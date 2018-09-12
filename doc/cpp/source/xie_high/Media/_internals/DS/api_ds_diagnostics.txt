@@ -1,0 +1,61 @@
+/*!
+	@internal
+	@file		api_ds_diagnostics.h
+	@brief		メディア関連の内部定義 (DirectShow 用)
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_API_DS_DIAGNOSTICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_EnumFilters(ExMediaType type, ExMediaDir dir, TFUNC func)
+	@brief		フィルタの列挙
+
+	@tparam	TFUNC	コールバック関数の型
+
+	@param[in]		type			メディア種別
+	@param[in]		dir				メディア方向
+	@param[in]		func			コールバック関数
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			XIE_API fnPRV_DS_EnumPins(IBaseFilter* filter, TFUNC func)
+	@brief		フィルタのピンの列挙
+
+	@tparam	TFUNC	コールバック関数の型
+
+	@param[in]		filter			対象のフィルタ
+	@param[in]		func			コールバック関数
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_EnumMediaTypes(IPin* pin, TFUNC func)
+	@brief		メディアタイプの列挙
+
+	@tparam	TFUNC	コールバック関数の型
+
+	@param[in]		pin				対象のピン
+	@param[in]		func			コールバック関数
+*/
+
+}	// Media
+}	// xie
+
+#endif	// _MCS_VER

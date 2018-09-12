@@ -1,0 +1,27 @@
+﻿namespace User
+{
+	using System;
+	using System.Collections.Generic;
+	using System.Windows.Forms;
+	using System.Reflection;
+
+	static class Program
+	{
+		public static void Main(string[] args)
+		{
+			XIE.Axi.Setup();
+
+			XIE.CxImage src = new XIE.CxImage();
+			XIE.CxImage dst = new XIE.CxImage();
+
+			try
+			{
+			}
+			finally
+			{
+				src.Dispose();
+				dst.Dispose();
+			}
+		}
+	}
+}

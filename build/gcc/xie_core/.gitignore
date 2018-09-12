@@ -1,0 +1,5 @@
+obj
+objd
+*.so
+*.log
+.vs

@@ -1,0 +1,140 @@
+/*!
+	@file	TxEllipseArcD.h
+	@brief	楕円の円弧構造体 (実数版)
+*/
+/*!
+	@internal
+	@file	TxEllipseArcD.cpp
+	@brief	楕円の円弧構造体 (実数版)
+*/
+/*!
+	@def	_TXELLIPSEARCD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxEllipseArcD
+	@brief		楕円の円弧構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::X
+	@brief	中心座標(X)
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::Y
+	@brief	中心座標(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::RadiusX
+	@brief	半径(X)
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::RadiusY
+	@brief	半径(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::StartAngle
+	@brief	開始角 (度) [0~360]
+*/
+// ===================================================================
+/*!
+	@var	TxEllipseArcD::SweepAngle
+	@brief	円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::TxEllipseArcD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::TxEllipseArcD(double x, double y, double radius_x, double radius_y, double start_angle, double sweep_angle)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x				中心座標(X)
+	@param[in]		y				中心座標(Y)
+	@param[in]		radius_x		半径(X)
+	@param[in]		radius_y		半径(Y)
+	@param[in]		start_angle		開始角 (度) [0~360]
+	@param[in]		sweep_angle		円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::TxEllipseArcD(TxPointD center, double radius_x, double radius_y, double start_angle, double sweep_angle)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		center			中心座標
+	@param[in]		radius_x		半径(X)
+	@param[in]		radius_y		半径(Y)
+	@param[in]		start_angle		開始角 (度) [0~360]
+	@param[in]		sweep_angle		円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::operator == (const TxEllipseArcD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::operator != (const TxEllipseArcD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::operator TxEllipseArcI() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxEllipseArcI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::Center() const
+	@brief	中心座標の取得
+
+	@return	現在設定されている中心座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxEllipseArcD::Center(const TxPointD& value)
+	@brief	中心座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			中心座標を設定します。
+*/
+
+}

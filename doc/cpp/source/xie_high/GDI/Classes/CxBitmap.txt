@@ -1,0 +1,394 @@
+/*!
+	@file	CxBitmap.h
+	@brief	DIB クラス
+*/
+/*!
+	@internal
+	@file	CxBitmap.cpp
+	@brief	DIB クラス
+*/
+/*!
+	@def	_CXBITMAP_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxBitmap
+	@brief		DIB クラス
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::m_Tag
+	@brief	内部データ構造
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@var	CxBitmap::m_hDC
+	@brief	(Windows 版のみ) デバイスコンテキスト
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::m_hBitmap
+	@brief	(Windows 版のみ) ビットマップハンドル
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxBitmap::m_XImage
+	@brief	(Linux 版のみ) 画像情報
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::m_XServer
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@remarks
+			Resize メソッドの初回呼び出し時に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+
+	@sa
+		@ref XServer \n
+		@ref Resize \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::m_XVisual
+	@brief	(Linux 版のみ) X ビジュアル情報
+
+	@remarks
+			Resize メソッドの初回呼び出し時に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+
+	@sa
+		@ref XVisual \n
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#endif
+// ===================================================================
+/*!
+	@var	CxBitmap::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::CxBitmap()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::CxBitmap(const CxBitmap& src)
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::CxBitmap(const TxSizeI& size)
+	@brief	コンストラクタ (領域の確保)
+
+	@param[in]	size	幅と高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::CxBitmap(int width, int height)
+	@brief	コンストラクタ (領域の確保)
+
+	@param[in]	width	幅 (pixels) [0, 1~]
+	@param[in]	height	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::~CxBitmap()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator=(const CxBitmap &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator == (const CxBitmap &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator != (const CxBitmap &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator CxImage() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を CxImage のオブジェクトに複製して返します。
+
+	@sa
+		@ref CopyTo \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+							CxImage に対応しています。\n
+							対応していないオブジェクトが指定された場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Dispose()
+	@brief	内部リソースの解放
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Resize(const TxSizeI& size)
+	@brief	領域の確保
+
+	@param[in]	size	幅と高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Resize(int width, int height)
+	@brief	領域の確保
+
+	@param[in]	width	幅 (pixels) [0, 1~]
+	@param[in]	height	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Clear(TxRGB8x4 value)
+	@brief	画素値のクリア
+
+	@param[in]	value	値
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@var	CxBitmap::GetHDC() const
+	@brief	(Windows 版のみ) デバイスコンテキストの取得
+
+	@return	デバイスコンテキストを返します。未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::GetHBITMAP() const
+	@brief	(Windows 版のみ) ビットマップハンドルの取得
+
+	@return	ビットマップハンドルを返します。未確保の場合は NULL を返します。\n
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxBitmap::GetXImage() const
+	@brief	(Linux 版のみ) XImage 構造体の取得
+
+	@return	XImage 構造体へのポインタを返します。未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::XServer() const
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@return	X ディスプレイサーバーを返します。\n
+			未初期化の場合は NULL を返します。\n
+
+	@sa
+		@ref Resize \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::XVisual() const
+	@brief	(Linux 版のみ) X ビジュアル情報
+
+	@return	X ビジュアル情報を返します。\n
+			未初期化の場合は NULL を返します。\n
+
+	@sa
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#endif
+// ===================================================================
+/*!
+	@var	CxBitmap::Address() const
+	@brief	画像領域の先頭アドレス
+
+	@return	画像領域の先頭アドレスを返します。未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Width() const
+	@brief	画像の幅 (pixels)
+
+	@return	画像の幅を返します。未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Height() const
+	@brief	画像の高さ (pixels)
+
+	@return	画像の高さを返します。未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			確保されている場合は、BGR8x4 または RGB8x4 を返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。
+*/
+// ===================================================================
+/*!
+	@var	CxBitmap::Stride() const
+	@brief	画像領域の水平方向サイズ (bytes)
+
+	@return	画像領域の水平方向サイズを返します。未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::Size() const
+	@brief	幅と高さ (pixel)
+
+	@return	現在の画像の幅と高さをピクセル単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::ImageSize() const
+	@brief	画像サイズ情報
+
+	@return	現在の画像サイズ情報を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator [] (int y)
+	@brief	インデクサ
+
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator [] (int y) const
+	@brief	インデクサ
+
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator () (int y, int x)
+	@brief	インデクサ
+
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+	@param[in]		x	X 座標 [0~(Width - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::operator () (int y, int x) const
+	@brief	インデクサ
+
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+	@param[in]		x	X 座標 [0~(Width - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBitmap::Scanner()
+	@brief	２次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@return	データ構造を２次元配列走査構造体に設定して返します。
+*/
+
+}
+}

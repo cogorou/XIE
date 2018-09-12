@@ -1,0 +1,133 @@
+/*!
+	@internal
+	@file		CxSerialPort_Linux.h
+	@brief		シリアル通信クラス (Linux 版) 
+*/
+/*!
+	@def	_CXSERIALPORT_LINUX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace IO
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_IO_Internals
+	@struct		CxSerialPort_Linux
+	@brief		シリアル通信クラス (Linux 版)
+*/
+// ===================================================================
+/*!
+	@var	CxSerialPort_Linux::m_Handle
+	@brief	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::CxSerialPort_Linux
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::~CxSerialPort_Linux
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@sa
+		@ref Open \n
+		@ref Close \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Open(TxCharCPtrA portname, const TxSerialPort& param)
+	@brief	オープン
+
+	@param[in]		portname	ポート名 [/dev/ttyS# (※ # の部分は 0~ の序数)]
+	@param[in]		param		パラメータ
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref IsValid \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Close()
+	@brief	クローズ
+
+	@remarks
+			現在 オープンしているポートをクローズします。\n
+			再度 オープンするまで操作できません。\n
+
+	@sa
+		@ref IsValid \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Readable(int timeout)
+	@brief	(使用禁止) 読み取り可能なデータの有無の確認
+
+	@param[in]		timeout		待機時間 [-1=無限、0~=有限]
+
+	@retval	true	有り
+	@retval	false	無し
+
+	@remarks
+			現在、この関数の動作確認は行っていません。\n
+			常に false を返す可能性があります。\n
+			この関数を使わず @ref Read メソッドを使用してください。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Read(char* buffer, int length, int timeout)
+	@brief	データの読み取り
+
+	@param[in]		buffer		データを格納する領域の先頭アドレス
+	@param[in]		length		データ長 (bytes) [0~]
+	@param[in]		timeout		待機時間 [-1=無限、0~=有限]
+
+	@return	実際に読み込まれたデータ長を返します。\n
+			ポートがオープンされていなければ 0 を返します。\n
+			それ以外、異常があれば 0 未満を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Writeable(int timeout)
+	@brief	(使用禁止) データ書き込みの可否の確認
+
+	@param[in]		timeout		待機時間 [-1=無限、0~=有限]
+
+	@retval	true	可能
+	@retval	false	不可能
+
+	@remarks
+			現在、この関数の動作確認は行っていません。\n
+			常に false を返す可能性があります。\n
+			この関数を使わず @ref Write メソッドを使用してください。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort_Linux::Write(const char* buffer, int length, int timeout)
+	@brief	データの書き込み
+
+	@param[in]		buffer		データが格納された領域の先頭アドレス
+	@param[in]		length		データ長 (bytes) [0~]
+	@param[in]		timeout		待機時間 [-1=無限、0~=有限]
+
+	@return	実際に書き込まれたデータ長を返します。\n
+			ポートがオープンされていなければ 0 を返します。\n
+			それ以外、異常があれば 0 未満を返します。
+*/
+
+}
+}

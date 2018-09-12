@@ -1,0 +1,35 @@
+/*!
+	@file	IxAttachable.h
+	@brief	アタッチ機能を実装する機能のインターフェース
+*/
+/*!
+	@def	_IXATTACHABLE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxAttachable
+	@brief		アタッチ機能を実装する機能のインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxAttachable::Attach(const IxModule& src)
+	@brief	アタッチ
+
+	@param[in]		src		アタッチ先
+*/
+// ===================================================================
+/*!
+	@fn		IxAttachable::IsAttached() const
+	@brief	アタッチ状態の取得
+
+	@retval	true	アタッチしている。
+	@retval	false	アタッチしていない。
+*/
+
+}

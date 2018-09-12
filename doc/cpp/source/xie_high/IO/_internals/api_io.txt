@@ -1,0 +1,35 @@
+/*!
+	@internal
+	@file		api_io.h
+	@brief		シリアル通信関連の内部定義
+*/
+/*!
+	@internal
+	@file		api_io.cpp
+	@brief		シリアル通信関連の内部定義
+*/
+/*!
+	@def	_API_IO_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace IO
+{
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_IO_Internals
+	@fn			fnPRV_IO_Setup()
+	@brief		初期化
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_IO_Internals
+	@fn			fnPRV_IO_TearDown()
+	@brief		解放
+*/
+}
+}

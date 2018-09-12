@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<?define Manufacturer = "Eggs Imaging Laboratory" ?>
+	<?define Vendor = "Eggs" ?>
+	<?define Product = "XIE" ?>
+	<?define Version = "1.0" ?>
+	<?define Build = "0" ?>
+	<?define Revision = "0" ?>
+	<?define Release = "2018/07/25" ?>
+	<?define Codepage = "932" ?>
+	<!--
+		<?define Language = "1041" ?>
+		<?define Language = "1033" ?>
+		<?define Codepage = "1252" ?>
+	-->
+	<Product
+		Id="2B3A354D-8C41-43B0-9B23-D9BDCE30233E"
+		Name="$(var.Product) $(var.Version) Documents"
+		Language="1041"
+		Codepage="$(var.Codepage)"
+		Version="$(var.Version)"
+		Manufacturer="$(var.Manufacturer)"
+		UpgradeCode="DA43D409-9B20-4CA9-A597-E66968AFC5B0"
+		>
+		
+		<Package
+			Id="A8BA7366-C60A-4E92-A1E9-F2CCF38126D7"
+			Description="$(var.Product) Documents"
+			Comments="$(var.Version) ($(var.Release))"
+			InstallerVersion="200"
+			Compressed="yes"
+			SummaryCodepage="$(var.Codepage)"
+			InstallScope="perMachine"
+			/>
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+		<!--- Directory -->
+		<SetDirectory Id="WINDOWSDRIVE" Value="[WindowsVolume]" />
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			
+			<!--- directly under WINDOWSDRIVE -->
+			<Directory Id="WINDOWSDRIVE">
+				<Directory Id="VENDORDIR" Name="$(var.Vendor)">
+					<Directory Id="INSTALLLOCATION" Name="$(var.Product)-$(var.Version)">
+						<?include Directory-doc.wxs ?>
+					</Directory>
+				</Directory>
+			</Directory>
+			<!---->
+			
+			<!--- under Program Files -->
+			<!---
+			<Directory Id="ProgramFilesFolder" Name="PFiles">
+				<Directory Id="VENDORDIR" Name="$(var.Vendor)">
+					<Directory Id="INSTALLLOCATION" Name="$(var.Product)-$(var.Version)">
+						<?include Directory-doc.wxs ?>
+					</Directory>
+				</Directory>
+			</Directory>
+			-->
+
+			<!--- Program Menu -->
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ProgramMenuDir" Name="$(var.Product) $(var.Version) Documents">
+					<!-- Manual Shortcuts -->
+					<Component Id="StartMenuManual" Guid="9DF2BA51-2D19-42F0-88CB-2FD43172AE24">
+						<RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+						<RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="$(var.Version).$(var.Revision)" />
+						<Shortcut Id="UninstallProduct" Name="Uninstall $(var.Product) $(var.Version) Documents" Description="Uninstalls the documents" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+						<Shortcut Id="XIEcpp_Shortcut" Name="XIE C++ Reference" WorkingDirectory="DOC" Target="[DOC]XIE-cpp.chm" Icon="help.ico" IconIndex="0" />
+						<Shortcut Id="XIEcli_Shortcut" Name="XIE .NET Reference" WorkingDirectory="DOC" Target="[DOC]XIE-cli.chm" Icon="help.ico" IconIndex="0" />
+					</Component>
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature
+			Id="ProductFeature"
+			Title="$(var.Product)"
+			Level="1"
+			Display="expand"
+			InstallDefault="local"
+			AllowAdvertise="no"
+			Absent="disallow"
+			ConfigurableDirectory= "INSTALLLOCATION"
+			>
+			<!--- Manual -->
+			<Feature Id="FeatureManual" Title="Manual" Level="1" AllowAdvertise="no">
+				<?include Feature-doc.wxs ?>
+				<ComponentRef Id="StartMenuManual" />
+			</Feature>
+		</Feature>
+	
+		<!--- misc - start menu icon -->
+		<Icon Id="help.ico" SourceFile="SupportFiles\help.ico" />
+		<!--<Icon Id="info.ico" SourceFile="SupportFiles\info.ico" />-->
+		<!--<Icon Id="text.ico" SourceFile="SupportFiles\text.ico" />-->
+		<Icon Id="XIE.ico" SourceFile="SupportFiles\XIE.ico" />
+		<Property Id="ARPPRODUCTICON" Value="XIE.ico" />
+
+		<!--- misc - EULA -->
+		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="SupportFiles\EULA.rtf" />
+
+		<!--- User Interface -->
+		<UI>
+			<!--- wizard type -->
+			<UIRef Id="WixUI_FeatureTree" />
+			<!--
+			<UIRef Id="WixUI_Mondo" />
+			<UIRef Id="WixUI_FeatureTree" />
+			<UIRef Id="WixUI_InstallDir" />
+			<Property Id="WIXUI_INSTALLDIR" Value="VENDORDIR" />
+			<UIRef Id="WixUI_Minimal" />
+			<UIRef Id="WixUI_Advanced" />
+			-->
+		</UI>
+	</Product>
+</Wix>

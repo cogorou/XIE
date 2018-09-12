@@ -1,0 +1,90 @@
+/*!
+	@file	CxThreadEvent.h
+	@brief	スレッドイベントクラス
+*/
+/*!
+	@def	_CXTHREADEVENT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxThreadEvent
+	@brief		スレッドイベントクラス
+
+	@remarks
+			スレッドクラスの通知イベントにイベントハンドラを登録する為のラッパークラスです。\n
+			具体的な使用方法は @ref CxThread の Examples をご参照ください。\n
+
+	@sa
+		@ref CxThread \n
+		@ref CxThread::Notify \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadEvent::CxThreadEvent()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadEvent::CxThreadEvent(const std::function<Handler>& callback)
+	@brief	コンストラクタ
+
+	@param[in]		callback	コールバック関数へのポインタ
+
+	@remarks
+			コールバック関数を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadEvent::operator = ( const CxThreadEvent& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadEvent::operator std::shared_ptr<CxThreadEvent>() const
+	@brief	キャストオペレータ
+
+	@return	ヒープ領域に確保したオブジェクトに自身の内容を複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadEvent::Receive (void *sender, IxModule *e)
+	@brief	イベント受信用関数 (内部処理用)
+
+	@param[in]		sender		呼び出し元
+	@param[in,out]	e			イベント引数
+
+	@remarks
+			この関数が下位側から呼び出されると、
+			CallBack に設定されたユーザーの関数を呼び出します。
+
+	@sa
+		@ref CallBack \n
+*/
+// ===================================================================
+/*!
+	@typedef	CxThreadEvent::CallBack
+	@brief		コールバック関数へのポインタ
+*/
+// ===================================================================
+/*!
+	@typedef	CxThreadEvent::Handler
+	@brief		コールバック関数の型
+*/
+
+}

@@ -1,0 +1,276 @@
+/*!
+	@file	TxScanner1D.h
+	@brief	１次元配列走査構造体
+*/
+/*!
+	@def	_TXSCANNER1D_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxScanner1D
+	@brief		１次元配列走査構造体
+
+	@tparam	TE	要素の型
+*/
+// ===================================================================
+/*!
+	@var	TxScanner1D::Address
+	@brief	配列の先頭アドレス
+*/
+// ===================================================================
+/*!
+	@var	TxScanner1D::Length
+	@brief	長さ (要素数)
+*/
+// ===================================================================
+/*!
+	@var	TxScanner1D::Model
+	@brief	要素モデル
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::TxScanner1D()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::TxScanner1D(const TxScanner1D<TE>& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src			複製元
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::TxScanner1D(TE* addr, int length, TxModel model)
+	@brief	コンストラクタ
+
+	@param[in]		addr		配列の先頭アドレス
+	@param[in]		length		長さ (要素数)
+	@param[in]		model		要素モデル (省略時は template パラメータ TE に従います。)
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ElementSize() const
+	@brief	要素のサイズ (bytes)
+
+	@return	現在設定されている要素モデル(型とパック数)からバイト数を計算して返します。\n
+			要素モデルから計算した結果が 0 の時は、template パラメータ TE から計算して返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::IsValid() const
+	@brief	有効性の検査
+
+	@retval		true	有効
+	@retval		false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効と判断します。\n
+			-	Address が NULL でない。
+			-	Length が 1 以上である。
+			-	ElementSize() が 0 より大きい。
+			\n
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator = (const TxScanner1D<TE>& src)
+	@brief	代入オペレータ
+
+	@param[in]		src			複製元
+
+	@return		複製後の自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator == ( const TxScanner1D<TE>& other )
+	@brief	比較オペレータ (等価)
+
+	@param[in]		other		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator != ( const TxScanner1D<TE>& other )
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		other		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標
+
+	@return	指定位置の要素への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標
+
+	@return	指定位置の要素への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::Copy(const xie::TxScanner1D<TE>& src)
+	@brief	要素のコピー
+
+	@param[in]		src		複製元 \n
+							※自身の要素数と一致している必要があります。\n
+
+	@return	指定された配列を自身に複製して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::Copy(const xie::CxArrayEx<TE>& src)
+	@brief	要素のコピー
+
+	@param[in]		src		複製元 \n
+							※自身の要素数と一致している必要があります。\n
+
+	@return	指定された配列を自身に複製して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::Copy(const std::vector<TE>& src)
+	@brief	要素のコピー
+
+	@param[in]		src		複製元 \n
+							※自身の要素数と一致している必要があります。\n
+
+	@return	指定された配列を自身に複製して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::Copy(const std::initializer_list<TE>& src)
+	@brief	要素のコピー
+
+	@param[in]		src		複製元 \n
+							※自身の要素数と一致している必要があります。\n
+
+	@return	指定された配列を自身に複製して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator xie::CxArrayEx<TE>() const
+	@brief	キャストオペレータ
+
+	@return		自身の要素を複製した配列を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::operator std::vector<TE>() const
+	@brief	キャストオペレータ
+
+	@return		自身の要素を複製した配列を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1)
+
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TxScanner1D<TS2> src2, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TxScanner1D<TS2> src2, TxScanner1D<TS3> src3, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TxScanner1D<TS2> src2, TxScanner1D<TS3> src3, TxScanner1D<TS4> src4, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* addr4)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TxScanner1D<TS2> src2, TxScanner1D<TS3> src3, TxScanner1D<TS4> src4, TxScanner1D<TS5> src5, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TS5		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* addr4, TS5* addr5)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		src5	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		TxScanner1D::ForEach(TxScanner1D<TS2> src2, TxScanner1D<TS3> src3, TxScanner1D<TS4> src4, TxScanner1D<TS5> src5, TxScanner1D<TS6> src6, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TS5		オブジェクトの要素の型
+	@tparam	TS6		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* addr4, TS5* addr5, TS6* addr6)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		src5	同時に走査するオブジェクト
+	@param[in]		src6	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+
+}

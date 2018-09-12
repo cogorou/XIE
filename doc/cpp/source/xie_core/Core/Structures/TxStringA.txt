@@ -1,0 +1,55 @@
+/*!
+	@file	TxStringA.h
+	@brief	文字列オブジェクト構造体 (MBCS)
+*/
+/*!
+	@internal
+	@file	TxStringA.cpp
+	@brief	文字列オブジェクト構造体 (MBCS)
+*/
+/*!
+	@def	_TXSTRINGA_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxStringA
+	@brief		文字列オブジェクト構造体 (MBCS)
+*/
+// ===================================================================
+/*!
+	@var	TxStringA::Address
+	@brief	領域の先頭アドレス (１次元配列) ※sizeof(char)×(Length＋1) (bytes) の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxStringA::Length
+	@brief	長さ (bytes)
+*/
+// ===================================================================
+/*!
+	@fn		TxStringA::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStringA::TxStringA()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxStringA::TxStringA(char* addr, int length)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (１次元配列) ※sizeof(char)×(Length＋1) (bytes) の連続領域。
+	@param[in]		length		長さ (bytes)
+*/
+
+}

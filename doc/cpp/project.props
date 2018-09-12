@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <XIE_VER>100</XIE_VER>
+    <XIE_ROOT>$(XIE100ROOT)</XIE_ROOT>
+    <XIE_BIN>$(XIE100BIN)</XIE_BIN>
+    <XIE_INC>$(XIE100ROOT)/include</XIE_INC>
+    <XIE_LIB>$(XIE100ROOT)/lib</XIE_LIB>
+    <INTERNAL_HEADERS>examples</INTERNAL_HEADERS>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="XIE_VER">
+      <Value>$(XIE_VER)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_ROOT">
+      <Value>$(XIE_ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_BIN">
+      <Value>$(XIE_BIN)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_INC">
+      <Value>$(XIE_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_LIB">
+      <Value>$(XIE_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="INTERNAL_HEADERS">
+      <Value>$(INTERNAL_HEADERS)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

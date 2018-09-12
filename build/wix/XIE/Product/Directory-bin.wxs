@@ -1,0 +1,79 @@
+<Include>
+	<Directory Id="BIN" Name="bin">
+		<Component Id="XIE.CORE.DLL" DiskId="1" Guid="8383E7DB-57CB-4F2F-BC96-FD30FB9E6D29">
+			<File Id="XIE.CORE.DLL" Name="XIE.Core.dll" Source="..\Archives\bin\XIE.Core.dll" />
+		</Component>
+		<Component Id="XIE.CORE.XML" DiskId="1" Guid="B8E023ED-DB7C-40E5-A9ED-F003EF06F20C">
+			<File Id="XIE.CORE.XML" Name="XIE.Core.xml" Source="..\Archives\bin\XIE.Core.xml" />
+		</Component>
+		<Component Id="XIE.TASKS.DLL" DiskId="1" Guid="62C19B3A-1D56-4F60-BE29-1D11B52657B2">
+			<File Id="XIE.TASKS.DLL" Name="XIE.Tasks.dll" Source="..\Archives\bin\XIE.Tasks.dll" />
+		</Component>
+		<Component Id="XIE.TASKS.XML" DiskId="1" Guid="DDC68214-0009-4592-8391-63487D8F4622">
+			<File Id="XIE.TASKS.XML" Name="XIE.Tasks.xml" Source="..\Archives\bin\XIE.Tasks.xml" />
+		</Component>
+		<Component Id="XIECAPTURE_100.EXE" DiskId="1" Guid="E466A5A2-2FF9-46F4-BC91-A41DCA55EAB9">
+			<File Id="XIECAPTURE_100.EXE" Name="XIEcapture_100.exe" Source="..\Archives\bin\XIEcapture_100.exe" />
+		</Component>
+		<Component Id="XIECAPTURE_100.EXE.CONFIG" DiskId="1" Guid="CE05530A-D852-4076-A105-3FED1F5BB259">
+			<File Id="XIECAPTURE_100.EXE.CONFIG" Name="XIEcapture_100.exe.config" Source="..\Archives\bin\XIEcapture_100.exe.config" />
+		</Component>
+		<Component Id="XIECAPTURE_100.XML" DiskId="1" Guid="C7A76FED-C217-4DFE-838C-7FFD6DF261D5">
+			<File Id="XIECAPTURE_100.XML" Name="XIEcapture_100.xml" Source="..\Archives\bin\XIEcapture_100.xml" />
+		</Component>
+		<Component Id="XIEPROMPT_100.EXE" DiskId="1" Guid="66AC9A96-E1D3-4026-9E61-C395D98470C8">
+			<File Id="XIEPROMPT_100.EXE" Name="XIEprompt_100.exe" Source="..\Archives\bin\XIEprompt_100.exe" />
+		</Component>
+		<Component Id="XIEPROMPT_100.EXE.CONFIG" DiskId="1" Guid="DF1AE7AA-A418-4743-B3FA-EA6E4649F478">
+			<File Id="XIEPROMPT_100.EXE.CONFIG" Name="XIEprompt_100.exe.config" Source="..\Archives\bin\XIEprompt_100.exe.config" />
+		</Component>
+		<Component Id="XIEPROMPT_100.XML" DiskId="1" Guid="07C61734-594C-44BF-88D8-AE27E149246C">
+			<File Id="XIEPROMPT_100.XML" Name="XIEprompt_100.xml" Source="..\Archives\bin\XIEprompt_100.xml" />
+		</Component>
+		<Component Id="XIESCRIPT_100.EXE" DiskId="1" Guid="25650758-5CC9-4403-8A80-A17F2E374CC7">
+			<File Id="XIESCRIPT_100.EXE" Name="XIEscript_100.exe" Source="..\Archives\bin\XIEscript_100.exe" />
+		</Component>
+		<Component Id="XIESTUDIO_100.EXE" DiskId="1" Guid="DCBF2A34-8638-40DE-8B4E-3EF7FC518052">
+			<File Id="XIESTUDIO_100.EXE" Name="XIEstudio_100.exe" Source="..\Archives\bin\XIEstudio_100.exe" />
+		</Component>
+		<Component Id="XIESTUDIO_100.EXE.CONFIG" DiskId="1" Guid="9F1E341C-5FBF-455A-9759-3E59D6B02089">
+			<File Id="XIESTUDIO_100.EXE.CONFIG" Name="XIEstudio_100.exe.config" Source="..\Archives\bin\XIEstudio_100.exe.config" />
+		</Component>
+		<Component Id="XIESTUDIO_100.XML" DiskId="1" Guid="F69A25B0-76B5-4289-94B1-2C72D53A733A">
+			<File Id="XIESTUDIO_100.XML" Name="XIEstudio_100.xml" Source="..\Archives\bin\XIEstudio_100.xml" />
+		</Component>
+		<Component Id="XIEVERSION_100.EXE" DiskId="1" Guid="02C070F4-D68B-490D-98FA-87E179E7D611">
+			<File Id="XIEVERSION_100.EXE" Name="XIEversion_100.exe" Source="..\Archives\bin\XIEversion_100.exe" />
+		</Component>
+		<Component Id="XIE_CORE_X64_100.DLL" DiskId="1" Guid="8C59B086-E4ED-478C-9DC0-1E1EED037B8B">
+			<File Id="XIE_CORE_X64_100.DLL" Name="xie_core_x64_100.dll" Source="..\Archives\bin\xie_core_x64_100.dll" />
+		</Component>
+		<Component Id="XIE_CORE_X64_100.LIB" DiskId="1" Guid="3B0A1A08-4AFD-4DD5-A1B7-31E4E693A62D">
+			<File Id="XIE_CORE_X64_100.LIB" Name="xie_core_x64_100.lib" Source="..\Archives\bin\xie_core_x64_100.lib" />
+		</Component>
+		<Component Id="XIE_CORE_X86_100.DLL" DiskId="1" Guid="8BC0F141-2240-475C-B123-43BE1276E70E">
+			<File Id="XIE_CORE_X86_100.DLL" Name="xie_core_x86_100.dll" Source="..\Archives\bin\xie_core_x86_100.dll" />
+		</Component>
+		<Component Id="XIE_CORE_X86_100.LIB" DiskId="1" Guid="70E1B0CA-01A7-4392-B9B2-F5275B167F4D">
+			<File Id="XIE_CORE_X86_100.LIB" Name="xie_core_x86_100.lib" Source="..\Archives\bin\xie_core_x86_100.lib" />
+		</Component>
+		<Component Id="XIE_DS_X64_100.DLL" DiskId="1" Guid="5A0CB65D-B909-404B-AC8E-E4874EDDF7E8">
+			<File Id="XIE_DS_X64_100.DLL" Name="xie_ds_x64_100.dll" Source="..\Archives\bin\xie_ds_x64_100.dll" />
+		</Component>
+		<Component Id="XIE_DS_X86_100.DLL" DiskId="1" Guid="551499DD-83B2-41AA-858F-F87E2C77607F">
+			<File Id="XIE_DS_X86_100.DLL" Name="xie_ds_x86_100.dll" Source="..\Archives\bin\xie_ds_x86_100.dll" />
+		</Component>
+		<Component Id="XIE_HIGH_X64_100.DLL" DiskId="1" Guid="30D817B9-2980-4A11-BBBD-8622582B6AC2">
+			<File Id="XIE_HIGH_X64_100.DLL" Name="xie_high_x64_100.dll" Source="..\Archives\bin\xie_high_x64_100.dll" />
+		</Component>
+		<Component Id="XIE_HIGH_X64_100.LIB" DiskId="1" Guid="EBA55F6F-E1D9-4922-8AAC-AC469686B281">
+			<File Id="XIE_HIGH_X64_100.LIB" Name="xie_high_x64_100.lib" Source="..\Archives\bin\xie_high_x64_100.lib" />
+		</Component>
+		<Component Id="XIE_HIGH_X86_100.DLL" DiskId="1" Guid="820BA92C-A6DB-472C-9506-41191915210A">
+			<File Id="XIE_HIGH_X86_100.DLL" Name="xie_high_x86_100.dll" Source="..\Archives\bin\xie_high_x86_100.dll" />
+		</Component>
+		<Component Id="XIE_HIGH_X86_100.LIB" DiskId="1" Guid="AA34DDFA-4486-4148-A3D9-8DAC0A99C461">
+			<File Id="XIE_HIGH_X86_100.LIB" Name="xie_high_x86_100.lib" Source="..\Archives\bin\xie_high_x86_100.lib" />
+		</Component>
+	</Directory>
+</Include>

@@ -1,0 +1,230 @@
+/*!
+	@file	CxOverlay.h
+	@brief	オーバレイ基本クラス
+*/
+/*!
+	@internal
+	@file	CxOverlay.cpp
+	@brief	オーバレイ基本クラス
+*/
+/*!
+	@def	_CXOVERLAY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxOverlay
+	@brief		オーバレイ基本クラス
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::CxOverlay()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::CxOverlay(const CxOverlay& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxOverlay &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::~CxOverlay()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::operator = ( const CxOverlay& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::operator == ( const CxOverlay& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::operator != ( const CxOverlay& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxOverlay(const CxOverlay &src) \n
+		@ref operator=(const CxOverlay &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxOverlay &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxOverlay::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxOverlay::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			現在の図形を指定されたキャンバスに描画します。。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::Visible() const
+	@brief	可視属性
+
+	@retval	true	可視
+	@retval	false	非可視
+
+	@sa
+		@ref Render(HxModule hcanvas, ExGdiScalingMode mode) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlay::Visible( bool value )
+	@brief	可視属性
+
+	@param[in]		value		設定値 [true:可視、false:非可視]
+
+	@remarks
+			この値が false の場合は、描画メソッドを実行しても無視されます。
+
+	@sa
+		@ref Render(HxModule hcanvas, ExGdiScalingMode mode) const \n
+*/
+// ===================================================================
+/*!
+	@var	CxOverlay::m_Visible
+	@brief	可視属性
+*/
+
+}	// GDI
+}	// xie

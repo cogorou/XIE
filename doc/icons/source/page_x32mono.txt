@@ -1,0 +1,204 @@
+// ======================================================================
+/*!
+	@page	x32mono_Action	Action
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html App-Config-x32mono.png</td>
+				<td>App-Config-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>環境設定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Exit-x32mono.png</td>
+				<td>App-Exit-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>アプリケーション終了を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Main-x32mono.png</td>
+				<td>App-Main-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>メイン画面を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Down-x32mono.png</td>
+				<td>Cursor-Down-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(下)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Left-x32mono.png</td>
+				<td>Cursor-Left-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(左)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Right-x32mono.png</td>
+				<td>Cursor-Right-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(右)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Up-x32mono.png</td>
+				<td>Cursor-Up-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(上)</td>
+				</tr>
+			<tr>
+				<td>@image html File-Save-x32mono.png</td>
+				<td>File-Save-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>保存を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Key-x32mono.png</td>
+				<td>Security-Key-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>セキュリティを示します。パスコード設定等で使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Start-x32mono.png</td>
+				<td>Task-Start-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの開始を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Stop-x32mono.png</td>
+				<td>Task-Start-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの停止を示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32mono_Overlay	Overlay
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Focus-x32mono.png</td>
+				<td>Overlay-Focus-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>焦点調整を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Graph-x32mono.png</td>
+				<td>Overlay-Graph-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グラフを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Grid-x32mono.png</td>
+				<td>Overlay-Grid-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グリッドを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Profile-x32mono.png</td>
+				<td>Overlay-Profile-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>濃度プロファイルを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32mono_View	View
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Actual-x32mono.png</td>
+				<td>Mag-Actual-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(原寸)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Expand-x32mono.png</td>
+				<td>Mag-Expand-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(拡大)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Reduce-x32mono.png</td>
+				<td>Mag-Reduce-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(縮小)</td>
+				</tr>
+			<tr>
+				<td>@image html View-FitImageSize-x32mono.png</td>
+				<td>View-FitImageSize-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(ウィンドウサイズに合わせる)</td>
+				</tr>
+			<tr>
+				<td>@image html View-Fullscreen-x32mono.png</td>
+				<td>View-Fullscreen-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>フルスクリーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Halftone-x32mono.png</td>
+				<td>View-Halftone-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ハーフトーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH1-x32mono.png</td>
+				<td>View-LayoutCH1-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(1CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH2-x32mono.png</td>
+				<td>View-LayoutCH2-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(2CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH4-x32mono.png</td>
+				<td>View-LayoutCH4-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(4CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutHT-x32mono.png</td>
+				<td>View-LayoutHT-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutVL-x32mono.png</td>
+				<td>View-LayoutVL-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutVR-x32mono.png</td>
+				<td>View-LayoutVR-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Loupe-x32mono.png</td>
+				<td>View-Loupe-x32mono.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ルーペを示します。</td>
+				</tr>
+			</table>
+*/

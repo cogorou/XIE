@@ -1,0 +1,496 @@
+/*!
+	@file	CxStringA.h
+	@brief	文字列オブジェクト (MBCS) 
+*/
+/*!
+	@internal
+	@file	CxStringA.cpp
+	@brief	文字列オブジェクト (MBCS) 
+*/
+/*!
+	@def	_CXSTRINGA_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxStringA
+	@brief		文字列オブジェクト (MBCS)
+
+	@remarks
+			文字列 (MBCS) を管理するクラスです。\n
+*/
+// ===================================================================
+/*!
+	@var	CxStringA::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Format(TxCharCPtrA format, ...)
+	@brief	書式化された文字列の生成
+
+	@param[in]	format	書式
+	@param[in]	...		引数
+
+	@return		書式化された文字列を格納した文字列オブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::From(TxCharCPtrW src, unsigned int codepage)
+	@brief	文字セットの変換 (Unicode → MBCS)
+
+	@param[in]	src				変換元の文字列 (NULL で終端されている必要があります。)
+	@param[in]	codepage		変換後の文字列のコードページ \n
+								Windows 環境 でのみ使用します。Linux 環境では無視します。\n
+								指定可能な値は下記の通りです。\n
+								- 0 : O/S の既定のコードページに従う。
+								- CP_UTF8 : UTF-8
+								.
+
+	@return		指定された Unicode (UTF-16) の文字列を MBCS に変換して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::CxStringA()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::CxStringA(const CxStringA& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxStringA &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::CxStringA(CxStringA&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxStringA &&src) \n
+		@ref MoveFrom(CxStringA &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::CxStringA(TxCharCPtrA text)
+	@brief	コンストラクタ
+
+	@param[in]		text	文字列
+
+	@remarks
+			指定された文字列を複製してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::~CxStringA()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator = ( const CxStringA& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator = ( CxStringA&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxStringA &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator = ( TxCharCPtrA src )
+	@brief	代入オペレータ
+
+	@param[in]		src		文字列
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定された文字列を複製します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator == ( const CxStringA& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator != ( const CxStringA& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator == ( TxCharCPtrA src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		文字列
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			文字列の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator != ( TxCharCPtrA src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		文字列
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			文字列の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator + ( const CxStringA& src ) const
+	@brief	文字列の連結
+
+	@param[in]		src		連結する文字列
+
+	@return	自身と指定された文字列を連結した新しいオブジェクトを返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator += ( const CxStringA& src )
+	@brief	文字列の連結
+
+	@param[in]		src		連結する文字列
+
+	@return	自身に指定された文字列を連結して返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator + ( TxCharCPtrA src ) const
+	@brief	文字列の連結
+
+	@param[in]		src		連結する文字列
+
+	@return	自身と指定された文字列を連結した新しいオブジェクトを返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator += ( TxCharCPtrA src )
+	@brief	文字列の連結
+
+	@param[in]		src		連結する文字列
+
+	@return	自身に指定された文字列を連結して返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator TxCharCPtrA() const
+	@brief	文字列の取得
+
+	@return	文字列の先頭アドレスを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator TxCharPtrA()
+	@brief	文字列の取得
+
+	@return	文字列の先頭アドレスを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref CxStringA(const CxStringA &src) \n
+		@ref operator=(const CxStringA &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::MoveFrom(CxStringA& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxStringA(CxStringA &&src) \n
+		@ref operator=(CxStringA &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxStringA &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	配列の先頭アドレスが NULL でないこと。
+			-	要素数が 0 より大きいこと。
+			-	要素のサイズが 0 bytes より大きいこと。
+			.
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Resize(int length)
+	@brief	領域の確保
+	
+	@param[in]		length		文字列長 (bytes)
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の領域を解放し、指定された長さ＋１の領域を新しく確保します。\n
+
+	@sa
+		@ref Address \n
+		@ref Length \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Reset()
+	@brief	データのリセット
+
+	@remarks
+			各要素を 0 で初期化します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Length() const
+	@brief	文字列長 (bytes)
+
+	@return		文字列長を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Address()
+	@brief	文字列の先頭アドレス
+
+	@return		文字列の先頭アドレスを返します。\n
+				未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::Address() const
+	@brief	文字列の先頭アドレス
+
+	@return		文字列の先頭アドレスを返します。\n
+				未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	指標 [0~]
+
+	@return		指定位置の要素への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	指標 [0~]
+
+	@return		指定位置の要素への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::StartsWith(TxCharCPtrA value, bool ignore_case) const
+	@brief	文字列の先頭が指定文字列と一致するか否か
+
+	@param[in]		value		比較対象
+	@param[in]		ignore_case	大文字小文字の無視
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::EndsWith(TxCharCPtrA value, bool ignore_case) const
+	@brief	文字列の末尾が指定文字列と一致するか否か
+
+	@param[in]		value		比較対象
+	@param[in]		ignore_case	大文字小文字の無視
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::StartsWith(TxCharCPtrA src, TxCharCPtrA value, bool ignore_case)
+	@brief	文字列の先頭が指定文字列と一致するか否か
+
+	@param[in]		src			検査対象の文字列
+	@param[in]		value		比較対象
+	@param[in]		ignore_case	大文字小文字の無視
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxStringA::EndsWith(TxCharCPtrA src, TxCharCPtrA value, bool ignore_case)
+	@brief	文字列の末尾が指定文字列と一致するか否か
+
+	@param[in]		src			検査対象の文字列
+	@param[in]		value		比較対象
+	@param[in]		ignore_case	大文字小文字の無視
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+
+}

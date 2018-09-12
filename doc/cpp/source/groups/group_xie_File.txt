@@ -1,0 +1,30 @@
+namespace xie
+{
+namespace File
+{
+// =================================================================
+/*!
+	@internal
+	@defgroup	group_xie_File	xie.File
+	@{
+*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_File_Plugins	Plugins
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_File_Exports		Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_File_Internals	Internals
+	*/
+/*!
+	@}
+*/
+}
+}

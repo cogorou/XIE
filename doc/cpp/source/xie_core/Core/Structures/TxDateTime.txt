@@ -1,0 +1,265 @@
+/*!
+	@file	TxDateTime.h
+	@brief	日時構造体
+*/
+/*!
+	@internal
+	@file	TxDateTime.cpp
+	@brief	日時構造体
+*/
+/*!
+	@def	_TXDATETIME_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxDateTime
+	@brief		日時構造体
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Year
+	@brief	年 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Month
+	@brief	月 [1~12}
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Day
+	@brief	日 [1~31]
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Hour
+	@brief	時 [0~23]
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Minute
+	@brief	分 [0~59]
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Second
+	@brief	秒 [0~59, 60]
+*/
+// ===================================================================
+/*!
+	@var	TxDateTime::Millisecond
+	@brief	ミリ秒 [0~999]
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::Now(bool ltc)
+	@brief	現在時刻
+
+	@param[in]		ltc		ローカル時で取得するか否か \n
+							- true  : ローカル時
+							- false : 世界協定時(UTC)
+							.
+
+	@return	現在時刻を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::FromBinary(unsigned long long src, bool ltc)
+	@brief	日時変換
+
+	@param[in]		src		変換元 (バイナリ日時)
+	@param[in]		ltc		変換元がローカル時である否か \n
+							- true  : ローカル時
+							- false : 世界協定時(UTC)
+							.
+
+	@return	指定されたバイナリ日時を日時構造体に変換して返します。\n
+
+	@par
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					SystemTimeToFileTime \n
+					LocalFileTimeToFileTime \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					mktime \n
+					localtime_r \n
+					gmtime_r \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::Axi::GetTime \n
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::TxDateTime()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::TxDateTime(int year, int month, int day, int hour, int minute, int second, int millisecond)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		year			年 [0~]
+	@param[in]		month			月 [1~12}
+	@param[in]		day				日 [1~31]
+	@param[in]		hour			時 [0~23]
+	@param[in]		minute			分 [0~59]
+	@param[in]		second			秒 [0~59, 60]
+	@param[in]		millisecond		ミリ秒 [0~999]
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::TxDateTime(const SYSTEMTIME& src)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src			変換元
+
+	@remarks
+			この関数は Visual C++ の場合に定義されます。\n
+			gcc では【 From(const tm& src, int msec = 0) 】が定義されます。\n
+			SYSTEMTIME 構造体からの変換の場合は何も加工せず代入しますが、\n
+			tm 構造体の場合は下記フィールドを変換して代入します。
+				-	Year = tm_year + 1900
+				-	Month = src.tm_mon + 1
+				.
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::operator == (const TxDateTime& src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src			比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::operator != (const TxDateTime& src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src			比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::operator = (const SYSTEMTIME& src)
+	@brief	代入オペレータ
+
+	@param[in]		src			変換元
+
+	@return	SYSTEMTIME 構造体の内容を変換して代入し自身の参照を返します。
+
+	@remarks
+			この関数は Visual C++ の場合に定義されます。\n
+			gcc では【 operator = (const tm& src) 】が定義されます。\n
+			SYSTEMTIME 構造体からの変換の場合は何も加工せず代入しますが、\n
+			tm 構造体の場合は下記フィールドを変換して代入します。
+				-	Year = tm_year + 1900
+				-	Month = src.tm_mon + 1
+				.
+*/
+// ===================================================================
+/*!
+	@fn		TxDateTime::operator SYSTEMTIME () const
+	@brief	キャストオペレータ
+
+	@return	自身の内容を SYSTEMTIME 構造体に変換して返します。
+
+	@remarks
+			この関数は Visual C++ の場合に定義されます。\n
+			gcc では【 operator tm () const 】が定義されます。\n
+			SYSTEMTIME 構造体への変換の場合は何も加工せず代入しますが、\n
+			tm 構造体の場合は下記フィールドを変換して代入します。
+				-	tm_year = Year - 1900
+				-	tm_mon = Month - 1
+				.
+			@par
+*/
+// ===================================================================
+/*!
+	@fn			TxDateTime::ToBinary(bool ltc) const
+	@brief		日時変換
+
+	@param[in]		ltc		変換元がローカル時である否か \n
+							- true  : ローカル時
+							- false : 世界協定時(UTC)
+							.
+
+	@return	現在の値をバイナリ日時に変換して返します。\n
+
+	@par
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					LTC: GetLocalTime \n
+					UTC: GetSystemTime \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					clock_gettime \n
+					LTC: localtime_r \n
+					UTC: gmtime_r \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::Axi::GetTime \n
+*/
+
+}

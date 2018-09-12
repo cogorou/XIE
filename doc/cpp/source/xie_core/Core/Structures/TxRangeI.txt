@@ -1,0 +1,308 @@
+/*!
+	@file	TxRangeI.h
+	@brief	レンジ構造体 (整数版)
+*/
+/*!
+	@internal
+	@file	TxRangeI.cpp
+	@brief	レンジ構造体 (整数版)
+*/
+/*!
+	@def	_TXRANGEI_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxRangeI
+	@brief		レンジ構造体 (整数版)
+*/
+// ===================================================================
+/*!
+	@var	TxRangeI::Lower
+	@brief	下限
+*/
+// ===================================================================
+/*!
+	@var	TxRangeI::Upper
+	@brief	上限
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::TxRangeI()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::TxRangeI(int lower, int upper)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		lower		下限
+	@param[in]		upper		上限
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator == (const TxRangeI& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator != (const TxRangeI& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*! 
+	@fn		TxRangeI::operator TxRangeD () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxRangeD 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+ (const TxRangeI &value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+ (int value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+ (double value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+= (const TxRangeI &value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+= (int value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator+= (double value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。\n
+			小数点以下桁は四捨五入されます。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator- (const TxRangeI &value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator- (int value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator- (double value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator-= (const TxRangeI &value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身から指定値を減算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator-= (int value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身から指定値を減算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator-= (double value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身から指定値を減算して自身の参照を返します。\n
+			小数点以下桁は四捨五入されます。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator* (const TxRangeI &value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator* (int value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator* (double value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator*= (const TxRangeI &value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を乗算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator*= (int value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を乗算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator*= (double value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を乗算して自身の参照を返します。\n
+			小数点以下桁は四捨五入されます。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/ (const TxRangeI &value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/ (int value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/ (double value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/= (const TxRangeI &value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身を指定値を除算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/= (int value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身を指定値を除算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRangeI::operator/= (double value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身を指定値を除算して自身の参照を返します。\n
+			小数点以下桁は四捨五入されます。
+*/
+
+}

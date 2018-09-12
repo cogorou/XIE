@@ -1,0 +1,492 @@
+/*!
+	@file	CxControlProperty.h
+	@brief	制御プロパティクラス
+*/
+/*!
+	@internal
+	@file	CxControlProperty.cpp
+	@brief	制御プロパティクラス
+*/
+/*!
+	@def	_CXCONTROLPROPERTY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxControlProperty
+	@brief		制御プロパティクラス
+
+	カメラを制御するクラスです。\n
+	\n
+	本クラスが対応するプロパティを下表に示します。
+	カメラの機種によっては対応していないものもあります。
+	対応状況については、@ref IsSupported で判定してください。
+
+	@par	対応表 (1): 
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>Name</td>
+				<td align="center" class="indexkey" width=100>機能</td>
+				<td align="center" class="indexkey" width=100>単位</td>
+				<td align="center" class="indexkey" width=150>範囲</td>
+				<td align="center" class="indexkey" width=300>備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Pan</td>
+				<td align="left">パン</td>
+				<td align="left">度</td>
+				<td align="left">-180~+180</td>
+				<td align="left">
+					負の値は左方向、正の値は右方向を意味します。
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Tilt</td>
+				<td align="left">チルト</td>
+				<td align="left">度</td>
+				<td align="left">-180~+180</td>
+				<td align="left">
+					負の値は下方向、正の値は上方向を意味します。
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Roll</td>
+				<td align="left">ロール</td>
+				<td align="left">度</td>
+				<td align="left">-180~+180</td>
+				<td align="left">
+					負の値は左方向、正の値は右方向を意味します。
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Zoom</td>
+				<td align="left">ズーム</td>
+				<td align="left">msec</td>
+				<td align="left">0~600</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Exposure</td>
+				<td align="left">露光</td>
+				<td align="left">2 <sup>n</sup> sec</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Iris</td>
+				<td align="left">絞り</td>
+				<td align="left">f<sub>stop</sub> * 10</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Focus</td>
+				<td align="left">焦点</td>
+				<td align="left">mm</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			</table>
+
+	@par	対応表 (2): 映像品質関連
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>Name</td>
+				<td align="center" class="indexkey" width=100>機能</td>
+				<td align="center" class="indexkey" width=100>単位</td>
+				<td align="center" class="indexkey" width=150>範囲</td>
+				<td align="center" class="indexkey" width=300>備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Brightness</td>
+				<td align="left">輝度レベル</td>
+				<td align="left">IRE 単位 * 100</td>
+				<td align="left">-10,000 ~ +10,000</td>
+				<td align="left">
+					NTSC 以外の場合は単位は任意です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Contrast</td>
+				<td align="left">コントラスト</td>
+				<td align="left">ゲイン係数 * 100</td>
+				<td align="left">0 ~ 10,000</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Hue</td>
+				<td align="left">色相</td>
+				<td align="left">度 * 100</td>
+				<td align="left">-180,000 ~ +180,000</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Saturation</td>
+				<td align="left">彩度</td>
+				<td align="left">(なし)</td>
+				<td align="left">0 ~ 10,000</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Sharpness</td>
+				<td align="left">鮮明度</td>
+				<td align="left">(なし)</td>
+				<td align="left">0 ~ 100</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Gamma</td>
+				<td align="left">ガンマ</td>
+				<td align="left">ガンマ値 * 100</td>
+				<td align="left">1~500</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">ColorEnable</td>
+				<td align="left">色の有効化</td>
+				<td align="left">(なし)</td>
+				<td align="left">0=OFF/1=ON</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">WhiteBalance</td>
+				<td align="left">ホワイトバランス</td>
+				<td align="left">絶対温度の色温度</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">BacklightCompensation</td>
+				<td align="left">バックライト補正</td>
+				<td align="left">(なし)</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					負の値は暗、正の値は明を意味します。
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Gain</td>
+				<td align="left">ゲイン</td>
+				<td align="left">(なし)</td>
+				<td align="left">(機種依存)</td>
+				<td align="left">
+					負の値は暗、正の値は明を意味します。
+				</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref CxCamera::ControlProperty \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::CxControlProperty()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::CxControlProperty(HxModule controller, TxCharCPtrA name)
+	@brief	コンストラクタ
+
+	@param[in]		controller		コントローラ
+	@param[in]		name			プロパティ名称
+
+	@remarks
+			初期値を指定してオブジェクトを構築します。\n
+
+	@sa
+		@ref CxCamera::ControlProperty \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::CxControlProperty(const CxControlProperty& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxControlProperty &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::~CxControlProperty()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetModule() const
+	@brief	内部モジュールの取得
+
+	@return	このオブジェクトの内部モジュールを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::operator = ( const CxControlProperty& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::operator == ( const CxControlProperty& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::operator != ( const CxControlProperty& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxControlProperty(const CxControlProperty &src) \n
+		@ref operator=(const CxControlProperty &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxControlProperty &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::Controller() const
+	@brief	コントローラの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::Controller(HxModule value)
+	@brief	コントローラの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::Name() const
+	@brief	プロパティ名の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::Name(TxCharCPtrA value)
+	@brief	プロパティ名の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::IsSupported() const
+	@brief	対応状況の検査
+
+	@return	コントローラが指定のプロパティをサポートしているか否かを検査します。
+			サポートしている場合は true を返します。
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetRange() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetStep() const
+	@brief	ステップサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetDefault() const
+	@brief	既定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetFlags() const
+	@brief	制御方法を示すフラグの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::SetFlags(int value)
+	@brief	制御方法を示すフラグの設定
+
+	@param[in]		value		設定値 [1:自動、2:手動]
+
+	@remarks
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::GetValue() const
+	@brief	設定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+// ===================================================================
+/*!
+	@fn		CxControlProperty::SetValue(int value, bool relative)
+	@brief	設定値の設定
+
+	@param[in]		value		設定値
+	@param[in]		relative	設定値が相対値であるか否か
+
+	@remarks
+			このメソッドは Controller と Name が有効な場合に使用できます。
+
+	@sa
+		@ref Controller \n
+		@ref Name \n
+*/
+
+}
+}

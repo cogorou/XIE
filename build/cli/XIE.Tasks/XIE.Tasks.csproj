@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66DB6CDF-CFB4-4017-8E5F-07B98F852E1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XIE</RootNamespace>
+    <AssemblyName>XIE.Tasks</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1591</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\Debug\XIE.Tasks.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <NoWarn>1591</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\Release\XIE.Tasks.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLinux|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugLinux\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\DebugLinux\XIE.Tasks.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU'">
+    <OutputPath>bin\ReleaseLinux\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\ReleaseLinux\XIE.Tasks.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('$(XIE_SNK)\XIE.snk')">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(XIE_SNK)\XIE.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="XIE.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)\XIE.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Base\CxTaskPort.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskPortEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Base\CxTaskPortEditForm.Designer.cs">
+      <DependentUpon>CxTaskPortEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\CodeDom.cs" />
+    <Compile Include="Tasks.Units\Core\Axi.cs" />
+    <Compile Include="Tasks.Units\Core\Defs.cs" />
+    <Compile Include="Tasks\CxAuxInfo.cs" />
+    <Compile Include="Tasks\CxAuxInfo_Body.cs" />
+    <Compile Include="Tasks\CxAuxInfo_Icons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxAuxInfo_Icons.Designer.cs">
+      <DependentUpon>CxAuxInfo_Icons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxDataPortInfo.cs" />
+    <Compile Include="Tasks\CxDataPortThread.cs" />
+    <Compile Include="Tasks\CxGrabberInfo.cs" />
+    <Compile Include="Tasks\CxGrabberThread.cs" />
+    <Compile Include="Tasks\CxImageInfo.cs" />
+    <Compile Include="Tasks\CxMediaInfo.cs" />
+    <Compile Include="Tasks\CxReferencedAssembly.cs" />
+    <Compile Include="Tasks\CxSerialPortInfo.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskflow.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskFolder.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskReference.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskUnit.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskUnitInfo.cs" />
+    <Compile Include="Tasks\CxTcpClientInfo.cs" />
+    <Compile Include="Tasks\CxTcpServerInfo.cs" />
+    <Compile Include="Tasks\Enums.cs" />
+    <Compile Include="Tasks\EventArgs.cs" />
+    <Compile Include="Tasks\Interfaces.cs" />
+    <Compile Include="Tasks.Units\Core\CxStopwatch.cs" />
+    <Compile Include="Tasks.Units\Core\Enumerations.cs" />
+    <Compile Include="Tasks.Units\System\Threading.cs" />
+    <Compile Include="Tasks.Units\System\Collections.cs" />
+    <Compile Include="Tasks.Units\System\Math.cs" />
+    <Compile Include="Tasks.Units\System\Operations.cs" />
+    <Compile Include="Tasks.Units\System\Primitive.cs" />
+    <Compile Include="Tasks.Units\System\Structures.cs" />
+    <Compile Include="Tasks.Units\System\Syntax.cs" />
+    <Compile Include="Tasks.Units\System\Text.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Azuki\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Azuki\Actions.cs" />
+    <Compile Include="Azuki\Actions.Selection.cs" />
+    <Compile Include="Azuki\AutoIndentHooks.cs" />
+    <Compile Include="Azuki\CaretMoveLogic.cs" />
+    <Compile Include="Azuki\DebugUtl.cs" />
+    <Compile Include="Azuki\DefaultWordProc.cs" />
+    <Compile Include="Azuki\Document\CharClass.cs" />
+    <Compile Include="Azuki\Document\Document.cs" />
+    <Compile Include="Azuki\Document\EditAction.cs" />
+    <Compile Include="Azuki\Document\EditHistory.cs" />
+    <Compile Include="Azuki\Document\LineDirtyState.cs" />
+    <Compile Include="Azuki\Document\Marking.cs" />
+    <Compile Include="Azuki\Document\RleArray.cs" />
+    <Compile Include="Azuki\Document\SearchResult.cs" />
+    <Compile Include="Azuki\Document\SelectionManager.cs" />
+    <Compile Include="Azuki\Document\SplitArray.cs" />
+    <Compile Include="Azuki\Document\TextBuffer.cs" />
+    <Compile Include="Azuki\Document\TextDataType.cs" />
+    <Compile Include="Azuki\Document\UriMarker.cs" />
+    <Compile Include="Azuki\Document\ViewParam.cs" />
+    <Compile Include="Azuki\Document\WatchPattern.cs" />
+    <Compile Include="Azuki\Document\WatchPatternMarker.cs" />
+    <Compile Include="Azuki\FileType.cs" />
+    <Compile Include="Azuki\Highlighter\BatchFileHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\Buffer.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexParser.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexScanner.cs" />
+    <Compile Include="Azuki\Highlighter\CppHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\CSharpHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\DiffHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Highlighters.cs" />
+    <Compile Include="Azuki\Highlighter\IHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\IniHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaScriptHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\KeywordHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\LatexHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\PythonHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\RubyHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Utl.cs" />
+    <Compile Include="Azuki\Highlighter\VisualBasicHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\XmlHighlighter.cs" />
+    <Compile Include="Azuki\IUserInterface.cs" />
+    <Compile Include="Azuki\IWordProc.cs" />
+    <Compile Include="Azuki\LineLogic.cs" />
+    <Compile Include="Azuki\Platform.cs" />
+    <Compile Include="Azuki\UiImpl.cs" />
+    <Compile Include="Azuki\UserPref.cs" />
+    <Compile Include="Azuki\View\ColorScheme.cs" />
+    <Compile Include="Azuki\View\DrawingOption.cs" />
+    <Compile Include="Azuki\View\HRulerIndicatorType.cs" />
+    <Compile Include="Azuki\View\IView.cs" />
+    <Compile Include="Azuki\View\MouseCursor.cs" />
+    <Compile Include="Azuki\View\PropView.cs" />
+    <Compile Include="Azuki\View\PropWrapView.cs" />
+    <Compile Include="Azuki\View\TextDecoration.cs" />
+    <Compile Include="Azuki\View\View.cs" />
+    <Compile Include="Azuki\View\View.Paint.cs" />
+    <Compile Include="Azuki\View\ViewType.cs" />
+    <Compile Include="Azuki\WinForms\AzukiControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Azuki\WinForms\PlatWin.cs" />
+    <Compile Include="Azuki\WinForms\WinApi.cs" />
+    <Compile Include="Azuki\WinForms\WinFormsMouseEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tasks.Units\ApiHelper.cs" />
+    <Compile Include="Tasks.Units\ApiPlugin.cs" />
+    <Compile Include="Tasks.Units\Core\CxImageEffectors.cs" />
+    <Compile Include="Tasks.Units\Core\CxImageUtility.cs" />
+    <Compile Include="Tasks\SharedData.cs" />
+    <Compile Include="Tasks.Units\Core\CxAuxInfo.cs" />
+    <Compile Include="Tasks.Units\Base\CxTaskPortTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Base\CxTaskPortTypeForm.Designer.cs">
+      <DependentUpon>CxTaskPortTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Core\CxImage.cs" />
+    <Compile Include="Tasks.Units\Core\CxImageFilter.cs" />
+    <Compile Include="Tasks.Units\Core\TxImageSizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Core\TxImageSizeForm.Designer.cs">
+      <DependentUpon>TxImageSizeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Core\Structures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Base\CxTaskPortEditForm.resx">
+      <DependentUpon>CxTaskPortEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxAuxInfo_Icons.resx">
+      <DependentUpon>CxAuxInfo_Icons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Base\CxTaskPortTypeForm.resx">
+      <DependentUpon>CxTaskPortTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Core\TxImageSizeForm.resx">
+      <DependentUpon>TxImageSizeForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tasks.Units\Script\CxScript.cs" />
+    <Compile Include="Tasks.Units\Script\CxScriptEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptEditorForm.Designer.cs">
+      <DependentUpon>CxScriptEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptImportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptImportsForm.Designer.cs">
+      <DependentUpon>CxScriptImportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptToolboxFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptToolboxFind.Designer.cs">
+      <DependentUpon>CxScriptToolboxFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptToolboxGoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks.Units\Script\CxScriptToolboxGoto.Designer.cs">
+      <DependentUpon>CxScriptToolboxGoto.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tasks.Units\Script\CxScriptEditorForm.resx">
+      <DependentUpon>CxScriptEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Script\CxScriptImportsForm.resx">
+      <DependentUpon>CxScriptImportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Script\CxScriptToolboxFind.resx">
+      <DependentUpon>CxScriptToolboxFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks.Units\Script\CxScriptToolboxGoto.resx">
+      <DependentUpon>CxScriptToolboxGoto.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Windows -->
+    <PostBuildEvent Condition="'$(OS)'!='Unix'">
+echo $(XIE_BIN)
+copy "$(TargetDir)$(TargetFileName)"     "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetName).pdb"     "$(ProjectDir)$(XIE_BIN)"
+copy "$(ProjectDir)$(DocumentationFile)" "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+    <!-- Linux -->
+    <PostBuildEvent Condition="'$(OS)'=='Unix'">
+echo $(XIE_BIN)
+cp "$(TargetDir)$(TargetFileName)"     "$(ProjectDir)$(XIE_BIN)"
+cp "$(TargetDir)$(TargetFileName).mdb" "$(ProjectDir)$(XIE_BIN)"
+cp "$(ProjectDir)$(DocumentationFile)" "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

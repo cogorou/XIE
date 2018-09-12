@@ -1,0 +1,95 @@
+/*!
+	@file	TxRawFileHeader.h
+	@brief	Raw 形式ファイルヘッダー構造体
+*/
+/*!
+	@internal
+	@file	TxRawFileHeader.cpp
+	@brief	Raw 形式ファイルヘッダー構造体
+*/
+/*!
+	@def	_TXRAWFILEHEADER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxRawFileHeader
+	@brief		Raw 形式ファイルヘッダー構造体
+*/
+// ===================================================================
+/*!
+	@var	TxRawFileHeader::Signature
+	@brief	識別子
+*/
+// ===================================================================
+/*!
+	@var	TxRawFileHeader::Version
+	@brief	バージョン
+*/
+// ===================================================================
+/*!
+	@var	TxRawFileHeader::Revision
+	@brief	リビジョン
+*/
+// ===================================================================
+/*!
+	@var	TxRawFileHeader::ClassName
+	@brief	クラス名
+*/
+// ===================================================================
+/*!
+	@var	TxRawFileHeader::Terminal
+	@brief	終端 (常に 0 です。)
+*/
+// ===================================================================
+/*!
+	@fn		TxRawFileHeader::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRawFileHeader::TxRawFileHeader()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxRawFileHeader::TxRawFileHeader(TxCharCPtrA name)
+	@brief	コンストラクタ
+
+	@param[in]		name	クラス名 [256文字未満]
+*/
+// ===================================================================
+/*!
+	@fn		TxRawFileHeader::operator == (const TxRawFileHeader &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxRawFileHeader::operator != (const TxRawFileHeader &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+}

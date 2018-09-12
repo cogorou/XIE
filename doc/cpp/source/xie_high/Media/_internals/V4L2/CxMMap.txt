@@ -1,0 +1,77 @@
+/*!
+	@file	CxMMap.h
+	@brief	メモリマップクラス
+*/
+/*!
+	@internal
+	@file	CxMMap.cpp
+	@brief	メモリマップクラス
+*/
+#ifndef _MSC_VER
+
+/*!
+	@def	_CXMMAP_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxMMap
+	@brief		メモリマップクラス
+*/
+
+/*
+class XIE_EXPORT_CLASS CxMMap : public CxModule
+	, public IxDisposable
+{
+protected:
+	void*		m_Address;
+	int			m_Length;
+	int			m_Offset;
+	int			m_FD;
+	bool		m_IsAttached;
+
+private:
+	void _Constructor();
+
+public:
+	CxMMap();
+	CxMMap(CxMMap&& src);
+	CxMMap(const CxMMap& src);
+	CxMMap(int length, int offset, int fd);
+	virtual ~CxMMap();
+
+	CxMMap& operator = ( CxMMap&& src );
+	CxMMap& operator = ( const CxMMap& src );
+	bool operator == ( const CxMMap& src ) const;
+	bool operator != ( const CxMMap& src ) const;
+
+	virtual TxArray Tag() const;
+
+public:
+	virtual void Dispose();
+	virtual bool IsValid() const;
+	virtual bool IsAttached() const;
+
+public:
+	virtual void Resize(int length, int offset, int fd);
+	virtual void Reset();
+
+public:
+	virtual       void* Address();
+	virtual const void* Address() const;
+
+	virtual int Length() const;
+	virtual int Offset() const;
+	virtual int FD() const;
+};
+*/
+
+}
+
+#endif	// _MCS_VER

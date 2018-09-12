@@ -1,0 +1,365 @@
+/*!
+	@file	CxDeviceListItem.h
+	@brief	デバイスリスト項目クラス
+*/
+/*!
+	@internal
+	@file	CxDeviceListItem.cpp
+	@brief	デバイスリスト項目クラス
+*/
+/*!
+	@def	_CXDEVICELISTITEM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxDeviceListItem
+	@brief		デバイスリスト項目クラス
+
+	入出力デバイスの詳細情報を取得するクラスです。\n
+	通常は CxDeviceList から使用します。
+	使用例については @ref CxDeviceList の Examples をご参照ください。\n
+
+	@sa
+		@ref CxDeviceList \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::CxDeviceListItem()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::CxDeviceListItem(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index)
+	@brief	コンストラクタ
+
+	@param[in]		type		メディア種別
+	@param[in]		dir			メディア方向
+	@param[in]		name		デバイス名称
+	@param[in]		index		デバイス指標 [0~]
+
+	@remarks
+			初期値を指定してオブジェクト構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::CxDeviceListItem(CxDeviceListItem&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxDeviceListItem &&src) \n
+		@ref MoveFrom(CxDeviceListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::CxDeviceListItem(const CxDeviceListItem& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxDeviceListItem &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::~CxDeviceListItem()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::operator = ( CxDeviceListItem&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxDeviceListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::operator = ( const CxDeviceListItem& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::operator == ( const CxDeviceListItem& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::operator != ( const CxDeviceListItem& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	データ構造へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::MoveFrom(CxDeviceListItem& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxDeviceListItem(CxDeviceListItem &&src) \n
+		@ref operator=(CxDeviceListItem &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxDeviceListItem(const CxDeviceListItem &src) \n
+		@ref operator=(const CxDeviceListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxDeviceListItem &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::MediaType() const
+	@brief	メディア種別の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::MediaType(ExMediaType value)
+	@brief	メディア種別の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::MediaDir() const
+	@brief	メディア方向の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::MediaDir(ExMediaDir value)
+	@brief	メディア方向の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Name() const
+	@brief	デバイス名称の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Name(TxCharCPtrA value)
+	@brief	デバイス名称の設定
+
+	@param[in]		value		設定値 [NULL または有効な文字列]
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Index() const
+	@brief	デバイス指標の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::Index(int value)
+	@brief	デバイス指標の設定
+
+	@param[in]		value		設定値 [0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::GetProductName() const
+	@brief	製品名の取得
+
+	@return	指定されたデバイスの製品名を返します。
+			各プロパティが有効でなければなりません。
+			デバイスが見つからない場合は例外を発行します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref MediaType \n
+		@ref MediaDir \n
+		@ref Name \n
+		@ref Index \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::GetPinNames() const
+	@brief	ピン名一覧の取得
+
+	@return	指定されたデバイスがサポートするピン名一覧を返します。
+			各プロパティが有効でなければなりません。
+			デバイスが見つからない場合は例外を発行します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref MediaType \n
+		@ref MediaDir \n
+		@ref Name \n
+		@ref Index \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceListItem::GetFrameSizes(int pin) const
+	@brief	フレームサイズ一覧の取得
+
+	@param[in]		pin		ピン番号 [0~]
+
+	@return	指定されたデバイスの指定ピンがサポートするフレームサイズ一覧を返します。
+			各プロパティが有効でなければなりません。
+			デバイスまたはピンが見つからない場合は例外を発行します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref MediaType \n
+		@ref MediaDir \n
+		@ref Name \n
+		@ref Index \n
+*/
+// ===================================================================
+/*!
+	@var	CxDeviceListItem::m_Tag
+	@brief	データ構造
+
+	@sa
+		@ref Tag \n
+		@ref TagPtr \n
+*/
+
+}
+}

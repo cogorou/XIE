@@ -1,0 +1,25 @@
+namespace xie
+{
+namespace Effectors
+{
+
+// =================================================================
+/*!
+	@defgroup	group_xie_Effectors	xie.Effectors
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Effectors_Classes		Classes
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Effectors_Exports		Exports
+	*/
+/*!
+	@}
+*/
+
+}
+}

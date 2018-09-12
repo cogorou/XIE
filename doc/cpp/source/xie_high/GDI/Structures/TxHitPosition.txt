@@ -1,0 +1,90 @@
+/*!
+	@file	TxHitPosition.h
+	@brief	ヒット位置構造体
+*/
+/*!
+	@internal
+	@file	TxHitPosition.cpp
+	@brief	ヒット位置構造体
+*/
+/*!
+	@def	_TXHITPOSITION_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Structures
+	@struct		TxHitPosition
+	@brief		ヒット位置構造体
+*/
+// ===================================================================
+/*!
+	@var	TxHitPosition::Mode
+	@brief	状態 [0=無効、1=移動、2=形状変更]
+*/
+// ===================================================================
+/*!
+	@var	TxHitPosition::Index
+	@brief	配列指標 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxHitPosition::Site
+	@brief	状態 [0=無効、+1~=頂点、-1~=辺]
+*/
+// ===================================================================
+/*!
+	@fn		TxHitPosition::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxHitPosition::TxHitPosition()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxHitPosition::TxHitPosition(int mode, int index, int site)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		mode		モード [0:無効、1:移動、2:形状変更]
+	@param[in]		index		配列指標 [0~]
+	@param[in]		site		状態 [0=無効、+1~=頂点、-1~=辺]
+*/
+// ===================================================================
+/*!
+	@fn		TxHitPosition::operator == (const TxHitPosition &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxHitPosition::operator != (const TxHitPosition &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+}
+}

@@ -1,0 +1,65 @@
+/*!
+	@file	IxParam.h
+	@brief	パラメータの取得と設定を行うインターフェース
+*/
+/*!
+	@def	_IXPARAM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxParam
+	@brief		パラメータの取得と設定を行うインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxParam::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		IxParam::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxIndexedParam
+	@brief		パラメータの取得と設定を行うインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxIndexedParam::GetParam(TxCharCPtrA name, int index, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[in]		index	指標
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		IxIndexedParam::SetParam(TxCharCPtrA name, int index, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		index	指標
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+}

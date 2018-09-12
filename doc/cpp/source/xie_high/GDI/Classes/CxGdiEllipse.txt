@@ -1,0 +1,608 @@
+/*!
+	@file	CxGdiEllipse.h
+	@brief	オーバレイ図形クラス (楕円)
+*/
+/*!
+	@internal
+	@file	CxGdiEllipse.cpp
+	@brief	オーバレイ図形クラス (楕円)
+*/
+/*!
+	@def	_CXGDIELLIPSE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxGdiEllipse
+	@brief		オーバレイ図形クラス (楕円)
+*/
+// ===================================================================
+/*!
+	@var	CxGdiEllipse::Shape
+	@brief	図形の形状
+*/
+// ===================================================================
+/*!
+	@var	CxGdiEllipse::m_Param
+	@brief	オーバレイ図形パラメータ (２次元用)
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse( const CxGdiEllipse& src )
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiEllipse &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse(CxGdiEllipse &&src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiEllipse &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse( const TxEllipseD& shape )
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		shape		楕円情報
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse( const TxEllipseI& shape )
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		shape		楕円情報
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse(double x, double y, double radius_x, double radius_y)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x			中心 X 座標
+	@param[in]		y			中心 Y 座標
+	@param[in]		radius_x	X 軸半径
+	@param[in]		radius_y	Y 軸半径
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CxGdiEllipse(TxPointD center, double radius_x, double radius_y)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		center		中心座標
+	@param[in]		radius_x	X 軸半径
+	@param[in]		radius_y	Y 軸半径
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::~CxGdiEllipse()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator = ( const CxGdiEllipse& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator = (CxGdiEllipse &&src)
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator == ( const CxGdiEllipse& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator != ( const CxGdiEllipse& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref Shape \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref Shape \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator = ( const TxEllipseD& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定された構造体の内容を @ref Shape フィールドに複製します。
+			その他の描画情報は保持されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator = ( const TxEllipseI& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定された構造体の内容を @ref Shape フィールドに複製します。
+			その他の描画情報は保持されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator TxEllipseD() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxEllipseD 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::operator TxEllipseI() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxEllipseI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGdiEllipse(const CxGdiEllipse &src) \n
+		@ref operator=(const CxGdiEllipse &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGdiEllipse &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先のキャンバス
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			図形を指定されたキャンバスに描画します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Location(TxPointD value)
+	@brief	基準位置の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			この関数は図形を移動させることが目的です。\n
+			この値を設定しても図形を構成する各座標の相対位置は変化しません。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Location() const
+	@brief	基準位置の取得
+
+	@return
+			図形の基準位置を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Bounds() const
+	@brief	外接矩形の取得
+
+	@return
+			図形に外接する矩形を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Angle() const
+	@brief	回転角の取得
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Angle( double degree )
+	@brief	回転角の設定
+
+	@param[in]		degree		設定値 (度) [±180]
+
+	@remarks
+			この値は degree 単位で、範囲は ±180 です。\n
+			正の値（+）は右回転、負の値（-）は左回転です。			
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Axis() const
+	@brief	回転の機軸の取得
+
+	@return
+			現在設定されている値を返します。\n
+			この値は基準位置からの相対値(±)を示します。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Axis( TxPointD value )
+	@brief	回転の機軸の設定
+
+	@param[in]		value		設定値 (基準位置からの相対値(±)) 
+
+	@remarks
+			図形の基準位置（Location）に この値を加算した位置が回転中心になります。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::HitTest( TxPointD position, double margin ) const
+	@brief	位置判定
+
+	@param[in]		position	指定座標
+	@param[in]		margin		判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+
+	@return
+			指定座標が図形外にあれば 0 を返します。\n
+			指定座標が図形内にあれば 0 以外の値を返します。\n
+			返す値の範囲は図形によって異なります。 
+
+	@remarks
+			指定座標が図形上のどの位置にあるかを判定します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Modify(HxModule prev_figure, TxPointD prev_position, TxPointD move_position, double margin)
+	@brief	図形の編集（位置移動または形状変更）
+
+	@param[in]		prev_figure		編集前の図形
+	@param[in]		prev_position	移動前の座標
+	@param[in]		move_position	移動後の座標
+	@param[in]		margin			判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+	@sa
+		HitTest( TxPointD position, double margin ) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::BkColor() const
+	@brief	背景色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::BkColor( TxRGB8x4 value )
+	@brief	背景色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の面（輪郭線によって内包される部分）の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref PenColor( TxRGB8x4 value ) \n
+		@ref BkEnable( bool value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::BkEnable() const
+	@brief	背景の有効属性
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::BkEnable( bool value )
+	@brief	背景の有効属性
+
+	@param[in]		value		設定値 [true:有効、false:無効]
+
+	@remarks
+			この値が false の時は背景描画が無視されます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenColor() const
+	@brief	ペン色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenColor( TxRGB8x4 value )
+	@brief	ペン色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の輪郭部分の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenStyle() const
+	@brief	ペン形状
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenStyle( ExGdiPenStyle value )
+	@brief	ペン形状
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenWidth() const
+	@brief	ペン幅
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::PenWidth( int value )
+	@brief	ペン幅
+
+	@param[in]		value		設定値 [1~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Param() const
+	@brief	オーバレイ図形パラメータの取得
+
+	@return	オーバレイ図形パラメータを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Param(const TxGdi2dParam& value)
+	@brief	オーバレイ図形パラメータの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::X() const
+	@brief	X 座標の取得
+
+	@return	現在設定されている X 座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::X(double value)
+	@brief	X 座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			X 座標を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Y() const
+	@brief	Y 座標の取得
+
+	@return	現在設定されている Y 座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::Y(double value)
+	@brief	Y 座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			Y 座標を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::RadiusX() const
+	@brief	X 軸半径の取得
+
+	@return	現在設定されている X 軸半径を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::RadiusX(double value)
+	@brief	X 軸半径の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			X 軸半径を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::RadiusY() const
+	@brief	Y 軸半径の取得
+
+	@return	現在設定されている Y 軸半径を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::RadiusY(double value)
+	@brief	Y 軸半径の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			Y 軸半径を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiEllipse::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+}
+}

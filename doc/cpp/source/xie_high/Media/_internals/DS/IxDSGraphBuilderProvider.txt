@@ -1,0 +1,21 @@
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Interfaces
+	@struct		IxDSGraphBuilderProvider
+	@brief		グラフプロバイダインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxDSGraphBuilderProvider::GraphBuilder()
+	@brief	グラフビルダーの参照
+
+	@return	内部に保有しているグラフビルダーへのポインタを返します。外部で解放しないでください。
+*/
+
+}
+}

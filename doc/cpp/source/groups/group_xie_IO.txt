@@ -1,0 +1,40 @@
+namespace xie
+{
+namespace IO
+{
+// =================================================================
+/*!
+	@defgroup	group_xie_IO	xie.IO
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_IO_Classes	Classes
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_IO_Structures	Structures
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_IO_Enumerations	Enumerations
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_IO_Diagnostics	Diagnostics
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_IO_Exports	Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_IO_Internals	Internals
+	*/
+/*!
+	@}
+*/
+}
+}

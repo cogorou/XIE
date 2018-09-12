@@ -1,0 +1,10 @@
+/*!
+	@internal
+	@file		fnPRV_Buffer_Copy.h
+	@brief		ファイル入出力関連 (バッファコピー関数)
+*/
+/*!
+	@internal
+	@def		_FNPRV_BUFFER_COPY_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/

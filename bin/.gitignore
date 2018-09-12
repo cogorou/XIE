@@ -1,0 +1,12 @@
+x64
+x86
+*.exe
+*.exe.config
+*.exe.mdb
+*.dll
+*.dll.plugin
+*.lib
+*.pdb
+*.XML
+*.xml
+*.log

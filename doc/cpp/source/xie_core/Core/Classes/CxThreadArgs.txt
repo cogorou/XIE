@@ -1,0 +1,124 @@
+/*!
+	@file	CxThreadArgs.h
+	@brief	スレッド引数クラス
+*/
+/*!
+	@internal
+	@file	CxThreadArgs.cpp
+	@brief	スレッド引数クラス
+*/
+/*!
+	@def	_CXTHREADARGS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxThreadArgs
+	@brief		スレッド引数クラス
+
+	@remarks
+			スレッドクラスの通知イベントとイベントハンドラの間で情報交換する為のオブジェクトです。\n
+			具体的な使用方法は @ref CxThread の Examples をご参照ください。\n
+
+	@sa
+		@ref CxThread \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::CxThreadArgs()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::CxThreadArgs(void* param, int index)
+	@brief	コンストラクタ
+
+	@param[in]		param		ユーザー指定のパラメータへのポインタ
+	@param[in]		index		スレッド指標 [0~]
+
+	@remarks
+			初期値を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::CxThreadArgs(const CxThreadArgs& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			オブジェクトの内容を複製して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::~CxThreadArgs()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::operator = ( const CxThreadArgs& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::operator == ( const CxThreadArgs& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxThreadArgs::operator != ( const CxThreadArgs& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@typedef	CxThreadArgs::Param
+	@brief		ユーザー指定のパラメータへのポインタ
+*/
+// ===================================================================
+/*!
+	@var		CxThreadArgs::Index
+	@brief		スレッドの指標 [0~]
+
+	@remarks
+			ユーザーのスレッド関数を呼び出すたびにインクリメントされます。
+*/
+// ===================================================================
+/*!
+	@var		CxThreadArgs::Cancellation
+	@brief		スレッドの停止要求
+
+	@remarks
+			ユーザーのスレッド関数がこの値を true に設定すると
+			呼び出し元のスレッドが停止します。
+			何も設定しなければ継続します。
+*/
+
+}

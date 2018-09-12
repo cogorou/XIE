@@ -1,0 +1,95 @@
+/*!
+	@internal
+	@file		api_gdi_graphics.cpp
+	@brief		.NET/mono Graphics 関連の内部定義
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Graphics_CheckValidity(HDC hdc)
+	@brief		有効性の検査
+
+	@param[in]		hdc		デバイスコンテキスト
+
+	@retval	true	正常
+	@retval	false	異常
+
+	@remarks
+			Windows の場合は NULL で無ければ正常と判断します。\n
+			Linux の場合は 引数 @a hdc が libgdiplus の Graphics 構造体へのポインタである前提で判定します。
+			@a hdc を Graphics 構造体へキャストして display フィールドと drawable フィールドを調べます。
+			display (X ディスプレイサーバー) が NULL でなく drawable が 0 でなければ正常と判断します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Graphics_DrawImage(HDC hdc, HxModule hsrc, TxCanvas canvas)
+	@brief		背景画像の描画
+
+	@param[in,out]	hdc		描画先のデバイスコンテキスト
+	@param[in]		hsrc	描画対象の背景画像
+	@param[in]		canvas	キャンバス情報
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+#else
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Graphics_CheckValidity(void* hdc)
+	@brief		有効性の検査
+
+	@param[in]		hdc		デバイスコンテキスト
+
+	@retval	true	正常
+	@retval	false	異常
+
+	@remarks
+			Windows の場合は NULL で無ければ正常と判断します。\n
+			Linux の場合は 引数 @a hdc が libgdiplus の Graphics 構造体へのポインタである前提で判定します。
+			@a hdc を Graphics 構造体へキャストして display フィールドと drawable フィールドを調べます。
+			display (X ディスプレイサーバー) が NULL でなく drawable が 0 でなければ正常と判断します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Graphics_DrawImage(void* hdc, HxModule hsrc, TxCanvas canvas)
+	@brief		背景画像の描画
+
+	@param[in,out]	hdc		描画先のデバイスコンテキスト
+	@param[in]		hsrc	描画対象の背景画像
+	@param[in]		canvas	キャンバス情報
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+#endif
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Profile_MakeGraph(HxModule hsrc, TxCanvas canvas, TxPointD position, HxModule* hgraphs_x, HxModule* hgraphs_y, double* values)
+	@brief		濃度プロファイルの波形グラフの生成
+
+	@param[in]		hsrc		対象画像
+	@param[in]		canvas		キャンバス情報
+	@param[in]		position	カーソル位置
+	@param[in,out]	hgraphs_x	X 座標の波形グラフを格納する配列オブジェクト [要素モデル: TxModel.F64(2)] (カーソル位置の X 座標を垂直方向に走査したもの)
+	@param[in,out]	hgraphs_y	Y 座標の波形グラフを格納する配列オブジェクト [要素モデル: TxModel.F64(2)] (カーソル位置の Y 座標を水平方向に走査したもの)
+	@param[in,out]	values		指定位置の濃度値を格納する配列 [要素数は対象画像のチャネル数×パック数必要です。]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			引数 @a hgraphs_x と @a hgraphs_y の要素は TxPointD を意味します。領域は内部で再確保されます。
+			@a values は予め確保しておく必要があります。
+*/
+
+}
+}

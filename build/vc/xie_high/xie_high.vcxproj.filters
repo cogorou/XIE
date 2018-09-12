@@ -1,0 +1,1211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{df22920d-a200-4633-a803-d7f6c2a85b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4515cae7-7f14-400a-8e3b-bcc59a356eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\IO">
+      <UniqueIdentifier>{3236f551-e961-4a0f-9345-685a31fa7273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\IO">
+      <UniqueIdentifier>{0844ebb4-b704-46d5-9b47-e5524b4c3e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\GDI">
+      <UniqueIdentifier>{7c194a28-74db-4db8-ac96-4cb20a755ef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\File">
+      <UniqueIdentifier>{6e8da20f-2698-44b3-b571-820c04c668f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\GDI">
+      <UniqueIdentifier>{c0d83922-a36d-4f34-b9cd-7c0cd634fb93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\GDI\Base">
+      <UniqueIdentifier>{57d1fe8e-4ac2-4966-93d8-7c40235752ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\GDI\Figures">
+      <UniqueIdentifier>{f60f6a93-d32d-4edd-bca3-103c65ef173f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\GDI\Structures">
+      <UniqueIdentifier>{8d4ed310-2654-47ab-a986-e69ecad05cc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty">
+      <UniqueIdentifier>{928b7a37-ec83-4c39-ab75-8654e53ea999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjpeg">
+      <UniqueIdentifier>{e7107cdb-4525-4a80-b93b-e53752b4d2da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libpng">
+      <UniqueIdentifier>{a7b5d6e2-3b2c-4822-9b6f-d56909c15661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libtiff">
+      <UniqueIdentifier>{9377f600-935e-4693-b2b0-4b2362c91ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libz">
+      <UniqueIdentifier>{2cd92f24-b105-46bd-aabb-2ddbe480afa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjpeg\include">
+      <UniqueIdentifier>{82ddae7d-4ad6-4e13-940e-32369cb4c262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libjpeg\source">
+      <UniqueIdentifier>{bd9f7d50-a823-47d6-b0bc-0714c33bd206}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libpng\include">
+      <UniqueIdentifier>{7f88369f-c9a1-4653-8908-6b2d85895307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libpng\source">
+      <UniqueIdentifier>{4503bb0f-a901-4fe5-8833-0b8883530433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libtiff\include">
+      <UniqueIdentifier>{fdf67761-6ed6-43f5-8c2f-c1101eca1a5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libtiff\source">
+      <UniqueIdentifier>{8705d81f-d685-4b61-89ae-6556062cd04b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libz\include">
+      <UniqueIdentifier>{68edf3bb-a794-4c04-bc45-e4884e309da0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thirdparty\libz\source">
+      <UniqueIdentifier>{94be0bd1-0b30-4b69-b886-d3f897ff001f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Net">
+      <UniqueIdentifier>{2289f2b2-94cf-4762-9fb2-a5d501ad8488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Net">
+      <UniqueIdentifier>{c7ebcedb-d3d2-4b7a-833f-b5e2d606bab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{35f2a378-c38f-496a-b742-21b8ba6db3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Media">
+      <UniqueIdentifier>{24ac6ea5-de34-43a9-b1d3-9ab105bae58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Media">
+      <UniqueIdentifier>{2b7c44b1-42c5-44b7-b78a-2f1bd0b15c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Media\DS">
+      <UniqueIdentifier>{9f5e5069-5e83-4702-85c3-f48860e7b7a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Media\V4L2">
+      <UniqueIdentifier>{6932fb6e-04c8-4cf3-a901-161ed8348024}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Media\Base">
+      <UniqueIdentifier>{2eade57c-94a5-4420-b955-75f67f2bbea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\GDI\Overlays">
+      <UniqueIdentifier>{ec315cff-319c-4864-8dcd-b012feaeac58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xie_high.def">
+      <Filter>source</Filter>
+    </None>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\xie_high.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\IO\CxSerialPort.h">
+      <Filter>include\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\IO\TxSerialPort.h">
+      <Filter>include\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\CxGLContext.h">
+      <Filter>source\GDI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\api_gdi.h">
+      <Filter>source\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\IO\api_io.h">
+      <Filter>source\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\File\api_file_plugins.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\CxTcpClient.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\CxTcpServer.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\CxUdpClient.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxIPAddress.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxIPEndPoint.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxSocketStream.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxTcpClient.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxTcpServer.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Net\TxUdpClient.h">
+      <Filter>include\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Net\api_net.h">
+      <Filter>source\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\IO\AxiIODiagnostics.h">
+      <Filter>include\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxCamera.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\api_v4l2.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSCamera.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\api_media.h">
+      <Filter>source\Media\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLCamera.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_DDB.h">
+      <Filter>source\GDI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_YUV.h">
+      <Filter>source\GDI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_YUYV.h">
+      <Filter>source\GDI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxMMap.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxDeviceList.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxDeviceParam.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds_diagnostics.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxDeviceListItem.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\TxDeviceListItem.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\TxDeviceParam.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxMediaPlayer.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSMediaPlayer.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLMediaPlayer.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\IxMediaControl.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxControlProperty.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSControlProperty.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLControlProperty.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\AxiMediaDiagnostics.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSControlPropertyWrapper.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSSampleReceiver.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLSampleReceiver.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_config.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\png.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngconf.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngdebug.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pnginfo.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pnglibconf.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngpriv.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngstruct.h">
+      <Filter>thirdparty\libpng\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginJpeg.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginPng.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginTiff.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\GDI\CxGraphics.h">
+      <Filter>source\GDI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\AxiGDIDiagnostics.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxBitmap.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxCanvas.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxTexture.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\IxGdi2d.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiEllipseArc.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiCircle.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiEllipse.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiImage.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiLine.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiLineSegment.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiPoint.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiPolyline.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiRectangle.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiTrapezoid.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiVoid.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxBitmap.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxCanvas.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxGdi2dParam.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxGdiImage.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxGdiPolyline.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxHitPosition.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\IO\CxSerialPort_Linux.h">
+      <Filter>source\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\IO\CxSerialPort_Windows.h">
+      <Filter>source\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxScreenCapture.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSScreenCapture.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLScreenCapture.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxScreenList.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxScreenListItem.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\TxScreenListItem.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxOverlay.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxOverlayGrid.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxOverlayProfile.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxGrabber.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxGrabberArgs.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\TxGrabberArgs.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSGrabber.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSGrabberArgs.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabber.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabberArgs.h">
+      <Filter>source\Media\V4L2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Media\CxGrabberEvent.h">
+      <Filter>include\Media</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds_com.h">
+      <Filter>source\Media\DS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiCircleArc.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiStringW.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiStringA.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxGdiStringW.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\TxGdiStringA.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\GDI\CxGdiString.h">
+      <Filter>include\GDI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\xie_high\xie_high.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxBitmap.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiVoid.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiCircle.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiEllipse.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiImage.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiLine.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiLineSegment.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiPoint.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiPolyline.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiRectangle.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxTexture.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxBitmap.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiImage.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiPolyline.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi.cpp">
+      <Filter>source\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi_exports.cpp">
+      <Filter>source\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\IO\api_io.cpp">
+      <Filter>source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\IO\api_io_exports.cpp">
+      <Filter>source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\api_file_plugins.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\api_net.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\api_net_exports.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Extract.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiTrapezoid.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxHitPosition.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdi2dParam.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\AxiGDIDiagnostics.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\api_ds.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\api_v4l2.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSCamera.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\api_media.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxCamera.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLCamera.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxMMap.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\api_media_exports.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceList.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceParam.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceListItem.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxDeviceParam.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxDeviceListItem.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxMediaPlayer.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSMediaPlayer.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLMediaPlayer.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxControlProperty.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSControlProperty.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLControlProperty.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\AxiMediaDiagnostics.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSControlPropertyWrapper.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlayGrid.cpp">
+      <Filter>source\GDI\Overlays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlayProfile.cpp">
+      <Filter>source\GDI\Overlays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlay.cpp">
+      <Filter>source\GDI\Overlays</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSSampleReceiver.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLSampleReceiver.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxCanvas.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxCanvas.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\png.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngerror.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngget.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngmem.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngpread.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngread.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrio.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrtran.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrutil.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngset.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngtest.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngtrans.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwio.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwrite.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwtran.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwutil.c">
+      <Filter>thirdparty\libpng\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiEllipseArc.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Check.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Load.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Save.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Check.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Load.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Save.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Check.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Load.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Save.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\File\fnXIE_File_CopyJpegMarkers.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi_graphics.cpp">
+      <Filter>source\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGraphics.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\IO\AxiIODiagnostics.cpp">
+      <Filter>source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\IO\CxSerialPort.cpp">
+      <Filter>source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\IO\TxSerialPort.cpp">
+      <Filter>source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxTcpClient.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxTcpServer.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxUdpClient.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxIPAddress.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxIPEndPoint.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxSocketStream.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxTcpClient.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxTcpServer.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxUdpClient.cpp">
+      <Filter>source\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenCapture.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSScreenCapture.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLScreenCapture.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenList.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenListItem.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxScreenListItem.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxGrabber.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxGrabberArgs.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxGrabberArgs.cpp">
+      <Filter>source\Media\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSGrabber.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSGrabberArgs.cpp">
+      <Filter>source\Media\DS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabber.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabberArgs.cpp">
+      <Filter>source\Media\V4L2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiCircleArc.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiStringW.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiStringA.cpp">
+      <Filter>source\GDI\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiStringW.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiStringA.cpp">
+      <Filter>source\GDI\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink1.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink0.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink2.cpp">
+      <Filter>source\GDI\Base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jaricom.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jutils.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcapimin.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcapistd.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcarith.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jccoefct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jccolor.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcdctmgr.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jchuff.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcinit.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmainct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmarker.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmaster.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcomapi.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcparam.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcprepct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcsample.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jctrans.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdapimin.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdapistd.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdarith.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdatadst.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdatasrc.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdcoefct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdcolor.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jddctmgr.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdhuff.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdinput.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmainct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmarker.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmaster.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmerge.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdpostct.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdsample.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdtrans.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jerror.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctflt.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctfst.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctint.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctflt.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctfst.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctint.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jmemmgr.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jmemnobs.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jquant1.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jquant2.c">
+      <Filter>thirdparty\libjpeg\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jmorecfg.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jpeglib.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\include\vc\jconfig.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jerror.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jpegint.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jdct.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jmemsys.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jinclude.h">
+      <Filter>thirdparty\libjpeg\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\t4.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_dir.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_fax3.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_predict.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiff.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffconf.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffio.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffio.hxx">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffiop.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffvers.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\uvcode.h">
+      <Filter>thirdparty\libtiff\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_aux.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_close.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_codec.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_color.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_compress.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dir.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirinfo.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirread.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirwrite.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dumpmode.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_error.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_extension.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_fax3.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_fax3sm.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_flush.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_getimage.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jbig.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jpeg.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jpeg_12.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_luv.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_lzma.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_lzw.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_next.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_ojpeg.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_open.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_packbits.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_pixarlog.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_predict.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_print.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_read.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_stream.cxx">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_strip.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_swab.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_thunder.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_tile.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_version.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_warning.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_win32.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_write.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_zip.c">
+      <Filter>thirdparty\libtiff\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\adler32.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\compress.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\crc32.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\deflate.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzclose.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzlib.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzread.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzwrite.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\infback.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inffast.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inflate.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inftrees.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\trees.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\uncompr.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\zutil.c">
+      <Filter>thirdparty\libz\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\crc32.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\deflate.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\gzguts.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inffast.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inffixed.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inflate.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inftrees.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\trees.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\zconf.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\libz.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\zutil.h">
+      <Filter>thirdparty\libz\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xie_high.rc">
+      <Filter>EntryPoint</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

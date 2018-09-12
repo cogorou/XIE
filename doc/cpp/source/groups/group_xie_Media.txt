@@ -1,0 +1,59 @@
+namespace xie
+{
+namespace Media
+{
+// =================================================================
+/*!
+	@defgroup	group_xie_Media	xie.Media
+
+	この名前空間には、メディア関連機能を集約しています。\n
+	\n
+	主な機能）\n
+	- UVC 対応カメラの接続と制御
+	- 動画の再生と保存
+	.
+
+	インターフェースは共通ですが、一部のパラメータや挙動がプラットフォームによって異なる場合があります。\n
+	\n
+	内部の機能）\n
+	- Windows 版では DirectShow を使用しています。\n
+	- Linux 版では V4L２ を使用しています。\n
+	.
+
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Media_Classes	Classes
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Media_Interfaces	Interfaces
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Media_Structures	Structures
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Media_Enumerations	Enumerations
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Media_Diagnostics	Diagnostics
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Media_Exports	Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Media_Internals	Internals
+	*/
+/*!
+	@}
+*/
+}
+}

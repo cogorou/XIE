@@ -1,0 +1,253 @@
+/*!
+	@file	TxImageSize.h
+	@brief	画像サイズ情報構造体
+*/
+/*!
+	@internal
+	@file	TxImageSize.cpp
+	@brief	画像サイズ情報構造体
+*/
+/*!
+	@def	_TXIMAGESIZE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxImageSize
+	@brief		画像サイズ情報構造体
+*/
+// ===================================================================
+/*!
+	@var	TxImageSize::Width
+	@brief	幅 (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxImageSize::Height
+	@brief	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxImageSize::Model
+	@brief	要素モデル
+*/
+// ===================================================================
+/*!
+	@var	TxImageSize::Channels
+	@brief	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+*/
+// ===================================================================
+/*!
+	@var	TxImageSize::Depth
+	@brief	ビット深度 (bits) [0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::TxImageSize()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::TxImageSize(int width, int height, TxModel model, int channels)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		width		幅 (pixels) [0, 1~]
+	@param[in]		height		高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		channels	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::TxImageSize(int width, int height, TxModel model, int channels, int depth)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		width		幅 (pixels) [0, 1~]
+	@param[in]		height		高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		channels	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+	@param[in]		depth		ビット深度 (bits) [0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::TxImageSize(TxSizeI size, TxModel model, int channels)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		size		幅と高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		channels	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::TxImageSize(TxSizeI size, TxModel model, int channels, int depth)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		size		幅と高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		channels	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+	@param[in]		depth		ビット深度 (bits) [0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator == (const TxImageSize& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator != (const TxImageSize& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::Size() const
+	@brief	幅と高さの取得
+
+	@return	現在設定されている幅と高さを返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::Size(const TxSizeI& value)
+	@brief	幅と高さの設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			幅と高さを設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator+ (const TxSizeI &value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator+ (int value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator+ (double value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator- (const TxSizeI &value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator- (int value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator- (double value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator* (const TxSizeI &value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator* (int value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator* (double value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator/ (const TxSizeI &value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator/ (int value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImageSize::operator/ (double value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+
+}

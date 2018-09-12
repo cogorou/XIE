@@ -1,0 +1,27 @@
+/*!
+	@internal
+	@file		api_file_dib.h
+	@brief		ファイル入出力関連 (DIB 形式)
+*/
+/*!
+	@internal
+	@file		fnXIE_Core_DIB_Load.cpp
+	@brief		ファイル入出力関連 (DIB 形式)
+*/
+/*!
+	@internal
+	@file		fnXIE_Core_DIB_Save.cpp
+	@brief		ファイル入出力関連 (DIB 形式)
+*/
+/*!
+	@internal
+	@def		_API_FILE_DIB_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace File
+{
+}
+}

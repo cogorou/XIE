@@ -1,0 +1,218 @@
+/*!
+	@file	CxDSControlPropertyWrapper.h
+	@brief	制御プロパティラッパー
+*/
+/*!
+	@internal
+	@file	CxDSControlPropertyWrapper.cpp
+	@brief	制御プロパティラッパー
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSCONTROLPROPERTYWRAPPER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSControlPropertyWrapper
+	@brief		制御プロパティラッパー
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::CxDSControlPropertyWrapper()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::~CxDSControlPropertyWrapper()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::operator = ( const CxDSControlPropertyWrapper& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::operator == ( const CxDSControlPropertyWrapper& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::operator != ( const CxDSControlPropertyWrapper& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Controller() const
+	@brief	コントローラの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Controller(HxModule value)
+	@brief	コントローラの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Name() const
+	@brief	プロパティ名の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Name(TxCharCPtrA value)
+	@brief	プロパティ名の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::IsSupported() const
+	@brief	対応状況の検査
+
+	@return	コントローラが指定のプロパティをサポートしているか否かを検査します。
+			サポートしている場合は true を返します。
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::GetRange(long* minval, long* maxval, long* step, long* defval, long* flags) const
+	@brief	レンジの取得
+
+	@param[out]		minval		最小値
+	@param[out]		maxval		最大値
+	@param[out]		step		ステップサイズ
+	@param[out]		defval		初期値
+	@param[out]		flags		フラグ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Get(long* value, long* flags) const
+	@brief	プロパティ値の取得
+
+	@param[out]		value		設定値
+	@param[out]		flags		フラグ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::Set(long value, long flags)
+	@brief	プロパティ値の設定
+
+	@param[in]		value		設定値
+	@param[in]		flags		フラグ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::GraphBuilder() const
+	@brief	グラフビルダーの参照
+
+	@return	内部に保有しているグラフビルダーへのポインタを返します。外部で解放しないでください。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::ToCameraControlProperty(TxCharCPtrA name) const
+	@brief	CameraControl 定数への変換
+
+	@param[in]		name		プロパティ名
+
+	@return	指定された名称に該当する CameraControl 定数を返します。
+			該当するものが見つからなければ -1 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlPropertyWrapper::ToVideoProcAmpProperty(TxCharCPtrA name) const
+	@brief	VideoProcAmp 定数への変換
+
+	@param[in]		name		プロパティ名
+
+	@return	指定された名称に該当する VideoProcAmp 定数を返します。
+			該当するものが見つからなければ -1 を返します。
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::m_Controller
+	@brief	コントローラ
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::m_Name
+	@brief	プロパティ名
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::CameraControl
+	@brief	カメラ制御インターフェース
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::VideoProcAmp
+	@brief	ビデオ品質制御インターフェース
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::CameraControlID
+	@brief	カメラ制御プロパティ定数
+*/
+// ===================================================================
+/*!
+	@var	CxDSControlPropertyWrapper::VideoProcAmpID
+	@brief	ビデオ品質制御プロパティ定数
+*/
+
+}
+}
+
+#endif

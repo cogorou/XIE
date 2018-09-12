@@ -1,0 +1,212 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_11	単純なコンソールアプリケーション
+
+	ここでは、コンソールアプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_VC_Basic_11_1	"プロジェクトの作成"
+			- @subpage	page_Tutorial_VC_Basic_11_2	"プロジェクトの設定"
+			- @subpage	page_Tutorial_VC_Basic_11_3	"ライブラリの初期化"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ tutorial.cpp         … エントリポイント
+├ tutorial.sln
+├ tutorial.vcxproj
+├ tutorial.vcxproj.filters
+├ stdafx.cpp
+├ stdafx.h
+├ targetver.h
+├ TestFiles
+│├ color_grad.bmp     … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、濃淡化してファイル保存する処理です。\n
+			
+			@par
+			実行結果) \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">入力画像</td>
+				<td align="center" class="indexkey">→</td>
+				<td align="center" class="indexkey">出力画像</td>
+				</tr>
+			<tr>
+				<td align="center">@image html Tutorial_VC_Basic_11_test_src.png</td>
+				<td align="center">RgbToGray</td>
+				<td align="center">@image html Tutorial_VC_Basic_11_test_dst.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_11_1	プロジェクトの作成
+
+	Visual Studio の [ファイル] メニューから
+	[新規作成] → [プロジェクト] の順に選択してウィザードを開始します。
+
+	-# コンソールアプリケーションを選択します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_create_1.png</td>
+			</tr>
+		</table>
+		\n
+	-# [次へ]を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_create_2.png</td>
+			</tr>
+		</table>
+		\n
+	-# オプションを指定して [完了] を押下します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_create_3.png</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_11_2	プロジェクトの設定
+
+	前項で作成したプロジェクトの設定を Release ビルド 及び Debug ビルドに対して行います。
+	内容は共通ですので、構成のドロップダウンリストで "すべての構成" を選択してから行うことを推奨します。\n
+
+	-# プロジェクト設定ダイアログの表示 \n
+		\n
+		ソリューションエクスプローラでプロジェクトのノードを選択し、
+		[プロジェクト] メニューの [プロパティ] を選択して、プロパティページダイアログを起動します。\n
+		\n
+	-# 全般タブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_settings_1.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=100>項目</td>
+			<td align="center" class="indexkey" width=300>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">文字セット</td>
+			<td align="left">設定なし</td>
+			<td align="left">
+				マルチバイト文字列 (char) を使用することが目的です。
+				_MBCS マクロに依存しているのであれば "マルチバイト文字セットを使用する" に設定してください。
+			</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">出力ディレクトリ</td>
+			<td align="left">\$(SolutionDir)\$(Platform)\\\$(Configuration)\\</td>
+			<td align="left" ROWSPAN=2>
+				下図のように Win32 と x64 の生成物の階層を合わせたいので \$(Platform)\\ を追加しています。\n
+				├ Win32 \n
+				│├ Debug \n
+				│├ Release \n
+				├ x64 \n
+				│├ Debug \n
+				│├ Release \n
+			</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">中間ディレクトリ</td>
+			<td align="left">\$(Platform)\\\$(Configuration)\\</td>
+			</tr>
+		</table>
+		\n
+	-# C/C++ タブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_settings_2.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=200>項目</td>
+			<td align="center" class="indexkey" width=200>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">追加のインクルード ディレクトリ</td>
+			<td align="left">\$(XIE100ROOT)\\include;</td>
+			<td align="left">
+				\$(XIE100ROOT) は、XIE のインストーラで生成される環境変数です。
+				既定では "C:\Eggs\XIE-1.0" が設定されています。
+				インストーラを使用せず、手動でセットアップする場合は XIEversion.exe を使用してください。
+				その場合は、XIEversion.exe の位置を基準に環境変数の値を決定します。
+			</td>
+			</tr>
+		</table>
+		\n
+	-# リンカータブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_11_settings_3.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=200>項目</td>
+			<td align="center" class="indexkey" width=200>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">追加のライブラリ ディレクトリ</td>
+			<td align="left">\$(XIE100BIN);</td>
+			<td align="left">
+				\$(XIE100BIN) は、XIE のインストーラで生成される環境変数です。
+				既定では "C:\Eggs\XIE-1.0\bin" が設定されています。
+				インストーラを使用せず、手動でセットアップする場合は XIEversion.exe を使用してください。
+				その場合は、XIEversion.exe の位置を基準に環境変数の値を決定します。
+			</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_11_3	ライブラリの初期化
+
+	本ライブラリの機能を使用する前に @ref group_Overview_Setup "初期化関数" を呼び出す必要があります。
+	通常は、下記のようにエントリポイントで行ってください。
+
+	-# ライブラリのヘッダー \n
+	-# ライブラリの初期化 \n
+	-# ライブラリの解放 \n
+	.
+
+	@includelineno	Tutorial_VC_Basic_11_test.cpp
+
+	<hr>
+
+	初期化関数を呼び出した後、下記のように本ライブラリの機能が使用できます。
+
+	@includelineno	Tutorial_VC_Basic_11_test_1.cpp
+
+
+	<hr>
+
+	一部の画像形式（PNG,JPEG,TIFF）の読み込みと保存機能は xie_high に実装されています。
+	下記の例では PNG 画像の保存を使用するので xie_high.h（下記 (1)）をインクルードする必要があります。
+
+	@includelineno	Tutorial_VC_Basic_11_test_2.cpp
+*/

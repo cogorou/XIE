@@ -1,0 +1,190 @@
+/*!
+	@file	CxDSGrabberArgs.h
+	@brief	グラバー引数クラス
+*/
+/*!
+	@internal
+	@file	CxDSGrabberArgs.cpp
+	@brief	グラバー引数クラス
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSGRABBERARGS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSGrabberArgs
+	@brief		グラバー引数クラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CxDSGrabberArgs()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CxDSGrabberArgs(TxImageSize frame_size, double progress, void* addr, int length, IMediaSample* sample)
+	@brief	コンストラクタ
+
+	@param[in]		frame_size	フレームサイズ
+	@param[in]		progress	処理経過
+	@param[in]		addr		データ領域の先頭アドレス
+	@param[in]		length		データ長 (bytes)
+	@param[in]		sample		メディアサンプル
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CxDSGrabberArgs(CxDSGrabberArgs&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CxDSGrabberArgs(const CxDSGrabberArgs& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::~CxDSGrabberArgs()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::operator = ( CxDSGrabberArgs&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::operator = ( const CxDSGrabberArgs& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::operator == ( const CxDSGrabberArgs& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::operator != ( const CxDSGrabberArgs& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabberArgs::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@var	CxDSGrabberArgs::Sample
+	@brief	メディアサンプル
+*/
+
+/*
+class XIE_EXPORT_CLASS CxDSGrabberArgs : public CxGrabberArgs
+{
+private:
+	void _Constructor();
+
+public:
+	CxDSGrabberArgs();
+	CxDSGrabberArgs(TxImageSize frame_size, double progress, void* addr, int length, IMediaSample *sample);
+	CxDSGrabberArgs(CxDSGrabberArgs&& src);
+	CxDSGrabberArgs(const CxDSGrabberArgs& src);
+	virtual ~CxDSGrabberArgs();
+
+	CxDSGrabberArgs& operator = ( CxDSGrabberArgs&& src );
+	CxDSGrabberArgs& operator = ( const CxDSGrabberArgs& src );
+	bool operator == ( const CxDSGrabberArgs& src ) const;
+	bool operator != ( const CxDSGrabberArgs& src ) const;
+
+	// IxEquatable
+	virtual void CopyFrom(const IxModule& src);
+	virtual bool ContentEquals(const IxModule& src) const;
+
+	// IxConvertible
+	virtual void CopyTo(IxModule& dst) const;
+
+	// IxParam
+	virtual void GetParam(TxCharCPtrA name, void* value, TxModel model) const;
+	virtual void SetParam(TxCharCPtrA name, const void* value, TxModel model);
+
+	// set by SampleGrabberCB
+	IMediaSample*	Sample;		// SampleCB
+};
+*/
+
+}
+}
+
+#endif	// _MCS_VER

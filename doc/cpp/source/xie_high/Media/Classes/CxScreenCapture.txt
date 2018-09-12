@@ -1,0 +1,484 @@
+/*!
+	@file	CxScreenCapture.h
+	@brief	スクリーンキャプチャクラス
+*/
+/*!
+	@internal
+	@file	CxScreenCapture.cpp
+	@brief	スクリーンキャプチャクラス
+*/
+/*!
+	@def	_CXSCREENCAPTURE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxScreenCapture
+	@brief		スクリーンキャプチャクラス
+
+	レンダリング結果をストリームに送るクラスです。\n
+	主に動画を作成する為に使用します。\n
+	※注意）現在、Linux 版では未対応です。\n
+	\n
+	操作手順) \n
+	-# 初期化 (@ref Setup)
+	-# 描画処理同期の準備 (必須ではありません)
+		-# 生成 (@ref CreateGrabber)
+		-# 登録 (@ref CxGrabber::Notify)
+		-# 開始 (@ref CxGrabber::Start)
+		.
+		\n
+	-# 開始 (@ref Start) \n
+		※ 前述の Notify に登録した関数の呼び出しが開始されます。 \n
+		\n
+	-# 描画処理同期の完了待機
+		-# 待機 (@ref CxGrabber::Wait)
+		-# 停止 (@ref CxGrabber::Stop)
+		.
+		\n
+	-# 停止 (@ref Stop / @ref Abort)
+	-# 解放 (@ref Dispose)
+	.
+	\n
+
+	@par	Examples:
+			@includelineno	CxScreenCapture_01.cpp
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::CxScreenCapture()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::~CxScreenCapture()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::GetModule() const
+	@brief	内部モジュールの取得
+
+	@return	このオブジェクトの内部モジュールを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Setup(HxModule hWindow, HxModule hAudio, HxModule hOutput)
+	@brief	初期化
+
+	@param[in]		hWindow		対象のウィンドウ \n
+								キャプチャ対象のウィンドウを指定してください。\n
+								型は CxScreenListItem に対応しています。\n
+								NULL を指定した場合は、プライマリデスクトップをキャプチャします。\n
+
+	@param[in]		hAudio		音声入力 \n
+								音声を取り込むデバイスを指定してください。\n
+								型は CxDeviceParam に対応しています。\n
+								NULL を指定した場合は、音声の取り込みは行いません。\n
+
+	@param[in]		hOutput		出力先 \n
+								保存先の動画ファイル（avi,asf,wmv）を指定してください。\n
+								型は CxStringA または CxStringW に対応しています。\n
+								NULL を指定した場合は、動画ファイルへの保存は行いません。\n
+
+	@sa
+		@ref CreateGrabber \n
+		@ref CxGrabber \n
+		@ref xie::GDI::CxCanvas \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::CreateGrabber(ExMediaType type) const
+	@brief	メディア捕獲用イベントレシーバの生成
+
+	@param[in]		type		捕獲するメディアの種別
+
+	@return	メディア(映像または音声)を捕獲する為の同期オブジェクトを生成して返します。
+
+	@remarks
+			ピンの接続状態に関わらずインスタンスを返しますが、
+			ピンが接続されていない場合はイベントが発生しません。
+			予め GetParam でピンの接続状態を取得して同期オブジェクトの使用可否を判定してください。
+			映像入力の場合は "Video.Connected"、音声入力の場合は "Audio.Connected" で状態を取得できます。
+
+	@sa
+		@ref CxGrabber \n
+		@ref GetParam \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Reset()
+	@brief	リセット
+
+	@remarks
+			非同期処理の現在値をリセットするメソッドです。\n
+			このクラスは何も行いません。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Start()
+	@brief	開始
+
+	@remarks
+			下記の処理を非同期に繰り返します。\n
+			-# 描画 … ウィンドウを描画する。
+			-# 転送 … 映像を転送する。
+			-# 破棄 … 映像を破棄する。
+			.
+			\n
+
+	@sa
+		@ref CxGrabber \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Stop()
+	@brief	停止
+
+	@remarks
+			非同期処理を停止します。\n
+			ステータスが変化するまで待機します。\n
+			待機時間の上限は Timeout メソッドで指定できます。
+
+	@sa
+		@ref Timeout(int) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Abort()
+	@brief	中断
+
+	@remarks
+			非同期処理を停止します。\n
+			ステータスの変化を待機せず、呼び出し元に即座に制御を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Pause()
+	@brief	一時停止
+
+	@remarks
+			非同期処理を一時停止します。\n
+			ステータスが変化するまで待機します。\n
+			待機時間の上限は Timeout メソッドで指定できます。
+
+	@sa
+		@ref Timeout(int) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	非同期処理が停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::IsRunning() const
+	@brief	動作状態の取得
+
+	@return	非同期処理が動作中の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::IsPaused() const
+	@brief	一時停止状態の取得
+
+	@return	非同期処理が一時停止状態の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Timeout</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					タイムアウト (msec) を取得します。\n
+					@ref Timeout() const と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">FrameRate</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					フレームレート (fps) を取得します。\n
+					@ref FrameRate() const と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">FrameSize</td>
+				<td align="left">TxImageSize のポインタ</td>
+				<td align="left">ModelOf<TxImageSize></td>
+				<td align="left">
+					現在構成されているフィルタのフレームサイズを取得します。\n
+					@ref GetFrameSize() const と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Video.Connected</td>
+				<td align="left">bool のポインタ</td>
+				<td align="left">ModelOf<bool></td>
+				<td align="left">
+					映像入力の接続状態を取得します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Audio.Connected</td>
+				<td align="left">bool のポインタ</td>
+				<td align="left">ModelOf<bool></td>
+				<td align="left">
+					音声入力の接続状態を取得します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Audio.DeviceName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているマイクのデバイス名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+					デバイス名の形式は、Windows 版では CLSID 、
+					Linux 版は仕様未定です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Audio.ProductName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているマイクの製品名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.FileName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					出力先に指定されているファイル名称を取得します。\n
+					未指定の場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.DeviceName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているスピーカーのデバイス名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+					デバイス名の形式は、Windows 版では CLSID 、
+					Linux 版は仕様未定です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.ProductName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているスピーカーの製品名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxScreenCapture::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Timeout</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					タイムアウト (msec) を設定します。\n
+					@ref Timeout(int) と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">FrameRate</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					フレームレート (fps) を設定します。\n
+					@ref FrameRate(int) と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">SaveGraphFile</td>
+				<td align="left">CxStringA または CxStringW のハンドル</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在のフィルタ構成を指定されたファイル(GRF 拡張子)に保存します。\n
+					Windows 版でのみ使用できます。\n
+					Linux 版では例外を発行します。\n
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxScreenCapture::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Timeout() const
+	@brief	タイムアウトの取得
+
+	@return	現在設定されている値を返します。単位は msec です。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::Timeout(int value)
+	@brief	タイムアウトの設定
+
+	@param[in]		value		設定値 (msec) [-1,0~] [既定値:5000]
+
+	@remarks
+			このパラメータは Stop メソッドで使用されます。\n
+			Stop メソッドはフィルタを停止した後、ステータスが変化するまで待機します。
+			その際の待機時間として使用します。
+			フレームレートより長めに設定してください。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::FrameRate() const
+	@brief	フレームレートの取得
+
+	@return	現在設定されている値を返します。単位は fps です。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::FrameRate(int value)
+	@brief	フレームレートの設定
+
+	@param[in]		value		設定値 (fps) [1~] [既定値:10]
+
+	@remarks
+			このパラメータは動画を生成する場合に使用します。\n
+			動画を生成しない場合は無視されます。\n
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenCapture::GetFrameSize() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているフレームサイズを返します。
+			この値は初期化後に有効になります。
+
+	@sa
+		@ref Setup \n
+*/
+
+}
+}

@@ -1,0 +1,21 @@
+Imports System
+Imports System.Collections.Generic
+Imports System.Windows.Forms
+Imports System.Reflection
+
+Namespace User
+	NotInheritable Class Program
+		Public Shared Sub Main(args As String())
+			XIE.Axi.Setup()
+
+			Dim src = New XIE.CxImage()
+			Dim dst = New XIE.CxImage()
+
+			Try
+			Finally
+				src.Dispose()
+				dst.Dispose()
+			End Try
+		End Sub
+	End Class
+End Namespace

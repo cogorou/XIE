@@ -1,0 +1,9 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_VC				Visual C++ 
+
+	@par	目次:
+			- @subpage	page_Tutorial_VC_Basic_11	"単純なコンソールアプリケーション"
+			- @subpage	page_Tutorial_VC_Basic_12	"単純な GUI アプリケーション"
+			.
+*/

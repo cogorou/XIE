@@ -1,0 +1,295 @@
+/*!
+	@file	CxSerialPort.h
+	@brief	シリアル通信クラス
+*/
+/*!
+	@internal
+	@file	CxSerialPort.cpp
+	@brief	シリアル通信クラス
+*/
+/*!
+	@def	_CXSERIAPORT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace IO
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Classes
+	@class		CxSerialPort
+	@brief		シリアル通信クラス
+
+	@par	Examples:
+			一般的には、異なる環境で動作する２つのアプリケーションが送受信することになりますが、
+			下記例はシリアル通信ポートのエミュレータを使用して、同一 PC 内の COM1 と COM11 を
+			対応付けた環境で行っています。\n
+			\n
+			@includelineno	CxSerialPort_01.cpp
+
+			@par
+			出力結果)
+			@include	CxSerialPort_01.txt
+*/
+// ===================================================================
+/*!
+	@var	CxSerialPort::m_Controller
+	@brief	コントローラ
+*/
+// ===================================================================
+/*!
+	@var	CxSerialPort::m_PortName
+	@brief	ポート名
+*/
+// ===================================================================
+/*!
+	@var	CxSerialPort::m_Param
+	@brief	パラメータ
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::CxSerialPort()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::CxSerialPort(const CxSerialPort& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+
+	@sa
+		@ref operator=(const CxSerialPort &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::CxSerialPort(TxCharCPtrA portname, const TxSerialPort& param)
+	@brief	コンストラクタ
+
+	@param[in]		portname	ポート名 \n
+								Windows の場合: "COM1", "COM2" のような形式で指定してください。\n
+								Linux の場合は "/dev/ttyS0", "/dev/ttyS1" のような形式で指定してください。\n
+	@param[in]		param		パラメータ
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::~CxSerialPort()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::operator = ( const CxSerialPort& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::operator == ( const CxSerialPort& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::operator != ( const CxSerialPort& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	データ構造へのポインタを返します。
+
+	@sa
+		@ref m_Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Setup()
+	@brief	初期化
+
+	@remarks
+			現在設定されているパラメータの条件でポートをオープンします。\n
+
+	@sa
+		@ref m_PortName \n
+		@ref m_Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Dispose()
+	@brief	解放
+
+	@remarks
+			ポートをクローズします。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			ポートをオープンしている場合は有効(true)を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Readable(int timeout) const
+	@brief	読み込み可否の検査
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@retval	true	可能
+	@retval	false	不可能
+
+	@remarks
+			戻り値が true を返す場合は、データの一部が到達していることを意味します。\n
+			指定時間内に状態の変化がなければ false を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Read(char* buffer, int length, int timeout) const
+	@brief	読み込み
+
+	@param[out]		buffer		読み込み用バッファ
+	@param[in]		length		読み込み用バッファのサイズ (bytes) [1~]
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	実際に読み込んだサイズをバイト数で返します。\n
+			異常があれば -1 を返します。\n
+			指定時間内に状態の変化がなければ 0 を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Writeable(int timeout) const
+	@brief	書き込み可否の検査
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@retval	true	可能
+	@retval	false	不可能
+
+	@remarks
+			戻り値が true を返す場合は、データの書き込みが可能であることを意味します。\n
+			指定時間内に状態の変化がなければ false を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Write(const char* buffer, int length, int timeout) const
+	@brief	書き込み
+
+	@param[in]		buffer		書き込むデータ
+	@param[in]		length		書き込むデータのサイズ (bytes) [1~]
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	実際に書き込んだサイズをバイト数で返します。\n
+			異常があれば -1 を返します。\n
+			指定時間内に状態の変化がなければ 0 を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::PortName() const
+	@brief	ポート名
+
+	@return	ポート名を返します。\n
+
+	@sa
+		@ref m_PortName \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::PortName(TxCharCPtrA value)
+	@brief	ポート名
+
+	@param[in]		value	設定値
+
+	@sa
+		@ref m_PortName \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Param()
+	@brief	パラメータ
+
+	@return	パラメータを返します。\n
+
+	@sa
+		@ref m_Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Param() const
+	@brief	パラメータ
+
+	@return	パラメータを返します。\n
+
+	@sa
+		@ref m_Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxSerialPort::Param(const TxSerialPort& value)
+	@brief	パラメータ
+
+	@param[in]		value	設定値
+
+	@sa
+		@ref m_Param \n
+*/
+
+}
+}

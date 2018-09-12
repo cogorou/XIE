@@ -1,0 +1,290 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_core_math.h
+	@brief		算術演算関連定義
+*/
+// ===================================================================
+/*!
+	@def		_XIE_CORE_MATH_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_MIN
+	@brief		最小値
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_MAX
+	@brief		最大値
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Templates
+	@fn			saturate_cast (double value) 
+	@brief		濃度の飽和つきキャスト
+
+	@tparam	TD	戻り値の型
+
+	@param[in]	value	元の値
+
+	@return	戻り値の型の範囲外の値は下限値または上限値に飽和して返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(unsigned char value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+
+	@remarks
+			この関数は符号なしの値を引数に取るので、常に同じ値を返します。\n
+			符号つきの値を引数に取る関数とのオーバーロードを目的にしています。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(unsigned short value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+
+	@remarks
+			この関数は符号なしの値を引数に取るので、常に同じ値を返します。\n
+			符号つきの値を引数に取る関数とのオーバーロードを目的にしています。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(unsigned int value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+
+	@remarks
+			この関数は符号なしの値を引数に取るので、常に同じ値を返します。\n
+			符号つきの値を引数に取る関数とのオーバーロードを目的にしています。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(unsigned long long value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+
+	@remarks
+			この関数は符号なしの値を引数に取るので、常に同じ値を返します。\n
+			符号つきの値を引数に取る関数とのオーバーロードを目的にしています。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(short value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(int value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(long long value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(float value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_abs(double value)
+	@brief		絶対値
+
+	@param[in]	value	値
+
+	@return	指定された値の絶対値を返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(unsigned char value)
+	@brief		反転 (ビット反転)
+
+	@param[in]	value	値
+
+	@return	指定された値をビット反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(unsigned short value)
+	@brief		反転 (ビット反転)
+
+	@param[in]	value	値
+
+	@return	指定された値をビット反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(unsigned int value)
+	@brief		反転 (ビット反転)
+
+	@param[in]	value	値
+
+	@return	指定された値をビット反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(unsigned long long value)
+	@brief		反転 (ビット反転)
+
+	@param[in]	value	値
+
+	@return	指定された値をビット反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(char value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(short value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(int value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(long long value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(float value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_not(double value)
+	@brief		反転 (符号反転)
+
+	@param[in]	value	値
+
+	@return	指定された値を符号反転して返します。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_modf(double value)
+	@brief		少数部の抽出
+
+	@param[in]	value	値
+
+	@return	指定された値の少数部を返します。\n
+			例えば 12.345 が指定された場合は 0.345 を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			_sign(double value)
+	@brief		符号化
+
+	@param[in]	value	値
+
+	@return	指定された値の符号(±1)を返します。\n
+			例えば 12.345 が指定された場合は +1 を返し、
+			-12.345 が指定された場合は -1 を返します。
+*/
+
+}

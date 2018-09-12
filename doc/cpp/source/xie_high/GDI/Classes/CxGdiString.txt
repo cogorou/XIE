@@ -1,0 +1,30 @@
+/*!
+	@file	CxGdiString.h
+	@brief	オーバレイ図形クラス (文字列)
+*/
+/*!
+	@def	_CXGDISTRING_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Typedefs
+	@typedef	CxGdiString
+	@brief		オーバレイ図形クラス (文字列)
+
+	@remarks
+			UNICODE マクロが定義されている場合は CxGdiStringW 、それ以外は CxGdiStringA です。
+
+	@sa
+		@ref CxGdiStringA \n
+		@ref CxGdiStringW \n
+*/
+
+}
+}

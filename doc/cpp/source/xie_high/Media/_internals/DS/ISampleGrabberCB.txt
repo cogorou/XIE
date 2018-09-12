@@ -1,0 +1,35 @@
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Interfaces
+	@struct		ISampleGrabberCB
+	@brief		サンプルグラバーコールバックインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabberCB::SampleCB(double SampleTime, IMediaSample *pSample)
+	@brief	コールバック関数
+
+	@return	継続する場合は S_OK を返します。
+			中断する場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabberCB::BufferCB(double SampleTime, BYTE *pBuffer, LONG BufferLen)
+	@brief	コールバック関数
+
+	@return	継続する場合は S_OK を返します。
+			中断する場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabberCB::~ISampleGrabberCB()
+	@brief	デストラクタ
+*/
+
+}
+}

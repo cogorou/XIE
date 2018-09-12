@@ -1,0 +1,1120 @@
+/*!
+	@file	CxArray.h
+	@brief	配列オブジェクトクラス
+*/
+/*!
+	@internal
+	@file	CxArray.cpp
+	@brief	配列オブジェクトクラス
+*/
+/*!
+	@def	_CXARRAY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxArray
+	@brief		配列オブジェクトクラス
+
+	@remarks
+			１次元配列を管理するクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxArray_01.cpp
+*/
+// ===================================================================
+/*!
+	@var	CxArray::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@var	CxArray::m_IsAttached
+	@brief	アタッチ状態
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::FromTag(const TxArray& src)
+	@brief	アタッチ (情報構造体指定)
+
+	@param[in]		src		参照先
+
+	@return	指定された外部リソースにアタッチして返します。
+
+	@sa
+		@ref IsAttached() const \n
+		@ref Attach(const TxArray &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::From(const xie::CxArrayEx<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::From(const std::vector<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::From(const std::initializer_list<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray(const CxArray& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxArray &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray(CxArray&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxArray &&src) \n
+		@ref MoveFrom(CxArray &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray(int length, TxModel model)
+	@brief	コンストラクタ
+
+	@param[in]		length		要素数 [0, 1~]
+	@param[in]		model		要素モデル
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@sa
+		@ref Resize(int length, TxModel model)
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray(TxCharCPtrA filename)
+	@brief	コンストラクタ (ファイル読み込み) (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrA filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CxArray(TxCharCPtrW filename)
+	@brief	コンストラクタ (ファイル読み込み) (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrW filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::~CxArray()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator = ( const CxArray& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator = ( CxArray&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxArray &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator == ( const CxArray& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator != ( const CxArray& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+			アタッチしている場合はアタッチ解除を行います。\n
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+							※ 現在、対応するオブジェクトはありません。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。\n
+			対応していないオブジェクトが指定された場合は例外を発行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxArray(const CxArray &src) \n
+		@ref operator=(const CxArray &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::MoveFrom(CxArray& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxArray(CxArray &&src) \n
+		@ref operator=(CxArray &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxArray &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	配列の先頭アドレスが NULL でないこと。
+			-	要素数が 0 より大きいこと。
+			-	要素のサイズが 0 bytes より大きいこと。
+			.
+			\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::IsAttached() const
+	@brief	アタッチ状態
+
+	@retval	true	アタッチしている
+	@retval	false	アタッチしていない
+
+	@remarks
+			@ref Dispose が呼ばれた際に内部リソースを解放するか否かを示します。\n
+			このフラグが true の場合、データ構造に設定されたリソースを解放しません。\n
+
+	@sa
+		@ref Attach(const IxModule& src) \n
+		@ref Attach(const TxArray &src) \n
+		@ref MoveFrom(CxArray &src) \n
+		@ref Dispose() \n
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Attach(const IxModule& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Attach(const TxArray& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Attach(const CxArray& src, int index, int length)
+	@brief	外部リソースへのアタッチ (範囲指定)
+
+	@param[in]		src			参照先
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~] \n
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@remarks
+			外部リソースの指定範囲にアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Resize(int length, TxModel model)
+	@brief	内部リソースの確保
+
+	@param[in]		length		要素数 [0, 1~]
+	@param[in]		model		要素モデル
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			要素数に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Reset()
+	@brief	データのリセット
+
+	@remarks
+			各要素を既定値で初期化します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Clear(const void* value, TxModel model)
+	@brief	初期化
+
+	@param[in]		value		初期化値が格納された変数へのアドレス
+	@param[in]		model		初期化値の型
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+
+	@sa
+		@ref Clear(TV value) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Clear(TV value)
+	@brief	初期化
+
+	@tparam	TV		初期化値の型
+
+	@param[in]		value		初期化値
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+
+			@par
+			式) dst<sub>x</sub> = value \n
+			\n
+
+			@par
+			出力と初期化値の要素モデルのパック数が異なる場合は少ない方を適用します。\n
+			\n
+
+	@sa
+		@ref Clear(const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::ClearEx(const void* value, TxModel model, int index, int count)
+	@brief	初期化 (フィールド指定)
+
+	@param[in]		value			初期化値が格納された変数へのアドレス
+	@param[in]		model			初期化値の型 (Type が 整数または実数、且つ Pack が 1)
+	@param[in]		index			フィールド指標 [0~]
+	@param[in]		count			フィールド数 [1~]
+
+	@remarks
+			各要素の指定フィールドを指定値で初期化します。\n
+
+	@sa
+		@ref ClearEx(TV value, int index, int count) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::ClearEx(TV value, int index, int count)
+	@brief	初期化 (フィールド指定)
+
+	@tparam	TV		初期化値の型 (Type が 整数または実数、且つ Pack が 1)
+
+	@param[in]		value			初期化値
+	@param[in]		index			フィールド指標 [0~]
+	@param[in]		count			フィールド数 [1~]
+
+	@remarks
+			各要素の指定フィールドを指定値で初期化します。\n
+
+			@par
+			式) dst<sub>x</sub>[k + index] = value \n
+			\n
+			※ k=0~count \n
+			\n
+
+	@sa
+		@ref ClearEx(const void* value, TxModel model, int index, int count) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Clone(TxModel model, double scale) const
+	@brief	クローンの生成
+
+	@param[in]		model		複製先の要素モデル
+	@param[in]		scale		スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する] \n
+								@ref Axi::CalcScale "Axi::CalcScale(src.Model.Type, 0, dst.Model.Type, 0)" で求めることができます。\n
+
+	@return	指定された型のオブジェクトに自身の内容を複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Child() const
+	@brief	チャイルド配列の生成
+
+	@return	現在のオブジェクトの内部領域にアタッチした新しいオブジェクトを返します。
+
+	@sa
+		@ref Attach(const IxModule& src) \n
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Child(int index, int length) const
+	@brief	チャイルド配列の生成 (範囲指定)
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~] \n
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return	現在のオブジェクトの内部領域の指定範囲にアタッチした新しいオブジェクトを返します。
+
+	@sa
+		@ref Attach(const CxArray& src, int index, int length) \n
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Load(TxCharCPtrA filename)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Load(TxCharCPtrW filename)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Load(TxCharCPtrA filename, TV option)
+	@brief	ファイル読み込み (MBCS)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Load(TxCharCPtrW filename, TV option)
+	@brief	ファイル読み込み (UNICODE)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::LoadA(TxCharCPtrA filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::LoadW(TxCharCPtrW filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Save(TxCharCPtrA filename) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Save(TxCharCPtrW filename) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Save(TxCharCPtrA filename, TV option) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Save(TxCharCPtrW filename, TV option) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::SaveA(TxCharCPtrA filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::SaveW(TxCharCPtrW filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::OpenRawA(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名 \n
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::OpenRawW(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::CloseRaw(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::LoadRaw(void* handle)
+	@brief	Raw 形式ファイル読み込み
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::SaveRaw(void* handle) const
+	@brief	Raw 形式ファイル保存
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Length() const
+	@brief	要素数 [0~]
+
+	@return	現在の要素数を返します。\n
+			未確保の場合は 0 を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Address()
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Address() const
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Statistics(int ch) const
+	@brief	統計
+
+	@param[in]		ch		フィールド指標 [0~(Model.Pack-1)]
+
+	@return		すべての要素の統計を算出して返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			@par
+			処理可能な条件:
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Extract(int index, int length) const
+	@brief	抽出
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		抽出する要素数 [1~]
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return		指定された範囲の要素を抽出して返します。\n
+				配列の要素は自身と同一型です。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定された範囲の要素を抽出します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>index+x</sub> \n
+			\n
+
+			@par
+			※ x = 0~(length-1) \n
+
+			@par
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Filter() const
+	@brief	フィルタ
+
+	@return	配列オブジェクトフィルタのオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Scanner() const
+	@brief	１次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArray::Scanner(int index, int length) const
+	@brief	１次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~]
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// Export
+//
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Attach	(HxModule handle, TxArray src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Resize	(HxModule handle, int length, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Statistics	(HxModule hsrc, int ch, TxStatistics* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Extract	(HxModule hsrc, int index, int length, HxModule hresult)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Reset	(HxModule hdst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Clear	(HxModule hdst, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_ClearEx	(HxModule hdst, const void* value, TxModel model, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Cast	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Copy	(HxModule hdst, HxModule hsrc, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_CopyEx	(HxModule hdst, HxModule hsrc, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_RgbToBgr	(HxModule hdst, HxModule hsrc, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Compare	(HxModule hdst, HxModule hsrc, HxModule hcmp, double error_range)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_ColorMatrix	(HxModule hdst, HxModule hsrc, HxModule hmatrix)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Effect	(HxModule hdst, HxModule hsrc, HxModule hparam)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Not	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Math	(HxModule hdst, HxModule hsrc, ExMath mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Ope1A	(HxModule hdst, HxModule hsrc, double value, ExOpe1A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Ope1L	(HxModule hdst, HxModule hsrc, unsigned int value, ExOpe1L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Ope2A	(HxModule hdst, HxModule hsrc, HxModule hval, ExOpe2A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Array_Ope2L	(HxModule hdst, HxModule hsrc, HxModule hval, ExOpe2L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

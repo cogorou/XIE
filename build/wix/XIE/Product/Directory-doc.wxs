@@ -1,0 +1,18 @@
+<Include>
+	<!-- 暫定) インストーラのサイズを小さくしたい為、ドキュメントを含めない。
+	<Directory Id="DOC" Name="doc">
+		<Component Id="XIE_CLI.CHM" DiskId="1" Guid="FF7CA16E-EC7C-4093-9FC6-75F2E6860757">
+			<File Id="XIE_CLI.CHM" Name="XIE-cli.chm" Source="..\Archives\doc\XIE-cli.chm" />
+		</Component>
+		<Component Id="XIE_CLI.CHW" DiskId="1" Guid="B842BD14-450F-4EF8-9301-D095F686F9D8">
+			<File Id="XIE_CLI.CHW" Name="XIE-cli.chw" Source="..\Archives\doc\XIE-cli.chw" />
+		</Component>
+		<Component Id="XIE_CPP.CHM" DiskId="1" Guid="23012C79-212B-4975-B586-89492F8E3061">
+			<File Id="XIE_CPP.CHM" Name="XIE-cpp.chm" Source="..\Archives\doc\XIE-cpp.chm" />
+		</Component>
+		<Component Id="XIE_CPP.CHW" DiskId="1" Guid="4F4C786A-FE66-4167-995C-D704D071BCBD">
+			<File Id="XIE_CPP.CHW" Name="XIE-cpp.chw" Source="..\Archives\doc\XIE-cpp.chw" />
+		</Component>
+	</Directory>
+	-->
+</Include>

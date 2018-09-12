@@ -1,0 +1,853 @@
+/*!
+	@file	CxExif.h
+	@brief	Exif オブジェクトクラス
+*/
+/*!
+	@internal
+	@file	CxExif.cpp
+	@brief	Exif オブジェクトクラス
+*/
+/*!
+	@def	_CXEXIF_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxExif
+	@brief		Exif オブジェクトクラス
+
+	JPEG 形式の画像ファイルから読み込んだ Exif を閲覧及び編集するクラスです。
+
+	@par	Examples:
+			@includelineno	CxExif_01.cpp
+
+	@sa
+		@ref CxImage::Exif \n
+*/
+// ===================================================================
+/*!
+	@var	CxExif::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@var	CxExif::m_IsAttached
+	@brief	アタッチ状態
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::FromTag(const TxExif& src)
+	@brief	アタッチ (情報構造体指定)
+
+	@param[in]		src		参照先
+
+	@return	指定された外部リソースにアタッチして返します。
+
+	@sa
+		@ref IsAttached() const \n
+		@ref Attach(const TxExif &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif(const CxExif& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxExif &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif(CxExif&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxExif &&src) \n
+		@ref MoveFrom(CxExif &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif(int length)
+	@brief	コンストラクタ
+
+	@param[in]		length		要素数 [0, 1~]
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@sa
+		@ref Resize(int length)
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif(TxCharCPtrA filename)
+	@brief	コンストラクタ (ファイル読み込み) (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrA filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CxExif(TxCharCPtrW filename)
+	@brief	コンストラクタ (ファイル読み込み) (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrW filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::~CxExif()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator = ( const CxExif& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator = ( CxExif&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxExif &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator == ( const CxExif& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator != ( const CxExif& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+			アタッチしている場合はアタッチ解除を行います。\n
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+							※ 現在、対応するオブジェクトはありません。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。\n
+			対応していないオブジェクトが指定された場合は例外を発行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxExif(const CxExif &src) \n
+		@ref operator=(const CxExif &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::MoveFrom(CxExif& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxExif(CxExif &&src) \n
+		@ref operator=(CxExif &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxExif &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効 (@ref TxExif::IsValid が true を返す条件)
+	@retval	false	無効
+
+	@sa
+		@ref TxExif::IsValid \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::IsAttached() const
+	@brief	アタッチ状態
+
+	@retval	true	アタッチしている
+	@retval	false	アタッチしていない
+
+	@remarks
+			@ref Dispose が呼ばれた際に内部リソースを解放するか否かを示します。\n
+			このフラグが true の場合、データ構造に設定されたリソースを解放しません。\n
+
+	@sa
+		@ref Attach(const IxModule& src) \n
+		@ref Attach(const TxExif &src) \n
+		@ref MoveFrom(CxExif &src) \n
+		@ref Dispose() \n
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Attach(const IxModule& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Attach(const TxExif& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Attach(const CxExif& src, int index, int length)
+	@brief	外部リソースへのアタッチ (範囲指定)
+
+	@param[in]		src			参照先
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~] \n
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@remarks
+			外部リソースの指定範囲にアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Resize(int length)
+	@brief	内部リソースの確保
+
+	@param[in]		length		要素数 [0, 1~]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			要素数に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Reset()
+	@brief	データのリセット
+
+	@remarks
+			各要素を既定値で初期化します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Load(TxCharCPtrA filename)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Load(TxCharCPtrW filename)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Load(TxCharCPtrA filename, TV option)
+	@brief	ファイル読み込み (MBCS)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Load(TxCharCPtrW filename, TV option)
+	@brief	ファイル読み込み (UNICODE)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::LoadA(TxCharCPtrA filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::LoadW(TxCharCPtrW filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Save(TxCharCPtrA filename) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Save(TxCharCPtrW filename) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Save(TxCharCPtrA filename, TV option) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Save(TxCharCPtrW filename, TV option) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::SaveA(TxCharCPtrA filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::SaveW(TxCharCPtrW filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::OpenRawA(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名 \n
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::OpenRawW(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::CloseRaw(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::LoadRaw(void* handle)
+	@brief	Raw 形式ファイル読み込み
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::SaveRaw(void* handle) const
+	@brief	Raw 形式ファイル保存
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Length() const
+	@brief	要素数 [0~]
+
+	@return	現在の要素数を返します。\n
+			未確保の場合は 0 を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Address()
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Address() const
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Scanner() const
+	@brief	１次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::Scanner(int index, int length) const
+	@brief	１次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~]
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::EndianType() const
+	@brief	エンディアンタイプの取得
+
+	@return	現在の Exif のエンディアンタイプを取得して返します。\n
+			現在の領域が無効な場合は ExEndianType::None を返します。
+
+	@remarks
+			Exif のバイト配列に直接アクセスする場合にエンディアンタイプの識別が必要になりますが、
+			当クラスのメソッドを介して Exif の閲覧または編集を行う場合は意識する必要はありません。
+
+	@par	Examples:
+			@includelineno	CxExif_EndianType.cpp
+
+	@sa
+		@ref ExEndianType \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::GetItems() const
+	@brief	識別可能な項目の取得
+
+	@return	識別可能な項目をすべて取得して CxArrayEx に格納して返します。\n
+			現在の領域が無効な場合は要素数 0 の CxArrayEx を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@par	Examples:
+			@includelineno	CxExif_GetItems.cpp
+
+	@sa
+		@ref GetValue \n
+		@ref SetValue \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::GetPurgedExif() const
+	@brief	識別可能な項目と値の複製
+
+	@return	識別可能な項目と値を新しい領域に複製して返します。\n
+			現在の領域が無効な場合は未確保のオブジェクトを返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			元の領域と同一サイズの領域を確保して識別可能な項目のみを複製します。
+			それ以外の項目が格納されていた位置に該当する領域は 0 初期化されています。
+			「識別可能な項目」とは @ref GetItems メソッドで取得可能な項目を示します。\n
+			この処理はサムネイルを除去する場合に利用できます。
+			元画像の一部をトリミングして複製した場合はサムネイルと一致しない為、
+			当メソッドを使用してサムネイルを除去することを推奨します。
+
+	@par	Examples:
+			@includelineno	CxExif_GetPurgedExif.cpp
+
+	@sa
+		@ref CxImage::Exif \n
+		@ref GetItems \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::GetValue(const TxExifItem& item, HxModule hval) const
+	@brief	指定項目の値の取得
+
+	@param[in]		item	対象の項目
+	@param[in]		hval	取得する値を格納するオブジェクト [CxArray, item.Type=2 の場合は CxStringA も可能です。]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の領域が有効な Exif である必要があります。
+			無効な場合は例外を発行します。
+
+	@par	Examples:
+			@includelineno	CxExif_GetValue.cpp
+
+	@sa
+		@ref GetItems \n
+*/
+// ===================================================================
+/*!
+	@fn		CxExif::SetValue(const TxExifItem& item, HxModule hval)
+	@brief	指定項目の値の設定
+
+	@param[in]		item	対象の項目
+	@param[in,out]	hval	設定する値が格納されたオブジェクト [CxArray, item.Type=2 の場合は CxStringA も可能です。]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の領域が有効な Exif である必要があります。
+			無効な場合は例外を発行します。
+
+	@par	Examples:
+			下記は、更新日時と実行画像幅、実行画像高さを変更しています。\n
+			\n
+			@includelineno	CxExif_SetValue.cpp
+
+	@sa
+		@ref GetItems \n
+*/
+
+}

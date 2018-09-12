@@ -1,0 +1,6 @@
+User::CxFinalizer_01
+(1) allocation
+(2) registration
+(3) job
+(4) free
+(5) exception

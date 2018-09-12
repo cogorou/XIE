@@ -1,0 +1,70 @@
+/*!
+	@file	TxDeviceListItem.h
+	@brief	デバイスリスト構造体
+*/
+/*!
+	@internal
+	@file	TxDeviceListItem.cpp
+	@brief	デバイスリスト構造体
+*/
+/*!
+	@def	_TXDEVICELISTITEM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Structures
+	@struct		TxDeviceListItem
+	@brief		デバイスリスト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceListItem::MediaType
+	@brief	メディア種別
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceListItem::MediaDir
+	@brief	メディア方向
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceListItem::Name
+	@brief	デバイス名称
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceListItem::Index
+	@brief	デバイス指標
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceListItem::TxDeviceListItem()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceListItem::TxDeviceListItem(ExMediaType type, ExMediaDir dir, char* name, int index)
+	@brief	コンストラクタ
+
+	@param[in]		type		メディア種別
+	@param[in]		dir			メディア方向
+	@param[in]		name		デバイス名称
+	@param[in]		index		デバイス指標
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceListItem::Default()
+	@brief	既定値
+
+	@return	既定値で初期化した構造体を返します。
+*/
+
+}
+}

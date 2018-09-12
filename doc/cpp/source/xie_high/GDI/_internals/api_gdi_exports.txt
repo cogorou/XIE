@@ -1,0 +1,299 @@
+/*!
+	@internal
+	@file		api_gdi_exports.cpp
+	@brief		OpenGL 表示関連の内部定義
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Module_Create	(TxCharCPtrA name)
+	@brief		モジュールの生成
+
+	@param[in]		name	クラス名称
+
+	@return	正常の場合は生成されたオブジェクトへのポインタを返します。
+			異常の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Setup	(HxModule handle, void* hdc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Setup	(HxModule handle, int drawable)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Resize	(HxModule handle, int width, int height)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_BeginPaint	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_EndPaint	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Lock	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Unlock	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Clear	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_DrawImage	(HxModule handle, HxModule himage)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_DrawOverlay	(HxModule handle, HxModule* hfigures, int count, ExGdiScalingMode mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_DrawOverlayCB(HxModule handle, fnXIE_GDI_CallBack_Render render, void* param, ExGdiScalingMode mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Flush	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_FlushToImage	(HxModule handle, HxModule hdst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_EffectiveRect	(HxModule handle, TxRectangleI* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_VisibleRect	(HxModule handle, TxRectangleD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_VisibleRectI	(HxModule handle, ExBoolean includePartialPixel, TxRectangleI* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_DPtoIP	(HxModule handle, TxPointD dp, ExGdiScalingMode mode, TxPointD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_IPtoDP	(HxModule handle, TxPointD ip, ExGdiScalingMode mode, TxPointD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Api_EffectiveRect	(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxRectangleI* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Api_VisibleRect	(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxRectangleD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Api_DPtoIP	(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD dp, ExGdiScalingMode mode, TxPointD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Api_IPtoDP	(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD ip, ExGdiScalingMode mode, TxPointD* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Canvas_Api_Extract(HxModule hdst, HxModule hsrc, TxCanvas canvas)
+	@brief		可視範囲の切り出し
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_2d_Reset	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_2d_Resize	(HxModule handle, int length)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_Image_Resize	(HxModule handle, int width, int height)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_StringA_Text_Set	(HxModule handle, TxCharCPtrA text)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_StringA_FontName_Set	(HxModule handle, TxCharCPtrA text)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_StringW_Text_Set	(HxModule handle, TxCharCPtrW text)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_StringW_FontName_Set	(HxModule handle, TxCharCPtrW text)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_CanConvertFrom(HxModule hdst, TxSizeI size, ExBoolean* value)
+	@brief		変換の可否の判定
+
+	@param[in]		hdst	出力画像 (RGB)
+	@param[in]		size	入力画像のサイズ
+	@param[out]		value	True=変換可能、False=変換不可
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_ConvertFrom_DDB(HxModule hdst, HxModule hsrc)
+	@brief		データ変換 (RGB ← BGR Bottom-Up)
+
+	@param[in,out]	hdst	出力画像 (RGB)
+	@param[in]		hsrc	入力画像 (BGR Buttom-Up)
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Exports
+	@fn			fnXIE_GDI_ConvertFrom_YUYV(HxModule hdst, HxModule hsrc)
+	@brief		データ変換 (RGB ← YUYV)
+
+	@param[in,out]	hdst	出力画像 (RGB)
+	@param[in]		hsrc	入力画像 (YUYV)
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}
+}

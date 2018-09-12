@@ -1,0 +1,18 @@
+User::CxDeviceList_02
+User::CxDeviceList_02: Audio Input Device
+Length               : 3
+|- 0
+|  |- Name(Index)          : "{E30629D2-27E5-11CE-875D-00608CB78066}" (0)
+|  |- ProductName          : "デスクトップ マイク (2- Studio - Microso"
+|  |- PinNames             : 1
+|  |  |-  0: "Capture"
+|- 1
+|  |- Name(Index)          : "{E30629D2-27E5-11CE-875D-00608CB78066}" (1)
+|  |- ProductName          : "マイク (HD Pro Webcam C910)"
+|  |- PinNames             : 1
+|  |  |-  0: "Capture"
+|- 2
+|  |- Name(Index)          : "{E30629D2-27E5-11CE-875D-00608CB78066}" (2)
+|  |- ProductName          : "マイク (Realtek High Definition Au"
+|  |- PinNames             : 1
+|  |  |-  0: "Capture"

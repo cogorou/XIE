@@ -1,0 +1,236 @@
+/*!
+	@internal
+	@file		api_ds.h
+	@brief		メディア関連の内部定義 (DirectShow 用)
+*/
+/*!
+	@internal
+	@file		api_ds.cpp
+	@brief		メディア関連の内部定義 (DirectShow 用)
+*/
+#ifdef _MSC_VER
+
+/*!
+	@internal
+	@def	_API_DS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_Setup()
+	@brief		初期化
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_TearDown()
+	@brief		解放
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_CompareGuid(TxCharCPtrW src1, TxCharCPtrW src2)
+	@brief		GUID 文字列の比較
+
+	@retval	true	等価
+	@retval	false	不等価
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_ToString(GUID guid)
+	@brief		GUID の文字列化
+
+	@return	指定された GUID を文字列に変換して返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetDeviceCategory(ExMediaType type, ExMediaDir dir)
+	@brief		デバイスカテゴリの取得
+
+	@return	デバイスカテゴリの GUID を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetDeviceCount	(ExMediaType type, ExMediaDir dir)
+	@brief		デバイスの個数の取得
+
+	@return	現在接続されているデバイスの個数を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetDeviceNames	(ExMediaType type, ExMediaDir dir)
+	@brief		デバイス名称の一覧の取得
+
+	@return	現在接続されているデバイス(CLSID)の名称のコレクションを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetDeviceIndex	(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index)
+	@brief		デバイス指標の取得
+
+	@return	指定された条件に一致するデバイスの指標を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetProductName	(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index)
+	@brief		製品名の取得
+
+	@return	指定された条件に一致するデバイスの製品名(FriendlyName)を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetPinNames		(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index)
+	@brief		ピン名称の一覧の取得
+
+	@return	指定された条件に一致するデバイスのピン名称のコレクションを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetFrameSizes	(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index, int pin)
+	@brief		フレームサイズの一覧の取得
+
+	@return	指定された条件に一致するデバイスのフレームサイズのコレクションを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_CreateDeviceFilter(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index, CxStringA* device_name, CxStringA* product_name)
+	@brief		デバイスフィルタの生成
+
+	@return	生成されたデバイスフィルタを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetVideoInfo		(IBaseFilter* grabber)
+	@brief		サンプルグラバーの映像情報の取得
+
+	@return	映像情報を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_Connected		(IBaseFilter* grabber)
+	@brief		サンプルグラバーの接続状況の取得
+
+	@retval	true	接続済み
+	@retval	false	未接続	
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_FindPin			(IBaseFilter* filter, int index, PIN_DIRECTION direction)
+	@brief		フィルタのピンの検索
+
+	@return	ピンオブジェクトを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_SetFrameSize		(IBaseFilter* filter, TxSizeI frame_size)
+	@brief		映像入力フィルタのフレームサイズの設定
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetFrameSize		(IBaseFilter* filter)
+	@brief		映像入力フィルタのフレームサイズの取得
+
+	@return	サイズを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_GetFrameSizes	(IBaseFilter* filter)
+	@brief		映像入力フィルタのフレームサイズの一覧の取得
+
+	@return	サイズのコレクションを返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_SetVideoFrameSize(IBaseFilter* mux, TxSizeI frame_size)
+	@brief		WMV 形式ファイル保存用: ビデオのフレームサイズの設定
+
+	@param[in]	mux			現在は ASF Writer にのみ対応しています。他は無視します。
+	@param[in]	frame_size	設定値
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_SaveGraphFileA(IGraphBuilder *pGraph, TxCharCPtrA szPath)
+	@brief		GraphEdit ファイルへのフィルタ グラフの保存 (MBCS)
+
+	@return	正常の場合は 0 を返します。
+			異常の場合はそれ以外を返します。
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_DS_SaveGraphFileW(IGraphBuilder *pGraph, TxCharCPtrW szPath)
+	@brief		GraphEdit ファイルへのフィルタ グラフの保存 (UNICODE)
+
+	@return	正常の場合は 0 を返します。
+			異常の場合はそれ以外を返します。
+*/
+
+}	// Media
+}	// xie
+
+#endif	// _MCS_VER

@@ -1,0 +1,15 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_core_enums.h
+	@brief		基本ライブラリの定数
+*/
+// ===================================================================
+/*!
+	@def		_XIE_CORE_ENUMS_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+
+}

@@ -1,0 +1,11 @@
+Win32
+x64
+ipch
+*.log
+*.aps
+*.suo
+*.sdf
+*.opensdf
+*.user
+.vs
+*.db

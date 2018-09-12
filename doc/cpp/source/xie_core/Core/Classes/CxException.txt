@@ -1,0 +1,201 @@
+/*!
+	@file	CxException.h
+	@brief	例外クラス
+*/
+/*!
+	@internal
+	@file	CxException.cpp
+	@brief	例外クラス
+*/
+/*!
+	@def	_CXEXCEPTION_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxException
+	@brief		例外クラス
+
+	@remarks
+			例外の発生原因と発生場所を通知する為のクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxException_01.cpp
+
+			@par
+			出力結果)
+			@include	CxException_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxException::CxException( ExStatus code, TxCharCPtrA function, TxCharCPtrA file, int line )
+	@brief	コンストラクタ
+
+	@param[in]		code		エラーコード。例外が発生した要因を示します。
+	@param[in]		function	関数名。例外が発生した関数の名称を示します。
+	@param[in]		file		ファイル名。例外が発生した箇所のファイル名を示します。
+	@param[in]		line		行番号。例外が発生した箇所の行番号を示します。
+
+	@sa
+		@ref Code \n
+		@ref Function \n
+		@ref File \n
+		@ref Line \n
+*/
+// ===================================================================
+/*!
+	@fn		CxException::CxException( const CxException& src )
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxException::~CxException()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxException::operator = ( const CxException& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return		複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxException::operator == ( const CxException& src ) const;
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxException::operator != ( const CxException& src ) const;
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Code() const;
+	@brief	エラーコード
+
+	@return		例外が発生した要因を示すエラーコードを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Code(ExStatus value)
+	@brief	エラーコード (設定)
+
+	@param[in]		value		例外が発生した要因を示すエラーコード
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Function() const;
+	@brief	関数名
+
+	@return		例外が発生した関数の名称を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Function(TxCharCPtrA value)
+	@brief	関数名 (設定)
+
+	@param[in]		value		例外が発生した関数の名称
+*/
+// ===================================================================
+/*!
+	@fn		CxException::File() const;
+	@brief	関数名
+
+	@return		例外が発生した関数の名称を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxException::File(TxCharCPtrA value)
+	@brief	関数名 (設定)
+
+	@param[in]		value		例外が発生した関数の名称
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Line() const;
+	@brief	行番号
+
+	@return		例外が発生した箇所の行番号の名称を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxException::Line(int value)
+	@brief	行番号 (設定)
+
+	@param[in]		value		例外が発生した箇所の行番号
+*/
+// ===================================================================
+/*!
+	@var	CxException::m_Code
+	@brief	エラーコード
+
+	例外が発生した要因を示すエラーコードです。
+*/
+// ===================================================================
+/*!
+	@var	CxException::m_Function
+	@brief	関数名
+
+	例外が発生した関数の名称です。
+*/
+// ===================================================================
+/*!
+	@var	CxException::m_File
+	@brief	ファイル名
+
+	例外が発生した箇所のファイル名です。
+*/
+// ===================================================================
+/*!
+	@var	CxException::m_Line
+	@brief	行番号
+
+	例外が発生した箇所の行番号です。
+*/
+// ===================================================================
+/*!
+	@internal
+	@fn		CxException::_copy( TxCharCPtrA src )
+	@brief	文字列の複製
+
+	@param[in]		src		複製元
+
+	@return		新しくヒープに確保した領域に文字列を複製して返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@fn		CxException::_compare( TxCharCPtrA ope1, TxCharCPtrA ope2 )
+	@brief	文字列の比較
+
+	@param[in]		ope1	左辺値
+	@param[in]		ope2	右辺値
+
+	@retval		true	一致
+	@retval		false	不一致
+*/
+
+}

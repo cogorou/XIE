@@ -1,0 +1,55 @@
+/*!
+	@file	TxStringW.h
+	@brief	文字列オブジェクト構造体 (UNICODE)
+*/
+/*!
+	@internal
+	@file	TxStringW.cpp
+	@brief	文字列オブジェクト構造体 (UNICODE)
+*/
+/*!
+	@def	_TXSTRINGW_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxStringW
+	@brief		文字列オブジェクト構造体 (UNICODE)
+*/
+// ===================================================================
+/*!
+	@var	TxStringW::Address
+	@brief	領域の先頭アドレス (１次元配列) ※sizeof(wchar_t)×(Length＋1) (bytes) の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxStringW::Length
+	@brief	長さ (文字数)
+*/
+// ===================================================================
+/*!
+	@fn		TxStringW::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStringW::TxStringW()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxStringW::TxStringW(wchar_t* addr, int length)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (１次元配列) ※sizeof(wchar_t)×(Length＋1) (bytes) の連続領域。
+	@param[in]		length		長さ (文字数)
+*/
+
+}

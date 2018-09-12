@@ -1,0 +1,211 @@
+/*!
+	@internal
+	@file		api_data.h
+	@brief		データオブジェクト関連の定義
+*/
+/*!
+	@internal
+	@file		api_data.cpp
+	@brief		データオブジェクト関連の定義
+*/
+/*!
+	@internal
+	@def		_API_DATA_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ////////////////////////////////////////////////////////////
+// EXTERN VARIABLE
+
+// ////////////////////////////////////////////////////////////
+// FUNCTION
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Serialize	(TxArray dst, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Statistics	(TxImage src, TxImage mask, int ch, TxStatistics* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Extract		(TxImage src, TxImage mask, int ch, int sy, int sx, int length, ExScanDir dir, TxArray result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Projection		(TxImage src, TxImage mask, int ch, ExScanDir dir, TxArray result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Clear		(TxImage dst, TxImage mask, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_ClearEx		(TxImage dst, TxImage mask, const void* value, TxModel model, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Cast		(TxImage dst, TxImage mask, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Copy		(TxImage dst, TxImage mask, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_CopyEx		(TxImage dst, TxImage mask, TxImage src, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Convert		(TxImage dst, TxImage mask, TxImage src, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_RgbToBgr	(TxImage dst, TxImage mask, TxImage src, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Math		(TxImage dst, TxImage mask, TxImage src, ExMath mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Not			(TxImage dst, TxImage mask, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Ope1A		(TxImage dst, TxImage mask, TxImage src, double value, ExOpe1A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Ope1L		(TxImage dst, TxImage mask, TxImage src, unsigned int value, ExOpe1L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Ope2A		(TxImage dst, TxImage mask, TxImage src, TxImage val, ExOpe2A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Ope2L		(TxImage dst, TxImage mask, TxImage src, TxImage val, ExOpe2L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Compare		(TxImage dst, TxImage mask, TxImage src, TxImage cmp, double error_range)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_ColorMatrix		(TxImage dst, TxImage mask, TxImage src, TxMatrix matrix)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Affine		(TxImage dst, TxImage mask, TxImage src, TxMatrix matrix, int interpolation)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Mirror		(TxImage dst, TxImage mask, TxImage src, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Rotate		(TxImage dst, TxImage mask, TxImage src, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Core_2D_Transpose	(TxImage dst, TxImage mask, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

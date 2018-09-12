@@ -1,0 +1,116 @@
+/*!
+	@file	TxIPEndPoint.h
+	@brief	IPエンドポイント構造体
+*/
+/*!
+	@internal
+	@file	TxIPEndPoint.cpp
+	@brief	IPエンドポイント構造体
+*/
+/*!
+	@def	_TXIPENDPOINT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Structures
+	@struct		TxIPEndPoint
+	@brief		IPエンドポイント構造体
+*/
+// ===================================================================
+/*!
+	@var	TxIPEndPoint::IPAddress
+	@brief	IPアドレス [既定値:0,0,0,0]
+
+	@remarks
+			エンドポイントを特定する IP アドレスを指定します。\n
+*/
+// ===================================================================
+/*!
+	@var	TxIPEndPoint::Port
+	@brief	ポート番号 [既定値:0] [範囲:0~65535]
+
+	@remarks
+			エンドポイントを特定する識別子を指定します。\n
+			指定可能な範囲は以下の通りです。\n
+			- 0~1023: Well known port number
+			- 1024~49151: Registered port number
+			- 49152~65535: Dynamic port number
+*/
+// ===================================================================
+/*!
+	@var	TxIPEndPoint::Family
+	@brief	プロトコルファミリ [既定値:0] [範囲:2=XIE_AF_INET]
+
+	@remarks
+			通信に使用するプロトコルファミリを指定します。\n
+			本ライブラリに於いては XIE_AF_INET のみ使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::TxIPEndPoint()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::TxIPEndPoint(TxIPAddress addr, int port)
+	@brief	コンストラクタ
+
+	@param[in]		addr		IPアドレス
+	@param[in]		port		ポート番号 [0~65535]
+
+	@remarks
+			指定の値で初期化して構築します。\n
+			@ref Family は XIE_AF_INET に設定されます。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::TxIPEndPoint(TxIPAddress addr, int port, int family)
+	@brief	コンストラクタ
+
+	@param[in]		addr		IPアドレス
+	@param[in]		port		ポート番号 [0~65535]
+	@param[in]		family		プロトコルファミリ [2=XIE_AF_INET]
+
+	@remarks
+			指定の値で初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::operator == (const TxIPEndPoint& cmp) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		TxIPEndPoint::operator != (const TxIPEndPoint& cmp) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+
+}
+}

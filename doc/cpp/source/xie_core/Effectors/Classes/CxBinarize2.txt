@@ -1,0 +1,235 @@
+/*!
+	@file	CxBinarize2.h
+	@brief	２値化クラス (バンド閾値)
+*/
+/*!
+	@internal
+	@file	CxBinarize2.cpp
+	@brief	２値化クラス (バンド閾値)
+*/
+/*!
+	@def	_CXBINARIZE2_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_Binarize2	(HxModule hsrc, HxModule hdst, HxModule hmask, TxRangeD threshold, bool use_abs, TxRangeD value)
+	@brief		２値化 (バンド閾値)
+
+	@param[in]		hsrc			入力元
+	@param[in,out]	hdst			出力先
+	@param[in]		hmask			マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		threshold		閾値 (threshold.Lower≦src≦threshold.Upper を真とします。)
+	@param[in]		use_abs			入力値を絶対値として扱うか否か
+	@param[in]		value			出力値の範囲 (真の場合 Upper、偽の場合は Lower を使用します。)
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxBinarize2
+	@brief		２値化クラス (バンド閾値)
+
+	各要素の値を２値化して出力先のオブジェクトに格納します。\n
+	引数の @a UseAbs が false の場合は条件１、true の場合は条件２により判定します。\n
+	\n
+	式) dst<sub>y,x</sub> = (condition) ? Value.Upper : Value.Lower \n
+	\n
+	条件１) condition = (Threashold.Lower &lt;= (src<sub>y,x</sub>) && (src<sub>y,x</sub>) &lt;= Threashold.Upper) \n
+	条件２) condition = (Threashold.Lower &lt;= |src<sub>y,x</sub>| && |src<sub>y,x</sub>| &lt;= Threashold.Upper) \n
+	\n
+	処理可能な条件:
+		-	入出力の Size, Model.Pack, Channels が、それぞれ一致していること。
+		-	入力の Model.Type が下記の何れかであること。\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		-	出力の Model.Type が下記の何れかであること。\n
+			- ExType (U8) \n
+			.
+		.
+		\n
+
+	@par	Examples:
+			@includelineno	CxBinarize2_01.cpp
+			
+			@par
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">入力</td>
+				<td align="center" class="indexkey">→</td>
+				<td align="center" class="indexkey">出力</td>
+				</tr>
+			<tr>
+				<td align="center">@image html frog_320x240_u8x1.png</td>
+				<td align="center">\n</td>
+				<td align="center">@image html CxBinarize2_01.png</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxBinarize2::Threshold
+	@brief	閾値 (threshold.Lower≦src≦threshold.Upper を真とします。)
+*/
+// ===================================================================
+/*!
+	@var	CxBinarize2::UseAbs
+	@brief	入力値を絶対値として扱うか否か
+*/
+// ===================================================================
+/*!
+	@var	CxBinarize2::Value
+	@brief	出力値の範囲 (真の場合 Upper、偽の場合は Lower を使用します。)
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::CxBinarize2()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::CxBinarize2(const CxBinarize2& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxBinarize2 &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::CxBinarize2(TxRangeD threshold, bool use_abs, TxRangeD value)
+	@brief	コンストラクタ
+
+	@param[in]		threshold		閾値 (threshold.Lower≦src≦threshold.Upper を真とします。)
+	@param[in]		use_abs			入力値を絶対値として扱うか否か
+	@param[in]		value			出力値の範囲 (真の場合 Upper、偽の場合は Lower を使用します。)
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::~CxBinarize2()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::operator = ( const CxBinarize2& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::operator == ( const CxBinarize2& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::operator != ( const CxBinarize2& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxBinarize2(const CxBinarize2 &src) \n
+		@ref operator=(const CxBinarize2 &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxBinarize2 &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxBinarize2::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

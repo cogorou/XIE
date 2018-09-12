@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{146c8df2-7a72-4d97-b5ea-fa2142a9c5a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="res\demo.ico">
+      <Filter>EntryPoint</Filter>
+    </None>
+    <None Include="res\demo.rc2">
+      <Filter>EntryPoint</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChildView.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="demo.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChildView.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="demo.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="demo.rc">
+      <Filter>EntryPoint</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

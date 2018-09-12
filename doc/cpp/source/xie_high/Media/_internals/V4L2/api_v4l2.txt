@@ -1,0 +1,42 @@
+/*!
+	@internal
+	@file		api_v4l2.h
+	@brief		メディア関連の内部定義 (V4L2 用)
+*/
+/*!
+	@internal
+	@file		api_v4l2.cpp
+	@brief		メディア関連の内部定義 (V4L2 用)
+*/
+#ifndef _MSC_VER
+
+/*!
+	@def	_API_V4L2_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+/*
+// ////////////////////////////////////////////////////////////
+// PROTOTYPE
+
+void XIE_API fnPRV_VL_Setup();
+void XIE_API fnPRV_VL_TearDown();
+
+int					XIE_API fnPRV_VL_GetDeviceCount	(ExMediaType type, ExMediaDir dir);
+CxArrayEx<CxStringA>	XIE_API fnPRV_VL_GetDeviceNames	(ExMediaType type, ExMediaDir dir);
+CxStringA			XIE_API fnPRV_VL_GetProductName	(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index);
+CxArrayEx<CxStringA>	XIE_API fnPRV_VL_GetPinNames		(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index);
+CxArrayEx<TxSizeI>	XIE_API fnPRV_VL_GetFrameSizes	(ExMediaType type, ExMediaDir dir, TxCharCPtrA name, int index, int pin);
+
+int xioctl(int fd, int request, void* arg);
+*/
+
+}	// Media
+}	// xie
+
+#endif	// _MCS_VER

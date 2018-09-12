@@ -1,0 +1,49 @@
+/*!
+	@file	CxString.h
+	@brief	文字列クラス型
+*/
+/*!
+	@internal
+	@file	CxString.cpp
+	@brief	文字列クラス型
+*/
+/*!
+	@def	_CXSTRING_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	CxString
+	@brief		文字列クラス型
+
+	@remarks
+			UNICODE マクロが定義されている場合は CxStringW 、それ以外は CxStringA です。
+
+	@sa
+		@ref CxStringA \n
+		@ref CxStringW \n
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_String_Resize	(HxModule handle, int length)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_String_Reset	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

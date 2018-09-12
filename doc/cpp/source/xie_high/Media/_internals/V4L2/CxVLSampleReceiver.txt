@@ -1,0 +1,85 @@
+/*!
+	@file	CxVLSampleReceiver.h
+	@brief	サンプルレシーバークラス
+*/
+/*!
+	@internal
+	@file	CxVLSampleReceiver.cpp
+	@brief	サンプルレシーバークラス
+*/
+#ifndef _MSC_VER
+
+/*!
+	@def	_CXVLSAMPLERECEIVER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxVLSampleReceiver
+	@brief		サンプルレシーバークラス
+*/
+// ===================================================================
+/*!
+	@fn		CxVLSampleReceiver::CxVLSampleReceiver()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLSampleReceiver::~CxVLSampleReceiver()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxVLSampleReceiver::Receive(IMediaSample *sample)
+	@brief	サンプルを受信する関数
+
+	@param[in]		sample	受信したメディアサンプル
+
+	@return	継続する場合は S_OK を返します。
+			中断する場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLSampleReceiver::Add(IxGrabber* src)
+	@brief	グラバーの追加
+
+	@param[in]		src		グラバー
+*/
+// ===================================================================
+/*!
+	@fn		CxVLSampleReceiver::Remove(IxGrabber* src)
+	@brief	グラバーの除去
+
+	@param[in]		src		グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxVLSampleReceiver::Mutex
+	@brief	排他制御用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxVLSampleReceiver::FrameSize
+	@brief	フレームサイズ
+*/
+// ===================================================================
+/*!
+	@var	CxVLSampleReceiver::Notify
+	@brief	グラバーのコレクション
+*/
+
+}
+}
+
+#endif	// _MCS_VER

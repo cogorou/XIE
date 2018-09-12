@@ -1,0 +1,329 @@
+/*!
+	@file	CxScreenListItem.h
+	@brief	スクリーンリスト項目クラス
+*/
+/*!
+	@internal
+	@file	CxScreenListItem.cpp
+	@brief	スクリーンリスト項目クラス
+*/
+/*!
+	@def	_CXSCREENLISTITEM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxScreenListItem
+	@brief		スクリーンリスト項目クラス
+
+	入出力デバイスの詳細情報を取得するクラスです。\n
+	通常は CxScreenList から使用します。
+	使用例については @ref CxScreenList の Examples をご参照ください。\n
+
+	@sa
+		@ref CxScreenList \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CxScreenListItem()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CxScreenListItem(HWND handle, TxCharCPtrA name, TxRectangleI bounds)
+	@brief	コンストラクタ
+
+	@param[in]		handle		ウィンドウハンドル
+	@param[in]		name		ウィンドウ名称
+	@param[in]		bounds		位置とサイズ
+
+	@remarks
+			初期値を指定してオブジェクト構築します。\n
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CxScreenListItem(TxIntPtr handle, TxCharCPtrA name, TxRectangleI bounds)
+	@brief	コンストラクタ
+
+	@param[in]		handle		ウィンドウハンドル
+	@param[in]		name		ウィンドウ名称
+	@param[in]		bounds		位置とサイズ
+
+	@remarks
+			初期値を指定してオブジェクト構築します。\n
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CxScreenListItem(CxScreenListItem&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxScreenListItem &&src) \n
+		@ref MoveFrom(CxScreenListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CxScreenListItem(const CxScreenListItem& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxScreenListItem &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::~CxScreenListItem()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::operator = ( CxScreenListItem&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxScreenListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::operator = ( const CxScreenListItem& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::operator == ( const CxScreenListItem& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::operator != ( const CxScreenListItem& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	データ構造へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::MoveFrom(CxScreenListItem& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxScreenListItem(CxScreenListItem &&src) \n
+		@ref operator=(CxScreenListItem &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxScreenListItem(const CxScreenListItem &src) \n
+		@ref operator=(const CxScreenListItem &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxScreenListItem &src) const \n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Handle() const
+	@brief	ウィンドウハンドルの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Handle(HWND value)
+	@brief	ウィンドウハンドルの設定
+
+	@param[in]		value		設定値
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Handle() const
+	@brief	ウィンドウハンドルの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Handle(TxIntPtr value)
+	@brief	ウィンドウハンドルの設定
+
+	@param[in]		value		設定値
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Name() const
+	@brief	ウィンドウ名称の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Name(TxCharCPtrA value)
+	@brief	ウィンドウ名称の設定
+
+	@param[in]		value		設定値 [NULL または有効な文字列]
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Bounds() const
+	@brief	位置とサイズの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenListItem::Bounds(TxRectangleI value)
+	@brief	位置とサイズの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@var	CxScreenListItem::m_Tag
+	@brief	データ構造
+
+	@sa
+		@ref Tag \n
+		@ref TagPtr \n
+*/
+
+}
+}

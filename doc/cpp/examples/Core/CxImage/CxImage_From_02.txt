@@ -1,0 +1,9 @@
+User::CxImage_From_02
+src.Address(0)       = 0028B958
+src.Width            = 4
+src.Height           = 3
+src.Model            = U8(1)
+src.Channels         = 1
+[0] 0x00 0x01 0x02 0x03 
+[1] 0x10 0x11 0x12 0x13 
+[2] 0x20 0x21 0x22 0x23 

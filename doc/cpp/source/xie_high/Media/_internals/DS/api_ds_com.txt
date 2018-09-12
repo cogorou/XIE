@@ -1,0 +1,22 @@
+/*!
+	@internal
+	@file		api_ds_com.h
+	@brief		メディア関連の内部定義 (DirectShow 用)
+*/
+/*!
+	@internal
+	@def	_API_DS_COM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+#ifdef _MSC_VER
+
+namespace xie
+{
+namespace DS
+{
+
+}	// DS
+}	// xie
+
+#endif	// _MCS_VER

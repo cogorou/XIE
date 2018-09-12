@@ -1,0 +1,1426 @@
+/*!
+	@file	CxCanvas.h
+	@brief	画像描画クラス
+*/
+/*!
+	@internal
+	@file	CxCanvas.cpp
+	@brief	画像描画クラス
+*/
+/*!
+	@def	_CXCANVAS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Typedefs
+	@typedef	fnXIE_GDI_CallBack_Render
+	@brief		オーバレイ図形描画処理のコールバック関数の型
+
+	@sa
+		@ref CxCanvas::DrawOverlayCB(fnXIE_GDI_CallBack_Render render, void* param, ExGdiScalingMode mode) \n
+*/	
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxCanvas
+	@brief		画像描画クラス
+
+	ウィンドウのビュー部分に画像とオーバレイ図形を描画するクラスです。\n
+	Setup メソッドに NULL (Linux では 0) を指定するとオフスクリーンで描画を行います。\n
+	何れも描画結果を画像オブジェクトに転送することができます。\n
+
+	@par	Examples
+			@includelineno	CxCanvas_01.cpp
+
+			@par
+			描画結果) \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">入力画像</td>
+				<td align="center" class="indexkey">→</td>
+				<td align="center" class="indexkey">描画結果</td>
+				</tr>
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				<td align="center">\n</td>
+				<td align="center">@image html CxCanvas_01.png</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::CxCanvas()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::CxCanvas(const CxCanvas& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::~CxCanvas ()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::operator= (const CxCanvas &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::operator== (const CxCanvas &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::operator!= (const CxCanvas &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Tag () const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Dispose ()
+	@brief	解放
+
+	内部リソースを解放します。\n
+	アタッチしている場合はアタッチ解除を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::IsValid () const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			描画処理に必要なリソースが有効か否かを検査します。\n
+			Setup 及び Resize が実行された後に有効になります。\n
+			Dispose が実行された後、無効になります。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxCanvas::Setup (HDC hdc)
+	@brief	初期化
+
+	@param[in]		hdc		描画先のデバイスコンテキスト \n
+							下記の何れかを指定できます。\n
+							- OBJ_DC … ウィンドウから取得したデバイスコンテキスト\n
+							- OBJ_MEMDC … メモリデバイスコンテキスト (※ 32bpp のみ) \n
+							- NULL … 描画先なし (内部メモリのみ使用する) \n
+							.
+
+
+	@remarks
+			OpenGL の初期化を行います。\n
+			このクラスの一連の描画処理の前に実行する必要があります。\n
+			\n
+			このメソッドを複数回呼び出しても問題ありません。\n
+			描画先が変わらなければ２回目以降の呼び出しは無視されます。\n
+
+	@sa
+		@ref Resize \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+		@ref Flush \n
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxCanvas::Setup (GLXDrawable drawable)
+	@brief	初期化
+
+	@param[in]		drawable	描画先 \n
+								下記のオブジェクトに対応しています。
+								- Window … ウィンドウ \n
+								- GLXPixmap … ピックスマップ \n
+								- 0 … 描画先なし (内部メモリのみ使用する) \n
+								.
+
+	@remarks
+			OpenGL の初期化を行います。\n
+			このクラスの一連の描画処理の前に実行する必要があります。\n
+			\n
+			このメソッドを複数回呼び出しても問題ありません。\n
+			描画先が変わらなければ２回目以降の呼び出しは無視されます。\n
+
+	@sa
+		@ref Resize \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+		@ref Flush \n
+*/
+#endif
+// ===================================================================
+/*!
+	@var	CxCanvas::Resize(const TxSizeI& size)
+	@brief	描画用バッファの確保
+
+	@param[in]	size	幅と高さ (pixels) [1~]
+
+	@remarks
+			描画用バッファを確保します。\n
+			予め、Setup によって初期化されている必要があります。\n
+			\n
+			このメソッドを複数回呼び出しても問題ありません。\n
+			描画用バッファのサイズが変わらなければ２回目以降の呼び出しは無視されます。\n
+			\n
+			本クラスの描画処理(DrawImage, DrawOverlay)は、ここで確保された描画用バッファに描画しています。\n
+			その後、Flush メソッドが呼ばれた時にスクリーンに反映します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Width \n
+		@ref Height \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+		@ref Flush \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Resize (int width, int height)
+	@brief	描画用バッファの確保
+
+	@param[in]	width	幅 [1~]
+	@param[in]	height	高さ [1~]
+
+	@remarks
+			描画用バッファを確保します。\n
+			予め、Setup によって初期化されている必要があります。\n
+			\n
+			このメソッドを複数回呼び出しても問題ありません。\n
+			描画用バッファのサイズが変わらなければ２回目以降の呼び出しは無視されます。\n
+			\n
+			本クラスの描画処理(DrawImage, DrawOverlay)は、ここで確保された描画用バッファに描画しています。\n
+			その後、Flush メソッドが呼ばれた時にスクリーンに反映します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Width \n
+		@ref Height \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+		@ref Flush \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Clear () 
+	@brief	描画用バッファのクリア
+
+	@remarks
+			描画用バッファの全面を指定された背景色でクリアします。\n
+			このメソッドは @ref BkEnable に設定された有効属性を無視します。\n
+
+	@sa
+		@ref BkColor \n
+		@ref BkEnable \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawImage (HxModule himage) 
+	@brief	背景画像の描画
+
+	@param[in]		himage		背景画像 \n
+								※ CxImage を指定してください。
+
+	@remarks
+			指定された画像を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref CxImage \n
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref BkColor \n
+		@ref BkEnable \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlayCB(fnXIE_GDI_CallBack_Render render, void* param, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画 (コールバック)
+
+	@param[in]		render		描画関数へのポインタ
+	@param[in]		param		描画関数へ渡す任意のパラメータへのポインタ
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定されたスケーリングモードに従って変換行列を初期化した後、指定された描画関数を呼び出します。
+			描画関数内で IxGdi2dRendering を実装したクラスの Render メソッドを呼び出すと DrawOverlay メソッドと同様の処理になります。
+			IxGdi2dRendering を実装していない独自の描画処理がある場合は DrawOverlayCB を使用してください。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlay \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (HxModule hfigure, ExGdiScalingMode mode) 
+	@brief	オーバレイ図形の描画
+
+	@param[in]		hfigure		図形オブジェクト \n
+								※ IxGdi2dRendering を実装したクラスである必要があります。
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const HxModule* hfigures, int count, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@param[in]		hfigures	図形オブジェクトのハンドルが格納された配列の先頭アドレス \n
+								※ IxGdi2dRendering を実装したクラスである必要があります。
+	@param[in]		count		配列の要素数 [0~]
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const CxArrayEx<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam	TE	要素の型。
+
+	@param[in]		figures		図形オブジェクトのハンドルが格納された配列クラス \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。また、CxModule の派生クラスである必要があります。\n
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const std::vector<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam	TE	要素の型。
+
+	@param[in]		figures		図形オブジェクトのハンドルが格納された配列クラス \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。また、CxModule の派生クラスである必要があります。\n
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const std::initializer_list<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam	TE	要素の型。
+
+	@param[in]		figures		図形オブジェクトのハンドルが格納された配列クラス \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。また、CxModule の派生クラスである必要があります。\n
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const CxArrayEx<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam		TE		配列要素の型 (IxGdi2dRendering を実装したクラス)
+
+	@param[in]		figures		図形オブジェクトが格納された配列クラス \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const std::vector<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam		TE		配列要素の型 (IxGdi2dRendering を実装したクラス)
+
+	@param[in]		figures		図形オブジェクトが格納された配列クラス \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DrawOverlay (const std::initializer_list<TE>& figures, ExGdiScalingMode mode)
+	@brief	オーバレイ図形の描画
+
+	@tparam		TE		配列要素の型 (IxGdi2dRendering を実装したクラス)
+
+	@param[in]		figures		図形オブジェクトが格納された配列 \n
+								※ 各要素は IxGdi2dRendering を実装したクラスである必要があります。
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			指定された図形を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+			描画結果をスクリーンに表示するには、Flush メソッドを呼び出してください。
+	
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Flush \n
+		@ref DrawOverlayCB \n
+		@ref IxGdi2dRendering \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Flush () 
+	@brief	描画結果の反映
+
+	@remarks
+			本クラスの描画処理(DrawImage, DrawOverlay)の結果を
+			Setup で指定された描画先へ反映します。\n
+			Setup に NULL (Linux では 0) を指定した場合は、本メソッドは使用できません。\n
+			その場合は、@ref Flush(HxModule hdst) を使用して描画結果を取得してください。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Flush(HxModule hdst)
+	@brief	描画結果の反映
+
+	@param[in,out]	hdst	複製先の画像オブジェクト \n
+							※ CxImage を指定してください。内部でサイズ変更されます。\n
+
+	@remarks
+			本クラスの描画処理(DrawImage, DrawOverlay)の結果を
+			引数 @a hdst に指定された画像オブジェクトへ複製します。\n
+			\n
+			複製先のサイズと型）\n
+			- Width … ウィンドウの幅( @ref Width )と等価。
+			- Height … ウィンドウの高さ( @ref Height )と等価。
+			- Model … TxModel::U8(4) (※ ModelOf<TxRGB8x4>() と等価です。)
+			- Channels … 1 \n
+			.
+			\n
+			サイズと型が一致していてもサイズ変更は行われます。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BeginPaint () 
+	@brief	描画処理の準備
+
+	@remarks
+			描画先のウィンドウにレンダリングコンテキストを関連付けます。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					wglMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glXMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::EndPaint () 
+	@brief	描画処理の完了
+
+	@remarks
+			描画先のウィンドウからレンダリングコンテキストを解除します。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					wglMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glXMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Lock () 
+	@brief	描画用バッファへの接続
+
+	@remarks
+			描画用バッファ(OpenGL のフレームバッファ)をバインドします。\n
+			フレームバッファが使用できない場合は無視します。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					glBindFramebufferEXT \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glBindFramebufferEXT \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Unlock () 
+	@brief	描画用バッファへの接続解除
+
+	@remarks
+			描画用バッファ(OpenGL のフレームバッファ)をバインドを解除します。\n
+			フレームバッファが使用できない場合は無視します。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					glBindFramebufferEXT \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glBindFramebufferEXT \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxCanvas::Target() const
+	@brief	(Windows 版のみ) 描画先のデバイスコンテキスト
+
+	@return	Setup で指定された描画先のデバイスコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Context() const
+	@brief	(Windows 版のみ) レンダリングコンテキスト
+
+	@return	描画用のレンダリングコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Buffer() const
+	@brief	(Windows 版のみ) 描画用バッファ
+
+	@return	描画用バッファのインスタンスへの参照を返します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxCanvas::Target() const
+	@brief	(Linux 版のみ) 描画先
+
+	@return	Setup で指定された描画先の識別子(Window または GLXDrawable)を返します。\n
+			未初期化の場合は 0 を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Context() const
+	@brief	(Linux 版のみ) レンダリングコンテキスト
+
+	@return	描画用のレンダリングコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::XServer() const
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@return	X ディスプレイサーバーを返します。\n
+			未初期化の場合は NULL を返します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::XVisual() const
+	@brief	(Linux 版のみ) X ビジュアル情報
+
+	@return	X ビジュアル情報を返します。\n
+			未初期化の場合は NULL を返します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::FrameBufferID() const
+	@brief	フレームバッファID
+
+	@return	描画用のフレームバッファの ID を返します。\n
+			未初期化の場合は 0 を返します。\n
+			Setup を実行していても、描画先が OpenGL のフレームバッファに対応していない場合は 0 を返します。
+
+	@sa
+		@ref Setup \n
+		@ref RenderBufferID \n
+		@ref TextureID \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::RenderBufferID() const
+	@brief	レンダーバッファID
+
+	@return	描画用のレンダーバッファの ID を返します。\n
+			未初期化の場合は 0 を返します。\n
+			Setup を実行していても、描画先が OpenGL のフレームバッファに対応していない場合は 0 を返します。
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref FrameBufferID \n
+		@ref TextureID \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::TextureID() const
+	@brief	テクスチャID
+
+	@return	描画用のテクスチャの ID を返します。\n
+			未初期化の場合は 0 を返します。\n
+			Setup を実行していても、描画先が OpenGL のフレームバッファに対応していない場合は 0 を返します。
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref FrameBufferID \n
+		@ref RenderBufferID \n
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		CxCanvas::Size () const
+	@brief	描画用バッファの幅と高さの取得 (pixel) [0, 1~]
+
+	@return	現在の描画用バッファの幅と高さを返します。\n
+			単位は pixel です。\n
+			この値は、Resize メソッドで更新されます。
+
+	@sa
+		@ref Resize \n
+		@ref Width \n
+		@ref Height \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Width () const  
+	@brief	描画用バッファの幅の取得 (pixel) [0, 1~]
+
+	@return	現在の描画用バッファの幅を返します。\n
+			単位は pixel です。\n
+			この値は、Resize メソッドで更新されます。
+
+	@sa
+		@ref Resize \n
+		@ref Size \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Height () const  
+	@brief	描画用バッファの高さの取得 (pixel) [0, 1~]
+
+	@return	現在の描画用バッファの高さを返します。\n
+			単位は pixel です。\n
+			この値は、Resize メソッドで更新されます。
+
+	@sa
+		@ref Resize \n
+		@ref Size \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BgSize (TxSizeI value) 
+	@brief	背景画像のサイズの設定
+	
+	@param[in]		value		背景画像のサイズ (単位:画像座標)
+
+	@remarks
+			通常、このメソッドを使用する事はありません。\n
+			背景画像のサイズは DrawImage メソッドが呼ばれた際に決定します。\n
+			背景画像を表示せずオーバレイ図形のみを表示する場合は、
+			ここで背景画像のサイズを設定することができます。
+
+	@sa
+		@ref DrawImage \n
+		@ref DrawOverlay \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BgSize () const
+	@brief	背景画像のサイズの取得
+
+	@return	現在設定されている背景画像のサイズを返します。\n
+			単位は画像座標です。\n
+			この値は、BgSize メソッドにより設定した場合、または、
+			DrawImage メソッドにより描画した時に更新されます。
+	
+	@sa
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BkColor (TxRGB8x4 value)
+	@brief	背景色の設定
+	
+	@param[in]		value		設定値 (アルファ値は無視します。)
+
+	@remarks
+			このプロパティは @ref Clear や @ref DrawImage で背景の塗り潰しを行う際に使用されます。\n
+
+	@sa
+		@ref Clear \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BkColor () const
+	@brief	背景色の取得
+
+	@return	現在設定されている背景色を返します。\n
+	
+	@sa
+		@ref Clear \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BkEnable (bool value)
+	@brief	背景の塗り潰しの有効属性の設定
+	
+	@param[in]		value		設定値 [false=無効、true=有効]
+
+	@remarks
+			このプロパティは @ref DrawImage で背景の塗り潰しを行う際に使用されます。\n
+			一方、@ref Clear は、この設定値を無視して塗り潰しを実行します。\n
+
+	@sa
+		@ref Clear \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::BkEnable () const
+	@brief	背景の塗り潰しの有効属性の取得
+
+	@retval	true	有効
+	@retval	false	無効
+	
+	@sa
+		@ref Clear \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Magnification (double value) 
+	@brief	背景画像の表示倍率の設定
+
+	@param[in]		value		表示倍率 [0.0 より大きい値] ※ 1.0 が等倍を示します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Magnification () const  
+	@brief	背景画像の表示倍率の取得
+
+	@return	現在設定されている表示倍率を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::ViewPoint (TxPointD value) 
+	@brief	背景画像の視点の設定
+
+	@param[in]		value		背景画像の視点 (単位:画像座標) [0,0 ~]
+
+	@remarks
+			この設定は、画像の可視範囲の中心を示します。\n
+			背景画像の一部が描画領域に表示されている場合に画像の可視範囲を移動する為に使用します。
+
+	@sa
+		@ref VisibleRect \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::ViewPoint () const  
+	@brief	背景画像の視点の取得
+
+	@return	現在設定されている背景画像の視点を返します。\n
+			単位は画像座標です。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::ChannelNo (int value) 
+	@brief	背景画像の描画対象チャネル指標の設定
+
+	@param[in]		value		描画対象チャネル指標 [0~(XIE_IMAGE_CHANNELS_MAX-1)]
+
+	@remarks
+			この設定は、アンパック表示モードが true に設定されており、背景画像が複数チャネルの場合に有効です。
+			それ以外の場合は無視します。
+
+	@sa
+		@ref Unpack \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::ChannelNo () const  
+	@brief	背景画像の描画対象チャネル指標の取得
+
+	@return	現在設定されている描画対象チャネル指標 [0~(XIE_IMAGE_CHANNELS_MAX-1)] を返します。
+			
+	@sa
+		@ref Unpack \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Unpack (bool value) 
+	@brief	背景画像のアンパック表示モードの設定
+
+	@param[in]		value		アンパック表示モードの指示
+
+	@remarks
+			この設定は、背景画像が複数チャネルの場合に有効です。
+			それ以外の場合は無視します。
+
+	@sa
+		@ref ChannelNo \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Unpack () const  
+	@brief	背景画像のアンパック表示モードの取得
+
+	@retval	true	アンパック表示
+	@retval	false	通常表示
+
+	@sa
+		@ref ChannelNo \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Halftone (bool value) 
+	@brief	背景画像のハーフトーン表示モードの設定
+
+	@param[in]		value		ハーフトーン表示モードの指示
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::Halftone () const  
+	@brief	背景画像のハーフトーン表示モードの取得
+
+	@retval	true	ハーフトーン表示
+	@retval	false	通常表示
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DisplaySize () const  
+	@brief	描画領域のサイズの取得
+
+	@return	描画領域のサイズ返します。\n
+			単位はディスプレイ座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DisplayRect () const  
+	@brief	描画領域のサイズの取得 (矩形)
+
+	@return	描画領域のサイズを矩形で返します。\n
+			単位はディスプレイ座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::EffectiveRect () const  
+	@brief	有効領域の取得
+
+	@return	有効領域を返します。\n
+			有効領域とは、描画領域内の背景画像描画領域のことです。\n
+			単位はディスプレイ座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::VisibleRect () const  
+	@brief	可視範囲の取得
+
+	@return	可視範囲を返します。\n
+			可視範囲とは、描画領域に表示されている背景画像の一部(または全部)の座標範囲のことです。\n
+			単位は画像座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::VisibleRectI (bool includePartialPixel) const  
+	@brief	可視範囲の取得 (整数版)
+
+	@param[in]		includePartialPixel	画面淵の端数画素を含むか否か \n
+										- true … 端数を切り上げて計算します。\n
+										- false … 端数を切り捨てて計算します。\n
+										.
+
+	@return	可視範囲を返します。\n
+			可視範囲とは、描画領域に表示されている背景画像の一部(または全部)の座標範囲のことです。\n
+			単位は画像座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::DPtoIP (const TxPointD &dp, ExGdiScalingMode mode) const  
+	@brief	ディスプレイ座標から画像座標への変換
+
+	@param[in]		dp		ディスプレイ座標
+	@param[in]		mode	スケーリングモード
+
+	@return	画像座標に変換して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::IPtoDP (const TxPointD &ip, ExGdiScalingMode mode) const  
+	@brief	画像座標からディスプレイ座標への変換
+
+	@param[in]		ip		画像座標
+	@param[in]		mode	スケーリングモード
+
+	@return	ディスプレイ座標に変換して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	共通:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey" width=150>member</td>
+				</tr>
+			<tr>
+				<td align="center">Tag</td>
+				<td align="center">TxCanvas*</td>
+				<td align="center">(ignored)</td>
+				<td align="center">@ref m_Tag</td>
+				</tr>
+
+	@par	Windows 版:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey" width=150>member</td>
+				</tr>
+			<tr>
+				<td align="center">Target</td>
+				<td align="center">HDC*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">@ref m_Target</td>
+			<tr>
+				<td align="center">Context</td>
+				<td align="center">HGLRC*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">@ref m_Context</td>
+				</tr>
+			<tr>
+				<td align="center">Buffer</td>
+				<td align="center">HxModule*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">@ref m_Buffer</td>
+				</tr>
+
+	@par	Linux 版:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey" width=150>member</td>
+				</tr>
+			<tr>
+				<td align="center">Target</td>
+				<td align="center">GLXDrawable*</td>
+				<td align="center">S32(1)</td>
+				<td align="center">m_Target</td>
+			<tr>
+				<td align="center">Context</td>
+				<td align="center">GLXContext*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">m_Context</td>
+				</tr>
+			<tr>
+				<td align="center">XServer</td>
+				<td align="center">Display*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">m_XServer</td>
+				</tr>
+			<tr>
+				<td align="center">XVisual</td>
+				<td align="center">XVisualInfo*</td>
+				<td align="center">Ptr(1)</td>
+				<td align="center">m_XVisual</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCanvas::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+
+// ===================================================================
+/*!
+	@fn			CxCanvas::EffectiveRect(TxRectangleI display_rect, TxSizeI bg_size, double mag)
+	@brief		有効範囲の計算
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+
+	@return		有効範囲(ディスプレイ座標)を返します。\n
+				最大は @a display_rect と等価になります。\n
+				最小は 全て 0 になります。
+*/
+// ===================================================================
+/*!
+	@fn			CxCanvas::VisibleRect(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point)
+	@brief		可視範囲の計算
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+
+	@return		可視範囲(画像座標)を返します。\n
+				最大は @a bg_size と等価になります。\n
+				最小は 全て 0 になります。
+*/
+// ===================================================================
+/*!
+	@fn			CxCanvas::DPtoIP(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD dp, xie::GDI::ExGdiScalingMode mode)
+	@brief		ディスプレイ座標から画像座標への変換
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+	@param[in]		dp				ディスプレイ座標 (dot)
+	@param[in]		mode			スケーリングモード
+
+	@return		指定されたディスプレイ座標に対応する画像座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn			CxCanvas::IPtoDP(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD ip, xie::GDI::ExGdiScalingMode mode)
+	@brief		画像座標からディスプレイ座標への変換
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+	@param[in]		ip				画像座標 (pixel)
+	@param[in]		mode			スケーリングモード
+
+	@return		指定された画像座標に対応するディスプレイ座標を返します。
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Tag
+	@brief	情報構造体
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_DrawImage
+	@brief	画像変換用バッファ (DrawImage 用)
+
+	@remarks
+			DrawImage メソッドで使用する画像変換用バッファです。\n
+			DrawImage メソッドで更新されます。\n
+
+	@sa
+		@ref DrawImage \n
+*/
+#if _MSC_VER
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Target
+	@brief	描画先のデバイスコンテキスト
+
+	@remarks
+			Setup で指定された描画先のデバイスコンテキストを保有します。\n
+			Windows 環境で使用します。\n
+			Linux 環境では定義されません。\n
+			\n
+			Setup メソッドで更新されます。\n
+			Dispose メソッドでリセットされます。解放は行いません。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Context
+	@brief	レンダリングコンテキスト
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+			内部では wglCreateContext, wglDeleteContext を使用しています。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Buffer
+	@brief	描画用バッファ
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Resize メソッドでサイズ変更されます。\n
+			Dispose メソッドで解放されます。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Target
+	@brief	描画先
+
+	@remarks
+			Setup で指定された描画先の Window または GLXDrawable を保有します。\n
+			Linux 環境で使用します。\n
+			Windows 環境では定義されません。\n
+			\n
+			Setup メソッドで更新されます。\n
+			Dispose メソッドでリセットされます。解放は行いません。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_Context
+	@brief	レンダリングコンテキスト
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+			内部では glXCreateContext, glXDestroyContext を使用しています。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_XServer
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+
+	@sa
+		@ref XServer \n
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_XVisual
+	@brief	(Linux 版のみ) X ビジュアル情報
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+
+	@sa
+		@ref XVisual \n
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_FrameBufferID
+	@brief	フレームバッファ ID
+
+	@remarks
+			描画用バッファ(フレームバッファ)の ID を保有します。\n
+			\n
+			Resize メソッドで確保されます。\n
+			内部関数の Free で解放されます。\n
+			内部関数の Free は、Dispose メソッドから呼ばれます。\n
+
+	@sa
+		@ref Resize \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_RenderBufferID
+	@brief	レンダーバッファ ID
+
+	@remarks
+			レンダーバッファの ID を保有します。\n
+			\n
+			Resize メソッドで確保されます。\n
+			内部関数の Free で解放されます。\n
+			内部関数の Free は、Dispose メソッドから呼ばれます。\n
+
+	@sa
+		@ref Resize \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxCanvas::m_TextureID
+	@brief	テクスチャ ID (Flush 用)
+
+	@remarks
+			Flush メソッドで使用するテクスチャの ID を保有します。\n
+			\n
+			Resize メソッドで確保されます。\n
+			内部関数の Free で解放されます。\n
+			内部関数の Free は、Dispose メソッドから呼ばれます。\n
+
+	@sa
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#endif
+
+}
+}

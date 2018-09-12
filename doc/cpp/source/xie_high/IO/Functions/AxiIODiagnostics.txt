@@ -1,0 +1,82 @@
+/*!
+	@file	AxiIODiagnostics.h
+	@brief	シリアル通信関連 (診断ツール)
+*/
+/*!
+	@file	AxiIODiagnostics.cpp
+	@brief	シリアル通信関連 (診断ツール)
+*/
+/*!
+	@def	_AXIIODIAGNOSTICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_IO_Diagnostics
+	@fn			ToString(xie::IO::ExParity value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_IO_Diagnostics
+	@fn			ToString(xie::IO::ExStopBits value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_IO_Diagnostics
+	@fn			ToString(xie::IO::ExHandshake value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_IO_Diagnostics
+	@fn			ToString(xie::IO::ExNewLine value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+}
+}

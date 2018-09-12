@@ -1,0 +1,125 @@
+/*!
+	@file	TxLineI.h
+	@brief	直線構造体 (整数版)
+*/
+/*!
+	@internal
+	@file	TxLineI.cpp
+	@brief	直線構造体 (整数版)
+*/
+/*!
+	@def	_TXLINEI_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxLineI
+	@brief		直線構造体 (整数版)
+*/
+// ===================================================================
+/*!
+	@var	TxLineI::A
+	@brief	直線式(ax+by+c=0)の係数 a
+*/
+// ===================================================================
+/*!
+	@var	TxLineI::B
+	@brief	直線式(ax+by+c=0)の係数 b
+*/
+// ===================================================================
+/*!
+	@var	TxLineI::C
+	@brief	直線式(ax+by+c=0)の係数 c
+*/
+// ===================================================================
+/*!
+	@fn		TxLineI::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineI::TxLineI()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxLineI::TxLineI(int a, int b, int c)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		a		直線式(ax+by+c=0)の係数 a
+	@param[in]		b		直線式(ax+by+c=0)の係数 b
+	@param[in]		c		直線式(ax+by+c=0)の係数 c
+*/
+// ===================================================================
+/*!
+	@fn		TxLineI::operator == (const TxLineI& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxLineI::operator != (const TxLineI& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineI::operator TxLineD () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxLineD 構造体に格納して返します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineI::ToLineSegment (const TxRectangleI &region) const  
+	@brief	線分への変換
+
+	@param[in]		region		範囲
+
+	@return	この直線が指定された範囲と交差する２点を端点とする線分を返します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineI::ToLineSegment (const TxPointI &st, const TxPointI &ed) const  
+	@brief	線分への変換
+
+	@param[in]		st			範囲の始点
+	@param[in]		ed			範囲の終点
+
+	@return	この直線が指定された範囲と交差する２点を端点とする線分を返します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineI::ToLineSegment (int x1, int y1, int x2, int y2) const  
+	@brief	線分への変換
+
+	@param[in]		x1			範囲の始点(X)
+	@param[in]		y1			範囲の始点(Y)
+	@param[in]		x2			範囲の終点(X)
+	@param[in]		y2			範囲の終点(Y)
+
+	@return	この直線が指定された範囲と交差する２点を端点とする線分を返します。
+*/
+
+}

@@ -1,0 +1,35 @@
+/*!
+	@internal
+	@file		api_media.h
+	@brief		メディア関連の内部定義
+*/
+/*!
+	@internal
+	@file		api_media.cpp
+	@brief		メディア関連の内部定義
+*/
+/*!
+	@def	_API_MEDIA_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_Media_Setup()
+	@brief		初期化
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@fn			fnPRV_Media_TearDown()
+	@brief		解放
+*/
+}
+}

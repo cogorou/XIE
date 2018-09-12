@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{e0503c9b-c1d3-488c-9b22-0edf6e5702da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{6fe640a0-1650-457e-9504-c5690f96c83d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{42f92689-fa20-4ff2-8ce4-4ebc7f32afcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\baseclasses">
+      <UniqueIdentifier>{22f797bf-98d4-4528-a245-6addc13c2e65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\xie_ds.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\amextra.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\amfilter.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\cache.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\checkbmi.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\combase.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\cprop.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\ctlutil.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\ddmm.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\dllsetup.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\dshowutil.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\dxmperf.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\fourcc.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\measure.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\msgthrd.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\mtype.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\outputq.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\perflog.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\perfstruct.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\pstream.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\pullpin.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\refclock.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\reftime.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\renbase.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\schedule.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\seekpt.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\source.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\streams.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\strmctl.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\sysclock.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\transfrm.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\transip.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\videoctl.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\vtrans.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\winctrl.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\winutil.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\wxdebug.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\wxlist.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\baseclasses\wxutil.h">
+      <Filter>source\baseclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\CxDSScreenCaptureFilter.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_ds\CxDSScreenCapturePin.h">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="xie_ds.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\amextra.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\amfilter.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\amvideo.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\arithutil.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\combase.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\cprop.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\ctlutil.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\ddmm.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\dllentry.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\dllsetup.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\mtype.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\outputq.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\perflog.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\pstream.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\pullpin.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\refclock.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\renbase.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\schedule.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\seekpt.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\source.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\strmctl.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\sysclock.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\transfrm.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\transip.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\videoctl.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\vtrans.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\winctrl.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\winutil.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\wxdebug.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\wxlist.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\baseclasses\wxutil.cpp">
+      <Filter>source\baseclasses</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\CxDSScreenCaptureFilter.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_ds\CxDSScreenCapturePin.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xie_ds.def">
+      <Filter>EntryPoint</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xie_ds.rc">
+      <Filter>EntryPoint</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

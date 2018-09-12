@@ -1,0 +1,81 @@
+/*!
+	@internal
+	@file		CxGLContext.h
+	@brief		OpenGL レンダリングコンテキストクラス
+*/
+/*!
+	@def	_CXGLCONTEXT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@class		CxGLContext
+	@brief		OpenGL レンダリングコンテキストクラス
+
+	@tparam	TB	レンダリングコンテキストを保有するクラスの型
+				- CxCanvas (画像描画クラス) \n
+
+	@sa
+		@ref CxCanvas \n
+*/
+// ===================================================================
+/*!
+	@var	CxGLContext::Body
+	@brief	レンダリングコンテキストを保有するクラス
+*/
+// ===================================================================
+/*!
+	@var	CxGLContext::UseFB
+	@brief	フレームバッファのバインドを行うか否か
+*/
+// ===================================================================
+/*!
+	@fn		CxGLContext::CxGLContext(TB* body, bool useFB)
+	@brief	コンストラクタ
+
+	@param[in]	body	レンダリングコンテキストを保有するクラス
+	@param[in]	useFB	フレームバッファのバインドを行うか否か
+
+	@remarks
+			指定された値をフィールドに設定し、
+			このクラスの @ref Enter メソッドを実行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGLContext::~CxGLContext()
+	@brief	デストラクタ
+
+	@remarks
+			このクラスの @ref Leave メソッドを実行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGLContext::Enter()
+	@brief	前処理
+
+	@remarks
+			@ref Body の BeginPaint メソッドを呼び出します。\n
+			もし、@ref UseFB が true の場合は、
+			続いて @ref Body の Lock メソッドを呼び出します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGLContext::Leave()
+	@brief	後処理
+
+	@remarks
+			@ref Body の EndPaint メソッドを呼び出します。\n
+			もし、@ref UseFB が true の場合は、
+			続いて @ref Body の Unlock メソッドを呼び出します。\n
+*/
+
+}
+}

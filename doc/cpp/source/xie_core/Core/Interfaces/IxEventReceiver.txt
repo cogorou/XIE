@@ -1,0 +1,28 @@
+/*!
+	@file	IxEventReceiver.h
+	@brief	イベントレシーバーインターフェース
+*/
+/*!
+	@def	_IXEVENTRECEIVER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxEventReceiver
+	@brief		イベントレシーバーインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxEventReceiver::Receive(void* sender, IxModule* e)
+	@brief	受信関数
+
+	@param[in]		sender		送信元
+	@param[in]		e			イベント引数
+*/
+
+}

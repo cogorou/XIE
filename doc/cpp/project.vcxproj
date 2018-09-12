@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2392BF84-E260-4E00-9AB5-7C663136D44F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>User</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="project.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="project.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(XIE_BIN);</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /s /y /i "$(ProjectDir)images\src" "$(TargetDir)images\src"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(XIE_BIN);</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /s /y /i "$(ProjectDir)images\src" "$(TargetDir)images\src"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="examples\Core\Base\Axi.h" />
+    <ClInclude Include="examples\Core\Base\AxiModule.h" />
+    <ClInclude Include="examples\Core\Base\CxException.h" />
+    <ClInclude Include="examples\Core\Base\CxFinalizer.h" />
+    <ClInclude Include="examples\Core\Base\CxMutex.h" />
+    <ClInclude Include="examples\Core\Base\CxStopwatch.h" />
+    <ClInclude Include="examples\Core\Base\CxThread.h" />
+    <ClInclude Include="examples\Core\CxArray\CxArray.h" />
+    <ClInclude Include="examples\Core\CxExif\CxExif.h" />
+    <ClInclude Include="examples\Core\CxImage\CxImage.h" />
+    <ClInclude Include="examples\Core\CxMatrix\CxMatrix.h" />
+    <ClInclude Include="examples\Core\Macros\Macros.h" />
+    <ClInclude Include="examples\Core\Structures\Structures.h" />
+    <ClInclude Include="examples\Effectors\CxBinarize1.h" />
+    <ClInclude Include="examples\Effectors\CxBinarize2.h" />
+    <ClInclude Include="examples\Effectors\CxGammaConverter.h" />
+    <ClInclude Include="examples\Effectors\CxHsvConverter.h" />
+    <ClInclude Include="examples\Effectors\CxHsvToRgb.h" />
+    <ClInclude Include="examples\Effectors\CxIntegral.h" />
+    <ClInclude Include="examples\Effectors\CxMonochrome.h" />
+    <ClInclude Include="examples\Effectors\CxPartColor.h" />
+    <ClInclude Include="examples\Effectors\CxProjection.h" />
+    <ClInclude Include="examples\Effectors\CxRgbConverter.h" />
+    <ClInclude Include="examples\Effectors\CxRgbToGray.h" />
+    <ClInclude Include="examples\Effectors\CxRgbToHsv.h" />
+    <ClInclude Include="examples\example.h" />
+    <ClInclude Include="examples\GDI\CxCanvas\CxCanvas.h" />
+    <ClInclude Include="examples\IO\CxSerialPort\CxSerialPort.h" />
+    <ClInclude Include="examples\Media\CxCamera\CxCamera.h" />
+    <ClInclude Include="examples\Media\CxControlProperty\CxControlProperty.h" />
+    <ClInclude Include="examples\Media\CxDeviceList\CxDeviceList.h" />
+    <ClInclude Include="examples\Media\CxDeviceParam\CxDeviceParam.h" />
+    <ClInclude Include="examples\Media\CxGrabber\CxGrabber.h" />
+    <ClInclude Include="examples\Media\CxMediaPlayer\CxMediaPlayer.h" />
+    <ClInclude Include="examples\Media\CxScreenCapture\CxScreenCapture.h" />
+    <ClInclude Include="examples\Media\CxScreenList\CxScreenList.h" />
+    <ClInclude Include="examples\Net\CxTcpClient\CxTcpClient.h" />
+    <ClInclude Include="examples\Net\CxTcpServer\CxTcpServer.h" />
+    <ClInclude Include="examples\Net\CxUdpClient\CxUdpClient.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="examples\Core\Base\AxiModule_01.cpp" />
+    <ClCompile Include="examples\Core\Base\Axi_01.cpp" />
+    <ClCompile Include="examples\Core\Base\CxException_01.cpp" />
+    <ClCompile Include="examples\Core\Base\CxFinalizer_01.cpp" />
+    <ClCompile Include="examples\Core\Base\CxMutex_01.cpp" />
+    <ClCompile Include="examples\Core\Base\CxStopwatch_01.cpp" />
+    <ClCompile Include="examples\Core\Base\CxThread_01.cpp" />
+    <ClCompile Include="examples\Core\CxArray\CxArrayFilter_01.cpp" />
+    <ClCompile Include="examples\Core\CxArray\CxArray_01.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_01.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_EndianType.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetItems.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetPurgedExif.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetValue.cpp" />
+    <ClCompile Include="examples\Core\CxExif\CxExif_SetValue.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImageFilter_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Attach_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_CalcDepth_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ClearEx_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Clear_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_CopyFrom_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_02.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_03.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_Copy.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_Move.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Exif.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_ExifCopy.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Extract_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_02.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_03.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_MoveFrom_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Resize_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Resize_02.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_01.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_02.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_03.cpp" />
+    <ClCompile Include="examples\Core\CxImage\CxImage_Statistics_01.cpp" />
+    <ClCompile Include="examples\Core\CxMatrix\CxMatrixFilter_01.cpp" />
+    <ClCompile Include="examples\Core\CxMatrix\CxMatrix_01.cpp" />
+    <ClCompile Include="examples\Core\Macros\fnXIE_Core_TraceOut_01.cpp" />
+    <ClCompile Include="examples\Core\Structures\TxArray_01.cpp" />
+    <ClCompile Include="examples\Core\Structures\TxImage_01.cpp" />
+    <ClCompile Include="examples\Core\Structures\TxMatrix_01.cpp" />
+    <ClCompile Include="examples\Core\Structures\TxModel_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxBinarize1_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxBinarize2_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxGammaConverter_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxHsvConverter_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxHsvToRgb_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxIntegral_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxMonochrome_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxPartColor_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxProjection_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxRgbConverter_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxRgbToGray_01.cpp" />
+    <ClCompile Include="examples\Effectors\CxRgbToHsv_01.cpp" />
+    <ClCompile Include="examples\example.cpp" />
+    <ClCompile Include="examples\GDI\CxCanvas\CxCanvas_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiCircle\CxGdiCircle_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiEllipse\CxGdiEllipse_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiImage\CxGdiImage_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiLineSegment\CxGdiLineSegment_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiLine\CxGdiLine_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiPoint\CxGdiPoint_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiPolyline\CxGdiPolyline_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiRectangle\CxGdiRectangle_01.cpp" />
+    <ClCompile Include="examples\GDI\CxGdiString\CxGdiString_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuArray\CxGpuArrayFilter_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuArray\CxGpuArray_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuImage\CxGpuImageFilter_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuImage\CxGpuImage_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuMatrix\CxGpuMatrixFilter_01.cpp" />
+    <ClCompile Include="examples\GPU\CxGpuMatrix\CxGpuMatrix_01.cpp" />
+    <ClCompile Include="examples\IO\CxSerialPort\CxSerialPort_01.cpp" />
+    <ClCompile Include="examples\Media\CxCamera\CxCamera_01.cpp" />
+    <ClCompile Include="examples\Media\CxControlProperty\CxControlProperty_01.cpp" />
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_01.cpp" />
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_02.cpp" />
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_03.cpp" />
+    <ClCompile Include="examples\Media\CxDeviceParam\CxDeviceParam_01.cpp" />
+    <ClCompile Include="examples\Media\CxGrabber\CxGrabber_01.cpp" />
+    <ClCompile Include="examples\Media\CxMediaPlayer\CxMediaPlayer_01.cpp" />
+    <ClCompile Include="examples\Media\CxScreenCapture\CxScreenCapture_01.cpp" />
+    <ClCompile Include="examples\Media\CxScreenList\CxScreenList_01.cpp" />
+    <ClCompile Include="examples\Net\CxTcpClient\CxTcpClient_01.cpp" />
+    <ClCompile Include="examples\Net\CxTcpServer\CxTcpServer_01.cpp" />
+    <ClCompile Include="examples\Net\CxUdpClient\CxUdpClient_01.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="examples\Core\Base\CxException_01.txt" />
+    <Text Include="examples\Core\Base\CxFinalizer_01.txt" />
+    <Text Include="examples\Core\Base\CxMutex_01.txt" />
+    <Text Include="examples\Core\Base\CxStopwatch_01.txt" />
+    <Text Include="examples\Core\Base\CxThread_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Attach_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_CalcDepth_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ClearEx_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Clear_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_CopyFrom_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ctor_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ctor_02.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ctor_03.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ctor_Copy.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_ctor_Move.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Extract_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_From_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_From_02.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_From_03.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_MoveFrom_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Resize_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Resize_02.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_01.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_02.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_03.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Statistics_01.txt" />
+    <Text Include="examples\Core\Macros\fnXIE_Core_TraceOut_01.txt" />
+    <Text Include="examples\Effectors\CxBinarize1_01.txt" />
+    <Text Include="examples\Effectors\CxBinarize2_01.txt" />
+    <Text Include="examples\Effectors\CxGammaConverter_01.txt" />
+    <Text Include="examples\Effectors\CxHsvConverter_01.txt" />
+    <Text Include="examples\Effectors\CxHsvToRgb_01.txt" />
+    <Text Include="examples\Effectors\CxIntegral_01.txt" />
+    <Text Include="examples\Effectors\CxMonochrome_01.txt" />
+    <Text Include="examples\Effectors\CxPartColor_01.txt" />
+    <Text Include="examples\Effectors\CxProjection_01.txt" />
+    <Text Include="examples\Effectors\CxRgbConverter_01.txt" />
+    <Text Include="examples\Effectors\CxRgbToGray_01.txt" />
+    <Text Include="examples\Effectors\CxRgbToHsv_01.txt" />
+    <Text Include="examples\example.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="examples\IO\CxSerialPort\CxSerialPort_01.txt" />
+    <Text Include="examples\Media\CxCamera\CxCamera_01.txt" />
+    <Text Include="examples\Media\CxControlProperty\CxControlProperty_01.txt" />
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_01.txt" />
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_02.txt" />
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_03.txt" />
+    <Text Include="examples\Media\CxDeviceParam\CxDeviceParam_01.txt" />
+    <Text Include="examples\Media\CxGrabber\CxGrabber_01.txt" />
+    <Text Include="examples\Media\CxMediaPlayer\CxMediaPlayer_01.txt" />
+    <Text Include="examples\Media\CxScreenCapture\CxScreenCapture_01.txt" />
+    <Text Include="examples\Media\CxScreenList\CxScreenList_01.txt" />
+    <Text Include="examples\Net\CxTcpClient\CxTcpClient_01.txt" />
+    <Text Include="examples\Net\CxTcpServer\CxTcpServer_01.txt" />
+    <Text Include="examples\Net\CxUdpClient\CxUdpClient_01.txt" />
+    <Text Include="project-doxyfile.txt" />
+    <Text Include="source\groups\group_all.txt" />
+    <Text Include="source\groups\group_xie_Core.txt" />
+    <Text Include="source\groups\group_xie_DS.txt" />
+    <Text Include="source\groups\group_xie_Effectors.txt" />
+    <Text Include="source\groups\group_xie_File.txt" />
+    <Text Include="source\groups\group_xie_GDI.txt" />
+    <Text Include="source\groups\group_xie_IO.txt" />
+    <Text Include="source\groups\group_xie_Media.txt" />
+    <Text Include="source\groups\group_xie_Net.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxArray.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxArrayEx.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxArrayFilter.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxException.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxFinalizer.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxImage.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxImageFilter.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxMatrix.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxMatrixFilter.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxModule.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxMutex.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxStopwatch.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxString.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxStringA.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxStringW.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxThread.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxThreadArgs.txt" />
+    <Text Include="source\xie_core\Core\Classes\CxThreadEvent.txt" />
+    <Text Include="source\xie_core\Core\Enumerations\Enumerations.txt" />
+    <Text Include="source\xie_core\Core\Exchange\TxCvMat.txt" />
+    <Text Include="source\xie_core\Core\Exchange\TxIplImage.txt" />
+    <Text Include="source\xie_core\Core\Exchange\TxIplROI.txt" />
+    <Text Include="source\xie_core\Core\Exif\api_exif.txt" />
+    <Text Include="source\xie_core\Core\Exif\CxExif.txt" />
+    <Text Include="source\xie_core\Core\Exif\TxExif.txt" />
+    <Text Include="source\xie_core\Core\Exif\TxExifItem.txt" />
+    <Text Include="source\xie_core\Core\File\api_file.txt" />
+    <Text Include="source\xie_core\Core\File\api_file_bmp.txt" />
+    <Text Include="source\xie_core\Core\File\api_file_dib.txt" />
+    <Text Include="source\xie_core\Core\File\CxFilePluginBmp.txt" />
+    <Text Include="source\xie_core\Core\File\fnPRV_Buffer_Copy.txt" />
+    <Text Include="source\xie_core\Core\Functions\Axi.txt" />
+    <Text Include="source\xie_core\Core\Functions\AxiDiagnostics.txt" />
+    <Text Include="source\xie_core\Core\Functions\AxiMath.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxAttachable.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxEventReceiver.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxFileAccess.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxInternalModule.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxLockable.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxTagPtr.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxDisposable.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxEquatable.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxParam.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxFilePlugin.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxRawFile.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxRunnable.txt" />
+    <Text Include="source\xie_core\Core\Interfaces\IxValidatable.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxCircleArcD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxCircleArcI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxEllipseArcD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxEllipseArcI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxArray.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxBGR8x3.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxBGR8x4.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxCircleD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxCircleI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxDateTime.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxEllipseD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxEllipseI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxFrameIndex.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxImage.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxImageSize.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxLayer.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxLineD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxLineI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxLineSegmentD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxLineSegmentI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxMatrix.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxModel.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxPointD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxPointI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRangeD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRangeI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRawFileHeader.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRectangleD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRectangleI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRGB8x3.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxRGB8x4.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxScanner1D.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxScanner2D.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxSizeD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxSizeI.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxStatistics.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxStringA.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxStringW.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxTrapezoidD.txt" />
+    <Text Include="source\xie_core\Core\Structures\TxTrapezoidI.txt" />
+    <Text Include="source\xie_core\Core\_internals\api_core.txt" />
+    <Text Include="source\xie_core\Core\_internals\api_data.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize1.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize2.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxGammaConverter.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxHsvConverter.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxHsvToRgb.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxIntegral.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxMonochrome.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxPartColor.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxProjection.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbConverter.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbToGray.txt" />
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbToHsv.txt" />
+    <Text Include="source\xie_core\_base\xie.txt" />
+    <Text Include="source\xie_core\_base\xie_core.txt" />
+    <Text Include="source\xie_core\_base\xie_core_defs.txt" />
+    <Text Include="source\xie_core\_base\xie_core_enums.txt" />
+    <Text Include="source\xie_core\_base\xie_core_ipl.txt" />
+    <Text Include="source\xie_core\_base\xie_core_math.txt" />
+    <Text Include="source\xie_core\_base\xie_core_types.txt" />
+    <Text Include="source\xie_ds\DS\Classes\CxDSScreenCaptureFilter.txt" />
+    <Text Include="source\xie_ds\DS\Classes\CxDSScreenCapturePin.txt" />
+    <Text Include="source\xie_ds\DS\Interfaces\IxDSScreenCapturePin.txt" />
+    <Text Include="source\xie_ds\_base\xie_ds.txt" />
+    <Text Include="source\xie_high\File\api_file_plugins.txt" />
+    <Text Include="source\xie_high\File\CxFilePluginJpeg.txt" />
+    <Text Include="source\xie_high\File\CxFilePluginPng.txt" />
+    <Text Include="source\xie_high\File\CxFilePluginTiff.txt" />
+    <Text Include="source\xie_high\File\fnXIE_File_CopyJpegMarkers.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxBitmap.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxCanvas.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiCircleArc.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiEllipseArc.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiString.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiStringW.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiTrapezoid.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiCircle.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiEllipse.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiImage.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiLine.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiLineSegment.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiPoint.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiPolyline.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiRectangle.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiStringA.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGdiVoid.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxGraphics.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxOverlay.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxOverlayGrid.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxOverlayProfile.txt" />
+    <Text Include="source\xie_high\GDI\Classes\CxTexture.txt" />
+    <Text Include="source\xie_high\GDI\Enumerations\Enumerations.txt" />
+    <Text Include="source\xie_high\GDI\Functions\AxiGDIDiagnostics.txt" />
+    <Text Include="source\xie_high\GDI\Interfaces\IxGdi2d.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxBitmap.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxCanvas.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxGdi2dParam.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxGdiImage.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxGdiPolyline.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxGdiStringA.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxGdiStringW.txt" />
+    <Text Include="source\xie_high\GDI\Structures\TxHitPosition.txt" />
+    <Text Include="source\xie_high\GDI\_internals\api_gdi.txt" />
+    <Text Include="source\xie_high\GDI\_internals\api_gdi_exports.txt" />
+    <Text Include="source\xie_high\GDI\_internals\api_gdi_graphics.txt" />
+    <Text Include="source\xie_high\GDI\_internals\CxGLContext.txt" />
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_Extract.txt" />
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_ShrinkHT.txt" />
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_ShrinkNN.txt" />
+    <Text Include="source\xie_high\IO\Classes\CxSerialPort.txt" />
+    <Text Include="source\xie_high\IO\Enumerations\Enumerations.txt" />
+    <Text Include="source\xie_high\IO\Functions\AxiIODiagnostics.txt" />
+    <Text Include="source\xie_high\IO\Structures\TxSerialPort.txt" />
+    <Text Include="source\xie_high\IO\_internals\api_io.txt" />
+    <Text Include="source\xie_high\IO\_internals\api_io_exports.txt" />
+    <Text Include="source\xie_high\IO\_internals\CxSerialPort_Linux.txt" />
+    <Text Include="source\xie_high\IO\_internals\CxSerialPort_Windows.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxCamera.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxControlProperty.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxDeviceList.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxDeviceListItem.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxDeviceParam.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxGrabber.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxGrabberArgs.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxGrabberEvent.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxMediaPlayer.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxScreenCapture.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxScreenList.txt" />
+    <Text Include="source\xie_high\Media\Classes\CxScreenListItem.txt" />
+    <Text Include="source\xie_high\Media\Enumerations\Enumerations.txt" />
+    <Text Include="source\xie_high\Media\Functions\AxiMediaDiagnostics.txt" />
+    <Text Include="source\xie_high\Media\Interfaces\IxMediaControl.txt" />
+    <Text Include="source\xie_high\Media\Structures\TxDeviceListItem.txt" />
+    <Text Include="source\xie_high\Media\Structures\TxDeviceParam.txt" />
+    <Text Include="source\xie_high\Media\Structures\TxGrabberArgs.txt" />
+    <Text Include="source\xie_high\Media\Structures\TxScreenListItem.txt" />
+    <Text Include="source\xie_high\Media\_internals\api_media.txt" />
+    <Text Include="source\xie_high\Media\_internals\api_media_exports.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds_com.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds_diagnostics.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSCamera.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSControlProperty.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSControlPropertyWrapper.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSGrabber.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSGrabberArgs.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSMediaPlayer.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSScreenCapture.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSSampleReceiver.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\ISampleGrabber.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\ISampleGrabberCB.txt" />
+    <Text Include="source\xie_high\Media\_internals\DS\IxDSGraphBuilderProvider.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\api_v4l2.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxMMap.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLCamera.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLControlProperty.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLGrabber.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLGrabberArgs.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLMediaPlayer.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLScreenCapture.txt" />
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLSampleReceiver.txt" />
+    <Text Include="source\xie_high\Net\Classes\CxTcpClient.txt" />
+    <Text Include="source\xie_high\Net\Classes\CxTcpServer.txt" />
+    <Text Include="source\xie_high\Net\Classes\CxUdpClient.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxIPAddress.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxIPEndPoint.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxSocketStream.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxTcpClient.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxTcpServer.txt" />
+    <Text Include="source\xie_high\Net\Structures\TxUdpClient.txt" />
+    <Text Include="source\xie_high\Net\_internals\api_net.txt" />
+    <Text Include="source\xie_high\Net\_internals\api_net_exports.txt" />
+    <Text Include="source\xie_high\_base\xie_high.txt" />
+    <Text Include="source\_pages\mainpage.txt" />
+    <Text Include="source\_pages\page_Begining.txt" />
+    <Text Include="source\_pages\page_Outline.txt" />
+    <Text Include="source\_pages\page_Tutorial.txt" />
+    <Text Include="source\_pages\page_Tutorial_CS.txt" />
+    <Text Include="source\_pages\page_Tutorial_CS_Basic_11.txt" />
+    <Text Include="source\_pages\page_Tutorial_CS_Basic_12.txt" />
+    <Text Include="source\_pages\page_Tutorial_GCC.txt" />
+    <Text Include="source\_pages\page_Tutorial_GCC_Basic_11.txt" />
+    <Text Include="source\_pages\page_Tutorial_GCC_Basic_12.txt" />
+    <Text Include="source\_pages\page_Tutorial_VC.txt" />
+    <Text Include="source\_pages\page_Tutorial_VC_Basic_11.txt" />
+    <Text Include="source\_pages\page_Tutorial_VC_Basic_12.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

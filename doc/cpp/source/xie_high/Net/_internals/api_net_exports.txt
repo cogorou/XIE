@@ -1,0 +1,102 @@
+/*!
+	@internal
+	@file		api_net_exports.cpp
+	@brief		ネットワーク関連の内部定義
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_Module_Create	(TxCharCPtrA name)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_Module_Setup	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_SocketStream_Readable	(TxSocketStream tag, int timeout, ExBoolean* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_SocketStream_Writeable	(TxSocketStream tag, int timeout, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_SocketStream_Read	(TxSocketStream tag, char* buffer, int length, int timeout, int* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_SocketStream_Write	(TxSocketStream tag, const char* buffer, int length, int timeout, int* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_TcpClient_Connected	(HxModule handle, ExBoolean* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_UdpClient_Readable	(HxModule handle, int timeout, ExBoolean* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_UdpClient_Writeable	(HxModule handle, int timeout, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_UdpClient_Read	(HxModule handle, char* buffer, int length, int timeout, TxIPEndPoint* remoteEP, int* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Exports
+	@fn			fnXIE_Net_UdpClient_Write	(HxModule handle, const char* buffer, int length, int timeout, const TxIPEndPoint* remoteEP, int* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}
+}

@@ -1,0 +1,399 @@
+/*!
+	@file	CxGdiVoid.h
+	@brief	オーバレイ図形クラス (無形)
+*/
+/*!
+	@internal
+	@file	CxGdiVoid.cpp
+	@brief	オーバレイ図形クラス (無形)
+*/
+/*!
+	@def	_CXGDIVOID_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxGdiVoid
+	@brief		オーバレイ図形クラス (無形)
+*/
+// ===================================================================
+/*!
+	@var	CxGdiVoid::m_Param
+	@brief	オーバレイ図形パラメータ (２次元用)
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::CxGdiVoid()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::CxGdiVoid(const CxGdiVoid& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiVoid &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::~CxGdiVoid()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::operator = ( const CxGdiVoid& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::operator == ( const CxGdiVoid& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::operator != ( const CxGdiVoid& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGdiVoid(const CxGdiVoid &src) \n
+		@ref operator=(const CxGdiVoid &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGdiVoid &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先のキャンバス
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			図形を指定されたキャンバスに描画します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Location() const
+	@brief	基準位置の取得
+
+	@return
+			図形の基準位置を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Location(TxPointD value)
+	@brief	基準位置の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			この関数は図形を移動させることが目的です。\n
+			この値を設定しても図形を構成する各座標の相対位置は変化しません。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Bounds() const
+	@brief	外接矩形の取得
+
+	@return
+			図形に外接する矩形を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Angle() const
+	@brief	回転角の取得
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Angle( double degree )
+	@brief	回転角の設定
+
+	@param[in]		degree		設定値 (度) [±180]
+
+	@remarks
+			この値は degree 単位で、範囲は ±180 です。\n
+			正の値（+）は右回転、負の値（-）は左回転です。			
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Axis() const
+	@brief	回転の機軸の取得
+
+	@return
+			現在設定されている値を返します。\n
+			この値は基準位置からの相対値(±)を示します。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Axis( TxPointD value )
+	@brief	回転の機軸の設定
+
+	@param[in]		value		設定値 (基準位置からの相対値(±)) 
+
+	@remarks
+			図形の基準位置（Location）に この値を加算した位置が回転中心になります。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::HitTest( TxPointD position, double margin ) const
+	@brief	位置判定
+
+	@param[in]		position	指定座標
+	@param[in]		margin		判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+
+	@return
+			指定座標が図形外にあれば 0 を返します。\n
+			指定座標が図形内にあれば 0 以外の値を返します。\n
+			返す値の範囲は図形によって異なります。 
+
+	@remarks
+			指定座標が図形上のどの位置にあるかを判定します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Modify(HxModule prev_figure, TxPointD prev_position, TxPointD move_position, double margin)
+	@brief	図形の編集（位置移動または形状変更）
+
+	@param[in]		prev_figure		編集前の図形
+	@param[in]		prev_position	移動前の座標
+	@param[in]		move_position	移動後の座標
+	@param[in]		margin			判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+	@sa
+		HitTest( TxPointD position, double margin ) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::BkColor() const
+	@brief	背景色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::BkColor( TxRGB8x4 value )
+	@brief	背景色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の面（輪郭線によって内包される部分）の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref PenColor( TxRGB8x4 value ) \n
+		@ref BkEnable( bool value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::BkEnable() const
+	@brief	背景の有効属性
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::BkEnable( bool value )
+	@brief	背景の有効属性
+
+	@param[in]		value		設定値 [true:有効、false:無効]
+
+	@remarks
+			この値が false の時は背景描画が無視されます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenColor() const
+	@brief	ペン色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenColor( TxRGB8x4 value )
+	@brief	ペン色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の輪郭部分の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenStyle() const
+	@brief	ペン形状
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenStyle( ExGdiPenStyle value )
+	@brief	ペン形状
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenWidth() const
+	@brief	ペン幅
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::PenWidth( int value )
+	@brief	ペン幅
+
+	@param[in]		value		設定値 [1~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Param() const
+	@brief	オーバレイ図形パラメータの取得
+
+	@return	オーバレイ図形パラメータを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::Param(const TxGdi2dParam& value)
+	@brief	オーバレイ図形パラメータの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiVoid::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+}
+}

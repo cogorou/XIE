@@ -1,0 +1,162 @@
+namespace xie
+{
+
+// =================================================================
+/*!
+	@defgroup	group_xie_Core	xie
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Axi	Axi
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Classes	Classes
+		@{
+	*/
+		/*!
+			@class	CxModule
+		*/
+		/*!
+			@class	CxException
+		*/
+		/*!
+			@class	CxFinalizer
+		*/
+		/*!
+			@class	CxStopwatch
+		*/
+		/*!
+			@class	CxMutex
+		*/
+		/*!
+			@class	CxThread
+		*/
+		/*!
+			@class	CxThreadArgs
+		*/
+		/*!
+			@class	CxThreadEvent
+		*/
+		/*!
+			@class	CxStringA
+		*/
+		/*!
+			@class	CxStringW
+		*/
+		/*!
+			@class	CxArrayEx
+		*/
+		/*!
+			@class	CxArray
+		*/
+		/*!
+			@class	CxArrayFilter
+		*/
+		/*!
+			@class	CxImage
+		*/
+		/*!
+			@class	CxImageFilter
+		*/
+		/*!
+			@class	CxMatrix
+		*/
+		/*!
+			@class	CxMatrixFilter
+		*/
+	/*!
+		@}
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Exchange	Exchange
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Interfaces	Interfaces
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Structures	Structures
+		@{
+	*/
+		/*!
+			@class	TxModel
+		*/
+		/*!
+			@class	TxLayer
+		*/
+		/*!
+			@class	TxArray
+		*/
+		/*!
+			@class	TxImage
+		*/
+		/*!
+			@class	TxImageSize
+		*/
+		/*!
+			@class	TxMatrix
+		*/
+		/*!
+			@class	TxStringA
+		*/
+		/*!
+			@class	TxStringW
+		*/
+		/*!
+			@class	TxExif
+		*/
+		/*!
+			@class	TxExifItem
+		*/
+		/*!
+			@class	TxScanner1D
+		*/
+		/*!
+			@class	TxScanner2D
+		*/
+		/*!
+			@class	TxRawFileHeader
+		*/
+		/*!
+			@class	TxDateTime
+		*/
+		/*!
+			@class	TxFrameIndex
+		*/
+		/*!
+			@class	TxStatistics
+		*/
+	/*!
+		@}
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Typedefs	Typedefs
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Enumerations	Enumerations
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Core_Diagnostics	Diagnostics
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Core_Exports		Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Core_Internals	Internals
+	*/
+/*!
+	@}
+*/
+
+}

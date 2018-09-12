@@ -1,0 +1,186 @@
+/*!
+	@file	TxCvMat.h
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@internal
+	@file	TxCvMat.cpp
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@def	_TXCVMAT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Exchange
+	@struct		TxCvMat
+	@brief		画像オブジェクト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::type
+	@brief	ピクセルサイズ
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::step
+	@brief	水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::refcount
+	@brief	参照カウント
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::hdr_refcount
+	@brief	参照カウント
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::ptr
+	@brief	領域の先頭アドレス (２次元配列×１チャネル) ※widthStep×height の連続領域であること。
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::rows
+	@brief	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxCvMat::cols
+	@brief	幅 (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::TxCvMat()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::TxCvMat(void* addr, int _rows, int _cols, int _type, int _step, int* _refcount, int _hdr_refcount)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (２次元配列×１チャネル) ※step×height の連続領域であること。
+	@param[in]		_rows		高さ (pixels) [0, 1~]
+	@param[in]		_cols		幅 (pixels) [0, 1~]
+	@param[in]		_type		ピクセルサイズ
+	@param[in]		_step		水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+	@param[in]		_refcount		参照カウント (省略時は NULL を指定してください。)
+	@param[in]		_hdr_refcount	参照カウント (省略時は 0 を指定してください。)
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::TxCvMat(TxImage src, int ch)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src		元になる画像情報
+	@param[in]		ch		チャネル指標 [0~(src.Channels-1)]
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::operator == (const TxCvMat& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::operator != (const TxCvMat& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::operator TxImage() const
+	@brief	データ変換
+
+	@return	TxImage 構造体に変換して返します。\n
+			互換性がない場合は Model が @ref TxModel::Default() "Default" に設定された状態で返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::CopyTo(IxModule& dst) const
+	@brief	複製
+
+	@param[in,out]	dst		複製先
+*/
+// ===================================================================
+/*!
+	@fn		TxCvMat::CopyFrom(const IxModule& src)
+	@brief	複製
+
+	@param[in]		src		複製元
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// Export
+//
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_CvMat_Equals	(TxCvMat src, TxCvMat cmp)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_CvMat_IsValid	(TxCvMat src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_CvMat_CopyTo	(TxCvMat src, HxModule dst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_CvMat_CopyFrom	(TxCvMat dst, HxModule src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

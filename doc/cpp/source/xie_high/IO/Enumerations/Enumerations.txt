@@ -1,0 +1,127 @@
+namespace fie
+{
+namespace IO
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Enumerations
+	@enum		ExHandshake
+	@brief		ハンドシェイク
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>XonXoff</td>
+		<td>ソフトウェア制御 (Xon/Xoff)</td>
+		</tr>
+	<tr>
+		<td>RtsCts</td>
+		<td>ハードウェア制御 (RTS/CTS)</td>
+		</tr>
+	<tr>
+		<td>DsrDtr</td>
+		<td>ハードウェア制御 (DSR/DTR)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Enumerations
+	@enum		ExNewLine
+	@brief		改行コード
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>LF</td>
+		<td>ラインフィード</td>
+		</tr>
+	<tr>
+		<td>CR</td>
+		<td>キャリッジリターン</td>
+		</tr>
+	<tr>
+		<td>CRLF</td>
+		<td>キャリッジリターン＋ラインフィード</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Enumerations
+	@enum		ExParity
+	@brief		パリティ
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Odd</td>
+		<td>奇数</td>
+		</tr>
+	<tr>
+		<td>Even</td>
+		<td>偶数</td>
+		</tr>
+	<tr>
+		<td>Mark</td>
+		<td>常時 1</td>
+		</tr>
+	<tr>
+		<td>Space</td>
+		<td>常時 0</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Enumerations
+	@enum		ExStopBits
+	@brief		ストップビット
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>One</td>
+		<td>1 bit</td>
+		</tr>
+	<tr>
+		<td>One5</td>
+		<td>1.5 bits</td>
+		</tr>
+	<tr>
+		<td>Two</td>
+		<td>2 bits</td>
+		</tr>
+	</table>
+*/
+
+}
+}

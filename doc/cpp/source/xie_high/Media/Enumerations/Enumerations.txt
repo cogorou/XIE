@@ -1,0 +1,59 @@
+namespace fie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Enumerations
+	@enum		ExMediaDir
+	@brief		メディア方向
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Input</td>
+		<td>入力</td>
+		</tr>
+	<tr>
+		<td>Output</td>
+		<td>出力</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Enumerations
+	@enum		ExMediaType
+	@brief		メディア種別
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Audio</td>
+		<td>音声</td>
+		</tr>
+	<tr>
+		<td>Video</td>
+		<td>映像</td>
+		</tr>
+	</table>
+*/
+
+}
+}

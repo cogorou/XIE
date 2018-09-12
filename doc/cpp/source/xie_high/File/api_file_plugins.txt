@@ -1,0 +1,57 @@
+/*!
+	@internal
+	@file		api_file_plugins.h
+	@brief		ファイル入出力関連の内部定義
+*/
+/*!
+	@internal
+	@file		api_file_plugins.cpp
+	@brief		ファイル入出力関連の内部定義
+*/
+/*!
+	@def	_API_FILE_PLUGINS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace File
+{
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Internals
+	@fn			fnPRV_File_Setup()
+	@brief		初期化
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Internals
+	@fn			fnPRV_File_TearDown()
+	@brief		解放
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Internals
+	@var		g_jpeg
+	@brief		ファイル入出力プラグインのインスタンス (JPEG 関連)
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Internals
+	@var		g_png
+	@brief		ファイル入出力プラグインのインスタンス (PNG 関連)
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Internals
+	@var		g_tiff
+	@brief		ファイル入出力プラグインのインスタンス (TIFF 関連)
+*/
+}
+}

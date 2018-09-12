@@ -1,0 +1,68 @@
+/*!
+	@file	TxTcpClient.h
+	@brief	TCP/IP通信クライアント構造体
+*/
+/*!
+	@internal
+	@file	TxTcpClient.cpp
+	@brief	TCP/IP通信クライアント構造体
+*/
+/*!
+	@def	_TXTCPCLIENT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Structures
+	@struct		TxTcpClient
+	@brief		TCP/IP通信クライアント構造体
+*/
+// ===================================================================
+/*!
+	@var	TxTcpClient::Socket
+	@brief	ソケットハンドル [既定値:INVALID_SOCKET]
+*/
+// ===================================================================
+/*!
+	@var	TxTcpClient::IPAddress
+	@brief	IPアドレス [既定値:0,0,0,0]
+
+	@remarks
+			接続先のエンドポイントを特定する IP アドレスを指定します。\n
+*/
+// ===================================================================
+/*!
+	@var	TxTcpClient::Port
+	@brief	ポート番号 [既定値:0] [範囲:0~65535]
+
+	@remarks
+			接続先のエンドポイントを特定する識別子を指定します。\n
+			指定可能な範囲は以下の通りです。\n
+			- 0~1023: Well known port number
+			- 1024~49151: Registered port number
+			- 49152~65535: Dynamic port number
+*/
+// ===================================================================
+/*!
+	@fn		TxTcpClient::TxTcpClient()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTcpClient::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+
+}
+}

@@ -1,0 +1,4 @@
+User::CxImage_CalcDepth_01
+dst.Depth            = 0
+dst.CalcDepth(0)     = 7
+dst.Depth            = 7

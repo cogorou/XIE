@@ -1,0 +1,5 @@
+/*!
+	@internal
+	@file		fnPRV_GDI_ShrinkNN.cpp
+	@brief		OpenGL 表示ライブラリの内部定義 (縮小)
+*/

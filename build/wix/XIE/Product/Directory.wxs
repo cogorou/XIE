@@ -1,0 +1,22 @@
+<Include>
+	<Component Id="README.TXT" DiskId="1" Guid="0088FC06-E91E-4B20-AEE4-13C3BBECE4BD">
+		<File Id="README.TXT" Name="README.txt" Source="..\Archives\README.txt" />
+	</Component>
+	<Directory Id="COPYRIGHT" Name="Copyright">
+		<Component Id="AZUKI_LICENSE.TXT" DiskId="1" Guid="078CD7F5-9D6A-4526-BAD5-ED5EC762BE84">
+			<File Id="AZUKI_LICENSE.TXT" Name="Azuki-license.txt" Source="..\Archives\Copyright\Azuki-license.txt" />
+		</Component>
+		<Component Id="LIBJPEG_README.TXT" DiskId="1" Guid="DA220AF4-A1C8-436A-BBD2-528B441AEB20">
+			<File Id="LIBJPEG_README.TXT" Name="libjpeg-README.txt" Source="..\Archives\Copyright\libjpeg-README.txt" />
+		</Component>
+		<Component Id="LIBPNG_LICENSE.TXT" DiskId="1" Guid="111CC064-2042-4C94-BC74-A4B979A3AD00">
+			<File Id="LIBPNG_LICENSE.TXT" Name="libpng-LICENSE.txt" Source="..\Archives\Copyright\libpng-LICENSE.txt" />
+		</Component>
+		<Component Id="LIBTIFF_COPYRIGHT.TXT" DiskId="1" Guid="AD19A8C1-B097-4320-A2EC-598121E1D87A">
+			<File Id="LIBTIFF_COPYRIGHT.TXT" Name="libtiff-COPYRIGHT.txt" Source="..\Archives\Copyright\libtiff-COPYRIGHT.txt" />
+		</Component>
+		<Component Id="ZLIB_README.TXT" DiskId="1" Guid="D5C538F5-EC7A-4BAB-AB08-C7021F352B7F">
+			<File Id="ZLIB_README.TXT" Name="zlib-README.txt" Source="..\Archives\Copyright\zlib-README.txt" />
+		</Component>
+	</Directory>
+</Include>

@@ -1,0 +1,73 @@
+/*!
+	@file	IxRawFile.h
+	@brief	Raw 形式ファイルアクセスインターフェース
+*/
+/*!
+	@def	_IXRAWFILE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxRawFile
+	@brief		Raw 形式ファイルアクセスインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxRawFile::OpenRawA(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxRawFile::OpenRawW(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxRawFile::CloseRaw(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		IxRawFile::LoadRaw(void* handle)
+	@brief	Raw 形式ファイルの読み込み
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+*/
+// ===================================================================
+/*!
+	@fn		IxRawFile::SaveRaw(void* handle) const
+	@brief	Raw 形式ファイルへの保存
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+*/
+
+}

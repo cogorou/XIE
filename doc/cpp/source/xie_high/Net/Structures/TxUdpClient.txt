@@ -1,0 +1,68 @@
+/*!
+	@file	TxUdpClient.h
+	@brief	UDP通信構造体
+*/
+/*!
+	@internal
+	@file	TxUdpClient.cpp
+	@brief	UDP通信構造体
+*/
+/*!
+	@def	_TXUDPCLIENT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Structures
+	@struct		TxUdpClient
+	@brief		UDP通信構造体
+*/
+// ===================================================================
+/*!
+	@var	TxUdpClient::Socket
+	@brief	ソケットハンドル [既定値:INVALID_SOCKET]
+*/
+// ===================================================================
+/*!
+	@var	TxUdpClient::IPAddress
+	@brief	IPアドレス [既定値:0,0,0,0]
+
+	@remarks
+			自身のエンドポイントを特定する IP アドレスを指定します。\n
+*/
+// ===================================================================
+/*!
+	@var	TxUdpClient::Port
+	@brief	ポート番号 [既定値:0] [範囲:0~65535]
+
+	@remarks
+			自身のエンドポイントを特定する識別子を指定します。\n
+			指定可能な範囲は以下の通りです。\n
+			- 0~1023: Well known port number
+			- 1024~49151: Registered port number
+			- 49152~65535: Dynamic port number
+*/
+// ===================================================================
+/*!
+	@fn		TxUdpClient::TxUdpClient()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxUdpClient::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+
+}
+}

@@ -1,0 +1,40 @@
+namespace xie
+{
+namespace Net
+{
+// =================================================================
+/*!
+	@defgroup	group_xie_Net	xie.Net
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Net_Classes	Classes
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Net_Structures	Structures
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_Net_Typedefs	Typedefs
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Net_Exports	Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_Net_Internals	Internals
+		@{
+	*/
+	/*!
+		@}
+	*/
+/*!
+	@}
+*/
+}
+}

@@ -1,0 +1,85 @@
+/*!
+	@file	CxGrabberEvent.h
+	@brief	グラバーイベントクラス
+*/
+/*!
+	@def	_CXGRABBEREVENT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxGrabberEvent
+	@brief		グラバーイベントクラス
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberEvent::CxGrabberEvent()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberEvent::CxGrabberEvent(const std::function<Handler>& callback)
+	@brief	コンストラクタ
+
+	@param[in]		callback	コールバック関数へのポインタ
+
+	@remarks
+			コールバック関数を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberEvent::operator = ( const CxGrabberEvent& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberEvent::operator std::shared_ptr<CxGrabberEvent>() const
+	@brief	キャストオペレータ
+
+	@return	ヒープ領域に確保したオブジェクトに自身の内容を複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberEvent::Receive (void *sender, IxModule *e)
+	@brief	イベント受信用関数 (内部処理用)
+
+	@param[in]		sender		呼び出し元
+	@param[in,out]	e			イベント引数
+
+	@remarks
+			この関数が下位側から呼び出されると、
+			CallBack に設定されたユーザーの関数を呼び出します。
+
+	@sa
+		@ref CallBack \n
+*/
+// ===================================================================
+/*!
+	@typedef	CxGrabberEvent::CallBack
+	@brief		コールバック関数へのポインタ
+*/
+// ===================================================================
+/*!
+	@typedef	CxGrabberEvent::Handler
+	@brief		コールバック関数の型
+*/
+
+}
+}

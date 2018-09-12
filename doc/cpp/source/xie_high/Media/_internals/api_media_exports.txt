@@ -1,0 +1,410 @@
+/*!
+	@internal
+	@file		api_media_exports.cpp
+	@brief		メディア関連の内部定義
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Module_Create	(TxCharCPtrA name)
+	@brief		インスタンス生成
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Camera_Setup(HxModule handle, HxModule hVideo, HxModule hAudio, HxModule hOutput)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Camera_CreateGrabber(HxModule handle, ExMediaType type, HxModule hEvent)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+#if defined(_MSC_VER)
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Camera_OpenPropertyDialog(HxModule handle, HWND hWnd, ExMediaType type, int mode, TxCharCPtrA caption)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+#else
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Camera_OpenPropertyDialog(HxModule handle, Window window, ExMediaType type, int mode, TxCharCPtrA caption)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+#endif
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaPlayer_Setup(HxModule handle, HxModule hVideo, HxModule hAudio, HxModule hOutput)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaPlayer_CreateGrabber(HxModule handle, ExMediaType type, HxModule hEvent)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaPlayer_WaitForCompletion(HxModule handle, int timeout, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenCapture_Setup(HxModule handle, HxModule hWindow, HxModule hAudio, HxModule hOutput)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenCapture_CreateGrabber(HxModule handle, ExMediaType type, HxModule hEvent)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenList_Setup(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenList_Length(HxModule handle, int* length)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenList_Item_Get(HxModule handle, int index, HxModule hVal)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenList_Item_Set(HxModule handle, int index, HxModule hVal)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ScreenListItem_Name_Set(HxModule handle, TxCharCPtrA name)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceList_Setup(HxModule handle, ExMediaType type, ExMediaDir dir)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceList_Length(HxModule handle, int* length)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceList_Item_Get(HxModule handle, int index, HxModule hVal)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceList_Item_Set(HxModule handle, int index, HxModule hVal)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceListItem_Name_Set(HxModule handle, TxCharCPtrA name)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceListItem_GetProductName(HxModule handle, HxModule hResult)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceListItem_GetPinNames(HxModule handle, HxModule hResult)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceListItem_GetFrameSizes(HxModule handle, HxModule hResult, int pin)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_DeviceParam_Name_Set(HxModule handle, TxCharCPtrA name)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_Grabber_Notify_Set(HxModule handle, void* function)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// IxMediaControl
+//
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Reset(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Start(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Stop(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Abort(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Pause(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_Wait(HxModule handle, int timeout, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ======================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_IsRunning(HxModule handle, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_MediaControl_IsPaused(HxModule handle, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// CxControlProperty
+//
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_Controller_Set(HxModule handle, HxModule value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_Name_Set(HxModule handle, TxCharCPtrA value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_IsSupported(HxModule handle, ExBoolean* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_GetRange(HxModule handle, TxRangeI* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_GetStep(HxModule handle, int* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_GetDefault(HxModule handle, int* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_GetFlags(HxModule handle, int* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_SetFlags(HxModule handle, int value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_GetValue(HxModule handle, int* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+// ================================================================================
+/*!
+	@ingroup	group_xie_Media_Exports
+	@fn			fnXIE_Media_ControlProperty_SetValue(HxModule handle, int value, ExBoolean relative)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}
+}

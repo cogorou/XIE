@@ -1,0 +1,126 @@
+/*!
+	@file	CxDSSampleReceiver.h
+	@brief	サンプルレシーバークラス
+*/
+/*!
+	@internal
+	@file	CxDSSampleReceiver.cpp
+	@brief	サンプルレシーバークラス
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSSAMPLERECEIVER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSSampleReceiver
+	@brief		サンプルレシーバークラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::CxDSSampleReceiver()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::~CxDSSampleReceiver()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::AddRef()
+	@brief	参照カウントのインクリメント
+
+	@return	新しい参照カウントを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::Release()
+	@brief	参照カウントのデクリメント
+
+	@return	新しい参照カウントを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::QueryInterface(REFIID, void **ppvObject)
+	@brief	インターフェースの抽出
+
+	@param[out]		ppvObject	抽出したオブジェクトへのポインタ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::Receive(IMediaSample *sample)
+	@brief	サンプルを受信する関数
+
+	@param[in]		sample	受信したメディアサンプル
+
+	@return	継続する場合は S_OK を返します。
+			中断する場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::Add(IxGrabber* src)
+	@brief	グラバーの追加
+
+	@param[in]		src		グラバー
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::Remove(IxGrabber* src)
+	@brief	グラバーの除去
+
+	@param[in]		src		グラバー
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::SampleCB(double SampleTime, IMediaSample *pSample)
+	@brief	コールバック関数
+
+	@param[in]		SampleTime		サンプル時刻
+	@param[in]		pSample			サンプルデータ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSSampleReceiver::BufferCB(double SampleTime, BYTE *pBuffer, LONG BufferLen)
+	@brief	コールバック関数
+
+	@param[in]		SampleTime		サンプル時刻
+	@param[in]		pBuffer			サンプルデータ
+	@param[in]		BufferLen		サンプルデータの長さ (bytes)
+*/
+// ===================================================================
+/*!
+	@var	CxDSSampleReceiver::Mutex
+	@brief	排他制御用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSSampleReceiver::FrameSize
+	@brief	フレームサイズ
+*/
+// ===================================================================
+/*!
+	@var	CxDSSampleReceiver::Notify
+	@brief	グラバーのコレクション
+*/
+
+}
+}
+
+#endif	// _MCS_VER

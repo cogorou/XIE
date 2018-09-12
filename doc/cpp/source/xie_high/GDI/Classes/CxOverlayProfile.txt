@@ -1,0 +1,347 @@
+/*!
+	@file	CxOverlayProfile.h
+	@brief	オーバレイクラス (濃度プロファイル表示)
+*/
+/*!
+	@internal
+	@file	CxOverlayProfile.cpp
+	@brief	オーバレイクラス (濃度プロファイル表示)
+*/
+/*!
+	@def	_CXOVERLAYPROFILE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxOverlayProfile
+	@brief		オーバレイクラス (濃度プロファイル表示)
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::CxOverlayProfile()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::CxOverlayProfile(const CxOverlayProfile& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxOverlayProfile &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::~CxOverlayProfile()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::operator = ( const CxOverlayProfile& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::operator == ( const CxOverlayProfile& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::operator != ( const CxOverlayProfile& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxOverlayProfile(const CxOverlayProfile &src) \n
+		@ref operator=(const CxOverlayProfile &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxOverlayProfile &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">CursorPosition</td>
+				<td align="left">TxPointD のポインタ</td>
+				<td align="left">ModelOf<TxPointD></td>
+				<td align="left">
+					カーソル位置を取得します。\n
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxOverlayProfile::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">CursorPosition</td>
+				<td align="left">TxPointD のポインタ</td>
+				<td align="left">ModelOf<TxPointD></td>
+				<td align="left">
+					カーソル位置を設定します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Image</td>
+				<td align="left">CxImage のハンドル</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					描画対象の画像オブジェクトを設定します。\n
+					内部ではアタッチしています。
+					アタッチを解除する場合は未確保の画像オブジェクトを設定してください。
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxOverlayProfile::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			現在の図形を指定されたキャンバスに描画します。。
+*/
+// ===================================================================
+/*!
+	@var	CxOverlayProfile::m_Image
+	@brief	描画対象画像オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxOverlayProfile::m_CursorPosition
+	@brief	カーソル位置 (画像座標)
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::GetProfileX(CxArray& dst, const CxImage& src, int ch, int k, int x)
+	@brief	画像の X 座標(１列) を１次元配列へ複製します。
+
+	@param[in,out]	dst		出力先 (予め確保してください。要素数は dst.Length≧src.Height である必要があります。)
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		x		X 座標
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::GetProfileY(CxArray& dst, const CxImage& src, int ch, int k, int y)
+	@brief	画像の Y 座標(１行) を１次元配列へ複製します。
+
+	@param[in,out]	dst		出力先 (予め確保してください。要素数は dst.Length≧src.Width である必要があります。)
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		y		Y 座標
+*/
+// ===================================================================
+/*!
+	@fn		CxOverlayProfile::GetValue(const CxImage& src, int ch, int k, int y, int x)
+	@brief	指定座標の濃度値を取得します。
+
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		y		Y 座標
+	@param[in]		x		X 座標
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_GetProfileX(CxArray& dst, const CxImage& src, int ch, int k, int x)
+	@brief		指定された X 座標を垂直方向に走査して濃度値を取得します。
+
+	@tparam	TD	出力先の要素の型
+	@tparam	TS	入力元の要素の型
+
+	@param[in]		dst		出力先
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		x		X 座標
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_GetProfileY(CxArray& dst, const CxImage& src, int ch, int k, int y)
+	@brief		指定された Y 座標を水平方向に走査して濃度値を取得します。
+
+	@tparam	TD	出力先の要素の型
+	@tparam	TS	入力元の要素の型
+
+	@param[in]		dst		出力先
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		y		Y 座標
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_GetValue(const CxImage& src, int ch, int k, int y, int x)
+	@brief		指定された座標の濃度値を取得します。
+
+	@tparam	TD	出力の型
+	@tparam	TS	入力元の要素の型
+
+	@param[in]		src		入力元
+	@param[in]		ch		チャネル指標 [0~]
+	@param[in]		k		フィールド指標 [0~]
+	@param[in]		y		Y 座標
+	@param[in]		x		X 座標
+
+	@return	取得した値を返します。
+*/
+
+}	// GDI
+}	// xie

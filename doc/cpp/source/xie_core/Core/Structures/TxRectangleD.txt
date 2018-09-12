@@ -1,0 +1,149 @@
+/*!
+	@file	TxRectangleD.h
+	@brief	矩形構造体 (実数版)
+*/
+/*!
+	@internal
+	@file	TxRectangleD.cpp
+	@brief	矩形構造体 (実数版)
+*/
+/*!
+	@def	_TXRECTANGLED_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxRectangleD
+	@brief		矩形構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxRectangleD::X
+	@brief	始点(X)
+*/
+// ===================================================================
+/*!
+	@var	TxRectangleD::Y
+	@brief	始点(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxRectangleD::Width
+	@brief	幅
+*/
+// ===================================================================
+/*!
+	@var	TxRectangleD::Height
+	@brief	高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::TxRectangleD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::TxRectangleD(double x, double y, double width, double height)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x		始点(X)
+	@param[in]		y		始点(Y)
+	@param[in]		width	幅
+	@param[in]		height	高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::TxRectangleD(TxPointD st, TxSizeD size)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		st		始点
+	@param[in]		size	幅と高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::operator == (const TxRectangleD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::operator != (const TxRectangleD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*! 
+	@fn		TxRectangleD::operator TxRectangleI () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxRectangleI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::Location() const
+	@brief	矩形の位置 (左上) の取得
+
+	@return	現在設定されている矩形の位置 (左上) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::Location(const TxPointD& value)
+	@brief	矩形の位置 (左上) の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			矩形の位置 (左上) を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::Size() const
+	@brief	矩形のサイズの取得
+
+	@return	現在設定されている矩形のサイズを返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxRectangleD::Size(const TxSizeD& value)
+	@brief	矩形のサイズの設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			矩形のサイズを設定します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxRectangleD::ToTrapezoid() const
+	@brief	台形への変換
+
+	@return	現在の内容を台形構造体に格納して返します。
+*/
+
+}

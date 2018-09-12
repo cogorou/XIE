@@ -1,0 +1,1987 @@
+/*!
+	@file	CxImage.h
+	@brief	画像オブジェクトクラス
+*/
+/*!
+	@internal
+	@file	CxImage.cpp
+	@brief	画像オブジェクトクラス
+*/
+/*!
+	@def	_CXIMAGE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxImage
+	@brief		画像オブジェクトクラス
+
+	@remarks
+			画像を管理するクラスです。\n
+
+	@remarks
+			本ライブラリで扱う画像は、濃淡・カラー（アンパッキング）・カラー（パッキング）の３種類あります。\n
+			下図１は、画像と @ref xie::TxImage 及び @ref xie::TxImageSize との対応を示します。\n
+			カラー画像を他のライブラリと併用する場合は RGB の順序に注意する必要があります。
+			アンパッキングの場合は Layer 0,1,2 に R,G,B が格納されています。
+			パッキングの場合はアドレスが小さい方から R,G,B 順に格納されています。
+			例えば、Windows の DIB はアドレスが小さい方から B,G,R 順に格納されていますので、
+			本ライブラリの画像を Windows の DIB へ変換する際（またはその逆）は、
+			@ref CxImageFilter::RgbToBgr "RgbToBgr" で複製する必要があります。\n
+
+			@par
+			図１）画像サイズ
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html CxImage_ImageSize.png</td>
+				</tr>
+			</table>
+			※太枠の部分が１画素を示します。\n
+
+			@par
+			<hr>
+			下図２は、@ref xie::TxImage の Stride フィールドを示します。\n
+			画像領域の水平方向サイズ(Stride)は、既定では 4 bytes の整数倍に調整されます。
+			例えば１画素が 3 bytes のカラー画像の幅が 10 画素の場合は、
+			画像データ部分は 30 bytes ですが、2 bytes のパディングが加算され、
+			32 bytes に調整されます。
+			@ref Resize メソッドの packing_size 引数に 4 以外を指定すると調整サイズが変わります。
+			例えば 1 を指定するとパディングが無い連続した領域が確保されます。
+			\n
+
+			@par
+			図２）画像領域の水平方向サイズ
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html CxImage_Stride.png</td>
+				</tr>
+			</table>
+			※太枠の部分が１画素を示します。\n
+
+			@par
+			<hr>
+			下図３は、@ref Attach や @ref Child などで画像の一部にアタッチした部分画像を示します。\n
+			薄い灰色が元画像（Root）、濃い灰色が部分画像(Child)です。
+			水色が部分画像のパディングになります。
+
+			@par
+			図３）部分画像
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html CxImage_Child.png</td>
+				</tr>
+			</table>
+			\n
+
+	@par	Examples:
+			@includelineno	CxImage_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_01.txt
+*/
+// ===================================================================
+/*!
+	@var	CxImage::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@var	CxImage::m_Exif
+	@brief	Exif が格納された領域を示す配列情報
+*/
+// ===================================================================
+/*!
+	@var	CxImage::m_IsAttached
+	@brief	アタッチ状態
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@var	CxImage::m_IsLocked
+	@brief	ロック状態
+
+	@sa
+		@ref IsLocked() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::FromTag(const TxImage &src)
+	@brief	アタッチ (情報構造体指定)
+
+	@param[in]		src		参照先
+
+	@return	指定された外部リソースにアタッチして返します。
+
+	@sa
+		@ref IsAttached() const \n
+		@ref Attach(const TxImage &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::From(int width, int height, const xie::CxArrayEx<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		width			幅 (pixel) [1~]
+	@param[in]		height			高さ (pixel) [1~]
+	@param[in]		src				複製元 \n
+									※要素数が width*height と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+
+	@par	Examples:
+			@includelineno	CxImage_From_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_From_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::From(int width, int height, const std::vector<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		width			幅 (pixel) [1~]
+	@param[in]		height			高さ (pixel) [1~]
+	@param[in]		src				複製元 \n
+									※要素数が width*height と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+
+	@par	Examples:
+			@includelineno	CxImage_From_02.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_From_02.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::From(int width, int height, const std::initializer_list<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		width			幅 (pixel) [1~]
+	@param[in]		height			高さ (pixel) [1~]
+	@param[in]		src				複製元 \n
+									※要素数が width*height と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+
+	@par	Examples:
+			@includelineno	CxImage_From_03.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_From_03.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(const CxImage &src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_Copy.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_Copy.txt
+
+	@sa
+		@ref operator=(const CxImage &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(CxImage &&src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_Move.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_Move.txt
+
+	@sa
+		@ref operator=(CxImage &&src) \n
+		@ref MoveFrom(CxImage &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(const TxImageSize &size, int packing_size)
+	@brief	コンストラクタ
+
+	@param[in]		size			画像サイズ情報
+	@param[in]		packing_size	水平方向のパッキングサイズ (bytes) [範囲:1,2,4,8,16]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_02.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_02.txt
+
+	@sa
+		@ref Resize(const TxImageSize &size, int packing_size)
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(int width, int height, TxModel model, int channels, int packing_size)
+	@brief	コンストラクタ
+
+	@param[in]		width			幅 (pixel) [0, 1~]
+	@param[in]		height			高さ (pixel) [0, 1~]
+	@param[in]		model			要素モデル
+	@param[in]		channels		チャネル数 [1~XIE_IMAGE_CHANNELS_MAX]
+	@param[in]		packing_size	水平方向のパッキングサイズ (bytes) [範囲:1,2,4,8,16]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_01.txt
+
+	@sa
+		@ref Resize(int width, int height, TxModel model, int channels, int packing_size)
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(TxCharCPtrA filename, bool unpack)
+	@brief	コンストラクタ (ファイル読み込み) (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+								\n
+
+	@param[in]		unpack		アンパッキングの指示。
+								-	true … カラー画像の場合は３チャネルになります。
+								-	false … カラー画像の場合は１チャネルのカラーになります。(既定値)
+								.
+								\n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_03.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_03.txt
+
+	@sa
+		@ref Load(TxCharCPtrA filename) \n
+		@ref Load(TxCharCPtrA filename, TV option) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CxImage(TxCharCPtrW filename, bool unpack)
+	@brief	コンストラクタ (ファイル読み込み) (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+								\n
+
+	@param[in]		unpack		アンパッキングの指示。
+								-	true … カラー画像の場合は３チャネルになります。
+								-	false … カラー画像の場合は１チャネルのカラーになります。(既定値)
+								.
+								\n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@par	Examples:
+			@includelineno	CxImage_ctor_03.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ctor_03.txt
+
+	@sa
+		@ref Load(TxCharCPtrW filename) \n
+		@ref Load(TxCharCPtrW filename, TV option) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::~CxImage()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator=(const CxImage &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@par	Examples:
+			@includelineno	CxImage_CopyFrom_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_CopyFrom_01.txt
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator = (CxImage &&src)
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@par	Examples:
+			@includelineno	CxImage_MoveFrom_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_MoveFrom_01.txt
+
+	@sa
+		@ref MoveFrom(CxImage &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator == (const CxImage &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator != (const CxImage &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Exif() const
+	@brief	Exif の取得
+
+	@return	Exif が格納された領域を示す配列情報を返します。\n
+			内部領域を参照していますので解放しないでください。\n
+
+	@sa
+		@ref m_Exif \n
+		@ref Exif(const TxExif& value) \n
+		@ref ExifCopy() \n
+		@ref CxExif \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Exif(const TxExif& value)
+	@brief	Exif の設定
+
+	@param[in]		value		Exif が格納された領域を示す配列情報 \n
+								※ 内容を複製するので処理後は解放して構いません。\n
+								※ Exif を除去する場合は @ref TxExif::Default() を指定してください。\n
+								※ 自身の Exif 構造体と同一の場合は無視しますが、アドレスが同一でサイズが異なる場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このメソッドは指定された Exif をそのまま複製します。\n
+			Exif の更新が必要な場合(複製元と複製先の画像データが異なる場合等)は、
+			@ref CxImage::ExifCopy メソッドを使用してください。\n
+
+	@par	Examples:
+			@includelineno	CxImage_Exif.cpp
+
+	@sa
+		@ref m_Exif \n
+		@ref Exif() const \n
+		@ref ExifCopy() \n
+		@ref CxExif \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::ExifCopy(const TxExif& exif, bool ltc)
+	@brief	Exif の加工・複製
+
+	@param[in]		exif		複製元の Exif 構造体 \n
+								※ 自身の Exif 構造体を指定しても問題ありません。\n
+	@param[in]		ltc			複製後の Exif のタイムゾーン
+								- true: ローカル時刻 [既定値]
+								- false: 協定世界時
+								.
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このメソッドは指定された Exif を下記のように加工・複製して自身に設定します。\n
+			- サムネイルを除去します。(※ @ref CxExif::GetPurgedExif で複製を取得する際に除去されます。)
+			- 更新日時を現在時刻に書き換えます。(※ 下表参照)
+			- 画像幅情報を自身の画像幅に書き換えます。(※ 下表参照)
+			- 画像高さ情報を自身の画像高さに書き換えます。(※ 下表参照)
+			.
+			自身が未確保の場合は例外を発行します。\n
+
+			@par
+			表) 書き換え対象の情報
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">項目</td>
+				<td align="center" class="indexkey">ID</td>
+				<td align="center" class="indexkey">Type</td>
+				<td align="center" class="indexkey">Count</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey">更新日時</td>
+				<td align="center">0x0132</td>
+				<td align="center">2</td>
+				<td align="center">19 以上</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey">画像幅</td>
+				<td align="center">0xA002</td>
+				<td align="center">3 or 4</td>
+				<td align="center">1</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey">画像高さ</td>
+				<td align="center">0xA003</td>
+				<td align="center">3 or 4</td>
+				<td align="center">1</td>
+				</tr>
+			</table>
+			\n
+			他に書き換えが必要な項目があれば、自身の Exif 構造体を @ref CxExif オブジェクトに設定し、
+			@ref CxExif::SetValue メソッドで書き換えてください。\n
+
+
+	@par	Examples:
+			@includelineno	CxImage_ExifCopy.cpp
+
+	@sa
+		@ref m_Exif \n
+		@ref Exif() const \n
+		@ref Exif(const TxExif& value) \n
+		@ref CxExif \n
+		@ref CxExif::GetPurgedExif \n
+		@ref CxExif::SetValue \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+			アタッチしている場合はアタッチ解除を行います。\n
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。\n
+			対応していないオブジェクトが指定された場合は例外を発行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CopyFrom(const IxModule &src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@par	Examples:
+			@includelineno	CxImage_CopyFrom_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_CopyFrom_01.txt
+
+	@sa
+		@ref CxImage(const CxImage &src) \n
+		@ref operator=(const CxImage &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::MoveFrom(CxImage &src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の IsAttached は true に切り替わります。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@par	Examples:
+			@includelineno	CxImage_MoveFrom_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_MoveFrom_01.txt
+
+	@sa
+		@ref CxImage(CxImage &&src) \n
+		@ref operator=(CxImage &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxImage &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	配列の先頭アドレスが NULL でないこと。
+			-	幅(@ref Width)と高さ(@ref Height)が 0 より大きいこと。
+			-	要素のサイズ(@ref TxModel::Size() const "Model().Size()")が 0 bytes より大きいこと。
+			-	配列の水平方向サイズ(@ref Stride)が (@ref Width × @ref TxModel::Size() const "Model().Size()") 以上であること。
+			.
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::IsAttached() const
+	@brief	アタッチ状態
+
+	@retval	true	アタッチしている
+	@retval	false	アタッチしていない
+
+	@remarks
+			@ref Dispose が呼ばれた際に内部リソースを解放するか否かを示します。\n
+			このフラグが true の場合、データ構造に設定されたリソースを解放しません。\n
+
+	@sa
+		@ref Attach(const IxModule& src) \n
+		@ref Attach(const TxImage &src) \n
+		@ref Attach(const CxImage &src, const TxRectangleI &bounds) \n
+		@ref Attach(const CxImage &src, int ch) \n
+		@ref Attach(const CxImage &src, int ch, const TxRectangleI &bounds) \n
+		@ref MoveFrom(CxImage &src) \n
+		@ref m_Tag \n
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Attach(const IxModule& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+
+	@remarks
+			外部リソースにアタッチします。\n
+
+	@par	Examples:
+			@includelineno	CxImage_Attach_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Attach_01.txt
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Attach(const TxImage &src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		対象
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Attach(const CxImage &src, const TxRectangleI &bounds)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+	@param[in]		bounds	範囲 [すべて 0 の時は全面、それ以外は指定範囲]
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Attach(const CxImage &src, int ch)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+	@param[in]		ch		チャネル指標 [-1=全チャネル、0~(src.Channels() - 1)=指定チャネル]
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Attach(const CxImage &src, int ch, const TxRectangleI &bounds)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		参照先
+	@param[in]		ch		チャネル指標 [-1=全チャネル、0~(src.Channels() - 1)=指定チャネル]
+	@param[in]		bounds	範囲 [すべて 0 の時は全面、それ以外は指定範囲]
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Lock()
+	@brief	ロック
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このオブジェクトの内部で管理している領域がページングされることを防ぎます。\n
+			この操作は Linux 版に於いてフレームグラバーから画像データを取り込む場合に必要です。
+			Windows 版では無視されます。\n
+			\n
+			もし、このオブジェクトが外部メモリにアタッチしている場合(IsAttached() が true の時)は、例外を発行します。
+			Linux 版 / Windows 版 共に同じ挙動です。
+			ロックが必要な場合は、アタッチ先の画像オブジェクトに対して操作してください。
+
+	@sa
+		@ref Unlock \n
+		@ref IsLocked \n
+		@ref IsAttached \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Unlock()
+	@brief	ロック解除
+
+	@remarks
+			領域のロックを解除します。\n
+			この操作は Linux 版のみ必要です。Windows 版では無視されます。
+
+	@sa
+		@ref Lock \n
+		@ref IsLocked \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::IsLocked() const
+	@brief	ロック状態
+
+	@retval	true	ロックしている
+	@retval	false	ロックしていない
+
+	@sa
+		@ref Lock \n
+		@ref Unlock \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Resize(const TxImageSize &size, int packing_size)
+	@brief	内部リソースの確保
+
+	@param[in]		size			画像サイズ情報
+	@param[in]		packing_size	水平方向のパッキングサイズ (bytes) [範囲:1,2,4,8,16]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			幅・高さ共に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@par	Examples:
+			@includelineno	CxImage_Resize_02.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Resize_02.txt
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Resize(int width, int height, TxModel model, int channels, int packing_size)
+	@brief	内部リソースの確保
+
+	@param[in]		width			幅 (pixel) [0, 1~]
+	@param[in]		height			高さ (pixel) [0, 1~]
+	@param[in]		model			要素モデル
+	@param[in]		channels		チャネル数 [1~XIE_IMAGE_CHANNELS_MAX]
+	@param[in]		packing_size	水平方向のパッキングサイズ (bytes) [範囲:1,2,4,8,16]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			幅・高さ共に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@par	Examples:
+			@includelineno	CxImage_Resize_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Resize_01.txt
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Reset()
+	@brief	データのリセット
+
+	@remarks
+			各要素を 0 初期化し、@ref Depth を 0 に戻します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Clear(const void *value, TxModel model, HxModule hmask)
+	@brief	初期化
+
+	@param[in]		value			初期化値が格納された変数へのアドレス
+	@param[in]		model			初期化値の型
+	@param[in]		hmask			マスク
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+			通常は、このメソッドを直接呼び出す必要はありません。\n
+			@ref Clear(TV value, HxModule hmask) をご使用ください。
+
+	@sa
+		@ref Clear(TV value, HxModule hmask) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Clear(TV value, HxModule hmask)
+	@brief	初期化
+
+	@tparam	TV		初期化値の型
+
+	@param[in]		value			初期化値
+	@param[in]		hmask			マスク
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = value \n
+			\n
+
+			@par
+			出力と初期化値の要素モデルのパック数が異なる場合は少ない方を適用します。\n
+
+	@par	Examples:
+			@includelineno	CxImage_Clear_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Clear_01.txt
+
+	@sa
+		@ref Clear(const void* value, TxModel model, HxModule hmask) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::ClearEx(const void *value, TxModel model, int index, int count, HxModule hmask)
+	@brief	初期化 (フィールド指定)
+
+	@param[in]		value			初期化値が格納された変数へのアドレス
+	@param[in]		model			初期化値の型 (Type が 整数または実数、且つ Pack が 1)
+	@param[in]		index			フィールド指標 [0~]
+	@param[in]		count			フィールド数 [1~]
+	@param[in]		hmask			マスク
+
+	@remarks
+			各要素の指定フィールドを指定値で初期化します。\n
+			通常は、このメソッドを直接呼び出す必要はありません。\n
+			@ref ClearEx(TV value, int index, int count, HxModule hmask) をご使用ください。
+
+	@sa
+		@ref ClearEx(TV value, int index, int count, HxModule hmask) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::ClearEx(TV value, int index, int count, HxModule hmask)
+	@brief	初期化 (フィールド指定)
+
+	@tparam	TV		初期化値の型 (Type が 整数または実数、且つ Pack が 1)
+
+	@param[in]		value			初期化値
+	@param[in]		index			フィールド指標 [0~]
+	@param[in]		count			フィールド数 [1~]
+	@param[in]		hmask			マスク
+
+	@remarks
+			各要素の指定フィールドを指定値で初期化します。\n
+
+			@par
+			式) dst<sub>x</sub>[index + k] = value \n
+			\n
+			※ k=0~(count-1) \n
+			\n
+
+	@par	Examples:
+			@includelineno	CxImage_ClearEx_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_ClearEx_01.txt
+
+	@sa
+		@ref ClearEx(const void* value, TxModel model, int index, int count, HxModule hmask) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Clone(TxModel model, int channels, double scale) const
+	@brief	クローンの生成
+
+	@param[in]		model		複製先の要素モデル
+	@param[in]		channels	複製先のチャネル数 [0=同一チャネル数、1~XIE_IMAGE_CHANNELS_MAX=指定チャネル数]
+	@param[in]		scale		スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する] \n
+								@ref Axi::CalcScale "Axi::CalcScale(src.Model.Type, src.Depth, dst.Model.Type, dst.Depth)" で求めることができます。\n
+
+	@return	指定された型のオブジェクトに自身の内容を複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Child() const
+	@brief	チャイルド画像の生成
+
+	@return	現在のオブジェクトの画像領域にアタッチした新しいオブジェクトを生成して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Child(const TxRectangleI& bounds) const
+	@brief	チャイルド画像の生成 (範囲指定)
+
+	@param[in]		bounds		始点とサイズ (幅,高さが 0 の場合はそれぞれ最大値に正規化します。)
+
+	@return	現在のオブジェクトの画像領域にアタッチした新しいオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Child(int ch) const
+	@brief	チャイルド画像の生成 (チャネル指定)
+
+	@param[in]		ch			チャネル指標 [-1=全チャネル、0~(Channels - 1)=指定チャネル]
+
+	@return	現在のオブジェクトの画像領域にアタッチした新しいオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Child(int ch, const TxRectangleI& bounds) const
+	@brief	チャイルド画像の生成 (チャネル指定＋範囲指定)
+
+	@param[in]		ch			チャネル指標 [-1=全チャネル、0~(Channels - 1)=指定チャネル]
+	@param[in]		bounds		始点とサイズ (幅,高さが 0 の場合はそれぞれ最大値に正規化します。)
+
+	@return	現在のオブジェクトの画像領域にアタッチした新しいオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Load(TxCharCPtrA filename)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+			このメソッドは @ref Load(TxCharCPtrA filename, TV option) を呼び出します。
+			@a option には false を指定します。
+
+	@sa
+		@ref Load(TxCharCPtrA filename, TV option) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Load(TxCharCPtrW filename)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+			このメソッドは @ref Load(TxCharCPtrA filename, TV option) を呼び出します。
+			@a option には false を指定します。
+
+	@sa
+		@ref Load(TxCharCPtrW filename, TV option) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Load(TxCharCPtrA filename, TV option)
+	@brief	ファイル読み込み (MBCS)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプション。\n
+								アンパッキングの指示をブール型で指定できます。
+								-	true … カラー画像の場合はアンパッキング(Model.Pack=1, Channels=3)になります。
+								-	false … カラー画像の場合はパッキング(Model.Pack=3 or 4, Channels=1)になります。(既定値)
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Load(TxCharCPtrW filename, TV option)
+	@brief	ファイル読み込み (UNICODE)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプション。\n
+								アンパッキングの指示をブール型で指定できます。
+								-	true … カラー画像の場合はアンパッキング(Model.Pack=1, Channels=3)になります。
+								-	false … カラー画像の場合はパッキング(Model.Pack=3 or 4, Channels=1)になります。(既定値)
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::LoadA(TxCharCPtrA filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::LoadW(TxCharCPtrW filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Save(TxCharCPtrA filename) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Save(TxCharCPtrW filename) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Save(TxCharCPtrA filename, TV option) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプション。\n
+								圧縮レベルや圧縮品質を Int32 (32bit 符号付き整数) で指定できます。bmp,raw では使用しません。\n
+								- png: [-1, 0, 1~9] 圧縮レベル。-1 は既定値、0 は非圧縮、1 は低圧縮、9 は高圧縮。(未指定の場合は -1 と等価です。) \n
+								- jpeg: [0~100] 圧縮品質。0 は低品質、100 は高品質。(未指定の場合は 100 と等価です。) \n
+								- tiff: [-1, 0, 1~9] 圧縮レベル。-1 は既定値、0 は非圧縮、1 は低圧縮、9 は高圧縮。(未指定の場合は非圧縮です。) \n
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Save(TxCharCPtrW filename, TV option) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプション。\n
+								圧縮レベルや圧縮品質を Int32 (32bit 符号付き整数) で指定できます。bmp,raw では使用しません。\n
+								- png: [-1, 0, 1~9] 圧縮レベル。-1 は既定値、0 は非圧縮、1 は低圧縮、9 は高圧縮。(未指定の場合は -1 と等価です。) \n
+								- jpeg: [0~100] 圧縮品質。0 は低品質、100 は高品質。(未指定の場合は 100 と等価です。) \n
+								- tiff: [-1, 0, 1~9] 圧縮レベル。-1 は既定値、0 は非圧縮、1 は低圧縮、9 は高圧縮。(未指定の場合は非圧縮です。) \n
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::SaveA(TxCharCPtrA filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::SaveW(TxCharCPtrW filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								-	.bmp … Bitmap 形式。
+								-	.png … PNG 形式。
+								-	.jpg, .jpeg … JPEG 形式。
+								-	.tif, .tiff … TIFF 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::OpenRawA(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名 \n
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::OpenRawW(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CloseRaw(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::LoadRaw(void* handle)
+	@brief	Raw 形式ファイル読み込み
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::SaveRaw(void* handle) const
+	@brief	Raw 形式ファイル保存
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Width() const
+	@brief	幅 (pixel)
+
+	@return	現在の画像の幅をピクセル単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Height() const
+	@brief	高さ (pixel)
+
+	@return	現在の画像の高さをピクセル単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Channels() const
+	@brief	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+
+	@return	現在のチャネル数を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Stride() const
+	@brief	配列の水平方向サイズ (bytes)
+
+	@return	現在の配列の水平方向サイズをバイト単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Depth() const
+	@brief	ビット深度 [0, 1~64]
+
+	@return	現在のビット深度を返します。
+
+	@sa
+		@ref Depth(int value) \n
+		@ref CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+		@ref xie::Axi::CalcRange \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Depth(int value)
+	@brief	ビット深度 (設定)
+
+	@param[in]		value		ビット深度 [0, 1~64]
+
+	@remarks
+			現在のビット深度を変更します。\n
+
+	@remarks
+			ビット深度は、表示・ファイル保存・レンジ変換付きコピーで使用されます。
+			既定では、ビット深度は 0 に設定されており、要素の型が表すことができる最大値を使用します。
+			要素の型が大きく濃度が低い画像を表示した場合に下図のように暗く表示されるので、
+			視覚的に確認するために本値を調整する場合があります。
+			
+			@par
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">Depth=0</td>
+				<td align="center" class="indexkey">Depth=7</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxImage_CalcDepth_01-0.png</td>
+				<td align="center">@image html CxImage_CalcDepth_01-7.png</td>
+				</tr>
+			</table>
+
+			@par
+			要素の型とビット深度の対応については
+			@ref Axi::CalcDepth 、@ref Axi::CalcRange
+			の説明をご参照ください。
+
+	@sa
+		@ref Depth() const \n
+		@ref CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+		@ref xie::Axi::CalcRange \n
+		@ref xie::GDI::CxCanvas \n
+		@ref xie::CxImage::Save \n
+		@ref xie::CxImage::Clone \n
+		@ref xie::CxImageFilter::Copy \n
+		@ref xie::CxImageFilter::RgbToBgr \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Size() const
+	@brief	幅と高さ (pixel)
+
+	@return	現在の画像の幅と高さをピクセル単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::ImageSize() const
+	@brief	画像サイズ情報
+
+	@return	現在の画像サイズ情報を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Address(int ch)
+	@brief	画像領域の先頭アドレス
+
+	@param[in]		ch	チャネル指標 [0~(XIE_IMAGE_CHANNELS_MAX-1)]
+
+	@return	指定チャネルの先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Address(int ch) const
+	@brief	画像領域の先頭アドレス
+
+	@param[in]		ch	チャネル指標 [0~(XIE_IMAGE_CHANNELS_MAX-1)]
+
+	@return	指定チャネルの先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator[](int ch)
+	@brief	インデクサ
+
+	@param[in]		ch	チャネル指標 [0~(Channels - 1)]
+
+	@return	指定チャネルの先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator[](int ch) const
+	@brief	インデクサ
+
+	@param[in]		ch	チャネル指標 [0~(Channels - 1)]
+
+	@return	指定チャネルの先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator()(int ch, int y, int x)
+	@brief	インデクサ
+
+	@param[in]		ch	チャネル指標 [0~(Channels - 1)]
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+	@param[in]		x	X 座標 [0~(Width - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::operator()(int ch, int y, int x) const
+	@brief	インデクサ
+
+	@param[in]		ch	チャネル指標 [0~(Channels - 1)]
+	@param[in]		y	Y 座標 [0~(Height - 1)]
+	@param[in]		x	X 座標 [0~(Width - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::CalcDepth(int ch, HxModule hmask = NULL) const
+	@brief	ビット深度の算出
+
+	@param[in]		ch		チャネル指標 [-1, 0~(Channels - 1)] \n
+	@param[in]		hmask	マスク画像
+
+	@return		現在の濃度値を表すことができる最小のビット深度を算出して返します。\n
+
+	@remarks
+			引数 @a ch は、統計対象のチャネル指標を指定します。
+			濃淡画像の場合は -1 と 0 の何れを指定しても同様です。
+			カラー画像の場合は -1 を指定すると全ての色成分の統計から計算します。
+			0 以上を指定すると単一の色成分の統計から計算します。\n
+
+			@par
+			ビット深度(@ref Depth)は、表示・ファイル保存・レンジ変換付きコピーで使用されます。
+			既定では、ビット深度は 0 に設定されており、要素の型が表すことができる最大値を使用します。
+			要素の型が大きく濃度が低い画像を表示した場合に後述のサンプルのように暗く表示されるので、
+			視覚的に確認するために @ref Depth を調整する場合があります。
+			その際、適切なビット深度を算出するために、本関数を使用します。
+
+			@par
+			要素の型とビット深度の対応については
+			@ref Axi::CalcDepth 、@ref Axi::CalcRange
+			の説明をご参照ください。
+
+	@par	Examples:
+			@includelineno	CxImage_CalcDepth_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_CalcDepth_01.txt
+			
+			@par
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">Depth=0</td>
+				<td align="center" class="indexkey">Depth=7</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxImage_CalcDepth_01-0.png</td>
+				<td align="center">@image html CxImage_CalcDepth_01-7.png</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref Depth() const \n
+		@ref Depth(int value) \n
+		@ref xie::Axi::CalcDepth \n
+		@ref xie::Axi::CalcRange \n
+		@ref xie::GDI::CxCanvas \n
+		@ref xie::CxImage::Save \n
+		@ref xie::CxImage::Clone \n
+		@ref xie::CxImageFilter::Copy \n
+		@ref xie::CxImageFilter::RgbToBgr \n
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Statistics(int ch, HxModule hmask = NULL) const
+	@brief	統計
+
+	@param[in]		ch		チャネル指標またはフィールド指標 [0~(Model.Pack * Channels - 1)] \n
+	@param[in]		hmask	マスク画像
+
+	@return		すべての要素の統計を算出して返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			処理可能な条件:
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+
+	@par	Examples:
+			@includelineno	CxImage_Statistics_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Statistics_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Extract(int ch, int sy, int sx, int length, ExScanDir dir, HxModule hmask = NULL) const
+	@brief	抽出
+
+	@param[in]		ch		チャネル指標 [0~(Channels - 1)]
+	@param[in]		sy		始点 (Y 座標) [0~(Height - 1)]
+	@param[in]		sx		始点 (X 座標) [0~(Width - 1)]
+	@param[in]		length	抽出する要素数 [1~] \n
+							※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+	@param[in]		dir		抽出する方向 \n
+							-	ExScanDir::X: sx~(sx+length-1) の範囲。
+							-	ExScanDir::Y: sy~(sy+length-1) の範囲。
+							.
+	@param[in]		hmask	マスク画像
+
+	@return		指定された範囲の要素を抽出して返します。\n
+				配列の要素は自身と同一型です。
+			
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			引数の @a dir によって式が異なります。\n
+
+			@par
+			<b>dir = X)</b> \n
+			式１) dst<sub>i</sub> = src<sub>sy,sx+i</sub> \n
+			※ i = 0~(length-1) \n
+			\n
+
+			@par
+			<b>dir = Y)</b> \n
+			式２) dst<sub>i</sub> = src<sub>sy+i,sx</sub> \n
+			※ i = 0~(length-1) \n
+			\n
+			@par
+
+	@par	Examples:
+			@includelineno	CxImage_Extract_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Extract_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Filter() const
+	@brief	フィルタ
+
+	@return	画像オブジェクトフィルタのオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Filter(HxModule hmask) const
+	@brief	フィルタ (マスク付き)
+
+	@param[in]		hmask		マスク
+
+	@return	画像オブジェクトフィルタのオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Scanner(int ch) const
+	@brief	２次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@param[in]		ch		チャネル指標 [0~(Channels - 1)]
+
+	@return	データ構造を２次元配列走査構造体に設定して返します。
+
+	@par	Examples:
+			@includelineno	CxImage_Scanner_01.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Scanner_01.txt
+
+			@par
+			@includelineno	CxImage_Scanner_02.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Scanner_02.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxImage::Scanner(int ch, const TxRectangleI& bounds) const
+	@brief	２次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@param[in]		ch		チャネル指標 [0~(Channels - 1)]
+	@param[in]		bounds	始点とサイズ
+
+	@return	データ構造を２次元配列走査構造体に設定して返します。
+
+	@par	Examples:
+			@includelineno	CxImage_Scanner_03.cpp
+
+			@par
+			出力結果)
+			@include	CxImage_Scanner_03.txt
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// Export
+//
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Attach	(HxModule handle, TxImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Resize	(HxModule handle, int width, int height, TxModel model, int channels, int packing_size)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Exif_Get(HxModule handle, TxExif* tag)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Exif_Set(HxModule handle, TxExif tag)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_ExifCopy(HxModule handle, TxExif tag, ExBoolean ltc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_CalcDepth	(HxModule hsrc, HxModule hmask, int ch, int* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Statistics	(HxModule hsrc, HxModule hmask, int ch, TxStatistics* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Extract	(HxModule hsrc, HxModule hmask, int ch, int sy, int sx, int length, ExScanDir dir, HxModule hresult)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Reset	(HxModule hdst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Clear	(HxModule hdst, HxModule hmask, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_ClearEx	(HxModule hdst, HxModule hmask, const void* value, TxModel model, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Cast	(HxModule hdst, HxModule hmask, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Copy	(HxModule hdst, HxModule hmask, HxModule hsrc, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_CopyEx	(HxModule hdst, HxModule hmask, HxModule hsrc, int index, int count)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_RgbToBgr	(HxModule hdst, HxModule hmask, HxModule hsrc, double scale)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Compare	(HxModule hdst, HxModule hmask, HxModule hsrc, HxModule hcmp, double error_range)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_ColorMatrix	(HxModule hdst, HxModule hmask, HxModule hsrc, HxModule hmatrix)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Affine	(HxModule hdst, HxModule hmask, HxModule hsrc, HxModule hmatrix, int interpolation)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Mirror	(HxModule hdst, HxModule hmask, HxModule hsrc, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Rotate	(HxModule hdst, HxModule hmask, HxModule hsrc, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Transpose	(HxModule hdst, HxModule hmask, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Scale	(HxModule hdst, HxModule hmask, HxModule hsrc, double sx, double sy, int interpolation)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Not	(HxModule hdst, HxModule hmask, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Math	(HxModule hdst, HxModule hmask, HxModule hsrc, ExMath mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Ope1A	(HxModule hdst, HxModule hmask, HxModule hsrc, double value, ExOpe1A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Ope1L	(HxModule hdst, HxModule hmask, HxModule hsrc, unsigned int value, ExOpe1L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Ope2A	(HxModule hdst, HxModule hmask, HxModule hsrc, HxModule hval, ExOpe2A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_FromDIB	(HxModule hdst, const void* dib)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_ToDIB	(HxModule hsrc, void* dib)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Image_Ope2L	(HxModule hdst, HxModule hmask, HxModule hsrc, HxModule hval, ExOpe2L mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

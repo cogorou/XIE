@@ -1,0 +1,123 @@
+/*!
+	@file	TxImage.h
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@internal
+	@file	TxImage.cpp
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@def	_TXIMAGE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxImage
+	@brief		画像オブジェクト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Layer
+	@brief	領域の先頭アドレス (２次元配列 × Channels) ※各チャネルが Stride×Height の連続領域であること。
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Width
+	@brief	幅 (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Height
+	@brief	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Model
+	@brief	要素モデル
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Channels
+	@brief	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Stride
+	@brief	水平方向サイズ (bytes) [0, 1~] ※要素サイズ×Width 以上。
+*/
+// ===================================================================
+/*!
+	@var	TxImage::Depth
+	@brief	ビット深度 (bits) [0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::TxImage()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::TxImage(void* addr, int width, int height, TxModel model, int stride, int depth)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (２次元配列×１チャネル) ※Stride×Height の連続領域であること。
+	@param[in]		width		幅 (pixels) [0, 1~]
+	@param[in]		height		高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		stride		水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+	@param[in]		depth		ビット深度 (bits) [既定値:0] [範囲:0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::TxImage(TxLayer layer, int width, int height, TxModel model, int channels, int stride, int depth)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		layer		領域の先頭アドレス (２次元配列×４チャネル) ※各チャネルが Stride×Height の連続領域であること。
+	@param[in]		width		幅 (pixels) [0, 1~]
+	@param[in]		height		高さ (pixels) [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		channels	チャネル数 [0, 1~XIE_IMAGE_CHANNELS_MAX]
+	@param[in]		stride		水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+	@param[in]		depth		ビット深度 (bits) [既定値:0] [範囲:0, 1~64]
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::operator == (const TxImage& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxImage::operator != (const TxImage& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+}

@@ -1,0 +1,39 @@
+/*!
+	@file	IxDisposable.h
+	@brief	オブジェクトの内部リソースを解放するインターフェース
+*/
+/*!
+	@def	_IXDISPOSABLE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxDisposable
+	@brief		オブジェクトの内部リソースを解放するインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxDisposable::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放する処理を実装してください。
+*/
+// ===================================================================
+/*!
+	@fn		IxDisposable::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			内部リソースの有効性を検査する処理を実装してください。
+*/
+
+}

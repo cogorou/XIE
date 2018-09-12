@@ -1,0 +1,282 @@
+/*!
+	@internal
+	@file	IxFilePlugin.h
+	@brief	ファイル入出力プラグインインターフェース
+*/
+/*!
+	@internal
+	@def	_IXFILEPLUGIN_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxFilePluginJpeg
+	@brief		ファイル入出力プラグインインターフェース (JPEG 関連)
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::OpenA	(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::OpenW	(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::Close	(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::Check	(TxImageSize* image_size, void* handle, bool unpack)
+	@brief	画像サイズの確認
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::Load	(HxModule hdst, void* handle, bool unpack)
+	@brief	画像ファイルの読み込み
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		handle		ハンドル（ファイルディスクリプタ）
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginJpeg::Save	(HxModule hsrc, void* handle, int quality)
+	@brief	画像ファイルへの保存
+
+	@param[in]	hsrc		画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	quality		品質 [0~100] ※数値が高い方が高品質です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxFilePluginPng
+	@brief		ファイル入出力プラグインインターフェース (PNG 関連)
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::OpenA	(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::OpenW	(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::Close	(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::Check	(TxImageSize* image_size, void* handle, bool unpack)
+	@brief	画像サイズの確認
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::Load	(HxModule hdst, void* handle, bool unpack)
+	@brief	画像ファイルの読み込み
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		handle		ハンドル（ファイルディスクリプタ）
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginPng::Save	(HxModule hsrc, void* handle, int level)
+	@brief	画像ファイルへの保存
+
+	@param[in]	hsrc		画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxFilePluginTiff
+	@brief		ファイル入出力プラグインインターフェース (TIFF 関連)
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::OpenA	(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（TIFF 構造体へのポインタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::OpenW	(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（TIFF 構造体へのポインタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::Close	(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::Check	(TxImageSize* image_size, void* handle, bool unpack)
+	@brief	画像サイズの確認
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	handle		ハンドル（TIFF 構造体へのポインタ）
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::Load	(HxModule hdst, void* handle, bool unpack)
+	@brief	画像ファイルの読み込み
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		handle		ハンドル（TIFF 構造体へのポインタ）
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@fn		IxFilePluginTiff::Save	(HxModule hsrc, void* handle, int level)
+	@brief	画像ファイルへの保存
+
+	@param[in]	hsrc		画像サイズ
+	@param[in]	handle		ハンドル（TIFF 構造体へのポインタ）
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+
+}

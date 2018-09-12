@@ -1,0 +1,15 @@
+// =================================================================
+/*!
+	@page	page_Tutorial	チュートリアル
+
+	ここでは XIE を使用したアプリケーション開発方法について説明します。\n
+	使用する機能の詳細についてはリファレンスマニュアルをご参照ください。\n
+	C/C++ 版のリファレンスは、本書の <a href="modules.html">Modules</a> 配下にあります。\n
+	.NET 版のリファレンスは、別冊の XIE-cli.chm をご参照ください。\n
+
+	@par	目次:
+			- @subpage	page_Tutorial_CS	"Visual C#"
+			- @subpage	page_Tutorial_VC	"Visual C++"
+			- @subpage	page_Tutorial_GCC	"GNU C++"
+			.
+*/

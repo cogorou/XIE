@@ -1,0 +1,62 @@
+/*!
+	@file	CxDSScreenCaptureFilter.h
+	@brief	スクリーンキャプチャークラス
+*/
+/*!
+	@internal
+	@file	CxDSScreenCaptureFilter.cpp
+	@brief	スクリーンキャプチャークラス
+*/
+
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Internals
+	@class		CxDSScreenCaptureFilter
+	@brief		スクリーンキャプチャークラス
+*/
+// ===================================================================
+/*!
+	@internal
+	@var	CxDSScreenCaptureFilter::m_pPin
+	@brief	出力ピン
+*/
+// ===================================================================
+/*!
+	@internal
+	@fn		CxDSScreenCaptureFilter::CxDSScreenCaptureFilter(IUnknown pUnk, HRESULT* phr)
+	@brief	コンストラクタ
+
+	@param[in]		pUnk		このオブジェクトのオーナーへのポインタ
+	@param[out]		phr			結果 (無視されます。)
+*/
+// ===================================================================
+/*!
+	@internal
+	@fn		CxDSScreenCaptureFilter::~CxDSScreenCaptureFilter()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCaptureFilter::CreateInstance(IUnknown pUnk, HRESULT* phr)
+	@brief	インスタンスの生成
+
+	@param[in]		pUnk		このオブジェクトのオーナーへのポインタ
+	@param[out]		phr			結果 (無視されます。)
+
+	@return	生成したインスタンスを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCaptureFilter::GetMiscFlags()
+	@brief	フィルタタイプの取得
+
+	@return	常に AM_FILTER_MISC_FLAGS_IS_SOURCE を返します。
+*/
+
+}
+}

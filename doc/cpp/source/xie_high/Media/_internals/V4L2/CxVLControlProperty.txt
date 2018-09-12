@@ -1,0 +1,280 @@
+/*!
+	@file	CxVLControlProperty.h
+	@brief	制御プロパティクラス
+*/
+/*!
+	@internal
+	@file	CxVLControlProperty.cpp
+	@brief	制御プロパティクラス
+*/
+#ifndef _MSC_VER
+
+/*!
+	@def	_CXVLCONTROLPROPERTY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxVLControlProperty
+	@brief		制御プロパティクラス
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::m_Controller
+	@brief	コントローラ
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::m_Name
+	@brief	プロパティ名称
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::CxVLControlProperty()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::CxVLControlProperty(HxModule controller, TxCharCPtrA name)
+	@brief	コンストラクタ
+
+	@param[in]		controller		コントローラ
+	@param[in]		name			プロパティ名称
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::CxVLControlProperty(const CxVLControlProperty& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::~CxVLControlProperty()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::operator = ( const CxVLControlProperty& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::operator == ( const CxVLControlProperty& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::operator != ( const CxVLControlProperty& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::Controller() const
+	@brief	コントローラの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::Controller(HxModule value)
+	@brief	コントローラの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::Name() const
+	@brief	プロパティ名の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::Name(TxCharCPtrA value)
+	@brief	プロパティ名の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::IsSupported() const
+	@brief	対応状況の検査
+
+	@return	コントローラが指定のプロパティをサポートしているか否かを検査します。
+			サポートしている場合は true を返します。
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::GetRange() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::GetStep() const
+	@brief	ステップサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::GetDefault() const
+	@brief	既定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::GetFlags() const
+	@brief	制御方法を示すフラグの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::SetFlags(int value)
+	@brief	制御方法を示すフラグの設定
+
+	@param[in]		value		設定値 [1:自動、2:手動]
+
+	@remarks
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::GetValue() const
+	@brief	設定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLControlProperty::SetValue(int value, bool relative)
+	@brief	設定値の設定
+
+	@param[in]		value		設定値
+	@param[in]		relative	設定値が相対値であるか否か
+*/
+
+/*
+class XIE_EXPORT_CLASS CxVLControlProperty : public CxModule
+	, public IxDisposable
+	, public IxEquatable
+{
+protected:
+	HxModule m_Controller;
+	CxString m_Name;
+
+private:
+	void _Constructor();
+
+public:
+	CxVLControlProperty();
+	CxVLControlProperty(HxModule controller, TxCharCPtrA name);
+	CxVLControlProperty(const CxVLControlProperty& src);
+	virtual ~CxVLControlProperty();
+
+	CxVLControlProperty& operator = ( const CxVLControlProperty& src );
+	bool operator == ( const CxVLControlProperty& src ) const;
+	bool operator != ( const CxVLControlProperty& src ) const;
+
+public:
+	// IxDisposable
+	virtual void Dispose();
+	virtual bool IsValid() const;
+
+	// IxEquatable
+	virtual void CopyFrom(const IxModule& src);
+	virtual bool ContentEquals(const IxModule& src) const;
+
+public:
+	virtual HxModule Controller() const;
+	virtual void Controller(HxModule value);
+
+	virtual TxCharCPtrA Name() const;
+	virtual void Name(TxCharCPtrA value);
+
+public:
+	virtual bool IsSupported() const;
+	virtual TxRangeI GetRange() const;
+	virtual int GetStep() const;
+	virtual int GetDefault() const;
+	virtual int GetFlags() const;
+	virtual void SetFlags(int value);
+	virtual int GetValue() const;
+	virtual void SetValue(int value, bool relative);
+};
+*/
+
+}
+}
+
+#endif

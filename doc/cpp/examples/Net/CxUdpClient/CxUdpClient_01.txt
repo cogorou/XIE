@@ -1,0 +1,5 @@
+User::CxUdpClient_01
+[1] client1.Write()
+[1] client1.Write returned 12. [Hola, mundo!]
+[2] client2.Read()
+[2] client2.Read returned 12. [Hola, mundo!] (Port=5001)

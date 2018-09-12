@@ -1,0 +1,75 @@
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Interfaces
+	@struct		IxDSScreenCapturePin
+	@brief		スクリーンキャプチャインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::Setup(RECT rect)
+	@brief	初期化
+
+	@param[in]		rect		キャプチャ範囲
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::GetDC(HDC* hDC)
+	@brief	デバイスコンテキストの取得
+
+	@param[out]		hDC		デバイスコンテキスト
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::GetWindowRect(RECT* rect)
+	@brief	ウィンドウの位置とサイズの取得
+
+	@param[out]		rect	ウィンドウの位置とサイズ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::GetFrameSize(int* width, int* height)
+	@brief	フレームサイズの取得
+
+	@param[out]		width		幅 [0~]
+	@param[out]		height		高さ [0~]
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::SetFrameRate(int value)
+	@brief	フレームレートの設定
+
+	@param[in]		value		値 [1~] (単位:fps)
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		IxDSScreenCapturePin::GetFrameRate(int* value)
+	@brief	フレームレートの取得
+
+	@param[out]		value		値 [1~] (単位:fps)
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+
+}
+}

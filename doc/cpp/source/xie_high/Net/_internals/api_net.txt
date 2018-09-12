@@ -1,0 +1,81 @@
+/*!
+	@internal
+	@file		api_net.h
+	@brief		ネットワーク関連の内部定義
+*/
+/*!
+	@internal
+	@file		api_net.cpp
+	@brief		ネットワーク関連の内部定義
+*/
+/*!
+	@def	_API_NET_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+// ===================================================================
+/*!
+	@def	CLOSE_SOCKET(sock)
+	@brief	ソケットのクローズ
+
+	@remarks
+			Windows 版では closesocket を使用します。\n
+			Linux 版では close を使用します。\n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@typedef	socklen_t
+	@brief		ソケットの型
+
+	@remarks
+			Windows 版でのみ定義します。\n
+*/
+#else
+// ===================================================================
+/*!
+	@def		INVALID_SOCKET
+	@brief		無効なソケット
+
+	@remarks
+			Linux 版でのみ定義します。\n
+*/
+#endif
+
+namespace xie
+{
+namespace Net
+{
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Net_Internals
+	@fn			fnPRV_Net_Setup()
+	@brief		初期化
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Net_Internals
+	@fn			fnPRV_Net_TearDown()
+	@brief		解放
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Net_Internals
+	@fn			fnPRV_IPEndPoint_FromSockAddr(const sockaddr_in& src)
+	@brief		sockaddr_in からの変換 
+
+	@return	TxIPEndPoint 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Net_Internals
+	@fn			fnPRV_IPEndPoint_ToSockAddr(const TxIPEndPoint& src)
+	@brief		sockaddr_in への変換 
+
+	@return	sockaddr_in 構造体に格納して返します。
+*/
+}
+}

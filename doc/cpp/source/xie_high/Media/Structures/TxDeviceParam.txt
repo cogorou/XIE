@@ -1,0 +1,76 @@
+/*!
+	@file	TxDeviceParam.h
+	@brief	デバイスパラメータ構造体
+*/
+/*!
+	@internal
+	@file	TxDeviceParam.cpp
+	@brief	デバイスパラメータ構造体
+*/
+/*!
+	@def	_TXDEVICEPARAM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Structures
+	@struct		TxDeviceParam
+	@brief		デバイスパラメータ構造体
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceParam::Name
+	@brief	デバイス名称
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceParam::Index
+	@brief	デバイス指標 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceParam::Pin
+	@brief	ピン番号 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceParam::Width
+	@brief	フレームの幅
+*/
+// ===================================================================
+/*!
+	@var	TxDeviceParam::Height
+	@brief	フレームの高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceParam::TxDeviceParam()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceParam::TxDeviceParam(char* name, int index, int pin, int width, int height)
+	@brief	コンストラクタ
+
+	@param[in]		name		デバイス名称
+	@param[in]		index		デバイス指標 [0~]
+	@param[in]		pin			ピン番号 [0~]
+	@param[in]		width		フレームの幅
+	@param[in]		height		フレームの高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxDeviceParam::Default()
+	@brief	既定値
+
+	@return	既定値で初期化した構造体を返します。
+*/
+
+}
+}

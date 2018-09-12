@@ -1,0 +1,293 @@
+namespace fie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiAnchorStyle
+	@brief		アンカースタイル
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Arrow</td>
+		<td>(＞) 矢印</td>
+		</tr>
+	<tr>
+		<td>Cross</td>
+		<td>(＋) 十字</td>
+		</tr>
+	<tr>
+		<td>Diagcross</td>
+		<td>(×) Ｘマーク</td>
+		</tr>
+	<tr>
+		<td>Diamond</td>
+		<td>(◇) 菱形</td>
+		</tr>
+	<tr>
+		<td>Rectangle</td>
+		<td>(□) 矩形</td>
+		</tr>
+	<tr>
+		<td>Triangle</td>
+		<td>(▽) 三角</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiBrushStyle
+	@brief		ブラシスタイル
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Solid</td>
+		<td>塗り潰し</td>
+		</tr>
+	<tr>
+		<td>Cross</td>
+		<td>(＋) 十字</td>
+		</tr>
+	<tr>
+		<td>Diagcross</td>
+		<td>(×) Ｘマーク</td>
+		</tr>
+	<tr>
+		<td>Horizontal</td>
+		<td>(─) 水平線</td>
+		</tr>
+	<tr>
+		<td>Vertical</td>
+		<td>(｜) 垂直線</td>
+		</tr>
+	<tr>
+		<td>Diagonal</td>
+		<td>(／) 斜め線(右上がり)</td>
+		</tr>
+	<tr>
+		<td>DiagonalB</td>
+		<td>(＼) 斜め線(右下がり)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiEventType
+	@brief		イベント種別
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>KeyDown</td>
+		<td>キーボードが押下されたことを示します。</td>
+		</tr>
+	<tr>
+		<td>KeyUp</td>
+		<td>キーボードが押下解除されたことを示します。</td>
+		</tr>
+	<tr>
+		<td>MouseDown</td>
+		<td>マウスボタンが押下されたことを示します。</td>
+		</tr>
+	<tr>
+		<td>MouseUp</td>
+		<td>マウスボタンが押下解除されたことを示します。</td>
+		</tr>
+	<tr>
+		<td>MouseDoubleClick</td>
+		<td>マウスボタンがダブルクリックされたことを示します。</td>
+		</tr>
+	<tr>
+		<td>MouseWheel</td>
+		<td>マウスホイールが操作されたことを示します。</td>
+		</tr>
+	<tr>
+		<td>MouseMove</td>
+		<td>マウスポインタが移動したことを示します。</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiPenStyle
+	@brief		ペンスタイル
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Solid</td>
+		<td>実線 (────)</td>
+		</tr>
+	<tr>
+		<td>Dot</td>
+		<td>点線 (・・・・)</td>
+		</tr>
+	<tr>
+		<td>Dash</td>
+		<td>破線 (─ ─ ─)</td>
+		</tr>
+	<tr>
+		<td>DashDot</td>
+		<td>一点破線 (─・─)</td>
+		</tr>
+	<tr>
+		<td>DashDotDot</td>
+		<td>二点破線 (─・・─)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiScalingMode
+	@brief		スケーリングモード
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>スケーリングしない。</td>
+		</tr>
+	<tr>
+		<td>Center</td>
+		<td>スケーリングする。(画素の中心を 0 とする。左上 -0.5、右下 +0.5 とする。)</td>
+		</tr>
+	<tr>
+		<td>TopLeft</td>
+		<td>スケーリングする。(画素の左上を 0 とする。右下を 1 とする。)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExGdiTextAlign
+	@brief		テキスト配置
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>TopLeft</td>
+		<td>上辺(左端)</td>
+		</tr>
+	<tr>
+		<td>TopRight</td>
+		<td>上辺(右端)</td>
+		</tr>
+	<tr>
+		<td>TopCenter</td>
+		<td>上辺(中央)</td>
+		</tr>
+	<tr>
+		<td>BottomLeft</td>
+		<td>下辺(左端)</td>
+		</tr>
+	<tr>
+		<td>BottomRight</td>
+		<td>下辺(右端)</td>
+		</tr>
+	<tr>
+		<td>BottomCenter</td>
+		<td>下辺(中央)</td>
+		</tr>
+	<tr>
+		<td>BaselineLeft</td>
+		<td>ベースライン(左端)</td>
+		</tr>
+	<tr>
+		<td>BaselineRight</td>
+		<td>ベースライン(右端)</td>
+		</tr>
+	<tr>
+		<td>BaselineCenter</td>
+		<td>ベースライン(中央)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Enumerations
+	@enum		ExMouseButton
+	@brief		マウスボタン種別
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>なし</td>
+		</tr>
+	<tr>
+		<td>Left</td>
+		<td>マウスの左ボタン</td>
+		</tr>
+	<tr>
+		<td>Right</td>
+		<td>マウスの右ボタン</td>
+		</tr>
+	<tr>
+		<td>Middle</td>
+		<td>マウスの中ボタン</td>
+		</tr>
+	<tr>
+		<td>X1</td>
+		<td>マウスの X1 ボタン</td>
+		</tr>
+	<tr>
+		<td>X2</td>
+		<td>マウスの X2 ボタン</td>
+		</tr>
+	</table>
+*/
+
+}
+}

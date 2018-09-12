@@ -1,0 +1,114 @@
+/*!
+	@file	AxiGDIDiagnostics.h
+	@brief	表示関連 (診断ツール)
+*/
+/*!
+	@file	AxiGDIDiagnostics.cpp
+	@brief	表示関連 (診断ツール)
+*/
+/*!
+	@def	_AXIGDIDIAGNOSTICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiScalingMode value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiAnchorStyle value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiBrushStyle value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiPenStyle value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiTextAlign value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_GDI_Diagnostics
+	@fn			ToString(xie::GDI::ExGdiRectPosition value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+}
+}

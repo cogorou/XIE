@@ -1,0 +1,1131 @@
+/*!
+	@file	CxMatrixFilter.h
+	@brief	行列オブジェクトフィルタ
+*/
+/*!
+	@internal
+	@file	CxMatrixFilter.cpp
+	@brief	行列オブジェクトフィルタ
+*/
+/*!
+	@def	_CXMATRIXFILTER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxMatrixFilter
+	@brief		行列オブジェクトフィルタ
+
+	このクラスは、行列オブジェクトを加工する機能を集約しています。\n
+	通常は、出力先となるカーネルオブジェクトの Filter メソッドを介してこのクラスのインスタンスを生成し、
+	各メソッドを実行します。\n
+
+	各メソッドは、@ref hDst メンバフィールドに設定されたオブジェクトを加工することを意味します。
+
+	@par	Examples:
+@code
+	CxMatrix src(3, 1);
+	CxMatrix val(1, 3);
+	CxMatrix dst;
+
+	// src,val の初期化.
+	// :
+
+	// dst の加工.
+	dst.Filter().Mul(src, val);
+@endcode
+	@par
+
+	@sa
+		@ref CxMatrix \n
+		@ref CxMatrix::Filter() \n
+*/
+// ===================================================================
+/*!
+	@var	CxMatrixFilter::hDst
+	@brief	出力先のオブジェクト
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::CxMatrixFilter()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::CxMatrixFilter(HxModule hdst)
+	@brief	コンストラクタ
+
+	@param[in]		hdst	出力先のオブジェクト
+
+	@sa
+		@ref hDst \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::CxMatrixFilter(const CxMatrixFilter& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@sa
+		@ref operator=(const CxMatrixFilter &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::~CxMatrixFilter()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::operator = ( const CxMatrixFilter& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::operator == ( const CxMatrixFilter& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::operator != ( const CxMatrixFilter& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Cast(HxModule hsrc)
+	@brief	代入 (キャスト)
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			各要素の値を代入します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size が一致していること。
+				-	入出力の Model.Size が一致していること。
+				-	入出力の Model.Pack が一致していること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Copy(HxModule hsrc)
+	@brief	代入
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			各要素の値を代入します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size が一致していること。
+				-	入出力の Model が下表１の条件を満たすこと。\n
+				.
+				\n
+
+			@par
+			表１) 入出力の要素モデルとチャネル数の条件
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">出力</td>
+				<td class="indexkey">入力</td>
+				<td class="indexkey" ROWSPAN=2>備考</td>
+				</tr>
+			<tr>
+				<td class="indexkey">Pack</td>
+				<td class="indexkey">Pack</td>
+				</tr>
+			<tr>
+				<td>*</td>
+				<td>1</td>
+				<td>出力の全フィールドに入力の 0 フィールドを適用する。</td>
+				</tr>
+			<tr>
+				<td>N</td>
+				<td>N</td>
+				<td>出力の各フィールドに入力の各フィールドを適用する。</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Compare(HxModule hsrc, HxModule hcmp, double error_range)
+	@brief	比較
+
+	@param[in]		hsrc			比較対象(左辺値)
+	@param[in]		hcmp			比較対象(右辺値)
+	@param[in]		error_range		誤差範囲 \n
+									※各要素の差が ±error_range 以内の場合は一致と判断します。 \n
+
+	@remarks
+			各要素の値を比較して出力先のオブジェクトに格納します。\n
+			一致する要素は 0 、一致しない要素は 1 が格納されます。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (src<sub>y,x</sub> == cmp<sub>y,x</sub>) ? 0 : 1 \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				-	出力の Model.Type が ExType (U8) であること。\n
+				.
+				\n
+
+			@par
+			要素モデルのパック数に応じた処理: \n
+				-	入出力のパック数が少ない方で巡回して処理する。
+				-	入力が 1 パック場合は、出力の全フィールドへ書き込む。
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mirror(HxModule hsrc, int mode)
+	@brief	ミラー反転
+
+	@param[in]		hsrc			入力
+	@param[in]		mode			処理モード [1:X方向、2:Y方向、3:XY方向]
+
+	@remarks
+			入力の各要素の座標をミラー反転し、各要素の値を出力先のオブジェクトに格納します。\n
+			引数の @a mode によって 出力先の座標 (dx,dy) が異なります。\n
+
+			@par
+			式) dst<sub>dy,dx</sub> = src<sub>y,x</sub> \n
+			\n
+			mode = 1) dy = y; dx = src.Columns - x - 1; \n
+			mode = 2) dx = x; dy = src.Rows - y - 1; \n
+			mode = 3) dx = src.Columns - x - 1; dy = src.Rows - y - 1; \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Rotate(HxModule hsrc, int mode)
+	@brief	回転
+
+	@param[in]		hsrc			入力
+	@param[in]		mode			処理モード [-1:-90度、+1:+90度、+2:180度]
+
+	@remarks
+			入力の各要素の座標を回転し、各要素の値を出力先のオブジェクトに格納します。\n
+			引数の @a mode によって 出力先の座標 (dx,dy) が異なります。\n
+
+			@par
+			式) dst<sub>dy,dx</sub> = src<sub>y,x</sub> \n
+			\n
+			mode = -1) dx = y; dy = src.Columns - x - 1; \n
+			mode = +1) dy = x; dx = src.Rows - y - 1; \n
+			mode = +2) dx = src.Columns - x - 1; dy = src.Rows - y - 1; \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size が下記の条件で一致すること。
+					- mode = -1 : src.Columns == dst.Rows 且つ src.Rows == dst.Columns \n
+					- mode = +1 : src.Columns == dst.Rows 且つ src.Rows == dst.Columns \n
+					- mode = +2 : src.Size == dst.Size \n
+					.
+					\n
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				-	出力の Model が入力と同一であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Transpose(HxModule hsrc)
+	@brief	転置
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の各要素の座標を転置し、各要素の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x,y</sub> = src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入力の Columns と 出力の Rows が一致すること。
+				-	入力の Rows と 出力の Columns が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				-	出力の Model が入力と同一であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Math(HxModule hsrc, ExMath type)
+	@brief	数理関数
+
+	@param[in]		hsrc			入力
+	@param[in]		type			種別
+
+	@remarks
+			入力の各要素を指定の数理関数で計算して、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = f( src<sub>y,x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Not(HxModule hsrc)
+	@brief	反転
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の各要素を反転して、出力先のオブジェクトに格納します。\n
+			符号なしの整数の場合はビット反転します。それ以外は符号反転します。\n
+
+			@par
+			<b>符号なし整数の場合)</b> \n
+			式１) dst<sub>y,x</sub> = ~ src<sub>y,x</sub> \n
+			\n
+
+			@par
+			<b>符号付き整数または実数の場合)</b> \n
+			式２) dst<sub>y,x</sub> = -1 * src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Add(HxModule hsrc, HxModule hval)
+	@brief	加算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の加算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> + val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Add(HxModule hsrc, double value)
+	@brief	加算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の加算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> + value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mul(HxModule hsrc, HxModule hval)
+	@brief	乗算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の乗算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> * val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mul(HxModule hsrc, double value)
+	@brief	乗算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の乗算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> * value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Sub(HxModule hsrc, HxModule hval)
+	@brief	減算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> - val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Sub(HxModule hsrc, double value)
+	@brief	減算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> - value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Sub(double value, HxModule hsrc)
+	@brief	減算
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = value - src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Div(HxModule hsrc, HxModule hval)
+	@brief	除算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> / val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Div(HxModule hsrc, double value)
+	@brief	除算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> / value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Div(double value, HxModule hsrc)
+	@brief	除算
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = value / src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mod(HxModule hsrc, HxModule hval)
+	@brief	剰余
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> % val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mod(HxModule hsrc, double value)
+	@brief	剰余
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = src<sub>y,x</sub> % value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Mod(double value, HxModule hsrc)
+	@brief	剰余
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = value % src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Pow(HxModule hsrc, HxModule hval)
+	@brief	累乗
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = pow( src<sub>y,x</sub> , val<sub>y,x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Pow(HxModule hsrc, double value)
+	@brief	累乗
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = pow( src<sub>y,x</sub> , value ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Pow(double value, HxModule hsrc)
+	@brief	累乗
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = pow( value , src<sub>y,x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Atan2(HxModule hsrc, HxModule hval)
+	@brief	逆正接
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = atan2( src<sub>y,x</sub> , val<sub>y,x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Atan2(HxModule hsrc, double value)
+	@brief	逆正接
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = atan2( src<sub>y,x</sub> , value ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Atan2(double value, HxModule hsrc)
+	@brief	逆正接
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = atan2( value , src<sub>y,x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Diff(HxModule hsrc, HxModule hval)
+	@brief	差分
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の差分を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = | src<sub>y,x</sub> - val<sub>y,x</sub> | \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Diff(HxModule hsrc, double value)
+	@brief	差分
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の差分を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = | src<sub>y,x</sub> - value | \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Max(HxModule hsrc, HxModule hval)
+	@brief	比較演算(大なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の比較演算を行い大きい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (src<sub>y,x</sub> &gt; val<sub>y,x</sub>) ? src<sub>y,x</sub> : val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Max(HxModule hsrc, double value)
+	@brief	比較演算(大なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の比較演算を行い大きい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (src<sub>y,x</sub> &gt; value) ? src<sub>y,x</sub> : value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Min(HxModule hsrc, HxModule hval)
+	@brief	比較演算(小なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の比較演算を行い小さい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (src<sub>y,x</sub> &lt; val<sub>y,x</sub>) ? src<sub>y,x</sub> : val<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Min(HxModule hsrc, double value)
+	@brief	比較演算(小なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の比較演算を行い小さい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (src<sub>y,x</sub> &lt; value) ? src<sub>y,x</sub> : value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+*/
+// ===================================================================
+/*-
+	@fn		CxMatrixFilter::Triu(HxModule hsrc)
+	@brief	上三角成分の抽出
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の上三角成分を抽出して、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (x &lt; y) ? 0 : src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入出力の Model が TxModel::F64(1) であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*-
+	@fn		CxMatrixFilter::Tril(HxModule hsrc)
+	@brief	下三角成分の抽出
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の下三角成分を抽出して、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = (x &gt; y) ? 0 : src<sub>y,x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Size, Model が一致すること。
+				-	入出力の Model が TxModel::F64(1) であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Invert(HxModule hsrc)
+	@brief	逆行列の算出
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の逆行列(src<sup>-1</sup>)を算出して、出力先のオブジェクトに格納します。\n
+
+			@par
+			<b>1x1 の場合)</b> \n
+			式１) dst<sub>0,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) \n
+			\n
+
+			@par
+			<b>2x2 の場合)</b> \n
+			式２-1) dst<sub>0,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * src<sub>1,1</sub> \n
+			式２-2) dst<sub>1,1</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * src<sub>0,0</sub> \n
+			式２-3) dst<sub>0,1</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * src<sub>0,1</sub> \n
+			式２-4) dst<sub>1,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * src<sub>1,0</sub> \n
+			\n
+
+			@par
+			<b>3x3 の場合)</b> \n
+			式３-1) dst<sub>0,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>1,1</sub> * src<sub>2,2</sub> - src<sub>1,2</sub> * src<sub>2,1</sub>) \n
+			式３-2) dst<sub>0,1</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,2</sub> * src<sub>2,1</sub> - src<sub>0,1</sub> * src<sub>2,2</sub>) \n
+			式３-3) dst<sub>0,2</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,1</sub> * src<sub>1,2</sub> - src<sub>0,2</sub> * src<sub>1,1</sub>) \n
+			\n
+			式３-4) dst<sub>1,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>1,2</sub> * src<sub>2,0</sub> - src<sub>1,0</sub> * src<sub>2,2</sub>) \n
+			式３-5) dst<sub>1,1</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,0</sub> * src<sub>2,2</sub> - src<sub>0,2</sub> * src<sub>2,0</sub>) \n
+			式３-6) dst<sub>1,2</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,2</sub> * src<sub>1,0</sub> - src<sub>0,0</sub> * src<sub>1,2</sub>) \n
+			\n
+			式３-7) dst<sub>2,0</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>1,0</sub> * src<sub>2,1</sub> - src<sub>1,1</sub> * src<sub>2,0</sub>) \n
+			式３-8) dst<sub>2,1</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,1</sub> * src<sub>2,0</sub> - src<sub>0,0</sub> * src<sub>2,1</sub>) \n
+			式３-9) dst<sub>2,2</sub> = (<sup>1</sup>/<sub>det(src)</sub>) * (src<sub>0,0</sub> * src<sub>1,1</sub> - src<sub>0,1</sub> * src<sub>1,0</sub>) \n
+			\n
+
+			@par
+			<b>4x4 の場合)</b> \n
+			式４-1) sm = submatrix(src, y, x) \n
+			式４-2) dst<sub>x,y</sub> = ((-1)<sup>(y+x)</sup> * det(sm)) * (<sup>1</sup>/<sub>det(src)</sub>) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入力の行列式が算出可能であること。\n
+				-	入出力の Size が一致すること。
+				-	入出力の 行列数 が以下の何れかであること。\n
+					-	1x1
+					-	2x2
+					-	3x3
+					-	4x4
+				-	入出力の Model が TxModel::F64(1) であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Submatrix(HxModule hsrc, int row, int col)
+	@brief	小行列の抽出
+
+	@param[in]		hsrc			入力
+	@param[in]		row				除外する行を示す指標 [0~(src.Rows-1)]
+	@param[in]		col				除外する列を示す指標 [0~(src.Columns-1)]
+
+	@remarks
+			入力の小行列を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>r,c</sub> = src<sub>y,x</sub> \n
+			\n
+			※ r = 	(y &lt; row) ? y : (y+1) \n
+			※ c = 	(x &lt; col) ? x : (x+1) \n
+
+			@par
+			処理可能な条件:
+				-	出力の Rows が入力の Rows-1 と一致すること。
+				-	出力の Columns が入力の Columns-1 と一致すること。
+				-	入出力の Model が TxModel::F64(1) であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrixFilter::Product(HxModule hsrc, HxModule hval)
+	@brief	行列の積
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力行列の積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			処理可能な条件:
+				-	出力の行数(Rows)が入力(左辺値)の行数(Rows)と一致すること。
+				-	出力の列数(Columns)が入力(右辺値)の列数(Columns)と一致すること。
+				-	入出力の Model が TxModel::F64(1) であること。\n
+				.
+				\n
+*/
+
+}

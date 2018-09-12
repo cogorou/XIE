@@ -1,0 +1,3 @@
+User::CxImage_Attach_01
+src   = 0028B940,4,3,U8(1),3,4,false
+child = 0028B940,4,3,U8(1),3,4,true

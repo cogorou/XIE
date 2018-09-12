@@ -1,0 +1,75 @@
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Interfaces
+	@struct		ISampleGrabber
+	@brief		サンプルグラバーインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::SetOneShot(BOOL OneShot)
+	@brief	ワンショットモードの設定
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::SetMediaType(const AM_MEDIA_TYPE *pType)
+	@brief	メディアタイプの設定
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::GetConnectedMediaType(AM_MEDIA_TYPE *pType)
+	@brief	接続されているメディアタイプの取得
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::SetBufferSamples(BOOL BufferThem)
+	@brief	サンプルをバッファにコピーするか否かの指定
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::GetCurrentBuffer(LONG *pBufferSize, LONG *pBuffer)
+	@brief	最新のサンプルの複製の取得
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::GetCurrentSample(IMediaSample **ppSample)
+	@brief	最新のサンプルの複製の取得 (未実装)
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::SetCallback(ISampleGrabberCB *pCallback, LONG WhichMethodToCallback)
+	@brief	コールバッククラスの設定
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		ISampleGrabber::~ISampleGrabber()
+	@brief	デストラクタ
+*/
+
+}
+}

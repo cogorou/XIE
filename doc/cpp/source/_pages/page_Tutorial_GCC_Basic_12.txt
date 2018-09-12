@@ -1,0 +1,104 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_12	単純な GUI アプリケーション
+
+	ここでは、GUI アプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_GCC_Basic_12_1	"main と Makefile の作成"
+			- @subpage	page_Tutorial_GCC_Basic_12_2	"ウィンドウの生成"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ main.cpp             … エントリポイント
+├ Makefile
+├ test.cpp             … ウィンドウ生成と表示処理
+├ TestFiles
+│├ bird.jpg           … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、ウィンドウに表示する処理です。\n
+			
+			@par
+			表示結果) \n
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="left">@image html Tutorial_GCC_Basic_12_window.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_12_1	main と Makefile の作成
+
+	まずは、エントリポイント (main.cpp) を作成します。\n
+
+	※注1) 下記 main.cpp 中の test() 関数は、後述の "ウィンドウの生成" で説明します。\n
+
+	@includelineno		Tutorial_GCC_Basic_12_main.cpp
+
+	<hr>
+
+	続いて、Makefile を作成します。\n
+
+	※注1) 下記 Makefile 中の PREFIX 変数 及び XIE_TOP 変数の部分は実際の環境に合わせて適宜書き直してください。\n
+	※注2) コンパイル対象のソースファイルに指定している test.cpp は後述の "ウィンドウの生成" で説明します。\n
+
+	@includelineno		Tutorial_GCC_Basic_12_Makefile.txt
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_12_2	ウィンドウの生成
+
+	ウィンドウ生成処理を作成します。\n
+	コード量が多いので前述のエントリポイント (main.cpp) とは
+	別ファイルの test.cpp に記述します。
+
+	@includelineno		Tutorial_GCC_Basic_12_test.cpp
+
+	<hr>
+
+	上記 1~5 の実装内容を下記に示します。
+
+	-# 変数宣言 \n
+		\n
+		@includelineno		Tutorial_GCC_Basic_12_test_1.cpp
+		\n
+	-# 接続 \n
+		X ディスプレイサーバーのオープンとビジュアル情報の取得を行います。\n
+		この時、X ウィンドウが起動している必要があります。
+		XOpenDisplay を２段回に行っていますが、
+		これは ssh 等でリモートから実行する場合を考慮している為です。
+		何れにしても X ウィンドウが起動している環境にウィンドウが表示されます。\n
+		\n
+		@includelineno		Tutorial_GCC_Basic_12_test_2.cpp
+		\n
+	-# ウィンドウ作成 \n
+		ウィンドウを生成して起動します。\n
+		\n
+		@includelineno		Tutorial_GCC_Basic_12_test_3.cpp
+		\n
+	-# イベント待機 \n
+		ウィンドウが表示されている間のイベント処理です。\n
+		- Expose \n
+			再描画イベントです。
+			このイベントを受け取ったときに描画処理を行います。
+			描画処理の中の 4) overlay の部分は参考処理です。目的に応じて書き換えてください。\n
+		- ConfigureNotify \n
+			サイズ変更イベントです。
+			この中で現在のウィンドウサイズを取得して保管します。その後、Expose が発生します。\n
+		- KeyPress \n
+			キーボードイベントです。\n
+			この例ではキーボードが押下されるとウィンドウを終了しています。\n
+		.
+		\n
+		@includelineno		Tutorial_GCC_Basic_12_test_4.cpp
+		\n
+	-# 解放 \n
+		\n
+		@includelineno		Tutorial_GCC_Basic_12_test_5.cpp
+	.
+*/

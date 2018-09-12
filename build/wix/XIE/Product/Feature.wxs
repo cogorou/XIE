@@ -1,0 +1,8 @@
+<Include>
+	<ComponentRef Id="README.TXT" />
+	<ComponentRef Id="AZUKI_LICENSE.TXT" />
+	<ComponentRef Id="LIBJPEG_README.TXT" />
+	<ComponentRef Id="LIBPNG_LICENSE.TXT" />
+	<ComponentRef Id="LIBTIFF_COPYRIGHT.TXT" />
+	<ComponentRef Id="ZLIB_README.TXT" />
+</Include>

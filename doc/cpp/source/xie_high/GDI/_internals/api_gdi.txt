@@ -1,0 +1,494 @@
+/*!
+	@internal
+	@file		api_gdi.h
+	@brief		OpenGL 表示関連の内部定義
+*/
+/*!
+	@internal
+	@file		api_gdi.cpp
+	@brief		OpenGL 表示関連の内部定義
+*/
+/*!
+	@def	_API_GDI_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_Setup()
+	@brief		初期化
+
+	@remarks
+			Windows 環境では何も行いません。\n
+			Linux 環境では X ディスプレイサーバーと X ビジュアル情報の取得を行います。\n
+			エラーが発生しても例外は発行しません。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_TearDown()
+	@brief		解放
+
+	@remarks
+			Windows 環境では何も行いません。\n
+			Linux 環境では X ディスプレイサーバーと X ビジュアル情報の解放を行います。\n
+			エラーが発生しても例外は発行しません。\n
+*/
+
+#if defined(_MSC_VER)
+#else
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_XServer_Open()
+	@brief		(Linux 版のみ) X ディスプレイサーバーのオープン
+
+	@return	X ディスプレイサーバーを新規にオープンして返します。\n
+			異常があれば NULL を返します。\n
+			使用後は @ref fnPRV_GDI_XServer_Close でクローズする必要があります。\n
+
+	@sa
+		@ref fnPRV_GDI_XServer_Close \n
+		@ref fnPRV_GDI_XVisual_Open \n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_XServer_Close(Display* xserver)
+	@brief		(Linux 版のみ) X ディスプレイサーバーのクローズ
+
+	@param[in]		xserver		X ディスプレイサーバー
+
+	@remarks
+			指定された X ディスプレイサーバーをクローズします。\n
+
+	@sa
+		@ref fnPRV_GDI_XServer_Open \n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_XVisual_Open(Display* xserver)
+	@brief		(Linux 版のみ) X ビジュアル情報の生成
+
+	@param[in]		xserver		X ディスプレイサーバー
+
+	@return	X ビジュアル情報を新規に生成して返します。\n
+			異常があれば NULL を返します。\n
+			使用後は @ref fnPRV_GDI_XServer_Close でクローズする必要があります。\n
+
+	@sa
+		@ref fnPRV_GDI_XServer_Open \n
+		@ref fnPRV_GDI_XVisual_Close \n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_XVisual_Close(XVisualInfo* xvisual)
+	@brief		(Linux 版のみ) X ビジュアル情報の解放
+
+	@param[in]		xvisual		X ビジュアル情報
+
+	@remarks
+			指定された X ビジュアル情報を解放します。\n
+
+	@sa
+		@ref fnPRV_GDI_XVisual_Open \n
+*/
+#endif
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Internals
+	@struct		TxYUV
+	@brief		YUV 構造体
+*/
+/*!
+	@var	TxYUV::Y
+	@brief	Y フィールド
+*/
+/*!
+	@var	TxYUV::U
+	@brief	U フィールド
+*/
+/*!
+	@var	TxYUV::V
+	@brief	V フィールド
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Internals
+	@struct		TxYUYV
+	@brief		YUYV 構造体
+*/
+/*!
+	@var	TxYUYV::Y0
+	@brief	Y0 フィールド
+*/
+/*!
+	@var	TxYUYV::U
+	@brief	U フィールド
+*/
+/*!
+	@var	TxYUYV::Y1
+	@brief	Y1 フィールド
+*/
+/*!
+	@var	TxYUYV::V
+	@brief	V フィールド
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Internals
+	@struct		TxUYVY
+	@brief		UYVY 構造体
+*/
+/*!
+	@var	TxUYVY::U
+	@brief	U フィールド
+*/
+/*!
+	@var	TxUYVY::Y0
+	@brief	Y0 フィールド
+*/
+/*!
+	@var	TxUYVY::V
+	@brief	V フィールド
+*/
+/*!
+	@var	TxUYVY::Y1
+	@brief	Y1 フィールド
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_CanConvertFrom(HxModule hdst, TxSizeI size)
+	@brief		変換の可否の判定
+
+	@param[in]		hdst	出力画像 (RGB)
+	@param[in]		size	入力画像のサイズ
+
+	@retval	true	可能
+	@retval	false	不可能
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_ConvertFrom_DDB(HxModule hdst, HxModule hsrc)
+	@brief		データ変換 (RGB ← BGR Bottom-Up)
+
+	@param[in,out]	hdst	出力画像 (RGB)
+	@param[in]		hsrc	入力画像 (BGR Buttom-Up)
+
+	@exception	処理できない場合は例外を発行します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_ConvertFrom_YUYV(HxModule hdst, HxModule hsrc)
+	@brief		データ変換 (RGB ← YUYV)
+
+	@param[in,out]	hdst	出力画像 (RGB)
+	@param[in]		hsrc	入力画像 (YUYV)
+
+	@exception	処理できない場合は例外を発行します。
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_Extract(HxModule hdst, HxModule hsrc, const TxCanvas& canvas, bool swap)
+	@brief		切り出し
+
+	@param[out]		hdst		出力 (CxBitmap) ※内部で再確保されます。
+	@param[in]		hsrc		入力 (CxImage)
+	@param[in]		canvas		画像描画情報
+	@param[in]		swap		RGB/BGR の入れ替えを行うか否か
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_ShrinkNN(HxModule hdst, HxModule hsrc, double mag, bool swap)
+	@brief		縮小 (濃度補間=最近傍法)
+
+	@param[out]		hdst		出力 (CxImage)
+	@param[in]		hsrc		入力 (CxImage)
+	@param[in]		mag			縮小率 [1.0 以下]
+	@param[in]		swap		RGB/BGR の入れ替えを行うか否か
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_ShrinkHT(HxModule hdst, HxModule hsrc, double mag, bool swap)
+	@brief		縮小 (濃度補間=局所領域平均)
+
+	@param[out]		hdst		出力 (CxImage)
+	@param[in]		hsrc		入力 (CxImage)
+	@param[in]		mag			縮小率 [0.5 以下]
+	@param[in]		swap		RGB/BGR の入れ替えを行うか否か
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_Scaling(double x, double y, double mag, ExGdiScalingMode mode)
+	@brief		座標のスケーリング
+
+	@param[in]		x			X座標
+	@param[in]		y			Y座標
+	@param[in]		mag			倍率 (1.0 が等倍です。)
+	@param[in]		mode		スケーリングモード
+
+	@return	指定された座標をスケーリングした結果を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_Scaling(TxPointD src, double mag, ExGdiScalingMode mode)
+	@brief		座標のスケーリング
+
+	@param[in]		src			座標
+	@param[in]		mag			倍率 (1.0 が等倍です。)
+	@param[in]		mode		スケーリングモード
+
+	@return	指定された座標をスケーリングした結果を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_BkPrepare(const TxGdi2dParam* param)
+	@brief		背景描画の準備
+
+	@param[in]		param		２次元図形描画パラメータ
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_BkRestore(const TxGdi2dParam* param)
+	@brief		背景描画の復旧
+
+	@param[in]		param		２次元図形描画パラメータ
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_PenPrepare(const TxGdi2dParam* param)
+	@brief		ペン描画の準備
+
+	@param[in]		param		２次元図形描画パラメータ
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_PenRestore(const TxGdi2dParam* param)
+	@brief		ペン描画の復旧
+
+	@param[in]		param		２次元図形描画パラメータ
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_HitTest_Point(const TxPointD& position, double margin, const TxPointD& figure)
+	@brief		位置判定 (点上)
+
+	@param[in]		position	座標
+	@param[in]		margin		マージン (許容誤差)
+	@param[in]		figure		図形
+
+	@return	指定された座標が図形上にあれば 1 を返します。\n
+			図形外の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_HitTest_Line(const TxPointD& position, double margin, const TxLineD& figure)
+	@brief		位置判定 (直線上)
+
+	@param[in]		position	座標
+	@param[in]		margin		マージン (許容誤差)
+	@param[in]		figure		図形
+
+	@return	指定された座標が図形上にあれば 1 を返します。\n
+			図形外の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_HitTest_LineSegment(const TxPointD& position, double margin, const TxLineSegmentD& figure)
+	@brief		位置判定 (線分上)
+
+	@param[in]		position	座標
+	@param[in]		margin		マージン (許容誤差)
+	@param[in]		figure		図形
+
+	@return	指定された座標が図形上にあれば 0 以外を返します。\n
+			図形外の場合は 0 を返します。
+
+	@return	TxHitPosition 構造体を下記のように設定して返します。\n
+			- Mode = 0 … 範囲外
+			- Mode = 1 … 範囲内（移動可能）\n
+				指定座標が線分上にあることを示します。\n
+			- Mode = 2 … 範囲内（編集可能）
+				- Site = 1 … 線分の始点
+				- Site = 2 … 線分の始点
+				.
+			.
+			※ Index は常に 0 です。\n
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_HitTest_Rectangle(const TxPointD& position, double margin, const TxRectangleD& figure)
+	@brief		位置判定 (矩形上)
+
+	@param[in]		position	座標
+	@param[in]		margin		マージン (許容誤差)
+	@param[in]		figure		図形
+
+	@return	TxHitPosition 構造体を下記のように設定して返します。\n
+			- Mode = 0 … 範囲外
+			- Mode = 1 … 範囲内（移動可能）\n
+				指定座標が矩形内の何処かにあることを示します。\n
+			- Mode = 2 … 範囲内（編集可能）
+				- Site ≧ +1 … 頂点
+				- Site ≦ -1 … 辺
+				.
+			.
+			※ Index は常に 0 です。\n
+*/
+
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_CreateDC()
+	@brief		メモリデバイスコンテキストの生成
+
+	@return	メモリデバイスコンテキストを生成して返します。\n
+			失敗した場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_WorldTransformReset( HDC hdc )
+	@brief		単位行列の設定
+
+	@param[in]		hdc		デバイスコンテキスト
+
+	@retval	true	正常
+	@retval	false	異常
+
+	@remarks
+			指定されたデバイスコンテキストのアフィン変換行列を単位行列にリセットします。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_WorldTransformRotate( HDC hdc, double axis_x, double axis_y, double angle )
+	@brief		回転行列の設定
+
+	@param[in]		hdc				デバイスコンテキスト
+	@param[in]		axis_x			回転の基軸(X)
+	@param[in]		axis_y			回転の基軸(Y)
+	@param[in]		angle			回転角(degree)
+
+	@retval	true	正常
+	@retval	false	異常
+
+	@remarks
+			指定されたデバイスコンテキストの現在のアフィン変換行列に回転行列を乗算します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_WorldTransformScale( HDC hdc, double origin_x, double origin_y, double mag_x, double mag_y )
+	@brief		サイズ変更行列の設定
+
+	@param[in]		hdc				デバイスコンテキスト
+	@param[in]		origin_x		原点(X)
+	@param[in]		origin_y		原点(Y)
+	@param[in]		mag_x			X方向倍率 (1.0 が等倍です。)
+	@param[in]		mag_y			Y方向倍率 (1.0 が等倍です。)
+
+	@retval	true	正常
+	@retval	false	異常
+
+	@remarks
+			指定されたデバイスコンテキストの現在のアフィン変換行列にサイズ行列を乗算します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_GDI_CodePageToCharset(int codepage)
+
+	@param[in]		codepage		コードページ
+
+	@return	指定されたコードページに対応する文字セットを返します。\n
+			対応するものがなければ既定値(1:DEFAULT_CHARSET)を返します。\n
+
+	@todo
+			CxGdiString で ShiftJIS (codepage=932) の文字列を描画する為に取り敢えず作成したものです。
+			CxGdiString::Render メソッド内で CreateFontIndirectA を行う際に使用しています。
+*/
+#endif
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_Gdi2d_GetParam(TxCharCPtrA name, void* value, TxModel model, const TxGdi2dParam& param)
+
+	@return	正常の場合は true 、それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Internals
+	@fn			fnPRV_Gdi2d_SetParam(TxCharCPtrA name, const void* value, TxModel model, TxGdi2dParam& param)
+
+	@return	正常の場合は true 、それ以外は false を返します。
+*/
+
+}
+}

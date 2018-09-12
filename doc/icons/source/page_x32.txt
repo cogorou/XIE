@@ -1,0 +1,420 @@
+// ======================================================================
+/*!
+	@page	x32_Action	Action
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html App-Config-x32.png</td>
+				<td>App-Config-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>環境設定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Config_driver-x32.png</td>
+				<td>App-Config_driver-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>環境設定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Config_hammer-x32.png</td>
+				<td>App-Config_hammer-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>環境設定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Delete-x32.png</td>
+				<td>App-Delete-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>削除を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Exit-x32.png</td>
+				<td>App-Exit-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>アプリケーション終了を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Ask-OK-x32.png</td>
+				<td>Ask-OK-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>応答を示します。(OK)</td>
+				</tr>
+			<tr>
+				<td>@image html Ask-Cancel-x32.png</td>
+				<td>Ask-Cancel-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>応答を示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Down-x32.png</td>
+				<td>Cursor-Down-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(下)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Left-x32.png</td>
+				<td>Cursor-Left-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(左)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Right-x32.png</td>
+				<td>Cursor-Right-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(右)</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Up-x32.png</td>
+				<td>Cursor-Up-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(上)</td>
+				</tr>
+			<tr>
+				<td>@image html CursorV-Down-x32.png</td>
+				<td>CursorV-Down-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(下)</td>
+				</tr>
+			<tr>
+				<td>@image html CursorV-Left-x32.png</td>
+				<td>CursorV-Left-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(左)</td>
+				</tr>
+			<tr>
+				<td>@image html CursorV-Right-x32.png</td>
+				<td>CursorV-Right-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(右)</td>
+				</tr>
+			<tr>
+				<td>@image html CursorV-Up-x32.png</td>
+				<td>CursorV-Up-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カーソルを示します。(上)</td>
+				</tr>
+			<tr>
+				<td>@image html File-SearchDoc-x32.png</td>
+				<td>File-SearchDoc-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>テキスト検索を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Error-x32.png</td>
+				<td>Notify-Error-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(エラー)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-IHelp-x32.png</td>
+				<td>Notify-IHelp-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(ヘルプ)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Info-x32.png</td>
+				<td>Notify-Info-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(情報)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-None-x32.png</td>
+				<td>Notify-None-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(なし)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Question-x32.png</td>
+				<td>Notify-Question-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(問い合わせ)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Warning-x32.png</td>
+				<td>Notify-Warning-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(警告)</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Key-x32.png</td>
+				<td>Security-Key-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>セキュリティを示します。パスコード設定等で使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Locked-x32.png</td>
+				<td>Security-Locked-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>セキュリティを示します。ログイン/ログオフで使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Active-x32.png</td>
+				<td>Task-Active-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>動作している状態を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Option-x32.png</td>
+				<td>Task-Option-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>オプションを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Search-x32.png</td>
+				<td>Task-Search-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>検索を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Start-x32.png</td>
+				<td>Task-Start-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの開始を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Stop-x32.png</td>
+				<td>Task-Stop-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの停止を示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32_Device	Device
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Device-Camera-x32.png</td>
+				<td>Device-Camera-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Device-CameraRecording-x32.png</td>
+				<td>Device-CameraRecording-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラによる録画を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Device-IO-x32.png</td>
+				<td>Device-IO-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>入出力デバイスを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Device-Switch-x32.png</td>
+				<td>Device-Switch-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>スイッチを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32_Edit	Edit
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Copy-x32.png</td>
+				<td>Edit-Copy-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>コピーを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Cut-x32.png</td>
+				<td>Edit-Cut-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>切り取りを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Paste-x32.png</td>
+				<td>Edit-Paste-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>貼り付けを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Delete-x32.png</td>
+				<td>Edit-Delete-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>削除を示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32_Overlay	Overlay
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Focus-x32.png</td>
+				<td>Overlay-Focus-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>焦点調整を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Graph-x32.png</td>
+				<td>Overlay-Graph-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グラフを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Grid-x32.png</td>
+				<td>Overlay-Grid-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グリッドを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Profile-x32.png</td>
+				<td>Overlay-Profile-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>濃度プロファイルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Trend-x32.png</td>
+				<td>Overlay-Trend-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>トレンドを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x32_View	View
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html ListView-Sort1-x32.png</td>
+				<td>ListView-Sort1-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>ソートを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html ListView-Sort2-x32.png</td>
+				<td>ListView-Sort2-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>ソートを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Actual-x32.png</td>
+				<td>Mag-Actual-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(原寸)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Expand-x32.png</td>
+				<td>Mag-Expand-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(拡大)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Reduce-x32.png</td>
+				<td>Mag-Reduce-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(縮小)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag2-Actual-x32.png</td>
+				<td>Mag2-Actual-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>画像ビューの表示倍率調整を示します。(原寸)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag2-Expand-x32.png</td>
+				<td>Mag2-Expand-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>画像ビューの表示倍率調整を示します。(拡大)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag2-Reduce-x32.png</td>
+				<td>Mag2-Reduce-x32.png</td>
+				<td>改変及び再頒布</td>
+				<td>画像ビューの表示倍率調整を示します。(縮小)</td>
+				</tr>
+			<tr>
+				<td>@image html View-FitImageSize-x32.png</td>
+				<td>View-FitImageSize-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(ウィンドウサイズに合わせる)</td>
+				</tr>
+			<tr>
+				<td>@image html View-Fullscreen-x32.png</td>
+				<td>View-Fullscreen-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>フルスクリーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Halftone-x32.png</td>
+				<td>View-Halftone-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ハーフトーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-HalftoneL-x32.png</td>
+				<td>View-HalftoneL-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ハーフトーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH1-x32.png</td>
+				<td>View-LayoutCH1-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(1CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH2-x32.png</td>
+				<td>View-LayoutCH2-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(2CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH4-x32.png</td>
+				<td>View-LayoutCH4-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>レイアウトを示します。(4CH表示)</td>
+				</tr>
+			<tr>
+				<td>@image html View-Loupe-x32.png</td>
+				<td>View-Loupe-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ルーペを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Mesh-x32.png</td>
+				<td>View-Mesh-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>メッシュを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Oscillograph-x32.png</td>
+				<td>View-Oscillograph-x32.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>オシロスコープを示します。</td>
+				</tr>
+			</table>
+*/

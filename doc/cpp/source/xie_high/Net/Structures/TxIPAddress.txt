@@ -1,0 +1,152 @@
+/*!
+	@file	TxIPAddress.h
+	@brief	IPアドレス構造体
+*/
+/*!
+	@internal
+	@file	TxIPAddress.cpp
+	@brief	IPアドレス構造体
+*/
+/*!
+	@def	_TXIPADDRESS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Structures
+	@struct		TxIPAddress
+	@brief		IPアドレス構造体
+*/
+// ===================================================================
+/*!
+	@var	TxIPAddress::S1
+	@brief	IPアドレスの 1 番目のセグメント
+*/
+// ===================================================================
+/*!
+	@var	TxIPAddress::S2
+	@brief	IPアドレスの 2 番目のセグメント
+*/
+// ===================================================================
+/*!
+	@var	TxIPAddress::S3
+	@brief	IPアドレスの 3 番目のセグメント
+*/
+// ===================================================================
+/*!
+	@var	TxIPAddress::S4
+	@brief	IPアドレスの 4 番目のセグメント
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::TxIPAddress()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::TxIPAddress(unsigned char s1, unsigned char s2, unsigned char s3, unsigned char s4)
+	@brief	コンストラクタ
+
+	@param[in]	s1		IPアドレスの 1 番目のセグメント
+	@param[in]	s2		IPアドレスの 2 番目のセグメント
+	@param[in]	s3		IPアドレスの 3 番目のセグメント
+	@param[in]	s4		IPアドレスの 4 番目のセグメント
+
+	@remarks
+			指定の値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::TxIPAddress(unsigned int addr)
+	@brief	コンストラクタ
+
+	@param[in]	addr	IPアドレス
+
+	@remarks
+			4bytes の整数をこの構造体にキャストして構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::From(TxCharCPtrA value)
+	@brief	文字列からの変換
+
+	@param[in]		value	IPアドレスを表す文字列 \n
+							各セグメントがピリオドで区切られた形式で指定してください。\n
+							例えば "127.0.0.1" のような文字列です。
+
+	@return	指定の文字列を数値に変換し、この構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::Any()
+	@brief	Any (0.0.0.0)
+
+	@return	Any (0.0.0.0) を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::Broadcast()
+	@brief	Broadcast (255.255.255.255)
+
+	@return	Broadcast (255.255.255.255) を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::Loopback()
+	@brief	Loopback (127.0.0.1)
+
+	@return	Loopback (127.0.0.1) を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::operator == (const TxIPAddress& cmp) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::operator != (const TxIPAddress& cmp) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		TxIPAddress::ToUInt32() const
+	@brief	4bytes 符号なし整数への変換
+
+	@return	現在の値を4bytes 符号なし整数へキャストして返します。
+*/
+
+}
+}

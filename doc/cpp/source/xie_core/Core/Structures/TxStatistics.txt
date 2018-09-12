@@ -1,0 +1,213 @@
+/*!
+	@file	TxStatistics.h
+	@brief	統計データ構造体
+*/
+/*!
+	@internal
+	@file	TxStatistics.cpp
+	@brief	統計データ構造体
+*/
+/*!
+	@def	_TXSTATISTICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxStatistics
+	@brief		統計データ構造体
+
+	@par	既定値:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center">フィールド</td>
+				<td class="indexkey" align="center">値</td>
+				</tr>
+			<tr>
+				<td align="left">Count</td>
+				<td align="center">0</td>
+				</tr>
+			<tr>
+				<td align="left">Sum1</td>
+				<td align="center">0</td>
+				</tr>
+			<tr>
+				<td align="left">Sum2</td>
+				<td align="center">0</td>
+				</tr>
+			<tr>
+				<td align="left">Min</td>
+				<td align="center">+1.7976931348623158e+308</td>
+				</tr>
+			<tr>
+				<td align="left">Max</td>
+				<td align="center">-1.7976931348623158e+308</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@var	TxStatistics::Sum1
+	@brief	総和
+*/
+// ===================================================================
+/*!
+	@var	TxStatistics::Sum2
+	@brief	２乗の総和
+*/
+// ===================================================================
+/*!
+	@var	TxStatistics::Min
+	@brief	最小値
+*/
+// ===================================================================
+/*!
+	@var	TxStatistics::Max
+	@brief	最大値
+*/
+// ===================================================================
+/*!
+	@var	TxStatistics::Count
+	@brief	個数
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::Reset()
+	@brief	リセット
+
+	@remarks
+			現在の値を既定値にリセットします。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::TxStatistics()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::TxStatistics(double sum1, double sum2, double minval, double maxval, double count)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		sum1		総和
+	@param[in]		sum2		２乗の総和
+	@param[in]		minval		最小値
+	@param[in]		maxval		最大値
+	@param[in]		count		個数
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator == (const TxStatistics& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator != (const TxStatistics& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+ (const TxStatistics &value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+ (double value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+ (int value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+= (const TxStatistics &value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+= (double value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::operator+= (int value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::Mean()
+	@brief	平均値
+
+	@return	現在の統計データから平均値を計算して返します。\n
+			式) @ref Sum1 / @ref Count
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::Sigma()
+	@brief	標準偏差
+
+	@return	現在の統計データから標準偏差を計算して返します。\n
+			式) sqrt( @ref Variance )
+*/
+// ===================================================================
+/*!
+	@fn		TxStatistics::Variance()
+	@brief	分散値
+
+	@return	現在の統計データから分散値を計算して返します。\n
+			式) (@ref Sum2 / @ref Count) - (@ref Mean <sup>2</sup>)
+*/
+
+}

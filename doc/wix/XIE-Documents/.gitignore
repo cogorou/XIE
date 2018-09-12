@@ -1,0 +1,6 @@
+bin
+obj
+*.log
+*.msi
+*.suo
+*.user

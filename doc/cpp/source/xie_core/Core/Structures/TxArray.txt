@@ -1,0 +1,87 @@
+/*!
+	@file	TxArray.h
+	@brief	配列オブジェクト構造体
+*/
+/*!
+	@internal
+	@file	TxArray.cpp
+	@brief	配列オブジェクト構造体
+*/
+/*!
+	@def	_TXARRAY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxArray
+	@brief		配列オブジェクト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxArray::Address
+	@brief	配列の先頭アドレス (１次元配列) ※要素サイズ×Length の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxArray::Length
+	@brief	要素数 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxArray::Model
+	@brief	要素モデル
+*/
+// ===================================================================
+/*!
+	@fn		TxArray::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxArray::TxArray()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxArray::TxArray(void* addr, int length, TxModel model)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (１次元配列) ※要素サイズ×Length の連続領域。
+	@param[in]		length		要素数 [0~]
+	@param[in]		model		要素モデル
+*/
+// ===================================================================
+/*!
+	@fn		TxArray::operator == (const TxArray& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxArray::operator != (const TxArray& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+}

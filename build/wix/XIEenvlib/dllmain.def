@@ -1,0 +1,6 @@
+LIBRARY "XIEenvlib"
+
+EXPORTS
+
+InstallEnv			@101
+UninstallEnv		@102

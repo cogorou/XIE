@@ -1,0 +1,27 @@
+<Include>
+	<ComponentRef Id="XIE.CORE.DLL" />
+	<ComponentRef Id="XIE.CORE.XML" />
+	<ComponentRef Id="XIE.TASKS.DLL" />
+	<ComponentRef Id="XIE.TASKS.XML" />
+	<ComponentRef Id="XIECAPTURE_100.EXE" />
+	<ComponentRef Id="XIECAPTURE_100.EXE.CONFIG" />
+	<ComponentRef Id="XIECAPTURE_100.XML" />
+	<ComponentRef Id="XIEPROMPT_100.EXE" />
+	<ComponentRef Id="XIEPROMPT_100.EXE.CONFIG" />
+	<ComponentRef Id="XIEPROMPT_100.XML" />
+	<ComponentRef Id="XIESCRIPT_100.EXE" />
+	<ComponentRef Id="XIESTUDIO_100.EXE" />
+	<ComponentRef Id="XIESTUDIO_100.EXE.CONFIG" />
+	<ComponentRef Id="XIESTUDIO_100.XML" />
+	<ComponentRef Id="XIEVERSION_100.EXE" />
+	<ComponentRef Id="XIE_CORE_X64_100.DLL" />
+	<ComponentRef Id="XIE_CORE_X64_100.LIB" />
+	<ComponentRef Id="XIE_CORE_X86_100.DLL" />
+	<ComponentRef Id="XIE_CORE_X86_100.LIB" />
+	<ComponentRef Id="XIE_DS_X64_100.DLL" />
+	<ComponentRef Id="XIE_DS_X86_100.DLL" />
+	<ComponentRef Id="XIE_HIGH_X64_100.DLL" />
+	<ComponentRef Id="XIE_HIGH_X64_100.LIB" />
+	<ComponentRef Id="XIE_HIGH_X86_100.DLL" />
+	<ComponentRef Id="XIE_HIGH_X86_100.LIB" />
+</Include>

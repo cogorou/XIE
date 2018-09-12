@@ -1,0 +1,280 @@
+/*!
+	@file	CxRgbToGray.h
+	@brief	濃淡化クラス
+*/
+/*!
+	@internal
+	@file	CxRgbToGray.cpp
+	@brief	濃淡化クラス
+*/
+/*!
+	@def	_CXRGBTOGRAY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_RgbToGray	(HxModule hsrc, HxModule hdst, HxModule hmask, double scale, double red_ratio, double green_ratio, double blue_ratio)
+	@brief		濃淡化
+
+	@param[in]		hsrc			入力元
+	@param[in,out]	hdst			出力先
+	@param[in]		hmask			マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		scale			スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する]
+	@param[in]		red_ratio		赤成分の変換係数 [0~1]
+	@param[in]		green_ratio		緑成分の変換係数 [0~1]
+	@param[in]		blue_ratio		青成分の変換係数 [0~1]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxRgbToGray
+	@brief		濃淡化クラス
+
+	RGB 色空間のカラー画像を濃淡化して出力先のオブジェクトに格納します。\n
+	各要素の値を下式にて濃淡化して代入します。\n
+	\n
+	式) dst<sub>y,x</sub> = ((src0<sub>y,x</sub> * RedRatio) + (src1<sub>y,x</sub> * GreenRatio) + (src2<sub>y,x</sub> * BlueRatio)) * Scale \n
+	\n
+	※ src0,src1,src2 は src の 0,1,2 チャネルを意味します。Packing の場合は src.R,src.G,src.B と対応します。\n
+	\n
+	処理可能な条件:
+		-	入出力の Size が一致していること。
+		-	入力の Model.Type が下記の何れかであること。(但し、下表１の条件を満たすこと。)\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		-	出力の Model.Type が下記の何れかであること。(但し、下表１の条件を満たすこと。)\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		.
+		\n
+	\n
+	表１) 入出力の要素モデルとチャネル数の条件
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td class="indexkey" COLSPAN=2>出力</td>
+		<td class="indexkey" COLSPAN=2>入力</td>
+		<td class="indexkey" ROWSPAN=2>備考</td>
+		</tr>
+	<tr>
+		<td class="indexkey">Channels</td>
+		<td class="indexkey">Pack</td>
+		<td class="indexkey">Channels</td>
+		<td class="indexkey">Pack</td>
+		</tr>
+	<tr>
+		<td>*</td>
+		<td>1</td>
+		<td>*</td>
+		<td>3,4</td>
+		<td>-</td>
+		</tr>
+	<tr>
+		<td>1</td>
+		<td>1</td>
+		<td>3,4</td>
+		<td>1</td>
+		<td>-</td>
+		</tr>
+	</table>
+	※ 表中の * は 1 以上を意味します。\n
+
+	@par	Examples:
+			@includelineno	CxRgbToGray_01.cpp
+			
+			@par
+			入力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				</tr>
+			</table>
+
+			@par
+			出力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">1</td>
+				<td align="center" class="indexkey">2</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxRgbToGray_01-1.png</td>
+				<td align="center">@image html CxRgbToGray_01-2.png</td>
+				</tr>
+			</table>
+			1) 既定の濃淡化係数で変換した画像 \n
+			2) 濃淡化係数を変更して変換した画像 \n
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxRgbToGray::Scale
+	@brief	スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する]
+*/
+// ===================================================================
+/*!
+	@var	CxRgbToGray::RedRatio
+	@brief	赤成分の変換係数 [0~1]
+*/
+// ===================================================================
+/*!
+	@var	CxRgbToGray::GreenRatio
+	@brief	緑成分の変換係数 [0~1]
+*/
+// ===================================================================
+/*!
+	@var	CxRgbToGray::BlueRatio
+	@brief	青成分の変換係数 [0~1]
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::CxRgbToGray()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::CxRgbToGray(const CxRgbToGray& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxRgbToGray &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::CxRgbToGray(double scale, double red_ratio, double green_ratio, double blue_ratio)
+	@brief	コンストラクタ
+
+	@param[in]		scale			スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する]
+	@param[in]		red_ratio		赤成分の変換係数 [0~1]
+	@param[in]		green_ratio		緑成分の変換係数 [0~1]
+	@param[in]		blue_ratio		青成分の変換係数 [0~1]
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::~CxRgbToGray()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::operator = ( const CxRgbToGray& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::operator == ( const CxRgbToGray& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::operator != ( const CxRgbToGray& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxRgbToGray(const CxRgbToGray &src) \n
+		@ref operator=(const CxRgbToGray &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxRgbToGray &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxRgbToGray::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

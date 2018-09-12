@@ -1,0 +1,22 @@
+ifeq ($(DEBUG),1)			
+	XIE_CORE = xie_cored	„¢Debug ”Å
+	XIE_HIGH = xie_highd	„£
+else						
+	XIE_CORE = xie_core		„¢Release ”Å
+	XIE_HIGH = xie_high		„£
+endif
+
+XIE_TOP=$(HOME)/XIE
+XIE_INC=$(XIE_TOP)/include
+XIE_LIB=$(XIE_TOP)/lib
+
+#CROSS_COMPILE=arm-linux-gnueabihf-
+CC  = $(CROSS_COMPILE)gcc
+CXX = $(CROSS_COMPILE)g++
+CFLAGS   = -Wall -Wno-unknown-pragmas -Wno-unused-variable -Wno-switch
+CXXFLAGS = -Wall -Wno-unknown-pragmas -Wno-unused-variable -Wno-switch -fpermissive -std=c++0x
+CDEFS    = -DLINUX
+LDFLAGS  = -L$(XIE_LIB) -l$(XIE_CORE) -l$(XIE_HIGH) -lm -lstdc++
+                          ~~~~~~~~~~~   ~~~~~~~~~~~
+ARCHIVES = 
+INCDIR   = -I$(XIE_INC)

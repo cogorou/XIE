@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6448D947-4725-4925-A9D5-2C9CA1AE7E71}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>xie_high</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="app.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="app.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="app.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="app.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(CUDA_INC);$(INTERNAL_HEADERS);$(FILE_HEADERS);</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>/wd 4819 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\..\bin-debug;$(XIE_LIB)/$(PlatformTarget);$(CUDA_LIB)\$(Platform);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>set BINDIR=..\..\..\bin-debug
+copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)%BINDIR%"
+</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(CUDA_INC);$(INTERNAL_HEADERS);$(FILE_HEADERS);</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>/wd 4819 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\..\bin-debug;$(XIE_LIB)/$(PlatformTarget);$(CUDA_LIB)\$(Platform);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>set BINDIR=..\..\..\bin-debug
+copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)%BINDIR%"
+</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(CUDA_INC);$(INTERNAL_HEADERS);$(FILE_HEADERS);</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>/wd 4819 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\..\bin;$(XIE_LIB)/$(PlatformTarget);$(CUDA_LIB)\$(Platform);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>set BINDIR=..\..\..\bin
+copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)%BINDIR%"
+</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(CUDA_INC);$(INTERNAL_HEADERS);$(FILE_HEADERS);</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <AdditionalOptions>/wd 4819 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\..\bin;$(XIE_LIB)/$(PlatformTarget);$(CUDA_LIB)\$(Platform);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>set BINDIR=..\..\..\bin
+copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)%BINDIR%"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)%BINDIR%"
+</Command>
+    </PostBuildEvent>
+    <Manifest>
+      <AdditionalManifestFiles>
+      </AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="xie_high.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\GDI\AxiGDIDiagnostics.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxBitmap.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxCanvas.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiCircleArc.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiEllipseArc.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiString.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiStringW.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiTrapezoid.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiCircle.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiEllipse.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiImage.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiLine.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiLineSegment.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiPoint.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiPolyline.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiRectangle.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiStringA.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxGdiVoid.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxOverlay.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxOverlayGrid.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxOverlayProfile.h" />
+    <ClInclude Include="..\..\..\include\GDI\CxTexture.h" />
+    <ClInclude Include="..\..\..\include\GDI\IxGdi2d.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxBitmap.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxCanvas.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxGdi2dParam.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxGdiImage.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxGdiPolyline.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxGdiStringA.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxGdiStringW.h" />
+    <ClInclude Include="..\..\..\include\GDI\TxHitPosition.h" />
+    <ClInclude Include="..\..\..\include\IO\AxiIODiagnostics.h" />
+    <ClInclude Include="..\..\..\include\IO\CxSerialPort.h" />
+    <ClInclude Include="..\..\..\include\IO\TxSerialPort.h" />
+    <ClInclude Include="..\..\..\include\Media\AxiMediaDiagnostics.h" />
+    <ClInclude Include="..\..\..\include\Media\CxControlProperty.h" />
+    <ClInclude Include="..\..\..\include\Media\CxDeviceList.h" />
+    <ClInclude Include="..\..\..\include\Media\CxDeviceListItem.h" />
+    <ClInclude Include="..\..\..\include\Media\CxGrabber.h" />
+    <ClInclude Include="..\..\..\include\Media\CxGrabberArgs.h" />
+    <ClInclude Include="..\..\..\include\Media\CxCamera.h" />
+    <ClInclude Include="..\..\..\include\Media\CxDeviceParam.h" />
+    <ClInclude Include="..\..\..\include\Media\CxGrabberEvent.h" />
+    <ClInclude Include="..\..\..\include\Media\CxMediaPlayer.h" />
+    <ClInclude Include="..\..\..\include\Media\CxScreenCapture.h" />
+    <ClInclude Include="..\..\..\include\Media\CxScreenList.h" />
+    <ClInclude Include="..\..\..\include\Media\CxScreenListItem.h" />
+    <ClInclude Include="..\..\..\include\Media\IxMediaControl.h" />
+    <ClInclude Include="..\..\..\include\Media\TxDeviceListItem.h" />
+    <ClInclude Include="..\..\..\include\Media\TxDeviceParam.h" />
+    <ClInclude Include="..\..\..\include\Media\TxGrabberArgs.h" />
+    <ClInclude Include="..\..\..\include\Media\TxScreenListItem.h" />
+    <ClInclude Include="..\..\..\include\Net\CxTcpClient.h" />
+    <ClInclude Include="..\..\..\include\Net\CxTcpServer.h" />
+    <ClInclude Include="..\..\..\include\Net\CxUdpClient.h" />
+    <ClInclude Include="..\..\..\include\Net\TxIPAddress.h" />
+    <ClInclude Include="..\..\..\include\Net\TxIPEndPoint.h" />
+    <ClInclude Include="..\..\..\include\Net\TxSocketStream.h" />
+    <ClInclude Include="..\..\..\include\Net\TxTcpClient.h" />
+    <ClInclude Include="..\..\..\include\Net\TxTcpServer.h" />
+    <ClInclude Include="..\..\..\include\Net\TxUdpClient.h" />
+    <ClInclude Include="..\..\..\include\xie_high.h" />
+    <ClInclude Include="..\..\..\source\xie_high\File\api_file_plugins.h" />
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginJpeg.h" />
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginPng.h" />
+    <ClInclude Include="..\..\..\source\xie_high\File\CxFilePluginTiff.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\api_gdi.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\CxGLContext.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\CxGraphics.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_DDB.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_YUV.h" />
+    <ClInclude Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_ConvertFrom_YUYV.h" />
+    <ClInclude Include="..\..\..\source\xie_high\IO\api_io.h" />
+    <ClInclude Include="..\..\..\source\xie_high\IO\CxSerialPort_Linux.h" />
+    <ClInclude Include="..\..\..\source\xie_high\IO\CxSerialPort_Windows.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\api_media.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds_com.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\api_ds_diagnostics.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSControlProperty.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSControlPropertyWrapper.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSGrabber.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSGrabberArgs.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSCamera.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSSampleReceiver.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSMediaPlayer.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\DS\CxDSScreenCapture.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\api_v4l2.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxMMap.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLCamera.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLControlProperty.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabber.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabberArgs.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLSampleReceiver.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLMediaPlayer.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Media\V4L2\CxVLScreenCapture.h" />
+    <ClInclude Include="..\..\..\source\xie_high\Net\api_net.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\png.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngconf.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngdebug.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pnginfo.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pnglibconf.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngpriv.h" />
+    <ClInclude Include="..\..\..\thirdparty\libpng\source-1.6.6\pngstruct.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_config.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\xie_high\File\api_file_plugins.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Check.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Load.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginJpeg_Save.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Check.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Load.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginPng_Save.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Check.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Load.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\CxFilePluginTiff_Save.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\File\fnXIE_File_CopyJpegMarkers.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi_graphics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\AxiGDIDiagnostics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\api_gdi_exports.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiCircleArc.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiEllipseArc.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiStringW.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGraphics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlay.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlayGrid.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxOverlayProfile.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Extract.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink1.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink2.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\fnPRV_GDI_Shrink0.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxBitmap.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxCanvas.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiTrapezoid.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiCircle.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiEllipse.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiImage.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiLine.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiLineSegment.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiPoint.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiPolyline.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiRectangle.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiStringA.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxGdiVoid.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\CxTexture.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxBitmap.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxCanvas.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdi2dParam.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiImage.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiPolyline.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiStringA.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxGdiStringW.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\GDI\TxHitPosition.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\IO\api_io.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\IO\api_io_exports.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\IO\AxiIODiagnostics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\IO\CxSerialPort.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\IO\TxSerialPort.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\api_media.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\api_media_exports.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\AxiMediaDiagnostics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceList.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceListItem.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxGrabber.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxGrabberArgs.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxCamera.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxDeviceParam.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxMediaPlayer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxControlProperty.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenCapture.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenList.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\CxScreenListItem.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\api_ds.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSControlProperty.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSControlPropertyWrapper.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSGrabber.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSGrabberArgs.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSCamera.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSSampleReceiver.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSMediaPlayer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\DS\CxDSScreenCapture.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxDeviceListItem.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxDeviceParam.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxGrabberArgs.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\TxScreenListItem.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\api_v4l2.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxMMap.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLCamera.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLControlProperty.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabber.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLGrabberArgs.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLSampleReceiver.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLMediaPlayer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Media\V4L2\CxVLScreenCapture.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\api_net.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\api_net_exports.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxTcpClient.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxTcpServer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\CxUdpClient.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxIPAddress.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxIPEndPoint.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxSocketStream.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxTcpClient.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxTcpServer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\Net\TxUdpClient.cpp" />
+    <ClCompile Include="..\..\..\source\xie_high\xie_high.cpp" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\png.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngerror.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngget.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngmem.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngpread.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngread.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrio.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrtran.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngrutil.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngset.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngtest.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngtrans.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwio.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwrite.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwtran.c" />
+    <ClCompile Include="..\..\..\thirdparty\libpng\source-1.6.6\pngwutil.c" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jaricom.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcapimin.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcapistd.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcarith.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jccoefct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jccolor.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcdctmgr.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jchuff.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcinit.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmainct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmarker.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcmaster.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcomapi.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcparam.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcprepct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jcsample.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jctrans.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdapimin.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdapistd.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdarith.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdatadst.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdatasrc.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdcoefct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdcolor.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jddctmgr.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdhuff.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdinput.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmainct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmarker.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmaster.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdmerge.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdpostct.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdsample.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jdtrans.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jerror.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctflt.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctfst.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jfdctint.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctflt.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctfst.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jidctint.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jmemmgr.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jmemnobs.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jquant1.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jquant2.c" />
+    <ClCompile Include="..\..\..\thirdparty\libjpeg\source\jutils.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\include\vc\jconfig.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jdct.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jerror.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jinclude.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jmemsys.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jmorecfg.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jpegint.h" />
+    <ClInclude Include="..\..\..\thirdparty\libjpeg\source\jpeglib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\t4.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiff.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffconf.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffio.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffio.hxx" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffiop.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tiffvers.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_dir.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_fax3.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\tif_predict.h" />
+    <ClInclude Include="..\..\..\thirdparty\libtiff\source\uvcode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_aux.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_close.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_codec.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_color.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_compress.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dir.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirinfo.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirread.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dirwrite.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_dumpmode.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_error.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_extension.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_fax3.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_fax3sm.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_flush.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_getimage.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jbig.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jpeg.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_jpeg_12.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_luv.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_lzma.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_lzw.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_next.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_ojpeg.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_open.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_packbits.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_pixarlog.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_predict.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_print.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_read.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_stream.cxx" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_strip.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_swab.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_thunder.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_tile.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_version.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_warning.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_win32.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_write.c" />
+    <ClCompile Include="..\..\..\thirdparty\libtiff\source\tif_zip.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\thirdparty\libz\source\adler32.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\compress.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\crc32.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\deflate.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzclose.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzlib.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzread.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\gzwrite.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\infback.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inffast.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inflate.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\inftrees.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\trees.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\uncompr.c" />
+    <ClCompile Include="..\..\..\thirdparty\libz\source\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\thirdparty\libz\source\crc32.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\deflate.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\gzguts.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inffast.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inffixed.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inflate.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\inftrees.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\trees.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\zconf.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\libz.h" />
+    <ClInclude Include="..\..\..\thirdparty\libz\source\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xie_high.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

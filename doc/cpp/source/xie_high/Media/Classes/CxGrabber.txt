@@ -1,0 +1,262 @@
+/*!
+	@file	CxGrabber.h
+	@brief	グラバークラス
+*/
+/*!
+	@internal
+	@file	CxGrabber.cpp
+	@brief	グラバークラス
+*/
+/*!
+	@def	_CXGRABBER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxGrabber
+	@brief		グラバークラス
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::CxGrabber()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::CxGrabber(const CxGrabber& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGrabber &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::~CxGrabber()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::GetModule() const
+	@brief	内部モジュールの取得
+
+	@return	このオブジェクトの内部モジュールを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::operator = ( const CxGrabber& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::operator == ( const CxGrabber& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::operator != ( const CxGrabber& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGrabber(const CxGrabber &src) \n
+		@ref operator=(const CxGrabber &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGrabber &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Reset()
+	@brief	リセット
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Start()
+	@brief	開始
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Stop()
+	@brief	停止
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	非同期処理が停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::IsRunning() const
+	@brief	動作状態の取得
+
+	@return	非同期処理が動作中の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Index() const
+	@brief	シーケンス番号の取得
+
+	@return	現在設定されている値を返します。
+			この値はイベントを受信するとインクリメントされます。
+			Reset によって -1 に初期化されます。
+
+	@sa
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Index(int value)
+	@brief	シーケンス番号の設定
+
+	@param[in]		value		設定値 [-1,0~]
+
+	@sa
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabber::Receive (void *sender, IxModule *e)
+	@brief	イベント受信用関数 (内部処理用)
+
+	@param[in]		sender		呼び出し元
+	@param[in,out]	e			イベント引数
+
+	@remarks
+			この関数が下位側から呼び出されると、
+			Notify に設定されたクラスの Receive を呼び出します。
+*/
+// ===================================================================
+/*!
+	@var	CxGrabber::Notify
+	@brief	通知イベントを受けるイベントクラスへのポインタ
+
+	@sa
+		@ref CxGrabberEvent \n
+*/
+// ===================================================================
+/*!
+	@var	CxGrabber::m_Enabled
+	@brief	非同期処理の活性化属性
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@var	CxGrabber::m_Index
+	@brief	シーケンス番号
+
+	@sa
+		@ref Index \n
+*/
+
+}
+}

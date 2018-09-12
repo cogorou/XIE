@@ -1,0 +1,102 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_11	単純なコンソールアプリケーション
+
+	ここでは、コンソールアプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_CS_Basic_11_1	"プロジェクトの作成"
+			- @subpage	page_Tutorial_CS_Basic_11_2	"プロジェクトの設定"
+			- @subpage	page_Tutorial_CS_Basic_11_3	"ライブラリの初期化"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ tutorial.csproj
+├ tutorial.sln
+├ app.config
+├ Program.cs           … エントリポイント
+├ Properties
+├ TestFiles
+│├ color_grad.bmp     … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、濃淡化してファイル保存する処理です。\n
+			
+			@par
+			実行結果) \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">入力画像</td>
+				<td align="center" class="indexkey">→</td>
+				<td align="center" class="indexkey">出力画像</td>
+				</tr>
+			<tr>
+				<td align="center">@image html Tutorial_CS_Basic_11_test_src.png</td>
+				<td align="center">RgbToGray</td>
+				<td align="center">@image html Tutorial_CS_Basic_11_test_dst.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_11_1	プロジェクトの作成
+
+	Visual Studio の [ファイル] メニューから
+	[新規作成] → [プロジェクト] の順に選択してウィザードを開始します。
+
+	※注意) \n
+	".NET Framework 4" (または、それ以降のバージョン)が選択されていることを確認してください。\n
+	".NET Framework 2.0" では動作しません。\n
+	\n
+	コンソールアプリケーションを選択して、名前を入力し [OK] を押下します。\n
+	<table border="0" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="left">@image html Tutorial_CS_Basic_11_create_1.png</td>
+		</tr>
+	</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_11_2	プロジェクトの設定
+
+	-# 参照設定
+		\n
+		参照設定に XIE.Core を追加する必要があります。\n
+		ソリューションエクスプローラの "参照設定" ノードを右クリックして表示されたコンテキストメニューから
+		"参照の追加" メニューを選択すると、下図の "参照の追加" ダイアログが表示されますので、
+		左側ツリーで [アセンブリ]／[拡張] ノードに切り替えて XIE.Core を選択します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_CS_Basic_10_settings_11.png</td>
+			</tr>
+		</table>
+		\n
+		下図のように "参照設定" ノードに "XIE.Core" が追加されます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_CS_Basic_10_settings_12.png</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_11_3	ライブラリの初期化
+
+	本ライブラリの機能を使用する前に初期化関数を呼び出す必要があります。
+	通常は、下記のようにエントリポイントで行ってください。
+
+	@includelineno	Tutorial_CS_Basic_11_Program_1.cs
+
+	<hr>
+
+	初期化関数を呼び出した後、下記のように本ライブラリの機能が使用できます。
+
+	@includelineno	Tutorial_CS_Basic_11_Program_2.cs
+*/

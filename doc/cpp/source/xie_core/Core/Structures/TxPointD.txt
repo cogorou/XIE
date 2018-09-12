@@ -1,0 +1,233 @@
+/*!
+	@file	TxPointD.h
+	@brief	点構造体
+*/
+/*!
+	@internal
+	@file	TxPointD.cpp
+	@brief	点構造体
+*/
+/*!
+	@def	_TXPOINTD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxPointD
+	@brief		点構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxPointD::X
+	@brief	X 座標
+*/
+// ===================================================================
+/*!
+	@var	TxPointD::Y
+	@brief	Y 座標
+*/
+
+// ===================================================================
+/*!
+	@fn		TxPointD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::TxPointD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::TxPointD(double x, double y)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x		X 座標
+	@param[in]		y		Y 座標
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator == (const TxPointD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator != (const TxPointD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*! 
+	@fn		TxPointD::operator TxPointI () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxPointI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator+ (const TxPointD &value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator+ (double value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の加算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator+= (const TxPointD &value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator+= (double value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を加算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator- (const TxPointD &value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator- (double value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の減算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator-= (const TxPointD &value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身から指定値を減算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator-= (double value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身から指定値を減算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator* (const TxPointD &value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator* (double value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の乗算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator*= (const TxPointD &value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を乗算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator*= (double value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身に指定値を乗算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator/ (const TxPointD &value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator/ (double value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身と指定値の除算結果を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator/= (const TxPointD &value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身を指定値を除算して自身の参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxPointD::operator/= (double value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身を指定値を除算して自身の参照を返します。
+*/
+
+}

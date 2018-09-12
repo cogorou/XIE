@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54054B0F-39EC-4025-BB33-C8D62BAAC496}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XIE</RootNamespace>
+    <AssemblyName>XIE.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1591</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\Debug\XIE.Core.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <NoWarn>1591</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\Release\XIE.Core.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLinux|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugLinux\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\DebugLinux\XIE.Core.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU'">
+    <OutputPath>bin\ReleaseLinux\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\ReleaseLinux\XIE.Core.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('$(XIE_SNK)\XIE.snk')">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(XIE_SNK)\XIE.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\xie_core.cs" />
+    <Compile Include="Api\xie_core_x64.cs" />
+    <Compile Include="Api\xie_core_x86.cs" />
+    <Compile Include="Api\xie_high.cs" />
+    <Compile Include="Api\xie_high_x64.cs" />
+    <Compile Include="Api\xie_high_x86.cs" />
+    <Compile Include="Core\Attributes\CxModelOfAttribute.cs" />
+    <Compile Include="Core\Attributes\CxRelationAttribute.cs" />
+    <Compile Include="Core\Attributes\CxSortingConverter.cs" />
+    <Compile Include="Core\Base\AxiClipboard.cs" />
+    <Compile Include="Core\Base\AxiEnv.cs" />
+    <Compile Include="Core\Base\Defs.cs" />
+    <Compile Include="Core\Base\ModelOf.cs" />
+    <Compile Include="Core\Data\CxStringA.cs" />
+    <Compile Include="Core\Data\CxStringW.cs" />
+    <Compile Include="Core\Structures\Shape\TxCircleArcD.cs" />
+    <Compile Include="Core\Structures\Shape\TxCircleArcI.cs" />
+    <Compile Include="Effectors\CxGammaConverter.cs" />
+    <Compile Include="Effectors\CxIntegral.cs" />
+    <Compile Include="Effectors\CxMonochrome.cs" />
+    <Compile Include="Effectors\CxPartColor.cs" />
+    <Compile Include="Effectors\CxProjection.cs" />
+    <Compile Include="Effectors\CxRgbConverter.cs" />
+    <Compile Include="Effectors\CxRgbToGray.cs" />
+    <Compile Include="GDI\CxCanvas.cs" />
+    <Compile Include="GDI\CxCanvasInfo.cs" />
+    <Compile Include="GDI\CxGdiCircleArc.cs" />
+    <Compile Include="GDI\CxImageView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GDI\CxOverlayGrid.cs" />
+    <Compile Include="GDI\CxOverlayProfile.cs" />
+    <Compile Include="GDI\CxOverlayROI.cs" />
+    <Compile Include="GDI\Enums.cs" />
+    <Compile Include="GDI\EventArgs.cs" />
+    <Compile Include="GDI\Interfaces.cs" />
+    <Compile Include="GDI\CxGdiEllipseArc.cs" />
+    <Compile Include="GDI\CxGdiCircle.cs" />
+    <Compile Include="GDI\CxGdiEllipse.cs" />
+    <Compile Include="GDI\CxGdiImage.cs" />
+    <Compile Include="GDI\CxGdiLine.cs" />
+    <Compile Include="GDI\CxGdiLineSegment.cs" />
+    <Compile Include="GDI\CxGdiPoint.cs" />
+    <Compile Include="GDI\CxGdiPolyline.cs" />
+    <Compile Include="GDI\CxGdiRectangle.cs" />
+    <Compile Include="GDI\CxGdiString.cs" />
+    <Compile Include="GDI\CxGdiTrapezoid.cs" />
+    <Compile Include="GDI\TxCanvas.cs" />
+    <Compile Include="GDI\TxGdi2dParam.cs" />
+    <Compile Include="GDI\TxGdiBrush.cs" />
+    <Compile Include="GDI\TxGdiFont.cs" />
+    <Compile Include="GDI\TxGdiPen.cs" />
+    <Compile Include="GDI\TxHitPosition.cs" />
+    <Compile Include="Effectors\CxBinarize1.cs" />
+    <Compile Include="Effectors\CxBinarize2.cs" />
+    <Compile Include="Effectors\CxHsvConverter.cs" />
+    <Compile Include="Core\Exchange\CVDefs.cs" />
+    <Compile Include="Core\Exchange\TxCvMat.cs" />
+    <Compile Include="Core\Exif\CxExif.cs" />
+    <Compile Include="Core\Exif\TxExif.cs" />
+    <Compile Include="Core\Exif\TxExifItem.cs" />
+    <Compile Include="Core\Interfaces\IxLockable.cs" />
+    <Compile Include="Core\Structures\Data\TxStringA.cs" />
+    <Compile Include="Core\Structures\Data\TxStringW.cs" />
+    <Compile Include="Core\Structures\Shape\TxEllipseArcD.cs" />
+    <Compile Include="Core\Structures\Shape\TxEllipseArcI.cs" />
+    <Compile Include="Effectors\CxHsvToRgb.cs" />
+    <Compile Include="Effectors\CxRgbToHsv.cs" />
+    <Compile Include="Log\ApiLog.cs" />
+    <Compile Include="Core\Base\AxiTextStorage.cs" />
+    <Compile Include="Core\Base\CxStopwatch.cs" />
+    <Compile Include="Core\Base\Delegates.cs" />
+    <Compile Include="Core\Data\CxArrayFilter.cs" />
+    <Compile Include="Core\Data\CxImageFilter.cs" />
+    <Compile Include="Core\Base\Enums.cs" />
+    <Compile Include="Core\Data\CxMatrixFilter.cs" />
+    <Compile Include="Core\Structures\Data\TxImageSize.cs" />
+    <Compile Include="Core\Structures\Data\TxLayer.cs" />
+    <Compile Include="Core\Structures\Data\TxModel.cs" />
+    <Compile Include="Core\Structures\Data\TxScanner.cs" />
+    <Compile Include="Core\Structures\Data\TxScanner1D.cs" />
+    <Compile Include="Core\Structures\Data\TxScanner2D.cs" />
+    <Compile Include="Core\Interfaces\IxAttachable.cs" />
+    <Compile Include="Core\Interfaces\IxEquatable.cs" />
+    <Compile Include="Core\Interfaces\IxParam.cs" />
+    <Compile Include="Core\Interfaces\IxRunnable.cs" />
+    <Compile Include="Core\Structures\Color\TxBGR8x3.cs" />
+    <Compile Include="Core\Structures\Color\TxBGR8x4.cs" />
+    <Compile Include="Core\Structures\IO\TxDateTime.cs" />
+    <Compile Include="Core\Structures\IO\TxFrameIndex.cs" />
+    <Compile Include="Core\Structures\IO\TxRawFileHeader.cs" />
+    <Compile Include="Core\Exchange\IPLDefs.cs" />
+    <Compile Include="Core\Exchange\TxIplImage.cs" />
+    <Compile Include="Core\Structures\Shape\TxRangeD.cs" />
+    <Compile Include="Core\Structures\Shape\TxRangeI.cs" />
+    <Compile Include="Core\Structures\Shape\TxTrapezoidD.cs" />
+    <Compile Include="Core\Structures\Shape\TxTrapezoidI.cs" />
+    <Compile Include="Forms\CxClipboardObserver.cs" />
+    <Compile Include="Forms\CxToolStripEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IO\CxSerialPort.cs" />
+    <Compile Include="IO\Enums.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IO\TxSerialPort.cs" />
+    <Compile Include="Log\CxLogCollection.cs" />
+    <Compile Include="Log\CxLogElement.cs" />
+    <Compile Include="Log\CxLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Log\CxLogForm.Designer.cs">
+      <DependentUpon>CxLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\CxLogView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Log\CxLogView.Designer.cs">
+      <DependentUpon>CxLogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\CxRingList.cs" />
+    <Compile Include="Log\Enums.cs" />
+    <Compile Include="Media\CxCamera.cs" />
+    <Compile Include="Media\CxCameraSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Media\CxCameraSelectionForm.Designer.cs">
+      <DependentUpon>CxCameraSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Media\CxControlProperty.cs" />
+    <Compile Include="Media\CxDeviceList.cs" />
+    <Compile Include="Media\CxDeviceListItem.cs" />
+    <Compile Include="Media\CxDeviceParam.cs" />
+    <Compile Include="Media\CxDeviceSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Media\CxDeviceSelectionForm.Designer.cs">
+      <DependentUpon>CxDeviceSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Media\CxGrabber.cs" />
+    <Compile Include="Media\CxGrabberArgs.cs" />
+    <Compile Include="Media\CxGrabberInternal.cs" />
+    <Compile Include="Media\CxMediaPlayer.cs" />
+    <Compile Include="Media\CxScreenCapture.cs" />
+    <Compile Include="Media\CxScreenList.cs" />
+    <Compile Include="Media\CxScreenListItem.cs" />
+    <Compile Include="Media\Enums.cs" />
+    <Compile Include="Media\IxMediaControl.cs" />
+    <Compile Include="Media\TxDeviceListItem.cs" />
+    <Compile Include="Media\TxDeviceParam.cs" />
+    <Compile Include="Media\TxEventReceiverArgs.cs" />
+    <Compile Include="Media\TxScreenListItem.cs" />
+    <Compile Include="Net\CxTcpClient.cs" />
+    <Compile Include="Net\CxTcpServer.cs" />
+    <Compile Include="Net\CxUdpClient.cs" />
+    <Compile Include="Net\Enums.cs" />
+    <Compile Include="Net\TxIPAddress.cs" />
+    <Compile Include="Net\TxIPEndPoint.cs" />
+    <Compile Include="Net\TxSocketStream.cs" />
+    <Compile Include="Net\TxTcpClient.cs" />
+    <Compile Include="Net\TxTcpServer.cs" />
+    <Compile Include="Net\TxUdpClient.cs" />
+    <Compile Include="Ptr\Struct\TxCircleArcDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxCircleArcIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxEllipseArcDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxEllipseArcIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxBGR8x3Ptr.cs" />
+    <Compile Include="Ptr\Struct\TxBGR8x4Ptr.cs" />
+    <Compile Include="Ptr\Struct\TxCircleDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxCircleIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxEllipseDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxEllipseIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxLineDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxLineIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxLineSegmentDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxLineSegmentIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxPointDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxPointIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxRangeDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxRangeIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxRectangleDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxRectangleIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxSizeDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxSizeIPtr.cs" />
+    <Compile Include="Ptr\Struct\TxStatisticsPtr.cs" />
+    <Compile Include="Ptr\Struct\TxRGB8x3Ptr.cs" />
+    <Compile Include="Ptr\Struct\TxRGB8x4Ptr.cs" />
+    <Compile Include="Ptr\Primitive\BytePtr.cs" />
+    <Compile Include="Ptr\Primitive\SBytePtr.cs" />
+    <Compile Include="Ptr\Primitive\DoublePtr.cs" />
+    <Compile Include="Ptr\Primitive\Int16Ptr.cs" />
+    <Compile Include="Ptr\Primitive\Int32Ptr.cs" />
+    <Compile Include="Ptr\Primitive\Int64Ptr.cs" />
+    <Compile Include="Ptr\Primitive\SinglePtr.cs" />
+    <Compile Include="Ptr\Primitive\UInt16Ptr.cs" />
+    <Compile Include="Ptr\Primitive\UInt32Ptr.cs" />
+    <Compile Include="Ptr\Primitive\UInt64Ptr.cs" />
+    <Compile Include="Core\Structures\Shape\TxCircleD.cs" />
+    <Compile Include="Core\Structures\Shape\TxCircleI.cs" />
+    <Compile Include="Core\Structures\Shape\TxEllipseD.cs" />
+    <Compile Include="Core\Structures\Shape\TxEllipseI.cs" />
+    <Compile Include="Core\Structures\Shape\TxLineD.cs" />
+    <Compile Include="Core\Structures\Shape\TxLineI.cs" />
+    <Compile Include="Core\Structures\Shape\TxLineSegmentD.cs" />
+    <Compile Include="Core\Structures\Shape\TxLineSegmentI.cs" />
+    <Compile Include="Core\Structures\Shape\TxPointI.cs" />
+    <Compile Include="Core\Structures\Shape\TxRectangleI.cs" />
+    <Compile Include="Core\Structures\Shape\TxSizeI.cs" />
+    <Compile Include="Core\Structures\Shape\TxStatistics.cs" />
+    <Compile Include="Core\Structures\Color\TxRGB8x3.cs" />
+    <Compile Include="Core\Structures\Color\TxRGB8x4.cs" />
+    <Compile Include="Core\Base\SIZE_T.cs" />
+    <Compile Include="Core\Structures\Data\TxArray.cs" />
+    <Compile Include="Core\Structures\Data\TxImage.cs" />
+    <Compile Include="Core\Structures\Data\TxMatrix.cs" />
+    <Compile Include="Core\Base\HxModule.cs" />
+    <Compile Include="Core\Data\CxArray.cs" />
+    <Compile Include="Core\Data\CxImage.cs" />
+    <Compile Include="Core\Data\CxMatrix.cs" />
+    <Compile Include="Core\Structures\Shape\TxPointD.cs" />
+    <Compile Include="Core\Structures\Shape\TxRectangleD.cs" />
+    <Compile Include="Core\Structures\Shape\TxSizeD.cs" />
+    <Compile Include="Ptr\Struct\TxTrapezoidDPtr.cs" />
+    <Compile Include="Ptr\Struct\TxTrapezoidIPtr.cs" />
+    <Compile Include="Core\Attributes\CxCategoryAttribute.cs" />
+    <Compile Include="Core\Attributes\CxDescriptionAttribute.cs" />
+    <Compile Include="Core\Base\Axi.cs" />
+    <Compile Include="Core\Interfaces\IxFileAccess.cs" />
+    <Compile Include="Core\Interfaces\IxValidatable.cs" />
+    <Compile Include="Core\Base\CxException.cs" />
+    <Compile Include="Core\Attributes\CxPluginAttribute.cs" />
+    <Compile Include="Core\Interfaces\IxModule.cs" />
+    <Compile Include="Core\Interfaces\IxPtrEnumerator.cs" />
+    <Compile Include="Core\Interfaces\IxPointer.cs" />
+    <Compile Include="Core\Base\AxiXml.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GDI\CxImageView.resx">
+      <DependentUpon>CxImageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Log\CxLogForm.resx">
+      <DependentUpon>CxLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\CxCameraSelectionForm.resx">
+      <DependentUpon>CxCameraSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Media\CxDeviceSelectionForm.resx">
+      <DependentUpon>CxDeviceSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Windows -->
+    <PostBuildEvent Condition="'$(OS)'!='Unix'">
+echo $(XIE_BIN)
+copy "$(TargetDir)$(TargetFileName)"     "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetName).pdb"     "$(ProjectDir)$(XIE_BIN)"
+copy "$(ProjectDir)$(DocumentationFile)" "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+    <!-- Linux -->
+    <PostBuildEvent Condition="'$(OS)'=='Unix'">
+echo $(XIE_BIN)
+cp "$(TargetDir)$(TargetFileName)"     "$(ProjectDir)$(XIE_BIN)"
+cp "$(TargetDir)$(TargetFileName).mdb" "$(ProjectDir)$(XIE_BIN)"
+cp "$(ProjectDir)$(DocumentationFile)" "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

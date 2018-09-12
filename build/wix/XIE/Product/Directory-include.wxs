@@ -1,0 +1,505 @@
+<Include>
+	<Directory Id="INCLUDE" Name="include">
+		<Component Id="XIE.H" DiskId="1" Guid="C8DF72C3-6D01-417E-A82A-FE3863462B4E">
+			<File Id="XIE.H" Name="xie.h" Source="..\Archives\include\xie.h" />
+		</Component>
+		<Component Id="XIE_CORE.H" DiskId="1" Guid="0E0460AE-94ED-46F8-8545-6045EC632256">
+			<File Id="XIE_CORE.H" Name="xie_core.h" Source="..\Archives\include\xie_core.h" />
+		</Component>
+		<Component Id="XIE_DS.H" DiskId="1" Guid="90B99705-7AC0-419B-9164-C01B2185F369">
+			<File Id="XIE_DS.H" Name="xie_ds.h" Source="..\Archives\include\xie_ds.h" />
+		</Component>
+		<Component Id="XIE_HIGH.H" DiskId="1" Guid="CA976E73-39D0-4CB5-8FAA-F89312C93D72">
+			<File Id="XIE_HIGH.H" Name="xie_high.h" Source="..\Archives\include\xie_high.h" />
+		</Component>
+		<Directory Id="CORE" Name="Core">
+			<Component Id="AXI.H" DiskId="1" Guid="1935C3C8-4D42-489A-8FF8-CA27CC2A9CBB">
+				<File Id="AXI.H" Name="Axi.h" Source="..\Archives\include\Core\Axi.h" />
+			</Component>
+			<Component Id="AXIDIAGNOSTICS.H" DiskId="1" Guid="B2A1CAAD-35F3-4812-B611-1573DAE74AD6">
+				<File Id="AXIDIAGNOSTICS.H" Name="AxiDiagnostics.h" Source="..\Archives\include\Core\AxiDiagnostics.h" />
+			</Component>
+			<Component Id="AXIMATH.H" DiskId="1" Guid="655347B8-8A52-4478-B562-495C575D9F29">
+				<File Id="AXIMATH.H" Name="AxiMath.h" Source="..\Archives\include\Core\AxiMath.h" />
+			</Component>
+			<Component Id="CXARRAY.H" DiskId="1" Guid="61E20261-366B-49CD-9B1A-B29CFDCA59D9">
+				<File Id="CXARRAY.H" Name="CxArray.h" Source="..\Archives\include\Core\CxArray.h" />
+			</Component>
+			<Component Id="CXARRAYFILTER.H" DiskId="1" Guid="8320FEBE-7673-4940-AC51-094FFD1BC1FF">
+				<File Id="CXARRAYFILTER.H" Name="CxArrayFilter.h" Source="..\Archives\include\Core\CxArrayFilter.h" />
+			</Component>
+			<Component Id="CXARRAYEX.H" DiskId="1" Guid="C403FC93-42AF-4541-A795-F5DF5CCB1FF6">
+				<File Id="CXARRAYEX.H" Name="CxArrayEx.h" Source="..\Archives\include\Core\CxArrayEx.h" />
+			</Component>
+			<Component Id="CXEXCEPTION.H" DiskId="1" Guid="1357B2AE-073D-4DF5-A31B-779FA71DA3F9">
+				<File Id="CXEXCEPTION.H" Name="CxException.h" Source="..\Archives\include\Core\CxException.h" />
+			</Component>
+			<Component Id="CXEXIF.H" DiskId="1" Guid="E26020AE-3082-49D0-9D03-8F24173BEA08">
+				<File Id="CXEXIF.H" Name="CxExif.h" Source="..\Archives\include\Core\CxExif.h" />
+			</Component>
+			<Component Id="CXFINALIZER.H" DiskId="1" Guid="A5F477B2-CCF5-4ABE-A53A-EF576777344E">
+				<File Id="CXFINALIZER.H" Name="CxFinalizer.h" Source="..\Archives\include\Core\CxFinalizer.h" />
+			</Component>
+			<Component Id="CXIMAGE.H" DiskId="1" Guid="D97641E6-CC81-44F2-84C3-AF36CDF65650">
+				<File Id="CXIMAGE.H" Name="CxImage.h" Source="..\Archives\include\Core\CxImage.h" />
+			</Component>
+			<Component Id="CXIMAGEFILTER.H" DiskId="1" Guid="F38409D2-9A20-47A3-8B99-B7566ECE4E3C">
+				<File Id="CXIMAGEFILTER.H" Name="CxImageFilter.h" Source="..\Archives\include\Core\CxImageFilter.h" />
+			</Component>
+			<Component Id="CXMATRIX.H" DiskId="1" Guid="1A555134-C9E9-4722-B288-2EDD2088126D">
+				<File Id="CXMATRIX.H" Name="CxMatrix.h" Source="..\Archives\include\Core\CxMatrix.h" />
+			</Component>
+			<Component Id="CXMATRIXFILTER.H" DiskId="1" Guid="0F42B2A8-FC79-47DD-A69F-C03921789785">
+				<File Id="CXMATRIXFILTER.H" Name="CxMatrixFilter.h" Source="..\Archives\include\Core\CxMatrixFilter.h" />
+			</Component>
+			<Component Id="CXMODULE.H" DiskId="1" Guid="A26C355D-5BF1-424B-A9BD-09E4A5C5BDAD">
+				<File Id="CXMODULE.H" Name="CxModule.h" Source="..\Archives\include\Core\CxModule.h" />
+			</Component>
+			<Component Id="CXMUTEX.H" DiskId="1" Guid="0BDA51F9-9FF7-4D9D-8C20-1AB1F9A0727F">
+				<File Id="CXMUTEX.H" Name="CxMutex.h" Source="..\Archives\include\Core\CxMutex.h" />
+			</Component>
+			<Component Id="CXSTOPWATCH.H" DiskId="1" Guid="7944B6C1-7D1E-421D-B9E5-C1F642BF8D28">
+				<File Id="CXSTOPWATCH.H" Name="CxStopwatch.h" Source="..\Archives\include\Core\CxStopwatch.h" />
+			</Component>
+			<Component Id="CXSTRING.H" DiskId="1" Guid="77A2A6D2-B2EF-48E6-93AC-06E45B81390F">
+				<File Id="CXSTRING.H" Name="CxString.h" Source="..\Archives\include\Core\CxString.h" />
+			</Component>
+			<Component Id="CXSTRINGA.H" DiskId="1" Guid="AC455F8A-C5BB-4E8F-80F0-3FC4EFC94C42">
+				<File Id="CXSTRINGA.H" Name="CxStringA.h" Source="..\Archives\include\Core\CxStringA.h" />
+			</Component>
+			<Component Id="CXSTRINGW.H" DiskId="1" Guid="089EC378-2B63-47F7-A0F3-0ECF5F57C6AC">
+				<File Id="CXSTRINGW.H" Name="CxStringW.h" Source="..\Archives\include\Core\CxStringW.h" />
+			</Component>
+			<Component Id="CXTHREAD.H" DiskId="1" Guid="F273ACFF-4E62-4E4D-BA39-81F7D76A83AD">
+				<File Id="CXTHREAD.H" Name="CxThread.h" Source="..\Archives\include\Core\CxThread.h" />
+			</Component>
+			<Component Id="CXTHREADARGS.H" DiskId="1" Guid="0C144305-0526-4219-9AB7-9CD106EBB371">
+				<File Id="CXTHREADARGS.H" Name="CxThreadArgs.h" Source="..\Archives\include\Core\CxThreadArgs.h" />
+			</Component>
+			<Component Id="CXTHREADEVENT.H" DiskId="1" Guid="7D0AAA8F-35C1-4054-A542-EFA98E032CEC">
+				<File Id="CXTHREADEVENT.H" Name="CxThreadEvent.h" Source="..\Archives\include\Core\CxThreadEvent.h" />
+			</Component>
+			<Component Id="IXATTACHABLE.H" DiskId="1" Guid="8D5099D7-D8BE-4176-9B4B-813A8164F3BB">
+				<File Id="IXATTACHABLE.H" Name="IxAttachable.h" Source="..\Archives\include\Core\IxAttachable.h" />
+			</Component>
+			<Component Id="IXDISPOSABLE.H" DiskId="1" Guid="CC445A05-F837-4ADE-BBF5-28BAE5C87628">
+				<File Id="IXDISPOSABLE.H" Name="IxDisposable.h" Source="..\Archives\include\Core\IxDisposable.h" />
+			</Component>
+			<Component Id="IXEQUATABLE.H" DiskId="1" Guid="5A38AB59-11DD-487D-B510-46FAE1D9AC49">
+				<File Id="IXEQUATABLE.H" Name="IxEquatable.h" Source="..\Archives\include\Core\IxEquatable.h" />
+			</Component>
+			<Component Id="IXEVENTRECEIVER.H" DiskId="1" Guid="B534D38C-8D05-414C-9A59-20DE6574AE48">
+				<File Id="IXEVENTRECEIVER.H" Name="IxEventReceiver.h" Source="..\Archives\include\Core\IxEventReceiver.h" />
+			</Component>
+			<Component Id="IXFILEACCESS.H" DiskId="1" Guid="2268C552-1443-4801-A479-C03663806483">
+				<File Id="IXFILEACCESS.H" Name="IxFileAccess.h" Source="..\Archives\include\Core\IxFileAccess.h" />
+			</Component>
+			<Component Id="IXFILEPLUGIN.H" DiskId="1" Guid="1DB22BBA-6FEA-4561-BD46-4A40E4AA7345">
+				<File Id="IXFILEPLUGIN.H" Name="IxFilePlugin.h" Source="..\Archives\include\Core\IxFilePlugin.h" />
+			</Component>
+			<Component Id="IXLOCKABLE.H" DiskId="1" Guid="0A3B9B54-A217-4241-9803-F45E1A1EE45B">
+				<File Id="IXLOCKABLE.H" Name="IxLockable.h" Source="..\Archives\include\Core\IxLockable.h" />
+			</Component>
+			<Component Id="IXINTERNALMODULE.H" DiskId="1" Guid="63B4AE47-85F5-40C0-90C3-8E47E3F6CB31">
+				<File Id="IXINTERNALMODULE.H" Name="IxInternalModule.h" Source="..\Archives\include\Core\IxInternalModule.h" />
+			</Component>
+			<Component Id="IXPARAM.H" DiskId="1" Guid="5B2E064D-6898-4FC7-B524-0D4F1B117D81">
+				<File Id="IXPARAM.H" Name="IxParam.h" Source="..\Archives\include\Core\IxParam.h" />
+			</Component>
+			<Component Id="IXRAWFILE.H" DiskId="1" Guid="5D76AD77-1D76-431C-9098-76F3976D6728">
+				<File Id="IXRAWFILE.H" Name="IxRawFile.h" Source="..\Archives\include\Core\IxRawFile.h" />
+			</Component>
+			<Component Id="IXRUNNABLE.H" DiskId="1" Guid="2F92A1C6-C73E-47D7-882C-22E8C72F75F9">
+				<File Id="IXRUNNABLE.H" Name="IxRunnable.h" Source="..\Archives\include\Core\IxRunnable.h" />
+			</Component>
+			<Component Id="IXTAGPTR.H" DiskId="1" Guid="FDE7AEC7-814F-43D6-8777-A30EFD115105">
+				<File Id="IXTAGPTR.H" Name="IxTagPtr.h" Source="..\Archives\include\Core\IxTagPtr.h" />
+			</Component>
+			<Component Id="IXVALIDATABLE.H" DiskId="1" Guid="444D015D-3898-4C2E-83FF-E425E878D88D">
+				<File Id="IXVALIDATABLE.H" Name="IxValidatable.h" Source="..\Archives\include\Core\IxValidatable.h" />
+			</Component>
+			<Component Id="TXARRAY.H" DiskId="1" Guid="FD42931C-1C4C-4FE9-9534-A817D65E6F8C">
+				<File Id="TXARRAY.H" Name="TxArray.h" Source="..\Archives\include\Core\TxArray.h" />
+			</Component>
+			<Component Id="TXBGR8X3.H" DiskId="1" Guid="30BB9DA8-4EA9-4038-AA77-08FD4C9B9B1D">
+				<File Id="TXBGR8X3.H" Name="TxBGR8x3.h" Source="..\Archives\include\Core\TxBGR8x3.h" />
+			</Component>
+			<Component Id="TXBGR8X4.H" DiskId="1" Guid="A4E42909-C7B6-4C69-A5B3-0E57FA2CC4B7">
+				<File Id="TXBGR8X4.H" Name="TxBGR8x4.h" Source="..\Archives\include\Core\TxBGR8x4.h" />
+			</Component>
+			<Component Id="TXCIRCLED.H" DiskId="1" Guid="9347F328-C9CA-4286-ACAE-689761AB8073">
+				<File Id="TXCIRCLED.H" Name="TxCircleD.h" Source="..\Archives\include\Core\TxCircleD.h" />
+			</Component>
+			<Component Id="TXCIRCLEI.H" DiskId="1" Guid="C0F6B83C-F474-4BD4-A937-03482C61381D">
+				<File Id="TXCIRCLEI.H" Name="TxCircleI.h" Source="..\Archives\include\Core\TxCircleI.h" />
+			</Component>
+			<Component Id="TXCIRCLEARCD.H" DiskId="1" Guid="393046EB-FA44-46F1-8D8A-CA560BE53AEF">
+				<File Id="TXCIRCLEARCD.H" Name="TxCircleArcD.h" Source="..\Archives\include\Core\TxCircleArcD.h" />
+			</Component>
+			<Component Id="TXCIRCLEARCI.H" DiskId="1" Guid="AB43FF6C-C1C1-4232-8A7A-E9CC9B7CEED3">
+				<File Id="TXCIRCLEARCI.H" Name="TxCircleArcI.h" Source="..\Archives\include\Core\TxCircleArcI.h" />
+			</Component>
+			<Component Id="TXCVMAT.H" DiskId="1" Guid="63E29D80-9419-4F06-BD1C-C8397A8A75DE">
+				<File Id="TXCVMAT.H" Name="TxCvMat.h" Source="..\Archives\include\Core\TxCvMat.h" />
+			</Component>
+			<Component Id="TXDATETIME.H" DiskId="1" Guid="2C7DDD99-9D81-42D2-9057-607258C025BF">
+				<File Id="TXDATETIME.H" Name="TxDateTime.h" Source="..\Archives\include\Core\TxDateTime.h" />
+			</Component>
+			<Component Id="TXELLIPSED.H" DiskId="1" Guid="24742436-3F04-4FA4-8862-9BB5E9088CA4">
+				<File Id="TXELLIPSED.H" Name="TxEllipseD.h" Source="..\Archives\include\Core\TxEllipseD.h" />
+			</Component>
+			<Component Id="TXELLIPSEI.H" DiskId="1" Guid="73996129-DFD7-4873-A112-811A1ACBA926">
+				<File Id="TXELLIPSEI.H" Name="TxEllipseI.h" Source="..\Archives\include\Core\TxEllipseI.h" />
+			</Component>
+			<Component Id="TXELLIPSEARCD.H" DiskId="1" Guid="49031AA7-DA42-47BB-AF1F-28F12D50AF1E">
+				<File Id="TXELLIPSEARCD.H" Name="TxEllipseArcD.h" Source="..\Archives\include\Core\TxEllipseArcD.h" />
+			</Component>
+			<Component Id="TXELLIPSEARCI.H" DiskId="1" Guid="4B1B8BF2-D9FB-42C5-801A-52AA77939CDC">
+				<File Id="TXELLIPSEARCI.H" Name="TxEllipseArcI.h" Source="..\Archives\include\Core\TxEllipseArcI.h" />
+			</Component>
+			<Component Id="TXEXIF.H" DiskId="1" Guid="4BB3C0BE-9642-4FF6-83EB-5D0908AE020A">
+				<File Id="TXEXIF.H" Name="TxExif.h" Source="..\Archives\include\Core\TxExif.h" />
+			</Component>
+			<Component Id="TXEXIFITEM.H" DiskId="1" Guid="BD0AC678-3511-47DA-884F-499000EDAF5F">
+				<File Id="TXEXIFITEM.H" Name="TxExifItem.h" Source="..\Archives\include\Core\TxExifItem.h" />
+			</Component>
+			<Component Id="TXFRAMEINDEX.H" DiskId="1" Guid="0A0F5173-490F-4BC9-A840-AA0195044B98">
+				<File Id="TXFRAMEINDEX.H" Name="TxFrameIndex.h" Source="..\Archives\include\Core\TxFrameIndex.h" />
+			</Component>
+			<Component Id="TXIMAGE.H" DiskId="1" Guid="FFEF3B50-94EA-454C-8451-04BB129D2B65">
+				<File Id="TXIMAGE.H" Name="TxImage.h" Source="..\Archives\include\Core\TxImage.h" />
+			</Component>
+			<Component Id="TXIMAGESIZE.H" DiskId="1" Guid="132DD46A-3D20-486F-BBB0-98F14F8D282F">
+				<File Id="TXIMAGESIZE.H" Name="TxImageSize.h" Source="..\Archives\include\Core\TxImageSize.h" />
+			</Component>
+			<Component Id="TXIPLIMAGE.H" DiskId="1" Guid="1596656E-48CC-42AF-B514-EEA288A54E54">
+				<File Id="TXIPLIMAGE.H" Name="TxIplImage.h" Source="..\Archives\include\Core\TxIplImage.h" />
+			</Component>
+			<Component Id="TXIPLROI.H" DiskId="1" Guid="8A403A08-68DA-42EB-B3DB-335CAB0F5469">
+				<File Id="TXIPLROI.H" Name="TxIplROI.h" Source="..\Archives\include\Core\TxIplROI.h" />
+			</Component>
+			<Component Id="TXLAYER.H" DiskId="1" Guid="BA785AA9-C02F-4FF1-B3BC-8399B00FA1FC">
+				<File Id="TXLAYER.H" Name="TxLayer.h" Source="..\Archives\include\Core\TxLayer.h" />
+			</Component>
+			<Component Id="TXLINED.H" DiskId="1" Guid="DAE45284-E41A-42E2-9783-4A3BB0B0D82B">
+				<File Id="TXLINED.H" Name="TxLineD.h" Source="..\Archives\include\Core\TxLineD.h" />
+			</Component>
+			<Component Id="TXLINEI.H" DiskId="1" Guid="F9E053C8-A9D8-4F4F-89D7-489E1032160B">
+				<File Id="TXLINEI.H" Name="TxLineI.h" Source="..\Archives\include\Core\TxLineI.h" />
+			</Component>
+			<Component Id="TXLINESEGMENTD.H" DiskId="1" Guid="CB5BAD5F-FC84-41EF-A7B2-E1B9C9ACBE14">
+				<File Id="TXLINESEGMENTD.H" Name="TxLineSegmentD.h" Source="..\Archives\include\Core\TxLineSegmentD.h" />
+			</Component>
+			<Component Id="TXLINESEGMENTI.H" DiskId="1" Guid="383DC8D8-1AF3-4118-95FA-899AEC2D9EF4">
+				<File Id="TXLINESEGMENTI.H" Name="TxLineSegmentI.h" Source="..\Archives\include\Core\TxLineSegmentI.h" />
+			</Component>
+			<Component Id="TXMATRIX.H" DiskId="1" Guid="930453D1-681F-47EB-A9D2-927319523BCB">
+				<File Id="TXMATRIX.H" Name="TxMatrix.h" Source="..\Archives\include\Core\TxMatrix.h" />
+			</Component>
+			<Component Id="TXMODEL.H" DiskId="1" Guid="AD5B4C87-EF2D-4985-9AE6-B2F33FD92353">
+				<File Id="TXMODEL.H" Name="TxModel.h" Source="..\Archives\include\Core\TxModel.h" />
+			</Component>
+			<Component Id="TXPOINTD.H" DiskId="1" Guid="291C15E7-ADB9-496D-AEFC-FD291E938173">
+				<File Id="TXPOINTD.H" Name="TxPointD.h" Source="..\Archives\include\Core\TxPointD.h" />
+			</Component>
+			<Component Id="TXPOINTI.H" DiskId="1" Guid="5EAB7663-2B05-40BA-B1AA-FB85CB198F13">
+				<File Id="TXPOINTI.H" Name="TxPointI.h" Source="..\Archives\include\Core\TxPointI.h" />
+			</Component>
+			<Component Id="TXRANGED.H" DiskId="1" Guid="F2F40B8B-417B-4C14-AB4D-04A2D92F513D">
+				<File Id="TXRANGED.H" Name="TxRangeD.h" Source="..\Archives\include\Core\TxRangeD.h" />
+			</Component>
+			<Component Id="TXRANGEI.H" DiskId="1" Guid="C349F697-D279-4082-8956-38ED3A3D44B6">
+				<File Id="TXRANGEI.H" Name="TxRangeI.h" Source="..\Archives\include\Core\TxRangeI.h" />
+			</Component>
+			<Component Id="TXRAWFILEHEADER.H" DiskId="1" Guid="AB9E03FF-56D6-40AF-9768-7B8D9D04ADD0">
+				<File Id="TXRAWFILEHEADER.H" Name="TxRawFileHeader.h" Source="..\Archives\include\Core\TxRawFileHeader.h" />
+			</Component>
+			<Component Id="TXRECTANGLED.H" DiskId="1" Guid="2F65D11E-9C3A-49C6-88EE-772306EBD2B5">
+				<File Id="TXRECTANGLED.H" Name="TxRectangleD.h" Source="..\Archives\include\Core\TxRectangleD.h" />
+			</Component>
+			<Component Id="TXRECTANGLEI.H" DiskId="1" Guid="6D2E69D1-8A8C-47DB-8758-75C40B1B511C">
+				<File Id="TXRECTANGLEI.H" Name="TxRectangleI.h" Source="..\Archives\include\Core\TxRectangleI.h" />
+			</Component>
+			<Component Id="TXRGB8X3.H" DiskId="1" Guid="EB5CC2F3-B45B-4475-80D6-9B639FF4D589">
+				<File Id="TXRGB8X3.H" Name="TxRGB8x3.h" Source="..\Archives\include\Core\TxRGB8x3.h" />
+			</Component>
+			<Component Id="TXRGB8X4.H" DiskId="1" Guid="E3FD48E8-3B98-49B4-9391-B598280E2D1E">
+				<File Id="TXRGB8X4.H" Name="TxRGB8x4.h" Source="..\Archives\include\Core\TxRGB8x4.h" />
+			</Component>
+			<Component Id="TXSCANNER1D.H" DiskId="1" Guid="3F594CD7-DA90-4161-8406-9DB2F6F93233">
+				<File Id="TXSCANNER1D.H" Name="TxScanner1D.h" Source="..\Archives\include\Core\TxScanner1D.h" />
+			</Component>
+			<Component Id="TXSCANNER2D.H" DiskId="1" Guid="9235AB3F-80B6-45EE-9A08-E5561A6A5F23">
+				<File Id="TXSCANNER2D.H" Name="TxScanner2D.h" Source="..\Archives\include\Core\TxScanner2D.h" />
+			</Component>
+			<Component Id="TXSIZED.H" DiskId="1" Guid="E61011A3-73D2-4DA0-BB24-7C9FEF9F786A">
+				<File Id="TXSIZED.H" Name="TxSizeD.h" Source="..\Archives\include\Core\TxSizeD.h" />
+			</Component>
+			<Component Id="TXSIZEI.H" DiskId="1" Guid="9659CFE4-FA8B-405E-B738-F2690E4E21F4">
+				<File Id="TXSIZEI.H" Name="TxSizeI.h" Source="..\Archives\include\Core\TxSizeI.h" />
+			</Component>
+			<Component Id="TXSTATISTICS.H" DiskId="1" Guid="426E1B86-70F9-4DC4-BFAE-9771D62AA772">
+				<File Id="TXSTATISTICS.H" Name="TxStatistics.h" Source="..\Archives\include\Core\TxStatistics.h" />
+			</Component>
+			<Component Id="TXSTRINGA.H" DiskId="1" Guid="645AC67D-0C77-4EC5-8CD1-9D359EF07BB5">
+				<File Id="TXSTRINGA.H" Name="TxStringA.h" Source="..\Archives\include\Core\TxStringA.h" />
+			</Component>
+			<Component Id="TXSTRINGW.H" DiskId="1" Guid="AF0E3AA8-D6B4-4EFD-BAC8-543199D85B57">
+				<File Id="TXSTRINGW.H" Name="TxStringW.h" Source="..\Archives\include\Core\TxStringW.h" />
+			</Component>
+			<Component Id="TXTRAPEZOIDD.H" DiskId="1" Guid="4452F5D8-A134-46D2-B5E5-62F8B89B1BC5">
+				<File Id="TXTRAPEZOIDD.H" Name="TxTrapezoidD.h" Source="..\Archives\include\Core\TxTrapezoidD.h" />
+			</Component>
+			<Component Id="TXTRAPEZOIDI.H" DiskId="1" Guid="FF4C408D-DA33-4FE7-8829-B89A9DF03E37">
+				<File Id="TXTRAPEZOIDI.H" Name="TxTrapezoidI.h" Source="..\Archives\include\Core\TxTrapezoidI.h" />
+			</Component>
+			<Component Id="XIE_CORE_CV.H" DiskId="1" Guid="F3CC325C-1133-4F3F-92CB-037FEB7DBD09">
+				<File Id="XIE_CORE_CV.H" Name="xie_core_cv.h" Source="..\Archives\include\Core\xie_core_cv.h" />
+			</Component>
+			<Component Id="XIE_CORE_DEFS.H" DiskId="1" Guid="E3ACB9F7-6809-4CD0-A46A-08A16114BE02">
+				<File Id="XIE_CORE_DEFS.H" Name="xie_core_defs.h" Source="..\Archives\include\Core\xie_core_defs.h" />
+			</Component>
+			<Component Id="XIE_CORE_ENUMS.H" DiskId="1" Guid="F7A98FF3-8C56-44D0-AEE8-1B5EA97F0FA2">
+				<File Id="XIE_CORE_ENUMS.H" Name="xie_core_enums.h" Source="..\Archives\include\Core\xie_core_enums.h" />
+			</Component>
+			<Component Id="XIE_CORE_IPL.H" DiskId="1" Guid="FB8C8687-28CF-46E5-B235-50B398B3CDAB">
+				<File Id="XIE_CORE_IPL.H" Name="xie_core_ipl.h" Source="..\Archives\include\Core\xie_core_ipl.h" />
+			</Component>
+			<Component Id="XIE_CORE_MATH.H" DiskId="1" Guid="9EF0A967-7B23-4054-A682-69C577F5E624">
+				<File Id="XIE_CORE_MATH.H" Name="xie_core_math.h" Source="..\Archives\include\Core\xie_core_math.h" />
+			</Component>
+			<Component Id="XIE_CORE_TYPES.H" DiskId="1" Guid="7EDA8EFD-96A9-4857-A3E6-00FAB2AB799F">
+				<File Id="XIE_CORE_TYPES.H" Name="xie_core_types.h" Source="..\Archives\include\Core\xie_core_types.h" />
+			</Component>
+		</Directory>
+		<Directory Id="EFFECTORS" Name="Effectors">
+			<Component Id="CXBINARIZE1.H" DiskId="1" Guid="6D2E6586-741A-428D-A94C-43FF06813EB9">
+				<File Id="CXBINARIZE1.H" Name="CxBinarize1.h" Source="..\Archives\include\Effectors\CxBinarize1.h" />
+			</Component>
+			<Component Id="CXBINARIZE2.H" DiskId="1" Guid="FBC63CB5-B070-4271-9C54-76073FA245A5">
+				<File Id="CXBINARIZE2.H" Name="CxBinarize2.h" Source="..\Archives\include\Effectors\CxBinarize2.h" />
+			</Component>
+			<Component Id="CXGAMMACONVERTER.H" DiskId="1" Guid="886F1AA5-DEEA-4DF5-93CF-B94FF67E3378">
+				<File Id="CXGAMMACONVERTER.H" Name="CxGammaConverter.h" Source="..\Archives\include\Effectors\CxGammaConverter.h" />
+			</Component>
+			<Component Id="CXHSVCONVERTER.H" DiskId="1" Guid="D90E9A4C-ADF5-4513-A1FC-435A0891293A">
+				<File Id="CXHSVCONVERTER.H" Name="CxHsvConverter.h" Source="..\Archives\include\Effectors\CxHsvConverter.h" />
+			</Component>
+			<Component Id="CXHSVTORGB.H" DiskId="1" Guid="A88E5074-88BD-46E6-85E5-632E3468A59C">
+				<File Id="CXHSVTORGB.H" Name="CxHsvToRgb.h" Source="..\Archives\include\Effectors\CxHsvToRgb.h" />
+			</Component>
+			<Component Id="CXINTEGRAL.H" DiskId="1" Guid="41F54E40-2F34-44A8-9CE5-EE957AF101C4">
+				<File Id="CXINTEGRAL.H" Name="CxIntegral.h" Source="..\Archives\include\Effectors\CxIntegral.h" />
+			</Component>
+			<Component Id="CXMONOCHROME.H" DiskId="1" Guid="5FE328FC-038A-4570-8DCC-42E904663333">
+				<File Id="CXMONOCHROME.H" Name="CxMonochrome.h" Source="..\Archives\include\Effectors\CxMonochrome.h" />
+			</Component>
+			<Component Id="CXPARTCOLOR.H" DiskId="1" Guid="A232F1F5-F1E3-44C2-AE49-3246F5720D20">
+				<File Id="CXPARTCOLOR.H" Name="CxPartColor.h" Source="..\Archives\include\Effectors\CxPartColor.h" />
+			</Component>
+			<Component Id="CXPROJECTION.H" DiskId="1" Guid="79E0E0D6-13D3-4548-85C2-BE4D2F222046">
+				<File Id="CXPROJECTION.H" Name="CxProjection.h" Source="..\Archives\include\Effectors\CxProjection.h" />
+			</Component>
+			<Component Id="CXRGBCONVERTER.H" DiskId="1" Guid="B2FFF5D4-40F8-4F18-96F5-2A1C4561D028">
+				<File Id="CXRGBCONVERTER.H" Name="CxRgbConverter.h" Source="..\Archives\include\Effectors\CxRgbConverter.h" />
+			</Component>
+			<Component Id="CXRGBTOGRAY.H" DiskId="1" Guid="21D5818B-89B2-472D-96E1-7759BC4A4B99">
+				<File Id="CXRGBTOGRAY.H" Name="CxRgbToGray.h" Source="..\Archives\include\Effectors\CxRgbToGray.h" />
+			</Component>
+			<Component Id="CXRGBTOHSV.H" DiskId="1" Guid="892B1AEB-7BAD-473D-BC6C-3E1AFFFE34F6">
+				<File Id="CXRGBTOHSV.H" Name="CxRgbToHsv.h" Source="..\Archives\include\Effectors\CxRgbToHsv.h" />
+			</Component>
+		</Directory>
+		<Directory Id="GDI" Name="GDI">
+			<Component Id="AXIGDIDIAGNOSTICS.H" DiskId="1" Guid="3763A052-A7A2-4C8B-8073-CFF09C79338D">
+				<File Id="AXIGDIDIAGNOSTICS.H" Name="AxiGDIDiagnostics.h" Source="..\Archives\include\GDI\AxiGDIDiagnostics.h" />
+			</Component>
+			<Component Id="CXBITMAP.H" DiskId="1" Guid="C308FA7B-3382-4744-A3A3-157780CFDD39">
+				<File Id="CXBITMAP.H" Name="CxBitmap.h" Source="..\Archives\include\GDI\CxBitmap.h" />
+			</Component>
+			<Component Id="CXCANVAS.H" DiskId="1" Guid="45DF88F5-F8C5-416A-A5C2-54A90CDDCB81">
+				<File Id="CXCANVAS.H" Name="CxCanvas.h" Source="..\Archives\include\GDI\CxCanvas.h" />
+			</Component>
+			<Component Id="CXGDICIRCLE.H" DiskId="1" Guid="161A9E97-F83D-4F15-8C03-6A98A83148A5">
+				<File Id="CXGDICIRCLE.H" Name="CxGdiCircle.h" Source="..\Archives\include\GDI\CxGdiCircle.h" />
+			</Component>
+			<Component Id="CXGDICIRCLEARC.H" DiskId="1" Guid="DF89B0AE-CA85-434D-A6F8-2823EF99C314">
+				<File Id="CXGDICIRCLEARC.H" Name="CxGdiCircleArc.h" Source="..\Archives\include\GDI\CxGdiCircleArc.h" />
+			</Component>
+			<Component Id="CXGDIELLIPSE.H" DiskId="1" Guid="0CA69870-FA48-46CA-A37B-9604974D2828">
+				<File Id="CXGDIELLIPSE.H" Name="CxGdiEllipse.h" Source="..\Archives\include\GDI\CxGdiEllipse.h" />
+			</Component>
+			<Component Id="CXGDIELLIPSEARC.H" DiskId="1" Guid="2860658E-E8D9-4BB6-9CA0-CF4A9F406BFC">
+				<File Id="CXGDIELLIPSEARC.H" Name="CxGdiEllipseArc.h" Source="..\Archives\include\GDI\CxGdiEllipseArc.h" />
+			</Component>
+			<Component Id="CXGDIIMAGE.H" DiskId="1" Guid="20631F57-863F-4FF1-8432-E3CE74B436FE">
+				<File Id="CXGDIIMAGE.H" Name="CxGdiImage.h" Source="..\Archives\include\GDI\CxGdiImage.h" />
+			</Component>
+			<Component Id="CXGDILINE.H" DiskId="1" Guid="13EF7BC5-01A6-4F1B-AD5E-1B439B32E2F7">
+				<File Id="CXGDILINE.H" Name="CxGdiLine.h" Source="..\Archives\include\GDI\CxGdiLine.h" />
+			</Component>
+			<Component Id="CXGDILINESEGMENT.H" DiskId="1" Guid="493AA01D-107C-4ED3-8F52-35EA403CEE27">
+				<File Id="CXGDILINESEGMENT.H" Name="CxGdiLineSegment.h" Source="..\Archives\include\GDI\CxGdiLineSegment.h" />
+			</Component>
+			<Component Id="CXGDIPOINT.H" DiskId="1" Guid="E77A6D5C-269A-4FF1-800D-CEF0BC53A98E">
+				<File Id="CXGDIPOINT.H" Name="CxGdiPoint.h" Source="..\Archives\include\GDI\CxGdiPoint.h" />
+			</Component>
+			<Component Id="CXGDIPOLYLINE.H" DiskId="1" Guid="98EA1784-2D4C-4D8A-AB21-23ECD289CC3E">
+				<File Id="CXGDIPOLYLINE.H" Name="CxGdiPolyline.h" Source="..\Archives\include\GDI\CxGdiPolyline.h" />
+			</Component>
+			<Component Id="CXGDIRECTANGLE.H" DiskId="1" Guid="78C7195E-6CDC-4755-A138-0995A2DEF202">
+				<File Id="CXGDIRECTANGLE.H" Name="CxGdiRectangle.h" Source="..\Archives\include\GDI\CxGdiRectangle.h" />
+			</Component>
+			<Component Id="CXGDISTRING.H" DiskId="1" Guid="D9B0EFE0-D250-46E9-8B0F-7408C18CBCA2">
+				<File Id="CXGDISTRING.H" Name="CxGdiString.h" Source="..\Archives\include\GDI\CxGdiString.h" />
+			</Component>
+			<Component Id="CXGDISTRINGA.H" DiskId="1" Guid="B5AEED4D-755D-434A-A8E4-85238FF24519">
+				<File Id="CXGDISTRINGA.H" Name="CxGdiStringA.h" Source="..\Archives\include\GDI\CxGdiStringA.h" />
+			</Component>
+			<Component Id="CXGDISTRINGW.H" DiskId="1" Guid="F2B22354-C9CC-46FD-8018-8D1BB2624690">
+				<File Id="CXGDISTRINGW.H" Name="CxGdiStringW.h" Source="..\Archives\include\GDI\CxGdiStringW.h" />
+			</Component>
+			<Component Id="CXGDITRAPEZOID.H" DiskId="1" Guid="AF74D0F9-30B8-4546-8322-446338D36FB8">
+				<File Id="CXGDITRAPEZOID.H" Name="CxGdiTrapezoid.h" Source="..\Archives\include\GDI\CxGdiTrapezoid.h" />
+			</Component>
+			<Component Id="CXGDIVOID.H" DiskId="1" Guid="3AFDB86B-2571-4CCE-A942-816FF95709E9">
+				<File Id="CXGDIVOID.H" Name="CxGdiVoid.h" Source="..\Archives\include\GDI\CxGdiVoid.h" />
+			</Component>
+			<Component Id="CXOVERLAY.H" DiskId="1" Guid="366EDBE3-409A-463C-96CA-549A57717FA7">
+				<File Id="CXOVERLAY.H" Name="CxOverlay.h" Source="..\Archives\include\GDI\CxOverlay.h" />
+			</Component>
+			<Component Id="CXOVERLAYGRID.H" DiskId="1" Guid="9116706C-3A85-4E01-8346-204F587B9B92">
+				<File Id="CXOVERLAYGRID.H" Name="CxOverlayGrid.h" Source="..\Archives\include\GDI\CxOverlayGrid.h" />
+			</Component>
+			<Component Id="CXOVERLAYPROFILE.H" DiskId="1" Guid="FBEE8F98-5060-4B37-B101-4182F1FDC187">
+				<File Id="CXOVERLAYPROFILE.H" Name="CxOverlayProfile.h" Source="..\Archives\include\GDI\CxOverlayProfile.h" />
+			</Component>
+			<Component Id="CXTEXTURE.H" DiskId="1" Guid="74885EAD-8105-4746-9B97-4AE7D92A7878">
+				<File Id="CXTEXTURE.H" Name="CxTexture.h" Source="..\Archives\include\GDI\CxTexture.h" />
+			</Component>
+			<Component Id="IXGDI2D.H" DiskId="1" Guid="9DB753E0-CEE0-4DE6-9280-F443DBF5832A">
+				<File Id="IXGDI2D.H" Name="IxGdi2d.h" Source="..\Archives\include\GDI\IxGdi2d.h" />
+			</Component>
+			<Component Id="TXBITMAP.H" DiskId="1" Guid="AE7019C8-EAD3-4423-B681-53A1F569013E">
+				<File Id="TXBITMAP.H" Name="TxBitmap.h" Source="..\Archives\include\GDI\TxBitmap.h" />
+			</Component>
+			<Component Id="TXCANVAS.H" DiskId="1" Guid="BA10E005-57C1-428A-AEF3-691800DFBA87">
+				<File Id="TXCANVAS.H" Name="TxCanvas.h" Source="..\Archives\include\GDI\TxCanvas.h" />
+			</Component>
+			<Component Id="TXGDI2DPARAM.H" DiskId="1" Guid="D1AF30B6-D16C-451C-9510-6DF5F9A365A8">
+				<File Id="TXGDI2DPARAM.H" Name="TxGdi2dParam.h" Source="..\Archives\include\GDI\TxGdi2dParam.h" />
+			</Component>
+			<Component Id="TXGDIIMAGE.H" DiskId="1" Guid="B7A63EF9-0E5A-485E-B0AA-6E0BC14F955E">
+				<File Id="TXGDIIMAGE.H" Name="TxGdiImage.h" Source="..\Archives\include\GDI\TxGdiImage.h" />
+			</Component>
+			<Component Id="TXGDIPOLYLINE.H" DiskId="1" Guid="9749EE1E-CF42-47C5-B04D-AA353B152A4A">
+				<File Id="TXGDIPOLYLINE.H" Name="TxGdiPolyline.h" Source="..\Archives\include\GDI\TxGdiPolyline.h" />
+			</Component>
+			<Component Id="TXGDISTRINGA.H" DiskId="1" Guid="72EB8992-87D7-4123-AC5B-2D8DF871802D">
+				<File Id="TXGDISTRINGA.H" Name="TxGdiStringA.h" Source="..\Archives\include\GDI\TxGdiStringA.h" />
+			</Component>
+			<Component Id="TXGDISTRINGW.H" DiskId="1" Guid="B20AF650-35B6-40C7-8849-F7E142243D84">
+				<File Id="TXGDISTRINGW.H" Name="TxGdiStringW.h" Source="..\Archives\include\GDI\TxGdiStringW.h" />
+			</Component>
+			<Component Id="TXHITPOSITION.H" DiskId="1" Guid="BBE1B6B5-3829-4955-8BC7-1D2A19CB33EF">
+				<File Id="TXHITPOSITION.H" Name="TxHitPosition.h" Source="..\Archives\include\GDI\TxHitPosition.h" />
+			</Component>
+		</Directory>
+		<Directory Id="IO" Name="IO">
+			<Component Id="AXIIODIAGNOSTICS.H" DiskId="1" Guid="1E51AC5B-F8F8-4219-AB12-DBB6A5FDED37">
+				<File Id="AXIIODIAGNOSTICS.H" Name="AxiIODiagnostics.h" Source="..\Archives\include\IO\AxiIODiagnostics.h" />
+			</Component>
+			<Component Id="CXSERIALPORT.H" DiskId="1" Guid="8BD6D8C9-297F-4F4D-B08E-E18EC1A54631">
+				<File Id="CXSERIALPORT.H" Name="CxSerialPort.h" Source="..\Archives\include\IO\CxSerialPort.h" />
+			</Component>
+			<Component Id="TXSERIALPORT.H" DiskId="1" Guid="9F9293EF-7DD9-4400-B17E-0DB74BBA534F">
+				<File Id="TXSERIALPORT.H" Name="TxSerialPort.h" Source="..\Archives\include\IO\TxSerialPort.h" />
+			</Component>
+		</Directory>
+		<Directory Id="MEDIA" Name="Media">
+			<Component Id="AXIMEDIADIAGNOSTICS.H" DiskId="1" Guid="ECDD617E-9992-4039-AB54-9EE99F32C0EB">
+				<File Id="AXIMEDIADIAGNOSTICS.H" Name="AxiMediaDiagnostics.h" Source="..\Archives\include\Media\AxiMediaDiagnostics.h" />
+			</Component>
+			<Component Id="CXCAMERA.H" DiskId="1" Guid="3DBA4587-6007-414F-A85B-37F2A8790177">
+				<File Id="CXCAMERA.H" Name="CxCamera.h" Source="..\Archives\include\Media\CxCamera.h" />
+			</Component>
+			<Component Id="CXCONTROLPROPERTY.H" DiskId="1" Guid="25193E07-6EC4-407A-8113-B9F37365087D">
+				<File Id="CXCONTROLPROPERTY.H" Name="CxControlProperty.h" Source="..\Archives\include\Media\CxControlProperty.h" />
+			</Component>
+			<Component Id="CXDEVICELIST.H" DiskId="1" Guid="C0A93AEC-B700-41B9-A2DF-F18330B7F7C7">
+				<File Id="CXDEVICELIST.H" Name="CxDeviceList.h" Source="..\Archives\include\Media\CxDeviceList.h" />
+			</Component>
+			<Component Id="CXDEVICELISTITEM.H" DiskId="1" Guid="EA4E0D5F-88F3-4A9F-AD35-E422C6238832">
+				<File Id="CXDEVICELISTITEM.H" Name="CxDeviceListItem.h" Source="..\Archives\include\Media\CxDeviceListItem.h" />
+			</Component>
+			<Component Id="CXDEVICEPARAM.H" DiskId="1" Guid="6451B61C-4AF5-4E53-B817-F3D469060719">
+				<File Id="CXDEVICEPARAM.H" Name="CxDeviceParam.h" Source="..\Archives\include\Media\CxDeviceParam.h" />
+			</Component>
+			<Component Id="CXGRABBER.H" DiskId="1" Guid="855E3907-1D6F-4756-9848-A17E23CE9024">
+				<File Id="CXGRABBER.H" Name="CxGrabber.h" Source="..\Archives\include\Media\CxGrabber.h" />
+			</Component>
+			<Component Id="CXGRABBERARGS.H" DiskId="1" Guid="73F505AB-E078-4C99-98FF-F81A7CBFF8CE">
+				<File Id="CXGRABBERARGS.H" Name="CxGrabberArgs.h" Source="..\Archives\include\Media\CxGrabberArgs.h" />
+			</Component>
+			<Component Id="CXGRABBEREVENT.H" DiskId="1" Guid="6FCF5323-E91A-4EC5-87F9-4ACB3E3023B8">
+				<File Id="CXGRABBEREVENT.H" Name="CxGrabberEvent.h" Source="..\Archives\include\Media\CxGrabberEvent.h" />
+			</Component>
+			<Component Id="CXMEDIAPLAYER.H" DiskId="1" Guid="516BB6D9-EC47-4E49-AAC9-2DF671957123">
+				<File Id="CXMEDIAPLAYER.H" Name="CxMediaPlayer.h" Source="..\Archives\include\Media\CxMediaPlayer.h" />
+			</Component>
+			<Component Id="CXSCREENCAPTURE.H" DiskId="1" Guid="5D9AB2C5-637E-4CFD-B629-CC004357F00E">
+				<File Id="CXSCREENCAPTURE.H" Name="CxScreenCapture.h" Source="..\Archives\include\Media\CxScreenCapture.h" />
+			</Component>
+			<Component Id="CXSCREENLIST.H" DiskId="1" Guid="27FE8EB0-9DC2-4CF5-901A-48CD7579A8EA">
+				<File Id="CXSCREENLIST.H" Name="CxScreenList.h" Source="..\Archives\include\Media\CxScreenList.h" />
+			</Component>
+			<Component Id="CXSCREENLISTITEM.H" DiskId="1" Guid="77914A48-0CA9-4C1C-9714-E2304F63244B">
+				<File Id="CXSCREENLISTITEM.H" Name="CxScreenListItem.h" Source="..\Archives\include\Media\CxScreenListItem.h" />
+			</Component>
+			<Component Id="IXMEDIACONTROL.H" DiskId="1" Guid="51D5583A-81E0-4394-BC8A-5A830FE12DD8">
+				<File Id="IXMEDIACONTROL.H" Name="IxMediaControl.h" Source="..\Archives\include\Media\IxMediaControl.h" />
+			</Component>
+			<Component Id="TXDEVICELISTITEM.H" DiskId="1" Guid="CF87960E-AD9F-4EB1-9564-4E542458DB12">
+				<File Id="TXDEVICELISTITEM.H" Name="TxDeviceListItem.h" Source="..\Archives\include\Media\TxDeviceListItem.h" />
+			</Component>
+			<Component Id="TXDEVICEPARAM.H" DiskId="1" Guid="D29DC8BB-F279-481A-A487-9DAEEC039EDC">
+				<File Id="TXDEVICEPARAM.H" Name="TxDeviceParam.h" Source="..\Archives\include\Media\TxDeviceParam.h" />
+			</Component>
+			<Component Id="TXGRABBERARGS.H" DiskId="1" Guid="51B2D922-33E5-4FAD-8A65-90B38B70CA3D">
+				<File Id="TXGRABBERARGS.H" Name="TxGrabberArgs.h" Source="..\Archives\include\Media\TxGrabberArgs.h" />
+			</Component>
+			<Component Id="TXSCREENLISTITEM.H" DiskId="1" Guid="CD59FD35-4D67-4553-AFE6-B69FCA0D64F1">
+				<File Id="TXSCREENLISTITEM.H" Name="TxScreenListItem.h" Source="..\Archives\include\Media\TxScreenListItem.h" />
+			</Component>
+		</Directory>
+		<Directory Id="NET" Name="Net">
+			<Component Id="CXTCPCLIENT.H" DiskId="1" Guid="9BD5B5C3-8A19-41E9-B6A2-A77963F5BF6F">
+				<File Id="CXTCPCLIENT.H" Name="CxTcpClient.h" Source="..\Archives\include\Net\CxTcpClient.h" />
+			</Component>
+			<Component Id="CXTCPSERVER.H" DiskId="1" Guid="07F1E915-04EE-40E8-A0D2-BFC5BAACAFC3">
+				<File Id="CXTCPSERVER.H" Name="CxTcpServer.h" Source="..\Archives\include\Net\CxTcpServer.h" />
+			</Component>
+			<Component Id="CXUDPCLIENT.H" DiskId="1" Guid="40FB78DB-2BD1-4E92-B098-DF5CFB43A9DA">
+				<File Id="CXUDPCLIENT.H" Name="CxUdpClient.h" Source="..\Archives\include\Net\CxUdpClient.h" />
+			</Component>
+			<Component Id="TXIPADDRESS.H" DiskId="1" Guid="53406B90-5E82-44E9-9C1F-20B3AFC4B464">
+				<File Id="TXIPADDRESS.H" Name="TxIPAddress.h" Source="..\Archives\include\Net\TxIPAddress.h" />
+			</Component>
+			<Component Id="TXIPENDPOINT.H" DiskId="1" Guid="D078233A-3CA4-4A36-B5EC-77693150A059">
+				<File Id="TXIPENDPOINT.H" Name="TxIPEndPoint.h" Source="..\Archives\include\Net\TxIPEndPoint.h" />
+			</Component>
+			<Component Id="TXSOCKETSTREAM.H" DiskId="1" Guid="5F6AE922-B283-44EF-99BA-A3F6706A0701">
+				<File Id="TXSOCKETSTREAM.H" Name="TxSocketStream.h" Source="..\Archives\include\Net\TxSocketStream.h" />
+			</Component>
+			<Component Id="TXTCPCLIENT.H" DiskId="1" Guid="3D992983-395F-4E52-80AB-D8CC099A4331">
+				<File Id="TXTCPCLIENT.H" Name="TxTcpClient.h" Source="..\Archives\include\Net\TxTcpClient.h" />
+			</Component>
+			<Component Id="TXTCPSERVER.H" DiskId="1" Guid="193C34D7-B1C4-45F2-9E53-6B320294ED14">
+				<File Id="TXTCPSERVER.H" Name="TxTcpServer.h" Source="..\Archives\include\Net\TxTcpServer.h" />
+			</Component>
+			<Component Id="TXUDPCLIENT.H" DiskId="1" Guid="9287D387-6AC6-4662-9B5E-94E2725397BC">
+				<File Id="TXUDPCLIENT.H" Name="TxUdpClient.h" Source="..\Archives\include\Net\TxUdpClient.h" />
+			</Component>
+		</Directory>
+	</Directory>
+</Include>

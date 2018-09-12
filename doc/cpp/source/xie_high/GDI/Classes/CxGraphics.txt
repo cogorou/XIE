@@ -1,0 +1,499 @@
+/*!
+	@internal
+	@file	CxGraphics.h
+	@brief	画像描画クラス (.NET/mono 用)
+*/
+/*!
+	@internal
+	@file	CxGraphics.cpp
+	@brief	画像描画クラス (.NET/mono 用)
+*/
+/*!
+	@internal
+	@def	_CXGRAPHICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_GDI_Classes
+	@class		CxGraphics
+	@brief		画像描画クラス (.NET/mono 用)
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::CxGraphics()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::CxGraphics(const CxGraphics& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::~CxGraphics ()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::operator= (const CxGraphics &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::operator== (const CxGraphics &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::operator!= (const CxGraphics &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Tag () const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Tag (TxCanvas value)
+	@brief	データ構造の設定
+
+	@param[in]		value	設定値
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Dispose ()
+	@brief	解放
+
+	内部リソースを解放します。\n
+	アタッチしている場合はアタッチ解除を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::IsValid () const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			描画処理に必要なリソースが有効か否かを検査します。\n
+			Setup 及び Resize が実行された後に有効になります。\n
+			Dispose が実行された後、無効になります。\n
+
+	@sa
+		@ref Setup \n
+		@ref Resize \n
+		@ref Dispose \n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxGraphics::CheckValidity(HDC hdc)
+	@brief	有効性の検査
+
+	@param[in]		hdc		デバイスコンテキスト
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			Windows の場合は NULL で無ければ正常と判断します。\n
+			Linux の場合は 引数 @a hdc が libgdiplus の Graphics 構造体へのポインタである前提で判定します。
+			@a hdc を Graphics 構造体へキャストして display フィールドと drawable フィールドを調べます。
+			display (X ディスプレイサーバー) が NULL でなく drawable が 0 でなければ正常と判断します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Setup (HDC hdc)
+	@brief	初期化
+
+	@param[in]		hdc		描画先のデバイスコンテキスト \n
+
+	@remarks
+			描画の為の初期化を行います。\n
+			このクラスの一連の描画処理の前に実行する必要があります。\n
+
+	@sa
+		@ref Resize \n
+		@ref DrawImage \n
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxGraphics::CheckValidity(void* hdc)
+	@brief	有効性の検査
+
+	@param[in]		hdc		デバイスコンテキスト
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			Windows の場合は NULL で無ければ正常と判断します。\n
+			Linux の場合は 引数 @a hdc が libgdiplus の Graphics 構造体へのポインタである前提で判定します。
+			@a hdc を Graphics 構造体へキャストして display フィールドと drawable フィールドを調べます。
+			display (X ディスプレイサーバー) が NULL でなく drawable が 0 でなければ正常と判断します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Setup (void* hdc)
+	@brief	初期化
+
+	@param[in]		hdc		描画先のデバイスコンテキスト \n
+
+	@remarks
+			描画の為の初期化を行います。\n
+			このクラスの一連の描画処理の前に実行する必要があります。\n
+
+	@sa
+		@ref Resize \n
+		@ref DrawImage \n
+*/
+#endif
+// ===================================================================
+/*!
+	@var	CxGraphics::Resize(const TxSizeI& size)
+	@brief	描画用バッファの確保
+
+	@param[in]		size	幅と高さ (pixels) [1~]
+
+	@remarks
+			描画用バッファを確保します。\n
+			予め、Setup によって初期化されている必要があります。\n
+
+	@sa
+		@ref Setup \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Resize (int width, int height)
+	@brief	描画用バッファの確保
+
+	@param[in]		width	幅 [1~]
+	@param[in]		height	高さ [1~]
+
+	@remarks
+			描画用バッファを確保します。\n
+			予め、Setup によって初期化されている必要があります。\n
+
+	@sa
+		@ref Setup \n
+		@ref DrawImage \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::DrawImage (HxModule himage) 
+	@brief	背景画像の描画
+
+	@param[in]		himage		背景画像 \n
+								※ CxImage を指定してください。
+
+	@remarks
+			指定された画像を描画用バッファに描画します。\n
+			予め、Setup や Resize によって描画用バッファが生成されている必要があります。\n
+	
+	@sa
+		@ref CxImage \n
+		@ref Setup \n
+		@ref Resize \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::BeginPaint () 
+	@brief	描画処理の準備
+
+	@remarks
+			描画先のウィンドウにレンダリングコンテキストを関連付けます。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					wglMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glXMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::EndPaint () 
+	@brief	描画処理の完了
+
+	@remarks
+			描画先のウィンドウからレンダリングコンテキストを解除します。\n
+			このメソッドは内部処理で使用します。\n
+			通常、ユーザーが呼び出す必要はありません。\n
+			\n
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>
+					wglMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>
+					glXMakeCurrent \n
+				</td>
+				<td>-</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Lock () 
+	@brief	描画用バッファへの接続
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Unlock () 
+	@brief	描画用バッファへの接続解除
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxGraphics::DC() const
+	@brief	(Windows 版のみ) 描画先のデバイスコンテキスト
+
+	@return	Setup で指定された描画先のデバイスコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxGraphics::DC() const
+	@brief	(Linux 版のみ) 描画先のデバイスコンテキスト
+
+	@return	Setup で指定された描画先のデバイスコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::XServer() const
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@return	X ディスプレイサーバーを返します。\n
+			未初期化の場合は NULL を返します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::Context() const
+	@brief	(Linux 版のみ) レンダリングコンテキスト
+
+	@return	描画用のレンダリングコンテキストを返します。\n
+			未初期化の場合は NULL を返します。
+
+	@sa
+		@ref Setup \n
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::DrawableID() const
+	@brief	(Linux 版のみ) 描画先の Drawable
+
+	@return	描画先の Drawable を返します。\n
+			未初期化の場合は 0 を返します。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		CxGraphics::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGraphics::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::m_Tag
+	@brief	情報構造体
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::m_DrawImage
+	@brief	画像変換用バッファ (DrawImage 用)
+
+	@remarks
+			DrawImage メソッドで使用する画像変換用バッファです。\n
+			DrawImage メソッドで更新されます。\n
+
+	@sa
+		@ref DrawImage \n
+*/
+#if _MSC_VER
+// ===================================================================
+/*!
+	@var	CxGraphics::m_DC
+	@brief	描画先のデバイスコンテキスト
+
+	@remarks
+			Setup で指定された描画先のデバイスコンテキストを保有します。\n
+			\n
+			Setup メソッドで更新されます。\n
+			Dispose メソッドでリセットされます。解放は行いません。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxGraphics::m_DC
+	@brief	描画先
+
+	@remarks
+			Setup で指定された描画先のデバイスコンテキストを保有します。\n
+			\n
+			Setup メソッドで更新されます。\n
+			Dispose メソッドでリセットされます。解放は行いません。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::m_XServer
+	@brief	(Linux 版のみ) X ディスプレイサーバー
+
+	@remarks
+			Setup メソッドでの初期化処理の際に設定されます。\n
+			Dispose メソッドでリセットされます。\n
+			\n
+
+	@sa
+		@ref XServer \n
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::m_Context
+	@brief	(Linux 版のみ) レンダリングコンテキスト
+
+	@remarks
+			Setup メソッドでの初期化処理の際に生成されます。\n
+			Dispose メソッドで解放されます。\n
+			\n
+			内部では glXCreateContext, glXDestroyContext を使用しています。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxGraphics::m_DrawableID
+	@brief	(Linux 版のみ) 描画先の Drawable
+
+	@remarks
+			Setup メソッドでの初期化処理の際に設定されます。\n
+			Dispose メソッドでリセットされます。\n
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+#endif
+
+}
+}

@@ -1,0 +1,134 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_12	単純なフォームアプリケーション
+
+	ここでは、フォームアプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_CS_Basic_12_1	"プロジェクトの作成"
+			- @subpage	page_Tutorial_CS_Basic_12_2	"プロジェクトの設定"
+			- @subpage	page_Tutorial_CS_Basic_12_3	"ライブラリの初期化"
+			- @subpage	page_Tutorial_CS_Basic_12_4	"描画処理"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ tutorial.csproj
+├ tutorial.sln
+├ app.config
+├ Program.cs           … エントリポイント
+├ Form1.cs             … メインフォーム
+├ Form1.Designer.cs
+├ Form1.resx
+├ Properties
+├ TestFiles
+│├ cube_320x240.png    … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、ウィンドウに表示する処理です。\n
+
+			@par
+			表示結果) \n
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="left">@image html Tutorial_CS_Basic_12_window.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_12_1	プロジェクトの作成
+
+	Visual Studio の [ファイル] メニューから
+	[新規作成] → [プロジェクト] の順に選択してウィザードを開始します。
+
+	※注意) \n
+	".NET Framework 4" (または、それ以降のバージョン)が選択されていることを確認してください。\n
+	".NET Framework 2.0" では動作しません。\n
+	\n
+	Windows フォームアプリケーションを選択して、名前を入力し [OK] を押下します。\n
+	<table border="0" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="left">@image html Tutorial_CS_Basic_12_create_1.png</td>
+		</tr>
+	</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_12_2	プロジェクトの設定
+
+	-# 参照設定
+		\n
+		参照設定に XIE.Core を追加する必要があります。\n
+		ソリューションエクスプローラの "参照設定" ノードを右クリックして表示されたコンテキストメニューから
+		"参照の追加" メニューを選択すると、下図の "参照の追加" ダイアログが表示されますので、
+		左側ツリーで [アセンブリ]／[拡張] ノードに切り替えて XIE.Core を選択します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_CS_Basic_10_settings_11.png</td>
+			</tr>
+		</table>
+		\n
+		下図のように "参照設定" ノードに "XIE.Core" が追加されます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_CS_Basic_10_settings_12.png</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_12_3	ライブラリの初期化
+
+	本ライブラリの機能を使用する前に初期化関数を呼び出す必要があります。
+	通常は、下記のようにエントリポイントで行ってください。
+
+	@includelineno	Tutorial_CS_Basic_12_Program_1.cs
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_CS_Basic_12_4	描画処理
+
+	フォームに画像を表示するには、画像ビュー (CxImageView) を使用します。\n
+	CxImageView はコントロールなのでツールボックスに追加することも可能ですが、
+	ここでは、初期化コードを記述する方法を示します。\n
+
+	-# 画像ビューのインスタンス \n
+		インスタンス生成はコンストラクタで行いますので初期値は null にしておきます。\n
+		\n
+	-# 表示対象の画像オブジェクト \n
+		前述の画像ビューで表示する画像オブジェクトを生成します。\n
+		この状態では内部領域は未確保ですので、後で画像ファイルを読み込みます。\n
+		\n
+	-# 画像ビューの初期化処理 \n
+		画像ビューのインスタンスを生成してフォームに追加します。\n
+		\n
+	-# 表示対象の画像の読み込み \n
+		前述 2 の画像オブジェクトに画像を読み込みます。\n
+		前述 3 で画像ビューと画像オブジェクトは関連付いているので、ここで読み込まれた画像が表示されます。\n
+		\n
+	.
+
+	@includelineno	Tutorial_CS_Basic_12_Form1_1.cs
+
+	<hr>
+
+	画像ビューにオーバレイ図形を表示するには Rendering イベントハンドラに記述します。\n
+	\n
+	-# イベントハンドラの追加 \n
+		画像ビュー (CxImageView) の Rendering イベント にハンドラを追加します。\n
+		\n
+	-# イベントハンドラ \n
+		画像ビューの表示更新の度に Renderring イベントが発生し、このハンドラが呼び出されます。\n
+		ここに描画処理を記述します。下記は描画処理例ですので、適宜書き直してください。\n
+		\n
+	.
+
+	@includelineno	Tutorial_CS_Basic_12_Form1_2.cs
+*/

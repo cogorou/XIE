@@ -1,0 +1,121 @@
+/*!
+	@file	CxTexture.h
+	@brief	Texture ラッパークラス
+*/
+/*!
+	@internal
+	@file	CxTexture.cpp
+	@brief	Texture ラッパークラス
+*/
+/*!
+	@def	_CXTEXTURE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxTexture
+	@brief		Texture クラス
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::m_TextureID
+	@brief	テクスチャID [初期値:0]
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::CxTexture()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::CxTexture(const CxTexture& src)
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::~CxTexture()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxTexture::operator=(const CxTexture &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+*/
+// ===================================================================
+/*!
+	@fn		CxTexture::operator == (const CxTexture &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxTexture::operator != (const CxTexture &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::Dispose()
+	@brief	内部リソースの解放
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::Setup()
+	@brief	初期化
+
+	@remarks
+			テクスチャを新しく生成します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxTexture::TextureID() const
+	@brief	テクスチャID の取得
+
+	@return	現在のテクスチャID を返します。未初期化の場合は 0 を返します。\n
+*/
+
+}
+}

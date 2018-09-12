@@ -1,0 +1,46 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie.h
+	@brief		XIE ライブラリの初期化/解放処理
+*/
+// ===================================================================
+/*!
+	@def		_XIE_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Axi
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			Setup()
+	@brief		XIE ライブラリの初期化
+
+	@remarks
+			アプリケーションがリンクしている XIE ライブラリを初期化します。\n
+
+	@sa
+		@ref xie_core_setup \n
+		@ref xie_high_setup \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			TearDown()
+	@brief		XIE ライブラリの解放
+
+	@remarks
+			アプリケーションがリンクしている XIE ライブラリを解放します。\n
+
+	@sa
+		@ref xie_core_teardown \n
+		@ref xie_high_teardown \n
+*/
+
+}
+}
+

@@ -1,0 +1,710 @@
+/*!
+	@file	Axi.h
+	@brief	補助関数群
+*/
+/*!
+	@file	Axi.cpp
+	@brief	補助関数群
+*/
+/*!
+	@def	_AXI_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+// =================================================================
+/*!
+	@namespace	xie::Axi
+	@brief		補助関数群
+
+	補助的な関数を集約しています。
+*/
+namespace xie
+{
+namespace Axi
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			TraceLevel(int level)
+	@brief		トレースの ON/OFF の設定
+
+	@param[in]		level		トレースの ON/OFF [0:0ff,1~:ON]
+
+	@remarks
+			この関数は xie_core_setup より先に呼び出しても問題ありません。 
+			ON (1 以上) にすると fnXIE_Core_TraceOut の出力が有効になります。
+			ライブラリの内部では CxException で使用しています。
+			Release 版で例外が発生した場合に発生場所の特定に有用です。
+
+	@sa
+		@ref fnXIE_Core_TraceOut \n
+		@ref xie_core_setup \n
+		@ref xie::CxException \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			TraceLevel()
+	@brief		トレースの ON/OFF の取得
+
+	@retval	0	トレース OFF
+	@retval	1~	トレース ON
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			AlignedAlloc(size_t size, size_t alignment)
+	@brief		メモリの確保 (境界指定)
+
+	@param[in]		size		確保するサイズ (bytes) [1~]
+	@param[in]		alignment	境界のサイズ (bytes) [1,2,4,8,16] ※２の整数乗である必要があります。
+
+	@return	確保した領域の先頭アドレスを返します。\n
+			確保出来ない場合は NULL を返します。\n
+			使用後は @ref AlignedFree で解放してください。\n
+
+	@sa
+		@ref AlignedFree
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			AlignedFree(void *ptr)
+	@brief		メモリの解放 (境界指定用)
+
+	@param[in]		ptr		境界を指定して確保した領域の先頭アドレス
+
+	@sa
+		@ref AlignedAlloc
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryAlloc(size_t size, bool zero_clear)
+	@brief		メモリの確保
+
+	@param[in]		size		要素のサイズ (bytes)
+	@param[in]		zero_clear	0 初期化の指示
+
+	@return	確保した領域の先頭アドレスを返します。\n
+			確保出来ない場合は NULL を返します。\n
+			使用後は @ref MemoryFree で解放してください。\n
+
+	@sa
+		@ref MemoryFree
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryFree(void *ptr)
+	@brief		メモリの解放
+
+	@param[in]		ptr		ヒープメモリに確保した領域の先頭アドレス
+
+	@sa
+		@ref MemoryAlloc
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryMap(size_t size)
+	@brief		メモリマップ
+
+	@param[in]		size		領域のサイズ (bytes) [1~]
+
+	@return	確保した領域の先頭アドレスを返します。\n
+			確保出来ない場合は NULL を返します。\n
+			使用後は @ref MemoryUnmap で解放してください。\n
+
+	@sa
+		@ref MemoryUnmap
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryUnmap(void *ptr, size_t size)
+	@brief		メモリマップ解放
+
+	@param[in]		ptr		領域の先頭アドレス
+	@param[in]		size	領域のサイズ (bytes) [1~]
+
+	@sa
+		@ref MemoryMap
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryLock(void *ptr, size_t size)
+	@brief		メモリロック
+
+	@param[in]		ptr		領域の先頭アドレス
+	@param[in]		size	領域のサイズ (bytes) [1~]
+
+	@return	正常の場合は 0 を返します。異常の場合はそれ以外を返します。\n
+			使用後は @ref MemoryUnlock で解除してください。\n
+
+	@sa
+		@ref MemoryUnlock
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			MemoryUnlock(void *ptr, size_t size)
+	@brief		メモリロック解除
+
+	@param[in]		ptr		領域の先頭アドレス
+	@param[in]		size	領域のサイズ (bytes) [1~]
+
+	@return	正常の場合は 0 を返します。異常の場合はそれ以外を返します。\n
+
+	@sa
+		@ref MemoryLock
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			SizeOf(ExType type)
+	@brief		型のサイズ (bytes) の取得
+
+	@param[in]		type		型
+
+	@return	指定された型のサイズ (bytes) を返します。 \n
+
+	@par
+			表１) 型とサイズ (bytes) の対応 \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center">サイズ \n (bytes)</td>
+				<td class="indexkey" align="center">型</td>
+				<td class="indexkey" align="center">備考</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">None</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">
+					4 (32bit O/S) \n
+					8 (64bit O/S) \n
+				</td>
+				<td align="center">Ptr</td>
+				<td>
+					ポインタサイズを示します。\n
+					O/S が 32bit か 64bit かによって異なります。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="center">1</td>
+				<td align="center">S8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">1</td>
+				<td align="center">U8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">2</td>
+				<td align="center">S16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">2</td>
+				<td align="center">U16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">4</td>
+				<td align="center">S32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">4</td>
+				<td align="center">U32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">8</td>
+				<td align="center">S64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">8</td>
+				<td align="center">U64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">4</td>
+				<td align="center">F32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">8</td>
+				<td align="center">F64</td>
+				<td>-</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::TxModel::SizeOf(ExType type) \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CalcBpp(ExType type)
+	@brief		ビットサイズ (bits) の計算
+
+	@param[in]		type		型
+
+	@return	指定された型のビットサイズ (bits) を返します。\n
+			@ref SizeOf の戻り値 (bytes) に 8 bits を乗算した値です。
+
+	@sa
+		@ref SizeOf \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CalcDepth(ExType type)
+	@brief		ビット深度 (bits) の計算
+
+	@param[in]		type		型
+
+	@return	指定された型が表わす事ができる最大のビット深度 (bits) を返します。\n
+			画像の濃度を表わす型以外の場合は 0 を返します。 \n
+
+	@par
+			表１) 型とビット深度 (bits) の対応 \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center">ビット深度 \n (bits)</td>
+				<td class="indexkey" align="center">型</td>
+				<td class="indexkey" align="center">備考</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">None</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">Ptr</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">7</td>
+				<td align="center">S8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">8</td>
+				<td align="center">U8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">15</td>
+				<td align="center">S16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">16</td>
+				<td align="center">U16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">31</td>
+				<td align="center">S32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">32</td>
+				<td align="center">U32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">63</td>
+				<td align="center">S64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">64</td>
+				<td align="center">U64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">32</td>
+				<td align="center">F32</td>
+				<td>桁落ちする可能性があります。</td>
+				</tr>
+			<tr>
+				<td align="center">64</td>
+				<td align="center">F64</td>
+				<td>桁落ちする可能性があります。</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CalcRange(ExType type, int depth)
+	@brief		濃度のレンジの計算
+
+	@param[in]		type			型
+	@param[in]		depth			ビット深度 (bits) [0, 1~] \n
+									※ 0 が指定された場合は最大のビット深度(@ref CalcDepth)を使用します。
+
+	@return	指定された要素の型とビット深度が表わす事が出来る濃度値の範囲を返します。 \n
+			濃度を表わす型以外の場合は 0,0 を返します。
+
+	@par
+			表１) 要素の型とビット深度 (bits) の対応 \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center">Lower</td>
+				<td class="indexkey" align="center">Upper</td>
+				<td class="indexkey" align="center">型</td>
+				<td class="indexkey" align="center">備考</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">0</td>
+				<td align="center">None</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">0</td>
+				<td align="center">Ptr</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">+(2<sup>depth</sup>-1)</td>
+				<td align="center">U8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">U16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">U32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">U64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">-(2<sup>depth</sup>-1)</td>
+				<td align="center">+(2<sup>depth</sup>-1)</td>
+				<td align="center">S8</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">S16</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">S32</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">S64</td>
+				<td>-</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">F32</td>
+				<td>桁落ちする可能性があります。</td>
+				</tr>
+			<tr>
+				<td align="center">〃</td>
+				<td align="center">〃</td>
+				<td align="center">F64</td>
+				<td>桁落ちする可能性があります。</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CalcScale(ExType src_type, int src_depth, ExType dst_type, int dst_depth)
+	@brief		濃度のレンジ変換係数の計算
+
+	@param[in]		src_type		変換元の要素の型
+	@param[in]		src_depth		変換元のビット深度 [0, 1~] \n
+									※ 0 が指定された場合は最大のビット深度(@ref CalcDepth)を使用します。
+	@param[in]		dst_type		変換先の要素の型
+	@param[in]		dst_depth		変換先のビット深度 [0, 1~] \n
+									※ 0 が指定された場合は最大のビット深度(@ref CalcDepth)を使用します。
+
+	@return	下式により濃度のレンジ変換係数を計算して返します。\n
+			濃度を表わす型以外の場合は 0 を返します。
+
+	@par		
+			式) scale = 2<sup>dst_depth</sup> / 2<sup>src_depth</sup>
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CalcStride(TxModel model, int width, int packing_size)
+	@brief		２次元領域の水平方向サイズ (bytes) の計算
+
+	@param[in]		model			要素モデル
+	@param[in]		width			２次元領域の幅 (pixels) [1~]
+	@param[in]		packing_size	水平方向のパッキングサイズ (bytes) [1,2,4,8,16]
+
+	@return	２次元領域の水平方向サイズ (bytes) を返します。\n
+			計算できない場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CheckBmp(TxCharCPtrA filename, bool unpack)
+	@brief		画像ファイル情報の読み込み (Bitmap 形式)
+
+	@param[in]		filename		ファイル名
+	@param[in]		unpack			アンパックの指示
+
+	@return	指定された画像ファイルを読み込む為に必要となる画像サイズ情報を返します。\n
+			異常が有れば例外を発行します。
+
+	@exception	CxException	処理に異常が有れば例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref CxImage	\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CheckJpeg(TxCharCPtrA filename, bool unpack)
+	@brief		画像ファイル情報の読み込み (JPEG 形式)
+
+	@param[in]		filename		ファイル名
+	@param[in]		unpack			アンパックの指示
+
+	@return	指定された画像ファイルを読み込む為に必要となる画像サイズ情報を返します。\n
+			異常が有れば例外を発行します。
+
+	@exception	CxException	処理に異常が有れば例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref CxImage	\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CheckPng(TxCharCPtrA filename, bool unpack)
+	@brief		画像ファイル情報の読み込み (PNG 形式)
+
+	@param[in]		filename		ファイル名
+	@param[in]		unpack			アンパックの指示
+
+	@return	指定された画像ファイルを読み込む為に必要となる画像サイズ情報を返します。\n
+			異常が有れば例外を発行します。
+
+	@exception	CxException	処理に異常が有れば例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref CxImage	\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CheckTiff(TxCharCPtrA filename, bool unpack)
+	@brief		画像ファイル情報の読み込み (TIFF 形式)
+
+	@param[in]		filename		ファイル名
+	@param[in]		unpack			アンパックの指示
+
+	@return	指定された画像ファイルを読み込む為に必要となる画像サイズ情報を返します。\n
+			異常が有れば例外を発行します。
+
+	@exception	CxException	処理に異常が有れば例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref CxImage	\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			CheckRaw(TxCharCPtrA filename)
+	@brief		Raw 形式ファイル情報の読み込み
+
+	@param[in]		filename		ファイル名
+
+	@return	指定された Raw  形式ファイルのヘッダーを返します。\n
+			異常が有れば例外を発行します。
+
+	@exception	CxException	処理に異常が有れば例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref IxRawFile	\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			Sleep(int timeout)
+	@brief		指定時間待機
+
+	@param[in]		timeout		待機する時間 (msec) [-1:無限, 0~:有限] \n
+
+	@remarks
+			現在の日時を取得して返します。\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			GetTime()
+	@brief		日時取得
+
+	@return	現在の日時を取得して返します。\n
+				
+	@par
+			表１) 内部で使用している関数
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">実行環境</td>
+				<td class="indexkey">開発環境</td>
+				<td class="indexkey">関数</td>
+				<td class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td>Windows</td>
+				<td>Visual C++</td>
+				<td>GetSystemTimeAsFileTime</td>
+				<td>取得した FILETIME を unsigned long long にキャストします。</td>
+				</tr>
+			<tr>
+				<td>Linux</td>
+				<td>GCC</td>
+				<td>clock_gettime</td>
+				<td>取得した timespec を unsigned long long にキャストします。</td>
+				</tr>
+			</table>
+*/
+#if !defined(_MSC_VER)
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			IsClassPtr(const void* body)
+	@brief		クラスのポインタか否かの検査
+
+	@param[in]		body		検査対象のポインタ \n
+
+	@return	指定のポインタがクラスのポインタか否かを検査します。\n
+			クラスのポインタであれば true を返します。\n
+			それ以外は false を返します。\n
+
+	@remarks
+			この関数は GCC を対象にしています。\n
+			GCC の dynamic_cast にクラスのポインタ以外を指定した場合に
+			Segmentaion fault が発生する問題がある為、
+			この関数で事前に検査して問題を回避することが目的です。\n
+			検査内容は、指定されたポインタが示す領域にクラスの vtable があるか否かです。
+			もし、-fno-rtti オプションを付加してコンパイルされたクラスのポインタが指定された場合は false を返します。\n
+*/
+#endif
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			ClassIs(const IxModule& src)
+	@brief		モジュールの型の検査
+
+	@tparam	TD	キャストする型
+
+	@param[in]		src			モジュール \n
+
+	@return	指定の型のポインタにキャストできるか否かを検査します。\n
+			キャストできる場合は true を返します。\n
+			それ以外は false を返します。\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			ClassIs(const IxModule* psrc)
+	@brief		モジュールの型の検査
+
+	@tparam	TD	キャストする型
+
+	@param[in]		psrc		モジュールのポインタ \n
+
+	@return	指定の型のポインタにキャストできるか否かを検査します。\n
+			キャストできる場合は true を返します。\n
+			それ以外は false を返します。\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			ClassIs(HxModule hsrc)
+	@brief		モジュールの型の検査
+
+	@tparam	TD	キャストする型
+
+	@param[in]		hsrc		モジュールハンドル \n
+								※ @ref IxModule を実装したクラスを指定してください。\n
+
+	@return	指定の型のポインタにキャストできるか否かを検査します。\n
+			キャストできる場合は true を返します。\n
+			それ以外は false を返します。\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			SafeCast(const IxModule& src) 
+	@brief		モジュール限定キャスト
+
+	@tparam	TD	キャストする型
+
+	@param[in]		src			モジュール
+
+	@return	指定の型のポインタにキャストして返します。\n
+			キャストできない場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			SafeCast(const IxModule* psrc) 
+	@brief		モジュール限定キャスト
+
+	@tparam	TD	キャストする型
+
+	@param[in]		psrc		モジュールのポインタ
+
+	@return	指定の型のポインタにキャストして返します。\n
+			キャストできない場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			SafeCast(HxModule hsrc) 
+	@brief		モジュール限定キャスト
+
+	@tparam	TD	キャストする型
+
+	@param[in]		hsrc		モジュールハンドル
+								※ @ref IxModule を実装したクラスを指定してください。\n
+
+	@return	@ref IxModule のポインタにキャスト後、
+			指定の型のポインタにキャストして返します。\n
+			キャストできない場合は NULL を返します。
+*/
+
+}
+}

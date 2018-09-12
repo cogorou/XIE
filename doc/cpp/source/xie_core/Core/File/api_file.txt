@@ -1,0 +1,569 @@
+/*!
+	@internal
+	@file		api_file.h
+	@brief		ファイル入出力関連
+*/
+/*!
+	@internal
+	@file		api_file.cpp
+	@brief		ファイル入出力関連
+*/
+/*!
+	@internal
+	@def		_API_FILE_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace File
+{
+
+// ////////////////////////////////////////////////////////////
+// CONSTANT VARIABLE
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		XIE_FILE_OPENMODE_LOAD
+	@brief		ファイルオープンモード (読み込み用)
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		XIE_FILE_OPENMODE_SAVE
+	@brief		ファイルオープンモード (保存用)
+*/
+
+// ////////////////////////////////////////////////////////////
+// EXTERN VARIABLE
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		p_jpeg
+	@brief		ファイル入出力プラグインへのポインタ (JPEG 形式)
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		p_png
+	@brief		ファイル入出力プラグインへのポインタ (PNG 形式)
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		p_tiff
+	@brief		ファイル入出力プラグインへのポインタ (TIFF 形式)
+*/
+
+// ////////////////////////////////////////////////////////////
+// FUNCTION
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckRawA	(TxRawFileHeader* header, TxCharCPtrA filename)
+	@brief		Raw 形式ファイルヘッダーの確認 (MBCS)
+
+	@param[out]	header		Raw 形式ファイルヘッダー
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckRawW	(TxRawFileHeader* header, TxCharCPtrW filename)
+	@brief		Raw 形式ファイルヘッダーの確認 (UNICODE)
+
+	@param[out]	header		Raw 形式ファイルヘッダー
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadRawA	(HxModule hdst, TxCharCPtrA filename)
+	@brief		Raw 形式ファイルの読み込み (MBCS)
+
+	@param[in,out]	hdst		データオブジェクト
+	@param[in]		filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadRawW	(HxModule hdst, TxCharCPtrW filename)
+	@brief		Raw 形式ファイルの読み込み (UNICODE)
+
+	@param[in,out]	hdst		データオブジェクト
+	@param[in]		filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveRawA	(HxModule hsrc, TxCharCPtrA filename)
+	@brief		Raw 形式ファイルへの保存 (MBCS)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたデータオブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveRawW	(HxModule hsrc, TxCharCPtrW filename)
+	@brief		Raw 形式ファイルへの保存 (UNICODE)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたデータオブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckBmpA	(TxImageSize* image_size, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (MBCS)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckBmpW	(TxImageSize* image_size, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (UNICODE)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadBmpA	(HxModule hdst, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (MBCS)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadBmpW	(HxModule hdst, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (UNICODE)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveBmpA	(HxModule hsrc, TxCharCPtrA filename)
+	@brief		画像ファイルへの保存 (MBCS)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveBmpW	(HxModule hsrc, TxCharCPtrW filename)
+	@brief		画像ファイルへの保存 (UNICODE)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckJpegA	(TxImageSize* image_size, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (MBCS)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckJpegW	(TxImageSize* image_size, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (UNICODE)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadJpegA	(HxModule hdst, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (MBCS)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadJpegW	(HxModule hdst, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (UNICODE)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveJpegA	(HxModule hsrc, TxCharCPtrA filename, int quality)
+	@brief		画像ファイルへの保存 (MBCS)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	quality		品質 [0~100] ※数値が高い方が高品質です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveJpegW	(HxModule hsrc, TxCharCPtrW filename, int quality)
+	@brief		画像ファイルへの保存 (UNICODE)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	quality		品質 [0~100] ※数値が高い方が高品質です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckPngA	(TxImageSize* image_size, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (MBCS)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckPngW	(TxImageSize* image_size, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (UNICODE)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadPngA	(HxModule hdst, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (MBCS)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadPngW	(HxModule hdst, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (UNICODE)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SavePngA	(HxModule hsrc, TxCharCPtrA filename, int level)
+	@brief		画像ファイルへの保存 (MBCS)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SavePngW	(HxModule hsrc, TxCharCPtrW filename, int level)
+	@brief		画像ファイルへの保存 (UNICODE)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckTiffA	(TxImageSize* image_size, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (MBCS)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_CheckTiffW	(TxImageSize* image_size, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像サイズの確認 (UNICODE)
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	filename	ファイル名
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadTiffA	(HxModule hdst, TxCharCPtrA filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (MBCS)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_LoadTiffW	(HxModule hdst, TxCharCPtrW filename, ExBoolean unpack)
+	@brief		画像ファイルの読み込み (UNICODE)
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		filename	ファイル名
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveTiffA	(HxModule hsrc, TxCharCPtrA filename, int level)
+	@brief		画像ファイルへの保存 (MBCS)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_File_SaveTiffW	(HxModule hsrc, TxCharCPtrW filename, int level)
+	@brief		画像ファイルへの保存 (UNICODE)
+
+	@param[in]	hsrc		データオブジェクト
+	@param[in]	filename	ファイル名
+	@param[in]	level		圧縮レベル [-1,0~9] ※数値が高い方が高圧縮です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定された画像オブジェクトを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_DIB_Load	(HxModule hdst, void* pvdib, ExBoolean unpack)
+	@brief		DIB 形式からのデータ複製
+
+	@param[in,out]	hdst		データオブジェクト
+	@param[in]		pvdib		DIB 形式の領域
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@fn			fnXIE_Core_DIB_Save	(HxModule hsrc, void** ppvdib, unsigned int* puiBmpInfoSize, unsigned int* puiImageSize)
+	@brief		DIB 形式へのデータ複製
+
+	@param[in]		hsrc			データオブジェクト
+	@param[out]		ppvdib			確保された DIB 形式の領域のアドレスを受け取る変数へのポインタ
+	@param[out]		puiBmpInfoSize	確保された領域のヘッダーサイズを受け取る変数へのポインタ
+	@param[out]		puiImageSize	確保された領域の画像サイズを受け取る変数へのポインタ
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}	// File
+}	// xie

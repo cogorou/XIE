@@ -1,0 +1,175 @@
+/*!
+	@file	CxModule.h
+	@brief	モジュール基本クラス
+*/
+/*!
+	@internal
+	@file	CxModule.cpp
+	@brief	モジュール基本クラス
+*/
+/*!
+	@def	_CXMODULE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxModule
+	@brief		モジュール基本クラス
+
+	@remarks
+			本ライブラリの基底クラスです。\n
+			C++ 版と .NET 版の間で共有する機能は、この基本クラスから派生しています。\n
+
+	@sa
+		@ref xie::HxModule \n
+		@ref xie::IxModule \n
+		@ref xie::Axi::SafeCast \n
+		@ref xie::Axi::ClassIs \n
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::CxModule()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部では何も行っていません。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::~CxModule()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では何も行っていません。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator=(const CxModule &src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	自身への参照を返します。\n
+			内部では何も行っていません。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator==(const CxModule &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@return	常に true を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator!=(const CxModule &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@return	常に false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator new       ( size_t size )
+	@brief	new オペレータ
+
+	@param[in]		size		オブジェクトのサイズ (bytes)
+
+	@return		ヒープに確保されたオブジェクトへのポインタを返します。\n
+				失敗した場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator new    [] ( size_t size )
+	@brief	new [] オペレータ
+
+	@param[in]		size		オブジェクトのサイズ (bytes)
+
+	@return		ヒープに確保されたオブジェクトへのポインタを返します。\n
+				失敗した場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator delete    ( void* ptr )
+	@brief	delete オペレータ
+
+	@param[in]		ptr			ヒープに確保されたオブジェクトへのポインタ
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator delete [] ( void* ptr )
+	@brief	delete [] オペレータ
+
+	@param[in]		ptr			ヒープに確保されたオブジェクトへのポインタ
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator new       ( size_t size, TxCharCPtrA filename, int line )
+	@brief	new オペレータ
+
+	@param[in]		size		オブジェクトのサイズ (bytes)
+	@param[in]		filename	ファイル名
+	@param[in]		line		行番号
+
+	@return		ヒープに確保されたオブジェクトへのポインタを返します。\n
+				失敗した場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator new    [] ( size_t size, TxCharCPtrA filename, int line )
+	@brief	new [] オペレータ
+
+	@param[in]		size		オブジェクトのサイズ (bytes)
+	@param[in]		filename	ファイル名
+	@param[in]		line		行番号
+
+	@return		ヒープに確保されたオブジェクトへのポインタを返します。\n
+				失敗した場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator delete    ( void* ptr, TxCharCPtrA filename, int line )
+	@brief	delete オペレータ
+
+	@param[in]		ptr			ヒープに確保されたオブジェクトへのポインタ
+	@param[in]		filename	ファイル名
+	@param[in]		line		行番号
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator delete [] ( void* ptr, TxCharCPtrA filename, int line )
+	@brief	delete [] オペレータ
+
+	@param[in]		ptr			ヒープに確保されたオブジェクトへのポインタ
+	@param[in]		filename	ファイル名
+	@param[in]		line		行番号
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::operator HxModule() const
+	@brief	モジュールハンドル型へのキャスト
+
+	@return	このオブジェクトの this ポインタをモジュールハンドル型にキャストして返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxModule::ModuleID() const
+	@brief	モジュールID
+
+	@return	常に XIE_MODULE_ID を返します。
+
+	@remarks
+			通常は、このメソッドをオーバーライドしないでください。\n
+			特に戻り値の変更を行うと当クラスの派生とは判定されなくなります。\n
+*/
+
+}

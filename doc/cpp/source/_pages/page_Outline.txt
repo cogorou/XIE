@@ -1,0 +1,216 @@
+// =================================================================
+/*!
+	@page	page_Outline	概要
+
+	XIE は Eggs Imaging Elements の略称です。\n
+	画像処理アプリケーション開発を補助することを目的としたライブラリです。\n
+	データ構造、画像表示、画像取り込み、通信等を実装しています。\n
+
+	@par	目次:
+			- @subpage	page_Outline_Environment	"開発環境と動作環境"
+			- @subpage	page_Outline_LibraryList	"ライブラリ一覧"
+			.
+*/
+// =================================================================
+/*!
+	@page	page_Outline_Environment	開発環境と動作環境
+
+	XIE の開発に必要な環境を示します。\n
+
+	@par Windows 版:
+
+	オペレーティングシステム: \n
+		- Microsoft Windows 7 (SP1) [32bit/64bit]
+		.
+		\n
+
+	開発環境: \n
+		- Microsoft Visual Studio 2013 \n
+			※ Community または Professional 以上を対象とします。 \n
+		- Visual Studio 2013 のマルチバイト MFC ライブラリ \n
+			http://www.microsoft.com/ja-jp/download/details.aspx?id=40770 \n
+		.
+		\n
+
+	開発言語: \n
+		- Visual C++ … (C++ 0x 以降の仕様に依存します。)
+		- Visual C# … (C# 4.0 以降の仕様に依存します。)
+		.
+		\n
+
+	動作環境: \n
+		- Visual C++ v12.0 ランタイム \n
+		- .NET Framework 4.0 \n
+		.
+		\n
+	\n
+
+	<hr>
+	@par Linux 版:
+
+	オペレーティングシステム: \n
+		- Debian GNU/Linux 7.8 amd64 \n
+			https://www.debian.org/
+		.
+		\n
+
+	開発環境: \n
+		- GCC 4.7.2
+		- Mono 3.12.1
+		- MonoDevelop 5.7
+		.
+		\n
+
+	開発言語: \n
+		- GNU C++ … (C++ 0x 以降の仕様に依存します。)
+		- C# … (C# 4.0 以降の仕様に依存します。)
+		.
+		\n
+
+	動作環境: \n
+		- libstdc++
+		- Mono 3.12.1
+		.
+		\n
+	\n
+
+	<hr>
+	@par 頒布元一覧:
+
+	依存するライブラリ: \n
+		- glew [1.10.0] (The OpenGL Extension Wrangler Library) \n
+			http://glew.sourceforge.net/ \n
+			※ XIE の Linux 版でのみ使用します。Windows 版は OpenGL と WindowsGDI を使用します。\n
+		- libpng [1.2.5] \n
+			http://www.libpng.org/pub/png/libpng.html \n
+			※ XIE の Linux 版では共有オブジェクトに依存します。Windows 版はライブラリに埋め込みます。\n
+		- libjpeg [v8] \n
+			http://www.ijg.org/ \n
+			※ XIE の Linux 版では共有オブジェクトに依存します。Windows 版はライブラリに埋め込みます。\n
+		- libtiff [4.0.3] \n
+			http://www.remotesensing.org/libtiff/  
+			※ XIE の Linux 版では共有オブジェクトに依存します。Windows 版はライブラリに埋め込みます。\n
+		- zlib [1.2.8] \n
+			http://www.zlib.net/ \n
+			※ XIE の Linux 版では共有オブジェクトに依存します。Windows 版はライブラリに埋め込みます。\n
+		- Mono 3.12.1 \n
+			http://www.mono-project.com/download/#download-lin \n
+			※ XIE の Linux 版のみ依存します。Windows 版は .NET Framework 4 に依存します。\n
+		.
+		\n
+
+	リファレンスマニュアル生成環境: \n
+		- doxygen [1.8.9] \n
+			http://www.stack.nl/~dimitri/doxygen/download.html \n
+		- HTML Help Workshop \n
+			https://msdn.microsoft.com/ja-jp/library/windows/desktop/ms669985%28v=vs.85%29.aspx \n
+		- Sandcastle - June 2010 [2.6.1062.1] \n
+			http://sandcastle.codeplex.com/ \n
+		- Sandcastle Help File Builder [1.9.8.0] \n
+			https://shfb.codeplex.com/ \n
+		.
+		\n
+
+	インストーラ生成環境: \n
+		- Windows Installer XML (WiX) toolset [3.8] \n
+			http://wix.sourceforge.net/ \n
+			file: wix38.msi \n
+		- WiX Edit [0.7.5] \n
+			http://wixedit.sourceforge.net/ \n
+			file: wixedit-0.7.5.msi \n
+		.
+		\n
+
+	関連ライブラリ: \n
+		- OpenCV 3.0.0 \n
+			http://opencv.org/downloads.html \n
+		- NVIDIA CUDA 7.0 \n
+			https://developer.nvidia.com/cuda-downloads \n
+		.
+		\n
+*/
+// =================================================================
+/*!
+	@page	page_Outline_LibraryList	ライブラリ一覧
+
+	XIE は、Windows 環境と Linux 環境に対応しており、それぞれ、CLI 向けと C++ 向けに分類されます。\n
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=100>環境</td>
+				<td align="center" class="indexkey" width=100>CLI</td>
+				<td align="center" class="indexkey" width=100>C++</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey">Windows</td>
+				<td align="center">.NET Framework</td>
+				<td align="center">Visual C++</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey">Linux</td>
+				<td align="center">Mono</td>
+				<td align="center">GNU C++</td>
+				</tr>
+			</table>
+
+	@par	ファイル一覧 - CLI (.NET Framework / Mono) 向け
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=100 ROWSPAN=2>名称</td>
+				<td align="center" class="indexkey" width=100 ROWSPAN=2>ファイル</td>
+				<td align="center" class="indexkey" COLSPAN=2>動作環境</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey" width=100>.NET Framework</td>
+				<td align="center" class="indexkey" width=100>Mono</td>
+				</tr>
+			<tr>
+				<td align="center">基本機能</td>
+				<td align="center">XIE.Core.dll</td>
+				<td align="center">4.0.30319</td>
+				<td align="center">3.12.1</td>
+				</tr>
+			</table>
+
+	@par	ファイル一覧 - C++ (Visual C++ / GNU C++) 向け
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=100 ROWSPAN=2>名称</td>
+				<td align="center" class="indexkey" COLSPAN=2>ファイル</td>
+				<td align="center" class="indexkey" ROWSPAN=2>備考</td>
+				</tr>
+			<tr>
+				<td align="center" class="indexkey" width=100>Visual C++</td>
+				<td align="center" class="indexkey" width=100>GNU C++</td>
+				</tr>
+			<tr>
+				<td align="center">基本機能</td>
+				<td align="center">xie_core_(id).dll</td>
+				<td align="center">libxie_core.so</td>
+				<td align="left">
+					データ構造、画像変換、画像ファイル入出力などの基本機能を実装しています。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">上位機能</td>
+				<td align="center">xie_high_(id).dll</td>
+				<td align="center">libxie_high.so</td>
+				<td align="left">
+					UDP 通信、TCP/IP 通信、シリアル通信、ファイル入出力、メディア入出力、表示機能を実装しています。\n
+					ファイル入出力は JPEG、PNG を実装しています。
+					本ライブラリを初期化する際に基本ライブラリにプラグインとして組み込みます。\n
+					メディア入出力は、UVC 対応カメラを使用した画像入力機能や動画再生及び保存機能等です。
+					Windows 環境では Microsoft DirectShow を使用します。
+					Linux 環境では V4L2 を使用します。\n
+					表示機能は OpenGL と GLEW を使用しています。
+					Windows 環境では OpenGL と Windows GDI が必要です。
+					Linux 環境では X11、OpenGL、GLEW が必要です。\n
+				</td>
+				</tr>
+			</table>
+			\n
+			※1) \n
+			表中の (id) の部分は、Platform と Version によって異なります。\n
+			例えば、XIE 1.0 の 32bit 版は xie_core_x86_100.dll 、64bit 版は xie_core_x64_100.dll となります。\n
+*/

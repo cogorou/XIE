@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{b0661f2f-5594-41f1-b3cb-2aaab9b485cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

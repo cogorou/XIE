@@ -1,0 +1,315 @@
+/*!
+	@file	CxVLScreenCapture.h
+	@brief	スクリーンキャプチャクラス
+*/
+/*!
+	@internal
+	@file	CxVLScreenCapture.cpp
+	@brief	スクリーンキャプチャクラス
+*/
+#ifndef _MSC_VER
+
+/*!
+	@def	_CXVLSCREENCAPTURE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxVLScreenCapture
+	@brief		スクリーンキャプチャクラス
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::CxVLScreenCapture()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::~CxVLScreenCapture()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Setup(HxModule hWindow, HxModule hAudio, HxModule hOutput)
+	@brief	初期化
+
+	@param[in]		hWindow		対象のウィンドウ \n
+	@param[in]		hAudio		音声入力 \n
+	@param[in]		hOutput		出力先 \n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::CreatePreparer() const
+	@brief	描画処理同期用イベントレシーバの生成
+
+	@return	描画データの生成と転送を同期する為の同期オブジェクトを生成して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::CreateGrabber(ExMediaType type) const
+	@brief	メディア捕獲用イベントレシーバの生成
+
+	@param[in]		type		捕獲するメディアの種別
+
+	@return	メディア(映像または音声)を捕獲する為の同期オブジェクトを生成して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Reset()
+	@brief	リセット
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Start()
+	@brief	開始
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Stop()
+	@brief	停止
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Abort()
+	@brief	中断
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Pause()
+	@brief	一時停止
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	非同期処理が停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::IsRunning() const
+	@brief	動作状態の取得
+
+	@return	非同期処理が動作中の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::IsPaused() const
+	@brief	一時停止状態の取得
+
+	@return	非同期処理が一時停止状態の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxVLScreenCapture::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxVLScreenCapture::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Timeout() const
+	@brief	タイムアウトの取得
+
+	@return	現在設定されている値を返します。単位は msec です。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::Timeout(int value)
+	@brief	タイムアウトの設定
+
+	@param[in]		value		設定値 (msec) [-1,0~] [既定値:5000]
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::FrameRate() const
+	@brief	フレームレートの取得
+
+	@return	現在設定されている値を返します。単位は fps です。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::FrameRate(int value)
+	@brief	フレームレートの設定
+
+	@param[in]		value		設定値 (fps) [1~] [既定値:10]
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::GetFrameSize() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているフレームサイズを返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::WaitForCompletion(int timeout) const
+	@brief	レンダリング完了待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	レンダリングが完了するか指定時間が経過するまで待機します。\n
+			完了を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_Timeout
+	@brief	タイムアウト (msec)
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_FrameRate
+	@brief	フレームレート (fps)
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_AudioDeviceName
+	@brief	音声入力オブジェクトのデバイス名
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_AudioProductName
+	@brief	音声入力オブジェクトの製品名
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_OutputFileName
+	@brief	動画ファイル名
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_OutputDeviceName
+	@brief	映像出力オブジェクトのデバイス名
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_OutputProductName
+	@brief	映像出力オブジェクトの製品名
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_VideoPreparerReceiver
+	@brief	描画処理同期用グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_VideoGrabberReceiver
+	@brief	映像捕獲用グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_AudioGrabberReceiver
+	@brief	音声捕獲用グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_Thread
+	@brief	スレッド
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::ThreadProc(void* sender, CxThreadArgs* e)
+	@brief	スレッド関数
+
+	@param[in]	sender	呼び出し元
+	@param[in]	e		引数
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_FD
+	@brief	カメラデバイスのファイルディスクリプタ
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_Buffers
+	@brief	画像取り込み用バッファ
+*/
+// ===================================================================
+/*!
+	@var	CxVLScreenCapture::m_VideoStream
+	@brief	ビデオストリームの状態
+*/
+// ===================================================================
+/*!
+	@fn		CxVLScreenCapture::VideoStream(bool value)
+	@brief	ビデオストリームの開始と停止
+
+	@param[in]	value	指示 [true:開始、false:停止]
+*/
+
+}
+}
+
+#endif	// _MCS_VER

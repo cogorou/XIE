@@ -1,0 +1,41 @@
+/*!
+	@file	IxMediaControl.h
+	@brief	インターフェース
+*/
+/*!
+	@def	_IXMEDIACONTROL_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Interfaces
+	@struct		IxMediaControl
+	@brief		メディア制御インターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxMediaControl::Abort()
+	@brief	中断
+*/
+// ===================================================================
+/*!
+	@fn		IxMediaControl::Pause()
+	@brief	一時停止
+*/
+// ===================================================================
+/*!
+	@fn		IxMediaControl::IsPaused() const
+	@brief	一時停止状態の取得
+
+	@return	非同期処理が一時停止状態の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+
+}
+}

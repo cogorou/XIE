@@ -1,0 +1,276 @@
+/*!
+	@file	CxPartColor.h
+	@brief	パートカラー変換クラス
+*/
+/*!
+	@internal
+	@file	CxPartColor.cpp
+	@brief	パートカラー変換クラス
+*/
+/*!
+	@internal
+	@file	CxPartColor.hpp
+	@brief	パートカラー変換クラス
+*/
+/*!
+	@def	_CXPARTCOLOR_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+/*!
+	@internal
+	@def	_CXPARTCOLOR_HPP_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_PartColor	(HxModule hsrc, HxModule hdst, HxModule hmask, int depth, int hue_dir, int hue_range, double red_ratio, double green_ratio, double blue_ratio)
+	@brief		パートカラー変換
+
+	@param[in]		hsrc			入力元
+	@param[in,out]	hdst			出力先
+	@param[in]		hmask			マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		depth			ビット深度 [0,1~64]
+	@param[in]		hue_dir			抽出する色相の方向 [0~±180 または 0~360] ※ hue_dir±hue_range が抽出対象になります。
+	@param[in]		hue_range		抽出する色相の範囲 [0~180] ※ hue_dir±hue_range が抽出対象になります。
+	@param[in]		red_ratio		赤成分の変換係数 [0~1]
+	@param[in]		green_ratio		緑成分の変換係数 [0~1]
+	@param[in]		blue_ratio		青成分の変換係数 [0~1]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxPartColor
+	@brief		パートカラー変換クラス
+
+	RGB 色空間のカラー画像の各画素が特定の色相範囲内 (@ref HueDir ± @ref HueRange) にあるか否かを判定し、
+	範囲内であれば入力元の値をそのまま出力し、範囲外であれば濃淡化して出力します。\n
+	\n
+	処理可能な条件:
+		-	入出力の Size, Model, Channels が一致していること。
+		-	入力の Channels (または Model.Pack) が 3 または 4 であること。\n
+		-	入力の Model.Type が下記の何れかであること。\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		.
+		\n
+
+	@par	Examples:
+			@includelineno	CxPartColor_01.cpp
+			
+			@par
+			入力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				</tr>
+			</table>
+
+			@par
+			出力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">1</td>
+				<td align="center" class="indexkey">2</td>
+				<td align="center" class="indexkey">3</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxPartColor_01-1.png</td>
+				<td align="center">@image html CxPartColor_01-2.png</td>
+				<td align="center">@image html CxPartColor_01-3.png</td>
+				</tr>
+			</table>
+			1) 色相範囲 0±30 度を抽出した画像 \n
+			2) 色相範囲 180±60 度を抽出した画像 \n
+			3) 色相範囲 180±60 度を抽出した画像 (抽出対象外の濃淡化係数を変更しています) \n
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::Depth
+	@brief	入力画像のビット深度 [0,1~64]
+
+	@sa
+		@ref xie::CxImage::Depth \n
+		@ref xie::CxImage::CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::HueDir
+	@brief	抽出する色相の方向 [0~±180 または 0~360] ※ HueDir±HueRange が抽出対象になります。
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::HueRange
+	@brief	抽出する色相の範囲 [0~180] ※ HueDir±HueRange が抽出対象になります。
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::RedRatio
+	@brief	赤成分の変換係数 [0~1] [既定値:0.299]
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::GreenRatio
+	@brief	緑成分の変換係数 [0~1] [既定値:0.587]
+*/
+// ===================================================================
+/*!
+	@var	CxPartColor::BlueRatio
+	@brief	青成分の変換係数 [0~1] [既定値:0.114]
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::CxPartColor()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::CxPartColor(const CxPartColor& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxPartColor &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::CxPartColor(int depth, int hue_dir, int hue_range, double red_ratio, double green_ratio, double blue_ratio)
+	@brief	コンストラクタ
+
+	@param[in]		depth			ビット深度 [0,1~64]
+	@param[in]		hue_dir			抽出する色相の方向 [0~±180 または 0~360] ※ hue_dir±hue_range が抽出対象になります。
+	@param[in]		hue_range		抽出する色相の範囲 [0~180] ※ hue_dir±hue_range が抽出対象になります。
+	@param[in]		red_ratio		赤成分の変換係数 [0~1] [既定値:0.299]
+	@param[in]		green_ratio		緑成分の変換係数 [0~1] [既定値:0.587]
+	@param[in]		blue_ratio		青成分の変換係数 [0~1] [既定値:0.114]
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::~CxPartColor()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::operator = ( const CxPartColor& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::operator == ( const CxPartColor& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::operator != ( const CxPartColor& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxPartColor(const CxPartColor &src) \n
+		@ref operator=(const CxPartColor &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxPartColor &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxPartColor::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

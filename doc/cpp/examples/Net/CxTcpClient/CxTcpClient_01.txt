@@ -1,0 +1,10 @@
+User::CxTcpClient_01
+[1] client
+[2] server
+[3] client.IsValid
+[3] client.IsValid (i=1)
+[4] client.Write()
+[4] stream.Write returned 15. [This is client.]
+[5] server.Read()
+[6] client.Read()
+[6] stream.Read returned 0. []

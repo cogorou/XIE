@@ -1,0 +1,113 @@
+/*!
+	@file	CxMutex.h
+	@brief	排他制御クラス
+*/
+/*!
+	@internal
+	@file	CxMutex.cpp
+	@brief	排他制御クラス
+*/
+/*!
+	@def	_CXMUTEX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxMutex
+	@brief		排他制御クラス
+
+	@remarks
+			スレッド間の競合を防ぐ為のクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxMutex_01.cpp
+
+			@par
+			出力結果)
+			@include	CxMutex_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxMutex::CxMutex()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部では排他制御オブジェクト(@ref m_Mutex)の初期化を行っています。
+
+	@sa
+		@ref m_Mutex \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMutex::~CxMutex()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では排他制御オブジェクト(@ref m_Mutex)の解放を行っています。
+
+	@sa
+		@ref m_Mutex \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMutex::Lock()
+	@brief	ロック
+
+	@remarks
+			所有権を取得するまで待機します。\n
+
+	@sa
+		@ref m_Mutex \n
+		@ref Unlock \n
+		@ref Trylock \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMutex::Unlock()
+	@brief	アンロック
+
+	@remarks
+			所有権を放棄します。\n
+
+	@sa
+		@ref m_Mutex \n
+		@ref Lock \n
+		@ref Trylock \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMutex::Trylock( int timeout )
+	@brief	ロック (タイムアウト付き)
+
+	@param[in]		timeout		待機時間 (msec) [0~]
+
+	@retval		true	所有権を獲得できました。
+	@retval		false	所有権を獲得できません。タイムアウトが発生しました。
+
+	@remarks
+			所有権を取得するか指定時間を経過するまで待機します。\n
+
+	@sa
+		@ref m_Mutex \n
+		@ref Lock \n
+		@ref Unlock \n
+*/
+// ===================================================================
+/*!
+	@var	CxMutex::m_Mutex
+	@brief	排他制御オブジェクト
+
+	@sa
+		@ref Lock \n
+		@ref Unlock \n
+		@ref Trylock \n
+*/
+
+}

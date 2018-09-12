@@ -1,0 +1,669 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_core.h
+	@brief		基本ライブラリ
+*/
+/*!
+	@internal
+	@file		xie_core.cpp
+	@brief		基本ライブラリ
+*/
+// ===================================================================
+/*!
+	@def		_XIE_CORE_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+// ===================================================================
+/*!
+	@def		XIE_CORE_PREFIX
+	@brief		基本ライブラリの接頭辞
+
+	書式: name_arch_version \n
+
+	-	name … ライブラリ名
+	-	arch … ターゲット環境のアーキテクチャ [x86、x64]
+	-	version … ３桁の10進数 [Major * 100 + Minor]
+	.
+
+	@sa
+		@ref XIE_ARCH \n
+		@ref XIE_VER_STR \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_core_setup()
+	@brief		基本ライブラリの初期化
+
+	@remarks
+			xie_core を初期化します。\n
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+		@ref xie::CxMatrix \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_core_teardown()
+	@brief		基本ライブラリの解放
+
+	@remarks
+			xie_core を解放します。\n
+			現在のところ、内部では何も行っていません。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_core_plugin(void *handle)
+	@brief		基本ライブラリのプラグインの組み込み
+
+	@param[in]		handle		プラグインクラスのポインタ
+
+	@sa
+		@ref xie_core_setup \n
+		@ref xie_high_setup \n
+*/
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie
+	@brief		最上位のネームスペース
+
+	基本機能を集約しています。
+*/
+namespace xie
+{
+}
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::Effectors
+	@brief		イフェクター関連
+
+	データオブジェクトのイフェクト機能を集約しています。
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+namespace xie
+{
+namespace Effectors
+{
+}
+}
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_VER
+	@brief		製品バージョンを示す整数
+
+	書式) ABB
+
+	-	A … major (1桁 以上)
+	-	BB … minor (2桁 固定)
+
+	\n
+
+	例えば 102 の場合はバージョン 1.2 を示し、
+	120 の場合はバージョン 1.20 を示します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_VER_STR
+	@brief		製品バージョンを示す文字列
+
+	書式) ABB
+
+	-	A … major (1桁 以上)
+	-	BB … minor (2桁 固定)
+
+	\n
+
+	例えば "102" の場合はバージョン 1.2 を示し、
+	"120" の場合はバージョン 1.20 を示します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_X86
+	@brief		現在の CPU アーキテクチャ
+
+	現在のコンパイラが x86 の場合に定義されます。\n
+	x64 の場合は、代わりに XIE_X64 が定義されます。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_ARCH
+	@brief		CPU アーキテクチャを示す文字列
+
+	"x86" または "x64" を示します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_MODULE_ID
+	@brief		モジュールID
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_ALIGNED(sz)
+	@brief		構造体のアライメント属性
+
+	gcc の場合に下記のように定義されます。\n
+	Visual C++ の場合は無視されます。
+
+	@code
+	#define XIE_ALIGNED(sz) __attribute__ ((aligned (sz)))
+	@endcode
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_PACKED
+	@brief		構造体のパッキング属性
+
+	gcc の場合に下記のように定義されます。\n
+	Visual C++ の場合は無視されます。
+
+	@code
+	#define XIE_PACKED      __attribute__ ((packed))
+	@endcode
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_EXPORT_FUNCTION
+	@brief		C インターフェース
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_EXPORT_CLASS
+	@brief		外部公開クラスの指定
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_API
+	@brief		関数の呼び出し規約
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_CDECL
+	@brief		関数の呼び出し規約
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_MODULE_ID
+	@brief		XIE モジュール識別子
+
+	@sa
+		@ref xie::CxModule::ModuleID \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_TEXT(c)
+	@brief		汎用文字列型
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合は L を付加してワイド文字になります。
+			それ以外は何も付加せずマルチバイト文字になります。
+			@par
+			@code
+			#define xie::fnXIE_Core_TraceOut(1, XIE_TEXT("%s(%d): %s\"), __XIE_FILE__, __LINE__, __XIE_FUNCTION__);
+			@endcode
+
+	@sa
+		@ref XIE_ATOW \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_ATOW(m)
+	@brief		汎用文字列型
+
+	@remarks
+			UNICODE マクロが定義されている場合は L を付加してワイド文字になります。
+			それ以外は何も付加せずマルチバイト文字になります。
+			@par
+			XIE_TEXT と目的は同じですが、対象がリテラル文字列かマクロ定義された文字列かによって使い分ける必要があります。
+			リテラル文字列を指定する場合は XIE_TEXT を使用してください。
+			下記のようにマクロ定義された文字列を指定する場合は当マクロを介す必要があります。
+			@code
+			#define __TFILE__ XIE_ATOW(__FILE__)
+			@endcode
+
+	@sa
+		@ref XIE_TEXT \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		__XIE_FILE__
+	@brief		(汎用文字列型マクロ) 現在のソースファイルの名前
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合はワイド文字になります。
+			それ以外はマルチバイト文字になります。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		__XIE_DATE__
+	@brief		(汎用文字列型マクロ) 現在のソースファイルのコンパイル日付 (Mmm dd yyyy)
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合はワイド文字になります。
+			それ以外はマルチバイト文字になります。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		__XIE_TIME__
+	@brief		(汎用文字列型マクロ) 現在のソースファイルのコンパイル時刻 (hh:mm:ss)
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合はワイド文字になります。
+			それ以外はマルチバイト文字になります。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		__XIE_TIMESTAMP__
+	@brief		(汎用文字列型マクロ) 現在のソースファイルの更新日時 (Www Mmm dd hh:mm:ss yyyy)
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合はワイド文字になります。
+			それ以外はマルチバイト文字になります。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		__XIE_FUNCTION__
+	@brief		(汎用文字列型マクロ) 現在の関数の名称
+
+	@remarks
+			このマクロは定義済みマクロを拡張したものです。
+			UNICODE マクロが定義されている場合はワイド文字になります。
+			それ以外はマルチバイト文字になります。
+*/
+
+// ////////////////////////////////////////////////////////////
+// CONSTANTS
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_PACKING_SIZE
+	@brief		構造体のパッキングサイズ (bytes)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_IMAGE_PACKING_SIZE
+	@brief		画像オブジェクトの１行のパッキングサイズ (bytes)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_IMAGE_CHANNELS_MAX
+	@brief		画像オブジェクトのチャネル数最大値
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U08Min
+	@brief		8bit 符号なし整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U08Max
+	@brief		8bit 符号なし整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U16Min
+	@brief		16bit 符号なし整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U16Max
+	@brief		16bit 符号なし整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U32Min
+	@brief		32bit 符号なし整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U32Max
+	@brief		32bit 符号なし整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U64Min
+	@brief		64bit 符号なし整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_U64Max
+	@brief		64bit 符号なし整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S08Min
+	@brief		8bit 符号つき整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S08Max
+	@brief		8bit 符号つき整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S16Min
+	@brief		16bit 符号つき整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S16Max
+	@brief		16bit 符号つき整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S32Min
+	@brief		32bit 符号つき整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S32Max
+	@brief		32bit 符号つき整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S64Min
+	@brief		64bit 符号つき整数 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_S64Max
+	@brief		64bit 符号つき整数 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_F32Min
+	@brief		32bit 単精度浮動小数点 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_F32Max
+	@brief		32bit 単精度浮動小数点 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_F64Min
+	@brief		64bit 倍精度浮動小数点 (最小値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_F64Max
+	@brief		64bit 倍精度浮動小数点 (最大値)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_PI
+	@brief		円周率
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_EPSd
+	@brief		イプシロン（倍精度浮動小数点）
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Constants
+	@def		XIE_EPSf
+	@brief		イプシロン（単精度浮動小数点）
+*/
+
+namespace xie
+{
+
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxIntPtr
+	@brief		ポインター精度の型 (符号付き)
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxUIntPtr
+	@brief		ポインター精度の型 (符号なし)
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxChar
+	@brief		汎用文字型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharPtr
+	@brief		汎用文字列ポインタ型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharCPtr
+	@brief		汎用文字列ポインタ型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharPtrW
+	@brief		ワイド文字列ポインタ型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharCPtrW
+	@brief		ワイド文字列ポインタ型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharPtrA
+	@brief		マルチバイト文字列ポインタ型
+*/
+//===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	TxCharCPtrA
+	@brief		マルチバイト文字列ポインタ型
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			fnXIE_Core_TraceLevel_Set(int value)
+	@brief		トレースの ON/OFF の設定
+
+	@param[in]		value		トレースの ON/OFF [0:OFF,1~:ON]
+
+	@remarks
+			この関数は xie_core_setup より先に呼び出しても問題ありません。 
+			ON (1 以上) にすると fnXIE_Core_TraceOut の出力が有効になります。
+			ライブラリの内部では CxException で使用しています。
+			Release 版で例外が発生した場合に発生場所の特定に有用です。
+
+	@sa
+		@ref xie::Axi::TraceLevel(int level) \n
+		@ref fnXIE_Core_TraceOut \n
+		@ref xie_core_setup \n
+		@ref xie::CxException \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			fnXIE_Core_TraceLevel_Get()
+	@brief		トレースの ON/OFF の取得
+
+	@retval	0	トレース OFF
+	@retval	1~	トレース ON
+
+	@sa
+		@ref xie::Axi::TraceLevel() \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			fnXIE_Core_TraceOutA(int level, TxCharCPtrA format, ...)
+	@brief		トレース出力 (MBCS)
+
+	@param[in]		level		トレースの ON/OFF [0:OFF,1~:ON]
+	@param[in]		format		書式
+	@param[in]		...			引数
+
+	@remarks
+			指定された文字列を stdout へ出力します。Windows 版ではデバッガにも出力します。\n
+			第一引数の level はトレースレベルを示します。
+			level が xie::Axi::TraceLevel() の戻り値以下の場合に出力が有効になります。
+			普段は出力せず、テスト時のみ出力することが目的であれば、1 以上の値を指定してください。
+
+	@sa
+		@ref xie::Axi::TraceLevel(int level) \n
+		@ref xie::Axi::TraceLevel() \n
+		@ref fnXIE_Core_TraceOut \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@fn			fnXIE_Core_TraceOutW(int level, TxCharCPtrW format, ...)
+	@brief		トレース出力 (UNICODE)
+
+	@param[in]		level		トレースの ON/OFF [0:OFF,1~:ON]
+	@param[in]		format		書式
+	@param[in]		...			引数
+
+	@remarks
+			指定された文字列を stdout へ出力します。Windows 版ではデバッガにも出力します。\n
+			第一引数の level はトレースレベルを示します。
+			level が xie::Axi::TraceLevel() の戻り値以下の場合に出力が有効になります。
+			普段は出力せず、テスト時のみ出力することが目的であれば、1 以上の値を指定してください。
+
+	@sa
+		@ref xie::Axi::TraceLevel(int level) \n
+		@ref xie::Axi::TraceLevel() \n
+		@ref fnXIE_Core_TraceOut \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Debugger
+	@def		fnXIE_Core_TraceOut
+	@brief		(汎用文字列型マクロ) トレース出力
+
+	@remarks
+			このマクロはトレース出力関数を切り替えます。
+			UNICODE マクロが定義されている場合はワイド文字を受け付けます。
+			それ以外はマルチバイト文字を受け付けます。
+
+			@par
+			@includelineno	fnXIE_Core_TraceOut_01.cpp
+
+			@par
+			出力結果)
+			@include	fnXIE_Core_TraceOut_01.txt
+
+	@sa
+		@ref xie::fnXIE_Core_TraceOutA \n
+		@ref xie::fnXIE_Core_TraceOutW \n
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxModule
+	@brief		モジュールインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxModule::ModuleID() const
+	@brief	モジュールID の取得
+
+	@return	このオブジェクトのモジュールIDを返します。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Typedefs
+	@typedef	HxModule
+	@brief		モジュールハンドル型
+
+	@remarks
+			C++ の場合は IxModule* 、C 言語の場合は void* です。
+
+	@if	StaffSection
+	@note
+			HxModule が void* のような曖昧な型の場合、
+			CxModule の派生クラスを HxModule にキャストするオペレータが正常に動作しない場合がある為、
+			明示的な型にしています。\n
+			【現象】\n
+			CxStringA を SafeCast/ClassIs で認識できない。\n
+			【原因】\n
+			GCC 5.4 でビルドした場合、CxModule を void* にキャストすると
+			CxModule の HxModule() operator より
+			CxStringA の TxCharCPtrA() operator  の方が
+			優先的に呼ばれる為、this ポインタの受け渡しに失敗する。\n
+			【対策】: \n
+			HxModule を IxModule* と定義する。\n
+	@endif
+
+	@sa
+		@ref CxModule \n
+		@ref IxModule \n
+		@ref xie::Axi::ClassIs \n
+		@ref xie::Axi::SafeCast \n
+*/
+
+}	// xie

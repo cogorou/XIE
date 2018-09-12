@@ -1,0 +1,23 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_ds.h
+	@brief		DirectShow フィルタライブラリ
+*/
+// ===================================================================
+/*!
+	@def		_XIE_DS_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::DS
+	@brief		DirectShow 関連
+*/
+namespace xie
+{
+namespace DS
+{
+}
+}

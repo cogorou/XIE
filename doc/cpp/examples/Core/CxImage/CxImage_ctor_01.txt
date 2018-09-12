@@ -1,0 +1,7 @@
+User::CxImage_ctor_01
+src.Address(0)       = 0028AEB8
+src.Width            = 30
+src.Height           = 24
+src.Model            = U8(3)
+src.Channels         = 1
+src.Stride           = 92

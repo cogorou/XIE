@@ -1,0 +1,168 @@
+/*!
+	@file	TxSocketStream.h
+	@brief	ソケットストリーム構造体
+*/
+/*!
+	@internal
+	@file	TxSocketStream.cpp
+	@brief	ソケットストリーム構造体
+*/
+/*!
+	@def	_TXNETWORKSTREAM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Structures
+	@struct		TxSocketStream
+	@brief		ソケットストリーム構造体
+*/
+// ===================================================================
+/*!
+	@var	TxSocketStream::Socket
+	@brief	ソケットハンドル [既定値:INVALID_SOCKET]
+*/
+// ===================================================================
+/*!
+	@var	TxSocketStream::LocalEndPoint
+	@brief	ローカルエンドポイント
+*/
+// ===================================================================
+/*!
+	@var	TxSocketStream::RemoteEndPoint
+	@brief	リモートエンドポイント
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::TxSocketStream()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::TxSocketStream(HxSocket sock)
+	@brief	コンストラクタ
+
+	@param[in]		sock		ソケットハンドル
+
+	@remarks
+			指定されたソケットハンドルを @ref Socket に設定して構築します。\n
+			その他のフィールドは 0 初期化します。
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::TxSocketStream(HxSocket sock, TxIPEndPoint localeEP, TxIPEndPoint remoteEP)
+	@brief	コンストラクタ
+
+	@param[in]		sock		ソケットハンドル
+	@param[in]		localeEP	ローカルエンドポイント
+	@param[in]		remoteEP	リモートエンドポイント
+
+	@remarks
+			指定された値でメンバフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::operator == (const TxSocketStream& cmp) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::operator != (const TxSocketStream& cmp) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Connected() const
+	@brief	接続状態
+
+	@retval	true	接続
+	@retval	false	切断
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Readable(int timeout) const
+	@brief	読み込み可否の検査
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@retval	true	可能
+	@retval	false	不可能
+
+	@remarks
+			戻り値が true を返す場合は、データの一部が到達しているか、
+			ネットワークが切断された可能性があります。\n
+			指定時間内に状態の変化がなければ false を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Read(char* buffer, int length, int timeout) const
+	@brief	読み込み
+
+	@param[out]		buffer		読み込み用バッファ
+	@param[in]		length		読み込み用バッファのサイズ (bytes) [1~]
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	実際に読み込んだサイズをバイト数で返します。\n
+			ネットワークが切断された直後は -1 を返します。\n
+			指定時間内に状態の変化がなければ 0 を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Writeable(int timeout) const
+	@brief	書き込み可否の検査
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@retval	true	可能
+	@retval	false	不可能
+
+	@remarks
+			戻り値が true を返す場合は、データの書き込みが可能であることを意味します。\n
+			指定時間内に状態の変化がなければ false を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxSocketStream::Write(const char* buffer, int length, int timeout) const
+	@brief	書き込み
+
+	@param[in]		buffer		書き込むデータ
+	@param[in]		length		書き込むデータのサイズ (bytes) [1~]
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	実際に書き込んだサイズをバイト数で返します。\n
+			異常があれば -1 を返します。\n
+			指定時間内に状態の変化がなければ 0 を返します。\n
+			@a timeout に -1 を指定した場合は状態の変化があるまで待機します。\n
+*/
+
+}
+}

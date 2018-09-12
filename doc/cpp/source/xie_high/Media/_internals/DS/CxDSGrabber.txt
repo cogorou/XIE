@@ -1,0 +1,156 @@
+/*!
+	@file	CxDSGrabber.h
+	@brief	グラバークラス
+*/
+/*!
+	@internal
+	@file	CxDSGrabber.cpp
+	@brief	グラバークラス
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSGRABBER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSGrabber
+	@brief		グラバークラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::From(const CxDSSampleReceiver* receiver)
+	@brief	生成関数
+
+	@param[in]		receiver	サンプルレシーバー
+
+	@return	生成したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::CxDSGrabber(CxGrabber* parent)
+	@brief	コンストラクタ
+
+	@param[in]		parent		親オブジェクト(このオブジェクトを内包するオブジェクト)
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::~CxDSGrabber()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::Parent() const
+	@brief	親オブジェクトの取得
+
+	@return	親オブジェクト(このオブジェクトを内包するオブジェクト)を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::Receiver() const
+	@brief	サンプルレシーバーの取得
+
+	@return	サンプルレシーバーを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSGrabber::Receiver(const CxDSSampleReceiver* receiver)
+	@brief	サンプルレシーバーの設定
+
+	@param[in]		receiver		サンプルレシーバー
+*/
+// ===================================================================
+/*!
+	@var	CxDSGrabber::m_Parent
+	@brief	親オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSGrabber::m_Receiver
+	@brief	サンプルレシーバー
+*/
+
+/*
+class XIE_EXPORT_CLASS CxDSGrabber : public CxModule
+	, public IxDisposable
+	, public IxEquatable
+{
+public:
+	static CxGrabber From(const CxDSSampleReceiver* receiver)
+	{
+		CxGrabber result;
+		CxDSGrabber* body = (CxDSGrabber*)result.GetModule();
+		body->Receiver(receiver);
+		return result;
+	}
+
+	CxDSGrabber(CxGrabber* parent);
+	virtual ~CxDSGrabber();
+
+public:
+	// IxDisposable
+	virtual void Dispose();
+	virtual bool IsValid() const;
+
+	// IxEquatable
+	virtual void CopyFrom(const IxModule& src);
+	virtual bool ContentEquals(const IxModule& src) const;
+
+	virtual CxGrabber* Parent() const;
+
+	virtual CxDSSampleReceiver* Receiver() const;
+	virtual void Receiver(const CxDSSampleReceiver* receiver);
+
+protected:
+	CxGrabber*		m_Parent;
+	CxDSSampleReceiver*	m_Receiver;
+};
+*/
+
+}
+}
+
+#endif	// _MCS_VER

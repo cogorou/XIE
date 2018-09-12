@@ -1,0 +1,119 @@
+/*!
+	@file	TxSerialPort.h
+	@brief	シリアル通信構造体
+*/
+/*!
+	@internal
+	@file	TxSerialPort.cpp
+	@brief	シリアル通信構造体
+*/
+/*!
+	@def	_TXSERIAPORT_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace IO
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_IO_Structures
+	@struct		TxSerialPort
+	@brief		シリアル通信構造体
+*/
+// ===================================================================
+/*!
+	@var	TxSerialPort::BaudRate
+	@brief	ボーレート (bps) [既定値:9600]
+
+	@remarks
+			指定可能な範囲は以下の通りです。\n
+			-	110
+			-	300
+			-	600
+			-	1200
+			-	2400
+			-	4800
+			-	9600
+			-	14400
+			-	19200
+			-	38400
+			-	57600
+			-	115200
+			-	128000
+			-	256000
+*/
+// ===================================================================
+/*!
+	@var	TxSerialPort::Parity
+	@brief	パリティ [既定値:None]
+*/
+// ===================================================================
+/*!
+	@var	TxSerialPort::DataBits
+	@brief	データビット (bits) [既定値:8] [範囲:5~8]
+*/
+// ===================================================================
+/*!
+	@var	TxSerialPort::StopBits
+	@brief	ストップビット (bits) [既定値:One]
+*/
+// ===================================================================
+/*!
+	@var	TxSerialPort::Handshake
+	@brief	ハンドシェイク [既定値:None]
+*/
+// ===================================================================
+/*!
+	@fn		TxSerialPort::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxSerialPort::TxSerialPort()
+	@brief	コンストラクタ
+
+	@remarks
+			全てのメンバーフィールドを 0 初期化して構築します。
+*/
+// ===================================================================
+/*!
+	@fn		TxSerialPort::TxSerialPort(int buadrate, ExParity parity, int databits, ExStopBits stopbits, ExHandshake handshake)
+	@brief	コンストラクタ
+
+	@param[in]		buadrate		ボーレート (bps)
+	@param[in]		parity			パリティ
+	@param[in]		databits		データビット (bits)
+	@param[in]		stopbits		ストップビット (bits) [5~8]
+	@param[in]		handshake		ハンドシェイク
+
+	@remarks
+			指定の値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxSerialPort::operator == (const TxSerialPort& cmp) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		TxSerialPort::operator != (const TxSerialPort& cmp) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+
+}
+}

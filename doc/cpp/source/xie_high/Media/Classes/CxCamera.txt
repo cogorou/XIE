@@ -1,0 +1,577 @@
+/*!
+	@file	CxCamera.h
+	@brief	カメラデバイスクラス
+*/
+/*!
+	@internal
+	@file	CxCamera.cpp
+	@brief	カメラデバイスクラス
+*/
+/*!
+	@def	_CXCAMERA_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxCamera
+	@brief		カメラデバイスクラス
+
+	UVC 対応カメラを接続するクラスです。\n
+	※注意）現在、Linux 版では映像入力のみ対応しており、音声入力と動画ファイル保存は未対応です。\n
+	\n
+	操作手順) \n
+	-# 初期化 (@ref Setup)
+	-# 映像や音声の捕獲処理の準備
+		-# 生成 (@ref CreateGrabber)
+		-# 登録 (@ref CxGrabber::Notify)
+		-# 開始 (@ref CxGrabber::Start)
+		.
+		\n
+	-# 露光開始 (@ref Start) \n
+		※ 前述の Notify に登録した関数の呼び出しが開始されます。 \n
+		\n
+	-# 映像や音声の捕獲処理の完了待機
+		-# 待機 (@ref CxGrabber::Wait)
+		-# 停止 (@ref CxGrabber::Stop)
+		.
+		\n
+	-# 露光停止 (@ref Stop / @ref Abort)
+	-# 解放 (@ref Dispose)
+	.
+	\n
+
+	@par	Examples:
+			\n
+			@includelineno	CxCamera_01.cpp
+
+			@par
+			出力結果)
+			@include	CxCamera_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::CxCamera()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::~CxCamera()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::GetModule() const
+	@brief	内部モジュールの取得
+
+	@return	このオブジェクトの内部モジュールを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Setup(HxModule hVideo, HxModule hAudio, HxModule hOutput)
+	@brief	初期化
+
+	@param[in]		hVideo		映像入力 \n
+								映像を取り込むデバイスを指定してください。\n
+								型は CxDeviceParam に対応しています。\n
+								NULL を指定した場合は CxDeviceParam の既定値を指定した場合と等価です。\n
+
+	@param[in]		hAudio		音声入力 \n
+								音声を取り込むデバイスを指定してください。\n
+								型は CxDeviceParam に対応しています。\n
+								NULL を指定した場合は、音声の取り込みは行いません。\n
+								※注意）現在、Linux 版では未対応です。\n
+
+	@param[in]		hOutput		出力先 \n
+								保存先の動画ファイル（avi,asf,wmv）を指定してください。\n
+								型は CxStringA または CxStringW に対応しています。\n
+								NULL を指定した場合は、動画ファイルへの保存は行いません。\n
+								※注意）現在、Linux 版では未対応です。\n
+
+	@remarks
+			初期化が完了すると下図のようにフィルタが構成されます。\n
+			橙色の塗り潰し矩形は、引数 @a hVideo で指定される箇所です。\n
+			水色の塗り潰し矩形は、引数 @a hAudio ・ @a hOutput で指定される箇所です。
+			何れも指定は任意ですが、一部の条件では制約があります。
+			後述の "音声入力と出力先について" をご参照ください。\n
+			中間の白色の塗り潰し矩形は、ストリームから映像または音声を捕獲する為のフィルタです。
+			@ref CreateGrabber メソッドで捕獲用のイベントレシーバを生成できます。
+			音声入力が指定されていない場合は AudioGrabber は動作しません。
+			\n
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="left">@image html CxCamera_Setup.png</td>
+				</tr>
+			</table>
+
+			@par
+			音声入力と出力先について） \n
+			出力先が asf や wmv の場合は注意が必要です。
+			asf や wmv の保存では映像と音声の両方が必要です。
+			asf や wmv へ保存する際は音声入力を指定して音声部分を補完してください。
+
+	@sa
+		@ref CreateGrabber \n
+		@ref CxGrabber \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::CreateGrabber(ExMediaType type) const
+	@brief	メディア捕獲用イベントレシーバの生成
+
+	@param[in]		type		捕獲するメディアの種別
+
+	@return	メディア(映像または音声)を捕獲する同期オブジェクトを生成して返します。
+
+	@remarks
+			ピンの接続状態に関わらずインスタンスを返しますが、
+			ピンが接続されていない場合はイベントが発生しません。
+			予め GetParam でピンの接続状態を取得して同期オブジェクトの使用可否を判定してください。
+			映像入力の場合は "Video.Connected"、音声入力の場合は "Audio.Connected" で状態を取得できます。
+
+	@sa
+		@ref CxGrabber \n
+		@ref GetParam \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::ControlProperty(TxCharCPtrA name) const
+	@brief	制御プロパティの生成
+
+	@param[in]		name		プロパティ名称 \n
+								※ 詳しくは @ref CxControlProperty の説明をご参照ください。\n
+
+	@return	制御プロパティオブジェクトを生成して返します。
+
+	@sa
+		@ref CxControlProperty \n
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		CxCamera::OpenPropertyDialog(HWND hWnd, ExMediaType type, int mode, TxCharCPtrA caption)
+	@brief	プロパティページの生成
+
+	@param[in]		hWnd		オーナーウィンドウのハンドル
+	@param[in]		type		メディア種別
+	@param[in]		mode		モード \n
+								※ 予約されています。常に 0 を指定してください。\n
+	@param[in]		caption		プロパティページのタイトル \n
+								※ NULL を指定した場合は製品名を使用します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			接続しているメディアのプロパティページを表示します。\n
+			下図は映像入力の既定のプロパティページです。
+			専用のプロパティページがあれば、下図とは外観が異なるプロパティページが表示されます。\n
+			\n
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="left">@image html CxCamera_OpenPropertyDialog_0.png</td>
+				<td align="left">@image html CxCamera_OpenPropertyDialog_1.png</td>
+				</tr>
+			</table>
+*/
+#else
+// ===================================================================
+/*!
+	@fn		CxCamera::OpenPropertyDialog(Window window, ExMediaType type, int mode, TxCharCPtrA caption)
+	@brief	プロパティページの生成
+
+	@param[in]		window		オーナーウィンドウの ID
+	@param[in]		type		メディア種別
+	@param[in]		mode		モード \n
+								※ 予約されています。常に 0 を指定してください。\n
+	@param[in]		caption		プロパティページのタイトル \n
+								※ NULL を指定した場合は製品名を使用します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在、対応していません。\n
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		CxCamera::Reset()
+	@brief	リセット
+
+	@remarks
+			非同期処理の現在値をリセットするメソッドです。\n
+			このクラスは何も行いません。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Start()
+	@brief	開始
+
+	@remarks
+			下記の処理を非同期に繰り返します。\n
+			-# 露光 … カメラが露光を行う。
+			-# 転送 … 映像を転送する。
+			-# 破棄 … 映像を破棄する。
+			.
+			\n
+			1 フレーム毎に上記の一連の処理が行われます。\n
+			例えば、カメラのフレームレートが 30 fps の場合は、上記の処理が 33 msec 以内に完了します。
+			但し、カメラの起動に時間が掛かる為、開始直後の露光は 500 msec 程度(機種によっては 3,000 msec 程度)掛かります。
+			@ref Start と @ref Stop を頻繁に繰り返すような処理は非効率です。
+			画像取り込みの開始/停止が目的であれば、
+			CreateGrabber で生成した CxGrabber の Start/Stop メソッドを使用してください。\n
+			\n
+			上記の非同期処理が動作している間、カメラと CPU の負荷が上がります。
+			連続運転を行う場合はご注意ください。
+			画像取り込み処理で捕獲した映像を CxImage に複製する場合は更に CPU 負荷が上がります。\n
+
+	@sa
+		@ref CreateGrabber \n
+		@ref CxGrabber \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Stop()
+	@brief	停止
+
+	@remarks
+			非同期処理を停止します。\n
+			ステータスが変化するまで待機します。\n
+			待機時間の上限は Timeout メソッドで指定できます。
+
+	@sa
+		@ref Timeout(int) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Abort()
+	@brief	中断
+
+	@remarks
+			非同期処理を停止します。\n
+			ステータスの変化を待機せず、呼び出し元に即座に制御を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Pause()
+	@brief	一時停止
+
+	@remarks
+			非同期処理を一時停止します。\n
+			ステータスが変化するまで待機します。\n
+			待機時間の上限は Timeout メソッドで指定できます。
+
+	@sa
+		@ref Timeout(int) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	非同期処理が停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::IsRunning() const
+	@brief	動作状態の取得
+
+	@return	非同期処理が動作中の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::IsPaused() const
+	@brief	一時停止状態の取得
+
+	@return	非同期処理が一時停止状態の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Timeout</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					タイムアウト (msec) を取得します。\n
+					@ref Timeout() const と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">FrameSize</td>
+				<td align="left">TxImageSize のポインタ</td>
+				<td align="left">ModelOf<TxImageSize></td>
+				<td align="left">
+					現在構成されているフィルタのフレームサイズを取得します。\n
+					@ref GetFrameSize() const と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Video.Connected</td>
+				<td align="left">bool のポインタ</td>
+				<td align="left">ModelOf<bool></td>
+				<td align="left">
+					映像入力の接続状態を取得します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Audio.Connected</td>
+				<td align="left">bool のポインタ</td>
+				<td align="left">ModelOf<bool></td>
+				<td align="left">
+					音声入力の接続状態を取得します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Video.DeviceName \n
+					DeviceName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているカメラのデバイス名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+					デバイス名の形式は、Windows 版では CLSID 、
+					Linux 版ではファイル名 (形式: /dev/video# (#=0~)) です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Video.ProductName \n
+					ProductName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているカメラの製品名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Audio.DeviceName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているマイクのデバイス名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+					デバイス名の形式は、Windows 版では CLSID 、
+					Linux 版は仕様未定です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Audio.ProductName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているマイクの製品名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.FileName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					出力先に指定されているファイル名称を取得します。\n
+					未指定の場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.DeviceName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているスピーカーのデバイス名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+					デバイス名の形式は、Windows 版では CLSID 、
+					Linux 版は仕様未定です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">
+					Output.ProductName \n
+				</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在接続されているスピーカーの製品名を取得します。\n
+					接続されていない場合は文字列オブジェクトを未確保にして返します。\n
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxCamera::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+
+	@par	対応表
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=150>name</td>
+				<td align="center" class="indexkey" width=150>value</td>
+				<td align="center" class="indexkey" width=150>model</td>
+				<td align="center" class="indexkey">備考</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">Timeout</td>
+				<td align="left">int のポインタ</td>
+				<td align="left">ModelOf<int></td>
+				<td align="left">
+					タイムアウト (msec) を設定します。\n
+					@ref Timeout(int) と等価です。\n
+				</td>
+				</tr>
+			<tr>
+				<td align="left" class="indexkey">SaveGraphFile</td>
+				<td align="left">
+					CxStringA のハンドル \n
+					CxStringW のハンドル \n
+				</td>
+				<td align="left">(無視されます)</td>
+				<td align="left">
+					現在のフィルタ構成を指定されたファイル(GRF 拡張子)に保存します。\n
+					Windows 版でのみ使用できます。\n
+					Linux 版では例外を発行します。\n
+				</td>
+				</tr>
+			</table>
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxCamera::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Timeout() const
+	@brief	タイムアウトの取得
+
+	@return	現在設定されている値を返します。単位は msec です。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::Timeout(int value)
+	@brief	タイムアウトの設定
+
+	@param[in]		value		設定値 (msec) [-1,0~] [既定値:5000]
+
+	@remarks
+			このパラメータは Stop メソッドで使用されます。\n
+			Stop メソッドはフィルタを停止した後、ステータスが変化するまで待機します。
+			その際の待機時間として使用します。
+			フレームレートより長めに設定してください。
+*/
+// ===================================================================
+/*!
+	@fn		CxCamera::GetFrameSize() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているフレームサイズを返します。
+			この値は初期化後に有効になります。
+
+	@sa
+		@ref Setup \n
+*/
+
+}
+}

@@ -1,0 +1,418 @@
+/*!
+	@file	CxGrabberArgs.h
+	@brief	グラバー引数クラス
+*/
+/*!
+	@internal
+	@file	CxGrabberArgs.cpp
+	@brief	グラバー引数クラス
+*/
+/*!
+	@def	_CXGRABBERARGS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxGrabberArgs
+	@brief		グラバー引数クラス
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CxGrabberArgs()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CxGrabberArgs(TxImageSize frame_size, double progress, void* addr, int length)
+	@brief	コンストラクタ
+
+	@param[in]		frame_size	フレームサイズ
+	@param[in]		progress	処理経過
+	@param[in]		addr		データ領域の先頭アドレス
+	@param[in]		length		データ長 (bytes)
+
+	@remarks
+			初期値を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CxGrabberArgs(CxGrabberArgs&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+
+	@sa
+		@ref operator=(CxGrabberArgs &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CxGrabberArgs(const CxGrabberArgs& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGrabberArgs &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::~CxGrabberArgs()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::operator = ( CxGrabberArgs&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::operator = ( const CxGrabberArgs& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::operator == ( const CxGrabberArgs& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::operator != ( const CxGrabberArgs& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	データ構造へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGrabberArgs(const CxGrabberArgs &src) \n
+		@ref operator=(const CxGrabberArgs &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGrabberArgs &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+							CxImage に対応しています。\n
+							対応していないオブジェクトが指定された場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			複製先の画像オブジェクトは以下の条件を満たしている必要があります。\n
+			条件を満たしていない場合は、指定されたオブジェクトの領域は再確保されます。\n
+			\n
+			- 幅と高さが @ref FrameSize と一致していること
+			- 要素モデルとチャネル数が以下の何れかであること
+				- Model=TxModel::U8(1)、Channels=1
+				- Model=TxModel::U8(1)、Channels=3
+				- Model=TxModel::U8(1)、Channels=4
+				- Model=TxModel::U8(3)、Channels=1
+				- Model=TxModel::U8(4)、Channels=1
+				.
+			.
+			\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::operator CxImage() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を CxImage のオブジェクトに複製して返します。
+
+	@sa
+		@ref CopyTo \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+
+	@sa
+		@ref CxGrabberArgs::GetParam(TxCharCPtrA name, void* value, TxModel model) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+
+	@sa
+		@ref CxGrabberArgs::SetParam(TxCharCPtrA name, const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::TimeStamp() const
+	@brief	タイムスタンプの取得
+
+	@return	現在設定されている値を返します。\n
+			日時として確認する際は TxDateTime 構造体に変換してください。
+
+	@sa
+		@ref xie::Axi::GetTime \n
+		@ref xie::TxDateTime::FromBinary \n
+		@ref xie::TxDateTime::ToBinary \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::TimeStamp(unsigned long long value)
+	@brief	タイムスタンプの設定
+
+	@param[in]		value		設定値
+
+	@sa
+		@ref xie::Axi::GetTime \n
+		@ref xie::TxDateTime::FromBinary \n
+		@ref xie::TxDateTime::ToBinary \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::FrameSize() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::FrameSize(TxImageSize value)
+	@brief	フレームサイズの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Progress() const
+	@brief	処理経過の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Progress(double value)
+	@brief	処理経過の設定
+
+	@param[in]		value		設定値 [0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Address() const
+	@brief	データ領域の先頭アドレスの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Address(void* value)
+	@brief	データ領域の先頭アドレスの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Length() const
+	@brief	データ長の取得
+
+	@return	現在設定されている値を返します。単位は bytes です。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Length(int value)
+	@brief	データ長の設定
+
+	@param[in]		value		設定値 (bytes) [1~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Index() const
+	@brief	シーケンス番号の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Index(int value)
+	@brief	シーケンス番号の設定
+
+	@param[in]		value		設定値 [0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Cancellation() const
+	@brief	処理中断の応答の取得
+
+	@retval	true	中断
+	@retval	false	継続
+*/
+// ===================================================================
+/*!
+	@fn		CxGrabberArgs::Cancellation(bool value)
+	@brief	処理中断の応答の設定
+
+	@param[in]		value		設定値 [true:中断、false:継続]
+*/
+// ===================================================================
+/*!
+	@var	CxGrabberArgs::m_Tag
+	@brief	データ構造
+
+	@sa
+		@ref Tag \n
+		@ref TagPtr \n
+*/
+
+}
+}

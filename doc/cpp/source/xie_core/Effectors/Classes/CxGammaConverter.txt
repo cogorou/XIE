@@ -1,0 +1,251 @@
+/*!
+	@file	CxGammaConverter.h
+	@brief	ガンマ変換クラス
+*/
+/*!
+	@internal
+	@file	CxGammaConverter.cpp
+	@brief	ガンマ変換クラス
+*/
+/*!
+	@internal
+	@file	CxGammaConverter.hpp
+	@brief	ガンマ変換クラス
+*/
+/*!
+	@def	_CXGAMMACONVERTER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+/*!
+	@internal
+	@def	_CXGAMMACONVERTER_HPP_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_GammaConverter	(HxModule hsrc, HxModule hdst, HxModule hmask, int depth, double gamma)
+	@brief		ガンマ変換
+
+	@param[in]		hsrc				入力元
+	@param[in,out]	hdst				出力先
+	@param[in]		hmask				マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		depth				ビット深度 [0,1~64]
+	@param[in]		gamma				ガンマ値 [0 以外] ※ 1.0 が無変換を意味します。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxGammaConverter
+	@brief		ガンマ変換クラス
+
+	入力オブジェクトの各画素を下式で変換して出力先のオブジェクトへ格納します。\n
+	\n
+	式) dst<sub>y,x</sub> = pow(src<sub>y,x</sub> / range.Upper, 1 / @ref Gamma) *  range.Upper \n
+	-	@ref Gamma が 1.0 より大きければ出力の階調が明るくなり、1.0 より小さければ暗くなります。\n
+	-	@ref Gamma が 0.0 の場合、式中の 1 / @ref Gamma は 1 に置き換えられます。つまり無変換と等価です。\n
+	-	式中の range は @ref xie::Axi::CalcRange (src.Model.Type, @ref Depth) で求められます。 \n
+	.
+	\n
+	処理可能な条件:
+		-	入出力の Size, Model, Channels が一致していること。
+		-	入力の Model.Type が下記の何れかであること。\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		.
+		\n
+
+	@par	Examples:
+			@includelineno	CxGammaConverter_01.cpp
+			
+			@par
+			入力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html starflower_320x240.jpg</td>
+				</tr>
+			</table>
+
+			@par
+			出力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">1: Gamma=2.0</td>
+				<td align="center" class="indexkey">2: Gamma=0.75</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxGammaConverter_01-1.jpg</td>
+				<td align="center">@image html CxGammaConverter_01-2.jpg</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxGammaConverter::Depth
+	@brief	入力画像のビット深度 [0,1~64]
+
+	@sa
+		@ref xie::CxImage::Depth \n
+		@ref xie::CxImage::CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+*/
+// ===================================================================
+/*!
+	@var	CxGammaConverter::Gamma
+	@brief	ガンマ値 [0 以外] ※ 1.0 が無変換を意味します。
+
+	@remarks
+			この値が 1.0 より大きければ出力の階調が明るくなり、1.0 より小さければ暗くなります。\n
+			0.0 の場合は計算できない為、1.0（無変換）と等価になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::CxGammaConverter()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::CxGammaConverter(const CxGammaConverter& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGammaConverter &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::CxGammaConverter(int depth, double gamma)
+	@brief	コンストラクタ
+
+	@param[in]		depth		ビット深度 [0,1~64]
+	@param[in]		gamma		ガンマ値 [0 以外] ※ 1.0 が無変換を意味します。
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::~CxGammaConverter()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::operator = ( const CxGammaConverter& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::operator == ( const CxGammaConverter& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::operator != ( const CxGammaConverter& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGammaConverter(const CxGammaConverter &src) \n
+		@ref operator=(const CxGammaConverter &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGammaConverter &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGammaConverter::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

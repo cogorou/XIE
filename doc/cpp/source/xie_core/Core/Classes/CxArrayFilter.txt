@@ -1,0 +1,1140 @@
+/*!
+	@file	CxArrayFilter.h
+	@brief	配列オブジェクトフィルタ
+*/
+/*!
+	@internal
+	@file	CxArrayFilter.cpp
+	@brief	配列オブジェクトフィルタ
+*/
+/*!
+	@def	_CXARRAYFILTER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxArrayFilter
+	@brief		配列オブジェクトフィルタ
+
+	このクラスは、配列オブジェクトを加工する機能を集約しています。\n
+	通常は、出力先となる配列オブジェクトの Filter メソッドを介してこのクラスのインスタンスを生成し、
+	各メソッドを実行します。\n
+
+	各メソッドは、@ref hDst メンバフィールドに設定されたオブジェクトを加工することを意味します。
+
+	@par	Examples:
+@code
+	CxArray src(100, xie::TxModel::F64(1));
+	CxArray val(100, xie::TxModel::S32(1));
+	CxArray dst;
+
+	// src,val の初期化.
+	// :
+
+	// dst の加工.
+	dst.Filter().Add(src, val);
+@endcode
+	@par
+
+	@sa
+		@ref CxArray \n
+		@ref CxArray::Filter() \n
+*/
+// ===================================================================
+/*!
+	@var	CxArrayFilter::hDst
+	@brief	出力先のオブジェクト
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::CxArrayFilter()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::CxArrayFilter(HxModule hdst)
+	@brief	コンストラクタ
+
+	@param[in]		hdst	出力先のオブジェクト
+
+	@sa
+		@ref hDst \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::CxArrayFilter(const CxArrayFilter& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@sa
+		@ref operator=(const CxArrayFilter &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::~CxArrayFilter()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::operator = ( const CxArrayFilter& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::operator == ( const CxArrayFilter& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::operator != ( const CxArrayFilter& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Cast(HxModule hsrc)
+	@brief	要素のコピー (キャスト)
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			各要素の値を代入します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length が一致していること。
+				-	入出力の Model.Pack が一致していること。(異なる場合は少ない方が適用される。) \n
+				-	入出力の Model.Size が一致していること。
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Copy(HxModule hsrc, double scale)
+	@brief	要素のコピー
+
+	@param[in]		hsrc			入力
+	@param[in]		scale			スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する] \n
+									@ref Axi::CalcScale "Axi::CalcScale(src.Model.Type, src.Depth, dst.Model.Type, dst.Depth)" で求めることができます。\n
+
+	@remarks
+			各要素の値を代入します。(下式 1) \n
+			@a scale が 0 または 1 以外の時はレンジ変換して代入します。(下式 2) \n
+
+			@par
+			式1) dst<sub>x</sub> = src<sub>x</sub> \n
+			\n
+
+			@par
+			式2) dst<sub>y,x</sub> = src<sub>y,x</sub> * scale  \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length が一致していること。
+				-	入出力の Model.Pack が一致していること。(異なる場合は少ない方が適用される。) \n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::CopyEx(HxModule hsrc, int index, int count)
+	@brief	要素のコピー (フィールド指定)
+
+	@param[in]		hsrc			入力
+	@param[in]		index			フィールド指標 [0~]
+	@param[in]		count			フィールド数 [1~]
+
+	@remarks
+			各要素の指定フィールドを代入します。\n
+
+			@par
+			式) dst<sub>y,x</sub>[k] = src<sub>y,x</sub>[k+index] \n
+			\n
+			※ k=0~count \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length が一致していること。
+				-	index が 0 以上であること。\n
+				-	count が 1 以上であること。\n
+				-	出力の Model.Pack が count 以上であること。
+				-	入力の Model.Pack が (index+count) 以上であること。
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::RgbToBgr(HxModule hsrc, double scale)
+	@brief	RGB/BGR の相互変換
+
+	@param[in]		hsrc			入力
+	@param[in]		scale			スケーリングする際の倍率 [0=元の値をそのまま複製する、その他=元の画素値に指定値を乗算する] \n
+									@ref Axi::CalcScale "Axi::CalcScale(src.Model.Type, 0, dst.Model.Type, 0)" で求めることができます。\n
+
+	@remarks
+			各要素の値を RGB から BGR へ変換(または BGR から RGBへ変換)して代入します。\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length が一致していること。
+				-	入出力の Model.Pack が下表１の条件を満たすこと。
+				.
+				\n
+
+			@par
+			表１) 入出力の要素モデルのパック数 (Model.Pack) 条件
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey">出力</td>
+				<td class="indexkey">入力</td>
+				<td class="indexkey" ROWSPAN=2>備考</td>
+				</tr>
+			<tr>
+				<td class="indexkey">Pack</td>
+				<td class="indexkey">Pack</td>
+				</tr>
+			<tr>
+				<td>3,4</td>
+				<td>3,4</td>
+				<td>入出力の何れか小さい方のパック数を適用する。</td>
+				</tr>
+			</table>
+
+	@sa
+		Axi::CalcScale \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Compare(HxModule hsrc, HxModule hcmp, double error_range)
+	@brief	比較
+
+	@param[in]		hsrc			比較対象(左辺値)
+	@param[in]		hcmp			比較対象(右辺値)
+	@param[in]		error_range		誤差範囲 \n
+									※各要素の差が ±error_range 以内の場合は一致と判断します。 \n
+
+	@remarks
+			各要素の値を比較して出力先のオブジェクトに格納します。\n
+			一致する要素は 0 、一致しない要素は 1 が格納されます。\n
+
+			@par
+			式) dst<sub>x</sub> = (src<sub>x</sub> == cmp<sub>x</sub>) ? 0 : 1 \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				-	出力の Model.Type が ExType (U8) であること。\n
+				.
+				\n
+
+			@par
+			要素モデルのパック数に応じた処理: \n
+				-	入出力のパック数が少ない方で巡回して処理する。
+				-	入力が 1 パック場合は、出力の全フィールドへ書き込む。
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::ColorMatrix(HxModule hsrc, HxModule hmatrix)
+	@brief	カラー行列フィルタ
+
+	@param[in]		hsrc			入力
+	@param[in]		hmatrix			カラー行列 (3x3 の行列) [F64(1)] \n
+									※ @ref xie::CxMatrix を指定してください。\n
+
+	@remarks
+			入力の各要素(1x3 の行列)とカラー行列(3x3 の行列)の積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力の Model.Pack が 3 または 4 であること。\n
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+
+	@sa
+		@ref xie::Effectors::CxMonochrome \n
+		@ref xie::Effectors::CxRgbConverter \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Math(HxModule hsrc, ExMath type)
+	@brief	数理関数
+
+	@param[in]		hsrc			入力
+	@param[in]		type			種別
+
+	@remarks
+			入力の各要素を指定の数理関数で計算して、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = f( src<sub>x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Not(HxModule hsrc)
+	@brief	反転
+
+	@param[in]		hsrc			入力
+
+	@remarks
+			入力の各要素を反転して、出力先のオブジェクトに格納します。\n
+			符号なしの整数の場合はビット反転します。それ以外は符号反転します。\n
+
+			@par
+			<b>符号なし整数の場合)</b> \n
+			式１) dst<sub>x</sub> = ~ src<sub>x</sub> \n
+			\n
+
+			@par
+			<b>符号付き整数または実数の場合)</b> \n
+			式２) dst<sub>x</sub> = -1 * src<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Add(HxModule hsrc, HxModule hval)
+	@brief	加算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の加算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> + val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Add(HxModule hsrc, double value)
+	@brief	加算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の加算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> + value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Mul(HxModule hsrc, HxModule hval)
+	@brief	乗算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の乗算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> * val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Mul(HxModule hsrc, double value)
+	@brief	乗算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の乗算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> * value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Sub(HxModule hsrc, HxModule hval)
+	@brief	減算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> - val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Sub(HxModule hsrc, double value)
+	@brief	減算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> - value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Sub(double value, HxModule hsrc)
+	@brief	減算
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の減算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = value - src<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Div(HxModule hsrc, HxModule hval)
+	@brief	除算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> / val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Div(HxModule hsrc, double value)
+	@brief	除算
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> / value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Div(double value, HxModule hsrc)
+	@brief	除算
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の除算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = value / src<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Mod(HxModule hsrc, HxModule hval)
+	@brief	剰余
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> % val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Mod(HxModule hsrc, double value)
+	@brief	剰余
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> % value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Mod(double value, HxModule hsrc)
+	@brief	剰余
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の剰余演算を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = value % src<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Pow(HxModule hsrc, HxModule hval)
+	@brief	累乗
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = pow( src<sub>x</sub> , val<sub>x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Pow(HxModule hsrc, double value)
+	@brief	累乗
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = pow( src<sub>x</sub> , value ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Pow(double value, HxModule hsrc)
+	@brief	累乗
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の累乗を行い、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = pow( value , src<sub>x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Atan2(HxModule hsrc, HxModule hval)
+	@brief	逆正接
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = atan2( src<sub>x</sub> , val<sub>x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Atan2(HxModule hsrc, double value)
+	@brief	逆正接
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = atan2( src<sub>x</sub> , value ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Atan2(double value, HxModule hsrc)
+	@brief	逆正接
+
+	@param[in]		value			指定値(左辺値)
+	@param[in]		hsrc			入力(右辺値)
+
+	@remarks
+			指定値と入力の各要素の逆正接を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = atan2( value , src<sub>x</sub> ) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Diff(HxModule hsrc, HxModule hval)
+	@brief	差分
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の差分を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = | src<sub>x</sub> - val<sub>x</sub> | \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Diff(HxModule hsrc, double value)
+	@brief	差分
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の差分を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = | src<sub>x</sub> - value | \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Max(HxModule hsrc, HxModule hval)
+	@brief	比較演算(大なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の比較演算を行い大きい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = (src<sub>x</sub> &gt; val<sub>x</sub>) ? src<sub>x</sub> : val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Max(HxModule hsrc, double value)
+	@brief	比較演算(大なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の比較演算を行い大きい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = (src<sub>x</sub> &gt; value) ? src<sub>x</sub> : value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Min(HxModule hsrc, HxModule hval)
+	@brief	比較演算(小なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の比較演算を行い小さい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = (src<sub>x</sub> &lt; val<sub>x</sub>) ? src<sub>x</sub> : val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Min(HxModule hsrc, double value)
+	@brief	比較演算(小なり)
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の比較演算を行い小さい方の値を出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = (src<sub>x</sub> &lt; value) ? src<sub>x</sub> : value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::And(HxModule hsrc, HxModule hval)
+	@brief	論理積
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の論理積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> &amp; val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::And(HxModule hsrc, unsigned int value)
+	@brief	論理積
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の論理積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> &amp; value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Nand(HxModule hsrc, HxModule hval)
+	@brief	否定論理積
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の否定論理積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = ~(src<sub>x</sub> &amp; val<sub>x</sub>) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Nand(HxModule hsrc, unsigned int value)
+	@brief	否定論理積
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の否定論理積を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = ~(src<sub>x</sub> &amp; value) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Or(HxModule hsrc, HxModule hval)
+	@brief	論理和
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の論理和を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> | val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Or(HxModule hsrc, unsigned int value)
+	@brief	論理和
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の論理和を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> | value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Xor(HxModule hsrc, HxModule hval)
+	@brief	排他的論理和
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		hval			入力(右辺値)
+
+	@remarks
+			入力の各要素の排他的論理和を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> ^ val<sub>x</sub> \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayFilter::Xor(HxModule hsrc, unsigned int value)
+	@brief	排他的論理和
+
+	@param[in]		hsrc			入力(左辺値)
+	@param[in]		value			指定値(右辺値)
+
+	@remarks
+			入力の各要素と指定値の論理和を求め、出力先のオブジェクトに格納します。\n
+
+			@par
+			式) dst<sub>x</sub> = src<sub>x</sub> ^ value \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入出力の Length, Model が一致すること。
+				-	入力(左辺値)の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32) \n
+					.
+				.
+				\n
+*/
+
+}

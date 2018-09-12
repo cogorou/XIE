@@ -1,0 +1,440 @@
+/*!
+	@file	CxThread.h
+	@brief	スレッドクラス
+*/
+/*!
+	@internal
+	@file	CxThread.cpp
+	@brief	スレッドクラス
+*/
+/*!
+	@def	_CXTHREAD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxThread
+	@brief		スレッドクラス
+
+	@remarks
+			単一のスレッドの生成と管理を行うクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxThread_01.cpp
+
+			@par
+			出力結果)
+			@include	CxThread_01.txt
+
+	@sa
+		@ref CxThreadArgs \n
+		@ref CxThreadEvent \n
+*/
+// ===================================================================
+/*!
+	@var		CxThread::Notify
+	@brief		通知イベントを受けるイベントクラスへのポインタ
+
+	@sa
+		@ref CxThreadEvent \n
+*/
+// ===================================================================
+/*!
+	@var		CxThread::Param
+	@brief		スレッド関数へ渡す任意のパラメータへのポインタ
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::CxThread()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::CxThread(const CxThread& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			オブジェクトの内容を複製して構築します。\n
+			メンバフィールドの設定のみ行いますので、
+			別途 @ref Setup を実行してスレッドを生成する必要があります。
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::~CxThread()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::operator = ( const CxThread& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			複製対象は、スレッド関数とパラメータのみです。それ以外は除外します。\n
+			メンバフィールドの設定のみ行いますので、
+			別途 @ref Setup を実行してスレッドを生成する必要があります。
+
+	@sa
+		@ref Notify \n
+		@ref Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::operator == ( const CxThread& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトとの内容の比較を行います。\n
+			比較対象は、パラメータのみです。それ以外は除外します。\n
+
+	@sa
+		@ref Notify \n
+		@ref Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::operator != ( const CxThread& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			指定されたオブジェクトとの内容の比較を行います。\n
+			比較対象は、パラメータのみです。それ以外は除外します。\n
+
+	@sa
+		@ref Notify \n
+		@ref Param \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Setup()
+	@brief	初期化
+
+	@remarks
+			内部のスレッドを生成します。\n
+			生成済みの場合は、一旦解放してから再度生成します。
+
+	@sa
+		@ref Dispose \n
+		@ref IsValid \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Dispose()
+	@brief	解放
+
+	@remarks
+			内部スレッドを停止して解放します。\n
+
+	@sa
+		@ref Setup \n
+		@ref IsValid \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	内部のスレッドが生成されていること。
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Reset()
+	@brief	リセット
+
+	@remarks
+			周期処理の指標を -1 にリセットします。\n
+
+	@sa
+		@ref Index
+		@ref Start \n
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Start()
+	@brief	スレッドの開始
+
+	@sa
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Stop()
+	@brief	スレッドの停止
+
+	@sa
+		@ref Start \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	スレッドが停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxThread::IsRunning() const
+	@brief	スレッドの動作状態の取得
+
+	@return	スレッドが動作中の場合は true を返します。\n
+			それ以外は false を返します。
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::Index() const
+	@brief	周期処理の指標の取得
+
+	@return
+			現在の値を返します。\n
+
+	@sa
+		@ref m_Index \n
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::Index(int value)
+	@brief	周期処理の指標の設定
+
+	@param[in]	value		設定値 (msec) [-1,0~]
+
+	@sa
+		@ref m_Index \n
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::Delay() const
+	@brief	遅延時間の取得
+
+	@return
+			現在設定されている値を返します。\n
+			単位は msec です。
+
+	@sa
+		@ref m_Delay \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::Delay(int value)
+	@brief	遅延時間の設定
+
+	@param[in]	value		設定値 (msec) [0~]
+
+	@sa
+		@ref m_Delay \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::SafeSleep(int timeout) const
+	@brief	待機
+
+	@param[in]	timeout		待機時間 (msec) [-1,0~]
+
+	@remarks
+			指定時間に達するまで待機します。\n
+			@a timeout に -1 が指定された場合は無限に待機します。\n
+			何れの場合も IsValid または IsRunning が false に設定されると中断します。\n
+
+	@sa
+		@ref IsValid \n
+		@ref IsRunning \n
+*/
+
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@var	CxThread::hThread() const
+	@brief	(Windows 版のみ) スレッドハンドル
+
+	@return	現在のスレッドハンドルを返します。未初期化の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::ThreadID() const
+	@brief	スレッドID
+
+	@return	現在のスレッドIDを返します。未初期化の場合は 0 を返します。\n
+			Windows 版では unsigned int 型です。\n
+			Linux 版では pthread_t 型です。\n
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxThread::ThreadID() const
+	@brief	スレッドID
+
+	@return	現在のスレッドIDを返します。未初期化の場合は 0 を返します。\n
+			Windows 版では unsigned int 型です。\n
+			Linux 版では pthread_t 型です。\n
+*/
+#endif
+
+// ===================================================================
+/*!
+	@var	CxThread::m_IsValid
+	@brief	スレッドの有効属性
+
+	@remarks
+			Setup が呼ばれると true に設定されます。
+			Dispose が呼ばれると false に設定されます。
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::m_Enabled
+	@brief	スレッドの動作属性
+
+	@remarks
+			Start が呼ばれると true に設定されます。
+			Stop が呼ばれるか、ThreadProc がユーザーのスレッド関数から
+			停止要求(Cancellation)を受けた場合に false に設定されます。
+
+	@sa
+		@ref IsRunning \n
+		@ref Start \n
+		@ref Stop \n
+		@ref ThreadProc \n
+		@ref CxThreadArgs::Cancellation \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::m_Index
+	@brief	スレッド指標 [-1,0~]
+
+	@sa
+		@ref Index() const \n
+		@ref Index(int value) \n
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@var	CxThread::m_Delay
+	@brief	遅延時間 (msec)
+
+	@sa
+		@ref Delay() const \n
+		@ref Delay(int value) \n
+*/
+
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@var	CxThread::m_hThread
+	@brief	(Windows 版のみ) スレッドハンドル
+*/
+// ===================================================================
+/*!
+	@var	CxThread::m_ThreadID
+	@brief	スレッドID
+
+	@remarks
+			Windows 版では unsigned int 型です。\n
+			Linux 版では pthread_t 型です。\n
+*/
+#else
+// ===================================================================
+/*!
+	@var	CxThread::m_ThreadID
+	@brief	スレッドID
+
+	@remarks
+			Windows 版では unsigned int 型です。\n
+			Linux 版では pthread_t 型です。\n
+*/
+#endif
+
+// ===================================================================
+/*!
+	@var	CxThread::ThreadProc()
+	@brief	スレッド関数を呼び出す関数
+
+	@remarks
+			スレッドが開始されていれば @ref Notify に指定された関数を呼び出します。
+			関数から制御が戻ると @ref Delay に設定された時間待機して再度呼び出します。
+			引数の Cancellation が true に設定されていればスレッドを停止します。
+
+	@sa
+		@ref Notify \n
+		@ref Start \n
+		@ref Stop \n
+		@ref Delay \n
+		@ref CxThreadArgs \n
+		@ref CxThreadArgs::Cancellation \n
+*/
+
+// =================================================================
+/*!
+	@fn		CxThread::_ThreadStart(void* sender)
+	@brief	(Windows 版のみ) スレッドに登録する関数
+
+	@param[in]	sender	自身の this ポインタ
+
+	@return	Windows 版の場合は 常に 0 を返します。\n
+			Linux 版の場合は 常に NULL を返します。
+
+	@sa
+		@ref ThreadProc \n
+*/
+
+}

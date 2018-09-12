@@ -1,0 +1,5 @@
+User::CxImage_Scanner_03
+Data=
+FF 7F FF FF 
+FF 7F FF FF 
+FF 7F FF FF 

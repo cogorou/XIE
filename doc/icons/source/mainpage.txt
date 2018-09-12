@@ -1,0 +1,71 @@
+// ======================================================================
+/*!
+	@mainpage	アイコン一覧
+
+	@remarks
+			ここには、本ソフトウェアで使用しているアイコンの一覧を示します。\n
+			下記ページに示す画像は png ファイルです。これらの内の一部は ico ファイルとしても配布しています。
+			@par
+				-	@subpage	x16		"16x16"
+				-	@subpage	x32		"32x32"
+				-	@subpage	x32mono	"32x32 (単色)"
+				.
+			\n
+
+			@par
+			これらのアイコンは Eggs Imaging Laboratory が作成したものと
+			第三者が配布するソフトウェアを改変して再頒布したものがあります。\n
+			Eggs Imaging Laboratory が作成したものとそれ以外のものを識別できるように、
+			本書のアイコン一覧表の [分類] の覧に "Eggs Imaging Laboratory" / "改変及び再頒布" のいずれかを記載しています。
+
+			@par
+			"Eggs Imaging Laboratory" と記載されているものについては、本ソフトウェアの EULA に従属します。
+			"改変及び再頒布" と記載されているものについては、第三者が配布するソフトウェアの使用許諾にも従属します。
+			\n
+
+			@par
+			第三者が配布するソフトウェア: \n
+			Microsoft 社が配布する下記のソフトウェアを使用しています。\n
+			- Visual Studio Image Library \n
+				https://msdn.microsoft.com/ja-jp/library/ms246582.aspx?f=255&MSPPError=-2147217396 \n
+				https://www.microsoft.com/en-us/download/details.aspx?id=35825 \n
+			.
+			\n
+*/
+
+// ======================================================================
+/*!
+	@page	x16		16x16
+
+	-	@subpage	x16_Action
+	-	@subpage	x16_Data
+	-	@subpage	x16_Device
+	-	@subpage	x16_Edit
+	-	@subpage	x16_File
+	-	@subpage	x16_Overlay
+	-	@subpage	x16_Parser
+	-	@subpage	x16_View
+	.
+*/
+
+// ======================================================================
+/*!
+	@page	x32		32x32
+
+	-	@subpage	x32_Action
+	-	@subpage	x32_Device
+	-	@subpage	x32_Edit
+	-	@subpage	x32_Overlay
+	-	@subpage	x32_View
+	.
+*/
+
+// ======================================================================
+/*!
+	@page	x32mono		32x32 (単色)
+
+	-	@subpage	x32mono_Action
+	-	@subpage	x32mono_Overlay
+	-	@subpage	x32mono_View
+	.
+*/

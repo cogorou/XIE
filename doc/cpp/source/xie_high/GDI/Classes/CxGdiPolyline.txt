@@ -1,0 +1,770 @@
+/*!
+	@file	CxGdiPolyline.h
+	@brief	オーバレイ図形クラス (折れ線)
+*/
+/*!
+	@internal
+	@file	CxGdiPolyline.cpp
+	@brief	オーバレイ図形クラス (折れ線)
+*/
+/*!
+	@def	_CXGDIPOLYLINE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxGdiPolyline
+	@brief		オーバレイ図形クラス (折れ線)
+*/
+// ===================================================================
+/*!
+	@typedef	CxGdiPolyline::TE
+	@brief		要素の型
+*/
+// ===================================================================
+/*!
+	@var	CxGdiPolyline::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@var	CxGdiPolyline::m_IsAttached
+	@brief	アタッチ状態
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::From(const xie::CxArrayEx<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::From(const std::vector<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::From(const std::initializer_list<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		src		複製元
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CxGdiPolyline()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CxGdiPolyline( const CxGdiPolyline& src )
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiPolyline &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CxGdiPolyline(CxGdiPolyline &&src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxGdiPolyline &&src) \n
+		@ref MoveFrom(CxGdiPolyline &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CxGdiPolyline(int length)
+	@brief	コンストラクタ (内部リソース確保)
+
+	@param[in]		length	要素数 [0,1~]
+
+	@remarks
+			内部リソースを確保してオブジェクトを構築します。\n
+			内部では @ref Resize メソッドを呼び出しています。\n
+
+	@sa
+		@ref Resize(int length) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CxGdiPolyline(const CxArray& src)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiPolyline &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::~CxGdiPolyline()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator = ( const CxArray& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator = ( const xie::CxArrayEx<TE>& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator = ( const CxGdiPolyline& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator = (CxGdiPolyline &&src)
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の @ref IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxGdiPolyline &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator == ( const CxGdiPolyline& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator != ( const CxGdiPolyline& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator CxArray() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を CxArray のオブジェクトに複製して返します。
+
+	@sa
+		@ref CopyTo \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator xie::CxArrayEx<TE>() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を xie::CxArrayEx<TE> のオブジェクトに複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator std::vector<TE>() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を std::vector<TE> のオブジェクトに複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+							CxArray に対応しています。\n
+							対応していないオブジェクトが指定された場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+			アタッチしている場合はアタッチ解除を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGdiPolyline(const CxGdiPolyline &src) \n
+		@ref operator=(const CxGdiPolyline &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::MoveFrom(CxGdiPolyline &src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の IsAttached は true に切り替わります。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxGdiPolyline(CxGdiPolyline &&src) \n
+		@ref operator=(CxGdiPolyline &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGdiPolyline &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	配列の先頭アドレスが NULL でないこと。
+			-	要素数が 0 より大きいこと。
+			-	要素モデル(@ref Model)が ModelOf<TxPointD>() であること。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::IsAttached() const
+	@brief	アタッチ状態
+
+	@retval	true	アタッチしている
+	@retval	false	アタッチしていない
+
+	@remarks
+			@ref Dispose が呼ばれた際に内部リソースを解放するか否かを示します。\n
+			このフラグが true の場合、データ構造に設定されたリソースを解放しません。\n
+
+	@sa
+		@ref MoveFrom(CxGdiPolyline &src) \n
+		@ref m_Tag \n
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			現在の図形を指定されたキャンバスに描画します。。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Location() const
+	@brief	描画位置
+
+	@return	この図形の描画位置を返します。\n
+			未確保の場合は 0,0 を返します。\n
+			確保されている場合は 0 番目の要素の座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Location(TxPointD value)
+	@brief	描画位置 (設定)
+
+	@param[in]		value		値
+
+	@remarks
+			この図形の描画位置を変更します。\n
+			未確保の場合は無視します。\n
+			確保されている場合は 0 番目の要素と指定座標値の差分をすべての要素に加算します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Bounds() const
+	@brief	外接矩形
+
+	@return	この図形を内包する最小の外接矩形を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Angle() const
+	@brief	回転角の取得
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Angle( double degree )
+	@brief	回転角の設定
+
+	@param[in]		degree		設定値 (度) [±180]
+
+	@remarks
+			この値は degree 単位で、範囲は ±180 です。\n
+			正の値（+）は右回転、負の値（-）は左回転です。			
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Axis() const
+	@brief	回転の機軸の取得
+
+	@return
+			現在設定されている値を返します。\n
+			この値は基準位置からの相対値(±)を示します。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Axis( TxPointD value )
+	@brief	回転の機軸の設定
+
+	@param[in]		value		設定値 (基準位置からの相対値(±)) 
+
+	@remarks
+			図形の基準位置（Location）に この値を加算した位置が回転中心になります。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::HitTest( TxPointD position, double margin = 2.0 ) const
+	@brief	位置判定
+
+	@param[in]		position	指定座標
+	@param[in]		margin		判定の許容範囲 [0~] ※±margin の範囲内で判定します。
+
+	@return	指定座標が図形のどの位置にあるかを判定して指標を返します。 
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Modify(HxModule prev_figure, TxPointD prev_position, TxPointD move_position, double margin)
+	@brief	図形の編集（位置移動または形状変更）
+
+	@param[in]		prev_figure		編集前の図形
+	@param[in]		prev_position	移動前の座標
+	@param[in]		move_position	移動後の座標
+	@param[in]		margin			判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+	@sa
+		HitTest( TxPointD position, double margin ) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::BkColor() const
+	@brief	背景色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::BkColor( TxRGB8x4 value )
+	@brief	背景色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の面（輪郭線によって内包される部分）の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref PenColor( TxRGB8x4 value ) \n
+		@ref BkEnable( bool value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::BkEnable() const
+	@brief	背景の有効属性
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::BkEnable( bool value )
+	@brief	背景の有効属性
+
+	@param[in]		value		設定値 [true:有効、false:無効]
+
+	@remarks
+			この値が false の時は背景描画が無視されます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenColor() const
+	@brief	ペン色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenColor( TxRGB8x4 value )
+	@brief	ペン色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の輪郭部分の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenStyle() const
+	@brief	ペン形状
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenStyle( ExGdiPenStyle value )
+	@brief	ペン形状
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenWidth() const
+	@brief	ペン幅
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::PenWidth( int value )
+	@brief	ペン幅
+
+	@param[in]		value		設定値 [1~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Param() const
+	@brief	オーバレイ図形パラメータの取得
+
+	@return	オーバレイ図形パラメータを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Param(const TxGdi2dParam& value)
+	@brief	オーバレイ図形パラメータの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Resize(int length)
+	@brief	内部リソースの確保
+
+	@param[in]		length		要素数 [0~]
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			要素数に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Reset()
+	@brief	データのリセット
+
+	@remarks
+			各要素を既定値で初期化します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Length() const
+	@brief	要素数 [0~]
+
+	@return	現在の要素数を返します。\n
+			未確保の場合は 0 を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			確保されている場合は、常に ModelOf<TxPointD>() を返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Closed() const
+	@brief	端点の開閉の取得
+
+	@return	折れ線の端点を接続するか否かを示す値を返します。
+			true は 閉じる（多角形） を意味し、
+			false は 閉じない（折れ線） を意味します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Closed(bool value)
+	@brief	端点の開閉の設定
+
+	@param[in]		value	設定値
+							- true : 閉じる（多角形）
+							- false : 閉じない（折れ線）
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Address()
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Address() const
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Scanner() const
+	@brief	１次元配列走査構造体の取得
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::Scanner(int index, int length) const
+	@brief	１次元配列走査構造体の取得
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		要素数 [1~]
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return	データ構造を１次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiPolyline::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+}
+}

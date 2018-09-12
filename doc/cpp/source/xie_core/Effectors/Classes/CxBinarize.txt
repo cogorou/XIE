@@ -1,0 +1,17 @@
+/*!
+	@internal
+	@file	CxBinarize.hpp
+	@brief	２値化クラス
+*/
+/*!
+	@def	_CXBINARIZE_HPP_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+}
+}

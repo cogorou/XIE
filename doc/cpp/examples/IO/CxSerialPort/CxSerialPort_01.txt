@@ -1,0 +1,5 @@
+User::CxSerialPort_01
+[1] port1.Write()
+[1] port1.Write returned 5. [hello],     0.007 msec
+[2] port2.Read()
+[2] port2.Read returned 5. [hello],     0.005 msec

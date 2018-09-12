@@ -1,0 +1,102 @@
+// =================================================================
+/*!
+	@defgroup	group_Overview	Overview
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Setup	Setup
+
+		@remarks
+				XIE ライブラリの初期化と解放について説明します。\n
+				通常は、下記サンプルコードのように xie::Axi::Setup と xie::Axi::TearDown で一括して初期化と解放を行ってください。
+				個別に行うには、各ライブラリの setup/teardown 関数を使用してください。
+
+		@par	Examples:
+				@includelineno	group_Overview_Setup.cpp
+				\n
+				-# 使用するライブラリのヘッダー
+				-# 初期化/解放関数のヘッダー
+				-# ライブラリの初期化
+				-# 何らかの処理
+				-# ライブラリの解放
+				.
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Debugger	Debugger
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Files	Files
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Macros	Macros
+
+		@remarks
+				ここでは XIE で使用するマクロについて説明します。\n
+				ヘッダーで定義されるマクロについては後述の説明をご参照ください。\n
+				必要に応じて手動で定義するマクロについては下表をご参照ください。\n
+
+		@par	予約マクロ一覧表
+				<table border="1" cellspacing="0" cellpadding="3">
+				<tr>
+					<td align="center" class="indexkey">マクロ</td>
+					<td align="center" class="indexkey">備考</td>
+					</tr>
+				<tr>
+					<td align="left" class="indexkey">XIE_EXPLICIT_INCLUDE</td>
+					<td align="left">
+						ヘッダーの暗黙的なインクルードを無効化します。\n
+						後述の「ライブラリのリンクを無効化する方法」もご参照ください。\n
+					</td>
+					</tr>
+				<tr>
+					<td align="left" class="indexkey">XIE_EXPORTS_DISABLED</td>
+					<td align="left">
+						@ref XIE_EXPORT_CLASS の定義を無効化します。\n
+						後述の「ライブラリのリンクを無効化する方法」もご参照ください。\n
+					</td>
+					</tr>
+				<tr>
+					<td align="left" class="indexkey">XIE_LINK_DISABLED</td>
+					<td align="left">
+						ライブラリの暗黙的なリンクを無効化します。\n
+						Windows 環境でのみ効果があります。\n
+						Linux 環境では Makefile で明示的にリンクする必要があります。\n
+						後述の「ライブラリのリンクを無効化する方法」もご参照ください。\n
+					</td>
+					</tr>
+				</table>
+
+		@par	ライブラリのリンクを無効化する方法
+				XIE の構造体は、インスタンスメンバを export しているので
+				ヘッダーをインクルードするとライブラリのリンクが必須となります。
+				ライブラリをリンクせず構造体のみを参照したい場合は、
+				下記の３つのマクロを手動で定義する必要があります。
+				@par
+				-# XIE_EXPLICIT_INCLUDE \n
+					ヘッダーの暗黙的なインクルードを無効化します。\n
+				-# XIE_EXPORTS_DISABLED \n
+					XIE_EXPORT_CLASS の定義を無効化します。\n
+				-# XIE_LINK_DISABLED \n
+					ライブラリの暗黙的なリンクを無効化します。\n
+				.
+				\n
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Constants	Constants
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Namespaces	Namespaces
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_Overview_Templates	Templates
+	*/
+/*!
+	@}
+*/

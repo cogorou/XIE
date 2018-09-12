@@ -1,0 +1,24 @@
+/*!
+	@internal
+	@file		fnPRV_GDI_ShrinkHT.cpp
+	@brief		OpenGL 表示ライブラリの内部定義 (縮小(濃度補間))
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+// ======================================================================
+/*!
+	@var		FILTER_MODE_MAG
+	@brief		縮小率の閾値
+
+	@remarks
+			表示倍率がこの値以下の場合は濃度補間処理を行います。\n
+			この値を超える場合は最近傍法で処理します。
+*/
+
+
+}
+}

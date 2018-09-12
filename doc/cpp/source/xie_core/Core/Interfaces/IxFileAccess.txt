@@ -1,0 +1,56 @@
+/*!
+	@file	IxFileAccess.h
+	@brief	ファイルアクセスインターフェース
+*/
+/*!
+	@def	_IXFILEACCESS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxFileAccess
+	@brief		ファイルアクセスインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxFileAccess::LoadA(TxCharCPtrA filename, const void* option, TxModel model)
+	@brief	ファイルの読み込み (MBCS)
+
+	@param[in]		filename	ファイル名
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+*/
+// ===================================================================
+/*!
+	@fn		IxFileAccess::LoadW(TxCharCPtrW filename, const void* option, TxModel model)
+	@brief	ファイルの読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+*/
+// ===================================================================
+/*!
+	@fn		IxFileAccess::SaveA(TxCharCPtrA filename, const void* option, TxModel model) const
+	@brief	ファイルへの保存 (MBCS)
+
+	@param[in]		filename	ファイル名
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+*/
+// ===================================================================
+/*!
+	@fn		IxFileAccess::SaveW(TxCharCPtrW filename, const void* option, TxModel model) const
+	@brief	ファイルへの保存 (UNICODE)
+
+	@param[in]		filename	ファイル名
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+*/
+
+}

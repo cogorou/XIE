@@ -1,0 +1,72 @@
+/*!
+	@file	CxFinalizer.h
+	@brief	終了化子クラス
+*/
+/*!
+	@def	_CXFINALIZER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxFinalizer
+	@brief		終了化子クラス
+
+	@remarks
+			スコープを抜ける際に後処理を行うクラスです。\n
+			後処理は lambda 式等で自身で記述する必要があります。\n
+
+	@par	Examples:
+			@includelineno	CxFinalizer_01.cpp
+
+			@par
+			出力結果)
+			@include	CxFinalizer_01.txt
+*/
+// ===================================================================
+/*!
+	@typedef	CxFinalizer::Handler
+	@brief		関数の型
+*/
+// ===================================================================
+/*!
+	@var	CxFinalizer::Finalize
+	@brief	解放処理が記述された関数
+
+	@remarks
+			このクラスのデストラクタが呼び出された際に
+			ここに登録された関数が実行されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxFinalizer::CxFinalizer()
+	@brief	コンストラクタ
+
+	@remarks
+			@ref Finalize は NULL です。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxFinalizer::CxFinalizer(const std::function<Handler>& finalize)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		finalize		解放処理が記述された関数
+
+	@remarks
+			指定された関数を @ref Finalize に登録します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxFinalizer::~CxFinalizer()
+	@brief	デストラクタ
+
+	@remarks
+			@ref Finalize に登録された関数を呼び出して終了します。\n
+			登録されていなければ無視します。\n
+*/
+
+}

@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{26322628-760c-4920-ac6f-57d5be63045d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{1111d63e-c867-4046-8146-406ea0f9a011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Data">
+      <UniqueIdentifier>{e0a66abb-25c6-4d26-9791-7175cc58e251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\File">
+      <UniqueIdentifier>{adc4d079-26a8-406d-b4b6-d0675974f9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core">
+      <UniqueIdentifier>{d10daa8a-ee19-42d4-9811-51a917c5c18a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Interfaces">
+      <UniqueIdentifier>{1d12eee1-bdd8-4c93-bd88-3eb7fd3098c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Data">
+      <UniqueIdentifier>{d371bd48-8c66-4cb8-8074-1a5e4c56f18f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Base">
+      <UniqueIdentifier>{8b8b2e27-f990-42b7-91fc-a21181aad9a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Base">
+      <UniqueIdentifier>{325a32b8-e35e-4656-babe-5d396b9440e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Structures">
+      <UniqueIdentifier>{6924f9f6-61b3-467a-ab37-cf477df8f3e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Structures">
+      <UniqueIdentifier>{62b1685e-9e56-45f6-b236-24e39fbc5966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Structures\Data">
+      <UniqueIdentifier>{3311994a-4e84-47dd-9047-ea5749acb617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Structures\Color">
+      <UniqueIdentifier>{7f1c177b-17c2-4522-ae7f-f1232dca793c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Structures\IO">
+      <UniqueIdentifier>{05ee7b23-1209-4687-9bd6-5b1f696b162e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Structures\Data">
+      <UniqueIdentifier>{68316734-99c9-4c49-9277-a9b69f71a1f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Structures\Color">
+      <UniqueIdentifier>{735961c6-61ce-4809-889c-ed32f9b50cff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Structures\IO">
+      <UniqueIdentifier>{e61308f7-e009-4433-9926-260bbb704446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Data\2D">
+      <UniqueIdentifier>{2656c878-fe79-4dfe-8605-d61a9ed8a9bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{e64d5528-3fd6-4d35-98f3-16839871e0cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Exchange">
+      <UniqueIdentifier>{1174b130-30e3-443c-8258-d471b94662ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Exchange">
+      <UniqueIdentifier>{c0680266-9bee-4175-ab3d-c77ec957f38c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Exif">
+      <UniqueIdentifier>{a0e34e3d-202b-45da-90a8-cf8bf23738c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Exif">
+      <UniqueIdentifier>{25525907-7e23-4b59-8048-213668f0b229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Effectors">
+      <UniqueIdentifier>{7fd4ab87-bf96-4b90-a446-931d249927a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Effectors">
+      <UniqueIdentifier>{625d6f67-e7f7-4e34-aedf-273a68c6fcd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\Structures\Shape">
+      <UniqueIdentifier>{cf57b61f-9bba-424a-b67d-391b35db6d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\Structures\Shape">
+      <UniqueIdentifier>{36f2197c-d8c1-4422-b16d-ccbf1cf712bb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xie_core.def">
+      <Filter>source</Filter>
+    </None>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\xie_core.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file_bmp.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxAttachable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxParam.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxRunnable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxArray.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxImage.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxMatrix.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxException.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxModule.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\Axi.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxStopwatch.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxMutex.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\AxiMath.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxArrayFilter.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxImageFilter.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxMatrixFilter.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxArray.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxImage.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxImageSize.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxLayer.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxMatrix.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxFrameIndex.h">
+      <Filter>include\Core\Structures\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxDateTime.h">
+      <Filter>include\Core\Structures\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRawFileHeader.h">
+      <Filter>include\Core\Structures\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxBGR8x3.h">
+      <Filter>include\Core\Structures\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxBGR8x4.h">
+      <Filter>include\Core\Structures\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRGB8x3.h">
+      <Filter>include\Core\Structures\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRGB8x4.h">
+      <Filter>include\Core\Structures\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxCircleD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxTrapezoidI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxCircleI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxEllipseD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxEllipseI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxLineD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxLineI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxLineSegmentD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxLineSegmentI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxPointD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxPointI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRangeD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRangeI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRectangleD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxRectangleI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxSizeD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxSizeI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxStatistics.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxTrapezoidD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxStringA.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxStringW.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_types.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxDisposable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxThread.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxRawFile.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\api_core.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_ipl.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_defs.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_enums.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\api_data.h">
+      <Filter>source\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxModel.h">
+      <Filter>include\Core\Structures\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_math.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Convert.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Copy.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_CopyEx.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxFilePlugin.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine0.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine1.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine2.h">
+      <Filter>source\Data\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\AxiDiagnostics.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxFinalizer.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxThreadArgs.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxValidatable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxEquatable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxTagPtr.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxLockable.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxIplImage.h">
+      <Filter>include\Core\Exchange</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxIplROI.h">
+      <Filter>include\Core\Exchange</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxCvMat.h">
+      <Filter>include\Core\Exchange</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\xie_core_cv.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file_dib.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxEllipseArcD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxEllipseArcI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxStringA.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxStringW.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxExif.h">
+      <Filter>include\Core\Exif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxExif.h">
+      <Filter>include\Core\Exif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxExifItem.h">
+      <Filter>include\Core\Exif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Exif\api_exif.h">
+      <Filter>source\Exif</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxHsvConverter.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxBinarize.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbToHsv.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxRgbToHsv.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxHsvToRgb.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxHsvToRgb.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxHsvConverter.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxBinarize1.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxBinarize2.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxEventReceiver.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxArrayEx.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxThreadEvent.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxMonochrome.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbConverter.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxIntegral.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxIntegral.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbToGray.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxRgbToGray.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxFileAccess.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxScanner1D.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxScanner2D.h">
+      <Filter>include\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxPartColor.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxPartColor.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxGammaConverter.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxGammaConverter.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\IxInternalModule.h">
+      <Filter>include\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\CxString.h">
+      <Filter>include\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\File\fnPRV_Buffer_Copy.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxCircleArcD.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Core\TxCircleArcI.h">
+      <Filter>include\Core\Structures\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Effectors\CxProjection.h">
+      <Filter>include\Core\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxProjection.hpp">
+      <Filter>source\Effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\xie_core\File\CxFilePluginBmp.h">
+      <Filter>source\File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\xie_core\xie_core.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\Axi.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxException.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxModule.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxMutex.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxStopwatch.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxArray.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxArrayFilter.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxImage.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxImageFilter.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxMatrix.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxMatrixFilter.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxBGR8x3.cpp">
+      <Filter>source\Structures\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxBGR8x4.cpp">
+      <Filter>source\Structures\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxArray.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxDateTime.cpp">
+      <Filter>source\Structures\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxFrameIndex.cpp">
+      <Filter>source\Structures\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxImage.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxImageSize.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLayer.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxMatrix.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRawFileHeader.cpp">
+      <Filter>source\Structures\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStringA.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStringW.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRGB8x4.cpp">
+      <Filter>source\Structures\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRGB8x3.cpp">
+      <Filter>source\Structures\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxTrapezoidI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineSegmentD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineSegmentI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxPointD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxPointI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRangeD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRangeI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRectangleD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRectangleI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxSizeD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxSizeI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStatistics.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxTrapezoidD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxThread.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\api_data.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\api_file.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Cast.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Statistics.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Clear.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_ClearEx.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Convert.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Copy.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_CopyEx.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Extract.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_RgbToBgr.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Math.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope1A.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope1L.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope2A.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope2L.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Not.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxModel.cpp">
+      <Filter>source\Structures\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Compare.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_GeoTrans.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\AxiDiagnostics.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Serialize.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxThreadArgs.cpp">
+      <Filter>source\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exchange\TxIplImage.cpp">
+      <Filter>source\Exchange</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exchange\TxCvMat.cpp">
+      <Filter>source\Exchange</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\fnXIE_Core_DIB_Load.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\fnXIE_Core_DIB_Save.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseArcD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseArcI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxStringA.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxStringW.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exif\api_exif.cpp">
+      <Filter>source\Exif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exif\CxExif.cpp">
+      <Filter>source\Exif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exif\TxExif.cpp">
+      <Filter>source\Exif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Exif\TxExifItem.cpp">
+      <Filter>source\Exif</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxHsvConverter.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxBinarize1.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxBinarize2.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbToHsv.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxHsvToRgb.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_ColorMatrix.cpp">
+      <Filter>source\Data\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxMonochrome.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbConverter.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxIntegral.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbToGray.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxPartColor.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxGammaConverter.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxString.cpp">
+      <Filter>source\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleArcD.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleArcI.cpp">
+      <Filter>source\Structures\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxProjection.cpp">
+      <Filter>source\Effectors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Check.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Load.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Save.cpp">
+      <Filter>source\File</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xie_core.rc">
+      <Filter>EntryPoint</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

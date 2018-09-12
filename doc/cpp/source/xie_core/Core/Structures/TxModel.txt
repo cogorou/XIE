@@ -1,0 +1,339 @@
+/*!
+	@file	TxModel.h
+	@brief	要素モデル構造体
+*/
+/*!
+	@internal
+	@file	TxModel.cpp
+	@brief	要素モデル構造体
+*/
+/*!
+	@def	_TXMODEL_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxModel
+	@brief		要素モデル構造体
+*/
+// ===================================================================
+/*!
+	@var	TxModel::Type
+	@brief	型 [初期値:None]
+*/
+// ===================================================================
+/*!
+	@var	TxModel::Pack
+	@brief	パック数 [初期値:0] [範囲:1~]
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::TxModel()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::TxModel(ExType type, int pack)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		type		型
+	@param[in]		pack		パック数 [1~]
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator == (const TxModel& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator != (const TxModel& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::Size() const
+	@brief	要素のサイズ (bytes)
+
+	@return	現在設定されている型とパック数からバイト数を計算して返します。\n
+			無効な場合は 0 を返します。有効な場合は 0 より大きい値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::SizeOf(ExType type)
+	@brief	型のサイズ (bytes)
+
+	@param[in]		type		型
+
+	@return	指定された型のサイズ (bytes) を返します。 \n
+
+	@sa
+		@ref xie::Axi::SizeOf(ExType type) \n
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::From(ExType type, int pack)
+	@brief	生成関数
+
+	@param[in]		type		型
+	@param[in]		pack		パック数 [0,1~]
+
+	@return	TxModel(type, pack) を返します。
+
+	@remarks
+			当関数は、コンストラクタの代用です。
+			XIE をリンクせずヘッダーのみ参照する場合は
+			インスタンスメンバを使用できませんので
+			コンストラクタの代わりに当関数を使用します。
+			通常の開発では、コンストラクタを使用してください。
+
+	@sa
+		@ref group_Overview_Macros "Overview / Macros" \n
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::Default()
+	@brief	既定値
+
+	@return	TxModel(ExType_None, 0) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::Ptr(int pack)
+	@brief	生成関数 (void*)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_Ptr, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::U8(int pack)
+	@brief	生成関数 (unsigned char)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_U8, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::U16(int pack)
+	@brief	生成関数 (unsigned short)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_U16, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::U32(int pack)
+	@brief	生成関数 (unsigned int)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_U32, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::U64(int pack)
+	@brief	生成関数 (unsigned long long)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_U64, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::S8(int pack)
+	@brief	生成関数 (char)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_S8, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::S16(int pack)
+	@brief	生成関数 (short)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_S16, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::S32(int pack)
+	@brief	生成関数 (int)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_S32, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::S64(int pack)
+	@brief	生成関数 (long long)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_S64, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::F32(int pack)
+	@brief	生成関数 (float)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_F32, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::F64(int pack)
+	@brief	生成関数 (double)
+
+	@param[in]		pack		パック数 [1~]
+
+	@return	TxModel(ExType_F64, pack) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator+ (int value) const
+	@brief	加算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	TxModel(Type, Pack+value) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator+= (int value)
+	@brief	加算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身の Pack に指定値を加算して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator- (int value) const
+	@brief	減算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	TxModel(Type, Pack-value) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator-= (int value)
+	@brief	減算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身の Pack から指定値を減算して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator* (int value) const
+	@brief	乗算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	TxModel(Type, Pack*value) を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator*= (int value)
+	@brief	乗算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身の Pack に指定値を乗算して自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator/ (int value) const
+	@brief	除算オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	TxModel(Type, Pack/value) を返します。\n
+			指定値が 0 の時は自身と同一値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxModel::operator/= (int value)
+	@brief	除算代入オペレータ
+
+	@param[in]	value	右辺値
+
+	@return	自身の Pack を指定値で除算して自身への参照を返します。\n
+			指定値が 0 の時は何も行いません。
+*/
+
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Templates
+	@fn			TypeOf()
+	@brief		要素モデルの取得
+
+	@tparam	T	変数の型
+
+	@return		指定された変数の型に対応する要素モデルを返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Templates
+	@fn			TypeOf(T value)
+	@brief		要素モデルの取得
+
+	@tparam	T	変数の型
+
+	@param[in]		value		変数
+
+	@return		指定された変数の型に対応する要素モデルを返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Templates
+	@fn			ModelOf()
+	@brief		要素モデルの取得
+
+	@tparam	T	変数の型
+
+	@return		指定された変数の型に対応する要素モデルを返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Templates
+	@fn			ModelOf(T value)
+	@brief		要素モデルの取得
+
+	@tparam	T	変数の型
+
+	@param[in]		value		変数
+
+	@return		指定された変数の型に対応する要素モデルを返します。
+*/
+
+}

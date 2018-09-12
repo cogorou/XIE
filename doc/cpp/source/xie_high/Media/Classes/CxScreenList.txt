@@ -1,0 +1,215 @@
+/*!
+	@file	CxScreenList.h
+	@brief	スクリーンリストクラス
+*/
+/*!
+	@internal
+	@file	CxScreenList.cpp
+	@brief	スクリーンリストクラス
+*/
+/*!
+	@def	_CXSCREENLIST_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxScreenList
+	@brief		スクリーンリストクラス
+
+	現在表示されているウィンドウを列挙するクラスです。\n
+	可視状態且つ最小化されておらず幅・高さが 320x240 以上のウィンドウを探索します。\n
+
+	@par	Examples:
+			@par
+			1) ウィンドウの列挙 \n
+			@includelineno	CxScreenList_01.cpp
+
+			@par
+			出力結果)
+			@include	CxScreenList_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::CxScreenList()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::CxScreenList(const CxScreenList& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxScreenList &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::~CxScreenList()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::operator = ( const CxScreenList& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::operator == ( const CxScreenList& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::operator != ( const CxScreenList& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxScreenList(const CxScreenList &src) \n
+		@ref operator=(const CxScreenList &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxScreenList &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::Setup()
+	@brief	初期化
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::Length() const
+	@brief	要素数 [0~]
+
+	@return	現在の要素数を返します。\n
+			未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxScreenList::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@var	CxScreenList::m_Items
+	@brief	スクリーンリスト
+*/
+
+}
+}

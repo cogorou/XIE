@@ -1,0 +1,302 @@
+/*!
+	@file	CxDSScreenCapturePin.h
+	@brief	スクリーンキャプチャー出力ピンクラス
+*/
+/*!
+	@internal
+	@file	CxDSScreenCapturePin.cpp
+	@brief	スクリーンキャプチャー出力ピンクラス
+*/
+
+namespace xie
+{
+namespace DS
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_DS_Internals
+	@class		CxDSScreenCapturePin
+	@brief		スクリーンキャプチャー出力ピンクラス
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_hDesktop
+	@brief	プライマリデスクトップのウィンドウハンドル
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_hWnd
+	@brief	キャプチャ対象のウィンドウハンドル
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_hDC
+	@brief	描画用のデバイスコンテキスト
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_hBitmap
+	@brief	描画用ビットマップ
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_Address
+	@brief	描画用ビットマップのアドレス
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_DesktopRect
+	@brief	デスクトップの位置とサイズ
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_WindowRect
+	@brief	ウィンドウの位置とサイズ
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_FrameRate
+	@brief	フレームレート (fps)
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::Time
+	@brief	時間計測用
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::Freq
+	@brief	時間計測用
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_FrameNumber
+	@brief	フレーム番号
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_BitDepth
+	@brief	ビット深度 (bits) [8,16,24,32]
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_iRepeatTime
+	@brief	(未使用) Time in msec between frames
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_FramesWritten
+	@brief	(未使用) To track where we are in the file
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_bZeroMemory
+	@brief	(未使用) Do we need to clear the buffer?
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_rtSampleTime
+	@brief	(未使用) The time stamp for each sample
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_MediaType
+	@brief	メディアタイプ
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_cSharedState
+	@brief	排他制御用
+*/
+// ===================================================================
+/*!
+	@var	CxDSScreenCapturePin::m_Display
+	@brief	(未使用) Figures out our media type for us
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::CxDSScreenCapturePin(HRESULT *phr, CSource *pFilter)
+	@brief	コンストラクタ
+
+	@param[in]		phr			結果 (メソッドの成功または失敗を示します。)
+	@param[out]		pFilter		このピンを作成したフィルタへのポインタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::~CxDSScreenCapturePin()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::SetFormat(AM_MEDIA_TYPE* pmt)
+	@brief	フォーマットの設定
+
+	@param[in]		pmt		メディアタイプ構造体
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetFormat(AM_MEDIA_TYPE** ppmt)
+	@brief	フォーマットの取得
+
+	@param[out]		ppmt		メディアタイプ構造体
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetNumberOfCapabilities(int* piCount, int* piSize)
+	@brief	サポートするフォーマットの取得
+
+	@param[out]		piCount		要素数 [0~]
+	@param[out]		piSize		構造体のサイズ \n
+								※ VIDEO_STREAM_CONFIG_CAPS 構造体のサイズを返します。
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetStreamCaps(int iIndex, AM_MEDIA_TYPE** ppmt, BYTE* pSCC)
+	@brief	
+
+	@param[in]		iIndex		フォーマット指標 [0~]
+	@param[out]		ppmt		メディアタイプ構造体へのポインタ
+	@param[out]		pSCC		VIDEO_STREAM_CONFIG_CAPS 構造体へのポインタ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::Notify(IBaseFilter *pSelf, Quality q)
+	@brief	通知
+
+	@param[in]		pSelf		未使用
+	@param[in]		q			未使用
+
+	@return	常に FALSE を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::Setup(RECT rect)
+	@brief	初期化
+
+	@param[in]		rect	キャプチャ範囲
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::Dispose()
+	@brief	解放
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetDC(HDC* hDC)
+	@brief	デバイスコンテキストの取得
+
+	@param[out]		hDC		デバイスコンテキスト
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetWindowRect(RECT* rect)
+	@brief	ウィンドウの位置とサイズの取得
+
+	@param[out]		rect	ウィンドウの位置とサイズ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetFrameSize(int* width, int* height)
+	@brief	フレームサイズの取得
+
+	@param[out]		width		幅 [0~]
+	@param[out]		height		高さ [0~]
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::SetFrameRate(int value)
+	@brief	フレームレートの設定
+
+	@param[in]		value		値 [1~] (単位:fps)
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetFrameRate(int* value)
+	@brief	フレームレートの取得
+
+	@param[out]		value		値 [1~] (単位:fps)
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::DecideBufferSize(IMemAllocator *pAlloc, ALLOCATOR_PROPERTIES *pRequest)
+	@brief	バッファサイズの決定
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::FillBuffer(IMediaSample *pSample)
+	@brief	メディアサンプルにデータを埋める処理
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::SetMediaType(const CMediaType *pMediaType)
+	@brief	メディアタイプの設定
+
+	@param[in]		pMediaType		メディアタイプ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::CheckMediaType(const CMediaType *pMediaType)
+	@brief	許容するメディアタイプか否かの確認
+
+	@param[in]		pMediaType		メディアタイプ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSScreenCapturePin::GetMediaType(int iPosition, CMediaType *pmt)
+	@brief	優先メディアタイプの取得
+
+	@param[in]			iPosition	指標 [0~]
+	@param[out]			pmt			メディアタイプ
+
+	@return	正常の場合は S_OK を返します。
+			異常があればそれ以外を返します。
+*/
+
+}
+}

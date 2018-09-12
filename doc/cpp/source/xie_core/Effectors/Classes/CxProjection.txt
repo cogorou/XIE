@@ -1,0 +1,260 @@
+/*!
+	@file	CxProjection.h
+	@brief	濃度投影クラス
+*/
+/*!
+	@internal
+	@file	CxProjection.cpp
+	@brief	濃度投影クラス
+*/
+/*!
+	@def	_CXPROJECTION_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_Projection	(HxModule hsrc, HxModule hdst, HxModule hmask, ExScanDir dir, int ch)
+	@brief		濃度投影
+
+	@param[in]		hsrc			入力元 [CxImage]
+	@param[in,out]	hdst			出力先 [CxArray]
+	@param[in]		hmask			マスク [CxImage] (※ 省略する場合は NULL を指定してください。)
+	@param[in]		dir				投影方向
+	@param[in]		ch				処理対象のチャネル指標(またはフィールド指標) [0~] ※ 処理対象画像の Model.Pack * Channels 未満である必要があります。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxProjection
+	@brief		濃度投影クラス
+
+	@remarks
+			入力画像の濃度投影（指定方向の濃度値の統計）を出力先のオブジェクトに格納します。\n
+			配列の要素は TxModel.F64(5) (TxStatistics) です。\n
+			要素数は抽出する方向によって異なります。\n
+			X 方向の場合は対象画像の高さ、Y 方向の場合は対象画像の幅と一致します。\n
+
+			@par
+			パラメータの ScanDir によって式が異なります。\n
+
+			@par
+			<b>ScanDir = X)</b> \n
+			式１) dst<sub>i</sub> = Σ<sub>x=[0,(w-1)]</sub>(TxStatistics(src<sub>i,x</sub>)) \n
+			\n
+			※ w = src.Width \n
+			※ x = 0~(src.Width-1) \n
+			※ i = 0~(src.Height-1) \n
+			\n
+
+			@par
+			<b>ScanDir = Y)</b> \n
+			式２) dst<sub>i</sub> = Σ<sub>y=[0,(h-1)]</sub>(TxStatistics(src<sub>y,i</sub>)) \n
+			\n
+			※ h = src.Height \n
+			※ y = 0~(src.Height-1) \n
+			※ i = 0~(src.Width-1) \n
+			\n
+
+			@par
+			処理可能な条件:
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				.
+				\n
+
+	@par	Examples:
+			@includelineno	CxProjection_01.cpp
+			
+			@par
+			処理対象画像)
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				</tr>
+			</table>
+
+			@par
+			出力結果)
+			@include	CxProjection_01.txt
+
+			@par
+			出力結果のオーバレイ描画)
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey"><sub>Channel</sub>/<sup>ScanDir</sup></td>
+				<td align="center" class="indexkey">X</td>
+				<td align="center" class="indexkey">Y</td>
+				</tr>
+			<tr>
+				<td align="center">0</td>
+				<td align="center">@image html CxProjection_01_dir0_ch0.png</td>
+				<td align="center">@image html CxProjection_01_dir1_ch0.png</td>
+				</tr>
+			<tr>
+				<td align="center">1</td>
+				<td align="center">@image html CxProjection_01_dir0_ch1.png</td>
+				<td align="center">@image html CxProjection_01_dir1_ch1.png</td>
+				</tr>
+			<tr>
+				<td align="center">2</td>
+				<td align="center">@image html CxProjection_01_dir0_ch2.png</td>
+				<td align="center">@image html CxProjection_01_dir1_ch2.png</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxProjection::ScanDir
+	@brief	投影方向
+*/
+// ===================================================================
+/*!
+	@var	CxProjection::Channel
+	@brief	処理対象のチャネル指標(またはフィールド指標) [0~] ※ 処理対象画像の Model.Pack * Channels 未満である必要があります。
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::CxProjection(const CxProjection& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxProjection &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::CxProjection(ExScanDir dir, int ch)
+	@brief	コンストラクタ
+
+	@param[in]		dir				投影方向
+	@param[in]		ch				処理対象のチャネル指標(またはフィールド指標) [0~] ※ 処理対象画像の Model.Pack * Channels 未満である必要があります。
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::~CxProjection()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::operator = ( const CxProjection& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::operator == ( const CxProjection& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::operator != ( const CxProjection& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxProjection(const CxProjection &src) \n
+		@ref operator=(const CxProjection &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxProjection &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxProjection::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc			入力元 [CxImage]
+	@param[in,out]	hdst			出力先 [CxArray]
+	@param[in]		hmask			マスク [CxImage] (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

@@ -1,0 +1,23 @@
+/*!
+	@internal
+	@file		fnXIE_File_CopyJpegMarkers.cpp
+	@brief		ファイル入出力関連 (Jpeg Markers 複製)
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_File_Exports
+	@fn			fnXIE_File_CopyJpegMarkers(TxCharCPtrA src_file, TxCharCPtrA dst_file, HxModule option)
+	@brief		Jpeg Markers 複製
+
+	@param[in]		src_file		入力ファイル (※存在するファイルを指定してください。)
+	@param[in]		dst_file		出力ファイル (※存在するファイルを指定してください。)
+	@param[in]		option			オプション。※ 現在、使用していません。常に NULL を指定してください。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

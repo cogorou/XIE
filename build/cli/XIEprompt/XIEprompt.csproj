@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C9AC37E2-ED0C-4DE1-9A9B-3B7B8E136CE7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XIEprompt</RootNamespace>
+    <AssemblyName>XIEprompt_100</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\XIEprompt_100.xml</DocumentationFile>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\XIEprompt_100.xml</DocumentationFile>
+    <XIE_BIN>../../../bin</XIE_BIN>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLinux|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugLinux\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LINUX</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\DebugLinux\XIEprompt_100.xml</DocumentationFile>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU'">
+    <OutputPath>bin\ReleaseLinux\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\ReleaseLinux\XIEprompt_100.xml</DocumentationFile>
+    <XIE_BIN>../../../bin</XIE_BIN>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XIE.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)/XIE.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XIE.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)/XIE.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\CxPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxPromptForm.Designer.cs">
+      <DependentUpon>CxPromptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxAppSettings.cs" />
+    <Compile Include="Forms\CxPromptImportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxPromptImportsForm.Designer.cs">
+      <DependentUpon>CxPromptImportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxPromptToolboxFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxPromptToolboxFind.Designer.cs">
+      <DependentUpon>CxPromptToolboxFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxPromptToolboxGoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxPromptToolboxGoto.Designer.cs">
+      <DependentUpon>CxPromptToolboxGoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\CxPromptForm.resx">
+      <DependentUpon>CxPromptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxPromptImportsForm.resx">
+      <DependentUpon>CxPromptImportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxPromptToolboxFind.resx">
+      <DependentUpon>CxPromptToolboxFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxPromptToolboxGoto.resx">
+      <DependentUpon>CxPromptToolboxGoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="app.ico" />
+    <EmbeddedResource Include="Program_cs.txt" />
+    <EmbeddedResource Include="Program_vb.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Azuki\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Azuki\Actions.cs" />
+    <Compile Include="Azuki\Actions.Selection.cs" />
+    <Compile Include="Azuki\AutoIndentHooks.cs" />
+    <Compile Include="Azuki\CaretMoveLogic.cs" />
+    <Compile Include="Azuki\DebugUtl.cs" />
+    <Compile Include="Azuki\DefaultWordProc.cs" />
+    <Compile Include="Azuki\Document\CharClass.cs" />
+    <Compile Include="Azuki\Document\Document.cs" />
+    <Compile Include="Azuki\Document\EditAction.cs" />
+    <Compile Include="Azuki\Document\EditHistory.cs" />
+    <Compile Include="Azuki\Document\LineDirtyState.cs" />
+    <Compile Include="Azuki\Document\Marking.cs" />
+    <Compile Include="Azuki\Document\RleArray.cs" />
+    <Compile Include="Azuki\Document\SearchResult.cs" />
+    <Compile Include="Azuki\Document\SelectionManager.cs" />
+    <Compile Include="Azuki\Document\SplitArray.cs" />
+    <Compile Include="Azuki\Document\TextBuffer.cs" />
+    <Compile Include="Azuki\Document\TextDataType.cs" />
+    <Compile Include="Azuki\Document\UriMarker.cs" />
+    <Compile Include="Azuki\Document\ViewParam.cs" />
+    <Compile Include="Azuki\Document\WatchPattern.cs" />
+    <Compile Include="Azuki\Document\WatchPatternMarker.cs" />
+    <Compile Include="Azuki\FileType.cs" />
+    <Compile Include="Azuki\Highlighter\BatchFileHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\Buffer.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexParser.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexScanner.cs" />
+    <Compile Include="Azuki\Highlighter\CppHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\CSharpHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\DiffHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Highlighters.cs" />
+    <Compile Include="Azuki\Highlighter\IHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\IniHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaScriptHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\KeywordHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\LatexHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\PythonHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\RubyHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Utl.cs" />
+    <Compile Include="Azuki\Highlighter\VisualBasicHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\XmlHighlighter.cs" />
+    <Compile Include="Azuki\IUserInterface.cs" />
+    <Compile Include="Azuki\IWordProc.cs" />
+    <Compile Include="Azuki\LineLogic.cs" />
+    <Compile Include="Azuki\Platform.cs" />
+    <Compile Include="Azuki\UiImpl.cs" />
+    <Compile Include="Azuki\UserPref.cs" />
+    <Compile Include="Azuki\View\ColorScheme.cs" />
+    <Compile Include="Azuki\View\DrawingOption.cs" />
+    <Compile Include="Azuki\View\HRulerIndicatorType.cs" />
+    <Compile Include="Azuki\View\IView.cs" />
+    <Compile Include="Azuki\View\MouseCursor.cs" />
+    <Compile Include="Azuki\View\PropView.cs" />
+    <Compile Include="Azuki\View\PropWrapView.cs" />
+    <Compile Include="Azuki\View\TextDecoration.cs" />
+    <Compile Include="Azuki\View\View.cs" />
+    <Compile Include="Azuki\View\View.Paint.cs" />
+    <Compile Include="Azuki\View\ViewType.cs" />
+    <Compile Include="Azuki\WinForms\AzukiControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Azuki\WinForms\PlatWin.cs" />
+    <Compile Include="Azuki\WinForms\WinApi.cs" />
+    <Compile Include="Azuki\WinForms\WinFormsMouseEventArgs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Windows -->
+    <PostBuildEvent Condition="'$(OS)'!='Unix'">
+echo $(XIE_BIN)
+copy "$(TargetDir)$(TargetFileName)"        "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetFileName).config" "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetName).pdb"        "$(ProjectDir)$(XIE_BIN)"
+copy "$(ProjectDir)$(DocumentationFile)"    "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+    <!-- Linux -->
+    <PostBuildEvent Condition="'$(OS)'=='Unix'">
+echo $(XIE_BIN)
+cp -a "$(TargetDir)$(TargetFileName)"        "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(TargetDir)$(TargetFileName).config" "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(TargetDir)$(TargetFileName).mdb"    "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(ProjectDir)$(DocumentationFile)"    "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

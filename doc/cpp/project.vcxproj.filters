@@ -1,0 +1,1626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="examples">
+      <UniqueIdentifier>{80ed3c2e-1a00-4f13-88a4-0d99b989fb09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GPU">
+      <UniqueIdentifier>{e193006f-555c-49bc-923e-fa9c41a4ce0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI">
+      <UniqueIdentifier>{d990d5cd-5c7b-4b91-a361-aa5e1e232db0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core">
+      <UniqueIdentifier>{951e55c7-3969-4668-8648-87e22577dc0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\IO">
+      <UniqueIdentifier>{e8ff1950-953a-411d-9794-bca468642c30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\Base">
+      <UniqueIdentifier>{8906092a-1f83-4ee7-95d0-e347d29be979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\Structures">
+      <UniqueIdentifier>{e71e4a3d-8dff-49a1-8115-c5d366f05803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Net">
+      <UniqueIdentifier>{61ace18f-0d26-4eb0-9c21-cc1f413b1e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\CxArray">
+      <UniqueIdentifier>{af1d4843-4147-42b6-85ef-96625e71c9c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\CxImage">
+      <UniqueIdentifier>{ea27e465-ff11-4b79-a6e9-0678f5f4bf5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\CxMatrix">
+      <UniqueIdentifier>{352e2797-53bb-4ef0-9348-6dff89901300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxCanvas">
+      <UniqueIdentifier>{76a3845b-0791-4b68-9315-61c3eca52a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiCircle">
+      <UniqueIdentifier>{8d972fb2-e1ca-430c-a2b2-2013f96bd602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiEllipse">
+      <UniqueIdentifier>{15881ac4-a354-48b1-8582-7390ee901410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiImage">
+      <UniqueIdentifier>{c07a270e-2455-4a47-981d-d7d261e9c322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiLine">
+      <UniqueIdentifier>{ca728ebd-5d01-4d0e-896c-c97a42a7f5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiLineSegment">
+      <UniqueIdentifier>{8d5ab442-cafe-43b6-b760-639877d3bf8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiPoint">
+      <UniqueIdentifier>{9dcd75c4-1171-414a-94f6-867f3d7ec29d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiPolyline">
+      <UniqueIdentifier>{00eb8222-92a4-4bfe-8e0f-8c8bef20cde2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiRectangle">
+      <UniqueIdentifier>{b854645c-8d60-4ad1-9f8c-c85f2561a56c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GDI\CxGdiString">
+      <UniqueIdentifier>{c8be034e-f1aa-4487-b0cc-449c57cddd2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GPU\CxGpuArray">
+      <UniqueIdentifier>{9031eca5-7132-4100-adac-613f75c117f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GPU\CxGpuImage">
+      <UniqueIdentifier>{a9a8e03b-e07c-42e9-866c-fab30727b574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\GPU\CxGpuMatrix">
+      <UniqueIdentifier>{5ac4dc8b-7dff-4c9d-aeae-cefeede259d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\IO\CxSerialPort">
+      <UniqueIdentifier>{e260b98d-a11d-45be-a26c-b1cc01ffd425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Net\CxTcpClient">
+      <UniqueIdentifier>{48354b39-766f-4df5-b6bd-8dc51b7614ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Net\CxTcpServer">
+      <UniqueIdentifier>{d78ed044-7991-44cd-879f-743f6aac3f89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Net\CxUdpClient">
+      <UniqueIdentifier>{48939526-bbc2-4988-ad29-e1312f4827f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EntryPoint">
+      <UniqueIdentifier>{d4df640c-888c-411f-abb9-4450130054b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{e7edba87-6292-4800-8e8b-ac15692203cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\groups">
+      <UniqueIdentifier>{a38b7136-3306-4cd1-9b9d-e8c50663e2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\_pages">
+      <UniqueIdentifier>{3bf32df3-1a5d-4914-923c-7b54a05bc9a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>*.txt</Extensions>
+    </Filter>
+    <Filter Include="source\xie_core\Core">
+      <UniqueIdentifier>{56161b95-69ad-40f6-906e-250f8802e479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Structures">
+      <UniqueIdentifier>{61b2a31a-8b06-482c-b26d-9d25093242d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Structures\Data">
+      <UniqueIdentifier>{6ae2f55a-2c82-4264-bb70-05c97f7acd92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Structures\Color">
+      <UniqueIdentifier>{1cd6ba28-b006-4913-a107-81b073a88d47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Structures\IO">
+      <UniqueIdentifier>{46e63958-b3bb-4b86-a729-992bc93e93f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Interfaces">
+      <UniqueIdentifier>{208d6139-e067-416e-95ed-ec31db96484e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Functions">
+      <UniqueIdentifier>{422aba4f-1cbe-4f94-a63b-4a3944a14de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Enumerations">
+      <UniqueIdentifier>{e3f7f780-a07e-4711-8d27-64d2a4ba1568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Classes">
+      <UniqueIdentifier>{7ffb60b0-4ad5-400c-a09e-3a8a7ee9550d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\_internals">
+      <UniqueIdentifier>{3d1ed05f-84f5-4c48-97a5-a9c122de4499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\_base">
+      <UniqueIdentifier>{da7127bf-0844-4449-9cb3-d834e0603cd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high">
+      <UniqueIdentifier>{64852c6d-c779-41f8-b17b-485f2c928a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\File">
+      <UniqueIdentifier>{51dfb89c-9bcf-4eff-a984-f2bda64393ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI">
+      <UniqueIdentifier>{615f1759-d9e6-44e4-99af-cd08c942b532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\_internals">
+      <UniqueIdentifier>{89c60adb-05c5-49fb-82bc-d829657d13bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\Classes">
+      <UniqueIdentifier>{6d0d1958-7edd-4546-9cf8-453be67ec583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\Structures">
+      <UniqueIdentifier>{0eefc358-b9f7-4788-b0e4-86951e4fa699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\Enumerations">
+      <UniqueIdentifier>{f04d7b7b-4e29-4657-aa0c-8a34e17fbc12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\Functions">
+      <UniqueIdentifier>{61c4ff69-a461-4553-b78f-c04115af48e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO">
+      <UniqueIdentifier>{c42ae1e5-0f29-496e-a6f2-2c904f6c9584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO\_internals">
+      <UniqueIdentifier>{a0c697a9-da55-4df3-8aa8-fcd362b9cd45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO\Classes">
+      <UniqueIdentifier>{5fc64605-7b9f-44f0-8c30-d9aca386356c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO\Enumerations">
+      <UniqueIdentifier>{7ace6682-392a-4ba0-b4ec-1ee758336727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO\Structures">
+      <UniqueIdentifier>{4b7deb91-9811-4a0a-82d9-effaa8cd777e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Net">
+      <UniqueIdentifier>{ff09993a-7c5f-4156-8e8f-1eb6ace2972e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Net\_internals">
+      <UniqueIdentifier>{c723aeb0-777d-4c3f-8761-126f6ea5889d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Net\Classes">
+      <UniqueIdentifier>{0a11c1b0-10db-4139-aaa9-5f6c2eef132b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Net\Enumerations">
+      <UniqueIdentifier>{99e7c698-d35f-4a27-a857-cedda8fc85f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Net\Structures">
+      <UniqueIdentifier>{25f12a08-bd70-402a-bb96-70d89b99e8b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\_base">
+      <UniqueIdentifier>{9e9ae4a8-3798-4113-b1f1-e3f0e00c01f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\IO\Functions">
+      <UniqueIdentifier>{bca7bd07-b82c-4bd1-9eef-ab0b3042bcc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_ds">
+      <UniqueIdentifier>{1dd49408-f4ee-4220-ad60-ad1fc368215e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_ds\_base">
+      <UniqueIdentifier>{f0c07e4d-cd4b-4633-bdb5-63eae78e05cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media">
+      <UniqueIdentifier>{f7c0653c-0ea2-4e86-9dbe-caf22454bcac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\_internals">
+      <UniqueIdentifier>{4479bdbe-e9ae-4b5e-837a-327aee232979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\Classes">
+      <UniqueIdentifier>{28ad0f7d-9097-4478-831e-04d2520efa2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\Enumerations">
+      <UniqueIdentifier>{733bcc40-9876-4d75-b50d-54a09d32fe3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\Structures">
+      <UniqueIdentifier>{d30d0f63-ce14-4253-aa47-97762e0b946c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\Interfaces">
+      <UniqueIdentifier>{aa52af7b-f822-4440-99ec-deeff55f7e65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\Functions">
+      <UniqueIdentifier>{07deb238-4aef-4bb6-ab1e-12ff1cacad16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media">
+      <UniqueIdentifier>{cac81a6c-e8e6-40e0-89fc-276c1944d446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxCamera">
+      <UniqueIdentifier>{0494a1b2-7c11-4332-a2a1-4d378476b618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxControlProperty">
+      <UniqueIdentifier>{e594018b-6cd9-48a6-ad80-4e5cdfc9c6b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxDeviceList">
+      <UniqueIdentifier>{9a96f45b-b103-4d31-9d08-4e152044dee4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxDeviceParam">
+      <UniqueIdentifier>{e1737099-a6ec-4844-8087-c9652e0872ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxMediaPlayer">
+      <UniqueIdentifier>{6b1b493f-af07-4be5-9d9b-5a5fdf6d872f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxGrabber">
+      <UniqueIdentifier>{2452c542-d76e-4211-a7fc-27785e3f720b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_ds\DS">
+      <UniqueIdentifier>{61efc7b8-a16c-45d6-a02f-58a37aa67757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_ds\DS\Classes">
+      <UniqueIdentifier>{679bc03e-7f53-40f7-aa77-a6f0536a5d6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\_internals\DS">
+      <UniqueIdentifier>{2f87eae1-be1a-47af-92b1-24d00b7cfbcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\Media\_internals\V4L2">
+      <UniqueIdentifier>{8f91bde4-11ec-455d-9a5a-d89f6dbb0635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_ds\DS\Interfaces">
+      <UniqueIdentifier>{2c093d14-6356-4454-a2b2-75f45b33dbd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Exchange">
+      <UniqueIdentifier>{dd10c211-62b8-48ea-9c9b-4ead0f00e3bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Exif">
+      <UniqueIdentifier>{773a8737-7cfc-4378-acef-7cd7bd9ee9c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\CxExif">
+      <UniqueIdentifier>{597e3f3c-4596-48cf-b877-0d70da65e277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_high\GDI\Interfaces">
+      <UniqueIdentifier>{83da82a0-c30b-4bfd-bc7b-6444aaa8a76a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxScreenCapture">
+      <UniqueIdentifier>{1b0ce331-9b9e-4365-a92b-9af7babb5f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Media\CxScreenList">
+      <UniqueIdentifier>{514cbc54-7c53-48f6-a365-d2bce75e203e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Core\Macros">
+      <UniqueIdentifier>{9807a23c-0b53-46da-a693-c208da0829f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\Structures\Shape">
+      <UniqueIdentifier>{4f4a1295-6500-442b-9a25-f258b44322eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors">
+      <UniqueIdentifier>{e3e8682f-ecad-43c2-bc33-0843cfa570d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxBinarize1">
+      <UniqueIdentifier>{8a1eed7d-cb2a-4af4-be47-414860018c52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxBinarize2">
+      <UniqueIdentifier>{a4d9c5e2-26f4-48a7-99d9-a8f2861db6dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxHsvConverter">
+      <UniqueIdentifier>{27aabdd1-cf4e-4686-8ff9-22edf771b916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxHsvToRgb">
+      <UniqueIdentifier>{ecfb25bd-61a4-4b2a-8ac4-2162252718be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxIntegral">
+      <UniqueIdentifier>{3f3414c6-647d-4a63-9cc8-a29918f76493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxMonochrome">
+      <UniqueIdentifier>{86a0e505-80c9-489f-a68d-1f266252d2e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxPartColor">
+      <UniqueIdentifier>{a72a5201-e32d-4ddf-a6b9-18186f8f904a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxRgbConverter">
+      <UniqueIdentifier>{10adcce6-6e0f-4bf1-824a-f3f48cba4bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxRgbToGray">
+      <UniqueIdentifier>{3ce03132-adb0-47c6-9954-bb946e09bd85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxRgbToHsv">
+      <UniqueIdentifier>{299a0c2f-fa10-4aa1-a453-df0094bdfd3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Effectors">
+      <UniqueIdentifier>{1a67af0e-d6ea-4e2a-b6fb-0050e540d0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Effectors\Classes">
+      <UniqueIdentifier>{172eac6d-62d9-4f0c-9c23-3795ecc34248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxGammaConverter">
+      <UniqueIdentifier>{6b4827bd-0b00-4c8e-a886-81c7e8d330d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="examples\Effectors\CxProjection">
+      <UniqueIdentifier>{cdefc704-64b3-47b0-8e1d-74cba2ad235b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\xie_core\Core\File">
+      <UniqueIdentifier>{10ca3de4-c216-46e0-80ca-c32bb0f244f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="examples\Core\Base\CxException.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\CxMutex.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\CxStopwatch.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\CxThread.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\CxImage\CxImage.h">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\CxArray\CxArray.h">
+      <Filter>examples\Core\CxArray</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Structures\Structures.h">
+      <Filter>examples\Core\Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\CxMatrix\CxMatrix.h">
+      <Filter>examples\Core\CxMatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\GDI\CxCanvas\CxCanvas.h">
+      <Filter>examples\GDI\CxCanvas</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\example.h">
+      <Filter>EntryPoint</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\IO\CxSerialPort\CxSerialPort.h">
+      <Filter>examples\IO\CxSerialPort</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Net\CxTcpClient\CxTcpClient.h">
+      <Filter>examples\Net\CxTcpClient</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Net\CxTcpServer\CxTcpServer.h">
+      <Filter>examples\Net\CxTcpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Net\CxUdpClient\CxUdpClient.h">
+      <Filter>examples\Net\CxUdpClient</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\CxFinalizer.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxCamera\CxCamera.h">
+      <Filter>examples\Media\CxCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxMediaPlayer\CxMediaPlayer.h">
+      <Filter>examples\Media\CxMediaPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxDeviceParam\CxDeviceParam.h">
+      <Filter>examples\Media\CxDeviceParam</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxDeviceList\CxDeviceList.h">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxControlProperty\CxControlProperty.h">
+      <Filter>examples\Media\CxControlProperty</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxGrabber\CxGrabber.h">
+      <Filter>examples\Media\CxGrabber</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\CxExif\CxExif.h">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxScreenCapture\CxScreenCapture.h">
+      <Filter>examples\Media\CxScreenCapture</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Media\CxScreenList\CxScreenList.h">
+      <Filter>examples\Media\CxScreenList</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Macros\Macros.h">
+      <Filter>examples\Core\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxBinarize1.h">
+      <Filter>examples\Effectors\CxBinarize1</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxBinarize2.h">
+      <Filter>examples\Effectors\CxBinarize2</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxGammaConverter.h">
+      <Filter>examples\Effectors\CxGammaConverter</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxHsvConverter.h">
+      <Filter>examples\Effectors\CxHsvConverter</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxHsvToRgb.h">
+      <Filter>examples\Effectors\CxHsvToRgb</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxIntegral.h">
+      <Filter>examples\Effectors\CxIntegral</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxMonochrome.h">
+      <Filter>examples\Effectors\CxMonochrome</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxPartColor.h">
+      <Filter>examples\Effectors\CxPartColor</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxRgbConverter.h">
+      <Filter>examples\Effectors\CxRgbConverter</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxRgbToGray.h">
+      <Filter>examples\Effectors\CxRgbToGray</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxRgbToHsv.h">
+      <Filter>examples\Effectors\CxRgbToHsv</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Effectors\CxProjection.h">
+      <Filter>examples\Effectors\CxProjection</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\Axi.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\Core\Base\AxiModule.h">
+      <Filter>examples\Core\Base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="examples\Core\Base\CxException_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\CxMutex_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\CxStopwatch_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\CxThread_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxArray\CxArray_01.cpp">
+      <Filter>examples\Core\CxArray</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxArray\CxArrayFilter_01.cpp">
+      <Filter>examples\Core\CxArray</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Attach_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_CalcDepth_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Clear_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ClearEx_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_CopyFrom_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_02.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_03.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_Copy.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ctor_Move.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_02.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_From_03.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_MoveFrom_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Resize_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Resize_02.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_02.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImageFilter_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxMatrix\CxMatrix_01.cpp">
+      <Filter>examples\Core\CxMatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxMatrix\CxMatrixFilter_01.cpp">
+      <Filter>examples\Core\CxMatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Structures\TxArray_01.cpp">
+      <Filter>examples\Core\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Structures\TxImage_01.cpp">
+      <Filter>examples\Core\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Structures\TxMatrix_01.cpp">
+      <Filter>examples\Core\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Structures\TxModel_01.cpp">
+      <Filter>examples\Core\Structures</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxCanvas\CxCanvas_01.cpp">
+      <Filter>examples\GDI\CxCanvas</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiCircle\CxGdiCircle_01.cpp">
+      <Filter>examples\GDI\CxGdiCircle</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiEllipse\CxGdiEllipse_01.cpp">
+      <Filter>examples\GDI\CxGdiEllipse</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiImage\CxGdiImage_01.cpp">
+      <Filter>examples\GDI\CxGdiImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiLine\CxGdiLine_01.cpp">
+      <Filter>examples\GDI\CxGdiLine</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiLineSegment\CxGdiLineSegment_01.cpp">
+      <Filter>examples\GDI\CxGdiLineSegment</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiPoint\CxGdiPoint_01.cpp">
+      <Filter>examples\GDI\CxGdiPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiPolyline\CxGdiPolyline_01.cpp">
+      <Filter>examples\GDI\CxGdiPolyline</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiRectangle\CxGdiRectangle_01.cpp">
+      <Filter>examples\GDI\CxGdiRectangle</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GDI\CxGdiString\CxGdiString_01.cpp">
+      <Filter>examples\GDI\CxGdiString</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuArray\CxGpuArray_01.cpp">
+      <Filter>examples\GPU\CxGpuArray</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuArray\CxGpuArrayFilter_01.cpp">
+      <Filter>examples\GPU\CxGpuArray</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuImage\CxGpuImage_01.cpp">
+      <Filter>examples\GPU\CxGpuImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuImage\CxGpuImageFilter_01.cpp">
+      <Filter>examples\GPU\CxGpuImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuMatrix\CxGpuMatrix_01.cpp">
+      <Filter>examples\GPU\CxGpuMatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\GPU\CxGpuMatrix\CxGpuMatrixFilter_01.cpp">
+      <Filter>examples\GPU\CxGpuMatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\IO\CxSerialPort\CxSerialPort_01.cpp">
+      <Filter>examples\IO\CxSerialPort</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Net\CxTcpClient\CxTcpClient_01.cpp">
+      <Filter>examples\Net\CxTcpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Net\CxTcpServer\CxTcpServer_01.cpp">
+      <Filter>examples\Net\CxTcpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Net\CxUdpClient\CxUdpClient_01.cpp">
+      <Filter>examples\Net\CxUdpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\example.cpp">
+      <Filter>EntryPoint</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Scanner_03.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Extract_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\CxFinalizer_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxCamera\CxCamera_01.cpp">
+      <Filter>examples\Media\CxCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxMediaPlayer\CxMediaPlayer_01.cpp">
+      <Filter>examples\Media\CxMediaPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxDeviceParam\CxDeviceParam_01.cpp">
+      <Filter>examples\Media\CxDeviceParam</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_01.cpp">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxControlProperty\CxControlProperty_01.cpp">
+      <Filter>examples\Media\CxControlProperty</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_02.cpp">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxDeviceList\CxDeviceList_03.cpp">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxGrabber\CxGrabber_01.cpp">
+      <Filter>examples\Media\CxGrabber</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_01.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_EndianType.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetItems.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetPurgedExif.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_GetValue.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxExif\CxExif_SetValue.cpp">
+      <Filter>examples\Core\CxExif</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Exif.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxScreenCapture\CxScreenCapture_01.cpp">
+      <Filter>examples\Media\CxScreenCapture</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Media\CxScreenList\CxScreenList_01.cpp">
+      <Filter>examples\Media\CxScreenList</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_Statistics_01.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\CxImage\CxImage_ExifCopy.cpp">
+      <Filter>examples\Core\CxImage</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxBinarize1_01.cpp">
+      <Filter>examples\Effectors\CxBinarize1</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxBinarize2_01.cpp">
+      <Filter>examples\Effectors\CxBinarize2</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxGammaConverter_01.cpp">
+      <Filter>examples\Effectors\CxGammaConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxHsvConverter_01.cpp">
+      <Filter>examples\Effectors\CxHsvConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxHsvToRgb_01.cpp">
+      <Filter>examples\Effectors\CxHsvToRgb</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxIntegral_01.cpp">
+      <Filter>examples\Effectors\CxIntegral</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxMonochrome_01.cpp">
+      <Filter>examples\Effectors\CxMonochrome</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxPartColor_01.cpp">
+      <Filter>examples\Effectors\CxPartColor</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxRgbConverter_01.cpp">
+      <Filter>examples\Effectors\CxRgbConverter</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxRgbToGray_01.cpp">
+      <Filter>examples\Effectors\CxRgbToGray</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxRgbToHsv_01.cpp">
+      <Filter>examples\Effectors\CxRgbToHsv</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Effectors\CxProjection_01.cpp">
+      <Filter>examples\Effectors\CxProjection</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Macros\fnXIE_Core_TraceOut_01.cpp">
+      <Filter>examples\Core\Macros</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\Axi_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\Core\Base\AxiModule_01.cpp">
+      <Filter>examples\Core\Base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="examples\Core\CxImage\CxImage_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Attach_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_CalcDepth_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Clear_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ClearEx_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_CopyFrom_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ctor_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ctor_02.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ctor_03.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ctor_Copy.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_ctor_Move.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_From_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_From_02.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_From_03.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_MoveFrom_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Resize_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Resize_02.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_02.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\example.txt">
+      <Filter>EntryPoint</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Functions\AxiDiagnostics.txt">
+      <Filter>source\xie_core\Core\Functions</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Functions\AxiGDIDiagnostics.txt">
+      <Filter>source\xie_high\GDI\Functions</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\Functions\AxiIODiagnostics.txt">
+      <Filter>source\xie_high\IO\Functions</Filter>
+    </Text>
+    <Text Include="examples\Core\Base\CxException_01.txt">
+      <Filter>examples\Core\Base</Filter>
+    </Text>
+    <Text Include="examples\Core\Base\CxMutex_01.txt">
+      <Filter>examples\Core\Base</Filter>
+    </Text>
+    <Text Include="examples\Core\Base\CxStopwatch_01.txt">
+      <Filter>examples\Core\Base</Filter>
+    </Text>
+    <Text Include="examples\Core\Base\CxThread_01.txt">
+      <Filter>examples\Core\Base</Filter>
+    </Text>
+    <Text Include="project-doxyfile.txt" />
+    <Text Include="examples\Core\CxImage\CxImage_Scanner_03.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Extract_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="examples\IO\CxSerialPort\CxSerialPort_01.txt">
+      <Filter>examples\IO\CxSerialPort</Filter>
+    </Text>
+    <Text Include="examples\Net\CxTcpClient\CxTcpClient_01.txt">
+      <Filter>examples\Net\CxTcpClient</Filter>
+    </Text>
+    <Text Include="examples\Net\CxTcpServer\CxTcpServer_01.txt">
+      <Filter>examples\Net\CxTcpServer</Filter>
+    </Text>
+    <Text Include="examples\Net\CxUdpClient\CxUdpClient_01.txt">
+      <Filter>examples\Net\CxUdpClient</Filter>
+    </Text>
+    <Text Include="examples\Core\Base\CxFinalizer_01.txt">
+      <Filter>examples\Core\Base</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxFinalizer.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxEquatable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxTagPtr.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxValidatable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxThreadArgs.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_ds\_base\xie_ds.txt">
+      <Filter>source\xie_ds\_base</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxCamera.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxControlProperty.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxDeviceList.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxDeviceListItem.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxDeviceParam.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxMediaPlayer.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Structures\TxDeviceListItem.txt">
+      <Filter>source\xie_high\Media\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Structures\TxDeviceParam.txt">
+      <Filter>source\xie_high\Media\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Interfaces\IxMediaControl.txt">
+      <Filter>source\xie_high\Media\Interfaces</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_Media.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Functions\AxiMediaDiagnostics.txt">
+      <Filter>source\xie_high\Media\Functions</Filter>
+    </Text>
+    <Text Include="examples\Media\CxCamera\CxCamera_01.txt">
+      <Filter>examples\Media\CxCamera</Filter>
+    </Text>
+    <Text Include="examples\Media\CxMediaPlayer\CxMediaPlayer_01.txt">
+      <Filter>examples\Media\CxMediaPlayer</Filter>
+    </Text>
+    <Text Include="examples\Media\CxDeviceParam\CxDeviceParam_01.txt">
+      <Filter>examples\Media\CxDeviceParam</Filter>
+    </Text>
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_01.txt">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </Text>
+    <Text Include="examples\Media\CxControlProperty\CxControlProperty_01.txt">
+      <Filter>examples\Media\CxControlProperty</Filter>
+    </Text>
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_02.txt">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </Text>
+    <Text Include="examples\Media\CxDeviceList\CxDeviceList_03.txt">
+      <Filter>examples\Media\CxDeviceList</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\api_media.txt">
+      <Filter>source\xie_high\Media\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\api_media_exports.txt">
+      <Filter>source\xie_high\Media\_internals</Filter>
+    </Text>
+    <Text Include="examples\Media\CxGrabber\CxGrabber_01.txt">
+      <Filter>examples\Media\CxGrabber</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxCanvas.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Structures\TxGrabberArgs.txt">
+      <Filter>source\xie_high\Media\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_ds\DS\Classes\CxDSScreenCaptureFilter.txt">
+      <Filter>source\xie_ds\DS\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_ds\DS\Classes\CxDSScreenCapturePin.txt">
+      <Filter>source\xie_ds\DS\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds_diagnostics.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSCamera.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSControlProperty.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSControlPropertyWrapper.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSGrabber.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSGrabberArgs.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSMediaPlayer.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSSampleReceiver.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\api_v4l2.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxMMap.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLCamera.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLControlProperty.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLGrabber.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLGrabberArgs.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLMediaPlayer.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLSampleReceiver.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_DS.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\xie_ds\DS\Interfaces\IxDSScreenCapturePin.txt">
+      <Filter>source\xie_ds\DS\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxOverlay.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxOverlayGrid.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxOverlayProfile.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxLockable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exchange\TxIplImage.txt">
+      <Filter>source\xie_core\Core\Exchange</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exchange\TxIplROI.txt">
+      <Filter>source\xie_core\Core\Exchange</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exchange\TxCvMat.txt">
+      <Filter>source\xie_core\Core\Exchange</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxEllipseArcD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxEllipseArcI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiEllipseArc.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exif\api_exif.txt">
+      <Filter>source\xie_core\Core\Exif</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exif\CxExif.txt">
+      <Filter>source\xie_core\Core\Exif</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exif\TxExif.txt">
+      <Filter>source\xie_core\Core\Exif</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Exif\TxExifItem.txt">
+      <Filter>source\xie_core\Core\Exif</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_Effectors.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Interfaces\IxGdi2d.txt">
+      <Filter>source\xie_high\GDI\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxScreenList.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxScreenListItem.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Structures\TxScreenListItem.txt">
+      <Filter>source\xie_high\Media\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxScreenCapture.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="examples\Media\CxScreenCapture\CxScreenCapture_01.txt">
+      <Filter>examples\Media\CxScreenCapture</Filter>
+    </Text>
+    <Text Include="examples\Media\CxScreenList\CxScreenList_01.txt">
+      <Filter>examples\Media\CxScreenList</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\CxDSScreenCapture.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\V4L2\CxVLScreenCapture.txt">
+      <Filter>source\xie_high\Media\_internals\V4L2</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGraphics.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\api_gdi_graphics.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxArrayEx.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxGrabber.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxGrabberArgs.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxEventReceiver.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxThreadEvent.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Classes\CxGrabberEvent.txt">
+      <Filter>source\xie_high\Media\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxFileAccess.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\api_ds_com.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\ISampleGrabber.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\ISampleGrabberCB.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\_internals\DS\IxDSGraphBuilderProvider.txt">
+      <Filter>source\xie_high\Media\_internals\DS</Filter>
+    </Text>
+    <Text Include="examples\Core\CxImage\CxImage_Statistics_01.txt">
+      <Filter>examples\Core\CxImage</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize1.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxBinarize2.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxHsvConverter.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxHsvToRgb.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxIntegral.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxMonochrome.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxPartColor.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbConverter.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbToGray.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxRgbToHsv.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxGammaConverter.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxInternalModule.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxString.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxCircleArcD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxCircleArcI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiCircleArc.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Media\Enumerations\Enumerations.txt">
+      <Filter>source\xie_high\Media\Enumerations</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\Enumerations\Enumerations.txt">
+      <Filter>source\xie_high\IO\Enumerations</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Enumerations\Enumerations.txt">
+      <Filter>source\xie_high\GDI\Enumerations</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Enumerations\Enumerations.txt">
+      <Filter>source\xie_core\Core\Enumerations</Filter>
+    </Text>
+    <Text Include="source\xie_core\Effectors\Classes\CxProjection.txt">
+      <Filter>source\xie_core\Effectors\Classes</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxBinarize1_01.txt">
+      <Filter>examples\Effectors\CxBinarize1</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxBinarize2_01.txt">
+      <Filter>examples\Effectors\CxBinarize2</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxGammaConverter_01.txt">
+      <Filter>examples\Effectors\CxGammaConverter</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxHsvConverter_01.txt">
+      <Filter>examples\Effectors\CxHsvConverter</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxHsvToRgb_01.txt">
+      <Filter>examples\Effectors\CxHsvToRgb</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxIntegral_01.txt">
+      <Filter>examples\Effectors\CxIntegral</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxMonochrome_01.txt">
+      <Filter>examples\Effectors\CxMonochrome</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxPartColor_01.txt">
+      <Filter>examples\Effectors\CxPartColor</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxRgbConverter_01.txt">
+      <Filter>examples\Effectors\CxRgbConverter</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxRgbToGray_01.txt">
+      <Filter>examples\Effectors\CxRgbToGray</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxRgbToHsv_01.txt">
+      <Filter>examples\Effectors\CxRgbToHsv</Filter>
+    </Text>
+    <Text Include="examples\Effectors\CxProjection_01.txt">
+      <Filter>examples\Effectors\CxProjection</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiStringW.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxGdiStringW.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiStringA.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxGdiStringA.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiString.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="examples\Core\Macros\fnXIE_Core_TraceOut_01.txt">
+      <Filter>examples\Core\Macros</Filter>
+    </Text>
+    <Text Include="source\xie_high\File\api_file_plugins.txt">
+      <Filter>source\xie_high\File</Filter>
+    </Text>
+    <Text Include="source\xie_high\File\CxFilePluginJpeg.txt">
+      <Filter>source\xie_high\File</Filter>
+    </Text>
+    <Text Include="source\xie_high\File\CxFilePluginPng.txt">
+      <Filter>source\xie_high\File</Filter>
+    </Text>
+    <Text Include="source\xie_high\File\CxFilePluginTiff.txt">
+      <Filter>source\xie_high\File</Filter>
+    </Text>
+    <Text Include="source\xie_high\File\fnXIE_File_CopyJpegMarkers.txt">
+      <Filter>source\xie_high\File</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\File\api_file.txt">
+      <Filter>source\xie_core\Core\File</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\File\api_file_bmp.txt">
+      <Filter>source\xie_core\Core\File</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\File\api_file_dib.txt">
+      <Filter>source\xie_core\Core\File</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\File\fnPRV_Buffer_Copy.txt">
+      <Filter>source\xie_core\Core\File</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\File\CxFilePluginBmp.txt">
+      <Filter>source\xie_core\Core\File</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="source\groups\group_all.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_Core.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_GDI.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_IO.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxBitmap.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxCanvas.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiCircle.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiEllipse.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiImage.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiLine.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiLineSegment.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiPoint.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiPolyline.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiRectangle.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiVoid.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxTexture.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxBitmap.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxGdiImage.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxGdiPolyline.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\Classes\CxSerialPort.txt">
+      <Filter>source\xie_high\IO\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\Structures\TxSerialPort.txt">
+      <Filter>source\xie_high\IO\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Classes\CxTcpClient.txt">
+      <Filter>source\xie_high\Net\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Classes\CxTcpServer.txt">
+      <Filter>source\xie_high\Net\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Classes\CxUdpClient.txt">
+      <Filter>source\xie_high\Net\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxIPAddress.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxIPEndPoint.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxSocketStream.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxTcpClient.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxTcpServer.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\Structures\TxUdpClient.txt">
+      <Filter>source\xie_high\Net\Structures</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_File.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\groups\group_xie_Net.txt">
+      <Filter>source\groups</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core_defs.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core_enums.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core_ipl.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core_math.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie_core_types.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\_internals\api_core.txt">
+      <Filter>source\xie_core\Core\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\_internals\api_data.txt">
+      <Filter>source\xie_core\Core\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxArray.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxArrayFilter.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxException.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxImage.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxImageFilter.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxMatrix.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxMatrixFilter.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxModule.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxMutex.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxStopwatch.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxStringA.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxStringW.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Classes\CxThread.txt">
+      <Filter>source\xie_core\Core\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Functions\Axi.txt">
+      <Filter>source\xie_core\Core\Functions</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Functions\AxiMath.txt">
+      <Filter>source\xie_core\Core\Functions</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxAttachable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxDisposable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxParam.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxRawFile.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxRunnable.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxArray.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxImage.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxImageSize.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxLayer.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxModel.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxMatrix.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxBGR8x3.txt">
+      <Filter>source\xie_core\Core\Structures\Color</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxBGR8x4.txt">
+      <Filter>source\xie_core\Core\Structures\Color</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRGB8x3.txt">
+      <Filter>source\xie_core\Core\Structures\Color</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRGB8x4.txt">
+      <Filter>source\xie_core\Core\Structures\Color</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxDateTime.txt">
+      <Filter>source\xie_core\Core\Structures\IO</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRawFileHeader.txt">
+      <Filter>source\xie_core\Core\Structures\IO</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxFrameIndex.txt">
+      <Filter>source\xie_core\Core\Structures\IO</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxStringW.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxStringA.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxScanner1D.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxScanner2D.txt">
+      <Filter>source\xie_core\Core\Structures\Data</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxCircleD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxTrapezoidI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxCircleI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxEllipseD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxEllipseI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxLineD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxLineI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxLineSegmentD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxLineSegmentI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxPointD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxPointI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRangeD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRangeI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRectangleD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxRectangleI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxSizeD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxSizeI.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxStatistics.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Structures\TxTrapezoidD.txt">
+      <Filter>source\xie_core\Core\Structures\Shape</Filter>
+    </Text>
+    <Text Include="source\xie_high\_base\xie_high.txt">
+      <Filter>source\xie_high\_base</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\_internals\api_net.txt">
+      <Filter>source\xie_high\Net\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Classes\CxGdiTrapezoid.txt">
+      <Filter>source\xie_high\GDI\Classes</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxHitPosition.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\Structures\TxGdi2dParam.txt">
+      <Filter>source\xie_high\GDI\Structures</Filter>
+    </Text>
+    <Text Include="source\_pages\mainpage.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_VC_Basic_11.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_VC_Basic_12.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_CS.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_GCC.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_VC.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_CS_Basic_11.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_CS_Basic_12.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_GCC_Basic_11.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Tutorial_GCC_Basic_12.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Outline.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\_pages\page_Begining.txt">
+      <Filter>source\_pages</Filter>
+    </Text>
+    <Text Include="source\xie_high\Net\_internals\api_net_exports.txt">
+      <Filter>source\xie_high\Net\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\_internals\api_io.txt">
+      <Filter>source\xie_high\IO\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\_internals\api_io_exports.txt">
+      <Filter>source\xie_high\IO\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\_internals\CxSerialPort_Linux.txt">
+      <Filter>source\xie_high\IO\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\IO\_internals\CxSerialPort_Windows.txt">
+      <Filter>source\xie_high\IO\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\api_gdi.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\api_gdi_exports.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\CxGLContext.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_Extract.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_ShrinkHT.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_high\GDI\_internals\fnPRV_GDI_ShrinkNN.txt">
+      <Filter>source\xie_high\GDI\_internals</Filter>
+    </Text>
+    <Text Include="source\xie_core\Core\Interfaces\IxFilePlugin.txt">
+      <Filter>source\xie_core\Core\Interfaces</Filter>
+    </Text>
+    <Text Include="source\xie_core\_base\xie.txt">
+      <Filter>source\xie_core\_base</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

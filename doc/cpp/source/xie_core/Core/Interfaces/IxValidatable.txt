@@ -1,0 +1,45 @@
+/*!
+	@file	IxValidatable.h
+	@brief	有効化インターフェース
+*/
+/*!
+	@def	_IXVALIDATABLE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxValidatable
+	@brief		有効化インターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxValidatable::Validate()
+	@brief	有効化
+
+	@remarks
+			自身が保有するオブジェクトを有効化するメソッドです。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxValidator
+	@brief		有効化インターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxValidator::Validate(IxModule& src) const
+	@brief	有効化
+
+	@param[in,out]	src		有効化対象
+
+	@remarks
+			指定されたオブジェクトを有効化するメソッドです。
+*/
+
+}

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <XIE_VER>100</XIE_VER>
+    <XIE_ROOT>$(XIE100ROOT)</XIE_ROOT>
+    <XIE_INC>..\..\..\include</XIE_INC>
+    <XIE_LIB>..\..\..\lib</XIE_LIB>
+    <CUDA_INC>..\..\..\thirdparty\CUDA\v7.0\vc\include</CUDA_INC>
+    <CUDA_LIB>..\..\..\thirdparty\CUDA\v7.0\vc\lib</CUDA_LIB>
+    <INTERNAL_HEADERS>..\..\..\source\$(ProjectName);</INTERNAL_HEADERS>
+    <FILE_HEADERS>..\..\..\thirdparty\libjpeg\include\vc;..\..\..\thirdparty\libz\source;..\..\..\thirdparty\libpng\source-1.6.6;..\..\..\thirdparty\libjpeg\source;..\..\..\thirdparty\libtiff\include\vc;..\..\..\thirdparty\libtiff\source;</FILE_HEADERS>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="XIE_VER">
+      <Value>$(XIE_VER)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_ROOT">
+      <Value>$(XIE_ROOT)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_INC">
+      <Value>$(XIE_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_LIB">
+      <Value>$(XIE_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CUDA_INC">
+      <Value>$(CUDA_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="CUDA_LIB">
+      <Value>$(CUDA_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="INTERNAL_HEADERS">
+      <Value>$(INTERNAL_HEADERS)</Value>
+    </BuildMacro>
+    <BuildMacro Include="FILE_HEADERS">
+      <Value>$(FILE_HEADERS)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

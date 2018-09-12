@@ -1,0 +1,589 @@
+/*!
+	@file	CxGdiCircle.h
+	@brief	オーバレイ図形クラス (真円)
+*/
+/*!
+	@internal
+	@file	CxGdiCircle.cpp
+	@brief	オーバレイ図形クラス (真円)
+*/
+/*!
+	@def	_CXGDICIRCLE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Classes
+	@class		CxGdiCircle
+	@brief		オーバレイ図形クラス (真円)
+*/
+// ===================================================================
+/*!
+	@var	CxGdiCircle::Shape
+	@brief	図形の形状
+*/
+// ===================================================================
+/*!
+	@var	CxGdiCircle::m_Param
+	@brief	オーバレイ図形パラメータ (２次元用)
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle( const CxGdiCircle& src )
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiCircle &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle(CxGdiCircle &&src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxGdiCircle &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle( const TxCircleD& shape )
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		shape		真円情報
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle( const TxCircleI& shape )
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		shape		真円情報
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle(double x, double y, double radius)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x			中心 X 座標
+	@param[in]		y			中心 Y 座標
+	@param[in]		radius		半径
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CxGdiCircle(TxPointD center, double radius)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		center		中心座標
+	@param[in]		radius		半径
+
+	@remarks
+			指定された値でフィールドを初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::~CxGdiCircle()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator = ( const CxGdiCircle& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator = (CxGdiCircle &&src)
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator == ( const CxGdiCircle& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator != ( const CxGdiCircle& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref Shape \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref Shape \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator = ( const TxCircleD& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定された構造体の内容を @ref Shape フィールドに複製します。
+			その他の描画情報は保持されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator = ( const TxCircleI& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@remarks
+			指定された構造体の内容を @ref Shape フィールドに複製します。
+			その他の描画情報は保持されます。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator TxCircleD() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxCircleD 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::operator TxCircleI() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxCircleI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxGdiCircle(const CxGdiCircle &src) \n
+		@ref operator=(const CxGdiCircle &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxGdiCircle &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Render(HxModule hcanvas, ExGdiScalingMode mode) const
+	@brief	描画
+
+	@param[in]		hcanvas		描画先のキャンバス
+	@param[in]		mode		スケーリングモード
+
+	@remarks
+			図形を指定されたキャンバスに描画します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Location() const
+	@brief	基準位置の取得
+
+	@return
+			図形の基準位置を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Location(TxPointD value)
+	@brief	基準位置の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			この関数は図形を移動させることが目的です。\n
+			この値を設定しても図形を構成する各座標の相対位置は変化しません。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Bounds() const
+	@brief	外接矩形の取得
+
+	@return
+			図形に外接する矩形を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Angle() const
+	@brief	回転角の取得
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Angle( double degree )
+	@brief	回転角の設定
+
+	@param[in]		degree		設定値 (度) [±180]
+
+	@remarks
+			この値は degree 単位で、範囲は ±180 です。\n
+			正の値（+）は右回転、負の値（-）は左回転です。			
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Axis() const
+	@brief	回転の機軸の取得
+
+	@return
+			現在設定されている値を返します。\n
+			この値は基準位置からの相対値(±)を示します。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Axis( TxPointD value )
+	@brief	回転の機軸の設定
+
+	@param[in]		value		設定値 (基準位置からの相対値(±)) 
+
+	@remarks
+			図形の基準位置（Location）に この値を加算した位置が回転中心になります。
+
+	@sa
+		@ref Location() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::HitTest( TxPointD position, double margin ) const
+	@brief	位置判定
+
+	@param[in]		position	指定座標
+	@param[in]		margin		判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+
+	@return
+			指定座標が図形外にあれば 0 を返します。\n
+			指定座標が図形内にあれば 0 以外の値を返します。\n
+			返す値の範囲は図形によって異なります。 
+
+	@remarks
+			指定座標が図形上のどの位置にあるかを判定します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Modify(HxModule prev_figure, TxPointD prev_position, TxPointD move_position, double margin)
+	@brief	図形の編集（位置移動または形状変更）
+
+	@param[in]		prev_figure		編集前の図形
+	@param[in]		prev_position	移動前の座標
+	@param[in]		move_position	移動後の座標
+	@param[in]		margin			判定の許容範囲 [範囲:0~] [既定値:2.0] ※±margin の範囲内で判定します。
+
+	@sa
+		HitTest( TxPointD position, double margin ) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::BkColor() const
+	@brief	背景色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::BkColor( TxRGB8x4 value )
+	@brief	背景色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の面（輪郭線によって内包される部分）の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref PenColor( TxRGB8x4 value ) \n
+		@ref BkEnable( bool value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::BkEnable() const
+	@brief	背景の有効属性
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::BkEnable( bool value )
+	@brief	背景の有効属性
+
+	@param[in]		value		設定値 [true:有効、false:無効]
+
+	@remarks
+			この値が false の時は背景描画が無視されます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenColor() const
+	@brief	ペン色
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenColor( TxRGB8x4 value )
+	@brief	ペン色
+
+	@param[in]		value		設定値
+
+	@remarks
+			この値は図形の輪郭部分の描画色を示します。\n
+			アルファ値（A フィールド）によって不透明度 [0~255=透明~不透明] を指定できます。\n
+
+	@sa
+		@ref BkColor( TxRGB8x4 value ) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenStyle() const
+	@brief	ペン形状
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenStyle( ExGdiPenStyle value )
+	@brief	ペン形状
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenWidth() const
+	@brief	ペン幅
+
+	@return
+			現在設定されている値を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::PenWidth( int value )
+	@brief	ペン幅
+
+	@param[in]		value		設定値 [1~]
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Param() const
+	@brief	オーバレイ図形パラメータの取得
+
+	@return	オーバレイ図形パラメータを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Param(const TxGdi2dParam& value)
+	@brief	オーバレイ図形パラメータの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::X() const
+	@brief	X 座標の取得
+
+	@return	現在設定されている X 座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::X(double value)
+	@brief	X 座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			X 座標を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Y() const
+	@brief	Y 座標の取得
+
+	@return	現在設定されている Y 座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Y(double value)
+	@brief	Y 座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			Y 座標を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Radius() const
+	@brief	半径の取得
+
+	@return	現在設定されている半径を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::Radius(double value)
+	@brief	半径の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			半径を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name	パラメータ名称
+	@param[out]		value	取得した値を格納する変数へのポインタ
+	@param[in]		model	変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxGdiCircle::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name	パラメータ名称
+	@param[in]		value	設定値が格納された変数へのポインタ
+	@param[in]		model	変数の型
+*/
+
+}
+}

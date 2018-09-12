@@ -1,0 +1,172 @@
+/*!
+	@internal
+	@file		api_exif.h
+	@brief		Exif オブジェクト関連の定義
+*/
+/*!
+	@internal
+	@file		api_exif.cpp
+	@brief		Exif オブジェクト関連の定義
+*/
+/*!
+	@internal
+	@def		_API_EXIF_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_GetItem(const TxScanner1D<unsigned char>& scan, int offset, ExEndianType endian_type)
+	@brief		項目の取得
+
+	@return	指定されたオフセット位置の項目を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_GetValueU16(const TxScanner1D<unsigned char>& scan, int offset, ExEndianType endian_type)
+	@brief		値の取得 (16 bit 整数)
+
+	@return	指定されたオフセット位置の値を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_GetValueU32(const TxScanner1D<unsigned char>& scan, int offset, ExEndianType endian_type)
+	@brief		値の取得 (32 bit 整数)
+
+	@return	指定されたオフセット位置の値を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_SetValueU16(TxScanner1D<unsigned char>& scan, int offset, ExEndianType endian_type, unsigned short value)
+	@brief		値の設定 (16 bit 整数)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_SetValueU32(TxScanner1D<unsigned char>& scan, int offset, ExEndianType endian_type, unsigned int value)
+	@brief		値の設定 (32 bit 整数)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_CopyRelatedItem(TxScanner1D<unsigned char>& dst_scan, const TxScanner1D<unsigned char>& src_scan, const TxExifItem& item, int offset)
+	@brief		指定項目に関連する値の複製
+
+	@param[in,out]	dst_scan	出力先 (Exif のバイト配列)
+	@param[in]		src_scan	入力元 (Exif のバイト配列)
+	@param[in]		item		対象の項目
+	@param[in]		offset		対象の項目が持つ Offset に加算する値 (通常は TiffOffset です。)
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_GetValue(const unsigned char* src, ExEndianType endian_type)
+	@brief		値の取得
+
+	@tparam	TD	出力側の要素の型
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_GetValues(TxScanner1D<TD>& dst_scan, const TxScanner1D<unsigned char>& src_scan, const TxExifItem& item, int offset)
+	@brief		値の取得 (一括処理)
+
+	@tparam	TD	出力側の要素の型
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_SetValue(unsigned char* dst, const TS* src, ExEndianType endian_type)
+	@brief		値の設定
+
+	@tparam	TS	入力側の要素の型
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Internals
+	@fn			fnPRV_Exif_SetValues(TxScanner1D<unsigned char>& dst_scan, const TxScanner1D<TS>& src_scan, const TxExifItem& item, int offset)
+	@brief		値の設定 (一括処理)
+
+	@tparam	TS	入力側の要素の型
+*/
+
+// ////////////////////////////////////////////////////////////
+// EXTERN VARIABLE
+
+// ////////////////////////////////////////////////////////////
+// FUNCTION
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_Attach	(HxModule handle, TxExif src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_Resize	(HxModule handle, int length)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_Reset	(HxModule hdst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_EndianType	(HxModule handle, ExEndianType* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_GetItems	(HxModule handle, HxModule hval)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_GetPurgedExif	(HxModule handle, HxModule hval)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_GetValue	(HxModule handle, TxExifItem item, HxModule hval)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Exif_SetValue	(HxModule handle, TxExifItem item, HxModule hval)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+
+}

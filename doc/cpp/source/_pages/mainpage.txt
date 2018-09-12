@@ -1,0 +1,13 @@
+// =================================================================
+/*!
+	@mainpage	Main Page
+
+	本書には、XIE の全般的な説明を記載しています。\n
+	本ソフトウェアを使用する前に @ref page_Begining "はじめに" の項を必ずお読みください。\n
+
+	@par	目次:
+			- @subpage	page_Begining	"はじめに"
+			- @subpage	page_Outline	"概要"
+			- @subpage	page_Tutorial	"チュートリアル"
+			.
+*/

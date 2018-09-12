@@ -1,0 +1,97 @@
+/*!
+	@file	TxScreenListItem.h
+	@brief	スクリーンリスト構造体
+*/
+/*!
+	@internal
+	@file	TxScreenListItem.cpp
+	@brief	スクリーンリスト構造体
+*/
+/*!
+	@def	_TXSCREENLISTITEM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Structures
+	@struct		TxScreenListItem
+	@brief		スクリーンリスト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::Handle
+	@brief	ウィンドウハンドル
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::Name
+	@brief	ウィンドウ名称
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::X
+	@brief	ウィンドウ位置 (X 座標)
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::Y
+	@brief	ウィンドウ位置 (Y 座標)
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::Width
+	@brief	ウィンドウの幅
+*/
+// ===================================================================
+/*!
+	@var	TxScreenListItem::Height
+	@brief	ウィンドウの高さ
+*/
+// ===================================================================
+/*!
+	@fn		TxScreenListItem::TxScreenListItem()
+	@brief	コンストラクタ
+*/
+#if defined(_MSC_VER)
+// ===================================================================
+/*!
+	@fn		TxScreenListItem::TxScreenListItem(HWND handle, char* name, int x, int y, int width, int height)
+	@brief	コンストラクタ
+
+	@param[in]		handle		ウィンドウハンドル
+	@param[in]		name		ウィンドウ名称
+	@param[in]		x			ウィンドウ位置 (X 座標)
+	@param[in]		y			ウィンドウ位置 (Y 座標)
+	@param[in]		width		ウィンドウの幅
+	@param[in]		height		ウィンドウの高さ
+*/
+#else
+// ===================================================================
+/*!
+	@fn		TxScreenListItem::TxScreenListItem(TxIntPtr handle, char* name, int x, int y, int width, int height)
+	@brief	コンストラクタ
+
+	@param[in]		handle		ウィンドウハンドル
+	@param[in]		name		ウィンドウ名称
+	@param[in]		x			ウィンドウ位置 (X 座標)
+	@param[in]		y			ウィンドウ位置 (Y 座標)
+	@param[in]		width		ウィンドウの幅
+	@param[in]		height		ウィンドウの高さ
+*/
+#endif
+// ===================================================================
+/*!
+	@fn		TxScreenListItem::Default()
+	@brief	既定値
+
+	@return	既定値で初期化した構造体を返します。
+*/
+
+}
+}

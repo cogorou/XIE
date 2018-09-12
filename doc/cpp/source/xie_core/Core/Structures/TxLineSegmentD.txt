@@ -1,0 +1,149 @@
+/*!
+	@file	TxLineSegmentD.h
+	@brief	線分構造体 (実数版)
+*/
+/*!
+	@internal
+	@file	TxLineSegmentD.cpp
+	@brief	線分構造体 (実数版)
+*/
+/*!
+	@def	_TXLINESEGMENTD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxLineSegmentD
+	@brief		線分構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxLineSegmentD::X1
+	@brief	始点(X)
+*/
+// ===================================================================
+/*!
+	@var	TxLineSegmentD::Y1
+	@brief	始点(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxLineSegmentD::X2
+	@brief	終点(X)
+*/
+// ===================================================================
+/*!
+	@var	TxLineSegmentD::Y2
+	@brief	終点(Y)
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::TxLineSegmentD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::TxLineSegmentD(double x1, double y1, double x2, double y2)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x1		始点(X)
+	@param[in]		y1		始点(Y)
+	@param[in]		x2		終点(X)
+	@param[in]		y2		終点(Y)
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::TxLineSegmentD(TxPointD st, TxPointD ed)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		st		始点
+	@param[in]		ed		終点
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::operator == (const TxLineSegmentD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::operator != (const TxLineSegmentD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineSegmentD::operator TxLineSegmentI () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxLineSegmentI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::Point1() const
+	@brief	端点 1 の取得
+
+	@return	現在設定されている端点 1 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::Point1(const TxPointD& value)
+	@brief	端点 1 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			端点 1 を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::Point2() const
+	@brief	端点 2 の取得
+
+	@return	現在設定されている端点 2 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxLineSegmentD::Point2(const TxPointD& value)
+	@brief	端点 2 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			端点 2 を設定します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxLineSegmentD::ToLine () const  
+	@brief	直線への変換
+
+	@return	この線分上を平行に通る直線を返します。
+*/
+
+}

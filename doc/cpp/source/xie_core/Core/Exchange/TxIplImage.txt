@@ -1,0 +1,260 @@
+/*!
+	@file	TxIplImage.h
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@internal
+	@file	TxIplImage.cpp
+	@brief	画像オブジェクト構造体
+*/
+/*!
+	@def	_TXIPLIMAGE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Exchange
+	@struct		TxIplImage
+	@brief		画像オブジェクト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::imageData
+	@brief	領域の先頭アドレス (２次元配列×１チャネル) ※widthStep×height の連続領域であること。
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::width
+	@brief	幅 (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::height
+	@brief	高さ (pixels) [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::depth
+	@brief	ピクセルサイズ [IPL_DEPTH]
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::nChannels
+	@brief	チャネル数 [0, 1~4]
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::widthStep
+	@brief	水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::nSize
+	@brief	IplImage 構造体のサイズ (bytes)
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::ID
+	@brief	バージョン (常に 0 です。)
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::dataOrder
+	@brief	画像データの並び [IPL_DATA_ORDER] ※IPL_DATA_ORDER_PIXEL のみ対応しています。
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::origin
+	@brief	画像データの始点 [IPL_ORIGIN] ※IPL_ORIGIN_TL のみ対応しています。
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::align
+	@brief	(Ignored) 画像データの水平方向サイズのアライメント [IPL_ALIGN]
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::alphaChannel
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::colorModel
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::channelSeq
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::roi
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::maskROI
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::imageId
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::tileInfo
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::imageSize
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::BorderMode
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::BorderConst
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@var	TxIplImage::imageDataOrigin
+	@brief	(Ignored) 
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::TxIplImage()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::TxIplImage(void* addr, int _width, int _height, int _depth, int channels, int step)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (２次元配列×１チャネル) ※step×height の連続領域であること。
+	@param[in]		_width		幅 (pixels) [0, 1~]
+	@param[in]		_height		高さ (pixels) [0, 1~]
+	@param[in]		_depth		ピクセルサイズ [IPL_DEPTH]
+	@param[in]		channels	チャネル数 [0, 1~4]
+	@param[in]		step		水平方向サイズ (bytes) [0, 1~] ※要素サイズ×width 以上。
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::TxIplImage(TxImage src, int ch)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src		元になる画像情報
+	@param[in]		ch		チャネル指標 [0~(src.Channels-1)]
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::operator == (const TxIplImage& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::operator != (const TxIplImage& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::operator TxImage() const;
+	@brief	データ変換
+
+	@return	TxImage 構造体に変換して返します。\n
+			互換性がない場合は Model が @ref TxModel::Default() "Default" に設定された状態で返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::CopyTo(IxModule& dst) const
+	@brief	複製
+
+	@param[in,out]	dst		複製先
+*/
+// ===================================================================
+/*!
+	@fn		TxIplImage::CopyFrom(const IxModule& src)
+	@brief	複製
+
+	@param[in]		src		複製元
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// Export
+//
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IplImage_Equals	(TxIplImage src, TxIplImage cmp)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IplImage_IsValid	(TxIplImage src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IplImage_CopyTo	(TxIplImage src, HxModule dst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IplImage_CopyFrom	(TxIplImage dst, HxModule src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

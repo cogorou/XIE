@@ -1,0 +1,8 @@
+User::CxScreenCapture_01
+10:13:50.015: index=0
+10:13:50.046: index=1
+10:13:51.561: index=2
+10:13:51.592: index=3
+10:13:53.578: index=4
+10:13:53.603: index=5
+User::CxScreenCapture_01: Elapsed=5479.438366 msec

@@ -1,0 +1,18 @@
+User::CxMutex_01
+Start
+thread1: ans = 1
+thread1: ans = 2
+thread1: ans = 3
+thread1: ans = 4
+thread1: ans = 5
+thread1: ans = 6
+thread1: ans = 7
+thread1: ans = 8
+thread1: ans = 9
+thread1: ans = 10
+thread2: ans = 20
+thread2: ans = 40
+thread2: ans = 80
+thread2: ans = 160
+thread2: ans = 320
+Finish

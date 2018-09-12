@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1d25ca27-66df-47f7-8520-dfd45f11791e}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.5.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <FrameworkVersion>.NET Framework 4.0</FrameworkVersion>
+    <OutputPath>Output\</OutputPath>
+    <HtmlHelpName>XIE-cli</HtmlHelpName>
+    <Language>ja-JP</Language>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="..\..\bin\XIE.Core.dll" />
+      <DocumentationSource sourceFile="..\..\bin\XIE.Core.xml" />
+      <DocumentationSource sourceFile="..\..\bin\XIE.Tasks.dll" />
+      <DocumentationSource sourceFile="..\..\bin\XIE.Tasks.xml" />
+    </DocumentationSources>
+    <SyntaxFilters>Standard</SyntaxFilters>
+    <SdkLinkTarget>Blank</SdkLinkTarget>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <PresentationStyle>VS2005</PresentationStyle>
+    <Preliminary>False</Preliminary>
+    <NamingMethod>Guid</NamingMethod>
+    <HelpTitle>XIE - .NET Framework</HelpTitle>
+    <ContentPlacement>AboveNamespaces</ContentPlacement>
+    <WorkingPath>Working\</WorkingPath>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <IndentHtml>False</IndentHtml>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <CppCommentsFixup>False</CppCommentsFixup>
+    <CleanIntermediates>False</CleanIntermediates>
+    <FooterText>Copyright &amp;#169%3b 2013 Eggs Imaging Laboratory</FooterText>
+    <CopyrightHref>https://github.com/cogorou</CopyrightHref>
+    <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
+    <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
+    <IncludeFavorites>True</IncludeFavorites>
+    <BinaryTOC>True</BinaryTOC>
+    <SandcastlePath>
+    </SandcastlePath>
+    <BuildLogFile>_build.log</BuildLogFile>
+    <ComponentConfigurations>
+      <ComponentConfig id="IntelliSense Component" enabled="True" xmlns="">
+        <component id="IntelliSense Component" type="Microsoft.Ddue.Tools.IntelliSenseComponent" assembly="{@SandcastlePath}ProductionTools\BuildComponents.dll">
+          <!-- Output options (optional)
+					 Attributes:
+							Include Namespaces (false by default)
+							Namespaces filename ("Namespaces" if not specified or empty)
+							Directory (current folder if not specified or empty) -->
+          <output includeNamespaces="false" namespacesFile="Namespaces" folder="{@OutputFolder}" />
+        </component>
+      </ComponentConfig>
+    </ComponentConfigurations>
+    <PlugInConfigurations />
+    <RootNamespaceTitle>Modules</RootNamespaceTitle>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="XIE" isDocumented="True">XIE の最上位ネームスペース</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Effectors" isDocumented="True">イフェクタ関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Forms" isDocumented="True">フォーム関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.GDI" isDocumented="True">表示機能</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.GPU" isDocumented="True">GPU 関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Ptr" isDocumented="True">ポインタ型</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Log" isDocumented="True">ログ関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.IO" isDocumented="True">シリアル通信関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Media" isDocumented="True">メディア関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Net" isDocumented="True">ネットワーク関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Tasks" isDocumented="True">タスク関連</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.Tasks.Forms" isDocumented="True">タスク関連フォーム</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="XIE.CV" isDocumented="True">OpenCV 関連</NamespaceSummaryItem>
+    </NamespaceSummaries>
+    <CatalogName>VisualStudio11</CatalogName>
+    <TocParentId>-1</TocParentId>
+    <TocParentVersion>100</TocParentVersion>
+    <TopicVersion>100</TopicVersion>
+    <TocOrder>-1</TocOrder>
+    <ProductTitle>XIE</ProductTitle>
+    <VendorName>Eggs Imaging Laboratory</VendorName>
+    <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
+    <CatalogVersion>100</CatalogVersion>
+    <CatalogProductId>VS</CatalogProductId>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in
+       order for Visual Studio to perform the build.  The others are optional
+       common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

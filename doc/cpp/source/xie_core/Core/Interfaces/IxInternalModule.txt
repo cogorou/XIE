@@ -1,0 +1,27 @@
+/*!
+	@file	IxInternalModule.h
+	@brief	モジュールインターフェース
+*/
+/*!
+	@def	_IXINTERNALMODULE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxInternalModule
+	@brief		内部にモジュールを持つ機能のインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxInternalModule::GetModule() const
+	@brief	内部モジュールの取得
+
+	@return	このオブジェクトの内部モジュールを返します。
+*/
+
+}

@@ -1,0 +1,203 @@
+/*!
+	@file	CxIntegral.h
+	@brief	積分画像生成クラス
+*/
+/*!
+	@internal
+	@file	CxIntegral.cpp
+	@brief	積分画像生成クラス
+*/
+/*!
+	@def	_CXINTEGRAL_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_Integral	(HxModule hsrc, HxModule hdst, HxModule hmask, int mode)
+	@brief		積分画像生成
+
+	@param[in]		hsrc			入力元
+	@param[in,out]	hdst			出力先
+	@param[in]		hmask			マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		mode			処理モード [1:総和、2:２乗の総和]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxIntegral
+	@brief		積分画像生成クラス
+
+	入力の積分を出力先のオブジェクトに格納します。\n
+	パラメータの @ref Mode によって式が異なります。\n
+	\n
+	<b>Mode = 1)</b> \n
+	式１) dst<sub>y,x</sub> = Σ<sub>i=[0,y]</sub>Σ<sub>j=[0,x]</sub>( src<sub>i,j</sub> ) \n
+	\n
+	<b>Mode = 2)</b> \n
+	式２) dst<sub>y,x</sub> = Σ<sub>i=[0,y]</sub>Σ<sub>j=[0,x]</sub>( src<sub>i,j</sub><sup>2</sup> ) \n
+	\n
+	処理可能な条件:
+	-	入出力の Size, Model.Pack, Channels が、それぞれ一致していること。\n
+	-	入力の Model.Type が下記の何れかであること。\n
+		- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+		.
+	-	出力の Model.Type が下記の何れかであること。\n
+		- ExType (F64) \n
+		.
+	.
+
+	@par	Examples:
+			@includelineno	CxIntegral_01.cpp
+
+			@par
+			出力結果)
+			@include	CxIntegral_01.txt
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxIntegral::Mode
+	@brief	処理モード [1:総和、2:２乗の総和]
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::CxIntegral(const CxIntegral& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxIntegral &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::CxIntegral(int mode)
+	@brief	コンストラクタ
+
+	@param[in]		mode			処理モード [1:総和、2:２乗の総和]
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::~CxIntegral()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::operator = ( const CxIntegral& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::operator == ( const CxIntegral& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::operator != ( const CxIntegral& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxIntegral(const CxIntegral &src) \n
+		@ref operator=(const CxIntegral &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxIntegral &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxIntegral::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

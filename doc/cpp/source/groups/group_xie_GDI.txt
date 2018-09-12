@@ -1,0 +1,52 @@
+namespace xie
+{
+namespace GDI
+{
+// =================================================================
+/*!
+	@defgroup	group_xie_GDI	xie.GDI
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Axi	Axi
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Classes	Classes
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Interfaces	Interfaces
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Structures	Structures
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Typedefs	Typedefs
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Enumerations	Enumerations
+	*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_GDI_Diagnostics	Diagnostics
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_GDI_Exports	Exports
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_GDI_Internals	Internals
+	*/
+/*!
+	@}
+*/
+}
+}

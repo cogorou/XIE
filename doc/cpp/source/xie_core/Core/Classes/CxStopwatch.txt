@@ -1,0 +1,206 @@
+/*!
+	@file	CxStopwatch.h
+	@brief	時間計測クラス
+*/
+/*!
+	@internal
+	@file	CxStopwatch.cpp
+	@brief	時間計測クラス
+*/
+/*!
+	@def	_CXSTOPWATCH_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxStopwatch
+	@brief		時間計測クラス
+
+	@remarks
+			処理時間を計測するクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxStopwatch_01.cpp
+
+			@par
+			出力結果)
+			@include	CxStopwatch_01.txt
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::CxStopwatch()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部では @ref Reset と @ref Start を実行しています。
+
+	@sa
+		@ref Reset \n
+		@ref Start \n
+		@ref Stop \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::CxStopwatch( const CxStopwatch& src )
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::~CxStopwatch()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::operator = ( const CxStopwatch& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return		複製後の自身への参照を返します。
+
+	@sa
+		@ref Lap \n
+		@ref Elapsed \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::operator == ( const CxStopwatch& src ) const;
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@sa
+		@ref Lap \n
+		@ref Elapsed \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::operator != ( const CxStopwatch& src ) const;
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@sa
+		@ref Lap \n
+		@ref Elapsed \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::Reset()
+	@brief	リセット
+
+	@ref Lap フィールドと @ref Elapsed フィールドを 0 にリセットします。
+
+	@sa
+		@ref Lap \n
+		@ref Elapsed \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::Start()
+	@brief	開始
+
+	@remarks
+			時間計測を開始します。\n
+
+	@sa
+		@ref Stop \n
+*/
+// ===================================================================
+/*!
+	@fn		CxStopwatch::Stop()
+	@brief	停止
+
+	@remarks
+			時間計測を停止します。\n
+
+			@par
+			前回 @ref Start (または @ref Stop) を実行した時刻から 現在までの時間を @ref Lap フィールド に設定します。\n
+			また、@ref Lap の値を @ref Elapsed に加算します。\n
+
+	@sa
+		@ref Start \n
+		@ref Lap \n
+		@ref Elapsed \n
+*/
+// ===================================================================
+/*!
+	@var	CxStopwatch::Lap
+	@brief	ラップタイム (msec)
+
+	@remarks
+			この値は、時間計測の開始時刻から停止時刻までの差を表します。\n
+			@ref Stop を実行した時に更新されます。\n
+			@ref Reset を実行した時に 0 にリセットされます。\n
+			開始時刻は @ref Start または @ref Stop によって更新されます。\n
+			停止時刻は @ref Stop によって更新されます。\n
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+		@ref Reset \n
+*/
+// ===================================================================
+/*!
+	@var	CxStopwatch::Elapsed
+	@brief	経過時間 (msec)
+
+	@remarks
+			この値はラップタイムの積算を表します。\n
+			@ref Stop を実行した時に @ref Lap が加算されます。\n
+			@ref Reset を実行した時に 0 にリセットされます。\n
+
+	@sa
+		@ref Reset \n
+		@ref Stop \n
+		@ref Lap \n
+*/
+// ===================================================================
+/*!
+	@internal
+	@var	CxStopwatch::Time
+	@brief	開始時刻
+
+	@ref Start を実行したときの時刻を保管するフィールドです。\n
+	gcc では timeval 構造体を使用します。
+
+	@sa
+		@ref Start \n
+		@ref Freq \n
+*/
+// ===================================================================
+/*!
+	@internal
+	@var	CxStopwatch::Freq
+	@brief	プロセッサ周波数
+
+	@ref Stop を実行したときに @ref Lap の計測に使用します。\n
+
+	式) Lap = ((now - Time) / Freq) * 1000 \n
+
+	このフィールドは gcc では存在しません。
+
+	@sa
+		@ref Stop \n
+		@ref Lap \n
+		@ref Time \n
+*/
+
+}

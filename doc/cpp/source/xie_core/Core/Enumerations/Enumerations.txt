@@ -1,0 +1,532 @@
+namespace fie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExStatus
+	@brief		処理結果定数
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>Success</td>
+		<td>正常</td>
+		</tr>
+	<tr>
+		<td>InvalidParam</td>
+		<td>パラメータが不正です。</td>
+		</tr>
+	<tr>
+		<td>InvalidObject</td>
+		<td>オブジェクトが不正です。</td>
+		</tr>
+	<tr>
+		<td>MemoryError</td>
+		<td>メモリの確保に失敗しました。</td>
+		</tr>
+	<tr>
+		<td>NotFound</td>
+		<td>見つかりません。</td>
+		</tr>
+	<tr>
+		<td>Impossible</td>
+		<td>処理できない条件です。</td>
+		</tr>
+	<tr>
+		<td>Interrupted</td>
+		<td>処理が中断しました。</td>
+		</tr>
+	<tr>
+		<td>IOError</td>
+		<td>アクセスに失敗しました。</td>
+		</tr>
+	<tr>
+		<td>Timeout</td>
+		<td>待機時間を超過しました。</td>
+		</tr>
+	<tr>
+		<td>Unsupported</td>
+		<td>サポートしていません。</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExType
+	@brief		要素の型
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>不明</td>
+		</tr>
+	<tr>
+		<td>Ptr</td>
+		<td>ポインタ</td>
+		</tr>
+	<tr>
+		<td>S8</td>
+		<td>整数 (8bit) 符号付き</td>
+		</tr>
+	<tr>
+		<td>U8</td>
+		<td>整数 (8bit) 符号なし</td>
+		</tr>
+	<tr>
+		<td>S16</td>
+		<td>整数 (16bit) 符号付き</td>
+		</tr>
+	<tr>
+		<td>U16</td>
+		<td>整数 (16bit) 符号なし</td>
+		</tr>
+	<tr>
+		<td>S32</td>
+		<td>整数 (32bit) 符号付き</td>
+		</tr>
+	<tr>
+		<td>U32</td>
+		<td>整数 (32bit) 符号なし</td>
+		</tr>
+	<tr>
+		<td>S64</td>
+		<td>整数 (64bit) 符号付き</td>
+		</tr>
+	<tr>
+		<td>U64</td>
+		<td>整数 (64bit) 符号なし</td>
+		</tr>
+	<tr>
+		<td>F32</td>
+		<td>実数 (32bit) (単精度浮動小数点型)</td>
+		</tr>
+	<tr>
+		<td>F64</td>
+		<td>実数 (64bit) (倍精度浮動小数点型)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExBoolean
+	@brief		ブーリアン
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>False</td>
+		<td>偽</td>
+		</tr>
+	<tr>
+		<td>True</td>
+		<td>真</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExScanDir
+	@brief		走査方向
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>X</td>
+		<td>X 方向</td>
+		</tr>
+	<tr>
+		<td>Y</td>
+		<td>Y 方向</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExEndianType
+	@brief		エンディアンタイプ
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>None</td>
+		<td>不明</td>
+		</tr>
+	<tr>
+		<td>LE</td>
+		<td>リトルエンディアン</td>
+		</tr>
+	<tr>
+		<td>BE</td>
+		<td>ビッグエンディアン</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExMath
+	@brief		数理関数種別
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>Abs</td>
+		<td>絶対値
+
+		式) dst<sub>x</sub> = | src<sub>x</sub> | \n
+		</td>
+		</tr>
+	<tr>
+		<td>Sign</td>
+		<td>符号化
+
+		式) dst<sub>x</sub> = (src<sub>x</sub> == 0) ? 0 : (src<sub>x</sub> &lt; 0) ? -1 : +1 \n
+		</td>
+		</tr>
+	<tr>
+		<td>Sqrt</td>
+		<td>平方根
+
+		式) dst<sub>x</sub> = √(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Exp</td>
+		<td>指数関数
+
+		式) dst<sub>x</sub> = exp(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Log</td>
+		<td>自然対数（底 e の対数）
+
+		式) dst<sub>x</sub> = log(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Log10</td>
+		<td>常用対数（底 10 の対数）
+
+		式) dst<sub>x</sub> = log10(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Sin</td>
+		<td>正弦
+
+		式) dst<sub>x</sub> = sin(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Cos</td>
+		<td>余弦
+
+		式) dst<sub>x</sub> = cos(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Tan</td>
+		<td>正接
+
+		式) dst<sub>x</sub> = tan(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Sinh</td>
+		<td>双曲線正弦（ハイパボリック サイン）
+
+		式) dst<sub>x</sub> = sinh(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Cosh</td>
+		<td>双曲線余弦（ハイパボリック コサイン）
+
+		式) dst<sub>x</sub> = cosh(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Tanh</td>
+		<td>双曲線正接（ハイパボリック タンジェント）
+
+		式) dst<sub>x</sub> = tanh(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Asin</td>
+		<td>逆正弦（アーク サイン）
+
+		式) dst<sub>x</sub> = sin<sup>-1</sup>(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Acos</td>
+		<td>逆余弦（アーク コサイン）
+
+		式) dst<sub>x</sub> = cos<sup>-1</sup>(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Atan</td>
+		<td>逆正接（アーク タンジェント）
+
+		式) dst<sub>x</sub> = tan<sup>-1</sup>(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Ceiling</td>
+		<td>天井関数
+
+		式) dst<sub>x</sub> = ceil(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Floor</td>
+		<td>床関数
+
+		式) dst<sub>x</sub> = floor(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Round</td>
+		<td>四捨五入
+
+		式) dst<sub>x</sub> = round(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Truncate</td>
+		<td>小数部の切捨て
+
+		式) dst<sub>x</sub> = trunc(src<sub>x</sub>) \n
+		</td>
+		</tr>
+	<tr>
+		<td>Modf</td>
+		<td>小数部の抽出
+
+		式) dst<sub>x</sub> = modf(src<sub>x</sub>, pint) \n
+		</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExOpe1A
+	@brief		二項演算種別 (各要素と固定値の算術演算)
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>Add</td>
+		<td>加算</td>
+		</tr>
+	<tr>
+		<td>Mul</td>
+		<td>乗算</td>
+		</tr>
+	<tr>
+		<td>Sub</td>
+		<td>減算</td>
+		</tr>
+	<tr>
+		<td>SubInv</td>
+		<td>減算 (左辺=固定値、右辺=要素)</td>
+		</tr>
+	<tr>
+		<td>Div</td>
+		<td>除算</td>
+		</tr>
+	<tr>
+		<td>DivInv</td>
+		<td>除算 (左辺=固定値、右辺=要素)</td>
+		</tr>
+	<tr>
+		<td>Mod</td>
+		<td>剰余</td>
+		</tr>
+	<tr>
+		<td>ModInv</td>
+		<td>剰余 (左辺=固定値、右辺=要素)</td>
+		</tr>
+	<tr>
+		<td>Pow</td>
+		<td>累乗</td>
+		</tr>
+	<tr>
+		<td>PowInv</td>
+		<td>累乗 (左辺=固定値、右辺=要素)</td>
+		</tr>
+	<tr>
+		<td>Atan2</td>
+		<td>逆正接</td>
+		</tr>
+	<tr>
+		<td>Atan2Inv</td>
+		<td>逆正接 (左辺=固定値、右辺=要素)</td>
+		</tr>
+	<tr>
+		<td>Diff</td>
+		<td>差分</td>
+		</tr>
+	<tr>
+		<td>Min</td>
+		<td>比較 (小なり)</td>
+		</tr>
+	<tr>
+		<td>Max</td>
+		<td>比較 (大なり)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExOpe1L
+	@brief		二項演算種別 (各要素と固定値の論理演算)
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>And</td>
+		<td>論理積</td>
+		</tr>
+	<tr>
+		<td>Nand</td>
+		<td>否定論理積</td>
+		</tr>
+	<tr>
+		<td>Or</td>
+		<td>論理和</td>
+		</tr>
+	<tr>
+		<td>Xor</td>
+		<td>排他的論理和</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExOpe2A
+	@brief		二項演算種別 (要素間の算術演算)
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>Add</td>
+		<td>加算</td>
+		</tr>
+	<tr>
+		<td>Mul</td>
+		<td>乗算</td>
+		</tr>
+	<tr>
+		<td>Sub</td>
+		<td>減算</td>
+		</tr>
+	<tr>
+		<td>Div</td>
+		<td>除算</td>
+		</tr>
+	<tr>
+		<td>Mod</td>
+		<td>剰余</td>
+		</tr>
+	<tr>
+		<td>Pow</td>
+		<td>累乗</td>
+		</tr>
+	<tr>
+		<td>Atan2</td>
+		<td>逆正接</td>
+		</tr>
+	<tr>
+		<td>Diff</td>
+		<td>差分</td>
+		</tr>
+	<tr>
+		<td>Min</td>
+		<td>比較 (小なり)</td>
+		</tr>
+	<tr>
+		<td>Max</td>
+		<td>比較 (大なり)</td>
+		</tr>
+	</table>
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Enumerations
+	@enum		ExOpe2L
+	@brief		二項演算種別 (要素間の論理演算)
+
+	<table border="1" cellspacing="0" cellpadding="3">
+	<tr>
+		<td align="center" class="indexkey" width=100>フィールド名</td>
+		<td align="center" class="indexkey" width=500>説明</td>
+		</tr>
+	<tr>
+		<td>And</td>
+		<td>論理積</td>
+		</tr>
+	<tr>
+		<td>Nand</td>
+		<td>否定論理積</td>
+		</tr>
+	<tr>
+		<td>Or</td>
+		<td>論理和</td>
+		</tr>
+	<tr>
+		<td>Xor</td>
+		<td>排他的論理和</td>
+		</tr>
+	</table>
+*/
+
+}

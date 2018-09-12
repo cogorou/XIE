@@ -1,0 +1,246 @@
+/*!
+	@file	CxHsvToRgb.h
+	@brief	色空間変換クラス (HSV から RGB への変換)
+*/
+/*!
+	@internal
+	@file	CxHsvToRgb.cpp
+	@brief	色空間変換クラス (HSV から RGB への変換)
+*/
+/*!
+	@internal
+	@file	CxHsvToRgb.hpp
+	@brief	色空間変換クラス (HSV から RGB への変換)
+*/
+/*!
+	@def	_CXHSVTORGB_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+/*!
+	@internal
+	@def	_CXHSVTORGB_HPP_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_HsvToRgb	(HxModule hsrc, HxModule hdst, HxModule hmask, int depth)
+	@brief		色空間変換 (HSV から RGB への変換)
+
+	@param[in]		hsrc			入力元
+	@param[in,out]	hdst			出力先
+	@param[in]		hmask			マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		depth			ビット深度 [0,1~64]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxHsvToRgb
+	@brief		色空間変換クラス (HSV から RGB への変換)
+
+	HSV 色空間のカラー画像を RGB 色空間に変換して出力先のオブジェクトに格納します。\n
+	\n
+	処理可能な条件:
+		-	入出力の Size, Model, Channels が一致していること。
+		-	入力の Channels (または Model.Pack) が 3 または 4 であること。\n
+		-	入力の Model.Type が下記の何れかであること。\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		.
+		\n
+
+	@par	Examples:
+			@includelineno	CxHsvToRgb_01.cpp
+			
+			@par
+			入力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				</tr>
+			</table>
+			
+			@par
+			HSV 色空間に変換された画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">H</td>
+				<td align="center" class="indexkey">S</td>
+				<td align="center" class="indexkey">V</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxHsvToRgb_01-HSV0.png</td>
+				<td align="center">@image html CxHsvToRgb_01-HSV1.png</td>
+				<td align="center">@image html CxHsvToRgb_01-HSV2.png</td>
+				</tr>
+			</table>
+			※ 彩度(saturation)が 0.5 倍されています。
+			
+			@par
+			HSV 色空間から RGB 色空間に変換された画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html CxHsvToRgb_01-RGB.png</td>
+				</tr>
+			</table>
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxHsvToRgb::Depth
+	@brief	入力画像のビット深度 [0,1~64]
+
+	@sa
+		@ref xie::CxImage::Depth \n
+		@ref xie::CxImage::CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::CxHsvToRgb()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::CxHsvToRgb(const CxHsvToRgb& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxHsvToRgb &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::CxHsvToRgb(int depth)
+	@brief	コンストラクタ
+
+	@param[in]		depth				ビット深度 [0,1~64]
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::~CxHsvToRgb()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::operator = ( const CxHsvToRgb& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::operator == ( const CxHsvToRgb& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::operator != ( const CxHsvToRgb& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxHsvToRgb(const CxHsvToRgb &src) \n
+		@ref operator=(const CxHsvToRgb &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxHsvToRgb &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvToRgb::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

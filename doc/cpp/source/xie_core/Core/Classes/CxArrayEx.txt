@@ -1,0 +1,451 @@
+/*!
+	@file	CxArrayEx.h
+	@brief	配列テンプレートクラス
+*/
+/*!
+	@def	_CXARRAYEX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxArrayEx
+	@brief		配列テンプレートクラス
+
+	@tparam	TE	要素の型
+
+	@remarks
+			１次元配列を管理するテンプレートクラスです。\n
+*/
+// ===================================================================
+/*!
+	@var	CxArrayEx::m_Address
+	@brief	配列の先頭アドレス
+*/
+// ===================================================================
+/*!
+	@var	CxArrayEx::m_Length
+	@brief	要素数 [0~]
+*/
+// ===================================================================
+/*!
+	@var	CxArrayEx::m_IsAttached
+	@brief	アタッチ状態
+*/
+// ===================================================================
+/*!
+	@var	CxArrayEx::m_UseInternalAllocator
+	@brief	内部のアロケータを使用するか否か
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			領域は未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx(int length, bool use_internal_allocator)
+	@brief	コンストラクタ
+
+	@param[in]		length					要素数 [0~]
+	@param[in]		use_internal_allocator	内部のアロケータを使用するか否か \n
+											- true : BufferAlloc/BufferFree を使用します。
+											- false : new/delete を使用します。
+											.
+											\n
+
+	@remarks
+			指定された要素数の領域を確保します。\n
+			内部では @ref Resize を呼び出しています。\n
+			@a use_internal_allocator について詳しくは
+			@ref Resize の説明をご参照ください。
+
+	@sa
+		@ref Resize \n
+		@ref xie::Axi::MemoryAlloc \n
+		@ref xie::Axi::MemoryFree \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx(const CxArrayEx& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@remarks
+			オブジェクトの内容を複製します。\n
+			内部では代入オペレータ(@ref operator=(const CxArrayEx& src))を呼び出しています。
+
+	@sa
+		@ref operator=(const CxArrayEx& src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx(CxArrayEx&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			オブジェクトの内容を複製します。\n
+			内部では移動オペレータ(@ref operator=(CxArrayEx&& src))を呼び出しています。
+
+	@sa
+		@ref operator=(CxArrayEx&& src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx(const std::vector<TE>& src)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src		複製元
+
+	@remarks
+			配列の要素を複製してオブジェクトを構築します。\n
+			内部では代入オペレータ(@ref operator=(const std::vector<TE>& src))を呼び出しています。
+
+	@sa
+		@ref operator=(const std::vector<TE>& src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::CxArrayEx(const std::initializer_list<TE>& src)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		src		複製元
+
+	@remarks
+			配列の要素を複製してオブジェクトを構築します。\n
+			内部では代入オペレータ(@ref operator=(const std::initializer_list<TE>& src))を呼び出しています。
+
+	@sa
+		@ref operator=(const std::initializer_list<TE>& src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::~CxArrayEx()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator = (const CxArrayEx& src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return		複製後の自身への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator = (CxArrayEx&& src)
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return		移動後の自身への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator = (const std::vector<TE>& src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return		複製後の自身への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator = (const std::initializer_list<TE>& src)
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return		複製後の自身への参照を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator std::vector<TE>() const
+	@brief	キャストオペレータ
+
+	@return		自身の要素を複製した配列を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator + (const CxArrayEx& src) const
+	@brief	配列の連結
+
+	@param[in]		src		連結する配列
+
+	@return	自身と指定された文字列を連結した新しいオブジェクトを返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator += (const CxArrayEx& src)
+	@brief	配列の連結
+
+	@param[in]		src		連結する配列
+
+	@return		自身に指定された配列を連結して返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Dispose()
+	@brief	解放
+
+	@remarks
+			現在の配列を解放します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::IsValid() const
+	@brief	有効性の検査
+
+	@retval		true	有効
+	@retval		false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効と判断します。\n
+			-	Address が NULL でない。
+			-	Length が 1 以上である。
+			\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Resize(int length, bool use_internal_allocator)
+	@brief	確保
+
+	@param[in]		length					要素数 [0~]
+	@param[in]		use_internal_allocator	内部のアロケータを使用するか否か \n
+											- true : MemoryAlloc/MemoryFree を使用します。
+											- false : new/delete を使用します。
+											.
+											\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の配列を解放し、新しく配列を確保します。\n
+			@a length に 0 を指定した場合は @ref Dispose と等価です。\n
+			\n
+
+	@par	use_internal_allocator:
+			@a use_internal_allocator は、既定では false を指定します。
+			要素の型(TE)がクラスの場合は true を指定しないでください。
+			構造体やビルトイン型の場合は true を指定した方が都合が良い場合があります。
+			\n
+			false の場合、要素(TE)を new で確保し、delete で開放します。
+			new/delete オペレータは呼び出し元の runtime に従うので
+			new/delete が行われる箇所の runtime が一致している必要があります。
+			一致していない場合は解放時にアプリケーションが異常終了します。
+			この問題の対策として基底クラス(@ref CxModule)で new/delete オペレータをオーバーロードしています。
+			そうすることにより new/delete が行われる箇所に関わらず、
+			@ref CxModule の new/delete が呼び出されるようになり、
+			runtime の不一致を防ぐ事ができます。
+			但し、@ref CxModule の派生クラスに限ります。\n
+			\n
+			C++ のクラスの場合は、前述のような対策ができるのですが、
+			構造体やビルトイン型はできない（不都合がある）ので、
+			代替の策として @a use_internal_allocator に true を指定することで
+			runtime の不一致を防げます。
+
+	@sa
+		@ref xie::Axi::MemoryAlloc \n
+		@ref xie::Axi::MemoryFree \n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Clear(TE value)
+	@brief	初期化
+
+	@param[in]		value		初期化値
+
+	@remarks
+			全ての要素の値を指定値で初期化します。\n
+			未確保の場合は例外を発行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Extract(int index, int length) const
+	@brief	初期化
+
+	@param[in]		index		始点 [0~(Length-1)]
+	@param[in]		length		抽出する要素数 [1~]
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+
+	@return		指定された範囲の要素を抽出して返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Address()
+	@brief	配列の先頭アドレス
+
+	@return		配列の先頭アドレスを返します。\n
+				未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Address() const
+	@brief	配列の先頭アドレス
+
+	@return		配列の先頭アドレスを返します。\n
+				未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::Length() const
+	@brief	要素数 [0~]
+
+	@return		現在の要素数を返します。\n
+				未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index		配列指標 [0~]
+
+	@return		該当する要素への参照を返します。\n
+				未確保の場合は例外を発行します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index		配列指標 [0~]
+
+	@return		該当する要素への参照を返します。\n
+				未確保の場合は例外を発行します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1)
+
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(const CxArrayEx<TS2>& src2, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* adrs4)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2)
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(const CxArrayEx<TS2>& src2, const CxArrayEx<TS3>& src3, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* adrs4)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3)
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(const CxArrayEx<TS2>& src2, const CxArrayEx<TS3>& src3, const CxArrayEx<TS4>& src4, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* adrs4)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(const CxArrayEx<TS2>& src2, const CxArrayEx<TS3>& src3, const CxArrayEx<TS4>& src4, const CxArrayEx<TS5>& src5, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TS5		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* adrs4, TS5* adrs5)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		src5	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+// ===================================================================
+/*!
+	@fn		CxArrayEx::ForEach(const CxArrayEx<TS2>& src2, const CxArrayEx<TS3>& src3, const CxArrayEx<TS4>& src4, const CxArrayEx<TS5>& src5, const CxArrayEx<TS6>& src6, TFUNC func)
+	@brief	各要素に対する処理の実行
+
+	@tparam	TS2		オブジェクトの要素の型
+	@tparam	TS3		オブジェクトの要素の型
+	@tparam	TS4		オブジェクトの要素の型
+	@tparam	TS5		オブジェクトの要素の型
+	@tparam	TS6		オブジェクトの要素の型
+	@tparam	TFUNC	関数の型 \n
+					書式) void FUNC(int x, TE* addr1, TS2* addr2, TS3* addr3, TS4* adrs4, TS5* adrs5, TS6* adrs6)
+
+	@param[in]		src2	同時に走査するオブジェクト
+	@param[in]		src3	同時に走査するオブジェクト
+	@param[in]		src4	同時に走査するオブジェクト
+	@param[in]		src5	同時に走査するオブジェクト
+	@param[in]		src6	同時に走査するオブジェクト
+	@param[in]		func	各要素の処理が記述された関数
+*/
+
+}

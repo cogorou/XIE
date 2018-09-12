@@ -1,0 +1,1482 @@
+// ======================================================================
+/*!
+	@page	x16_Action	Action
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html App-Config-x16.png</td>
+				<td>App-Config-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>環境設定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Observer-x16.png</td>
+				<td>App-Observer-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>クリップボード監視機能を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html App-Task-x16.png</td>
+				<td>App-Task-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Ask-OK-x16.png</td>
+				<td>Ask-OK-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>応答を示します。(OK)</td>
+				</tr>
+			<tr>
+				<td>@image html Ask-Cancel-x16.png</td>
+				<td>Ask-Cancel-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>応答を示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html Attach-x16.png</td>
+				<td>Attach-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>アタッチを示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html BreakPoint-x16.png</td>
+				<td>BreakPoint-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ブレークポイントを示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html Chart.Org-x16.png</td>
+				<td>Chart.Org-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>階層を示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html CheckBox-x16.png</td>
+				<td>CheckBox-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>チェックボックスを示します。(Cancel)</td>
+				</tr>
+			<tr>
+				<td>@image html cmd-x16.png</td>
+				<td>cmd-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>コマンド入力を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Color-EyeDropper-x16.png</td>
+				<td>Color-EyeDropper-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>スポイトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Color-LineColor-x16.png</td>
+				<td>Color-LineColor-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>線色を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Next-x16.png</td>
+				<td>Cursor-Next-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>指標を進めることを意味します。</td>
+				</tr>
+			<tr>
+				<td>@image html Cursor-Prev-x16.png</td>
+				<td>Cursor-Prev-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>指標を戻すことを意味します。</td>
+				</tr>
+			<tr>
+				<td>@image html Font-x16.png</td>
+				<td>Font-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>フォントを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html GotoShortcuts-x16.png</td>
+				<td>GotoShortcuts-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>指定位置への移動を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Grab-Oneshot-x16.png</td>
+				<td>Grab-Oneshot-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グラバーのワンショットを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Grab-Start-x16.png</td>
+				<td>Grab-Start-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グラバーの開始を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Grab-Stop-x16.png</td>
+				<td>Grab-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グラバーの停止を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Grab-Pause-x16.png</td>
+				<td>Grab-Pause-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グラバーの一時停止を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html List.Bullet-x16.png</td>
+				<td>List.Bullet-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>リストを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html List.Legend-x16.png</td>
+				<td>List.Legend-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>リストを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html List.Number-x16.png</td>
+				<td>List.Number-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>リストを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html List.Option-x16.png</td>
+				<td>List.Option-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>リストを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-Book-Closed-x16.png</td>
+				<td>Node-Book-Closed-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>フォルダを示します。子ノードが閉じられた時です。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-Book-Opened-x16.png</td>
+				<td>Node-Book-Opened-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>フォルダを示します。子ノードが展開された時です。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-ControlFlow-x16.png</td>
+				<td>Node-ControlFlow-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ノードのコントロールフローを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-DataIn-x16.png</td>
+				<td>Node-DataIn-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ノードのデータ入力を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-DataOut-x16.png</td>
+				<td>Node-DataOut-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ノードのデータ出力を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Node-DataParam-x16.png</td>
+				<td>Node-DataParam-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ノードのパラメータを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-OK-x16.png</td>
+				<td>Notify-OK-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>状態の通知を示します。(正常)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Error-x16.png</td>
+				<td>Notify-Error-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(エラー)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Help-x16.png</td>
+				<td>Notify-Help-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(ヘルプ)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Info-x16.png</td>
+				<td>Notify-Info-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(情報)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-None-x16.png</td>
+				<td>Notify-None-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(なし)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Question-x16.png</td>
+				<td>Notify-Question-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(問い合わせ)</td>
+				</tr>
+			<tr>
+				<td>@image html Notify-Warning-x16.png</td>
+				<td>Notify-Warning-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>状態の通知を示します。(警告)</td>
+				</tr>
+			<tr>
+				<td>@image html PaintBrush-x16.png</td>
+				<td>PaintBrush-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ペイントブラシを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Record-Pause-x16.png</td>
+				<td>Record-Pause-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>記録の一時停止を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Record-Start-x16.png</td>
+				<td>Record-Start-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>記録の開始を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Relationship-x16.png</td>
+				<td>Relationship-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>相関関係を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Key-x16.png</td>
+				<td>Security-Key-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>セキュリティを示します。パスコード設定等で使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Key2-x16.png</td>
+				<td>Security-Key2-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>セキュリティを示します。パスコード設定等で使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Security-Locked-x16.png</td>
+				<td>Security-Locked-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>セキュリティを示します。ログイン/ログオフで使用します。</td>
+				</tr>
+			<tr>
+				<td>@image html Sort-x16.png</td>
+				<td>Sort-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ソートを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html TabPage-x16.png</td>
+				<td>TabPage-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>タブページを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Calculator-x16.png</td>
+				<td>Task-Calculator-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>計算機を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Editor-x16.png</td>
+				<td>Task-Editor-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>タスクエディタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-History-x16.png</td>
+				<td>Task-History-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>履歴を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Link-x16.png</td>
+				<td>Task-Link-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>リンクを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Manual-x16.png</td>
+				<td>Task-Manual-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>手動を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Pushpin-x16.png</td>
+				<td>Task-Pushpin-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>固定を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Repeat-x16.png</td>
+				<td>Task-Repeat-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>繰り返しを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Start-x16.png</td>
+				<td>Task-Start-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの開始を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Step-x16.png</td>
+				<td>Task-Step-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクのステップ実行を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Stop-x16.png</td>
+				<td>Task-Stop-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの停止や中断を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Pause-x16.png</td>
+				<td>Task-Pause-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タスクの一時停止を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Task-Timer-x16.png</td>
+				<td>Task-Timer-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>タイマーを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-Constructor-x16.png</td>
+				<td>Unit-Constructor-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>コンストラクタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-Method-x16.png</td>
+				<td>Unit-Method-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メソッドを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-Property-x16.png</td>
+				<td>Unit-Property-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>プロパティを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-PropertyGet-x16.png</td>
+				<td>Unit-PropertyGet-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>プロパティ（取得）を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-PropertySet-x16.png</td>
+				<td>Unit-PropertySet-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>プロパティ（設定）を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-Scope-x16.png</td>
+				<td>Unit-Scope-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>スコープを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-StepIn-x16.png</td>
+				<td>Unit-StepIn-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ステップインを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-StepOut-x16.png</td>
+				<td>Unit-StepOut-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ステップアウトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Unit-StepOver-x16.png</td>
+				<td>Unit-StepOver-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ステップオーバーを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_Data	Data
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Color-Black-x16.png</td>
+				<td>Color-Black-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>塗り潰し画像(黒色)を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Color-White-x16.png</td>
+				<td>Color-White-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>塗り潰し画像(白色)を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Angle-x16.png</td>
+				<td>Data-Angle-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>角度を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Color-x16.png</td>
+				<td>Data-Color-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>色情報を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-DateTime-x16.png</td>
+				<td>Data-DateTime-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>日時を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-GroupOn-x16.png</td>
+				<td>Data-GroupOn-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グループ化を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-GroupOff-x16.png</td>
+				<td>Data-GroupOff-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>グループ化の解除を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Anchor-x16.png</td>
+				<td>Data-Anchor-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>アンカー付き図形を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Arc-x16.png</td>
+				<td>Data-Arc-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>円弧を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Circle-x16.png</td>
+				<td>Data-Circle-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>真円を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Ellipse-x16.png</td>
+				<td>Data-Ellipse-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>楕円を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Line-x16.png</td>
+				<td>Data-Line-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>直線を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-LineSegment-x16.png</td>
+				<td>Data-LineSegment-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>線分を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Point-x16.png</td>
+				<td>Data-Point-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>点を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Polyline-x16.png</td>
+				<td>Data-Polyline-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>多角形を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Rectangle-x16.png</td>
+				<td>Data-Rectangle-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>矩形を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-String-x16.png</td>
+				<td>Data-String-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>文字列を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data-Image-x16.png</td>
+				<td>Data-Image-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data1d-Array-x16.png</td>
+				<td>Data1d-Array-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>１次元配列を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data2d-Kernel-x16.png</td>
+				<td>Data2d-Kernel-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>フィルタのカーネルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data2d-Matrix-x16.png</td>
+				<td>Data2d-Matrix-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>行列を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Data2d-SE-x16.png</td>
+				<td>Data2d-SE-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>構造要素を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Image-Bin-x16.png</td>
+				<td>Image-Bin-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>２値画像を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Image-Gray-x16.png</td>
+				<td>Image-Gray-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>濃淡画像を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Image-RGB-x16.png</td>
+				<td>Image-RGB-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カラー画像(パック)を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Image-Unpacked-x16.png</td>
+				<td>Image-Unpacked-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>カラー画像(アンパック)を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Image-Signed-x16.png</td>
+				<td>Image-Signed-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>符号付き画像を示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_Device	Device
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Camera-Connect-x16.png</td>
+				<td>Camera-Connect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Camera-Disconnect-x16.png</td>
+				<td>Camera-Disconnect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html Camera-Stop-x16.png</td>
+				<td>Camera-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Camera-Pause-x16.png</td>
+				<td>Camera-Pause-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。(一時停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Camera-Record-x16.png</td>
+				<td>Camera-Record-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カメラを示します。(録画)</td>
+				</tr>
+			<tr>
+				<td>@image html IO-Connect-x16.png</td>
+				<td>IO-Connect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>入出力デバイスを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html IO-Disconnect-x16.png</td>
+				<td>IO-Disconnect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>入出力デバイスを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html IO-Stop-x16.png</td>
+				<td>IO-Stop-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>入出力デバイスを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Mail-Connect-x16.png</td>
+				<td>Mail-Connect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メールを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Mail-Disconnect-x16.png</td>
+				<td>Mail-Disconnect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メールを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html Mail-Stop-x16.png</td>
+				<td>Mail-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メールを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Media-Connect-x16.png</td>
+				<td>Media-Connect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メディアプレイヤーを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Media-Disconnect-x16.png</td>
+				<td>Media-Disconnect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メディアプレイヤーを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html Media-Pause-x16.png</td>
+				<td>Media-Pause-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メディアプレイヤーを示します。(一時停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Media-Stop-x16.png</td>
+				<td>Media-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>メディアプレイヤーを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Net-Connect-x16.png</td>
+				<td>Net-Connect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ネットワークを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Net-Disconnect-x16.png</td>
+				<td>Net-Disconnect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ネットワークを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html Net-Stop-x16.png</td>
+				<td>Net-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ネットワークを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html SerialPort-Connect-x16.png</td>
+				<td>SerialPort-Connect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>シリアル通信を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html SerialPort-Disconnect-x16.png</td>
+				<td>SerialPort-Disconnect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>シリアル通信を示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html SerialPort-Stop-x16.png</td>
+				<td>SerialPort-Stop-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>シリアル通信を示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Connect-x16.png</td>
+				<td>Service-Connect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Disconnect-x16.png</td>
+				<td>Service-Disconnect-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(オフライン)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Port-x16.png</td>
+				<td>Service-Port-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(入出力ポート付き)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-PortIn-x16.png</td>
+				<td>Service-PortIn-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(入力ポート付き)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-PortOut-x16.png</td>
+				<td>Service-PortOut-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(出力ポート付き)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Run-x16.png</td>
+				<td>Service-Run-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(開始)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Pause-x16.png</td>
+				<td>Service-Pause-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(一時停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Stop-x16.png</td>
+				<td>Service-Stop-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(停止)</td>
+				</tr>
+			<tr>
+				<td>@image html Service-Unknown-x16.png</td>
+				<td>Service-Unknown-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サービスを示します。(不明な状態)</td>
+				</tr>
+			<tr>
+				<td>@image html Switch-Connect-x16.png</td>
+				<td>Switch-Connect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>スイッチを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Switch-Disconnect-x16.png</td>
+				<td>Switch-Disconnect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>スイッチを示します。(オフライン)</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_Edit	Edit
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Copy2-x16.png</td>
+				<td>Edit-Copy2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>コピーを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Cut2-x16.png</td>
+				<td>Edit-Cut2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>切り取りを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Paste2-x16.png</td>
+				<td>Edit-Paste2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>貼り付けを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Copy-x16.png</td>
+				<td>Edit-Copy-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>コピーを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Cut-x16.png</td>
+				<td>Edit-Cut-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>切り取りを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Paste-x16.png</td>
+				<td>Edit-Paste-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>貼り付けを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Delete-x16.png</td>
+				<td>Edit-Delete-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>削除を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-DeleteBk-x16.png</td>
+				<td>Edit-DeleteBk-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>削除を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Undo-x16.png</td>
+				<td>Edit-Undo-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>"元に戻す"を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Redo-x16.png</td>
+				<td>Edit-Redo-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>"やり直す"を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Rename-x16.png</td>
+				<td>Edit-Rename-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>名前変更を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Edit-Split-x16.png</td>
+				<td>Edit-Split-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>分割を示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_File	File
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html File-Inifile-x16.png</td>
+				<td>File-Inifile-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ini ファイルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-Inifile1-x16.png</td>
+				<td>File-Inifile1-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ini ファイルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-Layout-x16.png</td>
+				<td>File-Layout-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>レイアウトを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-New-x16.png</td>
+				<td>File-New-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>新規作成を示します。(ファイル)</td>
+				</tr>
+			<tr>
+				<td>@image html File-NewFolder-x16.png</td>
+				<td>File-NewFolder-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>新規作成を示します。(フォルダ)</td>
+				</tr>
+			<tr>
+				<td>@image html File-Open-x16.png</td>
+				<td>File-Open-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>"開く"を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-Property-x16.png</td>
+				<td>File-Property-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>プロパティを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-Save-x16.png</td>
+				<td>File-Save-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>保存を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-SaveAll-x16.png</td>
+				<td>File-SaveAll-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>すべて保存を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-SaveAsWebPage-x16.png</td>
+				<td>File-SaveAsWebPage-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>マークアップ言語として保存することを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-SaveWithDesign-x16.png</td>
+				<td>File-SaveWithDesign-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>描画情報を含めて保存することを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-Search-x16.png</td>
+				<td>File-Search-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>検索を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-SourceCode-x16.png</td>
+				<td>File-SourceCode-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ソースコードを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html File-XML-x16.png</td>
+				<td>File-XML-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>XMLを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Lang-CPP-x16.png</td>
+				<td>Lang-CPP-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>開発言語を示します。(C++)</td>
+				</tr>
+			<tr>
+				<td>@image html Lang-CS-x16.png</td>
+				<td>Lang-CS-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>開発言語を示します。(Visual C#)</td>
+				</tr>
+			<tr>
+				<td>@image html Lang-VB-x16.png</td>
+				<td>Lang-VB-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>開発言語を示します。(Visual Basic)</td>
+				</tr>
+			<tr>
+				<td>@image html PrintOut-x16.png</td>
+				<td>PrintOut-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>印刷を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html PrintSetup-x16.png</td>
+				<td>PrintSetup-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>印刷プレビューを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_Overlay	Overlay
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Graph-x16.png</td>
+				<td>Overlay-Graph-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グラフを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Grid-x16.png</td>
+				<td>Overlay-Grid-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>グリッドを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Mask1-x16.png</td>
+				<td>Overlay-Mask1-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>マスク編集を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Mask2-x16.png</td>
+				<td>Overlay-Mask2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>マスク編集を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Profile-x16.png</td>
+				<td>Overlay-Profile-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>濃度プロファイルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-ROI-Active-x16.png</td>
+				<td>Overlay-ROI-Active-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>処理範囲の編集を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-ROI-Fixed-x16.png</td>
+				<td>Overlay-ROI-Fixed-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>処理範囲の表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Overlay-Trend-x16.png</td>
+				<td>Overlay-Trend-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>トレンドを示します。</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_Parser	Parser
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Barcode-x16.png</td>
+				<td>Parser-Barcode-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>1次元バーコードを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Barcode2-x16.png</td>
+				<td>Parser-Barcode2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>1次元バーコードを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-ChannelUnpack-x16.png</td>
+				<td>Parser-ChannelUnpack-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>チャネル分割を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-ColorConvert-x16.png</td>
+				<td>Parser-ColorConvert-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>色空間変換を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-DM-x16.png</td>
+				<td>Parser-DM-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>データマトリックス認識を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-EdgeDetect-x16.png</td>
+				<td>Parser-EdgeDetect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>エッジ検出を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Enhance-x16.png</td>
+				<td>Parser-Enhance-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>エンハンス処理を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-EnhanceBright-x16.png</td>
+				<td>Parser-EnhanceBright-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>エンハンス処理を示します。(明)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-EnhanceDark-x16.png</td>
+				<td>Parser-EnhanceDark-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>エンハンス処理を示します。(暗)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-FilterEdge-x16.png</td>
+				<td>Parser-FilterEdge-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>輪郭抽出フィルタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-FilterGauss-x16.png</td>
+				<td>Parser-FilterGauss-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ガウシアンフィルタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-FilterSharp-x16.png</td>
+				<td>Parser-FilterSharp-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>鮮鋭化フィルタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-FilterSmooth-x16.png</td>
+				<td>Parser-FilterSmooth-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>平滑化フィルタを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Formula-x16.png</td>
+				<td>Parser-Formula-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>数式を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Function-x16.png</td>
+				<td>Parser-Function-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>関数を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransMirror1-x16.png</td>
+				<td>Parser-GeoTransMirror1-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ミラー反転を示します。(左右)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransMirror2-x16.png</td>
+				<td>Parser-GeoTransMirror2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ミラー反転を示します。(上下)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransRotate45-x16.png</td>
+				<td>Parser-GeoTransRotate45-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>回転を示します。(45度)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransRotate90-x16.png</td>
+				<td>Parser-GeoTransRotate90-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>回転を示します。(90度)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransScale1-x16.png</td>
+				<td>Parser-GeoTransScale1-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>サイズ変更を示します。(縮小)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransScale2-x16.png</td>
+				<td>Parser-GeoTransScale2-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>サイズ変更を示します。(拡大)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-GeoTransTranspose-x16.png</td>
+				<td>Parser-GeoTransTranspose-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>転置を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-HoughDetect-x16.png</td>
+				<td>Parser-HoughDetect-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ハフ検出を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Measure-x16.png</td>
+				<td>Parser-Measure-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>計測を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-MorDilation-x16.png</td>
+				<td>Parser-MorDilation-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>モルフォロジを示します。(膨張)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-MorErosion-x16.png</td>
+				<td>Parser-MorErosion-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>モルフォロジを示します。(収縮)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-MorClosing-x16.png</td>
+				<td>Parser-MorClosing-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>モルフォロジを示します。(クロージング)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-MorOpening-x16.png</td>
+				<td>Parser-MorOpening-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>モルフォロジを示します。(オープニング)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Operation-x16.png</td>
+				<td>Parser-Operation-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>演算を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-PartColor-x16.png</td>
+				<td>Parser-PartColor-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>パートカラー変換を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-PolarTrans-x16.png</td>
+				<td>Parser-PolarTrans-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>極座標変換を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-PolarTransInvert-x16.png</td>
+				<td>Parser-PolarTransInvert-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>極座標変換を示します。(反転)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-QR-x16.png</td>
+				<td>Parser-QR-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>QRコード認識を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Search1-x16.png</td>
+				<td>Parser-Search1-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>テンプレートマッチングを示します。(正規化相関)</td>
+				</tr>
+			<tr>
+				<td>@image html Parser-Search2-x16.png</td>
+				<td>Parser-Search2-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>テンプレートマッチングを示します。(幾何学形状)</td>
+				</tr>
+			</table>
+*/
+// ======================================================================
+/*!
+	@page	x16_View	View
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td class="indexkey" align="center" width=32>項目</td>
+				<td class="indexkey" align="center" width=200>ファイル名</td>
+				<td class="indexkey" align="center" width=150>分類</td>
+				<td class="indexkey" align="center">説明</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Actual-x16.png</td>
+				<td>Mag-Actual-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(原寸)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Expand-x16.png</td>
+				<td>Mag-Expand-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(拡大)</td>
+				</tr>
+			<tr>
+				<td>@image html Mag-Reduce-x16.png</td>
+				<td>Mag-Reduce-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(縮小)</td>
+				</tr>
+			<tr>
+				<td>@image html PageWidth-x16.png</td>
+				<td>PageWidth-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ページ幅調整を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html TreeView-x16.png</td>
+				<td>TreeView-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ツリービューを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Align-x16.png</td>
+				<td>View-Align-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>位置調整を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Asterick-x16.png</td>
+				<td>View-Asterick-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>アスタリスクを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-FitImageSize-x16.png</td>
+				<td>View-FitImageSize-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(ウィンドウサイズに合わせる)</td>
+				</tr>
+			<tr>
+				<td>@image html View-FitImageHeight-x16.png</td>
+				<td>View-FitImageHeight-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(高さを合わせる)</td>
+				</tr>
+			<tr>
+				<td>@image html View-FitImageWidth-x16.png</td>
+				<td>View-FitImageWidth-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューの表示倍率調整を示します。(幅を合わせる)</td>
+				</tr>
+			<tr>
+				<td>@image html View-Fullscreen-x16.png</td>
+				<td>View-Fullscreen-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>フルスクリーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Halftone-x16.png</td>
+				<td>View-Halftone-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ハーフトーン表示を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Image-x16.png</td>
+				<td>View-Image-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>画像ビューを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH1-x16.png</td>
+				<td>View-LayoutCH1-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ビューレイアウトを示します。(1ch)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH2H-x16.png</td>
+				<td>View-LayoutCH2H-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ビューレイアウトを示します。(2ch 水平方向)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH2V-x16.png</td>
+				<td>View-LayoutCH2V-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ビューレイアウトを示します。(2ch 垂直方向)</td>
+				</tr>
+			<tr>
+				<td>@image html View-LayoutCH4-x16.png</td>
+				<td>View-LayoutCH4-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ビューレイアウトを示します。(4ch)</td>
+				</tr>
+			<tr>
+				<td>@image html View-Zoom-x16.png</td>
+				<td>View-Zoom-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>ズームを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Mode-x16.png</td>
+				<td>View-Mode-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>２つの画像ビューのモード切り替えを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-ModeActiveL-x16.png</td>
+				<td>View-ModeActiveL-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>２つの画像ビューのモード切り替えを示します。(左を有効にする)</td>
+				</tr>
+			<tr>
+				<td>@image html View-ModeActiveR-x16.png</td>
+				<td>View-ModeActiveR-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>２つの画像ビューのモード切り替えを示します。(右を有効にする)</td>
+				</tr>
+			<tr>
+				<td>@image html View-ModeSyc-x16.png</td>
+				<td>View-ModeSyc-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>２つの画像ビューのモード切り替えを示します。(同期)</td>
+				</tr>
+			<tr>
+				<td>@image html View-PixelMode-x16.png</td>
+				<td>View-PixelMode-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>ピクセルモードを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Pointer-x16.png</td>
+				<td>View-Pointer-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>カーソル操作を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Screen-x16.png</td>
+				<td>View-Screen-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>スクリーンを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Snap-x16.png</td>
+				<td>View-Snap-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>スナップショットを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Star-x16.png</td>
+				<td>View-Star-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>星を示します。</td>
+				</tr>
+			<tr>
+				<td>@image html View-Thumbnail-x16.png</td>
+				<td>View-Thumbnail-x16.png</td>
+				<td>改変及び再頒布</td>
+				<td>サムネイルを示します。</td>
+				</tr>
+			<tr>
+				<td>@image html Window-SplitterB-x16.png</td>
+				<td>Window-SplitterB-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>分割ウィンドウの可視属性の切り替えを示します。(下辺)</td>
+				</tr>
+			<tr>
+				<td>@image html Window-SplitterL-x16.png</td>
+				<td>Window-SplitterL-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>分割ウィンドウの可視属性の切り替えを示します。(左辺)</td>
+				</tr>
+			<tr>
+				<td>@image html Window-SplitterR-x16.png</td>
+				<td>Window-SplitterR-x16.png</td>
+				<td>Eggs Imaging Laboratory</td>
+				<td>分割ウィンドウの可視属性の切り替えを示します。(右辺)</td>
+				</tr>
+			</table>
+*/

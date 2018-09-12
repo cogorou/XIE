@@ -1,0 +1,100 @@
+/*!
+	@file	TxFrameIndex.h
+	@brief	フレーム指標構造体
+*/
+/*!
+	@internal
+	@file	TxFrameIndex.cpp
+	@brief	フレーム指標構造体
+*/
+/*!
+	@def	_TXFRAMEINDEX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxFrameIndex
+	@brief		フレーム指標構造体
+*/
+// ===================================================================
+/*!
+	@var	TxFrameIndex::Track
+	@brief	トラック指標 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxFrameIndex::Frame
+	@brief	フレーム指標 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxFrameIndex::Flag
+	@brief	取り込み状態 [0=継続、1=到達]
+*/
+// ===================================================================
+/*!
+	@var	TxFrameIndex::Progress
+	@brief	経過時間
+*/
+// ===================================================================
+/*!
+	@var	TxFrameIndex::TimeStamp
+	@brief	タイムスタンプ (UTC)
+*/
+// ===================================================================
+/*!
+	@fn		TxFrameIndex::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxFrameIndex::TxFrameIndex()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxFrameIndex::TxFrameIndex(int track, int frame, int flag, double progress, unsigned long long timestamp)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		track		トラック指標 [0~]
+	@param[in]		frame		フレーム指標 [0~]
+	@param[in]		flag		取り込み状態 [0=継続、1=到達]
+	@param[in]		progress	経過時間
+	@param[in]		timestamp	タイムスタンプ (UTC)
+*/
+// ===================================================================
+/*!
+	@fn		TxFrameIndex::operator == (const TxFrameIndex &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxFrameIndex::operator != (const TxFrameIndex &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+
+}

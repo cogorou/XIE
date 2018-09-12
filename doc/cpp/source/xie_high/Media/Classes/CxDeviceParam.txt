@@ -1,0 +1,316 @@
+/*!
+	@file	CxDeviceParam.h
+	@brief	デバイスパラメータクラス
+*/
+/*!
+	@internal
+	@file	CxDeviceParam.cpp
+	@brief	デバイスパラメータクラス
+*/
+/*!
+	@def	_CXDEVICEPARAM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxDeviceParam
+	@brief		デバイスパラメータクラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CxDeviceParam()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CxDeviceParam(TxCharCPtrA name, int index)
+	@brief	コンストラクタ
+
+	@param[in]		name		デバイス名称
+	@param[in]		index		デバイス指標 [0~]
+
+	@remarks
+			初期値を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CxDeviceParam(TxCharCPtrA name, int index, int pin, TxSizeI size)
+	@brief	コンストラクタ
+
+	@param[in]		name		デバイス名称
+	@param[in]		index		デバイス指標 [0~]
+	@param[in]		pin			ピン番号
+	@param[in]		size		フレームサイズ
+
+	@remarks
+			初期値を指定してオブジェクトを構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CxDeviceParam(CxDeviceParam&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxDeviceParam &&src) \n
+		@ref MoveFrom(CxDeviceParam &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CxDeviceParam(const CxDeviceParam& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxDeviceParam &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::~CxDeviceParam()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::operator = ( CxDeviceParam&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxDeviceParam &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::operator = ( const CxDeviceParam& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::operator == ( const CxDeviceParam& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::operator != ( const CxDeviceParam& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	データ構造へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::MoveFrom(CxDeviceParam& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxDeviceParam(CxDeviceParam &&src) \n
+		@ref operator=(CxDeviceParam &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxDeviceParam(const CxDeviceParam &src) \n
+		@ref operator=(const CxDeviceParam &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxDeviceParam &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Name() const
+	@brief	デバイス名称の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Name(TxCharCPtrA value)
+	@brief	デバイス名称の設定
+
+	@param[in]		value		設定値 [NULL または有効な文字列]
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Index() const
+	@brief	デバイス指標の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Index(int value)
+	@brief	デバイス指標の設定
+
+	@param[in]		value		設定値 [0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Pin() const
+	@brief	ピン番号の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Pin(int value)
+	@brief	ピン番号の設定
+
+	@param[in]		value		設定値 [0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Size() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceParam::Size(TxSizeI value)
+	@brief	フレームサイズの設定
+
+	@param[in]		value		設定値 [0,0 ~]
+*/
+// ===================================================================
+/*!
+	@var	CxDeviceParam::m_Tag
+	@brief	データ構造
+
+	@sa
+		@ref Tag \n
+		@ref TagPtr \n
+*/
+
+}
+}

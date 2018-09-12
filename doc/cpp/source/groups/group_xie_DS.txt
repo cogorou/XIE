@@ -1,0 +1,26 @@
+namespace xie
+{
+namespace DS
+{
+// =================================================================
+/*!
+	@defgroup	group_xie_DS	xie.DS
+
+	この名前空間には、DirectShow 関連機能を集約しています。\n
+
+	@{
+*/
+	// =================================================================
+	/*!
+		@defgroup	group_xie_DS_Interfaces	Interfaces
+	*/
+	// =================================================================
+	/*!
+		@internal
+		@defgroup	group_xie_DS_Internals	Internals
+	*/
+/*!
+	@}
+*/
+}
+}

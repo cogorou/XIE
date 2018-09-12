@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{040BFF4D-083C-410B-AF22-354D0BDE815E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XIEstudio</RootNamespace>
+    <AssemblyName>XIEstudio_100</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\XIEstudio_100.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Release\XIEstudio_100.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugLinux|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugLinux\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\DebugLinux\XIEstudio_100.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseLinux|AnyCPU'">
+    <OutputPath>bin\ReleaseLinux\</OutputPath>
+    <DefineConstants>TRACE;LINUX</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\ReleaseLinux\XIEstudio_100.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../../bin</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="XIE.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)/XIE.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XIE.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)/XIE.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiHelper.cs" />
+    <Compile Include="Image\CxGammaConverterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxGammaConverterForm.Designer.cs">
+      <DependentUpon>CxGammaConverterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxPartColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxPartColorForm.Designer.cs">
+      <DependentUpon>CxPartColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxRotateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxRotateForm.Designer.cs">
+      <DependentUpon>CxRotateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxRunCluster.cs" />
+    <Compile Include="Image\TxRunLength.cs" />
+    <Compile Include="Tasks\CodeDom.cs" />
+    <Compile Include="Forms\LoadingProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingProgress.Designer.cs">
+      <DependentUpon>LoadingProgress.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\LoadingProgress.resx">
+      <DependentUpon>LoadingProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Image\CxGammaConverterForm.resx">
+      <DependentUpon>CxGammaConverterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxPartColorForm.resx">
+      <DependentUpon>CxPartColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxRotateForm.resx">
+      <DependentUpon>CxRotateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Program_cs.txt" />
+    <EmbeddedResource Include="Program_vb.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Image\CxHsvConverterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxHsvConverterForm.Designer.cs">
+      <DependentUpon>CxHsvConverterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxMonochromeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxMonochromeForm.Designer.cs">
+      <DependentUpon>CxMonochromeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxRgbConverterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxRgbConverterForm.Designer.cs">
+      <DependentUpon>CxRgbConverterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxImageEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxImageEditorForm.Designer.cs">
+      <DependentUpon>CxImageEditorForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\CxAppSettings.cs" />
+    <Compile Include="Tasks\CxTaskflowImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowImageForm.Designer.cs">
+      <DependentUpon>CxTaskflowImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxAuxTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Image\CxExifForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxExifForm.Designer.cs">
+      <DependentUpon>CxExifForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxROIForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxROIForm.Designer.cs">
+      <DependentUpon>CxROIForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxScaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxScaleForm.Designer.cs">
+      <DependentUpon>CxScaleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxImageThumbnailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxImageThumbnailForm.Designer.cs">
+      <DependentUpon>CxImageThumbnailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxMediaNode.cs" />
+    <Compile Include="Forms\CxMediaPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxMediaPropertyForm.Designer.cs">
+      <DependentUpon>CxMediaPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxDataPortNode.cs" />
+    <Compile Include="Forms\CxDataPortPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxDataPortPropertyForm.Designer.cs">
+      <DependentUpon>CxDataPortPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxDataPortSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxDataPortSelectionForm.Designer.cs">
+      <DependentUpon>CxDataPortSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxGrabberNode.cs" />
+    <Compile Include="Forms\CxGrabberPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxGrabberPropertyForm.Designer.cs">
+      <DependentUpon>CxGrabberPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxGrabberSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxGrabberSelectionForm.Designer.cs">
+      <DependentUpon>CxGrabberSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxImageNode.cs" />
+    <Compile Include="Forms\CxCameraNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CxCameraPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxCameraPropertyForm.Designer.cs">
+      <DependentUpon>CxCameraPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxSerialPortNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CxSerialPortPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxSerialPortPropertyForm.Designer.cs">
+      <DependentUpon>CxSerialPortPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxTcpClientEvent.cs" />
+    <Compile Include="Forms\CxTcpClientNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpClientPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpClientPropertyForm.Designer.cs">
+      <DependentUpon>CxTcpClientPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxTcpClientSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpClientSelectForm.Designer.cs">
+      <DependentUpon>CxTcpClientSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxTcpServerEvent.cs" />
+    <Compile Include="Forms\CxTcpServerNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpServerPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpServerPropertyForm.Designer.cs">
+      <DependentUpon>CxTcpServerPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxTcpServerSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxTcpServerSelectForm.Designer.cs">
+      <DependentUpon>CxTcpServerSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Image\CxImagePreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image\CxImagePreviewForm.Designer.cs">
+      <DependentUpon>CxImagePreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CxAuxInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CxAuxInfoForm.Designer.cs">
+      <DependentUpon>CxAuxInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowThumbnailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowThumbnailForm.Designer.cs">
+      <DependentUpon>CxTaskflowThumbnailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowHelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowHelpForm.Designer.cs">
+      <DependentUpon>CxTaskflowHelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxToolboxView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxToolboxNode.cs" />
+    <Compile Include="Tasks\CxTaskflowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowForm.Designer.cs">
+      <DependentUpon>CxTaskflowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowPrintPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowPrintPreviewForm.Designer.cs">
+      <DependentUpon>CxTaskflowPrintPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceForm.Designer.cs">
+      <DependentUpon>CxTaskflowSourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceToolboxFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceToolboxFind.Designer.cs">
+      <DependentUpon>CxTaskflowSourceToolboxFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceToolboxGoto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowSourceToolboxGoto.Designer.cs">
+      <DependentUpon>CxTaskflowSourceToolboxGoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskNode.cs" />
+    <Compile Include="Tasks\CxTaskflowPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tasks\CxTaskflowPreviewForm.Designer.cs">
+      <DependentUpon>CxTaskflowPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\CxTaskVisualizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\CxHsvConverterForm.resx">
+      <DependentUpon>CxHsvConverterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxMonochromeForm.resx">
+      <DependentUpon>CxMonochromeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxRgbConverterForm.resx">
+      <DependentUpon>CxRgbConverterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxImageEditorForm.resx">
+      <DependentUpon>CxImageEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowImageForm.resx">
+      <DependentUpon>CxTaskflowImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxAuxInfoForm.resx">
+      <DependentUpon>CxAuxInfoForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxImagePreviewForm.resx">
+      <DependentUpon>CxImagePreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxExifForm.resx">
+      <DependentUpon>CxExifForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxScaleForm.resx">
+      <DependentUpon>CxScaleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxImageThumbnailForm.resx">
+      <DependentUpon>CxImageThumbnailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxDataPortPropertyForm.resx">
+      <DependentUpon>CxDataPortPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxDataPortSelectionForm.resx">
+      <DependentUpon>CxDataPortSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxGrabberPropertyForm.resx">
+      <DependentUpon>CxGrabberPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxGrabberSelectionForm.resx">
+      <DependentUpon>CxGrabberSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\CxROIForm.resx">
+      <DependentUpon>CxROIForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxCameraPropertyForm.resx">
+      <DependentUpon>CxCameraPropertyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxMediaPropertyForm.resx">
+      <DependentUpon>CxMediaPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxSerialPortPropertyForm.resx">
+      <DependentUpon>CxSerialPortPropertyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxTcpClientPropertyForm.resx">
+      <DependentUpon>CxTcpClientPropertyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxTcpClientSelectForm.resx">
+      <DependentUpon>CxTcpClientSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxTcpServerPropertyForm.resx">
+      <DependentUpon>CxTcpServerPropertyForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CxTcpServerSelectForm.resx">
+      <DependentUpon>CxTcpServerSelectForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowThumbnailForm.resx">
+      <DependentUpon>CxTaskflowThumbnailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowHelpForm.resx">
+      <DependentUpon>CxTaskflowHelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowForm.resx">
+      <DependentUpon>CxTaskflowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowPreviewForm.resx">
+      <DependentUpon>CxTaskflowPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowPrintPreviewForm.resx">
+      <DependentUpon>CxTaskflowPrintPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowSourceForm.resx">
+      <DependentUpon>CxTaskflowSourceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowSourceToolboxFind.resx">
+      <DependentUpon>CxTaskflowSourceToolboxFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tasks\CxTaskflowSourceToolboxGoto.resx">
+      <DependentUpon>CxTaskflowSourceToolboxGoto.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Azuki\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Azuki\Actions.cs" />
+    <Compile Include="Azuki\Actions.Selection.cs" />
+    <Compile Include="Azuki\AutoIndentHooks.cs" />
+    <Compile Include="Azuki\CaretMoveLogic.cs" />
+    <Compile Include="Azuki\DebugUtl.cs" />
+    <Compile Include="Azuki\DefaultWordProc.cs" />
+    <Compile Include="Azuki\Document\CharClass.cs" />
+    <Compile Include="Azuki\Document\Document.cs" />
+    <Compile Include="Azuki\Document\EditAction.cs" />
+    <Compile Include="Azuki\Document\EditHistory.cs" />
+    <Compile Include="Azuki\Document\LineDirtyState.cs" />
+    <Compile Include="Azuki\Document\Marking.cs" />
+    <Compile Include="Azuki\Document\RleArray.cs" />
+    <Compile Include="Azuki\Document\SearchResult.cs" />
+    <Compile Include="Azuki\Document\SelectionManager.cs" />
+    <Compile Include="Azuki\Document\SplitArray.cs" />
+    <Compile Include="Azuki\Document\TextBuffer.cs" />
+    <Compile Include="Azuki\Document\TextDataType.cs" />
+    <Compile Include="Azuki\Document\UriMarker.cs" />
+    <Compile Include="Azuki\Document\ViewParam.cs" />
+    <Compile Include="Azuki\Document\WatchPattern.cs" />
+    <Compile Include="Azuki\Document\WatchPatternMarker.cs" />
+    <Compile Include="Azuki\FileType.cs" />
+    <Compile Include="Azuki\Highlighter\BatchFileHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\Buffer.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexParser.cs" />
+    <Compile Include="Azuki\Highlighter\Coco\LatexScanner.cs" />
+    <Compile Include="Azuki\Highlighter\CppHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\CSharpHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\DiffHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Highlighters.cs" />
+    <Compile Include="Azuki\Highlighter\IHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\IniHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\JavaScriptHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\KeywordHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\LatexHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\PythonHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\RubyHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\Utl.cs" />
+    <Compile Include="Azuki\Highlighter\VisualBasicHighlighter.cs" />
+    <Compile Include="Azuki\Highlighter\XmlHighlighter.cs" />
+    <Compile Include="Azuki\IUserInterface.cs" />
+    <Compile Include="Azuki\IWordProc.cs" />
+    <Compile Include="Azuki\LineLogic.cs" />
+    <Compile Include="Azuki\Platform.cs" />
+    <Compile Include="Azuki\UiImpl.cs" />
+    <Compile Include="Azuki\UserPref.cs" />
+    <Compile Include="Azuki\View\ColorScheme.cs" />
+    <Compile Include="Azuki\View\DrawingOption.cs" />
+    <Compile Include="Azuki\View\HRulerIndicatorType.cs" />
+    <Compile Include="Azuki\View\IView.cs" />
+    <Compile Include="Azuki\View\MouseCursor.cs" />
+    <Compile Include="Azuki\View\PropView.cs" />
+    <Compile Include="Azuki\View\PropWrapView.cs" />
+    <Compile Include="Azuki\View\TextDecoration.cs" />
+    <Compile Include="Azuki\View\View.cs" />
+    <Compile Include="Azuki\View\View.Paint.cs" />
+    <Compile Include="Azuki\View\ViewType.cs" />
+    <Compile Include="Azuki\WinForms\AzukiControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Azuki\WinForms\PlatWin.cs" />
+    <Compile Include="Azuki\WinForms\WinApi.cs" />
+    <Compile Include="Azuki\WinForms\WinFormsMouseEventArgs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- Windows -->
+    <PostBuildEvent Condition="'$(OS)'!='Unix'">
+echo $(XIE_BIN)
+copy "$(TargetDir)$(TargetFileName)"        "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetFileName).config" "$(ProjectDir)$(XIE_BIN)"
+copy "$(TargetDir)$(TargetName).pdb"        "$(ProjectDir)$(XIE_BIN)"
+copy "$(ProjectDir)$(DocumentationFile)"    "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+    <!-- Linux -->
+    <PostBuildEvent Condition="'$(OS)'=='Unix'">
+echo $(XIE_BIN)
+cp -a "$(TargetDir)$(TargetFileName)"        "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(TargetDir)$(TargetFileName).config" "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(TargetDir)$(TargetFileName).mdb"    "$(ProjectDir)$(XIE_BIN)"
+cp -a "$(ProjectDir)$(DocumentationFile)"    "$(ProjectDir)$(XIE_BIN)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Windows -->
+    <PreBuildEvent Condition="'$(OS)'!='Unix'">
+    </PreBuildEvent>
+    <!-- Linux -->
+    <PreBuildEvent Condition="'$(OS)'=='Unix'">
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent />
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,2 @@
+User::CxException_01
+examples\Core\Base\CxException_01.cpp(16): Code=1, Function=User::CxException_01

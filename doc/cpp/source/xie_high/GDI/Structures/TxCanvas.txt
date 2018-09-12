@@ -1,0 +1,276 @@
+/*!
+	@file	TxCanvas.h
+	@brief	画像描画機能情報構造体
+*/
+/*!
+	@internal
+	@file	TxCanvas.cpp
+	@brief	画像描画機能情報構造体
+*/
+/*!
+	@def	_TXCANVAS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Structures
+	@struct		TxCanvas
+	@brief		表示機能情報構造体
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::Width
+	@brief	表示範囲の幅 [1~]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::Height
+	@brief	表示範囲の高さ [1~]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::BgSize
+	@brief	背景画像サイズ [1,1~]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::BkColor
+	@brief	背景色 (アルファ値は無視します。)
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::BkEnable
+	@brief	背景の塗り潰しの有効属性 [false=無効、true=有効]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::Magnification
+	@brief	表示倍率 (1.0=等倍) [0 より大きい値]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::ViewPoint
+	@brief	視点 (pixel) [画像座標]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::ChannelNo
+	@brief	表示対象チャネル指標 [-1=全て、0~:単一チャネル]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::Unpack
+	@brief	チャネル分割表示の指示 [false=パッキング表示、true=単一チャネル表示]
+*/
+// ===================================================================
+/*!
+	@var	TxCanvas::Halftone
+	@brief	濃度補間の指示
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::TxCanvas()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::TxCanvas(int width, int height, const TxSizeI& bg_size, double mag, const TxPointD& view_point)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		width			表示範囲の幅 [1~]
+	@param[in]		height			表示範囲の高さ [1~]
+	@param[in]		bg_size			背景画像サイズ [1,1~]
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [画像座標]
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::TxCanvas(int width, int height, const TxSizeI& bg_size, double mag, const TxPointD& view_point, int ch, ExBoolean unpack, ExBoolean halftone)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		width			表示範囲の幅 [1~]
+	@param[in]		height			表示範囲の高さ [1~]
+	@param[in]		bg_size			背景画像サイズ [1,1~]
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [画像座標]
+	@param[in]		ch				表示対象チャネル指標 [-1=全て、0~(XIE_IMAGE_CHANNELS_MAX-1):単一チャネル]
+	@param[in]		unpack			チャネル分割表示の指示 [false=パッキング表示、true=単一チャネル表示]
+	@param[in]		halftone		濃度補間の指示
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::operator == (const TxCanvas& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::operator != (const TxCanvas& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::DisplaySize () const  
+	@brief	描画領域のサイズの取得
+
+	@return	描画領域のサイズ返します。\n
+			単位はディスプレイ座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::DisplayRect () const  
+	@brief	描画領域のサイズの取得 (矩形)
+
+	@return	描画領域のサイズを矩形で返します。\n
+			単位はディスプレイ座標です。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::EffectiveRect() const
+	@brief	有効範囲の計算
+
+	@return	有効範囲を計算して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::VisibleRect() const
+	@brief	可視範囲の計算
+
+	@return	可視範囲を計算して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::VisibleRectI(bool includePartialPixel) const
+	@brief	可視範囲の計算 (整数版)
+
+	@param[in]		includePartialPixel		画面端の部分画素を含むか否か \n
+											- true : 部分画素を 1 画素として計算します。
+											- false : 部分画素を切り捨てて計算します。
+											.
+
+	@return	可視範囲を計算して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::DPtoIP (const TxPointD &dp, ExGdiScalingMode mode) const  
+	@brief	ディスプレイ座標から画像座標への変換
+
+	@param[in]		dp		ディスプレイ座標
+	@param[in]		mode	スケーリングモード
+
+	@return	画像座標に変換して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::IPtoDP (const TxPointD &ip, ExGdiScalingMode mode) const  
+	@brief	画像座標からディスプレイ座標への変換
+
+	@param[in]		ip		画像座標
+	@param[in]		mode	スケーリングモード
+
+	@return	ディスプレイ座標に変換して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::EffectiveRect(TxRectangleI display_rect, TxSizeI bg_size, double mag)
+	@brief	有効範囲の計算
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+
+	@return		有効範囲(ディスプレイ座標)を返します。\n
+				最大は @a display_rect と等価になります。\n
+				最小は 全て 0 になります。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::VisibleRect(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point)
+	@brief	可視範囲の計算
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+
+	@return		可視範囲(画像座標)を返します。\n
+				最大は @a bg_size と等価になります。\n
+				最小は 全て 0 になります。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::VisibleRectI(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, bool includePartialPixel)
+	@brief	可視範囲の計算 (整数版)
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+	@param[in]		includePartialPixel		画面端の部分画素を含むか否か \n
+											- true : 部分画素を 1 画素として計算します。
+											- false : 部分画素を切り捨てて計算します。
+											.
+
+	@return		可視範囲(画像座標)を返します。\n
+				最大は @a bg_size と等価になります。\n
+				最小は 全て 0 になります。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::DPtoIP(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD dp, ExGdiScalingMode mode)
+	@brief	ディスプレイ座標から画像座標への変換
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+	@param[in]		dp				ディスプレイ座標 (dot)
+	@param[in]		mode			スケーリングモード
+
+	@return		指定されたディスプレイ座標に対応する画像座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCanvas::IPtoDP(TxRectangleI display_rect, TxSizeI bg_size, double mag, TxPointD view_point, TxPointD ip, ExGdiScalingMode mode)
+	@brief	画像座標からディスプレイ座標への変換
+
+	@param[in]		display_rect	表示領域
+	@param[in]		bg_size			背景画像サイズ
+	@param[in]		mag				表示倍率 (1.0=等倍) [0 より大きい値]
+	@param[in]		view_point		視点 (pixel) [0~背景画像サイズ]
+	@param[in]		ip				画像座標 (pixel)
+	@param[in]		mode			スケーリングモード
+
+	@return		指定された画像座標に対応するディスプレイ座標を返します。
+*/
+
+}
+}

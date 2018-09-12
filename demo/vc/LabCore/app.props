@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <XIE_INC>$(XIE100ROOT)\include</XIE_INC>
+    <XIE_BIN>$(XIE100BIN)</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="XIE_INC">
+      <Value>$(XIE_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="XIE_BIN">
+      <Value>$(XIE_BIN)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

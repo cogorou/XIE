@@ -1,0 +1,1370 @@
+/*!
+	@file	CxMatrix.h
+	@brief	行列オブジェクト
+*/
+/*!
+	@internal
+	@file	CxMatrix.cpp
+	@brief	行列オブジェクト
+*/
+/*!
+	@def	_CXMATRIX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Classes
+	@class		CxMatrix
+	@brief		行列オブジェクト
+
+	@remarks
+			行列を管理するクラスです。\n
+
+	@par	Examples:
+			@includelineno	CxMatrix_01.cpp
+*/
+// ===================================================================
+/*!
+	@var	CxMatrix::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@var	CxMatrix::m_IsAttached
+	@brief	アタッチ状態
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::FromTag(const TxMatrix& src)
+	@brief	アタッチ (情報構造体指定)
+
+	@param[in]		src		参照先
+
+	@return	指定された外部リソースにアタッチして返します。
+
+	@sa
+		@ref IsAttached() const \n
+		@ref Attach(const TxMatrix &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::From(int rows, int cols, const xie::CxArrayEx<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		rows			行数 [1~]
+	@param[in]		cols			列数 [1~]
+	@param[in]		src				複製元 \n
+									※要素数が rows*cols と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::From(int rows, int cols, const std::vector<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		rows			行数 [1~]
+	@param[in]		cols			列数 [1~]
+	@param[in]		src				複製元 \n
+									※要素数が rows*cols と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::From(int rows, int cols, const std::initializer_list<TE>& src)
+	@brief	初期化
+
+	@tparam	TE		要素の型
+
+	@param[in]		rows			行数 [1~]
+	@param[in]		cols			列数 [1~]
+	@param[in]		src				複製元 \n
+									※要素数が rows*cols と同一である必要があります。\n
+
+	@return	指定された配列を複製したオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::PresetRotate(double degree, double axis_x, double axis_y)
+	@brief	回転行列の生成
+
+	@param[in]		degree		回転角(degree) [+:右回転、-:左回転]
+	@param[in]		axis_x		回転の基軸(X)
+	@param[in]		axis_y		回転の基軸(Y)
+
+	@return	指定のパラメータで初期化した行列オブジェクトを返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::PresetScale(double sx, double sy)
+	@brief	サイズ変更行列の生成
+
+	@param[in]		sx			倍率(X 方向) [0.0 より大きい値] ※ 1.0 を等倍とします。
+	@param[in]		sy			倍率(Y 方向) [0.0 より大きい値] ※ 1.0 を等倍とします。
+
+	@return	指定のパラメータで初期化した行列オブジェクトを返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::PresetTranslate(double tx, double ty)
+	@brief	平行移動行列の生成
+
+	@param[in]		tx			移動量(X 方向) [+:右、-:左]
+	@param[in]		ty			移動量(Y 方向) [+:下、-:上]
+
+	@return	指定のパラメータで初期化した行列オブジェクトを返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::PresetShear(double degree_x, double degree_y)
+	@brief	せん断行列の生成
+
+	@param[in]		degree_x	X 方向の角度(degree)
+	@param[in]		degree_y	Y 方向の角度(degree)
+
+	@return	指定のパラメータで初期化した行列オブジェクトを返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			内部リソースは未確保です。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(const CxMatrix& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxMatrix &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(CxMatrix&& src)
+	@brief	コンストラクタ (Move Constructor)
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(CxMatrix &&src) \n
+		@ref MoveFrom(CxMatrix &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(int rows, int cols, TxModel model)
+	@brief	コンストラクタ
+
+	@param[in]		rows		行数 [0, 1~]
+	@param[in]		cols		列数 [0, 1~]
+	@param[in]		model		要素モデル [既定値:TxModel::F64(1)] \n
+								※省略した場合(または Default が指定された場合)は既定値として処理します。
+	
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@sa
+		@ref Resize(int rows, int cols, TxModel model)
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(const TxSizeI& size, TxModel model)
+	@brief	コンストラクタ
+
+	@param[in]		size		幅と高さ [0, 1~] \n
+								※ Width と Columns 、Height と Rows が対応しています。
+	@param[in]		model		要素モデル [既定値:TxModel::F64(1)] \n
+								※省略した場合(または Default が指定された場合)は既定値として処理します。
+	
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+
+	@sa
+		@ref Resize(const TxSizeI& size, TxModel model)
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(TxCharCPtrA filename)
+	@brief	コンストラクタ (ファイル読み込み) (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrA filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CxMatrix(TxCharCPtrW filename)
+	@brief	コンストラクタ (ファイル読み込み) (UNICODE)
+	
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+
+	@sa
+		@ref Load(TxCharCPtrW filename)
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::~CxMatrix()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator = ( const CxMatrix& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator = ( CxMatrix&& src )
+	@brief	移動オペレータ
+
+	@param[in]		src		移動元
+
+	@return	移動後の自身への参照を返します。
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の IsAttached は true に切り替わります。\n
+			内部では @ref MoveFrom メソッドを呼び出しています。
+
+	@sa
+		@ref MoveFrom(CxMatrix &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator == ( const CxMatrix& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator != ( const CxMatrix& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::TagPtr() const
+	@brief	データ構造へのポインタ
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Dispose()
+	@brief	解放
+
+	@remarks
+			内部リソースを解放します。\n
+			アタッチしている場合はアタッチ解除を行います。\n
+
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in,out]	dst		複製先 \n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			現在の内容を指定されたオブジェクトに複製して返します。\n
+			指定されたオブジェクトの領域は再確保されます。\n
+			対応していないオブジェクトが指定された場合は例外を発行します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxMatrix(const CxMatrix &src) \n
+		@ref operator=(const CxMatrix &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::MoveFrom(CxMatrix& src)
+	@brief	内部リソースの移動
+
+	@param[in]		src		移動元
+
+	@remarks
+			指定されたオブジェクトの内部リソースを自身に移動します。\n
+			移動元の IsAttached は true に切り替わります。\n
+			このメソッドは Move Constructor や移動オペレータから呼び出されます。
+
+	@sa
+		@ref CxMatrix(CxMatrix &&src) \n
+		@ref operator=(CxMatrix &&src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxMatrix &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	配列の先頭アドレスが NULL でないこと。
+			-	行数(@ref Rows)と列数(@ref Columns)が 0 より大きいこと。
+			-	要素のサイズ(@ref TxModel::Size() const "Model().Size()")が 0 bytes より大きいこと。
+			-	配列の水平方向サイズ(@ref Stride)が (@ref Columns × @ref TxModel::Size() const "Model().Size()") 以上であること。
+			.
+			\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::IsAttached() const
+	@brief	アタッチ状態
+
+	@retval	true	アタッチしている
+	@retval	false	アタッチしていない
+
+	@remarks
+			@ref Dispose が呼ばれた際に内部リソースを解放するか否かを示します。\n
+			このフラグが true の場合、データ構造に設定されたリソースを解放しません。\n
+
+	@sa
+		@ref Attach(const IxModule& src) \n
+		@ref Attach(const TxMatrix &src) \n
+		@ref MoveFrom(CxMatrix &src) \n
+		@ref Dispose() \n
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Attach(const IxModule& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		対象
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Attach(const TxMatrix& src)
+	@brief	外部リソースへのアタッチ
+
+	@param[in]		src		対象
+
+	@remarks
+			外部リソースにアタッチします。\n
+	@sa
+		@ref IsAttached() const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Resize(int rows, int cols, TxModel model)
+	@brief	内部リソースの確保
+
+	@param[in]		rows		行数 [0, 1~]
+	@param[in]		cols		列数 [0, 1~]
+	@param[in]		model		要素モデル [既定値:TxModel::F64(1)] \n
+								※省略した場合(または Default が指定された場合)は既定値として処理します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			行数・列数共に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Resize(const TxSizeI& size, TxModel model)
+	@brief	内部リソースの確保
+
+	@param[in]		size		幅と高さ [0, 1~] \n
+								※ Width と Columns 、Height と Rows が対応しています。
+	@param[in]		model		要素モデル [既定値:TxModel::F64(1)] \n
+								※省略した場合(または Default が指定された場合)は既定値として処理します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			このクラスの内部リソースを確保します。\n
+			現在の内部リソースと一致している場合も再確保します。\n
+			行数・列数共に 0 が指定された場合は解放(@ref Dispose)と等価です。
+
+	@sa
+		@ref Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Reset()
+	@brief	データのリセット
+
+	@remarks
+			対角成分を 1 に、それ以外を 0 に初期化します。\n
+			未確保の場合は無視します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Clear(const void* value, TxModel model)
+	@brief	初期化
+
+	@param[in]		value		初期化値が格納された変数へのアドレス
+	@param[in]		model		初期化値の型
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+
+	@sa
+		@ref Clear(TV value) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Clear(TV value)
+	@brief	初期化
+
+	@tparam	TV		初期化値の型
+
+	@param[in]		value		初期化値
+
+	@remarks
+			各要素の値を指定値で初期化します。\n
+
+			@par
+			式) dst<sub>y,x</sub> = value \n
+			\n
+
+			@par
+			出力と初期化値の要素モデルのパック数が異なる場合は少ない方を適用します。\n
+			\n
+
+	@sa
+		@ref Clear(const void* value, TxModel model) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Eye(double value, int mode)
+	@brief	対角成分の初期化
+
+	@param[in]		value		初期化値
+	@param[in]		mode		モード
+								-	0 … 対角成分を value で初期化し、それ以外を 0 初期化します。
+								-	1 … 対角成分を value で初期化し、それ以外は保持します。
+								-	2 … 対角成分は保持し、それ以外を value で初期化します。
+								.
+								\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Clone() const
+	@brief	クローンの生成
+
+	@return	現在のオブジェクトと同一内容のオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Clone(TxModel model) const
+	@brief	クローンの生成
+
+	@param[in]		model		複製先の要素モデル
+
+	@return	指定された型のオブジェクトに自身の内容を複製して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Load(TxCharCPtrA filename)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Load(TxCharCPtrW filename)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Load(TxCharCPtrA filename, TV option)
+	@brief	ファイル読み込み (MBCS)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Load(TxCharCPtrW filename, TV option)
+	@brief	ファイル読み込み (UNICODE)
+
+	@tparam		TV	オプションの型
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::LoadA(TxCharCPtrA filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::LoadW(TxCharCPtrW filename, const void* option, TxModel model)
+	@brief	ファイル読み込み (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Save(TxCharCPtrA filename) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Save(TxCharCPtrW filename) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Save(TxCharCPtrA filename, TV option) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Save(TxCharCPtrW filename, TV option) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプション。(未使用) \n
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::SaveA(TxCharCPtrA filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (MBCS)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::SaveW(TxCharCPtrW filename, const void* option, TxModel model) const
+	@brief	ファイル保存 (UNICODE)
+
+	@param[in]		filename	ファイル名。\n
+								下記の拡張子に対応しています。\n
+								-	.raw … Raw 形式。
+								.
+
+	@param[in]		option		オプションの変数へのポインタ。
+	@param[in]		model		オプションの要素モデル。
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::OpenRawA(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名 \n
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::OpenRawW(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::CloseRaw(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::LoadRaw(void* handle)
+	@brief	Raw 形式ファイル読み込み
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			指定されたファイルを読み込みます。\n
+			内部リソースは再確保されます。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::SaveRaw(void* handle) const
+	@brief	Raw 形式ファイル保存
+
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+
+	@remarks
+			内部リソースを指定されたファイルに保存します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Rows() const
+	@brief	行数
+
+	@return	現在の行列の行数を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Columns() const
+	@brief	列数
+
+	@return	現在の行列の列数を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Size() const
+	@brief	幅と高さ
+
+	@return	現在の行列の幅と高さを返します。\n
+			Rows と Height、Columns と Width が対応しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Model() const
+	@brief	要素モデル
+
+	@return	現在の要素モデルを返します。\n
+			未確保の場合は @ref TxModel::Default() "Default" を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Stride() const
+	@brief	配列の水平方向サイズ (bytes)
+
+	@return	現在の配列の水平方向サイズをバイト単位で返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Address()
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Address() const
+	@brief	配列の先頭アドレス
+
+	@return	配列の先頭アドレスを返します。\n
+			未確保の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator [] ( int row )
+	@brief	インデクサ
+
+	@param[in]		row		行指標 [0~(Rows - 1)]
+
+	@return	指定位置の行の先頭アドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator [] ( int row ) const
+	@brief	インデクサ
+
+	@param[in]		row		行指標 [0~(Rows - 1)]
+
+	@return	指定位置の行の先頭アドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator () (int row, int col)
+	@brief	インデクサ
+
+	@param[in]		row		行指標 [0~(Rows - 1)]
+	@param[in]		col		列指標 [0~(Columns - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator () (int row, int col) const
+	@brief	インデクサ
+
+	@param[in]		row		行指標 [0~(Rows - 1)]
+	@param[in]		col		列指標 [0~(Columns - 1)]
+
+	@return	指定位置の要素のアドレスを返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Statistics() const
+	@brief	統計
+
+	@return		すべての要素の統計を算出して返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			@par
+			処理可能な条件:
+				-	入力の Model.Type が下記の何れかであること。\n
+					- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+					.
+					\n
+				-	入力の Model.Pack が 1 であること。\n
+				.
+				\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Extract(int row, int col, int length, ExScanDir dir) const
+	@brief	抽出
+
+	@param[in]		row			始点 (行指標) [0~(Rows - 1)]
+	@param[in]		col			始点 (列指標) [0~(Columns - 1)]
+	@param[in]		length		抽出する要素数 [1~] \n
+								※ 範囲(始点+length-1)が領域外を示す場合はエラーになります。\n
+	@param[in]		dir			抽出する方向 \n
+								-	ExScanDir::X: col~(col+length-1) の範囲。
+								-	ExScanDir::Y: row~(row+length-1) の範囲。
+								.
+								\n
+
+	@return		指定された範囲の要素を抽出して返します。\n
+				配列の要素は自身と同一型です。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			引数の @a dir によって式が異なります。\n
+
+			@par
+			<b>dir = X)</b> \n
+			式１) dst<sub>i</sub> = src<sub>row,col+i</sub> \n
+			※ i = 0~(length-1) \n
+			\n
+
+			@par
+			<b>dir = Y)</b> \n
+			式２) dst<sub>i</sub> = src<sub>row+i,col</sub> \n
+			※ i = 0~(length-1) \n
+			\n
+			@par
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Filter() const
+	@brief	フィルタ
+
+	@return	行列オブジェクトフィルタのオブジェクトを返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator* (const CxMatrix &val) const
+	@brief	行列の積
+
+	@param[in]		val			右辺値
+
+	@return		行列の積を返します。\n
+				詳しくは @ref CxMatrixFilter::Product の説明をご参照ください。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::operator*= (const CxMatrix &val)
+	@brief	行列の積
+
+	@param[in]		val			右辺値
+
+	@return		行列の積を自身に代入して自身の参照を返します。\n
+				詳しくは @ref CxMatrixFilter::Product の説明をご参照ください。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Det()
+	@brief	行列式の算出
+
+	@return		現在の行列の行列式を算出して返します。\n
+				現在の行列は、正方行列(1x1、2x2、3x3、4x4)でなければなりません。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Trace()
+	@brief	対角成分の和
+
+	@return		抽出したスケール変換係数を返します。\n
+				現在の行列が正方行列でない場合は、行列指標が同一の要素の和を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::ScaleFactor()
+	@brief	スケール変換係数の抽出
+
+	@return		現在の行列から抽出したスケール変換係数を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*-
+	@fn		CxMatrix::Triu() const
+	@brief	上三角成分の抽出
+
+	@return	自身の上三角成分を返します。\n
+			詳しくは @ref CxMatrixFilter::Triu の説明をご参照ください。\n
+*/
+// ===================================================================
+/*-
+	@fn		CxMatrix::Tril() const
+	@brief	下三角成分の抽出
+
+	@return	自身の下三角成分を返します。\n
+			詳しくは @ref CxMatrixFilter::Tril の説明をご参照ください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Invert() const
+	@brief	逆行列の算出
+
+	@return	自身の逆行列を返します。\n
+			詳しくは @ref CxMatrixFilter::Invert の説明をご参照ください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Submatrix(int row, int col) const
+	@brief	小行列の抽出
+
+	@param[in]		row				除外する行を示す指標 [0~(src.Rows-1)]
+	@param[in]		col				除外する列を示す指標 [0~(src.Columns-1)]
+
+	@return	自身の小行列を返します。\n
+			詳しくは @ref CxMatrixFilter::Submatrix の説明をご参照ください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Scanner() const
+	@brief	２次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@return	データ構造を２次元配列走査構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxMatrix::Scanner(const TxRectangleI& bounds) const
+	@brief	２次元配列走査構造体の取得
+
+	@tparam	TE		要素の型
+
+	@param[in]		bounds	始点とサイズ
+
+	@return	データ構造を２次元配列走査構造体に設定して返します。
+*/
+
+// //////////////////////////////////////////////////////////////////////
+// Export
+//
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Attach	(HxModule handle, TxMatrix src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Resize	(HxModule handle, int rows, int cols, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Statistics	(HxModule hsrc, int ch, TxStatistics* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Extract	(HxModule hsrc, int row, int col, int length, ExScanDir dir, HxModule hresult)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Reset	(HxModule hdst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Clear	(HxModule hdst, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Cast	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Copy	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Compare	(HxModule hdst, HxModule hsrc, HxModule hcmp, double error_range)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Det	(HxModule hsrc, double* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Trace	(HxModule hsrc, double* value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_ScaleFactor	(HxModule hsrc, TxSizeD *value)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Invert	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Eye	(HxModule hsrc, double value, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Submatrix	(HxModule hdst, HxModule hsrc, int row, int col)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*-
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Tril	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*-
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Triu	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Mirror	(HxModule hdst, HxModule hsrc, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Rotate	(HxModule hdst, HxModule hsrc, int mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Transpose	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Not	(HxModule hdst, HxModule hsrc)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Math	(HxModule hdst, HxModule hsrc, ExMath mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Ope1A	(HxModule hdst, HxModule hsrc, double value, ExOpe1A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Ope2A	(HxModule hdst, HxModule hsrc, HxModule hval, ExOpe2A mode)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Product	(HxModule hdst, HxModule hsrc, HxModule hval)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Preset_Rotate	(HxModule hdst, double degree, double axis_x, double axis_y)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Preset_Scale	(HxModule hdst, double sx, double sy)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Preset_Translate	(HxModule hdst, double tx, double ty)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Matrix_Preset_Shear	(HxModule hdst, double degree_x, double degree_y)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

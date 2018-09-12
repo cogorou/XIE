@@ -1,0 +1,239 @@
+/*!
+	@file	CxDeviceList.h
+	@brief	デバイスリストクラス
+*/
+/*!
+	@internal
+	@file	CxDeviceList.cpp
+	@brief	デバイスリストクラス
+*/
+/*!
+	@def	_CXDEVICELIST_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Media_Classes
+	@class		CxDeviceList
+	@brief		デバイスリストクラス
+
+	現在接続されている入出力デバイスを列挙するクラスです。\n
+
+	@par	Examples:
+			@par
+			1) ビデオ入力デバイスの列挙 \n
+			@includelineno	CxDeviceList_01.cpp
+
+			@par
+			出力結果)
+			@include	CxDeviceList_01.txt
+
+			<hr>
+
+			@par
+			2) オーディオ入力デバイスの列挙 \n
+			@includelineno	CxDeviceList_02.cpp
+
+			@par
+			出力結果)
+			@include	CxDeviceList_02.txt
+
+			<hr>
+
+			@par
+			3) オーディオ出力デバイスの列挙 \n
+			@includelineno	CxDeviceList_03.cpp
+
+			@par
+			出力結果)
+			@include	CxDeviceList_03.txt
+
+			<hr>
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::CxDeviceList()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::CxDeviceList(const CxDeviceList& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxDeviceList &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::~CxDeviceList()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::operator = ( const CxDeviceList& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::operator == ( const CxDeviceList& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::operator != ( const CxDeviceList& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxDeviceList(const CxDeviceList &src) \n
+		@ref operator=(const CxDeviceList &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxDeviceList &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::Setup(ExMediaType type, ExMediaDir dir)
+	@brief	初期化
+
+	@param[in]		type		メディア種別
+	@param[in]		dir			メディア方向
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::Length() const
+	@brief	要素数 [0~]
+
+	@return	現在の要素数を返します。\n
+			未確保の場合は 0 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::operator [] (int index)
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDeviceList::operator [] (int index) const
+	@brief	インデクサ
+
+	@param[in]		index	配列指標 [0~]
+
+	@return	指定位置の要素への参照を返します。\n
+			未確保の場合は例外を発行します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@var	CxDeviceList::m_Items
+	@brief	デバイスリスト
+*/
+
+}
+}

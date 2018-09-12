@@ -1,0 +1,225 @@
+/*!
+	@file	CxDSControlProperty.h
+	@brief	制御プロパティクラス
+*/
+/*!
+	@internal
+	@file	CxDSControlProperty.cpp
+	@brief	制御プロパティクラス
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSCONTROLPROPERTY_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSControlProperty
+	@brief		制御プロパティクラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::m_Wrapper
+	@brief	制御プロパティラッパー
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::CxDSControlProperty()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::CxDSControlProperty(HxModule controller, TxCharCPtrA name)
+	@brief	コンストラクタ
+
+	@param[in]		controller		コントローラ
+	@param[in]		name			プロパティ名称
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::CxDSControlProperty(const CxDSControlProperty& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::~CxDSControlProperty()
+	@brief	デストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::operator = ( const CxDSControlProperty& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::operator == ( const CxDSControlProperty& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::operator != ( const CxDSControlProperty& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::ContentEquals(const IxModule &src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::Controller() const
+	@brief	コントローラの取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::Controller(HxModule value)
+	@brief	コントローラの設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::Name() const
+	@brief	プロパティ名の取得
+
+	@return	現在設定されている値を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::Name(TxCharCPtrA value)
+	@brief	プロパティ名の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::IsSupported() const
+	@brief	対応状況の検査
+
+	@return	コントローラが指定のプロパティをサポートしているか否かを検査します。
+			サポートしている場合は true を返します。
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::GetRange() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::GetStep() const
+	@brief	ステップサイズの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::GetDefault() const
+	@brief	既定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::GetFlags() const
+	@brief	制御方法を示すフラグの取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::SetFlags(int value)
+	@brief	制御方法を示すフラグの設定
+
+	@param[in]		value		設定値 [1:自動、2:手動]
+
+	@remarks
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::GetValue() const
+	@brief	設定値の取得
+
+	@return	現在設定されているコントローラのプロパティから値を取得して返します。
+			このメソッドは Controller と Name が有効な場合に使用できます。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSControlProperty::SetValue(int value, bool relative)
+	@brief	設定値の設定
+
+	@param[in]		value		設定値
+	@param[in]		relative	設定値が相対値であるか否か
+*/
+
+}
+}
+
+#endif

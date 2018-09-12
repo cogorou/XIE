@@ -1,0 +1,128 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_core_ipl.h
+	@brief		IPL 関連定義
+*/
+// ===================================================================
+/*!
+	@def		_XIE_CORE_IPL_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+// =================================================================
+/*!
+	@ingroup	group_xie_Core_Exchange
+	@namespace	xie::IPLDefs
+	@brief		IPL 関連定義
+
+	基本機能を集約しています。
+*/
+namespace xie
+{
+namespace IPLDefs
+{
+
+//===================================================================
+/*!
+	@enum		IPL_DEPTH
+	@brief		ピクセルサイズ
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_1U
+	@brief	1bit 符号なし整数
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_8U
+	@brief	8bit 符号なし整数
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_16U
+	@brief	16bit 符号なし整数
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_32F
+	@brief	32bit 単精度浮動小数点
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_64F
+	@brief	64bit 倍精度浮動小数点
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_8S
+	@brief	8bit 符号つき整数
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_16S
+	@brief	16bit 符号つき整数
+*/
+/*!
+	@var	IPL_DEPTH::IPL_DEPTH_32S
+	@brief	32bit 符号つき整数
+*/
+
+//===================================================================
+/*!
+	@enum		IPL_DATA_ORDER
+	@brief		画像データの並び
+*/
+/*!
+	@var	IPL_DATA_ORDER::IPL_DATA_ORDER_PIXEL
+	@brief	0: Pixel (Packing)
+*/
+/*!
+	@var	IPL_DATA_ORDER::IPL_DATA_ORDER_PLANE
+	@brief	1: Plane (Unpacking)
+*/
+
+//===================================================================
+/*!
+	@enum		IPL_ORIGIN
+	@brief		画像データ始点
+*/
+/*!
+	@var	IPL_ORIGIN::IPL_ORIGIN_TL
+	@brief	0: Top-Left
+*/
+/*!
+	@var	IPL_ORIGIN::IPL_ORIGIN_BL
+	@brief	1: Bottom-Left
+*/
+
+//===================================================================
+/*!
+	@enum		IPL_ALIGN
+	@brief		画像データの水平方向サイズのアライメント
+*/
+/*!
+	@var	IPL_ALIGN::IPL_ALIGN_DWORD
+	@brief	4: 4bytes
+*/
+/*!
+	@var	IPL_ALIGN::IPL_ALIGN_QWORD
+	@brief	8: 8bytes
+*/
+
+//===================================================================
+/*!
+	@enum		IPL_BORDER
+	@brief		ボーダー処理定数
+*/
+/*!
+	@var	IPL_BORDER::IPL_BORDER_CONSTANT
+	@brief	0: Constant
+*/
+/*!
+	@var	IPL_BORDER::IPL_BORDER_REPLICATE
+	@brief	1: Replicate
+*/
+/*!
+	@var	IPL_BORDER::IPL_BORDER_REFLECT
+	@brief	2: Reflect
+*/
+/*!
+	@var	IPL_BORDER::IPL_BORDER_WRAP
+	@brief	3: Wrap
+*/
+
+}
+}

@@ -1,0 +1,110 @@
+/*!
+	@file	AxiMath.h
+	@brief	補助関数群
+*/
+/*!
+	@def	_AXIMATH_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Axi
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			DegToRad(double value)
+	@brief		degree から radian への変換
+
+	@param[in]		degree	対象の値
+
+	@return		指定された値を radian に変換して返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			RadToDeg(double value)
+	@brief		radian から degree への変換
+
+	@param[in]		radian	対象の値
+
+	@return		指定された値を degree に変換して返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			Min(T left, T right)
+	@brief		最小値
+
+	@tparam	T	変数の型
+
+	@param[in]		left	左辺値
+	@param[in]		right	右辺値
+
+	@return		指定された２つの値の内、小さい方の値を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			Max(T left, T right)
+	@brief		最大値
+
+	@tparam	T	変数の型
+
+	@param[in]		left	左辺値
+	@param[in]		right	右辺値
+
+	@return		指定された２つの値の内、大きい方の値を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			Rotate( const TS& src, const TA& axis, TF degree )
+	@brief		点座標の回転
+
+	@tparam	TD	変換後の点座標の型 (TxPointD, TxRectangleD, ... 等の X,Y フィールドを持つ構造体)
+	@tparam	TS	変換前の点座標の型 (同上)
+	@tparam	TA	回転の機軸の型 (同上)
+	@tparam	TF	回転角の型 (double, float)
+
+	@param[in]		src		点座標
+	@param[in]		axis	回転の機軸
+	@param[in]		degree	回転角 (degree 単位) [範囲:0~±360]
+
+	@return		指定された点座標を機軸を中心に指定方向に回転した結果を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			Saturate(TS value, TF lower, TF upper)
+	@brief		飽和
+
+	@tparam	TD	変換後の値の型 (double, float, int 等のプリミティブ型)
+	@tparam	TS	変換前の値の型 (同上)
+	@tparam	TF	上下限値の型 (同上)
+
+	@param[in]		value	対象の値
+	@param[in]		lower	下限値
+	@param[in]		upper	上限値
+
+	@return		指定された値が指定範囲を超える場合に飽和して返します。\n
+				範囲を超えなければそのまま返します。\n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Axi
+	@fn			RgbToGray(TS value)
+	@brief		飽和
+
+	@tparam	TS	変換前の値の型 (TxRGB8x3, TxRGB8x4, ... 等の R,G,B フィールドを持つ構造体)
+
+	@param[in]		value	対象のRGB値
+
+	@return		指定されたRGB値を下式で濃淡化して返します。\n
+				式) R * 0.299 + G * 0.587 + B * 0.114 \n
+*/
+
+}
+}

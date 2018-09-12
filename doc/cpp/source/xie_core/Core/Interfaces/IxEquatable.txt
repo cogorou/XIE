@@ -1,0 +1,51 @@
+/*!
+	@file	IxEquatable.h
+	@brief	複製と比較が可能な機能のインターフェース
+*/
+/*!
+	@def	_IXEQUATABLE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxEquatable
+	@brief		オブジェクトの内容の複製と比較が可能な機能のインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxEquatable::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+*/
+// ===================================================================
+/*!
+	@fn		IxEquatable::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Interfaces
+	@struct		IxConvertible
+	@brief		オブジェクトの内容の変換が可能な機能のインターフェース
+*/
+// ===================================================================
+/*!
+	@fn		IxConvertible::CopyTo(IxModule& dst) const
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		dst		複製先
+*/
+
+}

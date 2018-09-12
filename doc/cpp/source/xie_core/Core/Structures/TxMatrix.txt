@@ -1,0 +1,99 @@
+/*!
+	@file	TxMatrix.h
+	@brief	行列オブジェクト構造体
+*/
+/*!
+	@internal
+	@file	TxMatrix.cpp
+	@brief	行列オブジェクト構造体
+*/
+/*!
+	@def	_TXMATRIX_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxMatrix
+	@brief		行列オブジェクト構造体
+*/
+// ===================================================================
+/*!
+	@var	TxMatrix::Address
+	@brief	領域の先頭アドレス (２次元配列) ※Stride×Rows の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxMatrix::Rows
+	@brief	行数 [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxMatrix::Columns
+	@brief	列数 [0, 1~]
+*/
+// ===================================================================
+/*!
+	@var	TxMatrix::Model
+	@brief	要素モデル
+*/
+// ===================================================================
+/*!
+	@var	TxMatrix::Stride
+	@brief	水平方向サイズ (bytes) [0, 1~] ※要素サイズ×Columns 以上。
+*/
+// ===================================================================
+/*!
+	@fn		TxMatrix::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxMatrix::TxMatrix()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxMatrix::TxMatrix(void* addr, int rows, int cols, TxModel model, int stride)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		addr		領域の先頭アドレス (２次元配列) ※stride×rows の連続領域。
+	@param[in]		rows		行数 [0, 1~]
+	@param[in]		cols		列数 [0, 1~]
+	@param[in]		model		要素モデル
+	@param[in]		stride		水平方向サイズ (bytes) [0, 1~] ※要素サイズ×cols 以上。
+*/
+// ===================================================================
+/*!
+	@fn		TxMatrix::operator == (const TxMatrix& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxMatrix::operator != (const TxMatrix& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+}

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<?define Manufacturer = "Eggs Imaging Laboratory" ?>
+	<?define Vendor = "Eggs" ?>
+	<?define Product = "XIE" ?>
+	<?define Version = "1.0" ?>
+	<?define Build = "0" ?>
+	<?define Revision = "0" ?>
+	<?define Release = "2018/08/06" ?>
+	<?define Codepage = "932" ?>
+	<!--
+		<?define Language = "1041" ?>
+		<?define Language = "1033" ?>
+		<?define Codepage = "1252" ?>
+	-->
+	<Product
+		Id="606C8435-6BBF-48FA-8647-AE47D3473779"
+		Name="$(var.Product) $(var.Version)"
+		Language="1041"
+		Codepage="$(var.Codepage)"
+		Version="$(var.Version)"
+		Manufacturer="$(var.Manufacturer)"
+		UpgradeCode="0B242242-A5D2-44FC-A1A8-7A915E9DEF87"
+		>
+		
+		<Package
+			Id="137799B0-D851-48B9-8AA3-12675095353D"
+			Description="$(var.Product) SDK"
+			Comments="$(var.Version).$(var.Build).$(var.Revision) ($(var.Release))"
+			InstallerVersion="200"
+			Compressed="yes"
+			SummaryCodepage="$(var.Codepage)"
+			InstallScope="perMachine"
+			/>
+
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+		<!--- Directory -->
+		<SetDirectory Id="WINDOWSDRIVE" Value="[WindowsVolume]" />
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			
+			<!--- directly under WINDOWSDRIVE -->
+			<Directory Id="WINDOWSDRIVE">
+				<Directory Id="VENDORDIR" Name="$(var.Vendor)">
+					<Directory Id="INSTALLLOCATION" Name="$(var.Product)-$(var.Version)">
+						<?include Directory.wxs ?>
+						<?include Directory-bin.wxs ?>
+						<!-- 暫定) インストーラのサイズを小さくしたい為、ドキュメントを含めない。
+						<?include Directory-doc.wxs ?>
+						-->
+						<?include Directory-include.wxs ?>
+					</Directory>
+				</Directory>
+			</Directory>
+			<!---->
+			
+			<!--- under Program Files -->
+			<!---
+			<Directory Id="ProgramFilesFolder" Name="PFiles">
+				<Directory Id="VENDORDIR" Name="$(var.Vendor)">
+					<Directory Id="INSTALLLOCATION" Name="$(var.Product)-$(var.Version)">
+						<?include Directory.wxs ?>
+						<?include Directory-bin.wxs ?>
+						<?include Directory-doc.wxs ?>
+						<?include Directory-include.wxs ?>
+					</Directory>
+				</Directory>
+			</Directory>
+			-->
+
+			<!--- Program Menu -->
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ProgramMenuDir" Name="$(var.Product) $(var.Version)">
+					<!-- Core Shortcuts -->
+					<Component Id="StartMenuCore" Guid="9AD7B55B-F841-4700-AFE7-08D37F945C27">
+						<RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+						<RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="$(var.Version).$(var.Revision)" />
+						<Shortcut Id="UninstallProduct" Name="Uninstall $(var.Product) $(var.Version)" Description="Uninstalls the application" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+						<Shortcut Id="README_Shortcut" Name="README" WorkingDirectory="INSTALLLOCATION" Target="[INSTALLLOCATION]README.txt" Icon="text.ico" IconIndex="0" />
+						<Shortcut Id="XIEcapture_Shortcut" Name="XIE-Capture" WorkingDirectory="BIN" Target="[BIN]XIEcapture_100.exe" Icon="XIEcapture_100.exe" IconIndex="0" />
+						<Shortcut Id="XIEprompt_Shortcut" Name="XIE-Prompt" WorkingDirectory="BIN" Target="[BIN]XIEprompt_100.exe" Icon="XIEprompt_100.exe" IconIndex="0" />
+						<Shortcut Id="XIEstudio_Shortcut" Name="XIE-Studio" WorkingDirectory="BIN" Target="[BIN]XIEstudio_100.exe" Icon="XIEstudio_100.exe" IconIndex="0" />
+						<Shortcut Id="XIEversion_Shortcut" Name="XIE-Version" WorkingDirectory="BIN" Target="[BIN]XIEversion_100.exe" Icon="XIEversion_100.exe" IconIndex="0" />
+					</Component>
+					<!-- Manual Shortcuts -->
+					<!-- 暫定) インストーラのサイズを小さくしたい為、ドキュメントを含めない。
+					<Component Id="StartMenuManual" Guid="198A34F4-76B3-4F74-AFB0-1400F56260DF">
+						<RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="$(var.Version).$(var.Revision)" />
+						<Shortcut Id="XIEcpp_Shortcut" Name="XIE C++ Reference" WorkingDirectory="DOC" Target="[DOC]XIE-cpp.chm" Icon="help.ico" IconIndex="0" />
+						<Shortcut Id="XIEcli_Shortcut" Name="XIE .NET Reference" WorkingDirectory="DOC" Target="[DOC]XIE-cli.chm" Icon="help.ico" IconIndex="0" />
+					</Component>
+					-->
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature
+			Id="ProductFeature"
+			Title="$(var.Product)"
+			Level="1"
+			Display="expand"
+			InstallDefault="local"
+			AllowAdvertise="no"
+			Absent="disallow"
+			ConfigurableDirectory= "INSTALLLOCATION"
+			>
+			<!--- Core -->
+			<Feature Id="FeatureCore" Title="Core" Level="1" AllowAdvertise="no" Absent="disallow">
+				<?include Feature.wxs ?>
+				<?include Feature-bin.wxs ?>
+				<ComponentRef Id="StartMenuCore" />
+			</Feature>
+
+			<!--- Header -->
+			<Feature Id="FeatureHeader" Title="Header" Level="1" AllowAdvertise="no">
+				<?include Feature-include.wxs ?>
+			</Feature>
+
+			<!--- Manual -->
+			<!-- 暫定) インストーラのサイズを小さくしたい為、ドキュメントを含めない。
+			<Feature Id="FeatureManual" Title="Manual" Level="1" AllowAdvertise="no">
+				<?include Feature-doc.wxs ?>
+				<ComponentRef Id="StartMenuManual" />
+			</Feature>
+			-->
+		</Feature>
+	
+		<!--- misc - start menu icon -->
+		<!--<Icon Id="help.ico" SourceFile="SupportFiles\help.ico" />-->
+		<!--<Icon Id="info.ico" SourceFile="SupportFiles\info.ico" />-->
+		<Icon Id="text.ico" SourceFile="SupportFiles\text.ico" />
+		<Icon Id="XIE.ico" SourceFile="SupportFiles\XIE.ico" />
+		<Icon Id="XIEcapture_100.exe" SourceFile="..\Archives\bin\XIEcapture_100.exe" />
+		<Icon Id="XIEprompt_100.exe" SourceFile="..\Archives\bin\XIEprompt_100.exe" />
+		<Icon Id="XIEstudio_100.exe" SourceFile="..\Archives\bin\XIEstudio_100.exe" />
+		<Icon Id="XIEversion_100.exe" SourceFile="..\Archives\bin\XIEversion_100.exe" />
+		<Property Id="ARPPRODUCTICON" Value="XIE.ico" />
+
+		<!--- misc - EULA -->
+		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="SupportFiles\EULA.rtf" />
+
+		<!--- Binary -->
+		<Binary Id="XIEenvlib.dll" SourceFile="..\lib\$(var.Configuration)\XIEenvlib.dll" />
+
+		<!--- executing command -->
+		<!--- (XIEversion_100.exe を使用する場合) -->
+		<CustomAction Id="XIE_Install" BinaryKey="XIEenvlib.dll" DllEntry="InstallEnv" />
+		<CustomAction Id="XIE_Uninstall" BinaryKey="XIEenvlib.dll" DllEntry="UninstallEnv" />
+		<!--- (XIEsetup 内部に実装する場合) -->
+		<!--
+		<CustomAction Id="XIE_SetProperty" Return="check" Property="XIE_Install" Value="[INSTALLLOCATION]" />
+		<CustomAction Id="XIE_Install" BinaryKey="XIEenvlib.dll" DllEntry="InstallEnv" Execute="deferred" Impersonate="no" />
+		<CustomAction Id="XIE_Uninstall" BinaryKey="XIEenvlib.dll" DllEntry="UninstallEnv" Execute="deferred" Impersonate="no" />
+		-->
+
+		<!--- User Interface -->
+		<UI>
+			<!--- wizard type -->
+			<UIRef Id="WixUI_FeatureTree" />
+			<!--
+			<UIRef Id="WixUI_Mondo" />
+			<UIRef Id="WixUI_FeatureTree" />
+			<UIRef Id="WixUI_InstallDir" />
+			<Property Id="WIXUI_INSTALLDIR" Value="VENDORDIR" />
+			<UIRef Id="WixUI_Minimal" />
+			<UIRef Id="WixUI_Advanced" />
+			-->
+		</UI>
+
+		<!--- Custom Install Sequence -->
+		<InstallExecuteSequence>
+			<!--- (XIEversion_100.exe を使用する場合) -->
+			<Custom Action="XIE_Install" After="InstallFinalize"/>
+			<Custom Action="XIE_Uninstall" Before="RemoveFiles">
+				<![CDATA[Installed]]>
+			</Custom>
+			<!--- (XIEsetup 内部に実装する場合) -->
+			<!--
+			<Custom Action="XIE_SetProperty" Before="XIE_Install"/>
+			<Custom Action="XIE_Install" After="InstallInitialize"/>
+			<Custom Action="XIE_Uninstall" Before="RemoveFiles">
+				<![CDATA[Installed]]>
+			</Custom>
+			-->
+		</InstallExecuteSequence>
+	</Product>
+</Wix>

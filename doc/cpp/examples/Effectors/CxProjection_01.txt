@@ -1,0 +1,7 @@
+User::CxProjection_01
+(dir=0,ch=0) dst.Length = 240, src.Height = 240
+(dir=0,ch=1) dst.Length = 240, src.Height = 240
+(dir=0,ch=2) dst.Length = 240, src.Height = 240
+(dir=1,ch=0) dst.Length = 320, src.Width = 320
+(dir=1,ch=1) dst.Length = 320, src.Width = 320
+(dir=1,ch=2) dst.Length = 320, src.Width = 320

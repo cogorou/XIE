@@ -1,0 +1,133 @@
+/*!
+	@file	TxCircleArcD.h
+	@brief	真円の円弧構造体 (実数版)
+*/
+/*!
+	@internal
+	@file	TxCircleArcD.cpp
+	@brief	真円の円弧構造体 (実数版)
+*/
+/*!
+	@def	_TXELLIPSEARCD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxCircleArcD
+	@brief		真円の円弧構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxCircleArcD::X
+	@brief	中心座標(X)
+*/
+// ===================================================================
+/*!
+	@var	TxCircleArcD::Y
+	@brief	中心座標(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxCircleArcD::Radius
+	@brief	半径
+*/
+// ===================================================================
+/*!
+	@var	TxCircleArcD::StartAngle
+	@brief	開始角 (度) [0~360]
+*/
+// ===================================================================
+/*!
+	@var	TxCircleArcD::SweepAngle
+	@brief	円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::TxCircleArcD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::TxCircleArcD(double x, double y, double radius, double start_angle, double sweep_angle)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x				中心座標(X)
+	@param[in]		y				中心座標(Y)
+	@param[in]		radius			半径
+	@param[in]		start_angle		開始角 (度) [0~360]
+	@param[in]		sweep_angle		円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::TxCircleArcD(TxPointD center, double radius, double start_angle, double sweep_angle)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		center			中心座標
+	@param[in]		radius			半径
+	@param[in]		start_angle		開始角 (度) [0~360]
+	@param[in]		sweep_angle		円弧範囲 (度) [0~±360]
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::operator == (const TxCircleArcD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::operator != (const TxCircleArcD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::operator TxCircleArcI() const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxCircleArcI 構造体に格納して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::Center() const
+	@brief	中心座標の取得
+
+	@return	現在設定されている中心座標を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxCircleArcD::Center(const TxPointD& value)
+	@brief	中心座標の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			中心座標を設定します。
+*/
+
+}

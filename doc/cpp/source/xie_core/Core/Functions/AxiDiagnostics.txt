@@ -1,0 +1,184 @@
+/*!
+	@file	AxiDiagnostics.h
+	@brief	診断ツール
+*/
+/*!
+	@file	AxiDiagnostics.cpp
+	@brief	診断ツール
+*/
+/*!
+	@def	_AXIDIAGNOSTICS_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExStatus value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExType value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(TxModel value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象のモデル
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間や構造体名を含む
+									- false : メソッド名のみ (既定値)
+									.
+
+	@return		文字列 (書式：type(pack)) に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExBoolean value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExScanDir value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExEndianType value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExMath value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExOpe1A value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExOpe1L value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExOpe2A value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Diagnostics
+	@fn			ToString(ExOpe2L value, bool is_fullname)
+	@brief		文字列変換
+
+	@param[in]		value			変換対象の定数
+	@param[in]		is_fullname		フルネーム指示
+									- true : 名前空間やクラス名を含む
+									- false : フィールド名のみ (既定値)
+									.
+
+	@return		文字列に変換して返します。\n
+				未対応の場合は空文字を返します。
+*/
+
+}
+}

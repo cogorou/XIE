@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5467B30-C86C-47A5-B1AC-BC447F414B02}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>User</RootNamespace>
+    <AssemblyName>project</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../bin-debug</XIE_BIN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+    <XIE_BIN>../../bin</XIE_BIN>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XIE.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(XIE_BIN)\XIE.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="examples\Core\Base\CxException_01.cs" />
+    <Compile Include="examples\Core\Base\CxStopwatch_01.cs" />
+    <Compile Include="examples\Core\Base\CxStopwatch_02.cs" />
+    <Compile Include="examples\Core\Base\CxStopwatch_03.cs" />
+    <Compile Include="examples\Core\CxArray\CxArrayFilter_01.cs" />
+    <Compile Include="examples\Core\CxArray\CxArray_01.cs" />
+    <Compile Include="examples\Core\CxImage\CxImageFilter_01.cs" />
+    <Compile Include="examples\Core\CxImage\CxImage_01.cs" />
+    <Compile Include="examples\Core\CxMatrix\CxMatrixFilter_01.cs" />
+    <Compile Include="examples\Core\CxMatrix\CxMatrix_01.cs" />
+    <Compile Include="examples\Core\Structures\TxArray_01.cs" />
+    <Compile Include="examples\Core\Structures\TxImage_01.cs" />
+    <Compile Include="examples\Core\Structures\TxKernel_01.cs" />
+    <Compile Include="examples\Core\Structures\TxMatrix_01.cs" />
+    <Compile Include="examples\Core\Structures\TxModel_01.cs" />
+    <Compile Include="examples\Core\Structures\TxSE_01.cs" />
+    <Compile Include="examples\GDI\CxCanvas\CxCanvas_01.cs" />
+    <Compile Include="examples\GDI\CxGdiCircle\CxGdiCircle_01.cs" />
+    <Compile Include="examples\GDI\CxGdiEllipse\CxGdiEllipse_01.cs" />
+    <Compile Include="examples\GDI\CxGdiImage\CxGdiImage_01.cs" />
+    <Compile Include="examples\GDI\CxGdiLineSegment\CxGdiLineSegment_01.cs" />
+    <Compile Include="examples\GDI\CxGdiLine\CxGdiLine_01.cs" />
+    <Compile Include="examples\GDI\CxGdiPoint\CxGdiPoint_01.cs" />
+    <Compile Include="examples\GDI\CxGdiPolyline\CxGdiPolyline_01.cs" />
+    <Compile Include="examples\GDI\CxGdiRectangle\CxGdiRectangle_01.cs" />
+    <Compile Include="examples\GDI\CxGdiString\CxGdiString_01.cs" />
+    <Compile Include="examples\GPU\CxGpuArray\CxGpuArrayFilter_01.cs" />
+    <Compile Include="examples\GPU\CxGpuArray\CxGpuArray_01.cs" />
+    <Compile Include="examples\GPU\CxGpuImage\CxGpuImageFilter_01.cs" />
+    <Compile Include="examples\GPU\CxGpuImage\CxGpuImage_01.cs" />
+    <Compile Include="examples\GPU\CxGpuMatrix\CxGpuMatrixFilter_01.cs" />
+    <Compile Include="examples\GPU\CxGpuMatrix\CxGpuMatrix_01.cs" />
+    <Compile Include="examples\IO\CxSerialPort\CxSerialPort_01.cs" />
+    <Compile Include="examples\Log\ApiLog_Error_01.cs" />
+    <Compile Include="examples\Log\ApiLog_Logs_01.cs" />
+    <Compile Include="examples\Log\ApiLog_Logs_02.cs" />
+    <Compile Include="examples\Log\ApiLog_Trace_01.cs" />
+    <Compile Include="examples\Net\CxTcpClient\CxTcpClient_01.cs" />
+    <Compile Include="examples\Net\CxTcpServer\CxTcpServer_01.cs" />
+    <Compile Include="examples\Net\CxUdpClient\CxUdpClient_01.cs" />
+    <Compile Include="project.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,294 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_12	単純な GUI アプリケーション
+
+	ここでは、MFC の SDI アプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_VC_Basic_12_1	"プロジェクトの作成"
+			- @subpage	page_Tutorial_VC_Basic_12_2	"プロジェクトの設定"
+			- @subpage	page_Tutorial_VC_Basic_12_3	"ライブラリの初期化"
+			- @subpage	page_Tutorial_VC_Basic_12_4	"描画処理"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ tutorial.cpp         … エントリポイント
+├ tutorial.h
+├ tutorial.rc
+├ tutorial.sln
+├ tutorial.vcxproj
+├ tutorial.vcxproj.filters
+├ ChildView.cpp        … ビュー (実装)
+├ ChildView.h          … ビュー (宣言)
+├ MainFrm.cpp
+├ MainFrm.h
+├ Resource.h
+├ stdafx.cpp
+├ stdafx.h
+├ targetver.h
+├ UserImages.bmp
+├ res
+├ TestFiles
+│├ cube_320x240.png    … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、ウィンドウに表示する処理です。\n
+
+			@par
+			表示結果) \n
+			<table border="0" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="left">@image html Tutorial_VC_Basic_12_window.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_12_1	プロジェクトの作成
+
+	Visual Studio の [ファイル] メニューから
+	[新規作成] → [プロジェクト] の順に選択してウィザードを開始します。
+
+	-# MFC アプリケーションを選択します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_1.png</td>
+			</tr>
+		</table>
+		\n
+	-# [次へ]を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_2.png</td>
+			</tr>
+		</table>
+		\n
+	-# オプションを指定して [次へ] を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_3.png</td>
+			</tr>
+		</table>
+		\n
+	-# [次へ] を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_4.png</td>
+			</tr>
+		</table>
+		\n
+	-# オプションを指定して [次へ] を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_5.png</td>
+			</tr>
+		</table>
+		\n
+	-# オプションを指定して [次へ] を押下して進みます。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_6.png</td>
+			</tr>
+		</table>
+		\n
+	-# [完了] を押下します。\n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_create_7.png</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_12_2	プロジェクトの設定
+
+	前項で作成したプロジェクトの設定を Release ビルド 及び Debug ビルドに対して行います。
+	内容は共通ですので、構成のドロップダウンリストで "すべての構成" を選択してから行うことを推奨します。\n
+
+	-# プロジェクト設定ダイアログの表示 \n
+		\n
+		ソリューションエクスプローラでプロジェクトのノードを選択し、
+		[プロジェクト] メニューの [プロパティ] を選択して、プロパティページダイアログを起動します。\n
+		\n
+	-# 全般タブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_settings_1.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=100>項目</td>
+			<td align="center" class="indexkey" width=300>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">文字セット</td>
+			<td align="left">Unicode 文字セットを使用する</td>
+			<td align="left">
+				既定ではこの設定になっています。
+				マルチバイト文字列 (char) を使用する場合は "設定なし" または "マルチバイト文字セットを使用する" に設定してください。
+				但し、"マルチバイト MFC ライブラリ" が必要になります。
+			</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">出力ディレクトリ</td>
+			<td align="left">\$(SolutionDir)\$(Platform)\\\$(Configuration)\\</td>
+			<td align="left" ROWSPAN=2>
+				下図のように Win32 と x64 の生成物の階層を合わせたいので \$(Platform)\\ を追加しています。\n
+				├ Win32 \n
+				│├ Debug \n
+				│├ Release \n
+				├ x64 \n
+				│├ Debug \n
+				│├ Release \n
+			</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">中間ディレクトリ</td>
+			<td align="left">\$(Platform)\\\$(Configuration)\\</td>
+			</tr>
+		</table>
+		\n
+	-# C/C++ タブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_settings_2.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=200>項目</td>
+			<td align="center" class="indexkey" width=200>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">追加のインクルード ディレクトリ</td>
+			<td align="left">\$(XIE100ROOT)\\include;</td>
+			<td align="left">
+				\$(XIE100ROOT) は、XIE のインストーラで生成される環境変数です。
+				既定では "C:\Eggs\XIE-1.0" が設定されています。
+				インストーラを使用せず、手動でセットアップする場合は XIEversion.exe を使用してください。
+				その場合は、XIEversion.exe の位置を基準に環境変数の値を決定します。
+			</td>
+			</tr>
+		</table>
+		\n
+	-# リンカータブの設定 \n
+		\n
+		<table border="0" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="left">@image html Tutorial_VC_Basic_12_settings_3.png</td>
+			</tr>
+		</table>
+		\n
+		<table border="1" cellspacing="0" cellpadding="3">
+		<tr>
+			<td align="center" class="indexkey" width=200>項目</td>
+			<td align="center" class="indexkey" width=200>値</td>
+			<td align="center" class="indexkey">備考</td>
+			</tr>
+		<tr>
+			<td align="left" class="indexkey">追加のライブラリ ディレクトリ</td>
+			<td align="left">\$(XIE100BIN);</td>
+			<td align="left">
+				\$(XIE100BIN) は、XIE のインストーラで生成される環境変数です。
+				既定では "C:\Eggs\XIE-1.0\bin" が設定されています。
+				インストーラを使用せず、手動でセットアップする場合は XIEversion.exe を使用してください。
+				その場合は、XIEversion.exe の位置を基準に環境変数の値を決定します。
+			</td>
+			</tr>
+		</table>
+		\n
+	.
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_12_3	ライブラリの初期化
+
+	本ライブラリの機能を使用する前に @ref group_Overview_Setup "初期化関数" を呼び出す必要があります。
+	MFC SDI アプリケーション (または MDI アプリケーション) の場合は、
+	下記のように 初期化は InitInstance 内で行ってください。解放は ExitInstance 内で行ってください。\n
+
+	-# ライブラリのヘッダー \n
+	-# ライブラリの初期化 \n
+	-# ライブラリの解放 \n
+	.
+
+	@includelineno	Tutorial_VC_Basic_12_test.cpp
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_VC_Basic_12_4	描画処理
+
+	SDI アプリケーションのフレームウィンドウのビュー部分に画像とオーバレイ図形を表示する例を示します。
+
+	まず、ChildView.h を編集します。\n
+
+	-# 表示機能のクラスが実装されたライブラリのヘッダー \n
+	-# 画像表示クラス \n
+	-# 表示対象の画像オブジェクト \n
+	-# ちらつき防止処置 \n
+	.
+
+	@includelineno	Tutorial_VC_Basic_12_test_childview.h
+
+	<hr>
+
+	続いて、ChildView.cpp を編集します。\n
+
+	-# 表示対象の画像の読み込み \n
+		表示対象の画像オブジェクトに画像を読み込みます。\n
+		ここでは簡素化の為にハードコーディングしていますが、通常はファイルメニュー等から読み込んでください。\n
+		\n
+	-# ちらつき防止処置 \n
+		再描画の度にビューが点滅するのを避けるため、OnEraseBkgnd で常に TRUE を返します。\n
+		\n
+	-# 描画処理 \n
+		OnPaint ハンドラに実装します。処理手順は後述します。\n
+	.
+
+	@includelineno	Tutorial_VC_Basic_12_test_childview.cpp
+
+	<hr>
+
+	下記は、OnPaint ハンドラに記述する描画処理の実装例です。\n
+	@ref xie::GDI::CxCanvas "CxCanvas" を用いてビューのデバイスコンテキストに対して画像とオーバレイ図形を描画しています。\n
+	処理手順は下記の通りです。\n
+
+	- Setup \n
+		指定されたデバイスコンテキストに対し、OpenGL の初期化を行います。\n
+		\n
+	- Resize \n
+		描画用バッファのサイズ変更を行います。\n
+		ビューのクライアント領域のサイズを指定してください。\n
+		\n
+	- DrawImage \n
+		表示対象画像の描画を行います。\n
+		\n
+	- DrawOverlay \n
+		オーバレイ図形の描画を行います。\n
+		\n
+	- Flush \n
+		描画結果をデバイスコンテキスト(前述 Setup で指定したもの)に反映します。\n
+		\n
+	.
+
+	@includelineno	Tutorial_VC_Basic_12_test_paint.cpp
+*/

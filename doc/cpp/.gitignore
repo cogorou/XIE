@@ -1,0 +1,12 @@
+html
+ipch
+Win32
+Results
+*.chm
+*.chw
+*.log
+*.suo
+*.sdf
+*.opensdf
+*.user
+.vs

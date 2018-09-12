@@ -1,0 +1,493 @@
+/*!
+	@file	CxTcpServer.h
+	@brief	TCP/IP通信サーバークラス
+*/
+/*!
+	@internal
+	@file	CxTcpServer.cpp
+	@brief	TCP/IP通信サーバークラス
+*/
+/*!
+	@def	_CXTCPSERVER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Net
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Net_Classes
+	@class		CxTcpServer
+	@brief		TCP/IP通信サーバークラス
+
+	@par	Examples:
+			@includelineno	CxTcpServer_01.cpp
+
+			@par
+			出力結果)
+			@include	CxTcpServer_01.txt
+*/
+// ===================================================================
+/*!
+	@var	CxTcpServer::m_Tag
+	@brief	データ構造
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::_Constructor()
+	@brief	コンストラクタ用初期化関数
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::CxTcpServer()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+			データ構造は既定値でリセットされています。
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::CxTcpServer(const CxTcpServer& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			但し、ソケットハンドルは除外します。\n
+			複製先のオブジェクトの接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。
+
+	@sa
+		@ref operator=(const CxTcpServer &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::CxTcpServer(const TxIPAddress& addr, int port)
+	@brief	コンストラクタ
+
+	@param[in]		addr	自身のIPアドレス
+	@param[in]		port	自身のポート番号 [0~65535]
+
+	@remarks
+			指定された値をメンバフィールドに設定して構築します。\n
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。
+
+	@sa
+		@ref Setup \n
+		@ref Start \n
+		@ref m_Tag \n
+		@ref TxTcpServer \n
+		@ref TxTcpServer::IPAddress \n
+		@ref TxTcpServer::Port \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::CxTcpServer(const TxIPEndPoint& endpoint)
+	@brief	コンストラクタ
+
+	@param[in]		endpoint	自身のエンドポイント
+
+	@remarks
+			指定された値をメンバフィールドに設定して構築します。\n
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。
+
+	@sa
+		@ref Setup \n
+		@ref Start \n
+		@ref m_Tag \n
+		@ref TxTcpServer \n
+		@ref TxTcpServer::IPAddress \n
+		@ref TxTcpServer::Port \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::~CxTcpServer()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では @ref Dispose を呼び出しています。
+
+	@sa
+		@ref Dispose() \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::operator = ( const CxTcpServer& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			但し、ソケットハンドルは除外します。\n
+			複製先のオブジェクトの接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。
+
+	@sa
+		@ref Setup \n
+		@ref Start \n
+		@ref m_Tag \n
+		@ref TxTcpServer \n
+		@ref TxTcpServer::Socket \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::operator == ( const CxTcpServer& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			ソケットハンドルの違いは無視します。\n
+
+	@sa
+		@ref m_Tag \n
+		@ref TxTcpServer \n
+		@ref TxTcpServer::Socket \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::operator != ( const CxTcpServer& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			ソケットハンドルの違いは無視します。\n
+
+	@sa
+		@ref m_Tag \n
+		@ref TxTcpServer \n
+		@ref TxTcpServer::Socket \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Tag() const
+	@brief	データ構造の取得
+
+	@return	自身のデータ構造の複製を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::TagPtr() const
+	@brief	データ構造へのポインタの取得
+
+	@return	内部リソースを管理する構造体へのポインタを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Setup()
+	@brief	初期化
+
+	@remarks
+			内部のスレッドを生成します。\n
+			生成済みの場合は、一旦解放してから再度生成します。
+
+	@sa
+		@ref Dispose \n
+		@ref IsValid \n
+		@ref m_Thread \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Dispose()
+	@brief	解放
+
+	@remarks
+			内部スレッドを停止して解放します。\n
+
+	@sa
+		@ref Setup \n
+		@ref IsValid \n
+		@ref m_Thread \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+
+	@remarks
+			以下の条件を満たす場合は有効(true)を返します。\n
+			-	ソケットハンドルが無効でないこと。
+			-	内部のスレッドが生成されていること。
+
+	@sa
+		@ref Setup \n
+		@ref Dispose \n
+		@ref m_Thread \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Reset()
+	@brief	リセット
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Start()
+	@brief	スレッドの開始
+
+	@sa
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Stop()
+	@brief	スレッドの停止
+
+	@sa
+		@ref Start \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	スレッドが停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+		@ref IsRunning \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::IsRunning() const
+	@brief	スレッドの動作状態の取得
+
+	@return	スレッドが動作中の場合は true を返します。\n
+			それ以外は false を返します。
+
+	@sa
+		@ref Start \n
+		@ref Stop \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Socket() const
+	@brief	ソケットハンドルの取得
+
+	@return		ソケットハンドルを返します。\n
+				接続が確立していない場合は INVALID_SOCKET (0) を返します。\n
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Stream(int index) const
+	@brief	ソケットストリームの取得
+
+	@param[in]	index	クライアント指標 [0 ~ (@ref Connections() - 1)]
+
+	@return		指定されたクライアントの情報を TxSocketStream 構造体に設定して返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@sa
+		@ref m_Tag \n
+		@ref Connections \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Connections() const
+	@brief	接続数の取得
+
+	@return		現在接続しているクライアントの数を返します。\n
+				未接続の場合は 0 を返します。
+
+	@sa
+		@ref m_Tag \n
+		@ref Stream \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::IPAddress() const
+	@brief	自身のIPアドレスの取得
+
+	@return		現在設定されているIPアドレスを返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::IPAddress(const TxIPAddress& value)
+	@brief	自身のIPアドレスの設定
+
+	@param[in]		value	設定値
+
+	@remarks
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。\n
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Port() const
+	@brief	自身のポート番号の取得
+
+	@return		現在設定されているポート番号を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Port(int value)
+	@brief	自身のポート番号の設定
+
+	@param[in]		value	設定値 [0~65535]
+
+	@remarks
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。\n
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Backlog() const
+	@brief	最大接続数の取得
+
+	@return		現在設定されている最大接続数を返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Backlog(int value)
+	@brief	最大接続数の設定
+
+	@param[in]		value	設定値 [1~]
+
+	@remarks
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。\n
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::EndPoint() const
+	@brief	自身のエンドポイントの取得
+
+	@return		現在設定されているIPアドレスとポート番号を TxIPEndPoint 構造体に設定して返します。
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::EndPoint(const TxIPEndPoint& value)
+	@brief	自身のエンドポイントの設定
+
+	@param[in]		value	設定値
+
+	@remarks
+			接続を確立するには、別途 @ref Setup 及び @ref Start を実行する必要があります。\n
+
+	@sa
+		@ref m_Tag \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Open()
+	@brief	オープン
+
+	@remarks
+			現在設定されているエンドポイントへの接続します。
+
+	@sa
+		@ref ThreadProc \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::Close()
+	@brief	クローズ
+
+	@remarks
+			接続済の場合はソケットハンドルを解放します。
+
+	@sa
+		@ref ThreadProc \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::ThreadProc( void* sender, CxThreadArgs* e )
+	@brief	スレッド関数
+
+	@param[in]		sender	呼び出し元 (@ref m_Thread へのポインタ)
+	@param[in]		e		スレッド引数
+
+	@remarks
+			現在設定されているエンドポイントへ接続します。\n
+			接続確立後は、クライアントからの接続要求を監視し、受付を行います。\n
+			受付が正常に行われるとソケットリストに追加します。\n
+
+	@sa
+		Open \n
+		Close \n
+		Clients \n
+		Connections \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::m_Mutex
+	@brief	排他制御用オブジェクト
+
+	@sa
+		Setup \n
+		Dispose \n
+*/
+// ===================================================================
+/*!
+	@fn		CxTcpServer::m_Thread
+	@brief	スレッドオブジェクト
+
+	@sa
+		Setup \n
+		Dispose \n
+*/
+
+}
+}

@@ -1,0 +1,372 @@
+/*!
+	@internal
+	@file		api_core.h
+	@brief		基本ライブラリの内部定義
+*/
+/*!
+	@internal
+	@def		_API_CORE_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+namespace xie
+{
+
+// ////////////////////////////////////////////////////////////
+// FUNCTION
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Module_Create	(TxCharCPtrA name)
+	@brief		モジュールの生成
+
+	@param[in]		name	クラス名称
+
+	@return	正常の場合は生成されたオブジェクトへのポインタを返します。
+			異常の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Module_Destroy	(HxModule handle)
+	@brief		モジュールの破棄
+
+	@param[in]		handle	対象のモジュールハンドル
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Module_Dispose	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Module_IsValid	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Module_ID	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryAlloc	(size_t size, ExBoolean zero_clear)
+	@brief		メモリの確保
+
+	@param[in]		size		要素のサイズ [1~]
+	@param[in]		zero_clear	0 初期化の指示
+
+	@return	確保した領域の先頭アドレスを返します。異常の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryFree	(void* ptr)
+	@brief		メモリの解放
+
+	@param[in]		ptr			領域の先頭アドレス
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryMap	(size_t size)
+	@brief		メモリマップ
+
+	@param[in]		size		領域のサイズ [1~]
+
+	@return	確保した領域の先頭アドレスを返します。異常の場合は NULL を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryUnmap	(void* ptr, size_t size)
+	@brief		メモリマップ解放
+
+	@param[in]		ptr			領域の先頭アドレス
+	@param[in]		size		領域のサイズ [1~]
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryLock	(void* ptr, size_t size)
+	@brief		メモリロック
+
+	@param[in]		ptr			領域の先頭アドレス
+	@param[in]		size		領域のサイズ [1~]
+
+	@return	正常の場合は 0 を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_MemoryUnlock	(void* ptr, size_t size)
+	@brief		メモリロック解除
+
+	@param[in]		ptr			領域の先頭アドレス
+	@param[in]		size		領域のサイズ [1~]
+
+	@return	正常の場合は 0 を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_SizeOf	(ExType type)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_CalcBpp	(ExType type)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_CalcDepth	(ExType type)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_CalcRange	(ExType type, int depth, TxRangeD* range)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_CalcScale	(ExType src_type, int src_depth, ExType dst_type, int dst_depth)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_CalcStride	(TxModel model, int width, int packing_size)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Axi_GetTime	(unsigned long long* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_DateTime_Now	(ExBoolean ltc, TxDateTime* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_DateTime_ToBinary	(TxDateTime src, ExBoolean ltc, unsigned long long* dst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_DateTime_FromBinary	(unsigned long long src, ExBoolean ltc, TxDateTime* dst)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_TagPtr	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Equatable_CopyFrom	(HxModule handle, HxModule src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Equatable_ContentEquals	(HxModule handle, HxModule cmp)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Attachable_Attach	(HxModule handle, HxModule src)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Attachable_IsAttached	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Lockable_Lock	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Lockable_Unlock	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Lockable_IsLocked	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Runnable_Reset	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Runnable_Start	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Runnable_Stop	(HxModule handle)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Runnable_Wait	(HxModule handle, int timeout, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Runnable_IsRunning	(HxModule handle, ExBoolean* result)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Param_GetParam	(HxModule handle, TxCharCPtrA name, void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_Param_SetParam	(HxModule handle, TxCharCPtrA name, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IndexedParam_GetParam	(HxModule handle, TxCharCPtrA name, int index, void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_IndexedParam_SetParam	(HxModule handle, TxCharCPtrA name, int index, const void* value, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_FileAccess_LoadA(HxModule hdst, TxCharCPtrA filename, const void* option, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_FileAccess_LoadW(HxModule hdst, TxCharCPtrW filename, const void* option, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_FileAccess_SaveA(HxModule hsrc, TxCharCPtrA filename, const void* option, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+// ===================================================================
+/*!
+	@ingroup	group_xie_Core_Exports
+	@fn			fnXIE_Core_FileAccess_SaveW(HxModule hsrc, TxCharCPtrW filename, const void* option, TxModel model)
+	@brief		
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+}

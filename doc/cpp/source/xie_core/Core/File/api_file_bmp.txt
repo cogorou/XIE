@@ -1,0 +1,32 @@
+/*!
+	@internal
+	@file		api_file_bmp.h
+	@brief		ファイル入出力関連 (Bitmap 形式)
+*/
+/*!
+	@internal
+	@def		_API_FILE_BMP_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@def		BM_HEADER_MARKER
+	@brief		Bitmap ファイル識別子
+*/
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_Core_Internals
+	@var		_BITMAPFILEHEADER_SIZE
+	@brief		Bitmap ファイルヘッダーサイズ (bytes)
+*/
+
+namespace xie
+{
+namespace File
+{
+}
+}

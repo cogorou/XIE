@@ -1,0 +1,84 @@
+/*!
+	@file	TxGdiPolyline.h
+	@brief	オーバレイ図形構造体 (折れ線)
+*/
+/*!
+	@internal
+	@file	TxGdiPolyline.cpp
+	@brief	オーバレイ図形構造体 (折れ線)
+*/
+/*!
+	@def	_TXGDIPOLYLINE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Structures
+	@struct		TxGdiPolyline
+	@brief		オーバレイ図形構造体 (折れ線)
+*/
+// ===================================================================
+/*!
+	@var	TxGdiPolyline::Address
+	@brief	配列の先頭アドレス (１次元配列) ※sizeof(TxPointD)×Length (bytes) の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxGdiPolyline::Length
+	@brief	要素数 [0~]
+*/
+// ===================================================================
+/*!
+	@var	TxGdiPolyline::Model
+	@brief	要素モデル [TxModel::F64(2)] (※ ModelOf<TxPointD>() と等価です。)
+*/
+// ===================================================================
+/*!
+	@var	TxGdiPolyline::Closed
+	@brief	端点の開閉 [True: 閉じる（多角形）、False: 閉じない（折れ線）]
+*/
+// ===================================================================
+/*!
+	@var	TxGdiPolyline::Param
+	@brief	オーバレイ図形パラメータ (２次元用)
+*/
+// ===================================================================
+/*!
+	@fn		TxGdiPolyline::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxGdiPolyline::TxGdiPolyline()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxGdiPolyline::TxGdiPolyline(void* addr, int length, TxModel model, ExBoolean closed)
+	@brief	コンストラクタ
+
+	@param[in]		addr		配列の先頭アドレス
+	@param[in]		length		要素数 [0~]
+	@param[in]		model		要素モデル [TxModel::F64(2)] (※ ModelOf<TxPointD>() と等価です。)
+	@param[in]		closed		端点の開閉
+								- True : 閉じる（多角形）
+								- False : 閉じない（折れ線）
+*/
+// ===================================================================
+/*!
+	@fn		TxGdiPolyline::operator TxArray() const
+	@brief	キャストペレータ
+
+	@return	配列オブジェクト構造体に変換して返します。
+*/
+
+}
+}

@@ -1,0 +1,202 @@
+/*!
+	@file	TxTrapezoidD.h
+	@brief	台形構造体 (実数版)
+*/
+/*!
+	@internal
+	@file	TxTrapezoidD.cpp
+	@brief	台形構造体 (実数版)
+*/
+/*!
+	@def	_TXTRAPEZOIDD_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxTrapezoidD
+	@brief		台形構造体 (実数版)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::X1
+	@brief	頂点1(X)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::Y1
+	@brief	頂点1(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::X2
+	@brief	頂点2(X)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::Y2
+	@brief	頂点2(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::X3
+	@brief	頂点3(X)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::Y3
+	@brief	頂点3(Y)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::X4
+	@brief	頂点4(X)
+*/
+// ===================================================================
+/*!
+	@var	TxTrapezoidD::Y4
+	@brief	頂点4(Y)
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::TxTrapezoidD()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::TxTrapezoidD(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		x1		頂点1(X)
+	@param[in]		y1		頂点1(Y)
+	@param[in]		x2		頂点2(X)
+	@param[in]		y2		頂点2(Y)
+	@param[in]		x3		頂点3(X)
+	@param[in]		y3		頂点3(Y)
+	@param[in]		x4		頂点4(X)
+	@param[in]		y4		頂点4(Y)
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::TxTrapezoidD(TxPointD p1, TxPointD p2, TxPointD p3, TxPointD p4)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		p1		頂点1
+	@param[in]		p2		頂点2
+	@param[in]		p3		頂点3
+	@param[in]		p4		頂点4
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::operator == (const TxTrapezoidD& cmp) const
+	@brief	比較オペレータ(等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	一致
+	@retval		false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::operator != (const TxTrapezoidD& cmp) const
+	@brief	比較オペレータ(不等価)
+
+	@param[in]		cmp		比較対象
+
+	@retval		true	不一致
+	@retval		false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex1() const
+	@brief	頂点 1 の取得
+
+	@return	現在設定されている頂点 1 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex1(const TxPointD& value)
+	@brief	頂点 1 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			頂点 1 を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex2() const
+	@brief	頂点 2 の取得
+
+	@return	現在設定されている頂点 2 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex2(const TxPointD& value)
+	@brief	頂点 2 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			頂点 2 を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex3() const
+	@brief	頂点 3 の取得
+
+	@return	現在設定されている頂点 3 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex3(const TxPointD& value)
+	@brief	頂点 3 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			頂点 3 を設定します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex4() const
+	@brief	頂点 4 の取得
+
+	@return	現在設定されている頂点 4 を返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxTrapezoidD::Vertex4(const TxPointD& value)
+	@brief	頂点 4 の設定
+
+	@param[in]		value		設定値
+
+	@remarks
+			頂点 4 を設定します。
+*/
+// ===================================================================
+/*! 
+	@fn		TxTrapezoidD::operator TxTrapezoidI () const
+	@brief	キャストオペレータ
+
+	@return	現在の内容を TxTrapezoidI 構造体に格納して返します。
+*/
+
+}

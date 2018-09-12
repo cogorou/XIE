@@ -1,0 +1,262 @@
+/*!
+	@file	CxHsvConverter.h
+	@brief	HSV 変換クラス
+*/
+/*!
+	@internal
+	@file	CxHsvConverter.cpp
+	@brief	HSV 変換クラス
+*/
+/*!
+	@internal
+	@file	CxHsvConverter.hpp
+	@brief	HSV 変換クラス
+*/
+/*!
+	@def	_CXHSVCONVERTER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+/*!
+	@internal
+	@def	_CXHSVCONVERTER_HPP_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Effectors
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Effectors_Exports
+	@fn			fnXIE_Effectors_HsvConverter	(HxModule hsrc, HxModule hdst, HxModule hmask, int depth, int hue_dir, double saturation_factor, double value_factor)
+	@brief		HSV 変換
+
+	@param[in]		hsrc				入力元
+	@param[in,out]	hdst				出力先
+	@param[in]		hmask				マスク (※ 省略する場合は NULL を指定してください。)
+	@param[in]		depth				ビット深度 [0,1~64]
+	@param[in]		hue_dir				色相の回転方向 [0~±180 または 0~360]
+	@param[in]		saturation_factor	彩度の変換係数 [0~1]
+	@param[in]		value_factor		明度の変換係数 [0~1]
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Effectors_Classes
+	@class		CxHsvConverter
+	@brief		HSV 変換クラス
+
+	RGB 色空間のカラー画像を HSV 色空間に変換して 色相 (Hue)、彩度 (Saturation)、明度 (Value) を指定のパラメータに従って変換し、
+	RGB 色空間に戻して出力先のオブジェクトに格納します。\n
+	\n
+	処理可能な条件:
+		-	入出力の Size, Model, Channels が一致していること。
+		-	入力の Channels (または Model.Pack) が 3 または 4 であること。\n
+		-	入力の Model.Type が下記の何れかであること。\n
+			- ExType (U8, U16, U32, S8, S16, S32, F32, F64) \n
+			.
+		.
+		\n
+
+	@par	Examples:
+			@includelineno	CxHsvConverter_01.cpp
+			
+			@par
+			入力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center">@image html cube_320x240.png</td>
+				</tr>
+			</table>
+
+			@par
+			出力画像:
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">1</td>
+				<td align="center" class="indexkey">2</td>
+				<td align="center" class="indexkey">3</td>
+				</tr>
+			<tr>
+				<td align="center">@image html CxHsvConverter_01-1.png</td>
+				<td align="center">@image html CxHsvConverter_01-2.png</td>
+				<td align="center">@image html CxHsvConverter_01-3.png</td>
+				</tr>
+			</table>
+			1) 色相(Hue)を 180 度回転させた画像 \n
+			2) 彩度(Saturation)を 0.5 倍した画像 \n
+			3) 明度(Value)を 0.5 倍した画像 \n
+
+	@sa
+		@ref xie::CxArray \n
+		@ref xie::CxImage \n
+*/
+// ===================================================================
+/*!
+	@var	CxHsvConverter::Depth
+	@brief	入力画像のビット深度 [0,1~64]
+
+	@sa
+		@ref xie::CxImage::Depth \n
+		@ref xie::CxImage::CalcDepth \n
+		@ref xie::Axi::CalcDepth \n
+*/
+// ===================================================================
+/*!
+	@var	CxHsvConverter::HueDir
+	@brief	色相の回転方向 [0~±180 または 0~360]
+*/
+// ===================================================================
+/*!
+	@var	CxHsvConverter::SaturationFactor
+	@brief	彩度の変換係数 [0.0~]
+*/
+// ===================================================================
+/*!
+	@var	CxHsvConverter::ValueFactor
+	@brief	明度の変換係数 [0.0~]
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::CxHsvConverter()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::CxHsvConverter(const CxHsvConverter& src)
+	@brief	コンストラクタ (Copy Constructor)
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref operator=(const CxHsvConverter &src) \n
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::CxHsvConverter(int depth, int hue_dir, double saturation_factor, double value_factor)
+	@brief	コンストラクタ
+
+	@param[in]		depth				ビット深度 [0,1~64]
+	@param[in]		hue_dir				色相の回転方向 [0~±180 または 0~360]
+	@param[in]		saturation_factor	彩度の変換係数 [0~1]
+	@param[in]		value_factor		明度の変換係数 [0~1]
+
+	@remarks
+			このクラスのメンバフィールドを指定値で初期化して構築します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::~CxHsvConverter()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::operator = ( const CxHsvConverter& src )
+	@brief	代入オペレータ
+
+	@param[in]		src		複製元
+
+	@return	複製後の自身への参照を返します。
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。
+			内部では @ref CopyFrom メソッドを呼び出しています。
+
+	@sa
+		@ref CopyFrom(const IxModule &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::operator == ( const CxHsvConverter& src ) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			データ構造の比較を行います。\n
+			内部では @ref ContentEquals メソッドを呼び出しています。
+
+	@sa
+		@ref ContentEquals(const IxModule &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::operator != ( const CxHsvConverter& src ) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			データ構造の比較を行います。
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::CopyFrom(const IxModule& src)
+	@brief	オブジェクトの内容の複製
+
+	@param[in]		src		複製元
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+
+	@remarks
+			指定されたオブジェクトの内容を複製します。\n
+			このメソッドは Copy Constructor や代入オペレータから呼び出されます。
+
+	@sa
+		@ref CxHsvConverter(const CxHsvConverter &src) \n
+		@ref operator=(const CxHsvConverter &src) \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::ContentEquals(const IxModule& src) const
+	@brief	オブジェクトの内容の比較
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容と自身の内容を比較します。\n
+			このメソッドは比較オペレータから呼び出されます。
+
+	@sa
+		@ref operator==(const CxHsvConverter &src) const \n
+*/
+// ===================================================================
+/*!
+	@fn		CxHsvConverter::Execute(HxModule hsrc, HxModule hdst, HxModule hmask) const
+	@brief	実行
+
+	@param[in]		hsrc		入力
+	@param[in,out]	hdst		出力先
+	@param[in]		hmask		マスク (※ 省略する場合は NULL を指定してください。)
+*/
+
+}
+}

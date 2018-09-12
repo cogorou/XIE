@@ -1,0 +1,10 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_core_defs.h
+	@brief		基本ライブラリのマクロ
+*/
+// ===================================================================
+/*!
+	@def		_XIE_CORE_DEFS_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/

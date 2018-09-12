@@ -1,0 +1,381 @@
+/*!
+	@file	CxDSMediaPlayer.h
+	@brief	メディアプレーヤークラス
+*/
+/*!
+	@internal
+	@file	CxDSMediaPlayer.cpp
+	@brief	メディアプレーヤークラス
+*/
+#ifdef _MSC_VER
+
+/*!
+	@def	_CXDSMEDIAPLAYER_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace Media
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_Media_Internals
+	@class		CxDSMediaPlayer
+	@brief		メディアプレーヤークラス
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::CxDSMediaPlayer()
+	@brief	コンストラクタ
+
+	@remarks
+			標準のコンストラクタです。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::~CxDSMediaPlayer()
+	@brief	デストラクタ
+
+	@remarks
+			このオブジェクトを破棄します。\n
+			内部では Dispose を呼び出しています。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Dispose()
+	@brief	解放
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::IsValid() const
+	@brief	有効性の検査
+
+	@retval	true	有効
+	@retval	false	無効
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Setup(HxModule hVideo, HxModule hAudio, HxModule hOutput)
+	@brief	初期化
+
+	@param[in]		hVideo		映像入力 \n
+	@param[in]		hAudio		音声入力 \n
+	@param[in]		hOutput		出力先 \n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::CreateGrabber(ExMediaType type) const
+	@brief	メディア捕獲用イベントレシーバの生成
+
+	@param[in]		type		捕獲するメディアの種別
+
+	@return	メディア(映像または音声)を捕獲する同期オブジェクトを生成して返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GraphBuilder() const
+	@brief	グラフビルダーの参照
+
+	@return	内部に保有しているグラフビルダーへのポインタを返します。外部で解放しないでください。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Reset()
+	@brief	リセット
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Start()
+	@brief	開始
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Stop()
+	@brief	停止
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Abort()
+	@brief	中断
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Pause()
+	@brief	一時停止
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Wait(int timeout) const
+	@brief	待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	非同期処理が停止するか指定時間が経過するまで待機します。\n
+			停止を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::IsRunning() const
+	@brief	動作状態の取得
+
+	@return	非同期処理が動作中の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::IsPaused() const
+	@brief	一時停止状態の取得
+
+	@return	非同期処理が一時停止状態の場合は true を返します。\n
+			それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetParam(TxCharCPtrA name, void* value, TxModel model) const
+	@brief	パラメータの取得
+
+	@param[in]		name		パラメータ名称
+	@param[out]		value		取得した値を格納する変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetParam(TxCharCPtrA name) const
+	@brief	パラメータの取得
+
+	@tparam	TV		取得する値の型
+
+	@param[in]		name		パラメータ名称
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::SetParam(TxCharCPtrA name, const void* value, TxModel model)
+	@brief	パラメータの設定
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値が格納された変数へのポインタ
+	@param[in]		model		変数の型
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::SetParam(TxCharCPtrA name, TV value)
+	@brief	パラメータの設定
+
+	@tparam	TV		設定値の型
+
+	@param[in]		name		パラメータ名称
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Timeout() const
+	@brief	タイムアウトの取得
+
+	@return	現在設定されている値を返します。単位は msec です。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Timeout(int value)
+	@brief	タイムアウトの設定
+
+	@param[in]		value		設定値 (msec) [-1,0~] [既定値:5000]
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetFrameSize() const
+	@brief	フレームサイズの取得
+
+	@return	現在設定されているフレームサイズを返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::Connected(ExMediaType type) const
+	@brief	接続状態の取得
+
+	@param[in]		type		メディア種別
+
+	@return	指定のメディア(映像入力/音声入力)の接続状態を返します。
+			接続している場合は true、それ以外は false を返します。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetDuration() const
+	@brief	ストリームの時間幅の取得
+
+	@return	ストリームの時間幅を返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetCurrentPosition() const
+	@brief	ストリームの現在位置の取得
+
+	@return	ストリームの現在位置を返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetStartPosition() const
+	@brief	ストリームの開始位置の取得
+
+	@return	ストリームの開始位置を返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::GetStopPosition() const
+	@brief	ストリームの停止位置の取得
+
+	@return	ストリームの停止位置を返します。
+			この値は初期化後に有効になります。
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::SetStartPosition(long long value)
+	@brief	ストリームの開始位置の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::SetStopPosition(long long value)
+	@brief	ストリームの停止位置の設定
+
+	@param[in]		value		設定値
+*/
+// ===================================================================
+/*!
+	@fn		CxDSMediaPlayer::WaitForCompletion(int timeout) const
+	@brief	レンダリング完了待機
+
+	@param[in]		timeout		タイムアウト (msec) [-1,0~]
+
+	@return	レンダリングが完了するか指定時間が経過するまで待機します。\n
+			完了を検知すると true を返します。\n
+			指定時間が経過すると false を返します。\n
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Timeout
+	@brief	タイムアウト (msec)
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioDeviceName
+	@brief	音声入力オブジェクトのデバイス名
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioProductName
+	@brief	音声入力オブジェクトの製品名
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_OutputFileName
+	@brief	動画ファイル名
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_OutputDeviceName
+	@brief	映像出力オブジェクトのデバイス名
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_OutputProductName
+	@brief	映像出力オブジェクトの製品名
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_VideoGrabberReceiver
+	@brief	映像捕獲用グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioGrabberReceiver
+	@brief	音声捕獲用グラバー
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Graph
+	@brief	グラフビルダー
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Builder
+	@brief	キャプチャグラフビルダー
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Video
+	@brief	映像入力用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_VideoDecoder
+	@brief	映像デコード用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_VideoGrabber
+	@brief	映像捕獲用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_VideoRenderer
+	@brief	映像出力用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Audio
+	@brief	音声入力用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioDecoder
+	@brief	音声デコード用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioGrabber
+	@brief	音声捕獲用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_AudioRenderer
+	@brief	音声出力用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_FileSink
+	@brief	動画ファイル出力用オブジェクト
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_Splitter
+	@brief	映像と音声の分岐
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_MediaControl
+	@brief	メディアコントロール
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_MediaEvent
+	@brief	メディアイベント
+*/
+// ===================================================================
+/*!
+	@var	CxDSMediaPlayer::m_MediaSeeking
+	@brief	メディアシーク
+*/
+
+}
+}
+
+#endif	// _MCS_VER

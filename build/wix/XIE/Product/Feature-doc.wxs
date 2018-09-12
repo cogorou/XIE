@@ -1,0 +1,8 @@
+<Include>
+	<!-- 暫定) インストーラのサイズを小さくしたい為、ドキュメントを含めない。
+	<ComponentRef Id="XIE_CLI.CHM" />
+	<ComponentRef Id="XIE_CLI.CHW" />
+	<ComponentRef Id="XIE_CPP.CHM" />
+	<ComponentRef Id="XIE_CPP.CHW" />
+	-->
+</Include>

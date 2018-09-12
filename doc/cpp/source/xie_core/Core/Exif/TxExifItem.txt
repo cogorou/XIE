@@ -1,0 +1,112 @@
+/*!
+	@file	TxExifItem.h
+	@brief	Exif 項目構造体
+*/
+/*!
+	@internal
+	@file	TxExifItem.cpp
+	@brief	Exif 項目構造体
+*/
+/*!
+	@def	_TXEXIFITEM_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_Core_Structures
+	@struct		TxExifItem
+	@brief		Exif 項目構造体
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::Offset
+	@brief	オフセット
+
+	この項目が格納されていた位置の先頭を示します。この位置から ID,Type,Count,ValueOrIndex が Exif に書き込まれていることを示します。
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::EndianType
+	@brief	エンディアンタイプ
+
+	この項目が格納されていた Exif のエンディアンタイプを示します。
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::ID
+	@brief	識別子
+
+	Exif 仕様では Tag ID と呼称されています。
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::Type
+	@brief	型 [範囲: 1=BYTE,2=ASCII,3=SHORT,4=LONG,5=RATIONAL,7=UNDEFINED,9=SLONG,10=SRATIONAL]
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::Count
+	@brief	個数
+*/
+// ===================================================================
+/*!
+	@var	TxExifItem::ValueOrIndex
+	@brief	値または指標
+*/
+// ===================================================================
+/*!
+	@fn		TxExifItem::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxExifItem::TxExifItem()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxExifItem::TxExifItem(int offset, ExEndianType endian_type, unsigned short id, short type, int count, int value)
+	@brief	コンストラクタ (初期値指定)
+
+	@param[in]		offset			オフセット
+	@param[in]		endian_type		エンディアンタイプ
+	@param[in]		id				識別子
+	@param[in]		type			型
+	@param[in]		count			個数
+	@param[in]		value			値または指標
+*/
+// ===================================================================
+/*!
+	@fn		TxExifItem::operator == (const TxExifItem &src) const
+	@brief	比較オペレータ (等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	一致
+	@retval	false	不一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+// ===================================================================
+/*!
+	@fn		TxExifItem::operator != (const TxExifItem &src) const
+	@brief	比較オペレータ (不等価)
+
+	@param[in]		src		比較対象
+
+	@retval	true	不一致
+	@retval	false	一致
+
+	@remarks
+			指定されたオブジェクトの内容との比較を行います。\n
+*/
+
+
+}

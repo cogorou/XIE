@@ -1,0 +1,83 @@
+/*!
+	@file	TxBitmap.h
+	@brief	DIB ラッパー構造体
+*/
+/*!
+	@internal
+	@file	TxBitmap.cpp
+	@brief	DIB ラッパー構造体
+*/
+/*!
+	@def	_TXGDIIMAGE_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+namespace xie
+{
+namespace GDI
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@ingroup	group_xie_GDI_Structures
+	@struct		TxBitmap
+	@brief		DIB ラッパー構造体
+*/
+// ===================================================================
+/*!
+	@var	TxBitmap::Address
+	@brief	領域の先頭アドレス (２次元配列) ※Stride×Height (bytes) の連続領域。
+*/
+// ===================================================================
+/*!
+	@var	TxBitmap::Width
+	@brief	幅 (pixels)
+*/
+// ===================================================================
+/*!
+	@var	TxBitmap::Height
+	@brief	高さ (pixels)
+*/
+// ===================================================================
+/*!
+	@var	TxBitmap::Model
+	@brief	要素モデル [TxModel::U8(4)] (※ ModelOf<TxRGB8x4>() と等価です。)
+*/
+// ===================================================================
+/*!
+	@var	TxBitmap::Stride
+	@brief	水平方向サイズ (bytes)
+*/
+// ===================================================================
+/*!
+	@fn		TxBitmap::Default()
+	@brief	既定値
+
+	@return	既定値を構造体に設定して返します。
+*/
+// ===================================================================
+/*!
+	@fn		TxBitmap::TxBitmap()
+	@brief	コンストラクタ
+*/
+// ===================================================================
+/*!
+	@fn		TxBitmap::TxBitmap(void* addr, int width, int height, TxModel model, int stride)
+	@brief	コンストラクタ
+
+	@param[in]		addr		領域の先頭アドレス
+	@param[in]		width		幅 (pixels)
+	@param[in]		height		高さ (pixels)
+	@param[in]		model		要素モデル [TxModel::U8(4)] (※ ModelOf<TxRGB8x4>() と等価です。)
+	@param[in]		stride		水平方向サイズ (bytes)
+*/
+// ===================================================================
+/*!
+	@fn		TxBitmap::operator TxImage() const
+	@brief	キャストペレータ
+
+	@return	画像オブジェクト構造体に変換して返します。
+*/
+
+}
+}

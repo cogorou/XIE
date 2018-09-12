@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F8CB12F8-18A4-40D2-BBA8-E5F3565E764F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>xie_core</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project=".\app.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project=".\app.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project=".\app.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project=".\app.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(PlatformTarget)_$(XIE_VER)</TargetName>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(INTERNAL_HEADERS);</AdditionalIncludeDirectories>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\..\bin-debug;$(XIE_LIB)/$(PlatformTarget);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)..\..\..\bin-debug"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)..\..\..\bin-debug"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)..\..\..\bin-debug"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(INTERNAL_HEADERS);</AdditionalIncludeDirectories>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\..\bin-debug;$(XIE_LIB)/$(PlatformTarget);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)..\..\..\bin-debug"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)..\..\..\bin-debug"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)..\..\..\bin-debug"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(INTERNAL_HEADERS);</AdditionalIncludeDirectories>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\..\bin;$(XIE_LIB)/$(PlatformTarget);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)..\..\..\bin"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)..\..\..\bin"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)..\..\..\bin"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;XIE_EXPORTS;XIE_LINK_DISABLED;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(XIE_INC);$(INTERNAL_HEADERS);</AdditionalIncludeDirectories>
+      <OpenMPSupport>false</OpenMPSupport>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\..\bin;$(XIE_LIB)/$(PlatformTarget);</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>$(ProjectName).def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /y "$(TargetDir)$(TargetName).dll" "$(ProjectDir)..\..\..\bin"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(ProjectDir)..\..\..\bin"
+copy /y "$(TargetDir)$(TargetName).lib" "$(ProjectDir)..\..\..\bin"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+    <None Include="xie_core.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\Core\Axi.h" />
+    <ClInclude Include="..\..\..\include\Core\AxiDiagnostics.h" />
+    <ClInclude Include="..\..\..\include\Core\AxiMath.h" />
+    <ClInclude Include="..\..\..\include\Core\CxArray.h" />
+    <ClInclude Include="..\..\..\include\Core\CxArrayEx.h" />
+    <ClInclude Include="..\..\..\include\Core\CxArrayFilter.h" />
+    <ClInclude Include="..\..\..\include\Core\CxException.h" />
+    <ClInclude Include="..\..\..\include\Core\CxExif.h" />
+    <ClInclude Include="..\..\..\include\Core\CxFinalizer.h" />
+    <ClInclude Include="..\..\..\include\Core\CxImage.h" />
+    <ClInclude Include="..\..\..\include\Core\CxImageFilter.h" />
+    <ClInclude Include="..\..\..\include\Core\CxMatrix.h" />
+    <ClInclude Include="..\..\..\include\Core\CxMatrixFilter.h" />
+    <ClInclude Include="..\..\..\include\Core\CxModule.h" />
+    <ClInclude Include="..\..\..\include\Core\CxMutex.h" />
+    <ClInclude Include="..\..\..\include\Core\CxStopwatch.h" />
+    <ClInclude Include="..\..\..\include\Core\CxString.h" />
+    <ClInclude Include="..\..\..\include\Core\CxStringA.h" />
+    <ClInclude Include="..\..\..\include\Core\CxStringW.h" />
+    <ClInclude Include="..\..\..\include\Core\CxThread.h" />
+    <ClInclude Include="..\..\..\include\Core\CxThreadArgs.h" />
+    <ClInclude Include="..\..\..\include\Core\CxThreadEvent.h" />
+    <ClInclude Include="..\..\..\include\Core\IxAttachable.h" />
+    <ClInclude Include="..\..\..\include\Core\IxEventReceiver.h" />
+    <ClInclude Include="..\..\..\include\Core\IxFileAccess.h" />
+    <ClInclude Include="..\..\..\include\Core\IxLockable.h" />
+    <ClInclude Include="..\..\..\include\Core\IxTagPtr.h" />
+    <ClInclude Include="..\..\..\include\Core\IxEquatable.h" />
+    <ClInclude Include="..\..\..\include\Core\IxDisposable.h" />
+    <ClInclude Include="..\..\..\include\Core\IxInternalModule.h" />
+    <ClInclude Include="..\..\..\include\Core\IxFilePlugin.h" />
+    <ClInclude Include="..\..\..\include\Core\IxParam.h" />
+    <ClInclude Include="..\..\..\include\Core\IxRawFile.h" />
+    <ClInclude Include="..\..\..\include\Core\IxRunnable.h" />
+    <ClInclude Include="..\..\..\include\Core\IxValidatable.h" />
+    <ClInclude Include="..\..\..\include\Core\TxCircleArcD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxCircleArcI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxEllipseArcD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxEllipseArcI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxCvMat.h" />
+    <ClInclude Include="..\..\..\include\Core\TxExif.h" />
+    <ClInclude Include="..\..\..\include\Core\TxExifItem.h" />
+    <ClInclude Include="..\..\..\include\Core\TxModel.h" />
+    <ClInclude Include="..\..\..\include\Core\TxIplImage.h" />
+    <ClInclude Include="..\..\..\include\Core\TxIplROI.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_cv.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_defs.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_enums.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_ipl.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_math.h" />
+    <ClInclude Include="..\..\..\include\Core\xie_core_types.h" />
+    <ClInclude Include="..\..\..\include\Core\TxArray.h" />
+    <ClInclude Include="..\..\..\include\Core\TxBGR8x3.h" />
+    <ClInclude Include="..\..\..\include\Core\TxBGR8x4.h" />
+    <ClInclude Include="..\..\..\include\Core\TxCircleD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxCircleI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxDateTime.h" />
+    <ClInclude Include="..\..\..\include\Core\TxEllipseD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxEllipseI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxFrameIndex.h" />
+    <ClInclude Include="..\..\..\include\Core\TxImage.h" />
+    <ClInclude Include="..\..\..\include\Core\TxImageSize.h" />
+    <ClInclude Include="..\..\..\include\Core\TxLayer.h" />
+    <ClInclude Include="..\..\..\include\Core\TxLineD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxLineI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxLineSegmentD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxLineSegmentI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxMatrix.h" />
+    <ClInclude Include="..\..\..\include\Core\TxPointD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxPointI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRangeD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRangeI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRawFileHeader.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRectangleD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRectangleI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRGB8x3.h" />
+    <ClInclude Include="..\..\..\include\Core\TxRGB8x4.h" />
+    <ClInclude Include="..\..\..\include\Core\TxScanner1D.h" />
+    <ClInclude Include="..\..\..\include\Core\TxScanner2D.h" />
+    <ClInclude Include="..\..\..\include\Core\TxSizeD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxSizeI.h" />
+    <ClInclude Include="..\..\..\include\Core\TxStatistics.h" />
+    <ClInclude Include="..\..\..\include\Core\TxStringA.h" />
+    <ClInclude Include="..\..\..\include\Core\TxStringW.h" />
+    <ClInclude Include="..\..\..\include\Core\TxTrapezoidD.h" />
+    <ClInclude Include="..\..\..\include\Core\TxTrapezoidI.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxBinarize1.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxBinarize2.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxGammaConverter.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxHsvConverter.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxHsvToRgb.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxIntegral.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxMonochrome.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxPartColor.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxProjection.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbConverter.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbToGray.h" />
+    <ClInclude Include="..\..\..\include\Effectors\CxRgbToHsv.h" />
+    <ClInclude Include="..\..\..\include\xie_core.h" />
+    <ClInclude Include="..\..\..\source\xie_core\api_core.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\api_data.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine0.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine1.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine2.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Convert.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Copy.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_CopyEx.h" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxBinarize.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxGammaConverter.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxHsvConverter.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxHsvToRgb.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxIntegral.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxPartColor.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxProjection.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxRgbToGray.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Effectors\CxRgbToHsv.hpp" />
+    <ClInclude Include="..\..\..\source\xie_core\Exif\api_exif.h" />
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file.h" />
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file_bmp.h" />
+    <ClInclude Include="..\..\..\source\xie_core\File\api_file_dib.h" />
+    <ClInclude Include="..\..\..\source\xie_core\File\CxFilePluginBmp.h" />
+    <ClInclude Include="..\..\..\source\xie_core\File\fnPRV_Buffer_Copy.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\xie_core\Base\Axi.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\AxiDiagnostics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxException.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxModule.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxMutex.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxStopwatch.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxThread.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Base\CxThreadArgs.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\api_data.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxArray.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxImage.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxMatrix.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxMatrixFilter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxString.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxStringA.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxStringW.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Affine.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Cast.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Clear.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_ClearEx.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_ColorMatrix.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Compare.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Convert.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Copy.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_CopyEx.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Extract.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Math.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_GeoTrans.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Not.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope1A.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope1L.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope2A.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Ope2L.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_RgbToBgr.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Serialize.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\fnPRV_Core_2D_Statistics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxBinarize1.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxBinarize2.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxGammaConverter.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxHsvConverter.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxHsvToRgb.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxIntegral.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxMonochrome.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxPartColor.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxProjection.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbConverter.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbToGray.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Effectors\CxRgbToHsv.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exchange\TxCvMat.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exchange\TxIplImage.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exif\api_exif.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exif\CxExif.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exif\TxExif.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Exif\TxExifItem.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\api_file.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Check.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Load.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\CxFilePluginBmp_Save.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\fnXIE_Core_DIB_Load.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\File\fnXIE_Core_DIB_Save.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleArcD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleArcI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseArcD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseArcI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxModel.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxArrayFilter.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Data\CxImageFilter.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxArray.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxBGR8x3.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxBGR8x4.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxCircleI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxDateTime.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxEllipseI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxFrameIndex.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxImage.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxImageSize.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLayer.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineSegmentD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxLineSegmentI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxMatrix.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxPointD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxPointI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRangeD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRangeI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRawFileHeader.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRectangleD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRectangleI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRGB8x3.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxRGB8x4.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxSizeD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxSizeI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStatistics.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStringA.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxStringW.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxTrapezoidD.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\Structures\TxTrapezoidI.cpp" />
+    <ClCompile Include="..\..\..\source\xie_core\xie_core.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xie_core.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,170 @@
+/*!
+	@internal
+	@file	CxFilePluginJpeg.h
+	@brief	ファイル入出力プラグインクラス (JPEG 形式)
+*/
+/*!
+	@internal
+	@file	CxFilePluginJpeg.cpp
+	@brief	ファイル入出力プラグインクラス (JPEG 形式)
+*/
+/*!
+	@internal
+	@file	CxFilePluginJpeg_Check.cpp
+	@brief	ファイル入出力プラグインクラス (JPEG 形式)
+*/
+/*!
+	@internal
+	@file	CxFilePluginJpeg_Load.cpp
+	@brief	ファイル入出力プラグインクラス (JPEG 形式)
+*/
+/*!
+	@internal
+	@file	CxFilePluginJpeg_Save.cpp
+	@brief	ファイル入出力プラグインクラス (JPEG 形式)
+*/
+/*!
+	@internal
+	@def	_CXFILEPLUGINJPEG_H_INCLUDED_
+	@brief	多重インクルード抑制
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@ingroup	group_xie_File_Plugins
+	@def		XMD_H
+	@brief		jmorecfg 内の typedef (INT16/INT32) 抑制の為
+*/
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_File_Plugins
+	@struct		TxJpegErrorManager
+	@brief		JpegErrorManager 構造体
+*/
+// ===================================================================
+/*!
+	@var	TxJpegErrorManager::pub
+	@brief	jpeg_error_mgr
+*/
+// ===================================================================
+/*!
+	@var	TxJpegErrorManager::setjmp_buffer
+	@brief	jmp_buf
+*/
+
+// ===================================================================
+/*!
+	@internal
+	@fn		fnPRV_Jpeg_ErrorHandler (j_common_ptr cinfo)
+	@brief	ErrorHandler
+
+	@param[in]		cinfo
+*/
+// ===================================================================
+/*!
+	@internal
+	@fn		fnPRV_Jpeg_OutputMessage( j_common_ptr cinfo )
+	@brief	OutputMessage
+
+	@param[in]		cinfo
+*/
+
+namespace xie
+{
+namespace File
+{
+
+//////////////////////////////////////////////////////////////////////
+/*!
+	@internal
+	@ingroup	group_xie_File_Plugins
+	@class		CxFilePluginJpeg
+	@brief		ファイル入出力プラグインクラス (JPEG 形式)
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::OpenA	(TxCharCPtrA filename, int mode)
+	@brief	オープン (MBCS)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::OpenW	(TxCharCPtrW filename, int mode)
+	@brief	オープン (UNICODE)
+
+	@param[in]	filename	ファイル名
+	@param[in]	mode		オープンモード [0:Load,1:Save] \n
+							以下の値または定数を指定してください。
+							- 0: XIE_FILE_OPENMODE_LOAD
+							- 1: XIE_FILE_OPENMODE_SAVE
+							.
+
+	@return	ハンドル（ファイルディスクリプタ）を返します。\n
+
+	@exception	CxException	処理に失敗した場合は例外を発行します。Code で原因を特定してください。\n
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::Close	(void* handle)
+	@brief	クローズ
+
+	@param[in]	handle	ハンドル
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::Check	(TxImageSize* image_size, void* handle, bool unpack)
+	@brief	画像サイズの確認
+
+	@param[out]	image_size	画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::Load	(HxModule hdst, void* handle, bool unpack)
+	@brief	画像ファイルの読み込み
+
+	@param[in,out]	hdst		画像オブジェクト
+	@param[in]		handle		ハンドル（ファイルディスクリプタ）
+	@param[in]		unpack		アンパッキングの指示
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込みます。
+*/
+// ===================================================================
+/*!
+	@fn		CxFilePluginJpeg::Save	(HxModule hsrc, void* handle, int quality)
+	@brief	画像ファイルへの保存
+
+	@param[in]	hsrc		画像サイズ
+	@param[in]	handle		ハンドル（ファイルディスクリプタ）
+	@param[in]	quality		品質 [0~100] ※数値が高い方が高品質です。
+
+	@return	正常の場合は ExSuccess を返します。異常の場合はそれ以外を返します。
+
+	@remarks
+			指定されたファイルを読み込む為に必要となる画像サイズを確認します。
+*/
+
+}
+}

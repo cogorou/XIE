@@ -1,0 +1,308 @@
+/*!
+	@ingroup	group_Overview_Files
+	@file		xie_high.h
+	@brief		上位ライブラリ
+*/
+/*!
+	@internal
+	@file		xie_high.cpp
+	@brief		上位ライブラリ
+*/
+// ===================================================================
+/*!
+	@def		_XIE_HIGH_H_INCLUDED_
+	@brief		多重インクルード抑制
+*/
+// ===================================================================
+/*!
+	@def		XIE_HIGH_PREFIX
+	@brief		上位ライブラリの接頭辞
+
+	書式: name_arch_version \n
+
+	-	name … ライブラリ名
+	-	arch … ターゲット環境のアーキテクチャ [x86、x64]
+	-	version … ３桁の10進数 [Major * 100 + Minor]
+	.
+
+	@sa
+		@ref XIE_ARCH \n
+		@ref XIE_VER_STR \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_high_setup()
+	@brief		上位ライブラリの初期化
+
+	@remarks
+			xie_high を初期化します。\n
+			以下の処理を行います。\n
+			- Windows 版:
+				-# ファイル入出力プラグインの組み込み \n
+					png 及び jpeg のファイル入出力機能を xie_core に組み込みます。\n
+				-# ソケットの初期化 \n
+					WSAStartup を行います。初期化時に指定する要求バージョンは 2.2 です。\n
+				-# UVC の初期化 \n
+					DirectShow を使用する為、CoInitializeEx を実行します。\n
+				.
+			- Linux 版:
+				-# ファイル入出力プラグインの組み込み \n
+					png 及び jpeg のファイル入出力機能を xie_core に組み込みます。\n
+				.
+			.
+
+	@sa
+		@ref xie::CxImage::Load \n
+		@ref xie::CxImage::Save \n
+		@ref xie_core_plugin \n
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_high_teardown()
+	@brief		上位ライブラリの解放
+
+	@remarks
+			xie_high を解放します。\n
+			以下の処理を行います。\n
+			- Windows 版:
+				-# ソケットの解放 \n
+					WSACleanup を行います。\n
+				-# UVC の解放 \n
+					CoUninitialize を実行します。\n
+				.
+			- Linux 版:
+				何も行いません。\n
+			.
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_high_setup_ex(const char* category)
+	@brief		上位ライブラリの初期化 (カテゴリ単位)
+
+	@param[in]	category	対象のカテゴリ (下表参照)
+
+	@remarks
+			xie_high の内、指定されたカテゴリを初期化します。\n
+			<br/>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=70>category</td>
+				<td align="center" class="indexkey" width=200>Windows 版</td>
+				<td align="center" class="indexkey" width=200>Linux 版</td>
+				</tr>
+			<tr>
+				<td align="center">File</td>
+				<td align="left">
+					ファイル入出力プラグインの組み込み \n
+					png 及び jpeg のファイル入出力機能を xie_core に組み込みます。\n
+				</td>
+				<td align="left">
+					（同左）
+				</td>
+				</tr>
+			<tr>
+				<td align="center">GDI</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">IO</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">Net</td>
+				<td align="left">
+					ソケットの初期化 \n
+					WSAStartup を行います。初期化時に指定する要求バージョンは 2.2 です。\n
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">Media</td>
+				<td align="left">
+					メディア関連の初期化 \n
+					DirectShow を使用する為、CoInitializeEx を実行します。\n
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			</table>
+
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Setup
+	@fn			xie_high_teardown_ex(const char* category)
+	@brief		上位ライブラリの解放 (カテゴリ単位)
+
+	@param[in]	category	対象のカテゴリ (下表参照)
+
+	@remarks
+			xie_high の内、指定されたカテゴリを解放します。\n
+			<br/>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey" width=70>category</td>
+				<td align="center" class="indexkey" width=200>Windows 版</td>
+				<td align="center" class="indexkey" width=200>Linux 版</td>
+				</tr>
+			<tr>
+				<td align="center">File</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">GDI</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">IO</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">Net</td>
+				<td align="left">
+					ソケットの解放 \n
+					WSACleanup を行います。\n
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			<tr>
+				<td align="center">Media</td>
+				<td align="left">
+					メディア関連の解放 \n
+					CoUninitialize を実行します。\n
+				</td>
+				<td align="left">
+					何も行いません。
+				</td>
+				</tr>
+			</table>
+*/
+
+// =================================================================
+/*!
+	@internal
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::File
+	@brief		ファイル入出力関連
+
+	libjpeg、libpng、libtiff 等の OSS を使用したファイル入出力機能を集約しています。
+*/
+namespace xie
+{
+namespace File
+{
+}
+}
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::GDI
+	@brief		表示関連
+
+	OpenGL と WindowsGDI を使用した表示機能を集約しています。
+*/
+namespace xie
+{
+namespace GDI
+{
+}
+}
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::IO
+	@brief		シリアル通信関連
+
+	シリアル通信機能を集約しています。
+*/
+namespace xie
+{
+namespace IO
+{
+}
+}
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::Media
+	@brief		メディア関連
+
+	メディア関連の機能を集約しています。
+*/
+namespace xie
+{
+namespace Media
+{
+}
+}
+
+// =================================================================
+/*!
+	@ingroup	group_Overview_Namespaces
+	@namespace	xie::Net
+	@brief		ネットワーク関連
+
+	TCP/IP通信 及び UDP通信 を集約しています。
+*/
+namespace xie
+{
+namespace Net
+{
+
+// ===================================================================
+/*!
+	@ingroup	group_xie_Net_Typedefs
+	@typedef	HxSocket
+	@brief		ソケットハンドル型
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_INVALID_SOCKET
+	@brief		無効な Socket を示す定数
+*/
+// ===================================================================
+/*!
+	@ingroup	group_Overview_Macros
+	@def		XIE_AF_INET
+	@brief		AF_INET (internetwork: UDP, TCP, etc.) と等価
+*/
+
+}
+}

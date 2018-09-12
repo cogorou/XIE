@@ -1,0 +1,22 @@
+User::CxTcpServer_01
+[1] server
+[2] server.IsValid
+[3] client1
+[4] client2
+[5] server.Connections() = 0
+[5] server.Connections() = 1
+[5] server.Connections() = 2
+[6] server.Write()
+[6] stream.Write returned 8. [Hello 1!]
+[6] stream.Write returned 8. [Hello 2!]
+[7] client1.Read()
+[7] stream.Read returned 8. [Hello 2!]
+[8] client2.Read()
+[8] stream.Read returned 8. [Hello 1!]
+[9] client1.Write()
+[9] stream.Write returned 16. [This is client1.]
+[10] client2.Write()
+[10] stream.Write returned 16. [This is client2.]
+[11] server.Read()
+[11] stream.Read returned 16. [This is client2.]
+[11] stream.Read returned 16. [This is client1.]

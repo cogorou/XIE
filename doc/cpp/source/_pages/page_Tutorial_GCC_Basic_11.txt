@@ -1,0 +1,89 @@
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_11	単純なコンソールアプリケーション
+
+	ここでは、コンソールアプリケーションの作成手順を説明します。
+
+	@par	目次:
+			- @subpage	page_Tutorial_GCC_Basic_11_1	"main と Makefile の作成"
+			- @subpage	page_Tutorial_GCC_Basic_11_2	"ライブラリの初期化"
+			.
+
+	@par	構成:
+			<pre>
+ProjectDir
+├ main.cpp             … エントリポイント
+├ Makefile
+├ TestFiles
+│├ color_grad.bmp     … テスト画像
+			</pre>
+
+	@par	処理概要:
+			カラー画像を読み込み、濃淡化してファイル保存する処理です。\n
+			
+			@par
+			実行結果) \n
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr>
+				<td align="center" class="indexkey">入力画像</td>
+				<td align="center" class="indexkey">→</td>
+				<td align="center" class="indexkey">出力画像</td>
+				</tr>
+			<tr>
+				<td align="center">@image html Tutorial_GCC_Basic_11_test_src.png</td>
+				<td align="center">RgbToGray</td>
+				<td align="center">@image html Tutorial_GCC_Basic_11_test_dst.png</td>
+				</tr>
+			</table>
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_11_1	main と Makefile の作成
+
+	まずは、エントリポイント (main.cpp) を作成します。
+
+	@includelineno	Tutorial_GCC_Basic_11_main.cpp
+
+	<hr>
+
+	続いて、Makefile を作成します。\n
+
+	※注1) 下記 Makefile 中の PREFIX 変数 及び XIE_TOP 変数の部分は実際の環境に合わせて適宜書き直してください。\n
+
+	@includelineno	Tutorial_GCC_Basic_11_Makefile_1.txt
+
+	<hr>
+
+	もし、本ライブラリの Debug ビルドをリンクする必要があれば、下記のように記述してください。\n
+
+	@includelineno	Tutorial_GCC_Basic_11_Makefile_2.txt
+
+	この場合、"make DEBUG=1" のように DEBUG 環境変数を指定してビルドすると Debug ビルドをリンクします。
+
+	@includelineno	Tutorial_GCC_Basic_11_Makefile_2_part1.txt
+
+	アプリケーション側も同様に -g オプションを付加してビルドされますので、
+	デバッガ (gdb) を使用してデバッグ実行が行えます。
+
+	@includelineno	Tutorial_GCC_Basic_11_Makefile_2_part2.txt
+*/
+// =================================================================
+/*!
+	@page	page_Tutorial_GCC_Basic_11_2	ライブラリの初期化
+
+	本ライブラリの機能を使用する前に @ref group_Overview_Setup "初期化関数" を呼び出す必要があります。
+	通常は、下記のようにエントリポイントで行ってください。
+
+	-# ライブラリのヘッダー \n
+	-# ライブラリの初期化 \n
+	-# ライブラリの解放 \n
+	.
+
+	@includelineno	Tutorial_GCC_Basic_11_main_1.cpp
+
+	<hr>
+
+	初期化関数を呼び出した後、下記のように本ライブラリの機能が使用できます。
+
+	@includelineno	Tutorial_GCC_Basic_11_main_2.cpp
+*/

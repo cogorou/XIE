@@ -1,0 +1,12 @@
+assembly
+Output
+Working
+bin
+obj
+*.chm
+*.chw
+*.log
+*.suo
+*.user
+*.shfbproj_*
+.vs
