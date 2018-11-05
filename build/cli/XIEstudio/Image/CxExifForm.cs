@@ -684,6 +684,31 @@ namespace XIEstudio
 										}
 									}
 									break;
+								case 0x829A:	// Exposure time
+									{
+										var ptr = (XIE.Ptr.UInt32Ptr)scan.Address;
+										if (ptr[1] == 0)
+										{
+											strValue = string.Format("{0}/{1}", ptr[0], ptr[1]);
+										}
+										else if (ptr[1] == 1)
+										{
+											strValue = string.Format("{0}", ptr[0]);
+										}
+										else if (1 < ptr[0] && ptr[0] <= ptr[1])
+										{
+											strValue = string.Format("1/{0:F0}", (double)ptr[1] / ptr[0]);
+										}
+										else if (ptr[0] == 1 && ptr[1] > 1)
+										{
+											strValue = string.Format("{0}/{1}", ptr[0], ptr[1]);
+										}
+										else
+										{
+											strValue = string.Format("{0}/{1}", ptr[0], ptr[1]);
+										}
+									}
+									break;
 								default:
 									scan.ForEach((int x, IntPtr addr) =>
 									{
