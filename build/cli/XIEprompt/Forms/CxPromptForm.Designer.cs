@@ -66,8 +66,8 @@
 			this.imageListTab = new System.Windows.Forms.ImageList(this.components);
 			this.splitMain = new System.Windows.Forms.SplitContainer();
 			this.panelArgs = new System.Windows.Forms.Panel();
-			this.labelArgs = new System.Windows.Forms.Label();
 			this.textArgs = new System.Windows.Forms.TextBox();
+			this.labelArgs = new System.Windows.Forms.Label();
 			this.toolbarMain.SuspendLayout();
 			this.statusbar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitView)).BeginInit();
@@ -431,6 +431,7 @@
 			this.tabSource.SelectedIndex = 0;
 			this.tabSource.Size = new System.Drawing.Size(944, 352);
 			this.tabSource.TabIndex = 0;
+			this.tabSource.SelectedIndexChanged += new System.EventHandler(this.tabSource_SelectedIndexChanged);
 			// 
 			// tabPageSource1
 			// 
@@ -489,15 +490,6 @@
 			this.panelArgs.Size = new System.Drawing.Size(944, 35);
 			this.panelArgs.TabIndex = 0;
 			// 
-			// labelArgs
-			// 
-			this.labelArgs.AutoSize = true;
-			this.labelArgs.Location = new System.Drawing.Point(12, 12);
-			this.labelArgs.Name = "labelArgs";
-			this.labelArgs.Size = new System.Drawing.Size(29, 12);
-			this.labelArgs.TabIndex = 0;
-			this.labelArgs.Text = "args";
-			// 
 			// textArgs
 			// 
 			this.textArgs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -506,6 +498,15 @@
 			this.textArgs.Name = "textArgs";
 			this.textArgs.Size = new System.Drawing.Size(884, 19);
 			this.textArgs.TabIndex = 1;
+			// 
+			// labelArgs
+			// 
+			this.labelArgs.AutoSize = true;
+			this.labelArgs.Location = new System.Drawing.Point(12, 12);
+			this.labelArgs.Name = "labelArgs";
+			this.labelArgs.Size = new System.Drawing.Size(29, 12);
+			this.labelArgs.TabIndex = 0;
+			this.labelArgs.Text = "args";
 			// 
 			// CxPromptForm
 			// 

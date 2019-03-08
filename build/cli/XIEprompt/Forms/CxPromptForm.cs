@@ -815,6 +815,22 @@ namespace XIEprompt
 
 		#endregion
 
+		#region コントロールイベント: (タブ)
+
+		/// <summary>
+		/// エディタのタブが切り替わったとき
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void tabSource_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var index = tabSource.SelectedIndex;
+			if (0 <= index && index < this.Editors.Count)
+				this.Editors[index].Focus();
+		}
+
+		#endregion
+
 		#region コントロールイベント: (エディタ)
 
 		/// <summary>
@@ -1362,6 +1378,7 @@ namespace XIEprompt
 					}
 				}
 			}
+			this.Arguments.AddRange(this.Parameters);
 
 			// 実行.
 			this.TaskThread = new System.Threading.Thread(Execute);

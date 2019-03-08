@@ -97,11 +97,6 @@
 			this.toolViewGrid = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
 			this.TabList = new System.Windows.Forms.TabControl();
-			this.tabPageTimes = new System.Windows.Forms.TabPage();
-			this.listTimes = new System.Windows.Forms.ListView();
-			this.toolbarTimes = new XIE.Forms.CxToolStripEx();
-			this.toolTimesSave = new System.Windows.Forms.ToolStripButton();
-			this.toolTimesAdjust = new System.Windows.Forms.ToolStripButton();
 			this.tabPageReport = new System.Windows.Forms.TabPage();
 			this.gridReport = new System.Windows.Forms.DataGridView();
 			this.toolbarReport = new XIE.Forms.CxToolStripEx();
@@ -129,16 +124,6 @@
 			this.toolbarMain = new XIE.Forms.CxToolStripEx();
 			this.toolPageTaskflow = new System.Windows.Forms.ToolStripButton();
 			this.toolPageImageView = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolTaskProperty = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolFileSave = new System.Windows.Forms.ToolStripButton();
-			this.toolFilePrint = new System.Windows.Forms.ToolStripButton();
-			this.toolFilePrintPreview = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolFileGenerateCode = new System.Windows.Forms.ToolStripDropDownButton();
-			this.toolFileGenerateCode1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolFileGenerateCode2 = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolCollapse = new System.Windows.Forms.ToolStripButton();
 			this.toolPanelR = new System.Windows.Forms.ToolStripButton();
 			this.toolPanelB = new System.Windows.Forms.ToolStripButton();
@@ -231,6 +216,22 @@
 			this.menuTaskflowViewBlockType1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuTaskflowQuit = new System.Windows.Forms.ToolStripMenuItem();
 			this.printDlg = new System.Windows.Forms.PrintDialog();
+			this.panelPageTimes = new System.Windows.Forms.Panel();
+			this.toolbarTimes = new XIE.Forms.CxToolStripEx();
+			this.toolTimesSave = new System.Windows.Forms.ToolStripButton();
+			this.toolTimesAdjust = new System.Windows.Forms.ToolStripButton();
+			this.listTimes = new System.Windows.Forms.ListView();
+			this.toolTaskProperty = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolFileSave = new System.Windows.Forms.ToolStripButton();
+			this.toolFilePrint = new System.Windows.Forms.ToolStripButton();
+			this.toolFilePrintPreview = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolFileGenerateCode = new System.Windows.Forms.ToolStripDropDownButton();
+			this.toolFileGenerateCode1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolFileGenerateCode2 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolPageTimes = new System.Windows.Forms.ToolStripButton();
 			this.statusbarMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
 			this.splitMain.Panel1.SuspendLayout();
@@ -251,8 +252,6 @@
 			this.panelPageImageView.SuspendLayout();
 			this.toolbarImageView.SuspendLayout();
 			this.TabList.SuspendLayout();
-			this.tabPageTimes.SuspendLayout();
-			this.toolbarTimes.SuspendLayout();
 			this.tabPageReport.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridReport)).BeginInit();
 			this.toolbarReport.SuspendLayout();
@@ -268,6 +267,8 @@
 			this.menuTaskPortOut.SuspendLayout();
 			this.menuTaskBody.SuspendLayout();
 			this.menuTaskflow.SuspendLayout();
+			this.panelPageTimes.SuspendLayout();
+			this.toolbarTimes.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// statusbarMain
@@ -339,6 +340,7 @@
 			// 
 			// splitView.Panel1
 			// 
+			this.splitView.Panel1.Controls.Add(this.panelPageTimes);
 			this.splitView.Panel1.Controls.Add(this.panelPageTaskflow);
 			this.splitView.Panel1.Controls.Add(this.panelPageImageView);
 			// 
@@ -355,7 +357,7 @@
 			this.panelPageTaskflow.Controls.Add(this.toolbarTaskflow);
 			this.panelPageTaskflow.Location = new System.Drawing.Point(21, 15);
 			this.panelPageTaskflow.Name = "panelPageTaskflow";
-			this.panelPageTaskflow.Size = new System.Drawing.Size(800, 182);
+			this.panelPageTaskflow.Size = new System.Drawing.Size(800, 100);
 			this.panelPageTaskflow.TabIndex = 1;
 			// 
 			// splitTaskflow
@@ -372,7 +374,7 @@
 			// splitTaskflow.Panel2
 			// 
 			this.splitTaskflow.Panel2.Controls.Add(this.panelTaskflow);
-			this.splitTaskflow.Size = new System.Drawing.Size(800, 147);
+			this.splitTaskflow.Size = new System.Drawing.Size(800, 65);
 			this.splitTaskflow.SplitterDistance = 200;
 			this.splitTaskflow.TabIndex = 1;
 			// 
@@ -385,7 +387,7 @@
 			this.treeToolbox.HideSelection = false;
 			this.treeToolbox.Location = new System.Drawing.Point(0, 0);
 			this.treeToolbox.Name = "treeToolbox";
-			this.treeToolbox.Size = new System.Drawing.Size(200, 147);
+			this.treeToolbox.Size = new System.Drawing.Size(200, 65);
 			this.treeToolbox.TabIndex = 1;
 			this.treeToolbox.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeToolbox_ItemDrag);
 			this.treeToolbox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeToolbox_MouseDown);
@@ -397,16 +399,16 @@
 			this.panelTaskflow.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelTaskflow.Location = new System.Drawing.Point(0, 0);
 			this.panelTaskflow.Name = "panelTaskflow";
-			this.panelTaskflow.Size = new System.Drawing.Size(596, 147);
+			this.panelTaskflow.Size = new System.Drawing.Size(596, 65);
 			this.panelTaskflow.TabIndex = 1;
 			this.panelTaskflow.Resize += new System.EventHandler(this.panelTaskflow_Resize);
 			// 
 			// pictureTaskflow
 			// 
 			this.pictureTaskflow.BackColor = System.Drawing.Color.Gray;
-			this.pictureTaskflow.Location = new System.Drawing.Point(20, 69);
+			this.pictureTaskflow.Location = new System.Drawing.Point(3, 3);
 			this.pictureTaskflow.Name = "pictureTaskflow";
-			this.pictureTaskflow.Size = new System.Drawing.Size(150, 95);
+			this.pictureTaskflow.Size = new System.Drawing.Size(150, 50);
 			this.pictureTaskflow.TabIndex = 0;
 			this.pictureTaskflow.TabStop = false;
 			this.pictureTaskflow.LocationChanged += new System.EventHandler(this.pictureTaskflow_LocationChanged);
@@ -436,7 +438,15 @@
             this.toolStripSeparator2,
             this.toolTaskflowViewScale,
             this.toolTaskflowViewScaleDown,
-            this.toolTaskflowViewScaleUp});
+            this.toolTaskflowViewScaleUp,
+            this.toolStripSeparator18,
+            this.toolTaskProperty,
+            this.toolStripSeparator21,
+            this.toolFileSave,
+            this.toolFilePrint,
+            this.toolFilePrintPreview,
+            this.toolStripSeparator1,
+            this.toolFileGenerateCode});
 			this.toolbarTaskflow.Location = new System.Drawing.Point(0, 0);
 			this.toolbarTaskflow.Name = "toolbarTaskflow";
 			this.toolbarTaskflow.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -663,9 +673,9 @@
 			// 
 			this.panelPageImageView.Controls.Add(this.panelImageView);
 			this.panelPageImageView.Controls.Add(this.toolbarImageView);
-			this.panelPageImageView.Location = new System.Drawing.Point(21, 220);
+			this.panelPageImageView.Location = new System.Drawing.Point(21, 135);
 			this.panelPageImageView.Name = "panelPageImageView";
-			this.panelPageImageView.Size = new System.Drawing.Size(800, 156);
+			this.panelPageImageView.Size = new System.Drawing.Size(800, 100);
 			this.panelPageImageView.TabIndex = 2;
 			this.panelPageImageView.VisibleChanged += new System.EventHandler(this.panelPageImageView_VisibleChanged);
 			// 
@@ -674,7 +684,7 @@
 			this.panelImageView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelImageView.Location = new System.Drawing.Point(0, 35);
 			this.panelImageView.Name = "panelImageView";
-			this.panelImageView.Size = new System.Drawing.Size(800, 121);
+			this.panelImageView.Size = new System.Drawing.Size(800, 65);
 			this.panelImageView.TabIndex = 2;
 			// 
 			// toolbarImageView
@@ -985,7 +995,6 @@
 			// TabList
 			// 
 			this.TabList.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-			this.TabList.Controls.Add(this.tabPageTimes);
 			this.TabList.Controls.Add(this.tabPageReport);
 			this.TabList.Controls.Add(this.tabPageConsole);
 			this.TabList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -997,68 +1006,6 @@
 			this.TabList.Size = new System.Drawing.Size(896, 220);
 			this.TabList.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
 			this.TabList.TabIndex = 0;
-			// 
-			// tabPageTimes
-			// 
-			this.tabPageTimes.Controls.Add(this.listTimes);
-			this.tabPageTimes.Controls.Add(this.toolbarTimes);
-			this.tabPageTimes.ImageKey = "Task-Timer";
-			this.tabPageTimes.Location = new System.Drawing.Point(4, 28);
-			this.tabPageTimes.Name = "tabPageTimes";
-			this.tabPageTimes.Size = new System.Drawing.Size(888, 188);
-			this.tabPageTimes.TabIndex = 0;
-			this.tabPageTimes.Text = "Times";
-			this.tabPageTimes.UseVisualStyleBackColor = true;
-			// 
-			// listTimes
-			// 
-			this.listTimes.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listTimes.FullRowSelect = true;
-			this.listTimes.GridLines = true;
-			this.listTimes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-			this.listTimes.Location = new System.Drawing.Point(0, 35);
-			this.listTimes.Name = "listTimes";
-			this.listTimes.Size = new System.Drawing.Size(888, 153);
-			this.listTimes.TabIndex = 0;
-			this.listTimes.UseCompatibleStateImageBehavior = false;
-			this.listTimes.View = System.Windows.Forms.View.Details;
-			this.listTimes.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listTimes_ItemSelectionChanged);
-			this.listTimes.SelectedIndexChanged += new System.EventHandler(this.listTimes_SelectedIndexChanged);
-			// 
-			// toolbarTimes
-			// 
-			this.toolbarTimes.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-			this.toolbarTimes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolTimesSave,
-            this.toolTimesAdjust});
-			this.toolbarTimes.Location = new System.Drawing.Point(0, 0);
-			this.toolbarTimes.Name = "toolbarTimes";
-			this.toolbarTimes.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.toolbarTimes.Size = new System.Drawing.Size(888, 35);
-			this.toolbarTimes.TabIndex = 1;
-			this.toolbarTimes.Text = "Report";
-			// 
-			// toolTimesSave
-			// 
-			this.toolTimesSave.AutoSize = false;
-			this.toolTimesSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolTimesSave.Image = ((System.Drawing.Image)(resources.GetObject("toolTimesSave.Image")));
-			this.toolTimesSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolTimesSave.Name = "toolTimesSave";
-			this.toolTimesSave.Size = new System.Drawing.Size(32, 32);
-			this.toolTimesSave.Text = "Save";
-			this.toolTimesSave.Click += new System.EventHandler(this.toolTimesSave_Click);
-			// 
-			// toolTimesAdjust
-			// 
-			this.toolTimesAdjust.AutoSize = false;
-			this.toolTimesAdjust.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolTimesAdjust.Image = ((System.Drawing.Image)(resources.GetObject("toolTimesAdjust.Image")));
-			this.toolTimesAdjust.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolTimesAdjust.Name = "toolTimesAdjust";
-			this.toolTimesAdjust.Size = new System.Drawing.Size(32, 32);
-			this.toolTimesAdjust.Text = "Adjust";
-			this.toolTimesAdjust.Click += new System.EventHandler(this.toolTimesAdjust_Click);
 			// 
 			// tabPageReport
 			// 
@@ -1347,14 +1294,6 @@
 			this.toolbarMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolPageTaskflow,
             this.toolPageImageView,
-            this.toolStripSeparator18,
-            this.toolTaskProperty,
-            this.toolStripSeparator21,
-            this.toolFileSave,
-            this.toolFilePrint,
-            this.toolFilePrintPreview,
-            this.toolStripSeparator1,
-            this.toolFileGenerateCode,
             this.toolCollapse,
             this.toolPanelR,
             this.toolPanelB,
@@ -1364,6 +1303,7 @@
             this.toolTaskflowPreview,
             this.toolTaskHelp,
             this.toolSpacer1,
+            this.toolPageTimes,
             this.toolStripSeparator13,
             this.toolTaskLoopMax,
             this.toolTaskRepeat,
@@ -1399,97 +1339,6 @@
 			this.toolPageImageView.Size = new System.Drawing.Size(128, 32);
 			this.toolPageImageView.Text = "ImageView";
 			this.toolPageImageView.Click += new System.EventHandler(this.toolPageImageView_Click);
-			// 
-			// toolStripSeparator18
-			// 
-			this.toolStripSeparator18.Name = "toolStripSeparator18";
-			this.toolStripSeparator18.Size = new System.Drawing.Size(6, 35);
-			// 
-			// toolTaskProperty
-			// 
-			this.toolTaskProperty.AutoSize = false;
-			this.toolTaskProperty.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolTaskProperty.Image = ((System.Drawing.Image)(resources.GetObject("toolTaskProperty.Image")));
-			this.toolTaskProperty.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolTaskProperty.Name = "toolTaskProperty";
-			this.toolTaskProperty.Size = new System.Drawing.Size(32, 32);
-			this.toolTaskProperty.Text = "Task Property";
-			this.toolTaskProperty.Click += new System.EventHandler(this.toolTaskProperty_Click);
-			// 
-			// toolStripSeparator21
-			// 
-			this.toolStripSeparator21.Name = "toolStripSeparator21";
-			this.toolStripSeparator21.Size = new System.Drawing.Size(6, 35);
-			// 
-			// toolFileSave
-			// 
-			this.toolFileSave.AutoSize = false;
-			this.toolFileSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolFileSave.Image = ((System.Drawing.Image)(resources.GetObject("toolFileSave.Image")));
-			this.toolFileSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-			this.toolFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolFileSave.Name = "toolFileSave";
-			this.toolFileSave.Size = new System.Drawing.Size(32, 32);
-			this.toolFileSave.Text = "Save";
-			this.toolFileSave.Click += new System.EventHandler(this.toolFileSave_Click);
-			// 
-			// toolFilePrint
-			// 
-			this.toolFilePrint.AutoSize = false;
-			this.toolFilePrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolFilePrint.Image = ((System.Drawing.Image)(resources.GetObject("toolFilePrint.Image")));
-			this.toolFilePrint.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolFilePrint.Name = "toolFilePrint";
-			this.toolFilePrint.Size = new System.Drawing.Size(32, 32);
-			this.toolFilePrint.Text = "Print";
-			this.toolFilePrint.Click += new System.EventHandler(this.toolFilePrint_Click);
-			// 
-			// toolFilePrintPreview
-			// 
-			this.toolFilePrintPreview.AutoSize = false;
-			this.toolFilePrintPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolFilePrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("toolFilePrintPreview.Image")));
-			this.toolFilePrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolFilePrintPreview.Name = "toolFilePrintPreview";
-			this.toolFilePrintPreview.Size = new System.Drawing.Size(32, 32);
-			this.toolFilePrintPreview.Text = "Print Preview";
-			this.toolFilePrintPreview.Click += new System.EventHandler(this.toolFilePrintPreview_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
-			// 
-			// toolFileGenerateCode
-			// 
-			this.toolFileGenerateCode.AutoSize = false;
-			this.toolFileGenerateCode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolFileGenerateCode1,
-            this.toolFileGenerateCode2});
-			this.toolFileGenerateCode.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode.Image")));
-			this.toolFileGenerateCode.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolFileGenerateCode.Name = "toolFileGenerateCode";
-			this.toolFileGenerateCode.Size = new System.Drawing.Size(128, 32);
-			this.toolFileGenerateCode.Text = "Source Code";
-			this.toolFileGenerateCode.ToolTipText = "Generate Source Code";
-			// 
-			// toolFileGenerateCode1
-			// 
-			this.toolFileGenerateCode1.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode1.Image")));
-			this.toolFileGenerateCode1.Name = "toolFileGenerateCode1";
-			this.toolFileGenerateCode1.Size = new System.Drawing.Size(152, 22);
-			this.toolFileGenerateCode1.Tag = "1";
-			this.toolFileGenerateCode1.Text = "C#";
-			this.toolFileGenerateCode1.Click += new System.EventHandler(this.toolFileGenerateCode_Click);
-			// 
-			// toolFileGenerateCode2
-			// 
-			this.toolFileGenerateCode2.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode2.Image")));
-			this.toolFileGenerateCode2.Name = "toolFileGenerateCode2";
-			this.toolFileGenerateCode2.Size = new System.Drawing.Size(152, 22);
-			this.toolFileGenerateCode2.Tag = "2";
-			this.toolFileGenerateCode2.Text = "Visual Basic";
-			this.toolFileGenerateCode2.Click += new System.EventHandler(this.toolFileGenerateCode_Click);
 			// 
 			// toolCollapse
 			// 
@@ -2325,6 +2174,165 @@
 			// 
 			this.printDlg.UseEXDialog = true;
 			// 
+			// panelPageTimes
+			// 
+			this.panelPageTimes.Controls.Add(this.listTimes);
+			this.panelPageTimes.Controls.Add(this.toolbarTimes);
+			this.panelPageTimes.Location = new System.Drawing.Point(21, 242);
+			this.panelPageTimes.Name = "panelPageTimes";
+			this.panelPageTimes.Size = new System.Drawing.Size(800, 100);
+			this.panelPageTimes.TabIndex = 3;
+			// 
+			// toolbarTimes
+			// 
+			this.toolbarTimes.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+			this.toolbarTimes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolTimesSave,
+            this.toolTimesAdjust});
+			this.toolbarTimes.Location = new System.Drawing.Point(0, 0);
+			this.toolbarTimes.Name = "toolbarTimes";
+			this.toolbarTimes.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.toolbarTimes.Size = new System.Drawing.Size(800, 35);
+			this.toolbarTimes.TabIndex = 2;
+			this.toolbarTimes.Text = "Report";
+			// 
+			// toolTimesSave
+			// 
+			this.toolTimesSave.AutoSize = false;
+			this.toolTimesSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolTimesSave.Image = ((System.Drawing.Image)(resources.GetObject("toolTimesSave.Image")));
+			this.toolTimesSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolTimesSave.Name = "toolTimesSave";
+			this.toolTimesSave.Size = new System.Drawing.Size(32, 32);
+			this.toolTimesSave.Text = "Save";
+			this.toolTimesSave.Click += new System.EventHandler(this.toolTimesSave_Click);
+			// 
+			// toolTimesAdjust
+			// 
+			this.toolTimesAdjust.AutoSize = false;
+			this.toolTimesAdjust.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolTimesAdjust.Image = ((System.Drawing.Image)(resources.GetObject("toolTimesAdjust.Image")));
+			this.toolTimesAdjust.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolTimesAdjust.Name = "toolTimesAdjust";
+			this.toolTimesAdjust.Size = new System.Drawing.Size(32, 32);
+			this.toolTimesAdjust.Text = "Adjust";
+			this.toolTimesAdjust.Click += new System.EventHandler(this.toolTimesAdjust_Click);
+			// 
+			// listTimes
+			// 
+			this.listTimes.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listTimes.FullRowSelect = true;
+			this.listTimes.GridLines = true;
+			this.listTimes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+			this.listTimes.Location = new System.Drawing.Point(0, 35);
+			this.listTimes.Name = "listTimes";
+			this.listTimes.Size = new System.Drawing.Size(800, 65);
+			this.listTimes.TabIndex = 3;
+			this.listTimes.UseCompatibleStateImageBehavior = false;
+			this.listTimes.View = System.Windows.Forms.View.Details;
+			// 
+			// toolTaskProperty
+			// 
+			this.toolTaskProperty.AutoSize = false;
+			this.toolTaskProperty.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolTaskProperty.Image = ((System.Drawing.Image)(resources.GetObject("toolTaskProperty.Image")));
+			this.toolTaskProperty.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolTaskProperty.Name = "toolTaskProperty";
+			this.toolTaskProperty.Size = new System.Drawing.Size(32, 32);
+			this.toolTaskProperty.Text = "Task Property";
+			this.toolTaskProperty.Click += new System.EventHandler(this.toolTaskProperty_Click);
+			// 
+			// toolStripSeparator21
+			// 
+			this.toolStripSeparator21.Name = "toolStripSeparator21";
+			this.toolStripSeparator21.Size = new System.Drawing.Size(6, 35);
+			// 
+			// toolFileSave
+			// 
+			this.toolFileSave.AutoSize = false;
+			this.toolFileSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolFileSave.Image = ((System.Drawing.Image)(resources.GetObject("toolFileSave.Image")));
+			this.toolFileSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+			this.toolFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolFileSave.Name = "toolFileSave";
+			this.toolFileSave.Size = new System.Drawing.Size(32, 32);
+			this.toolFileSave.Text = "Save";
+			this.toolFileSave.Click += new System.EventHandler(this.toolFileSave_Click);
+			// 
+			// toolFilePrint
+			// 
+			this.toolFilePrint.AutoSize = false;
+			this.toolFilePrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolFilePrint.Image = ((System.Drawing.Image)(resources.GetObject("toolFilePrint.Image")));
+			this.toolFilePrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolFilePrint.Name = "toolFilePrint";
+			this.toolFilePrint.Size = new System.Drawing.Size(32, 32);
+			this.toolFilePrint.Text = "Print";
+			this.toolFilePrint.Click += new System.EventHandler(this.toolFilePrint_Click);
+			// 
+			// toolFilePrintPreview
+			// 
+			this.toolFilePrintPreview.AutoSize = false;
+			this.toolFilePrintPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolFilePrintPreview.Image = ((System.Drawing.Image)(resources.GetObject("toolFilePrintPreview.Image")));
+			this.toolFilePrintPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolFilePrintPreview.Name = "toolFilePrintPreview";
+			this.toolFilePrintPreview.Size = new System.Drawing.Size(32, 32);
+			this.toolFilePrintPreview.Text = "Print Preview";
+			this.toolFilePrintPreview.Click += new System.EventHandler(this.toolFilePrintPreview_Click);
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 35);
+			// 
+			// toolFileGenerateCode
+			// 
+			this.toolFileGenerateCode.AutoSize = false;
+			this.toolFileGenerateCode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolFileGenerateCode1,
+            this.toolFileGenerateCode2});
+			this.toolFileGenerateCode.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode.Image")));
+			this.toolFileGenerateCode.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolFileGenerateCode.Name = "toolFileGenerateCode";
+			this.toolFileGenerateCode.Size = new System.Drawing.Size(128, 32);
+			this.toolFileGenerateCode.Text = "Source Code";
+			this.toolFileGenerateCode.ToolTipText = "Generate Source Code";
+			// 
+			// toolFileGenerateCode1
+			// 
+			this.toolFileGenerateCode1.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode1.Image")));
+			this.toolFileGenerateCode1.Name = "toolFileGenerateCode1";
+			this.toolFileGenerateCode1.Size = new System.Drawing.Size(152, 22);
+			this.toolFileGenerateCode1.Tag = "1";
+			this.toolFileGenerateCode1.Text = "C#";
+			this.toolFileGenerateCode1.Click += new System.EventHandler(this.toolFileGenerateCode_Click);
+			// 
+			// toolFileGenerateCode2
+			// 
+			this.toolFileGenerateCode2.Image = ((System.Drawing.Image)(resources.GetObject("toolFileGenerateCode2.Image")));
+			this.toolFileGenerateCode2.Name = "toolFileGenerateCode2";
+			this.toolFileGenerateCode2.Size = new System.Drawing.Size(152, 22);
+			this.toolFileGenerateCode2.Tag = "2";
+			this.toolFileGenerateCode2.Text = "Visual Basic";
+			this.toolFileGenerateCode2.Click += new System.EventHandler(this.toolFileGenerateCode_Click);
+			// 
+			// toolStripSeparator18
+			// 
+			this.toolStripSeparator18.Name = "toolStripSeparator18";
+			this.toolStripSeparator18.Size = new System.Drawing.Size(6, 35);
+			// 
+			// toolPageTimes
+			// 
+			this.toolPageTimes.AutoSize = false;
+			this.toolPageTimes.AutoToolTip = false;
+			this.toolPageTimes.Image = ((System.Drawing.Image)(resources.GetObject("toolPageTimes.Image")));
+			this.toolPageTimes.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolPageTimes.Name = "toolPageTimes";
+			this.toolPageTimes.Size = new System.Drawing.Size(128, 32);
+			this.toolPageTimes.Text = "Tmes";
+			this.toolPageTimes.Click += new System.EventHandler(this.toolPageTimes_Click);
+			// 
 			// CxTaskflowForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2369,10 +2377,6 @@
 			this.toolbarImageView.ResumeLayout(false);
 			this.toolbarImageView.PerformLayout();
 			this.TabList.ResumeLayout(false);
-			this.tabPageTimes.ResumeLayout(false);
-			this.tabPageTimes.PerformLayout();
-			this.toolbarTimes.ResumeLayout(false);
-			this.toolbarTimes.PerformLayout();
 			this.tabPageReport.ResumeLayout(false);
 			this.tabPageReport.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gridReport)).EndInit();
@@ -2395,6 +2399,10 @@
 			this.menuTaskPortOut.ResumeLayout(false);
 			this.menuTaskBody.ResumeLayout(false);
 			this.menuTaskflow.ResumeLayout(false);
+			this.panelPageTimes.ResumeLayout(false);
+			this.panelPageTimes.PerformLayout();
+			this.toolbarTimes.ResumeLayout(false);
+			this.toolbarTimes.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -2413,9 +2421,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel statusViewInfo;
 		private System.Windows.Forms.SplitContainer splitView;
 		private System.Windows.Forms.TabControl TabList;
-		private System.Windows.Forms.TabPage tabPageTimes;
 		private System.Windows.Forms.TabPage tabPageConsole;
-		private System.Windows.Forms.ListView listTimes;
 		private System.Windows.Forms.RichTextBox textConsole;
 		private System.ComponentModel.BackgroundWorker workerTask;
 		private System.Windows.Forms.ImageList imageListTab;
@@ -2492,10 +2498,7 @@
 		private System.Windows.Forms.DataGridView gridReport;
 		private System.Windows.Forms.ToolStripStatusLabel statusSheetInfo;
 		private XIE.Forms.CxToolStripEx toolbarReport;
-		private XIE.Forms.CxToolStripEx toolbarTimes;
 		private XIE.Forms.CxToolStripEx toolbarConsole;
-		private System.Windows.Forms.ToolStripButton toolTimesSave;
-		private System.Windows.Forms.ToolStripButton toolTimesAdjust;
 		private System.Windows.Forms.ToolStripButton toolReportSave;
 		private System.Windows.Forms.ToolStripButton toolReportAdjust;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
@@ -2552,14 +2555,7 @@
 		private System.Windows.Forms.ToolStripButton toolTaskStop;
 		private System.Windows.Forms.ToolStripButton toolTaskHelp;
 		private System.Windows.Forms.ToolStripButton toolImagePreview;
-		private System.Windows.Forms.ToolStripDropDownButton toolFileGenerateCode;
-		private System.Windows.Forms.ToolStripMenuItem toolFileGenerateCode1;
-		private System.Windows.Forms.ToolStripMenuItem toolFileGenerateCode2;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
-		private System.Windows.Forms.ToolStripButton toolFileSave;
-		private System.Windows.Forms.ToolStripButton toolFilePrint;
-		private System.Windows.Forms.ToolStripButton toolFilePrintPreview;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton toolTaskflowPreview;
 		private System.Windows.Forms.ToolStripButton toolCollapse;
 		private System.Windows.Forms.ToolStripLabel toolSpacer1;
@@ -2587,7 +2583,6 @@
 		private System.Windows.Forms.Panel panelPageImageView;
 		private System.Windows.Forms.ToolStripButton toolPageTaskflow;
 		private System.Windows.Forms.ToolStripButton toolPageImageView;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
 		private System.Windows.Forms.ToolStripButton toolToolbox;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
 		private System.Windows.Forms.ToolStripButton toolPanelR;
@@ -2599,10 +2594,24 @@
 		private System.Windows.Forms.ToolStripMenuItem toolViewSnapshotOverlayMode0;
 		private System.Windows.Forms.ToolStripMenuItem toolViewSnapshotOverlayMode1;
 		private System.Windows.Forms.ToolStripMenuItem toolViewSnapshotOverlayMode2;
-		private System.Windows.Forms.ToolStripButton toolTaskProperty;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
 		private System.Windows.Forms.ToolStripMenuItem menuTaskflowProperty;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
+		private System.Windows.Forms.Panel panelPageTimes;
+		private System.Windows.Forms.ListView listTimes;
+		private XIE.Forms.CxToolStripEx toolbarTimes;
+		private System.Windows.Forms.ToolStripButton toolTimesSave;
+		private System.Windows.Forms.ToolStripButton toolTimesAdjust;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+		private System.Windows.Forms.ToolStripButton toolTaskProperty;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+		private System.Windows.Forms.ToolStripButton toolFileSave;
+		private System.Windows.Forms.ToolStripButton toolFilePrint;
+		private System.Windows.Forms.ToolStripButton toolFilePrintPreview;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripDropDownButton toolFileGenerateCode;
+		private System.Windows.Forms.ToolStripMenuItem toolFileGenerateCode1;
+		private System.Windows.Forms.ToolStripMenuItem toolFileGenerateCode2;
+		private System.Windows.Forms.ToolStripButton toolPageTimes;
 	}
 }
 

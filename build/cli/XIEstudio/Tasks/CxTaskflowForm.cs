@@ -113,8 +113,10 @@ namespace XIEstudio
 
 			panelPageTaskflow.Visible = true;
 			panelPageImageView.Visible = false;
+			panelPageTimes.Visible = false;
 			panelPageTaskflow.Dock = DockStyle.Fill;
 			panelPageImageView.Dock = DockStyle.Fill;
+			panelPageTimes.Dock = DockStyle.Fill;
 			panelTaskflow.BackColor = CxAuxInfoForm.AppSettings.BkColor;
 
 			this.TaskNode.Document.PrintPage += printTaskflow_PrintPage;
@@ -358,6 +360,7 @@ namespace XIEstudio
 			{
 				panelPageTaskflow.Visible = true;
 				panelPageImageView.Visible = false;
+				panelPageTimes.Visible = false;
 			}
 		}
 
@@ -372,6 +375,22 @@ namespace XIEstudio
 			{
 				panelPageTaskflow.Visible = false;
 				panelPageImageView.Visible = true;
+				panelPageTimes.Visible = false;
+			}
+		}
+
+		/// <summary>
+		/// toolbarMain: Times の表示
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolPageTimes_Click(object sender, EventArgs e)
+		{
+			if (panelPageTimes.Visible == false)
+			{
+				panelPageTaskflow.Visible = false;
+				panelPageImageView.Visible = false;
+				panelPageTimes.Visible = true;
 			}
 		}
 
