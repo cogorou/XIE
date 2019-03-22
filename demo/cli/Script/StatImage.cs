@@ -1,4 +1,4 @@
-/*
+﻿/*
 	XIE
 	Copyright (C) 2013 Eggs Imaging Laboratory
 */
@@ -14,7 +14,8 @@ namespace StatImage
 	partial class Program
 	{
 		const string AppName = "StatImage";
-		static string ResultDir = "";
+
+		const string DstExtension = "jpg";
 
 		/// <summary>
 		/// エントリポイント
@@ -27,14 +28,6 @@ namespace StatImage
 
 			try
 			{
-				// Results
-				const string result_dir = "Results";
-				System.IO.Directory.CreateDirectory(result_dir);
-
-				// Results/AppName
-				ResultDir = System.IO.Path.Combine(result_dir, AppName);
-				System.IO.Directory.CreateDirectory(ResultDir);
-
 				// mode
 				int mode = 1;
 				if (args.Length > 0)
@@ -53,20 +46,16 @@ namespace StatImage
 				if (dlg.ShowDialog(Form.ActiveForm) == DialogResult.OK)
 				{
 					var filenames = dlg.FileNames;
+					if (filenames.Length == 0) return;
 
 					Console.WriteLine("{0} files", filenames.Length);
-
-					var now = DateTime.Now;
-					var suffix = string.Format("{0:0000}{1:00}{2:00}_{3:00}{4:00}{5:00}",
-						now.Year, now.Month, now.Day,
-						now.Hour, now.Minute, now.Second);
 
 					// Make Thumbnail
 					switch (mode)
 					{
 						default:
-						case 1: MakeCompositImage1(filenames, ResultDir, suffix); break;
-						case 2: MakeCompositImage2(filenames, ResultDir, suffix); break;
+						case 1: MakeCompositImage1(filenames); break;
+						case 2: MakeCompositImage2(filenames); break;
 					}
 				}
 			}
@@ -83,15 +72,15 @@ namespace StatImage
 		/// 合成画像の生成 (平均、最少、最大)
 		/// </summary>
 		/// <param name="filenames">元画像</param>
-		/// <param name="result_dir">保存先のディレクトリ</param>
-		/// <param name="suffix">ファイル名のサフィックス</param>
-		static void MakeCompositImage1(string[] filenames, string result_dir, string suffix)
+		static void MakeCompositImage1(string[] filenames)
 		{
 			var __FUNCTION__ = MethodBase.GetCurrentMethod().Name;
 			Console.WriteLine(__FUNCTION__);
 
 			var watch = new XIE.CxStopwatch();
 			var stat = new XIE.TxStatistics();
+			var defaultExt = DstExtension;
+			var initialDir = "";
 
 			using (var sum = new XIE.CxImage())
 			using (var ave = new XIE.CxImage())
@@ -142,9 +131,52 @@ namespace StatImage
 				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Min", stat.Min);
 				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Max", stat.Max);
 
-				ave.Save(string.Format("{0}/{1}_ave.jpg", result_dir, suffix));
-				min.Save(string.Format("{0}/{1}_min.jpg", result_dir, suffix));
-				max.Save(string.Format("{0}/{1}_max.jpg", result_dir, suffix));
+				#region ファイル保存:
+				var now = DateTime.Now;
+				var suffix = string.Format("{0:0000}{1:00}{2:00}_{3:00}{4:00}{5:00}",
+					now.Year, now.Month, now.Day,
+					now.Hour, now.Minute, now.Second);
+
+				var sfd = new SaveFileDialog();
+				sfd.AddExtension = true;
+				sfd.DefaultExt = defaultExt;
+				sfd.Filter = "Image files |*.bmp;*.dib;*.png;*.jpg;*.jpeg;*.tif;*.tiff;*.raw;";
+				sfd.Filter += "|Bmp files |*.bmp;*.dib";
+				sfd.Filter += "|Png files |*.png";
+				sfd.Filter += "|Jpeg files |*.jpg;*.jpeg;";
+				sfd.Filter += "|Tiff files |*.tif;*.tiff";
+				sfd.Filter += "|Raw files |*.raw";
+				sfd.Filter += "|All files |*.*";
+				sfd.FileName = string.Format("{0}.{1}", System.IO.Path.GetFileNameWithoutExtension(filenames[0]), defaultExt);
+				if (string.IsNullOrEmpty(initialDir) == false)
+					sfd.InitialDirectory = initialDir;
+
+				if (sfd.ShowDialog(Form.ActiveForm) == DialogResult.OK)
+				{
+					var dst_dir = System.IO.Path.GetDirectoryName(sfd.FileName);
+					var prefix = System.IO.Path.GetFileNameWithoutExtension(sfd.FileName);
+					var ext = System.IO.Path.GetExtension(sfd.FileName);
+
+					var ave_filename = string.Format("{0}-{1}{2}", prefix, "ave", ext);
+					Console.WriteLine("dst: {0}", ave_filename);
+					ave.Save(System.IO.Path.Combine(dst_dir, ave_filename));
+
+					var min_filename = string.Format("{0}-{1}{2}", prefix, "min", ext);
+					Console.WriteLine("dst: {0}", min_filename);
+					min.Save(System.IO.Path.Combine(dst_dir, min_filename));
+
+					var max_filename = string.Format("{0}-{1}{2}", prefix, "max", ext);
+					Console.WriteLine("dst: {0}", max_filename);
+					max.Save(System.IO.Path.Combine(dst_dir, max_filename));
+
+					defaultExt = System.IO.Path.GetExtension(sfd.FileName).Substring(1);
+					initialDir = System.IO.Path.GetDirectoryName(sfd.FileName);
+				}
+				else
+				{
+					Console.WriteLine("dst: canceled.");
+				}
+				#endregion
 			}
 		}
 
@@ -152,72 +184,113 @@ namespace StatImage
 		/// 合成画像の生成 (彩度の最大)
 		/// </summary>
 		/// <param name="filenames">元画像</param>
-		/// <param name="result_dir">保存先のディレクトリ</param>
-		/// <param name="suffix">ファイル名のサフィックス</param>
-		static void MakeCompositImage2(string[] filenames, string result_dir, string suffix)
+		static void MakeCompositImage2(string[] filenames)
 		{
 			var __FUNCTION__ = MethodBase.GetCurrentMethod().Name;
 			Console.WriteLine(__FUNCTION__);
 
 			var watch = new XIE.CxStopwatch();
 			var stat = new XIE.TxStatistics();
-			var dst = new XIE.CxImage();
+			var defaultExt = DstExtension;
+			var initialDir = "";
 
-			for (int i = 0; i < filenames.Length; i++)
+			using (var dst = new XIE.CxImage())
 			{
-				using (var src = new XIE.CxImage(filenames[i], true))
-				using (var hsv = new XIE.CxImage())
+				for (int i = 0; i < filenames.Length; i++)
 				{
-					watch.Start();
-					var effector = new XIE.Effectors.CxRgbToHsv();
-					effector.Execute(src, hsv);
-					if (i == 0)
+					using (var src = new XIE.CxImage(filenames[i], true))
+					using (var hsv = new XIE.CxImage())
 					{
-						dst.CopyFrom(hsv);
-						dst.ExifCopy(src.Exif());
-					}
-					else
-					{
-						for (int ch = 0; ch < src.Channels; ch++)
+						watch.Start();
+						var effector = new XIE.Effectors.CxRgbToHsv();
+						effector.Execute(src, hsv);
+						if (i == 0)
 						{
-							var src_scan = hsv.Scanner(ch);
-							var dst_scan = dst.Scanner(ch);
-
-							for (int y = 0; y < src_scan.Height; y++)
+							dst.CopyFrom(hsv);
+							dst.ExifCopy(src.Exif());
+						}
+						else
+						{
+							for (int ch = 0; ch < src.Channels; ch++)
 							{
-								for (int x = 0; x < src_scan.Width; x++)
+								var src_scan = hsv.Scanner(ch);
+								var dst_scan = dst.Scanner(ch);
+
+								for (int y = 0; y < src_scan.Height; y++)
 								{
-									var _src = (XIE.Ptr.DoublePtr)src_scan[y, x];
-									var _dst = (XIE.Ptr.DoublePtr)dst_scan[y, x];
-									if (_dst[1] < _src[1])
+									for (int x = 0; x < src_scan.Width; x++)
 									{
-										_dst[0] = _src[0];
-										_dst[1] = _src[1];
-										_dst[2] = _src[2];
+										var _src = (XIE.Ptr.DoublePtr)src_scan[y, x];
+										var _dst = (XIE.Ptr.DoublePtr)dst_scan[y, x];
+										// 0:Hue, 1:Saturation, 2:Value
+										if (_dst[1] < _src[1])
+										{
+											_dst[0] = _src[0];
+											_dst[1] = _src[1];
+											_dst[2] = _src[2];
+										}
 									}
 								}
 							}
 						}
+						watch.Stop();
+						stat += watch.Lap;
+						Console.WriteLine("{0,2}/{1,2}: Lap = {2:F3} msec", i + 1, filenames.Length, watch.Lap);
 					}
-					watch.Stop();
-					stat += watch.Lap;
-					Console.WriteLine("{0,2}/{1,2}: Lap = {2:F3} msec", i + 1, filenames.Length, watch.Lap);
 				}
-			}
 
-			Console.WriteLine("{0,-10}: {1,9:F0}", "Count", stat.Count);
-			Console.WriteLine("{0,-10}: {1,9:F3} msec", "Sum", stat.Sum1);
-			Console.WriteLine("{0,-10}: {1,9:F3} msec", "Mean", stat.Mean);
-			Console.WriteLine("{0,-10}: {1,9:F3} msec", "Sigma", stat.Sigma);
-			Console.WriteLine("{0,-10}: {1,9:F3} msec", "Min", stat.Min);
-			Console.WriteLine("{0,-10}: {1,9:F3} msec", "Max", stat.Max);
+				Console.WriteLine("{0,-10}: {1,9:F0}", "Count", stat.Count);
+				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Sum", stat.Sum1);
+				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Mean", stat.Mean);
+				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Sigma", stat.Sigma);
+				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Min", stat.Min);
+				Console.WriteLine("{0,-10}: {1,9:F3} msec", "Max", stat.Max);
 
-			using (var ans = new XIE.CxImage())
-			{
-				var effector = new XIE.Effectors.CxHsvToRgb();
-				effector.Execute(dst, ans);
-				ans.ExifCopy(dst.Exif());
-				ans.Save(string.Format("{0}/{1}.jpg", result_dir, suffix));
+				using (var ans = new XIE.CxImage())
+				{
+					var effector = new XIE.Effectors.CxHsvToRgb();
+					effector.Execute(dst, ans);
+					ans.ExifCopy(dst.Exif());
+
+					#region ファイル保存:
+					var now = DateTime.Now;
+					var suffix = string.Format("{0:0000}{1:00}{2:00}_{3:00}{4:00}{5:00}",
+						now.Year, now.Month, now.Day,
+						now.Hour, now.Minute, now.Second);
+
+					var sfd = new SaveFileDialog();
+					sfd.AddExtension = true;
+					sfd.DefaultExt = defaultExt;
+					sfd.Filter = "Image files |*.bmp;*.dib;*.png;*.jpg;*.jpeg;*.tif;*.tiff;*.raw;";
+					sfd.Filter += "|Bmp files |*.bmp;*.dib";
+					sfd.Filter += "|Png files |*.png";
+					sfd.Filter += "|Jpeg files |*.jpg;*.jpeg;";
+					sfd.Filter += "|Tiff files |*.tif;*.tiff";
+					sfd.Filter += "|Raw files |*.raw";
+					sfd.Filter += "|All files |*.*";
+					sfd.FileName = string.Format("{0}.{1}", System.IO.Path.GetFileNameWithoutExtension(filenames[0]), defaultExt);
+					if (string.IsNullOrEmpty(initialDir) == false)
+						sfd.InitialDirectory = initialDir;
+
+					if (sfd.ShowDialog(Form.ActiveForm) == DialogResult.OK)
+					{
+						var dst_dir = System.IO.Path.GetDirectoryName(sfd.FileName);
+						var prefix = System.IO.Path.GetFileNameWithoutExtension(sfd.FileName);
+						var ext = System.IO.Path.GetExtension(sfd.FileName);
+
+						var dst_filename = string.Format("{0}-{1}{2}", prefix, "satmax", ext);
+						Console.WriteLine("dst: {0}", dst_filename);
+						ans.Save(System.IO.Path.Combine(dst_dir, dst_filename));
+
+						defaultExt = System.IO.Path.GetExtension(sfd.FileName).Substring(1);
+						initialDir = System.IO.Path.GetDirectoryName(sfd.FileName);
+					}
+					else
+					{
+						Console.WriteLine("dst: canceled.");
+					}
+					#endregion
+				}
 			}
 		}
 	}

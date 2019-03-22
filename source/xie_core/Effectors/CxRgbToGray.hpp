@@ -103,10 +103,10 @@ template<class TM, class TS> static inline void XIE_API fnPRV_2D_RgbToGray__u(Tx
 {
 	switch(dst.Model.Type)
 	{
-	case ExType::U8:		fnPRV_2D_RgbToGray_gu<unsigned char,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
+	case ExType::U8:	fnPRV_2D_RgbToGray_gu<unsigned char,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::U16:	fnPRV_2D_RgbToGray_gu<unsigned short,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::U32:	fnPRV_2D_RgbToGray_gu<unsigned int,TM,TS>		(dst, mask, src, scale, coefR, coefG, coefB);	break;
-	case ExType::S8:		fnPRV_2D_RgbToGray_gu<char,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
+	case ExType::S8:	fnPRV_2D_RgbToGray_gu<char,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::S16:	fnPRV_2D_RgbToGray_gu<short,TM,TS>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::S32:	fnPRV_2D_RgbToGray_gu<int,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::F32:	fnPRV_2D_RgbToGray_gu<float,TM,TS>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
@@ -121,10 +121,10 @@ template<class TM, class TS> static inline void XIE_API fnPRV_2D_RgbToGray__p(Tx
 {
 	switch(dst.Model.Type)
 	{
-	case ExType::U8:		fnPRV_2D_RgbToGray_gp<unsigned char,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
+	case ExType::U8:	fnPRV_2D_RgbToGray_gp<unsigned char,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::U16:	fnPRV_2D_RgbToGray_gp<unsigned short,TM,TS>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::U32:	fnPRV_2D_RgbToGray_gp<unsigned int,TM,TS>		(dst, mask, src, scale, coefR, coefG, coefB);	break;
-	case ExType::S8:		fnPRV_2D_RgbToGray_gp<char,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
+	case ExType::S8:	fnPRV_2D_RgbToGray_gp<char,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::S16:	fnPRV_2D_RgbToGray_gp<short,TM,TS>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::S32:	fnPRV_2D_RgbToGray_gp<int,TM,TS>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 	case ExType::F32:	fnPRV_2D_RgbToGray_gp<float,TM,TS>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
@@ -142,10 +142,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_RgbToGray___(TxImage dst,
 	case 1:
 		switch(src.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_RgbToGray__u<TM,unsigned char>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
+		case ExType::U8:	fnPRV_2D_RgbToGray__u<TM,unsigned char>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::U16:	fnPRV_2D_RgbToGray__u<TM,unsigned short>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::U32:	fnPRV_2D_RgbToGray__u<TM,unsigned int>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
-		case ExType::S8:		fnPRV_2D_RgbToGray__u<TM,char>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
+		case ExType::S8:	fnPRV_2D_RgbToGray__u<TM,char>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::S16:	fnPRV_2D_RgbToGray__u<TM,short>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::S32:	fnPRV_2D_RgbToGray__u<TM,int>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::F32:	fnPRV_2D_RgbToGray__u<TM,float>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
@@ -158,10 +158,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_RgbToGray___(TxImage dst,
 	case 4:
 		switch(src.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_RgbToGray__p<TM,unsigned char>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
+		case ExType::U8:	fnPRV_2D_RgbToGray__p<TM,unsigned char>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::U16:	fnPRV_2D_RgbToGray__p<TM,unsigned short>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::U32:	fnPRV_2D_RgbToGray__p<TM,unsigned int>	(dst, mask, src, scale, coefR, coefG, coefB);	break;
-		case ExType::S8:		fnPRV_2D_RgbToGray__p<TM,char>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
+		case ExType::S8:	fnPRV_2D_RgbToGray__p<TM,char>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::S16:	fnPRV_2D_RgbToGray__p<TM,short>			(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::S32:	fnPRV_2D_RgbToGray__p<TM,int>				(dst, mask, src, scale, coefR, coefG, coefB);	break;
 		case ExType::F32:	fnPRV_2D_RgbToGray__p<TM,float>			(dst, mask, src, scale, coefR, coefG, coefB);	break;

@@ -183,10 +183,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_HsvToRgb___(TxImage dst, 
 			throw CxException(ExStatus::InvalidObject, __FUNCTION__, __FILE__, __LINE__);
 		switch(dst.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_HsvToRgb__u<unsigned char,TM>	(dst, mask, src, depth);	break;
+		case ExType::U8:	fnPRV_2D_HsvToRgb__u<unsigned char,TM>	(dst, mask, src, depth);	break;
 		case ExType::U16:	fnPRV_2D_HsvToRgb__u<unsigned short,TM>	(dst, mask, src, depth);	break;
 		case ExType::U32:	fnPRV_2D_HsvToRgb__u<unsigned int,TM>		(dst, mask, src, depth);	break;
-		case ExType::S8:		fnPRV_2D_HsvToRgb__u<char,TM>				(dst, mask, src, depth);	break;
+		case ExType::S8:	fnPRV_2D_HsvToRgb__u<char,TM>				(dst, mask, src, depth);	break;
 		case ExType::S16:	fnPRV_2D_HsvToRgb__u<short,TM>			(dst, mask, src, depth);	break;
 		case ExType::S32:	fnPRV_2D_HsvToRgb__u<int,TM>				(dst, mask, src, depth);	break;
 		case ExType::F32:	fnPRV_2D_HsvToRgb__u<float,TM>			(dst, mask, src, depth);	break;
@@ -201,10 +201,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_HsvToRgb___(TxImage dst, 
 			throw CxException(ExStatus::InvalidObject, __FUNCTION__, __FILE__, __LINE__);
 		switch(dst.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_HsvToRgb__p<unsigned char,TM>	(dst, mask, src, depth);	break;
+		case ExType::U8:	fnPRV_2D_HsvToRgb__p<unsigned char,TM>	(dst, mask, src, depth);	break;
 		case ExType::U16:	fnPRV_2D_HsvToRgb__p<unsigned short,TM>	(dst, mask, src, depth);	break;
 		case ExType::U32:	fnPRV_2D_HsvToRgb__p<unsigned int,TM>		(dst, mask, src, depth);	break;
-		case ExType::S8:		fnPRV_2D_HsvToRgb__p<char,TM>				(dst, mask, src, depth);	break;
+		case ExType::S8:	fnPRV_2D_HsvToRgb__p<char,TM>				(dst, mask, src, depth);	break;
 		case ExType::S16:	fnPRV_2D_HsvToRgb__p<short,TM>			(dst, mask, src, depth);	break;
 		case ExType::S32:	fnPRV_2D_HsvToRgb__p<int,TM>				(dst, mask, src, depth);	break;
 		case ExType::F32:	fnPRV_2D_HsvToRgb__p<float,TM>			(dst, mask, src, depth);	break;

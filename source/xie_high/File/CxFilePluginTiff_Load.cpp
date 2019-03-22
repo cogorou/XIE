@@ -316,7 +316,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 					// CMYK to RGB
 					switch (image_size.Model.Type)
 					{
-					case ExType::U8:		Buffer_CmykToRgb_pp<unsigned char>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
+					case ExType::U8:	Buffer_CmykToRgb_pp<unsigned char>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
 					case ExType::U16:	Buffer_CmykToRgb_pp<unsigned short>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
 					default: break;
 					}
@@ -324,7 +324,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 					// RGB
 					switch (image_size.Model.Type)
 					{
-					case ExType::U8:		Buffer_Copy_pp<unsigned char>		(_dst, _src, image_width, dst_pack, src_pack); break;
+					case ExType::U8:	Buffer_Copy_pp<unsigned char>		(_dst, _src, image_width, dst_pack, src_pack); break;
 					case ExType::U16:	Buffer_Copy_pp<unsigned short>		(_dst, _src, image_width, dst_pack, src_pack); break;
 					default: break;
 					}
@@ -342,7 +342,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 					// CMYK to RGB
 					switch (image_size.Model.Type)
 					{
-					case ExType::U8:		Buffer_CmykToRgb_pp<unsigned char>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
+					case ExType::U8:	Buffer_CmykToRgb_pp<unsigned char>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
 					case ExType::U16:	Buffer_CmykToRgb_pp<unsigned short>		(_src, _buf, image_width, src_pack, src_pack, range.Upper); break;
 					default: break;
 					}
@@ -353,7 +353,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 						void* _dst = dst(ch, y, 0);
 						switch (image_size.Model.Type)
 						{
-						case ExType::U8:		Buffer_Copy_up<unsigned char>		(_dst, _src, image_width, ch, src_pack); break;
+						case ExType::U8:	Buffer_Copy_up<unsigned char>		(_dst, _src, image_width, ch, src_pack); break;
 						case ExType::U16:	Buffer_Copy_up<unsigned short>		(_dst, _src, image_width, ch, src_pack); break;
 						default: break;
 						}
@@ -419,7 +419,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 					switch (image_size.Model.Type)
 					{
 					case ExType::S8:
-					case ExType::U8:		Buffer_Copy_pp<char>		(_dst, _src, image_width, dst_pack, src_pack); break;
+					case ExType::U8:	Buffer_Copy_pp<char>		(_dst, _src, image_width, dst_pack, src_pack); break;
 					case ExType::S16:
 					case ExType::U16:	Buffer_Copy_pp<short>		(_dst, _src, image_width, dst_pack, src_pack); break;
 					case ExType::S32:
@@ -445,7 +445,7 @@ void CxFilePluginTiff::LoadScanline(CxImage& dst, TIFF* tif, bool unpack)
 						switch (image_size.Model.Type)
 						{
 						case ExType::S8:
-						case ExType::U8:		Buffer_Copy_up<char>		(_dst, _src, image_width, ch, src_pack); break;
+						case ExType::U8:	Buffer_Copy_up<char>		(_dst, _src, image_width, ch, src_pack); break;
 						case ExType::S16:
 						case ExType::U16:	Buffer_Copy_up<short>		(_dst, _src, image_width, ch, src_pack); break;
 						case ExType::S32:

@@ -82,9 +82,9 @@ TxIplImage::TxIplImage(TxImage src, int ch)
 	{
 		default:
 			throw CxException(ExStatus::Unsupported, __FUNCTION__, __FILE__, __LINE__);
-		case ExType::U8:		dst_depth = IPLDefs::IPL_DEPTH_8U; break;
+		case ExType::U8:	dst_depth = IPLDefs::IPL_DEPTH_8U; break;
 		case ExType::U16:	dst_depth = IPLDefs::IPL_DEPTH_16U; break;
-		case ExType::S8:		dst_depth = IPLDefs::IPL_DEPTH_8S; break;
+		case ExType::S8:	dst_depth = IPLDefs::IPL_DEPTH_8S; break;
 		case ExType::S16:	dst_depth = IPLDefs::IPL_DEPTH_16S; break;
 		case ExType::S32:	dst_depth = IPLDefs::IPL_DEPTH_32S; break;
 		case ExType::F32:	dst_depth = IPLDefs::IPL_DEPTH_32F; break;

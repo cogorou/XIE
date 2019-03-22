@@ -72,10 +72,10 @@ template<class TD, class TM, class TFUNC> static inline void XIE_API fnPRV_2D_Bi
 {
 	switch(src.Model.Type)
 	{
-	case ExType::U8:		fnPRV_2D_Binarize_pp<TD,TM,unsigned char>		(dst, mask, src, element_operator); break;
+	case ExType::U8:	fnPRV_2D_Binarize_pp<TD,TM,unsigned char>		(dst, mask, src, element_operator); break;
 	case ExType::U16:	fnPRV_2D_Binarize_pp<TD,TM,unsigned short>	(dst, mask, src, element_operator); break;
 	case ExType::U32:	fnPRV_2D_Binarize_pp<TD,TM,unsigned int>		(dst, mask, src, element_operator); break;
-	case ExType::S8:		fnPRV_2D_Binarize_pp<TD,TM,char>				(dst, mask, src, element_operator); break;
+	case ExType::S8:	fnPRV_2D_Binarize_pp<TD,TM,char>				(dst, mask, src, element_operator); break;
 	case ExType::S16:	fnPRV_2D_Binarize_pp<TD,TM,short>				(dst, mask, src, element_operator); break;
 	case ExType::S32:	fnPRV_2D_Binarize_pp<TD,TM,int>				(dst, mask, src, element_operator); break;
 	case ExType::F32:	fnPRV_2D_Binarize_pp<TD,TM,float>				(dst, mask, src, element_operator); break;

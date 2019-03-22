@@ -83,10 +83,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_GammaConverter___(TxImage
 {
 	switch(src.Model.Type)
 	{
-	case ExType::U8:		fnPRV_2D_GammaConverter__p<TM,unsigned char>	(dst, mask, src, depth, gamma);	break;
+	case ExType::U8:	fnPRV_2D_GammaConverter__p<TM,unsigned char>	(dst, mask, src, depth, gamma);	break;
 	case ExType::U16:	fnPRV_2D_GammaConverter__p<TM,unsigned short>	(dst, mask, src, depth, gamma);	break;
 	case ExType::U32:	fnPRV_2D_GammaConverter__p<TM,unsigned int>		(dst, mask, src, depth, gamma);	break;
-	case ExType::S8:		fnPRV_2D_GammaConverter__p<TM,char>				(dst, mask, src, depth, gamma);	break;
+	case ExType::S8:	fnPRV_2D_GammaConverter__p<TM,char>				(dst, mask, src, depth, gamma);	break;
 	case ExType::S16:	fnPRV_2D_GammaConverter__p<TM,short>			(dst, mask, src, depth, gamma);	break;
 	case ExType::S32:	fnPRV_2D_GammaConverter__p<TM,int>				(dst, mask, src, depth, gamma);	break;
 	case ExType::F32:	fnPRV_2D_GammaConverter__p<TM,float>			(dst, mask, src, depth, gamma);	break;

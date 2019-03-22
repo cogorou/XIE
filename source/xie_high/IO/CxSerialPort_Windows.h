@@ -223,7 +223,7 @@ public:
 	// ============================================================
 	bool Readable(int timeout)
 	{
-		::ResetEvent(m_hEvent);
+		//::ResetEvent(m_hEvent);
 
 		DWORD	dwTimeout = (timeout < 0) ? INFINITE : timeout;
 		DWORD	mask = EV_RXCHAR;
@@ -265,7 +265,10 @@ public:
 	// ============================================================
 	int Read(char* buffer, int length, int timeout)
 	{
-		::ResetEvent(m_hEvent);
+		//::ResetEvent(m_hEvent);
+
+		if (Readable(timeout) == false)
+			return 0;
 
 		DWORD	dwLength = 0;
 		DWORD	dwTimeout = (timeout < 0) ? INFINITE : timeout;
@@ -308,7 +311,7 @@ public:
 	// ============================================================
 	bool Writeable(int timeout)
 	{
-		::ResetEvent(m_hEvent);
+		//::ResetEvent(m_hEvent);
 
 		DWORD	dwTimeout = (timeout < 0) ? INFINITE : timeout;
 		DWORD	mask = EV_TXEMPTY;
@@ -350,7 +353,7 @@ public:
 	// ============================================================
 	int Write(const char* buffer, int length, int timeout)
 	{
-		::ResetEvent(m_hEvent);
+		//::ResetEvent(m_hEvent);
 
 		DWORD	dwLength = 0;
 		DWORD	dwTimeout = (timeout < 0) ? INFINITE : timeout;

@@ -212,10 +212,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_HsvConverter___(TxImage d
 			throw CxException(ExStatus::InvalidObject, __FUNCTION__, __FILE__, __LINE__);
 		switch(src.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_HsvConverter__u<TM,unsigned char>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
+		case ExType::U8:	fnPRV_2D_HsvConverter__u<TM,unsigned char>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::U16:	fnPRV_2D_HsvConverter__u<TM,unsigned short>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::U32:	fnPRV_2D_HsvConverter__u<TM,unsigned int>		(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
-		case ExType::S8:		fnPRV_2D_HsvConverter__u<TM,char>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
+		case ExType::S8:	fnPRV_2D_HsvConverter__u<TM,char>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::S16:	fnPRV_2D_HsvConverter__u<TM,short>			(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::S32:	fnPRV_2D_HsvConverter__u<TM,int>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::F32:	fnPRV_2D_HsvConverter__u<TM,float>			(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
@@ -230,10 +230,10 @@ template<class TM> static inline void XIE_API fnPRV_2D_HsvConverter___(TxImage d
 			throw CxException(ExStatus::InvalidObject, __FUNCTION__, __FILE__, __LINE__);
 		switch(src.Model.Type)
 		{
-		case ExType::U8:		fnPRV_2D_HsvConverter__p<TM,unsigned char>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
+		case ExType::U8:	fnPRV_2D_HsvConverter__p<TM,unsigned char>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::U16:	fnPRV_2D_HsvConverter__p<TM,unsigned short>	(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::U32:	fnPRV_2D_HsvConverter__p<TM,unsigned int>		(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
-		case ExType::S8:		fnPRV_2D_HsvConverter__p<TM,char>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
+		case ExType::S8:	fnPRV_2D_HsvConverter__p<TM,char>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::S16:	fnPRV_2D_HsvConverter__p<TM,short>			(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::S32:	fnPRV_2D_HsvConverter__p<TM,int>				(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;
 		case ExType::F32:	fnPRV_2D_HsvConverter__p<TM,float>			(dst, mask, src, depth, hue_dir, saturation_factor, value_factor);	break;

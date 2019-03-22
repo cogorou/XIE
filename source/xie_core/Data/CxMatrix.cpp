@@ -1152,11 +1152,11 @@ XIE_EXPORT_FUNCTION ExStatus	XIE_API fnXIE_Core_Matrix_Eye			(HxModule hdst, dou
 
 		switch(dst->Model().Type)
 		{
-		case ExType::U8:		fnPRV_Matrix_Eye_cc	( dst->Scanner<unsigned char>(), value, mode );	break;
+		case ExType::U8:	fnPRV_Matrix_Eye_cc	( dst->Scanner<unsigned char>(), value, mode );	break;
 		case ExType::U16:	fnPRV_Matrix_Eye_cc	( dst->Scanner<unsigned short>(), value, mode );	break;
 		case ExType::U32:	fnPRV_Matrix_Eye_cc	( dst->Scanner<unsigned int>(), value, mode );	break;
 		case ExType::U64:	fnPRV_Matrix_Eye_cc	( dst->Scanner<unsigned long long>(), value, mode );	break;
-		case ExType::S8:		fnPRV_Matrix_Eye_cc	( dst->Scanner<char>(), value, mode );	break;
+		case ExType::S8:	fnPRV_Matrix_Eye_cc	( dst->Scanner<char>(), value, mode );	break;
 		case ExType::S16:	fnPRV_Matrix_Eye_cc	( dst->Scanner<short>(), value, mode );	break;
 		case ExType::S32:	fnPRV_Matrix_Eye_cc	( dst->Scanner<int>(), value, mode );	break;
 		case ExType::S64:	fnPRV_Matrix_Eye_cc	( dst->Scanner<long long>(), value, mode );	break;

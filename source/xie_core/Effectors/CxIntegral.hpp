@@ -83,10 +83,10 @@ template<class TD, class TM, class TB, class TFUNC> static inline void XIE_API f
 {
 	switch(src.Model.Type)
 	{
-	case ExType::U8:		fnPRV_2D_Integral_aa<TD,TM,unsigned char,TB>	(dst, mask, src, buf, element_operator);	break;
+	case ExType::U8:	fnPRV_2D_Integral_aa<TD,TM,unsigned char,TB>	(dst, mask, src, buf, element_operator);	break;
 	case ExType::U16:	fnPRV_2D_Integral_aa<TD,TM,unsigned short,TB>	(dst, mask, src, buf, element_operator);	break;
 	case ExType::U32:	fnPRV_2D_Integral_aa<TD,TM,unsigned int,TB>	(dst, mask, src, buf, element_operator);	break;
-	case ExType::S8:		fnPRV_2D_Integral_aa<TD,TM,char,TB>			(dst, mask, src, buf, element_operator);	break;
+	case ExType::S8:	fnPRV_2D_Integral_aa<TD,TM,char,TB>			(dst, mask, src, buf, element_operator);	break;
 	case ExType::S16:	fnPRV_2D_Integral_aa<TD,TM,short,TB>			(dst, mask, src, buf, element_operator);	break;
 	case ExType::S32:	fnPRV_2D_Integral_aa<TD,TM,int,TB>			(dst, mask, src, buf, element_operator);	break;
 	case ExType::F32:	fnPRV_2D_Integral_aa<TD,TM,float,TB>			(dst, mask, src, buf, element_operator);	break;

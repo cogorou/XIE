@@ -51,9 +51,9 @@ TxCvMat::TxCvMat(TxImage src, int ch)
 	{
 	default:
 		throw CxException(ExStatus::Unsupported, __FUNCTION__, __FILE__, __LINE__);
-	case ExType::U8:		dst_depth = CVDefs::CV_8U; break;
+	case ExType::U8:	dst_depth = CVDefs::CV_8U; break;
 	case ExType::U16:	dst_depth = CVDefs::CV_16U; break;
-	case ExType::S8:		dst_depth = CVDefs::CV_8S; break;
+	case ExType::S8:	dst_depth = CVDefs::CV_8S; break;
 	case ExType::S16:	dst_depth = CVDefs::CV_16S; break;
 	case ExType::S32:	dst_depth = CVDefs::CV_32S; break;
 	case ExType::F32:	dst_depth = CVDefs::CV_32F; break;
