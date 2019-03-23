@@ -267,18 +267,29 @@ public:
 	{
 		//::ResetEvent(m_hEvent);
 
-		if (Readable(timeout) == false)
-			return 0;
-
 		DWORD	dwLength = 0;
 		DWORD	dwTimeout = (timeout < 0) ? INFINITE : timeout;
 
 		memset(&m_Overlapped, 0, sizeof(m_Overlapped));
 		m_Overlapped.hEvent = m_hEvent;
 
-		if (::ReadFile(m_Handle, buffer, length, &dwLength, &m_Overlapped))
-			return (int)dwLength;
-		else
+		do
+		{
+			if (::ReadFile(m_Handle, buffer, length, &dwLength, &m_Overlapped) == TRUE)
+			{
+				if (dwLength == 0)
+				{
+					if (Readable(timeout) == false)
+						return 0;
+					if (::ReadFile(m_Handle, buffer, length, &dwLength, &m_Overlapped) == FALSE)
+						break;
+				}
+
+				return (int)dwLength;
+			}
+		} while(false);
+
+		// error
 		{
 			DWORD dwError = ::GetLastError();
 			switch(dwError)
