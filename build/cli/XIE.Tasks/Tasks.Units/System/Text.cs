@@ -270,10 +270,10 @@ namespace XIE.Tasks
 
 			this.DataIn = new CxTaskPortIn[]
 			{
+				new CxTaskPortIn("Body", new Type[] { typeof(String) }),
 			};
 			this.DataParam = new CxTaskPortIn[]
 			{
-				new CxTaskPortIn("Body", new Type[] { typeof(String) }),
 			};
 			this.DataOut = new CxTaskPortOut[]
 			{
@@ -284,7 +284,7 @@ namespace XIE.Tasks
 		private enum Descriptions
 		{
 			/// <summary>
-			/// 対象のオブジェクト
+			/// 対象の文字列
 			/// </summary>
 			DataIn0,
 
@@ -321,7 +321,6 @@ namespace XIE.Tasks
 
 				var _src = (String_GetProperty)src;
 
-				this.Body = _src.Body;
 				this.ItemName = _src.ItemName;
 
 				return;
@@ -356,7 +355,6 @@ namespace XIE.Tasks
 			{
 				var _src = (String_GetProperty)src;
 
-				if (this.Body != _src.Body) return false;
 				if (this.ItemName != _src.ItemName) return false;
 			}
 			#endregion
@@ -366,25 +364,28 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Inputs)
 
 		/// <summary>
-		/// 文字列
+		/// 対象の文字列
 		/// </summary>
-		[CxCategory("Parameters")]
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Inputs")]
 		[CxDescription("P:XIE.Tasks.String_GetProperty.Body")]
-		public String Body
+		public string Body
 		{
-			get { return m_Body; }
-			set { m_Body = value; }
+			get
+			{
+				return this.DataIn[0].Data as string;
+			}
 		}
-		private String m_Body = "";
 
 		/// <summary>
 		/// 取得するプロパティの名称
 		/// </summary>
 		[Browsable(false)]
-		[CxCategory("Parameters")]
+		[CxCategory("Inputs")]
 		[CxDescription("P:XIE.Tasks.String_GetProperty.ItemName")]
 		public string ItemName
 		{
@@ -446,9 +447,6 @@ namespace XIE.Tasks
 		/// <param name="e"></param>
 		public override void Setup(object sender, CxTaskSetupEventArgs e)
 		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
 		}
 
 		#endregion
@@ -464,17 +462,8 @@ namespace XIE.Tasks
 		{
 			this.Reset();
 
-			// 引数の取得.
-			for (int iii = 0; iii < this.DataParam.Length; iii++)
-			{
-				if (this.DataParam[iii].CheckValidity())
-				{
-					switch (iii)
-					{
-						case 0: this.Body = (String)(this.DataParam[iii].Data); break;
-					}
-				}
-			}
+			for (int i = 0; i < this.DataIn.Length; i++)
+				this.DataIn[i].CheckValidity(true);
 
 			// 出力.
 			if (string.IsNullOrWhiteSpace(this.ItemName) == false)
@@ -490,43 +479,6 @@ namespace XIE.Tasks
 		#region メソッド: (コード生成)
 
 		/// <summary>
-		/// コード生成: 変数宣言
-		/// </summary>
-		/// <param name="sender">呼び出し元</param>
-		/// <param name="e">引数</param>
-		/// <param name="scope">追加先のスコープ</param>
-		public override void GenerateDeclarationCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
-		{
-			if (e.TargetMethod.Name == "Execute")
-			{
-				for (int i = 0; i < this.DataOut.Length; i++)
-				{
-					var name = e.TaskNames[this];
-					var port = this.DataOut[i];
-
-					var variable = new CodeExtraVariable(string.Format("{0}_{1}", name, port.Name), (port.Data == null) ? typeof(object) : port.Data.GetType());
-
-					var key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this, port);
-					var value = new KeyValuePair<string, Type>(variable.VariableName, variable.Type);
-					e.Variables[key] = value;
-
-					//scope.Add(new CodeSnippetStatement());
-					//scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
-
-					if (this.DataParam[0].IsConnected)
-					{
-						scope.Add(variable.Declare());
-					}
-					else
-					{
-						// var task#_X = xxx;
-						scope.Add(variable.Declare(CodeLiteral.From(this.DataOut[i].Data)));
-					}
-				}
-			}
-		}
-
-		/// <summary>
 		/// コード生成: 処理部
 		/// </summary>
 		/// <param name="sender">呼び出し元</param>
@@ -536,7 +488,7 @@ namespace XIE.Tasks
 		{
 			if (e.TargetMethod.Name == "Execute")
 			{
-				if (this.DataParam[0].IsConnected)
+				if (this.DataIn[0].IsConnected)
 				{
 					scope.Add(new CodeSnippetStatement());
 					scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
@@ -578,6 +530,324 @@ namespace XIE.Tasks
 			else
 			{
 				return base.GetDescription(key);
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region String.TrimEnd
+
+	/// <summary>
+	/// 現在の String オブジェクトの末尾から、配列で指定された文字セットをすべて削除します。
+	/// </summary>
+	[Serializable]
+	[TypeConverter(typeof(CxSortingConverter))]
+	public class String_TrimEnd : CxTaskUnit
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public String_TrimEnd()
+			: base()
+		{
+			_Construtor();
+		}
+
+		/// <summary>
+		/// コンストラクタ用初期化関数
+		/// </summary>
+		private void _Construtor()
+		{
+			this.Category = "System.String";
+			this.Name = "TrimEnd";
+			this.IconKey = "Unit-Method";
+
+			this.DataIn = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Body", new Type[] { typeof(string) }),
+			};
+			this.DataParam = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("TrimChars", new Type[] { typeof(char[]), typeof(char)  }),
+			};
+			this.DataOut = new CxTaskPortOut[]
+			{
+				new CxTaskPortOut("Result", new Type[] { typeof(string) }),
+			};
+		}
+
+		private enum Descriptions
+		{
+			/// <summary>
+			/// 対象のオブジェクト
+			/// </summary>
+			DataIn0,
+
+			/// <summary>
+			/// 削除する Unicode 文字 (配列 または 単一の文字)
+			/// </summary>
+			DataParam0,
+
+			/// <summary>
+			/// 現在の文字列の末尾から、trimChars パラメーターの文字をすべて削除した後に残った文字列を返します。
+			/// </summary>
+			DataOut0,
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public override void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			#region 同一型:
+			if (src is String_TrimEnd)
+			{
+				base.CopyFrom(src);
+
+				var _src = (String_TrimEnd)src;
+
+				// Items
+				if (_src.TrimChars == null)
+					this.TrimChars = null;
+				else
+				{
+					this.TrimChars = new char[_src.TrimChars.Length];
+					for (int i = 0; i < this.TrimChars.Length; i++)
+					{
+						this.TrimChars[i] = _src.TrimChars[i];
+					}
+				}
+
+				return;
+			}
+			#endregion
+
+			#region XIE.IxConvertible
+			if (src is XIE.IxConvertible)
+			{
+				((XIE.IxConvertible)src).CopyTo(this);
+				return;
+			}
+			#endregion
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public override bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			#region 同一型の比較:
+			{
+				var _src = (String_TrimEnd)src;
+
+				if (this.TrimChars == null && _src.TrimChars != null) return false;
+				if (this.TrimChars != null && _src.TrimChars == null) return false;
+				if (this.TrimChars != null && _src.TrimChars != null)
+				{
+					if (this.TrimChars.Length != _src.TrimChars.Length) return false;
+					for (int i = 0; i < this.TrimChars.Length; i++)
+					{
+						if (this.TrimChars[i] != _src.TrimChars[i]) return false;
+					}
+				}
+			}
+			#endregion
+
+			return true;
+		}
+
+		#endregion
+
+		#region プロパティ: (Inputs)
+
+		/// <summary>
+		/// 対象の文字列
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Inputs")]
+		[CxDescription("P:XIE.Tasks.String_TrimEnd.Body")]
+		public string Body
+		{
+			get
+			{
+				return this.DataIn[0].Data as string;
+			}
+		}
+
+		#endregion
+
+		#region プロパティ: (Parameters)
+
+		/// <summary>
+		/// 削除する Unicode 文字の配列
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.Tasks.String_TrimEnd.TrimChars")]
+		public char[] TrimChars
+		{
+			get { return m_TrimChars; }
+			set { m_TrimChars = value; }
+		}
+		private char[] m_TrimChars = new char[0];
+
+		#endregion
+
+		#region プロパティ: (Outputs)
+
+		/// <summary>
+		/// 現在の文字列の末尾から、trimChars パラメーターの文字をすべて削除した後に残った文字列を返します。
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Outputs")]
+		[CxDescription("P:XIE.Tasks.String_TrimEnd.Result")]
+		public string Result
+		{
+			get
+			{
+				if (this.DataOut == null) return null;
+				if (this.DataOut.Length == 0) return null;
+				return this.DataOut[0].Data as string;
+			}
+		}
+
+		#endregion
+
+		#region メソッド: (初期化)
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		{
+		}
+
+		#endregion
+
+		#region メソッド: (実行)
+
+		/// <summary>
+		/// 実行
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Execute(object sender, CxTaskExecuteEventArgs e)
+		{
+			this.Reset();
+
+			for (int i = 0; i < this.DataIn.Length; i++)
+				this.DataIn[i].CheckValidity(true);
+
+			// 引数の取得.
+			for (int iii = 0; iii < this.DataParam.Length; iii++)
+			{
+				if (this.DataParam[iii].CheckValidity())
+				{
+					switch (iii)
+					{
+						case 0:
+							if (this.DataParam[iii].Data is char[])
+							{
+								this.TrimChars = (char[])this.DataParam[iii].Data;
+							}
+							else if (this.DataParam[iii].Data is char)
+							{
+								this.TrimChars = new char[]
+									{
+										(char)this.DataParam[iii].Data
+									};
+							}
+							else
+							{
+								throw new CxException(ExStatus.Unsupported);
+							}
+							break;
+					}
+				}
+			}
+
+			// 出力.
+			this.DataOut[0].Data = this.Body.TrimEnd(this.TrimChars);
+		}
+
+		#endregion
+
+		#region メソッド: (コード生成)
+
+		/// <summary>
+		/// コード生成: 処理部
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+			if (e.TargetMethod.Name == "Execute")
+			{
+				if (this.DataIn[0].IsConnected)
+				{
+					scope.Add(new CodeSnippetStatement());
+					scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
+
+					var dst = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
+					var src = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
+
+					// task#_X = task$.X;
+					if (this.DataParam[0].IsConnected)
+					{
+						if (this.DataParam[0].Data is char[])
+						{
+							// task#_X = task$.X;
+							var trimChars = new CodeExtraVariable(e.GetVariable(this.DataParam[0]));
+							scope.Add(dst.Assign(src.Call("TrimEnd", trimChars)));
+						}
+						else if (this.DataParam[0].Data is char)
+						{
+							// task#_X = new Char[] { task$.X };
+							var trimChars = new List<CodeExpression>();
+							trimChars.Add(new CodeExtraVariable(e.GetVariable(this.DataParam[0])));
+							var trimChars_new = new CodeArrayCreateExpression(typeof(char), trimChars.ToArray());
+							scope.Add(dst.Assign(src.Call("TrimEnd", trimChars_new)));
+						}
+						else
+						{
+							scope.Add(new CodeCommentStatement("Error: Not supported."));
+						}
+					}
+					else
+					{
+						var trimChars = new List<CodeExpression>();
+						foreach (var item in this.TrimChars)
+							trimChars.Add(CodeLiteral.From(item));
+						var trimChars_new = new CodeArrayCreateExpression(typeof(char), trimChars.ToArray());
+						scope.Add(dst.Assign(src.Call("TrimEnd", trimChars_new)));
+					}
+				}
 			}
 		}
 
@@ -1154,6 +1424,8 @@ namespace XIE.Tasks
 			this.DataParam = new CxTaskPortIn[]
 			{
 				new CxTaskPortIn("Bytes", new Type[] {typeof(byte[])}),
+				new CxTaskPortIn("Index", new Type[] {typeof(int)}),
+				new CxTaskPortIn("Count", new Type[] {typeof(int)}),
 			};
 			this.DataOut = new CxTaskPortOut[]
 			{
@@ -1169,9 +1441,19 @@ namespace XIE.Tasks
 			DataIn0,
 
 			/// <summary>
-			/// 変換元のバイト配列
+			/// 変換対象のバイト配列
 			/// </summary>
 			DataParam0,
+
+			/// <summary>
+			/// 変換対象の開始位置 [0~]
+			/// </summary>
+			DataParam1,
+
+			/// <summary>
+			/// 変換対象のサイズ (bytes) [0=全部、1~=指定数分]
+			/// </summary>
+			DataParam2,
 
 			/// <summary>
 			/// 変換後の文字列
@@ -1248,7 +1530,7 @@ namespace XIE.Tasks
 		#region プロパティ:
 
 		/// <summary>
-		/// 変換元のバイト配列
+		/// 変換対象のバイト配列
 		/// </summary>
 		[CxCategory("Parameters")]
 		[CxDescription("P:XIE.Tasks.Encoding_GetString.Bytes")]
@@ -1259,6 +1541,30 @@ namespace XIE.Tasks
 			set { m_Bytes = value; }
 		}
 		private byte[] m_Bytes = new byte[0];
+
+		/// <summary>
+		/// 変換対象の開始位置 [0~]
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.Tasks.Encoding_GetString.Index")]
+		public int Index
+		{
+			get { return m_Index; }
+			set { m_Index = value; }
+		}
+		private int m_Index = 0;
+
+		/// <summary>
+		/// 変換対象のサイズ (bytes) [0~]
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.Tasks.Encoding_GetString.Count")]
+		public int Count
+		{
+			get { return m_Count; }
+			set { m_Count = value; }
+		}
+		private int m_Count = 0;
 
 		#endregion
 
@@ -1316,12 +1622,14 @@ namespace XIE.Tasks
 					switch (iii)
 					{
 						case 0: this.Bytes = (byte[])this.DataParam[iii].Data; break;
+						case 1: this.Index = Convert.ToInt32(this.DataParam[iii].Data); break;
+						case 2: this.Count = Convert.ToInt32(this.DataParam[iii].Data); break;
 					}
 				}
 			}
 
 			// 実行.
-			this.This = src.GetString(this.Bytes);
+			this.This = src.GetString(this.Bytes, this.Index, this.Count);
 
 			// 出力.
 			this.DataOut[0].Data = this.This;
@@ -1352,13 +1660,16 @@ namespace XIE.Tasks
 					var body = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
 					var result = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
 
+					var index = ApiHelper.CodeOptionalExpression(e, this.DataParam[1], CodeLiteral.From(this.Index));
+					var count = ApiHelper.CodeOptionalExpression(e, this.DataParam[2], CodeLiteral.From(this.Count));
+
 					if (this.DataParam[0].IsConnected)
 					{
 						// parameters
 						var bytes = new CodeExtraVariable(e.GetVariable(this.DataParam[0]));
 
 						// task#_This = task$.GetString(bytes);
-						scope.Add(result.Assign(body.Call("GetString", bytes)));
+						scope.Add(result.Assign(body.Call("GetString", bytes, index, count)));
 					}
 					else
 					{
@@ -1369,7 +1680,7 @@ namespace XIE.Tasks
 						var bytes = new CodeArrayCreateExpression(typeof(byte), items);
 
 						// task#_This = task$.GetString(bytes);
-						scope.Add(result.Assign(body.Call("GetString", bytes)));
+						scope.Add(result.Assign(body.Call("GetString", bytes, index, count)));
 					}
 				}
 			}

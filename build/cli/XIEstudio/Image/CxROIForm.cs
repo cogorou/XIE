@@ -323,6 +323,41 @@ namespace XIEstudio
 						ey = 0;
 
 					var roi = new XIE.TxRectangleI(sx, sy, (ex - sx + 1), (ey - sy + 1));
+
+					#region アスペクト比:
+					if (this.ROIOverlay.AspectRatio.Width > 0 && this.ROIOverlay.AspectRatio.Height > 0)
+					{
+						if (ReferenceEquals(sender, numX) ||
+							ReferenceEquals(sender, numWidth))
+						{
+							var height = (int)System.Math.Round(roi.Width * this.ROIOverlay.AspectRatio.Height / this.ROIOverlay.AspectRatio.Width);
+							if (roi.Y + height <= image_size.Height)
+							{
+								roi.Height = height;
+							}
+							else
+							{
+								roi.Height = image_size.Height - roi.Y;
+								roi.Width = (int)System.Math.Round(roi.Height * this.ROIOverlay.AspectRatio.Width / this.ROIOverlay.AspectRatio.Height);
+							}
+						}
+						else if (ReferenceEquals(sender, numY) ||
+								ReferenceEquals(sender, numHeight))
+						{
+							var width = (int)System.Math.Round(roi.Height * this.ROIOverlay.AspectRatio.Width / this.ROIOverlay.AspectRatio.Height);
+							if (roi.X + width <= image_size.Width)
+							{
+								roi.Width = width;
+							}
+							else
+							{
+								roi.Width = image_size.Width - roi.X;
+								roi.Height = (int)System.Math.Round(roi.Width * this.ROIOverlay.AspectRatio.Height / this.ROIOverlay.AspectRatio.Width);
+							}
+						}
+					}
+					#endregion
+
 					this.ROIOverlay.Shape = roi;
 					this.ImageView.Refresh();
 				}
@@ -378,6 +413,36 @@ namespace XIEstudio
 						roi.X + roi.Width <= image_size.Width &&
 						roi.Y + roi.Height <= image_size.Height)
 					{
+						#region アスペクト比:
+						if (this.ROIOverlay.AspectRatio.Width > 0 && this.ROIOverlay.AspectRatio.Height > 0)
+						{
+							var width = (int)System.Math.Round(roi.Height * this.ROIOverlay.AspectRatio.Width / this.ROIOverlay.AspectRatio.Height);
+							var height = (int)System.Math.Round(roi.Width * this.ROIOverlay.AspectRatio.Height / this.ROIOverlay.AspectRatio.Width);
+							if (this.ROIOverlay.AspectRatio.Width > this.ROIOverlay.AspectRatio.Height)
+							{
+								if (roi.Y + height <= image_size.Height)
+								{
+									roi.Height = height;
+								}
+								else if (roi.X + width > image_size.Width)
+								{
+									roi.Width = width;
+								}
+							}
+							else
+							{
+								if (roi.X + width > image_size.Width)
+								{
+									roi.Width = width;
+								}
+								else if (roi.Y + height <= image_size.Height)
+								{
+									roi.Height = height;
+								}
+							}
+						}
+						#endregion
+
 						this.ROIOverlay.Shape = roi;
 					}
 					this.ImageView.Refresh();
@@ -674,7 +739,7 @@ namespace XIEstudio
 		/// <summary>
 		/// アスペクト比
 		/// </summary>
-		private int AspectRatio = 0;
+		private TxSizeI AspectRatio = new TxSizeI();
 
 		/// <summary>
 		/// Aspect ボタンが押下されたとき
@@ -683,8 +748,8 @@ namespace XIEstudio
 		/// <param name="e"></param>
 		private void toolAspect_ButtonClick(object sender, EventArgs e)
 		{
-			var ax = AspectRatio / 100;
-			var ay = AspectRatio % 100;
+			var ax = AspectRatio.Width;
+			var ay = AspectRatio.Height;
 
 			var size = this.ImageView.Image.Size;
 			var roi = ROIOverlay.Shape;
@@ -735,7 +800,7 @@ namespace XIEstudio
 				var tag = item.Tag;
 				if (tag == null) continue;
 				var ratio = Convert.ToInt32(tag);
-				item.Checked = (ratio == AspectRatio);
+				item.Checked = (ratio == (AspectRatio.Width * 100 + AspectRatio.Height));
 			}
 		}
 
@@ -748,8 +813,13 @@ namespace XIEstudio
 		{
 			var tag = ((ToolStripMenuItem)sender).Tag;
 			if (tag == null) return;
-			AspectRatio = Convert.ToInt32(tag);
-			toolAspect_ButtonClick(sender, e);
+			var val = Convert.ToInt32(tag);
+			AspectRatio = new TxSizeI(val / 100, val % 100);
+			if (ReferenceEquals(sender, toolAspect0) == false)
+			{
+				toolAspect_ButtonClick(sender, e);
+			}
+			ROIOverlay.AspectRatio = AspectRatio;
 		}
 
 		#endregion

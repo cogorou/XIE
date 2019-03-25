@@ -208,6 +208,7 @@ namespace XIE.Tasks
 					subdir.Tasks[new XIE.Tasks.Boolean_ctor()] = "";
 					subdir.Tasks[new XIE.Tasks.Byte_ctor()] = "";
 					subdir.Tasks[new XIE.Tasks.SByte_ctor()] = "";
+					subdir.Tasks[new XIE.Tasks.Char_ctor()] = "";
 					subdir.Tasks[new XIE.Tasks.Int16_ctor()] = "";
 					subdir.Tasks[new XIE.Tasks.Int32_ctor()] = "";
 					subdir.Tasks[new XIE.Tasks.Int64_ctor()] = "";
@@ -336,6 +337,7 @@ namespace XIE.Tasks
 						var tag = AddFolder(subdir, "String", "", "Font", 0);
 						tag.Tasks[new XIE.Tasks.String_ctor()] = "";
 						tag.Tasks[new XIE.Tasks.String_GetProperty("Length")] = "";
+						tag.Tasks[new XIE.Tasks.String_TrimEnd()] = "";
 					}
 					#endregion
 

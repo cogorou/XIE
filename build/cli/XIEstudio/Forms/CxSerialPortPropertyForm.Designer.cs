@@ -37,6 +37,8 @@ namespace XIEstudio
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolClear = new System.Windows.Forms.ToolStripButton();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolEncoding = new System.Windows.Forms.ToolStripComboBox();
 			this.statusbar = new System.Windows.Forms.StatusStrip();
 			this.statusInfo = new System.Windows.Forms.ToolStripStatusLabel();
 			this.labelCTS = new System.Windows.Forms.ToolStripStatusLabel();
@@ -51,6 +53,7 @@ namespace XIEstudio
 			this.splitter = new System.Windows.Forms.SplitContainer();
 			this.toolbar.SuspendLayout();
 			this.statusbar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitter)).BeginInit();
 			this.splitter.Panel1.SuspendLayout();
 			this.splitter.Panel2.SuspendLayout();
 			this.splitter.SuspendLayout();
@@ -65,7 +68,9 @@ namespace XIEstudio
             this.buttonOK,
             this.toolStripSeparator1,
             this.toolStripSeparator2,
-            this.toolClear});
+            this.toolClear,
+            this.toolStripSeparator3,
+            this.toolEncoding});
 			this.toolbar.Location = new System.Drawing.Point(0, 0);
 			this.toolbar.Name = "toolbar";
 			this.toolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -128,6 +133,24 @@ namespace XIEstudio
 			this.toolClear.Text = "Clear";
 			this.toolClear.Click += new System.EventHandler(this.toolClear_Click);
 			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 35);
+			// 
+			// toolEncoding
+			// 
+			this.toolEncoding.Items.AddRange(new object[] {
+            "Default",
+            "ASCII",
+            "UTF8",
+            "UTF7",
+            "UTF32",
+            "Unicode",
+            "BigEndianUnicode"});
+			this.toolEncoding.Name = "toolEncoding";
+			this.toolEncoding.Size = new System.Drawing.Size(121, 35);
+			// 
 			// statusbar
 			// 
 			this.statusbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -145,8 +168,9 @@ namespace XIEstudio
 			// statusInfo
 			// 
 			this.statusInfo.Name = "statusInfo";
-			this.statusInfo.Size = new System.Drawing.Size(472, 24);
+			this.statusInfo.Size = new System.Drawing.Size(441, 24);
 			this.statusInfo.Spring = true;
+			this.statusInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// labelCTS
 			// 
@@ -189,14 +213,14 @@ namespace XIEstudio
 			this.textRecv.Location = new System.Drawing.Point(3, 50);
 			this.textRecv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.textRecv.Name = "textRecv";
-			this.textRecv.Size = new System.Drawing.Size(405, 459);
+			this.textRecv.Size = new System.Drawing.Size(402, 459);
 			this.textRecv.TabIndex = 6;
 			this.textRecv.Text = "";
 			// 
 			// buttonSend
 			// 
 			this.buttonSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonSend.Location = new System.Drawing.Point(325, 16);
+			this.buttonSend.Location = new System.Drawing.Point(322, 12);
 			this.buttonSend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.buttonSend.Name = "buttonSend";
 			this.buttonSend.Size = new System.Drawing.Size(84, 29);
@@ -212,7 +236,7 @@ namespace XIEstudio
 			this.textSend.Location = new System.Drawing.Point(3, 16);
 			this.textSend.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.textSend.Name = "textSend";
-			this.textSend.Size = new System.Drawing.Size(314, 23);
+			this.textSend.Size = new System.Drawing.Size(311, 23);
 			this.textSend.TabIndex = 3;
 			this.textSend.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.textSend_PreviewKeyDown);
 			// 
@@ -268,6 +292,7 @@ namespace XIEstudio
 			this.splitter.Panel1.ResumeLayout(false);
 			this.splitter.Panel2.ResumeLayout(false);
 			this.splitter.Panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitter)).EndInit();
 			this.splitter.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -295,5 +320,7 @@ namespace XIEstudio
 		private System.Windows.Forms.ToolStripStatusLabel labelCTS;
 		private System.Windows.Forms.ToolStripStatusLabel labelDSR;
 		private System.Windows.Forms.ToolStripStatusLabel labelCD;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.ToolStripComboBox toolEncoding;
 	}
 }

@@ -119,6 +119,18 @@ namespace XIE.GDI
 		}
 		private TxRectangleD m_Shape = new TxRectangleD();
 
+		/// <summary>
+		/// アスペクト比
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.GDI.CxOverlayROI.AspectRatio")]
+		public TxSizeD AspectRatio
+		{
+			get { return m_AspectRatio; }
+			set { m_AspectRatio = value; }
+		}
+		private TxSizeD m_AspectRatio = new TxSizeD();
+
 		#endregion
 
 		#region プロパティ: (描画色)
@@ -521,7 +533,7 @@ namespace XIE.GDI
 				case 2:
 					switch (ROI_GripStatus.Site)
 					{
-						case -4:
+						case -4:	// 左辺:
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -536,15 +548,30 @@ namespace XIE.GDI
 									st.X = ed.X - 2;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										st.X = ed.X - width;
+									if (st.X < 0)
+										st.X = 0;
+								}
+								#endregion
+
 								#region 反映:
-								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
+								this.Shape =  new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
 								e.Cursor = Cursors.SizeWE;
 								view.Refresh();
 								#endregion
 							}
 							break;
-						case -1:
+						case -1:	// 上辺:
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -559,6 +586,21 @@ namespace XIE.GDI
 									st.Y = ed.Y - 2;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									ed.X = width + st.X;
+									if (ed.X > view.Image.Width)
+										ed.X = view.Image.Width;
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									if ((ed.Y - st.Y) > height)
+										st.Y = ed.Y - height;
+									if (st.Y < 0)
+										st.Y = 0;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -567,7 +609,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case -2:
+						case -2:	// 右辺:
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -582,6 +624,21 @@ namespace XIE.GDI
 									ed.X = view.Image.Width;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										ed.X = st.X + width;
+									if (ed.X > view.Image.Width)
+										ed.X = view.Image.Width;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -590,7 +647,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case -3:
+						case -3:	// 下辺:
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -605,6 +662,21 @@ namespace XIE.GDI
 									ed.Y = view.Image.Height;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									ed.X = width + st.X;
+									if (ed.X > view.Image.Width)
+										ed.X = view.Image.Width;
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									if ((ed.Y - st.Y) > height)
+										ed.Y = st.Y + height;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -613,7 +685,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case +1:
+						case +1:	// 頂点:(左上)
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location + (XIE.TxPointD)(ip - ROI_GripPoint);
@@ -631,6 +703,21 @@ namespace XIE.GDI
 									st.Y = ed.Y - 2;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										st.X = ed.X - width;
+									if (st.X < 0)
+										st.X = 0;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -639,7 +726,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case +2:
+						case +2:	// 頂点:(右上)
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -659,6 +746,21 @@ namespace XIE.GDI
 									ed.X = view.Image.Width;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										ed.X = st.X + width;
+									if (ed.X > view.Image.Width)
+										ed.X = view.Image.Width;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -667,7 +769,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case +3:
+						case +3:	// 頂点:(右下)
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -685,6 +787,21 @@ namespace XIE.GDI
 									ed.Y = view.Image.Height;
 								#endregion
 
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										ed.X = st.X + width;
+									if (ed.X > view.Image.Width)
+										ed.X = view.Image.Width;
+								}
+								#endregion
+
 								#region 反映:
 								this.Shape = new TxRectangleD(st.X, st.Y, (ed.X - st.X), (ed.Y - st.Y));
 								e.IsGripped = true;
@@ -693,7 +810,7 @@ namespace XIE.GDI
 								#endregion
 							}
 							break;
-						case +4:
+						case +4:	// 頂点:(左下)
 							{
 								#region サイズ変更:
 								XIE.TxPointD st = ROI_GripRect.Location;
@@ -711,6 +828,21 @@ namespace XIE.GDI
 									ed.Y = st.Y + 2;
 								if (ed.Y > view.Image.Height)
 									ed.Y = view.Image.Height;
+								#endregion
+
+								#region アスペクト比:
+								if (AspectRatio.Width > 0 && AspectRatio.Height > 0)
+								{
+									var height = (ed.X - st.X) * AspectRatio.Height / AspectRatio.Width;
+									ed.Y = height + st.Y;
+									if (ed.Y > view.Image.Height)
+										ed.Y = view.Image.Height;
+									var width = (ed.Y - st.Y) * AspectRatio.Width / AspectRatio.Height;
+									if ((ed.X - st.X) > width)
+										st.X = ed.X - width;
+									if (st.X < 0)
+										st.X = 0;
+								}
 								#endregion
 
 								#region 反映:

@@ -618,6 +618,201 @@ namespace XIE.Tasks
 
 	#endregion
 
+	#region Char.ctor
+
+	/// <summary>
+	/// Unicode 文字
+	/// </summary>
+	[Serializable]
+	[TypeConverter(typeof(CxSortingConverter))]
+	public class Char_ctor : CxTaskUnit
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public Char_ctor()
+			: base()
+		{
+			this.Category = "Primitive";
+			this.Name = "Char";
+			this.IconKey = "Unit-Constructor";
+
+			this.DataIn = new CxTaskPortIn[]
+			{
+			};
+			this.DataParam = new CxTaskPortIn[]
+			{
+			};
+			this.DataOut = new CxTaskPortOut[]
+			{
+				new CxTaskPortOut("This", new Type[] { typeof(Char) })
+			};
+		}
+
+		private enum Descriptions
+		{
+			/// <summary>
+			/// プロパティで設定された値を返します。
+			/// </summary>
+			DataOut0,
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public override void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			#region 同一型:
+			if (src is Char_ctor)
+			{
+				base.CopyFrom(src);
+
+				var _src = (Char_ctor)src;
+
+				this.This = _src.This;
+
+				return;
+			}
+			#endregion
+
+			#region XIE.IxConvertible
+			if (src is XIE.IxConvertible)
+			{
+				((XIE.IxConvertible)src).CopyTo(this);
+				return;
+			}
+			#endregion
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public override bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			#region 同一型の比較:
+			{
+				var _src = (Char_ctor)src;
+
+				if (this.This != _src.This) return false;
+			}
+			#endregion
+
+			return true;
+		}
+
+		#endregion
+
+		#region プロパティ:
+
+		/// <summary>
+		/// 値
+		/// </summary>
+		[CxCategory("Outputs")]
+		[CxDescription("P:XIE.Tasks.Char_ctor.This")]
+		public Char This
+		{
+			get { return m_This; }
+			set { m_This = value; }
+		}
+		private Char m_This = default(Char);
+
+		#endregion
+
+		#region メソッド: (初期化)
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		{
+			var args = new CxTaskExecuteEventArgs();
+			args.CopyFrom(e);
+			this.Execute(sender, args);
+		}
+
+		#endregion
+
+		#region メソッド: (実行)
+
+		/// <summary>
+		/// 実行
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Execute(object sender, CxTaskExecuteEventArgs e)
+		{
+			this.Reset();
+			this.DataOut[0].Data = this.This;
+		}
+
+		#endregion
+
+		#region メソッド: (コード生成)
+
+		/// <summary>
+		/// コード生成: 変数宣言
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateDeclarationCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+			if (e.TargetMethod.Name == "Execute")
+			{
+				//scope.Add(new CodeSnippetStatement());
+				//scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
+				{
+					var name = e.TaskNames[this];
+					var port = this.DataOut[0];
+
+					var variable = new CodeExtraVariable(string.Format("{0}_{1}", name, port.Name), this.This.GetType());
+
+					var key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this, port);
+					var value = new KeyValuePair<string, Type>(variable.VariableName, variable.Type);
+					e.Variables[key] = value;
+
+					// var task#_This = xxx;
+					scope.Add(variable.Declare(CodeLiteral.From(this.This)));
+				}
+			}
+		}
+
+		/// <summary>
+		/// コード生成: 処理部
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+		}
+
+		#endregion
+	}
+
+	#endregion
+
 	#region UInt16.ctor
 
 	/// <summary>

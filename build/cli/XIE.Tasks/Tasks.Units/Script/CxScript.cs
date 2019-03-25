@@ -550,10 +550,12 @@ namespace XIE.Tasks
 		/// <summary>
 		/// 行番号のオフセット
 		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
 		[Browsable(false)]
 		[CxCategory("Parameters")]
 		[CxDescription("P:XIE.Tasks.CxScript.LineOffset")]
-		public int LineOffset
+		public virtual int LineOffset
 		{
 			get
 			{
@@ -600,33 +602,37 @@ namespace XIE.Tasks
 			{
 				XIE.Log.Api.Error("Failed to compile.");
 			}
-			else if (this.Results.Errors.Count > 0)
+			else 
 			{
-				XIE.Log.Api.Error("Failed to compile.");
-				foreach (CompilerError item in this.Results.Errors)
+				if (this.Results.Errors.Count > 0)
 				{
-					int line_no = item.Line - this.LineOffset;
-					string msg = string.Format(
-						"({0},{1}): {2} {3} {4}\n",
-						line_no,
-						item.Column,
-						(item.IsWarning) ? "Warning" : "Error",
-						item.ErrorNumber,
-						item.ErrorText
-						);
-					XIE.Log.Api.Error(msg);
-				}
-			}
-			else
-			{
-				Assembly asm = this.Results.CompiledAssembly;
-				Type[] types = asm.GetTypes();
-				foreach (Type type in types)
-				{
-					if (typeof(CxTaskUnit).IsAssignableFrom(type))
+					XIE.Log.Api.Error("Failed to compile.");
+					foreach (CompilerError item in this.Results.Errors)
 					{
-						this.Task = asm.CreateInstance(type.FullName) as CxTaskUnit;
-						break;
+						int line_no = item.Line - this.LineOffset;
+						string msg = string.Format(
+							"({0},{1}): {2} {3} {4}\n",
+							line_no,
+							item.Column,
+							(item.IsWarning) ? "Warning" : "Error",
+							item.ErrorNumber,
+							item.ErrorText
+							);
+						XIE.Log.Api.Error(msg);
+					}
+				}
+
+				if (this.Results.Errors.HasErrors == false)
+				{
+					Assembly asm = this.Results.CompiledAssembly;
+					Type[] types = asm.GetTypes();
+					foreach (Type type in types)
+					{
+						if (typeof(CxTaskUnit).IsAssignableFrom(type))
+						{
+							this.Task = asm.CreateInstance(type.FullName) as CxTaskUnit;
+							break;
+						}
 					}
 				}
 			}

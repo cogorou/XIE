@@ -1459,9 +1459,21 @@ namespace XIE.Tasks
 					}
 				}
 			}
+
+			// ファイルパス.
+			var filename = this.FileName;
+			// 相対パスの場合は、基準ディレクトリを付加する.
+			if (string.IsNullOrWhiteSpace(this.FileName) == false &&
+				string.IsNullOrWhiteSpace(e.BaseDir) == false)
+			{
+				if (System.IO.Path.IsPathRooted(this.FileName) == false)
+				{
+					filename = System.IO.Path.Combine(e.BaseDir, this.FileName);
+				}
+			}
 			
 			// 実行.
-			src.Load(this.FileName, this.Unpacking);
+			src.Load(filename, this.Unpacking);
 
 			// 出力.
 			this.DataOut[0].Data = src;

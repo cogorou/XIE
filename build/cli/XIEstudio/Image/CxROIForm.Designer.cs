@@ -511,20 +511,20 @@
 			// toolAspect0
 			// 
 			this.toolAspect0.Name = "toolAspect0";
-			this.toolAspect0.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0.Tag = "0";
-			this.toolAspect0.Text = "Image Aspect";
+			this.toolAspect0.Text = "Free";
 			this.toolAspect0.Click += new System.EventHandler(this.toolAspect_Click);
 			// 
 			// toolStripSeparator4
 			// 
 			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(154, 6);
+			this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
 			// 
 			// toolAspect0302
 			// 
 			this.toolAspect0302.Name = "toolAspect0302";
-			this.toolAspect0302.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0302.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0302.Tag = "302";
 			this.toolAspect0302.Text = "3:2";
 			this.toolAspect0302.Click += new System.EventHandler(this.toolAspect_Click);
@@ -532,7 +532,7 @@
 			// toolAspect0403
 			// 
 			this.toolAspect0403.Name = "toolAspect0403";
-			this.toolAspect0403.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0403.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0403.Tag = "403";
 			this.toolAspect0403.Text = "4:3";
 			this.toolAspect0403.Click += new System.EventHandler(this.toolAspect_Click);
@@ -540,7 +540,7 @@
 			// toolAspect1609
 			// 
 			this.toolAspect1609.Name = "toolAspect1609";
-			this.toolAspect1609.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect1609.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect1609.Tag = "1609";
 			this.toolAspect1609.Text = "16:9";
 			this.toolAspect1609.Click += new System.EventHandler(this.toolAspect_Click);
@@ -548,12 +548,12 @@
 			// toolStripSeparator3
 			// 
 			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(154, 6);
+			this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
 			// 
 			// toolAspect0203
 			// 
 			this.toolAspect0203.Name = "toolAspect0203";
-			this.toolAspect0203.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0203.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0203.Tag = "203";
 			this.toolAspect0203.Text = "2:3";
 			this.toolAspect0203.Click += new System.EventHandler(this.toolAspect_Click);
@@ -561,7 +561,7 @@
 			// toolAspect0304
 			// 
 			this.toolAspect0304.Name = "toolAspect0304";
-			this.toolAspect0304.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0304.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0304.Tag = "304";
 			this.toolAspect0304.Text = "3:4";
 			this.toolAspect0304.Click += new System.EventHandler(this.toolAspect_Click);
@@ -569,7 +569,7 @@
 			// toolAspect0916
 			// 
 			this.toolAspect0916.Name = "toolAspect0916";
-			this.toolAspect0916.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0916.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0916.Tag = "916";
 			this.toolAspect0916.Text = "9:16";
 			this.toolAspect0916.Click += new System.EventHandler(this.toolAspect_Click);
@@ -577,12 +577,12 @@
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(154, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
 			// 
 			// toolAspect0505
 			// 
 			this.toolAspect0505.Name = "toolAspect0505";
-			this.toolAspect0505.Size = new System.Drawing.Size(157, 22);
+			this.toolAspect0505.Size = new System.Drawing.Size(152, 22);
 			this.toolAspect0505.Tag = "505";
 			this.toolAspect0505.Text = "5:5";
 			this.toolAspect0505.Click += new System.EventHandler(this.toolAspect_Click);

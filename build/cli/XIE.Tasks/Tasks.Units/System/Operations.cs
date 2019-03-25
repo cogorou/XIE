@@ -183,7 +183,9 @@ namespace XIE.Tasks
 				if (this.DataIn.Length <= 0) return "";
 				if (this.DataIn[0].IsConnected)
 				{
-					return this.DataIn[0].Data.ToString();
+					if (this.DataIn[0].Data != null)
+						return this.DataIn[0].Data.ToString();
+					return "";
 				}
 				else
 				{
@@ -207,7 +209,9 @@ namespace XIE.Tasks
 				if (this.DataIn.Length <= 1) return "";
 				if (this.DataIn[1].IsConnected)
 				{
-					return this.DataIn[1].Data.ToString();
+					if (this.DataIn[1].Data != null)
+						return this.DataIn[1].Data.ToString();
+					return "";
 				}
 				else
 				{
@@ -293,31 +297,46 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			this.DataIn[1].CheckValidity(true);
 
-			// 演算子:
-			string ope = "";
-			switch (this.Operator)
-			{
-				case ExComparisonOperatorType.Equal: ope = "=="; break;
-				case ExComparisonOperatorType.NotEqual: ope = "!="; break;
-				case ExComparisonOperatorType.LessThan: ope = "<"; break;
-				case ExComparisonOperatorType.LessThanOrEqual: ope = "<="; break;
-				case ExComparisonOperatorType.GreaterThan: ope = ">"; break;
-				case ExComparisonOperatorType.GreaterThanOrEqual: ope = ">="; break;
-				default:
-					throw new System.NotSupportedException();
-			}
+			// NOTE:
+			// 以下の「型の変化」と「ビルド」は Prepare では行えないことに注意されたい。
+			// 上流の処理が実行 (Execute) されるまでデータ入力の型が確定されない為である。
 
-			// 準備:
+			// 型の変化:
 			Type type0 = this.DataIn[0].Data.GetType();
 			Type type1 = this.DataIn[1].Data.GetType();
 			if (DataInType0 != type0 ||
 				DataInType1 != type1)
 			{
+				DataInType0 = type0;
+				DataInType1 = type1;
+				IsUpdated = true;
+			}
+
+			// ビルド:
+			if (IsUpdated == true || this.Task == null)
+			{
+				// 演算子:
+				string ope = "";
+				switch (this.Operator)
+				{
+					case ExComparisonOperatorType.Equal: ope = "=="; break;
+					case ExComparisonOperatorType.NotEqual: ope = "!="; break;
+					case ExComparisonOperatorType.LessThan: ope = "<"; break;
+					case ExComparisonOperatorType.LessThanOrEqual: ope = "<="; break;
+					case ExComparisonOperatorType.GreaterThan: ope = ">"; break;
+					case ExComparisonOperatorType.GreaterThanOrEqual: ope = ">="; break;
+					default:
+						throw new System.NotSupportedException();
+				}
+
+				// 構文生成:
 				string statement = "";
-				statement += string.Format("var left = ({0})DataIn[0].Data;", type0.FullName);
-				statement += string.Format("var right = ({0})DataIn[1].Data;", type1.FullName);
-				statement += string.Format("DataOut[0].Data = (left {0} right);", ope);
+				statement += string.Format("var left = ({0})DataIn[0].Data;", type0.FullName) + "\n";
+				statement += string.Format("var right = ({0})DataIn[1].Data;", type1.FullName) + "\n";
+				statement += string.Format("DataOut[0].Data = (left {0} right);", ope) + "\n";
 				this.Statement = statement;
+
+				// ビルド:
 				if (this.Build() == false)
 				{
 					string errors = "";
@@ -340,12 +359,29 @@ namespace XIE.Tasks
 
 					throw new InvalidOperationException(errors);
 				}
-
-				DataInType0 = type0;
-				DataInType1 = type1;
 			}
 
 			base.Execute(sender, e);
+		}
+
+		/// <summary>
+		/// 処理開始前の準備
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Prepare(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Prepare(sender, e);
+		}
+
+		/// <summary>
+		/// 処理終了後の復旧
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Restore(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Restore(sender, e);
 		}
 
 		#endregion
@@ -628,7 +664,9 @@ namespace XIE.Tasks
 				if (this.DataIn.Length <= 0) return "";
 				if (this.DataIn[0].IsConnected)
 				{
-					return this.DataIn[0].Data.ToString();
+					if (this.DataIn[0].Data != null)
+						return this.DataIn[0].Data.ToString();
+					return "";
 				}
 				else
 				{
@@ -652,7 +690,9 @@ namespace XIE.Tasks
 				if (this.DataIn.Length <= 1) return "";
 				if (this.DataIn[1].IsConnected)
 				{
-					return this.DataIn[1].Data.ToString();
+					if (this.DataIn[1].Data != null)
+						return this.DataIn[1].Data.ToString();
+					return "";
 				}
 				else
 				{
@@ -767,42 +807,55 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			this.DataIn[1].CheckValidity(true);
 
-			// 準備:
+			// NOTE:
+			// 以下の「型の変化」と「ビルド」は Prepare では行えないことに注意されたい。
+			// データ入力の型は上流の処理が実行 (Execute) されなければ確定されない為である。
+
+			// 型の変化:
 			Type type0 = this.DataIn[0].Data.GetType();
 			Type type1 = this.DataIn[1].Data.GetType();
 			if (DataInType0 != type0 ||
 				DataInType1 != type1)
 			{
+				DataInType0 = type0;
+				DataInType1 = type1;
+				IsUpdated = true;
+			}
+
+			// ビルド:
+			if (IsUpdated == true || this.Task == null)
+			{
+				// 構文生成:
 				string statement = "";
-				statement += string.Format("var left = ({0})DataIn[0].Data;", type0.FullName);
-				statement += string.Format("var right = ({0})DataIn[1].Data;", type1.FullName);
+				statement += string.Format("var left = ({0})DataIn[0].Data;", type0.FullName) + "\n";
+				statement += string.Format("var right = ({0})DataIn[1].Data;", type1.FullName) + "\n";
 
 				#region 式:
 				switch (this.Operator)
 				{
 					case ExBinaryOperatorType.Add:
 						{
-							statement += "DataOut[0].Data = (left + right);";
+							statement += "DataOut[0].Data = (left + right);" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Subtract:
 						{
-							statement += "DataOut[0].Data = (left - right);";
+							statement += "DataOut[0].Data = (left - right);" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Multiply:
 						{
-							statement += "DataOut[0].Data = (left * right);";
+							statement += "DataOut[0].Data = (left * right);" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Divide:
 						{
-							statement += "DataOut[0].Data = (left / right);";
+							statement += "DataOut[0].Data = (left / right);" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Modulus:
 						{
-							statement += "DataOut[0].Data = (left % right);";
+							statement += "DataOut[0].Data = (left % right);" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.And:
@@ -814,11 +867,11 @@ namespace XIE.Tasks
 								ope = "(left & right)";
 
 							if (type0 == type1)
-								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope);
+								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope) + "\n";
 							else
-								statement += string.Format("var ans = ({0});", ope);
+								statement += string.Format("var ans = ({0});", ope) + "\n";
 
-							statement += "DataOut[0].Data = ans;";
+							statement += "DataOut[0].Data = ans;" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Or:
@@ -830,11 +883,11 @@ namespace XIE.Tasks
 								ope = "(left | right)";
 
 							if (type0 == type1)
-								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope);
+								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope) + "\n";
 							else
-								statement += string.Format("var ans = ({0});", ope);
+								statement += string.Format("var ans = ({0});", ope) + "\n";
 
-							statement += "DataOut[0].Data = ans;";
+							statement += "DataOut[0].Data = ans;" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Xor:
@@ -846,11 +899,11 @@ namespace XIE.Tasks
 								ope = "(left ^ right)";
 
 							if (type0 == type1)
-								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope);
+								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope) + "\n";
 							else
-								statement += string.Format("var ans = ({0});", ope);
+								statement += string.Format("var ans = ({0});", ope) + "\n";
 
-							statement += "DataOut[0].Data = ans;";
+							statement += "DataOut[0].Data = ans;" + "\n";
 						}
 						break;
 					case ExBinaryOperatorType.Nand:
@@ -862,11 +915,11 @@ namespace XIE.Tasks
 								ope = "~(left & right)";
 
 							if (type0 == type1)
-								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope);
+								statement += string.Format("var ans = ({0})({1});", type0.FullName, ope) + "\n";
 							else
-								statement += string.Format("var ans = ({0});", ope);
+								statement += string.Format("var ans = ({0});", ope) + "\n";
 
-							statement += "DataOut[0].Data = ans;";
+							statement += "DataOut[0].Data = ans;" + "\n";
 						}
 						break;
 					default:
@@ -875,6 +928,8 @@ namespace XIE.Tasks
 				#endregion
 
 				this.Statement = statement;
+
+				// ビルド:
 				if (this.Build() == false)
 				{
 					string errors = "";
@@ -897,12 +952,29 @@ namespace XIE.Tasks
 
 					throw new InvalidOperationException(errors);
 				}
-
-				DataInType0 = type0;
-				DataInType1 = type1;
 			}
 
 			base.Execute(sender, e);
+		}
+
+		/// <summary>
+		/// 処理開始前の準備
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Prepare(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Prepare(sender, e);
+		}
+
+		/// <summary>
+		/// 処理終了後の復旧
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Restore(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Restore(sender, e);
 		}
 
 		#endregion
@@ -1276,7 +1348,9 @@ namespace XIE.Tasks
 				if (this.DataIn.Length <= 0) return "";
 				if (this.DataIn[0].IsConnected)
 				{
-					return this.DataIn[0].Data.ToString();
+					if (this.DataIn[0].Data != null)
+						return this.DataIn[0].Data.ToString();
+					return "";
 				}
 				else
 				{
@@ -1387,25 +1461,39 @@ namespace XIE.Tasks
 			// 引数の取得:
 			this.DataIn[0].CheckValidity(true);
 
-			// 演算子:
-			string ope = "";
-			switch (this.Operator)
-			{
-				case ExUnaryOperatorType.BooleanNot: ope = "!"; break;
-				case ExUnaryOperatorType.BitwiseNot: ope = "~"; break;
-				default:
-					throw new System.NotSupportedException();
-			}
+			// NOTE:
+			// 以下の「型の変化」と「ビルド」は Prepare では行えないことに注意されたい。
+			// データ入力の型は上流の処理が実行 (Execute) されなければ確定されない為である。
 
-			// 準備:
+			// 型の変化:
 			Type type0 = this.DataIn[0].Data.GetType();
 			if (DataInType0 != type0)
 			{
+				DataInType0 = type0;
+				IsUpdated = true;
+			}
+
+			// ビルド:
+			if (IsUpdated == true || this.Task == null)
+			{
+				// 演算子:
+				string ope = "";
+				switch (this.Operator)
+				{
+					case ExUnaryOperatorType.BooleanNot: ope = "!"; break;
+					case ExUnaryOperatorType.BitwiseNot: ope = "~"; break;
+					default:
+						throw new System.NotSupportedException();
+				}
+
+				// 構文生成:
 				string statement = "";
-				statement += string.Format("{0} value = ({0})DataIn[0].Data;", type0.FullName);
-				statement += string.Format("{0} ans = ({0})({1}value);", type0.FullName, ope);
-				statement += "DataOut[0].Data = ans;";
+				statement += string.Format("{0} value = ({0})DataIn[0].Data;", type0.FullName) + "\n";
+				statement += string.Format("{0} ans = ({0})({1}value);", type0.FullName, ope) + "\n";
+				statement += "DataOut[0].Data = ans;" + "\n";
 				this.Statement = statement;
+
+				// ビルド:
 				if (this.Build() == false)
 				{
 					string errors = "";
@@ -1428,11 +1516,29 @@ namespace XIE.Tasks
 
 					throw new InvalidOperationException(errors);
 				}
-
-				DataInType0 = type0;
 			}
 
 			base.Execute(sender, e);
+		}
+
+		/// <summary>
+		/// 処理開始前の準備
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Prepare(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Prepare(sender, e);
+		}
+
+		/// <summary>
+		/// 処理終了後の復旧
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Restore(object sender, CxTaskExecuteEventArgs e)
+		{
+			base.Restore(sender, e);
 		}
 
 		#endregion

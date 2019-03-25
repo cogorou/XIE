@@ -49,6 +49,8 @@ namespace XIEstudio
 		/// <param name="e"></param>
 		protected virtual void TcpServerPropertyForm_Load(object sender, EventArgs e)
 		{
+			toolEncoding.SelectedIndex = 0;
+
 			// プロパティグリッド.
 			propertyParam.SelectedObject = Node.Controller;
 
@@ -123,7 +125,10 @@ namespace XIEstudio
 						byte[] buffer = new byte[256];
 						int count = stream.Read(buffer, buffer.Length, 0);
 						if (count <= 0) break;
-						string text = Encoding.UTF8.GetString(buffer, 0, count);
+						statusInfo.Text = string.Format("RECV: {0} bytes", count);
+
+						var encoding = GetEncoding();
+						string text = encoding.GetString(buffer, 0, count);
 						text = System.Text.RegularExpressions.Regex.Replace(text, @"[\r\n]+$", "");
 
 						textRecv.SelectionColor = Color.Red;
@@ -189,8 +194,10 @@ namespace XIEstudio
 					XIE.Net.TxSocketStream stream = Node.Controller.Stream(ClientIndex);
 
 					// 送信.
-					byte[] buffer = Encoding.UTF8.GetBytes(textSend.Text);
+					var encoding = GetEncoding();
+					byte[] buffer = encoding.GetBytes(textSend.Text);
 					int count = stream.Write(buffer, buffer.Length, 0);
+					statusInfo.Text = string.Format("SEND: {0} bytes", count);
 
 					// 表示.
 					textRecv.SelectionColor = Color.Blue;
@@ -206,6 +213,54 @@ namespace XIEstudio
 				MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			#endregion
+		}
+
+		/// <summary>
+		/// 現在のエンコーディングを取得します。
+		/// </summary>
+		/// <returns>
+		///		エンコーディングを返します。
+		/// </returns>
+		private Encoding GetEncoding()
+		{
+			// エンコーディング.
+			var encoding = Encoding.Default;
+			switch (toolEncoding.Text)
+			{
+				case "Default":
+					encoding = Encoding.Default;
+					break;
+				case "ASCII":
+					encoding = Encoding.ASCII;
+					break;
+				case "UTF7":
+					encoding = Encoding.UTF7;
+					break;
+				case "UTF8":
+					encoding = Encoding.UTF8;
+					break;
+				case "UTF32":
+					encoding = Encoding.UTF32;
+					break;
+				case "Unicode":
+					encoding = Encoding.Unicode;
+					break;
+				case "BigEndianUnicode":
+					encoding = Encoding.BigEndianUnicode;
+					break;
+				default:
+					try
+					{
+						var codepage = Convert.ToInt32(toolEncoding.Text);
+						encoding = Encoding.GetEncoding(codepage);
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+					break;
+			}
+			return encoding;
 		}
 
 		#endregion
