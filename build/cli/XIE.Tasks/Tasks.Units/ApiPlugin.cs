@@ -76,7 +76,9 @@ namespace XIE.Tasks
 					var tag = AddFolder(category, "SerialPort", "T:XIE.Tasks.CxAuxInfo_SerialPort_Controller", "SerialPort-Connect", 0);
 					tag.Tasks[new XIE.Tasks.CxAuxInfo_SerialPort_Controller()] = "Controller";
 					tag.Tasks[new XIE.Tasks.CxSerialPort_Read()] = "";
+					tag.Tasks[new XIE.Tasks.CxSerialPort_Readable()] = "";
 					tag.Tasks[new XIE.Tasks.CxSerialPort_Write()] = "";
+					tag.Tasks[new XIE.Tasks.CxSerialPort_Writeable()] = "";
 				}
 				#endregion
 

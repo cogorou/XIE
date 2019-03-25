@@ -3158,7 +3158,7 @@ namespace XIE.Tasks
 			DataParam0,
 
 			/// <summary>
-			/// タイムアウト (msec) [-1,0,1~]
+			/// タイムアウト (msec) [-1=無限,0~=有限]
 			/// </summary>
 			DataParam1,
 
@@ -3252,7 +3252,7 @@ namespace XIE.Tasks
 		private int m_Length = 0;
 
 		/// <summary>
-		/// タイムアウト (msec) [-1,0,1~]
+		/// タイムアウト (msec) [-1=無限,0~=有限]
 		/// </summary>
 		[CxCategory("Parameters")]
 		[CxDescription("P:XIE.Tasks.CxSerialPort_Read.Timeout")]
@@ -3391,6 +3391,233 @@ namespace XIE.Tasks
 
 	#endregion
 
+	#region CxSerialPort.Readable
+
+	/// <summary>
+	/// Readable メソッド。データを読み込みます。
+	/// </summary>
+	[Serializable]
+	[TypeConverter(typeof(CxSortingConverter))]
+	public class CxSerialPort_Readable : CxTaskUnit
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public CxSerialPort_Readable()
+			: base()
+		{
+			this.Category = "XIE.IO.CxSerialPort";
+			this.Name = "Readable";
+			this.IconKey = "Unit-Method";
+
+			this.DataIn = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Body", new Type[] {typeof(XIE.IO.CxSerialPort)}),
+			};
+			this.DataParam = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Timeout", new Type[] {typeof(int)}),
+			};
+			this.DataOut = new CxTaskPortOut[]
+			{
+				new CxTaskPortOut("Result", new Type[] {typeof(bool)}),
+			};
+		}
+
+		private enum Descriptions
+		{
+			/// <summary>
+			/// シリアル通信ポートオブジェクト
+			/// </summary>
+			DataIn0,
+
+			/// <summary>
+			/// タイムアウト (msec) [-1=無限,0~=有限]
+			/// </summary>
+			DataParam0,
+
+			/// <summary>
+			/// 読み込み可否を示すブール値を返します。
+			/// </summary>
+			DataOut0,
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public override void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			#region 同一型:
+			if (src is CxSerialPort_Readable)
+			{
+				base.CopyFrom(src);
+
+				var _src = (CxSerialPort_Readable)src;
+
+				this.Timeout = _src.Timeout;
+
+				return;
+			}
+			#endregion
+
+			#region XIE.IxConvertible
+			if (src is XIE.IxConvertible)
+			{
+				((XIE.IxConvertible)src).CopyTo(this);
+				return;
+			}
+			#endregion
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public override bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			#region 同一型の比較:
+			{
+				var _src = (CxSerialPort_Readable)src;
+
+				if (this.Timeout != _src.Timeout) return false;
+			}
+			#endregion
+
+			return true;
+		}
+
+		#endregion
+
+		#region プロパティ:
+
+		/// <summary>
+		/// タイムアウト (msec) [-1=無限,0~=有限]
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.Tasks.CxSerialPort_Readable.Timeout")]
+		public int Timeout
+		{
+			get { return m_Timeout; }
+			set { m_Timeout = value; }
+		}
+		private int m_Timeout = 0;
+
+		#endregion
+
+		#region プロパティ: (Outputs)
+
+		/// <summary>
+		/// 読み込み可否を示すブール値を返します。
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Outputs")]
+		[CxDescription("P:XIE.Tasks.CxSerialPort_Readable.Result")]
+		public string Result
+		{
+			get
+			{
+				if (this.DataOut == null) return "";
+				if (this.DataOut.Length == 0) return "";
+				object data = this.DataOut[0].Data;
+				if (data == null) return "";
+				return data.ToString();
+			}
+		}
+
+		#endregion
+
+		#region メソッド: (実行)
+
+		/// <summary>
+		/// 実行
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Execute(object sender, CxTaskExecuteEventArgs e)
+		{
+			this.Reset();
+
+			// 引数の取得.
+			for (int i = 0; i < this.DataIn.Length; i++)
+				this.DataIn[i].CheckValidity(true);
+			var body = (XIE.IO.CxSerialPort)this.DataIn[0].Data;
+
+			for (int iii = 0; iii < this.DataParam.Length; iii++)
+			{
+				if (this.DataParam[iii].CheckValidity())
+				{
+					switch (iii)
+					{
+						case 0: this.Timeout = Convert.ToInt32(this.DataParam[iii].Data); break;
+					}
+				}
+			}
+
+			// 実行.
+			bool result = body.Readable(this.Timeout);
+
+			// 出力.
+			this.DataOut[0].Data = result;
+
+			return;
+		}
+
+		#endregion
+
+		#region メソッド: (コード生成)
+
+		/// <summary>
+		/// コード生成: 処理部
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+			if (e.TargetMethod.Name == "Execute")
+			{
+				scope.Add(new CodeSnippetStatement());
+				scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
+
+				var connected = !Array.Exists(this.DataIn, (item) => { return (item.IsConnected == false); });
+				if (connected)
+				{
+					var body = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
+					var result = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
+
+					// parameters
+					var timeout = ApiHelper.CodeOptionalExpression(e, this.DataParam[0], CodeLiteral.From(this.Timeout));
+
+					// result = body.Readable(timeout);
+					scope.Add(result.Assign(body.Call("Readable", timeout)));
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
 	#region CxSerialPort.Write
 
 	/// <summary>
@@ -3424,7 +3651,7 @@ namespace XIE.Tasks
 			};
 			this.DataOut = new CxTaskPortOut[]
 			{
-				new CxTaskPortOut("Length", new Type[] {typeof(int)}),
+				new CxTaskPortOut("Result", new Type[] {typeof(int)}),
 			};
 		}
 
@@ -3446,7 +3673,7 @@ namespace XIE.Tasks
 			DataParam0,
 
 			/// <summary>
-			/// タイムアウト (msec) [-1,0,1~]
+			/// タイムアウト (msec) [-1=無限,0~=有限]
 			/// </summary>
 			DataParam1,
 
@@ -3521,7 +3748,7 @@ namespace XIE.Tasks
 		#region プロパティ:
 
 		/// <summary>
-		/// タイムアウト (msec) [-1,0,1~]
+		/// タイムアウト (msec) [-1=無限,0~=有限]
 		/// </summary>
 		[CxCategory("Parameters")]
 		[CxDescription("P:XIE.Tasks.CxSerialPort_Write.Timeout")]
@@ -3542,8 +3769,8 @@ namespace XIE.Tasks
 		[XmlIgnore]
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
-		[CxDescription("P:XIE.Tasks.CxSerialPort_Write.This")]
-		public string This
+		[CxDescription("P:XIE.Tasks.CxSerialPort_Write.Result")]
+		public string Result
 		{
 			get
 			{
@@ -3575,23 +3802,23 @@ namespace XIE.Tasks
 			var data = (byte[])this.DataIn[1].Data;
 
 			// length
-			int length1 = 0;
+			int length = 0;
 			if (this.DataParam[0].CheckValidity())
-				length1 = Convert.ToInt32(this.DataParam[0].Data);
+				length = Convert.ToInt32(this.DataParam[0].Data);
 			else
-				length1 = data.Length;
+				length = data.Length;
 
 			// timeout
 			if (this.DataParam[1].CheckValidity())
 				this.Timeout = Convert.ToInt32(this.DataParam[1].Data);
 
 			// 実行.
-			int length2 = 0;
+			int result = 0;
 			if (data.Length != 0)
-				length2 = body.Write(data, length1, this.Timeout);
+				result = body.Write(data, length, this.Timeout);
 
 			// 出力.
-			this.DataOut[0].Data = length2;
+			this.DataOut[0].Data = result;
 
 			return;
 		}
@@ -3618,14 +3845,234 @@ namespace XIE.Tasks
 				{
 					var body = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
 					var data = new CodeExtraVariable(e.GetVariable(this.DataIn[1]));
-					var length2 = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
+					var result = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
 
 					// parameters
-					var length1 = ApiHelper.CodeOptionalExpression(e, this.DataParam[0], data.Ref("Length"));
+					var length = ApiHelper.CodeOptionalExpression(e, this.DataParam[0], data.Ref("Length"));
 					var timeout = ApiHelper.CodeOptionalExpression(e, this.DataParam[1], CodeLiteral.From(this.Timeout));
 
-					// length2 = body.Write(data, length1, timeout);
-					scope.Add(length2.Assign(body.Call("Write", data, length1, timeout)));
+					// result = body.Write(data, length, timeout);
+					scope.Add(result.Assign(body.Call("Write", data, length, timeout)));
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
+	#region CxSerialPort.Writeable
+
+	/// <summary>
+	/// Writeable メソッド。データを書き込みます。
+	/// </summary>
+	[Serializable]
+	[TypeConverter(typeof(CxSortingConverter))]
+	public class CxSerialPort_Writeable : CxTaskUnit
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public CxSerialPort_Writeable()
+			: base()
+		{
+			this.Category = "XIE.IO.CxSerialPort";
+			this.Name = "Writeable";
+			this.IconKey = "Unit-Method";
+
+			this.DataIn = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Body", new Type[] {typeof(XIE.IO.CxSerialPort)}),
+			};
+			this.DataParam = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Timeout", new Type[] {typeof(int)}),
+			};
+			this.DataOut = new CxTaskPortOut[]
+			{
+				new CxTaskPortOut("Result", new Type[] {typeof(bool)}),
+			};
+		}
+
+		private enum Descriptions
+		{
+			/// <summary>
+			/// シリアル通信ポートオブジェクト
+			/// </summary>
+			DataIn0,
+
+			/// <summary>
+			/// タイムアウト (msec) [-1=無限,0~=有限]
+			/// </summary>
+			DataParam0,
+
+			/// <summary>
+			/// 書き込み可否を示すブール値を返します。
+			/// </summary>
+			DataOut0,
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public override void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			#region 同一型:
+			if (src is CxSerialPort_Writeable)
+			{
+				base.CopyFrom(src);
+
+				var _src = (CxSerialPort_Writeable)src;
+
+				this.Timeout = _src.Timeout;
+
+				return;
+			}
+			#endregion
+
+			#region XIE.IxConvertible
+			if (src is XIE.IxConvertible)
+			{
+				((XIE.IxConvertible)src).CopyTo(this);
+				return;
+			}
+			#endregion
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public override bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			#region 同一型の比較:
+			{
+				var _src = (CxSerialPort_Writeable)src;
+
+				if (this.Timeout != _src.Timeout) return false;
+			}
+			#endregion
+
+			return true;
+		}
+
+		#endregion
+
+		#region プロパティ:
+
+		/// <summary>
+		/// タイムアウト (msec) [-1=無限,0~=有限]
+		/// </summary>
+		[CxCategory("Parameters")]
+		[CxDescription("P:XIE.Tasks.CxSerialPort_Writeable.Timeout")]
+		public int Timeout
+		{
+			get { return m_Timeout; }
+			set { m_Timeout = value; }
+		}
+		private int m_Timeout = 0;
+
+		#endregion
+
+		#region プロパティ: (Outputs)
+
+		/// <summary>
+		/// 実際に書き込まれたデータの長さ (bytes)
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Outputs")]
+		[CxDescription("P:XIE.Tasks.CxSerialPort_Writeable.Result")]
+		public string Result
+		{
+			get
+			{
+				if (this.DataOut == null) return "";
+				if (this.DataOut.Length == 0) return "";
+				object data = this.DataOut[0].Data;
+				if (data == null) return "";
+				return data.ToString();
+			}
+		}
+
+		#endregion
+
+		#region メソッド: (実行)
+
+		/// <summary>
+		/// 実行
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Execute(object sender, CxTaskExecuteEventArgs e)
+		{
+			this.Reset();
+
+			// 引数の取得.
+			for (int i = 0; i < this.DataIn.Length; i++)
+				this.DataIn[i].CheckValidity(true);
+			var body = (XIE.IO.CxSerialPort)this.DataIn[0].Data;
+
+			// timeout
+			if (this.DataParam[0].CheckValidity())
+				this.Timeout = Convert.ToInt32(this.DataParam[0].Data);
+
+			// 実行.
+			bool result = body.Writeable(this.Timeout);
+
+			// 出力.
+			this.DataOut[0].Data = result;
+
+			return;
+		}
+
+		#endregion
+
+		#region メソッド: (コード生成)
+
+		/// <summary>
+		/// コード生成: 処理部
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+			if (e.TargetMethod.Name == "Execute")
+			{
+				scope.Add(new CodeSnippetStatement());
+				scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
+
+				var connected = !Array.Exists(this.DataIn, (item) => { return (item.IsConnected == false); });
+				if (connected)
+				{
+					var body = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
+					var result = new CodeExtraVariable(e.GetVariable(this, this.DataOut[0]));
+
+					// parameters
+					var timeout = ApiHelper.CodeOptionalExpression(e, this.DataParam[0], CodeLiteral.From(this.Timeout));
+
+					// result = body.Writeable(timeout);
+					scope.Add(result.Assign(body.Call("Writeable", timeout)));
 				}
 			}
 		}
