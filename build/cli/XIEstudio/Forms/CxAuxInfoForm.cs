@@ -181,11 +181,12 @@ namespace XIEstudio
 			}
 			#endregion
 
+			CxAuxInfoForm.AuxInfo.Purge();
+
 			#region 外部機器情報 (保存):
 			if (this.AuxInfoPrev != null &&
 				this.AuxInfoPrev.ContentEquals(AuxInfo) == false)
 			{
-				CxAuxInfoForm.AuxInfo.Purge();
 				if (System.IO.Directory.Exists(XIE.Tasks.SharedData.ProjectDir))
 				{
 					#region 外部機器情報の保存:

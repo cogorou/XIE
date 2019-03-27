@@ -1323,13 +1323,11 @@ namespace XIE.Tasks
 			#region 不正な要素の除去.
 			foreach (var item in pairs)
 			{
-				if (item.Value == null)
+				if (item.Value == null ||
+					string.IsNullOrEmpty(item.Key.FileName) ||
+					!System.IO.File.Exists(item.Key.FileName))
 				{
-					if (string.IsNullOrEmpty(item.Key.FileName) ||
-						!System.IO.File.Exists(item.Key.FileName))
-					{
-						this.MediaInfos = ArrayTool.Remove(this.MediaInfos, item.Key).ToArray();
-					}
+					this.MediaInfos = ArrayTool.Remove(this.MediaInfos, item.Key).ToArray();
 				}
 			}
 			#endregion
@@ -1484,13 +1482,11 @@ namespace XIE.Tasks
 			#region 不正な要素の除去.
 			foreach (var item in pairs)
 			{
-				if (item.Value == null)
+				if (item.Value == null ||
+					string.IsNullOrWhiteSpace(item.Key.FileName) ||
+					!System.IO.File.Exists(item.Key.FileName))
 				{
-					if (string.IsNullOrEmpty(item.Key.FileName) ||
-						!System.IO.File.Exists(item.Key.FileName))
-					{
-						this.ImageInfos = ArrayTool.Remove(this.ImageInfos, item.Key).ToArray();
-					}
+					this.ImageInfos = ArrayTool.Remove(this.ImageInfos, item.Key).ToArray();
 				}
 			}
 			#endregion
@@ -1640,13 +1636,11 @@ namespace XIE.Tasks
 			#region 不正な要素の除去.
 			foreach (var item in pairs)
 			{
-				if (item.Value == null)
+				if (item.Value == null ||
+					string.IsNullOrWhiteSpace(item.Key.FileName) ||
+					!System.IO.File.Exists(item.Key.FileName))
 				{
-					if (string.IsNullOrEmpty(item.Key.FileName) ||
-						!System.IO.File.Exists(item.Key.FileName))
-					{
-						this.TaskUnitInfos = ArrayTool.Remove(this.TaskUnitInfos, item.Key).ToArray();
-					}
+					this.TaskUnitInfos = ArrayTool.Remove(this.TaskUnitInfos, item.Key).ToArray();
 				}
 			}
 			#endregion
