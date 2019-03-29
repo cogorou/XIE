@@ -241,12 +241,12 @@ namespace XIE.Tasks
 		public virtual void GenerateTypeCode(object sender, CxGenerateCodeArgs e)
 		{
 			// このスコープ内の全てのタスク.
-			var tasks = this.GetTasksInScope(true);
+			var all_tasks = this.GetTasksInScope(true);
 
 			// タスク名リスト.
 			var tasknames = new Dictionary<XIE.Tasks.CxTaskUnit, string>();
-			for (int i = 0; i < tasks.Count; i++)
-				tasknames[tasks[i]] = string.Format("task{0}", i);
+			for (int i = 0; i < all_tasks.Count; i++)
+				tasknames[all_tasks[i]] = string.Format("task{0}", i);
 
 			#region クラスのメンバ関数内のインデントの段数:
 			// namespace XXXX
@@ -495,12 +495,16 @@ namespace XIE.Tasks
 					args.TaskNames = tasknames;
 
 					// 変数宣言:
-					foreach (var task in tasks)
+					foreach (var task in this.TaskUnits)
+					{
 						task.GenerateDeclarationCode(this, args, member.Statements);
+					}
 
 					// 処理:
 					foreach (var task in this.TaskUnits)
+					{
 						task.GenerateProcedureCode(this, args, member.Statements);
+					}
 				}
 				#endregion
 
@@ -1007,6 +1011,13 @@ namespace XIE.Tasks
 				{
 					var this_scope = body_statement.TryStatements;
 
+					// 変数宣言:
+					foreach (var task in this.TaskUnits)
+					{
+						task.GenerateDeclarationCode(this, e, this_scope);
+					}
+
+					// 処理:
 					foreach (var task in this.TaskUnits)
 					{
 						task.GenerateProcedureCode(this, e, this_scope);
@@ -1250,6 +1261,13 @@ namespace XIE.Tasks
 				{
 					e.IndentLevel++;
 
+					// 変数宣言:
+					foreach (var task in this.TaskUnits)
+					{
+						task.GenerateDeclarationCode(this, e, if1.TrueStatements);
+					}
+
+					// 処理:
 					foreach (var task in this.TaskUnits)
 					{
 						task.GenerateProcedureCode(this, e, if1.TrueStatements);
@@ -1519,6 +1537,13 @@ namespace XIE.Tasks
 
 						e.IndentLevel++;
 
+						// 変数宣言:
+						foreach (var task in this.TaskUnits)
+						{
+							task.GenerateDeclarationCode(this, e, true_scope);
+						}
+
+						// 処理:
 						foreach (var task in this.TaskUnits)
 						{
 							task.GenerateProcedureCode(this, e, true_scope);
@@ -1788,6 +1813,13 @@ namespace XIE.Tasks
 					{
 						e.IndentLevel++;
 
+						// 変数宣言:
+						foreach (var task in this.TaskUnits)
+						{
+							task.GenerateDeclarationCode(this, e, scope);
+						}
+
+						// 処理:
 						foreach (var task in this.TaskUnits)
 						{
 							task.GenerateProcedureCode(this, e, scope);
@@ -2212,6 +2244,13 @@ namespace XIE.Tasks
 				{
 					var this_scope = new CodeStatementCollection();
 
+					// 変数宣言:
+					foreach (var task in this.TaskUnits)
+					{
+						task.GenerateDeclarationCode(this, e, this_scope);
+					}
+
+					// 処理:
 					foreach (var task in this.TaskUnits)
 					{
 						task.GenerateProcedureCode(this, e, this_scope);
@@ -2797,6 +2836,13 @@ namespace XIE.Tasks
 						// item = task#_enumerator.Current
 						this_scope.Add(dataout0.Assign(new CodeCastExpression(dataout0.TypeRef, enumerator.Ref("Current"))));
 
+						// 変数宣言:
+						foreach (var task in this.TaskUnits)
+						{
+							task.GenerateDeclarationCode(this, e, this_scope);
+						}
+
+						// 処理:
 						foreach (var task in this.TaskUnits)
 						{
 							task.GenerateProcedureCode(this, e, this_scope);
