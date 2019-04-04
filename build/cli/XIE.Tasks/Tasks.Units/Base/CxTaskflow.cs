@@ -875,5 +875,21 @@ namespace XIE.Tasks
 		}
 
 		#endregion
+
+		#region メソッド: (OwnerTaskflow)
+
+		/// <summary>
+		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
+		/// </summary>
+		/// <param name="owner">所有者となるタスクフロー</param>
+		public override void SetOwnerTaskflow(CxTaskUnit owner)
+		{
+			base.SetOwnerTaskflow(owner);
+
+			foreach (var task in this.TaskUnits)
+				task.SetOwnerTaskflow(owner);
+		}
+
+		#endregion
 	}
 }

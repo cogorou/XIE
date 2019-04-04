@@ -841,14 +841,13 @@ namespace XIEstudio
 		/// <summary>
 		/// オーバレイ図形のコレクション (選択されているもの)
 		/// </summary>
-		[ReadOnly(true)]
 		[XmlIgnore]
 		[XIE.CxCategory("Parameters")]
 		[XIE.CxDescription("P:XIEstudio.CxFigureOverlay.SelectedFigures")]
 		public CxSelectedFigures SelectedFigures
 		{
 			get { return m_SelectedFigures; }
-			private set { m_SelectedFigures = value; }
+			set { m_SelectedFigures = value; }
 		}
 		[NonSerialized]
 		private CxSelectedFigures m_SelectedFigures = new CxSelectedFigures();
@@ -856,14 +855,13 @@ namespace XIEstudio
 		/// <summary>
 		/// 最後に選択されたオーバレイ図形
 		/// </summary>
-		[ReadOnly(true)]
 		[XmlIgnore]
 		[XIE.CxCategory("Parameters")]
 		[XIE.CxDescription("P:XIEstudio.CxFigureOverlay.SelectedFigure")]
 		public XIE.GDI.IxGdi2d SelectedFigure
 		{
 			get { return m_SelectedFigure; }
-			private set { m_SelectedFigure = value; }
+			set { m_SelectedFigure = value; }
 		}
 		[NonSerialized]
 		private XIE.GDI.IxGdi2d m_SelectedFigure = null;

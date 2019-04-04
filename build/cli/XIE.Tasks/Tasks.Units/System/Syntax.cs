@@ -721,22 +721,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(this);
-		}
-
-		#endregion
-
 		#region IxTaskControlPanel の実装:
 
 		/// <summary>
@@ -1041,22 +1025,6 @@ namespace XIE.Tasks
 		}
 
 		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
-		}
-
-		#endregion
 	}
 
 	#endregion
@@ -1291,22 +1259,6 @@ namespace XIE.Tasks
 					}
 				}
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
 		}
 
 		#endregion
@@ -1594,22 +1546,6 @@ namespace XIE.Tasks
 		}
 
 		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
-		}
-
-		#endregion
 	}
 
 	#endregion
@@ -1830,22 +1766,6 @@ namespace XIE.Tasks
 					#endregion
 				}
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
 		}
 
 		#endregion
@@ -2121,7 +2041,8 @@ namespace XIE.Tasks
 				for (this.Index = this.Initial; this.Index < this.Limit; this.Index += this.Step)
 				{
 					#region 子タスクの初期化:
-					foreach (var task in this.TaskUnits)
+					var tasks = this.GetTasks(true);
+					foreach (var task in tasks)
 					{
 						if (task is Syntax_For_Index)
 						{
@@ -2157,7 +2078,8 @@ namespace XIE.Tasks
 				for (this.Index = this.Initial; this.Index > this.Limit; this.Index += this.Step)
 				{
 					#region 子タスクの初期化:
-					foreach (var task in this.TaskUnits)
+					var tasks = this.GetTasks(true);
+					foreach (var task in tasks)
 					{
 						if (task is Syntax_For_Index)
 						{
@@ -2303,22 +2225,6 @@ namespace XIE.Tasks
 				e.IndentLevel--;
 				e.TargetIterations.Remove(this);
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
 		}
 
 		#endregion
@@ -2759,7 +2665,8 @@ namespace XIE.Tasks
 				this.DataOut[0].Data = item;
 
 				#region 子タスクの初期化:
-				foreach (var task in this.TaskUnits)
+				var tasks = this.GetTasks(true);
+				foreach (var task in tasks)
 				{
 					if (task is Syntax_ForEach_Item)
 					{
@@ -2898,22 +2805,6 @@ namespace XIE.Tasks
 					e.TargetIterations.Remove(this);
 				}
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
 		}
 
 		#endregion

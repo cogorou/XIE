@@ -1878,6 +1878,9 @@ namespace XIEstudio
 					this.ImageNode.Overlay.Visible = true;
 
 				this.ImageNode.Overlay.Figures.Add(added_figure);
+				this.ImageNode.Overlay.SelectedFigures.Dispose();
+				this.ImageNode.Overlay.SelectedFigures.Add(added_figure);
+				this.ImageNode.Overlay.SelectedFigure = added_figure;
 				this.propertyOverlay.SelectedObject = added_figure;
 				this.propertyOverlay.Refresh();
 				this.ImageView.Refresh();
@@ -1938,6 +1941,7 @@ namespace XIEstudio
 			this.ImageNode.AddHistory(0, true);	// 編集履歴:
 			{
 				this.ImageNode.Overlay.SelectedFigures.Dispose();
+				this.ImageNode.Overlay.SelectedFigure = null;
 
 				var display_size = ImageView.Image.Size;
 				var view_point = ImageView.ViewPoint;
@@ -1978,6 +1982,7 @@ namespace XIEstudio
 			{
 				var figures = new List<XIE.GDI.IxGdi2d>(this.ImageNode.Overlay.SelectedFigures.Figures.Keys);
 				this.ImageNode.Overlay.SelectedFigures.Dispose();
+				this.ImageNode.Overlay.SelectedFigure = null;
 				foreach (var figure in figures)
 				{
 					this.ImageNode.Overlay.Figures.Remove(figure);
