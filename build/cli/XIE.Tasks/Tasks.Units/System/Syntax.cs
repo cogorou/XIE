@@ -1902,6 +1902,10 @@ namespace XIE.Tasks
 
 				var _src = (Syntax_For)src;
 
+				this.Initial = _src.Initial;
+				this.Limit = _src.Limit;
+				this.Step = _src.Step;
+
 				return;
 			}
 			#endregion
@@ -1933,6 +1937,10 @@ namespace XIE.Tasks
 			#region 同一型の比較:
 			{
 				var _src = (Syntax_For)src;
+
+				if (this.Initial != _src.Initial) return false;
+				if (this.Limit != _src.Limit) return false;
+				if (this.Step != _src.Step) return false;
 			}
 			#endregion
 

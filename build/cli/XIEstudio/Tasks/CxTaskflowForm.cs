@@ -1917,14 +1917,7 @@ namespace XIEstudio
 						}
 						else
 						{
-							var owner_taskflow = (this.TaskNode.CurrentTaskflow is XIE.Tasks.Syntax_Class)
-								? this.TaskNode.CurrentTaskflow
-								: this.TaskNode.CurrentTaskflow.GetOwnerTaskflow();
-
-							if (ReferenceEquals(node.Task.GetOwnerTaskflow(), owner_taskflow))
-							{
-								DragDropEffects effect = treeOutline.DoDragDrop(new DataObject("treeOutline.CxToolboxNode", e.Item), DragDropEffects.All);
-							}
+							DragDropEffects effect = treeOutline.DoDragDrop(new DataObject("treeOutline.CxToolboxNode", e.Item), DragDropEffects.All);
 						}
 					}
 				}
