@@ -1744,20 +1744,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender">イベントの発行元 (通常は Form または Control です。)</param>
-		/// <param name="e">イベントの内容</param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.Name = this.Mode.ToString();
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1787,17 +1773,6 @@ namespace XIE.Tasks
 			// 出力.
 			this.DataOut[0].Data = dst;
 			return;
-		}
-
-		/// <summary>
-		/// 値が変更されたとき
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void ValueChanged(object sender, CxTaskValueChangedEventArgs e)
-		{
-			this.Name = this.Mode.ToString();
-			base.ValueChanged(sender, e);
 		}
 
 		#endregion

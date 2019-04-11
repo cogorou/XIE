@@ -155,12 +155,11 @@ namespace XIEstudio
 						this.Name
 						);
 
-					var tasks = this.Taskflow.GetTasks(true);
-					foreach (var task in tasks)
+					foreach (var task in this.Taskflow.TaskUnits)
 					{
 						try
 						{
-							task.Setup(this, args);
+							task.Setup(this, args, this.Taskflow);
 						}
 						catch (System.Exception ex)
 						{
@@ -1595,7 +1594,7 @@ namespace XIEstudio
 
 				#region UserTask: (Setup)
 				{
-					// task.Setup(sender, e);
+					// task.Setup(sender, e, parent);
 					member.Statements.Add(
 						new CodeMethodInvokeExpression(
 							new CodeVariableReferenceExpression(task_name),
@@ -1615,6 +1614,8 @@ namespace XIEstudio
 											new CodeVariableReferenceExpression(baseName_name),
 										}
 									),
+									// parent
+									CodeLiteral.Null,
 								}
 						));
 				}

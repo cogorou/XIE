@@ -145,22 +145,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -337,22 +321,6 @@ namespace XIE.Tasks
 			set { m_This = value; }
 		}
 		private ExEndianType m_This = default(ExEndianType);
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
 
 		#endregion
 
@@ -535,22 +503,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -730,22 +682,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -922,22 +858,6 @@ namespace XIE.Tasks
 			set { m_This = value; }
 		}
 		private ExType m_This = default(ExType);
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
 
 		#endregion
 

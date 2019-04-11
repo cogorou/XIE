@@ -403,6 +403,26 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (初期化)
+
+		/// <summary>
+		/// 初期化
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		/// <param name="parent"></param>
+		public override void Setup(object sender, CxTaskSetupEventArgs e, CxTaskflow parent)
+		{
+			base.Setup(sender, e, parent);
+
+			foreach (var task in this.TaskUnits)
+			{
+				task.Setup(sender, e, this);
+			}
+		}
+
+		#endregion
+
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -611,9 +631,6 @@ namespace XIE.Tasks
 				if (child is CxTaskflow)
 					((CxTaskflow)child).LoadDependency();
 			}
-
-			// タスクユニットを所有するタスクフローの設定:
-			this.SetOwnerTaskflow(this.GetOwnerTaskflow());
 		}
 
 		/// <summary>
@@ -872,22 +889,6 @@ namespace XIE.Tasks
 				schedules.Add(task);
 			}
 			#endregion
-		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。子ノードも再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public override void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			base.SetOwnerTaskflow(owner);
-
-			foreach (var task in this.TaskUnits)
-				task.SetOwnerTaskflow(owner);
 		}
 
 		#endregion

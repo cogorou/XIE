@@ -159,6 +159,42 @@ namespace XIEstudio
 		}
 		private bool m_GenerateEntryPoint = true;
 
+		/// <summary>
+		/// コード生成レベル [0:最小限、1:詳細]
+		/// </summary>
+		[TypeConverter(typeof(CodeGenerationLevelConverter))]
+		[CxCategory("Tasks")]
+		[CxDescription("P:XIEstudio.CxAppSettings.CodeGenerationLevel")]
+		public virtual int CodeGenerationLevel
+		{
+			get { return m_CodeGenerationLevel; }
+			set { m_CodeGenerationLevel = value; }
+		}
+		private int m_CodeGenerationLevel = 0;
+
+		#region IndexConverter
+
+		class CodeGenerationLevelConverter : Int32Converter
+		{
+			public CodeGenerationLevelConverter()
+			{
+			}
+			public override bool GetStandardValuesSupported(ITypeDescriptorContext context)
+			{
+				return true;
+			}
+			public override bool GetStandardValuesExclusive(ITypeDescriptorContext context)
+			{
+				return false;
+			}
+			public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
+			{
+				return new StandardValuesCollection(new int[] { 0, 1 });
+			}
+		}
+
+		#endregion
+
 		#endregion
 
 		#region プロパティ: (Media)
@@ -384,6 +420,7 @@ namespace XIEstudio
 
 			this.DebugMode = _src.DebugMode;
 			this.GenerateEntryPoint = _src.GenerateEntryPoint;
+			this.CodeGenerationLevel = _src.CodeGenerationLevel;
 
 			// Media
 			this.VideoFileType = _src.VideoFileType;
@@ -444,6 +481,7 @@ namespace XIEstudio
 
 				if (this.DebugMode != _src.DebugMode) return false;
 				if (this.GenerateEntryPoint != _src.GenerateEntryPoint) return false;
+				if (this.CodeGenerationLevel != _src.CodeGenerationLevel) return false;
 
 				// Media
 				if (this.VideoFileType != _src.VideoFileType) return false;

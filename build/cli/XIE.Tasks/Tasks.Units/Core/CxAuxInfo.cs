@@ -210,33 +210,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_Camera_Controller.Controller")]
 		public XIE.Media.CxCamera Controller
 		{
-			get { return m_Controller; }
-			private set { m_Controller = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
+					return this.AuxInfo.Controllers[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private XIE.Media.CxCamera m_Controller = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoCameras AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoCameras)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
-				this.Controller = this.AuxInfo.Controllers[this.Index];
-			else
-				this.Controller = null;
-
-			this.DataOut[0].Data = this.Controller;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoCameras)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoCameras AuxInfo = null;
 
 		#endregion
 
@@ -283,12 +278,6 @@ namespace XIE.Tasks
 					}
 				}
 			}
-
-			var aux = (IxAuxInfoCameras)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Controllers.Length)
-				this.Controller = aux.Controllers[this.Index];
-			else
-				this.Controller = null;
 
 			if (this.StartWhenBegin)
 			{
@@ -522,33 +511,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_SerialPort_Controller.Controller")]
 		public XIE.IO.CxSerialPort Controller
 		{
-			get { return m_Port; }
-			private set { m_Port = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
+					return this.AuxInfo.Controllers[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private XIE.IO.CxSerialPort m_Port = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoSerialPorts AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoSerialPorts)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
-				this.Controller = this.AuxInfo.Controllers[this.Index];
-			else
-				this.Controller = null;
-
-			this.DataOut[0].Data = this.Controller;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoSerialPorts)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoSerialPorts AuxInfo = null;
 
 		#endregion
 
@@ -574,11 +558,6 @@ namespace XIE.Tasks
 				}
 			}
 
-			var aux = (IxAuxInfoSerialPorts)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Controllers.Length)
-				this.Controller = aux.Controllers[this.Index];
-			else
-				this.Controller = null;
 			this.DataOut[0].Data = this.Controller;
 		}
 
@@ -796,33 +775,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_TcpServer_Controller.Controller")]
 		public XIE.Net.CxTcpServer Controller
 		{
-			get { return m_Controller; }
-			private set { m_Controller = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
+					return this.AuxInfo.Controllers[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private XIE.Net.CxTcpServer m_Controller = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoTcpServers AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoTcpServers)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
-				this.Controller = this.AuxInfo.Controllers[this.Index];
-			else
-				this.Controller = null;
-
-			this.DataOut[0].Data = this.Controller;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoTcpServers)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoTcpServers AuxInfo = null;
 
 		#endregion
 
@@ -848,11 +822,6 @@ namespace XIE.Tasks
 				}
 			}
 
-			var aux = (IxAuxInfoTcpServers)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Controllers.Length)
-				this.Controller = aux.Controllers[this.Index];
-			else
-				this.Controller = null;
 			this.DataOut[0].Data = this.Controller;
 		}
 
@@ -1070,33 +1039,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_TcpClient_Controller.Controller")]
 		public XIE.Net.CxTcpClient Controller
 		{
-			get { return m_Controller; }
-			private set { m_Controller = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
+					return this.AuxInfo.Controllers[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private XIE.Net.CxTcpClient m_Controller = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoTcpClients AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoTcpClients)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Controllers.Length)
-				this.Controller = this.AuxInfo.Controllers[this.Index];
-			else
-				this.Controller = null;
-
-			this.DataOut[0].Data = this.Controller;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoTcpClients)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoTcpClients AuxInfo = null;
 
 		#endregion
 
@@ -1122,11 +1086,6 @@ namespace XIE.Tasks
 				}
 			}
 
-			var aux = (IxAuxInfoTcpClients)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Controllers.Length)
-				this.Controller = aux.Controllers[this.Index];
-			else
-				this.Controller = null;
 			this.DataOut[0].Data = this.Controller;
 		}
 
@@ -1348,33 +1307,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_Media_Player.Data")]
 		public XIE.Media.CxMediaPlayer Player
 		{
-			get { return m_Player; }
-			private set { m_Player = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Players.Length)
+					return this.AuxInfo.Players[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private XIE.Media.CxMediaPlayer m_Player = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoMedias AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoMedias)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Players.Length)
-				this.Player = this.AuxInfo.Players[this.Index];
-			else
-				this.Player = null;
-
-			this.DataOut[0].Data = this.Player;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoMedias)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoMedias AuxInfo = null;
 
 		#endregion
 
@@ -1400,11 +1354,6 @@ namespace XIE.Tasks
 				}
 			}
 
-			var aux = (IxAuxInfoMedias)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Players.Length)
-				this.Player = aux.Players[this.Index];
-			else
-				this.Player = null;
 			this.DataOut[0].Data = this.Player;
 		}
 
@@ -1623,33 +1572,28 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxAuxInfo_Image_Data.Data")]
 		public CxImage Data
 		{
-			get { return m_Data; }
-			private set { m_Data = value; }
+			get
+			{
+				if (0 <= this.Index && this.Index < this.AuxInfo.Datas.Length)
+					return this.AuxInfo.Datas[this.Index];
+				return null;
+			}
 		}
-		[NonSerialized]
-		private CxImage m_Data = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private IxAuxInfoImages AuxInfo
 		{
-			this.AuxInfo = (IxAuxInfoImages)e.AuxInfo;
-			if (0 <= this.Index && this.Index < this.AuxInfo.Datas.Length)
-				this.Data = this.AuxInfo.Datas[this.Index];
-			else
-				this.Data = null;
-
-			this.DataOut[0].Data = this.Data;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return (IxAuxInfoImages)this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private IxAuxInfoImages AuxInfo = null;
 
 		#endregion
 
@@ -1675,11 +1619,6 @@ namespace XIE.Tasks
 				}
 			}
 
-			var aux = (IxAuxInfoImages)e.AuxInfo;
-			if (0 <= this.Index && this.Index < aux.Datas.Length)
-				this.Data = aux.Datas[this.Index];
-			else
-				this.Data = null;
 			this.DataOut[0].Data = this.Data;
 		}
 
@@ -1774,17 +1713,6 @@ namespace XIE.Tasks
 			: base()
 		{
 			_Constructor();
-		}
-
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		/// <param name="task">参照先のタスク</param>
-		public CxTaskUnit_DataIn_Data(CxTaskUnit task)
-			: base()
-		{
-			_Constructor();
-			this.SetOwnerTaskflow(task);
 		}
 
 		/// <summary>
@@ -1911,7 +1839,7 @@ namespace XIE.Tasks
 				try
 				{
 					var items = new List<int>();
-					var task = ((CxTaskUnit)context.Instance).GetOwnerTaskflow();
+					var task = this.GetBelongTaskflow(context.Instance as CxTaskflow);
 					if (task != null)
 					{
 						for (int i = 0; i < task.DataIn.Length; i++)
@@ -1923,6 +1851,14 @@ namespace XIE.Tasks
 				{
 					return null;
 				}
+			}
+			private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+			{
+				if (parent == null)
+					return null;
+				if (parent is Syntax_Class)
+					return parent;
+				return GetBelongTaskflow(parent.Parent);
 			}
 		}
 
@@ -1951,19 +1887,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1986,11 +1909,11 @@ namespace XIE.Tasks
 				}
 			}
 
-			if (this.GetOwnerTaskflow() != null)
+			var owner = this.GetBelongTaskflow(this.Parent);
+			if (owner != null)
 			{
-				var port = this.GetOwnerTaskflow().DataIn;
-				if (0 <= this.Index && this.Index < port.Length)
-					this.DataOut[0].Data = this.GetOwnerTaskflow().DataIn[this.Index].Data;
+				if (0 <= this.Index && this.Index < owner.DataIn.Length)
+					this.DataOut[0].Data = owner.DataIn[this.Index].Data;
 			}
 		}
 
@@ -2032,6 +1955,26 @@ namespace XIE.Tasks
 		}
 
 		#endregion
+
+		#region 関数: (自身が所属する Class)
+
+		/// <summary>
+		/// 自身が所属する Class の取得
+		/// </summary>
+		/// <param name="parent">自身を所有するタスクフロー</param>
+		/// <returns>
+		///		Syntax_Class のインスタンスを返します。
+		/// </returns>
+		private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+		{
+			if (parent == null)
+				return null;
+			if (parent is Syntax_Class)
+				return parent;
+			return GetBelongTaskflow(parent.Parent);
+		}
+
+		#endregion
 	}
 
 	#endregion
@@ -2054,17 +1997,6 @@ namespace XIE.Tasks
 			: base()
 		{
 			_Constructor();
-		}
-
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		/// <param name="task">参照先のタスク</param>
-		public CxTaskUnit_DataParam_Data(CxTaskUnit task)
-			: base()
-		{
-			_Constructor();
-			this.SetOwnerTaskflow(task);
 		}
 
 		/// <summary>
@@ -2191,7 +2123,7 @@ namespace XIE.Tasks
 				try
 				{
 					var items = new List<int>();
-					var task = ((CxTaskUnit)context.Instance).GetOwnerTaskflow();
+					var task = this.GetBelongTaskflow(context.Instance as CxTaskflow);
 					if (task != null)
 					{
 						for (int i = 0; i < task.DataParam.Length; i++)
@@ -2203,6 +2135,14 @@ namespace XIE.Tasks
 				{
 					return null;
 				}
+			}
+			private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+			{
+				if (parent == null)
+					return null;
+				if (parent is Syntax_Class)
+					return parent;
+				return GetBelongTaskflow(parent.Parent);
 			}
 		}
 
@@ -2231,19 +2171,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -2266,11 +2193,11 @@ namespace XIE.Tasks
 				}
 			}
 
-			if (this.GetOwnerTaskflow() != null)
+			var owner = this.GetBelongTaskflow(this.Parent);
+			if (owner != null)
 			{
-				var port = this.GetOwnerTaskflow().DataParam;
-				if (0 <= this.Index && this.Index < port.Length)
-					this.DataOut[0].Data = this.GetOwnerTaskflow().DataParam[this.Index].Data;
+				if (0 <= this.Index && this.Index < owner.DataParam.Length)
+					this.DataOut[0].Data = owner.DataParam[this.Index].Data;
 			}
 		}
 
@@ -2312,6 +2239,26 @@ namespace XIE.Tasks
 		}
 
 		#endregion
+
+		#region 関数: (自身が所属する Class)
+
+		/// <summary>
+		/// 自身が所属する Class の取得
+		/// </summary>
+		/// <param name="parent">自身を所有するタスクフロー</param>
+		/// <returns>
+		///		Syntax_Class のインスタンスを返します。
+		/// </returns>
+		private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+		{
+			if (parent == null)
+				return null;
+			if (parent is Syntax_Class)
+				return parent;
+			return GetBelongTaskflow(parent.Parent);
+		}
+
+		#endregion
 	}
 
 	#endregion
@@ -2334,17 +2281,6 @@ namespace XIE.Tasks
 			: base()
 		{
 			_Constructor();
-		}
-
-		/// <summary>
-		/// コンストラクタ
-		/// </summary>
-		/// <param name="task">参照先のタスク</param>
-		public CxTaskUnit_DataOut_Data(CxTaskUnit task)
-			: base()
-		{
-			_Constructor();
-			this.SetOwnerTaskflow(task);
 		}
 
 		/// <summary>
@@ -2471,7 +2407,7 @@ namespace XIE.Tasks
 				try
 				{
 					var items = new List<int>();
-					var task = ((CxTaskUnit)context.Instance).GetOwnerTaskflow();
+					var task = this.GetBelongTaskflow(context.Instance as CxTaskflow);
 					if (task != null)
 					{
 						for (int i = 0; i < task.DataOut.Length; i++)
@@ -2483,6 +2419,14 @@ namespace XIE.Tasks
 				{
 					return null;
 				}
+			}
+			private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+			{
+				if (parent == null)
+					return null;
+				if (parent is Syntax_Class)
+					return parent;
+				return GetBelongTaskflow(parent.Parent);
 			}
 		}
 
@@ -2511,19 +2455,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -2546,11 +2477,11 @@ namespace XIE.Tasks
 				}
 			}
 
-			if (this.GetOwnerTaskflow() != null)
+			var owner = this.GetBelongTaskflow(this.Parent);
+			if (owner != null)
 			{
-				var port = this.GetOwnerTaskflow().DataOut;
-				if (0 <= this.Index && this.Index < port.Length)
-					this.GetOwnerTaskflow().DataOut[this.Index].Data = this.DataIn[0].Data;
+				if (0 <= this.Index && this.Index < owner.DataOut.Length)
+					owner.DataOut[this.Index].Data = this.DataIn[0].Data;
 			}
 		}
 
@@ -2610,6 +2541,26 @@ namespace XIE.Tasks
 					}
 				}
 			}
+		}
+
+		#endregion
+
+		#region 関数: (自身が所属する Class)
+
+		/// <summary>
+		/// 自身が所属する Class の取得
+		/// </summary>
+		/// <param name="parent">自身を所有するタスクフロー</param>
+		/// <returns>
+		///		Syntax_Class のインスタンスを返します。
+		/// </returns>
+		private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+		{
+			if (parent == null)
+				return null;
+			if (parent is Syntax_Class)
+				return parent;
+			return GetBelongTaskflow(parent.Parent);
 		}
 
 		#endregion
@@ -2768,33 +2719,6 @@ namespace XIE.Tasks
 			set { m_Timeout = value; }
 		}
 		private int m_Timeout = 5000;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			if (this.DataIn[0].Data is XIE.Media.CxCamera)
-			{
-				var controller = (XIE.Media.CxCamera)this.DataIn[0].Data;
-				var image_size = controller.GetFrameSize();
-				var dst = new CxImage(image_size);
-				this.DataOut[0].Data = dst;
-			}
-			if (this.DataIn[0].Data is XIE.Media.CxMediaPlayer)
-			{
-				var controller = (XIE.Media.CxMediaPlayer)this.DataIn[0].Data;
-				var image_size = controller.GetFrameSize();
-				var dst = new CxImage(image_size);
-				this.DataOut[0].Data = dst;
-			}
-		}
 
 		#endregion
 

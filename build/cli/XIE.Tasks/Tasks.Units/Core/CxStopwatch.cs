@@ -148,20 +148,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.DataOut[0].Data = this.This;
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -335,20 +321,6 @@ namespace XIE.Tasks
 		}
 		[NonSerialized]
 		private double m_This = 0;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.DataOut[0].Data = this.This;
-		}
 
 		#endregion
 
@@ -720,20 +692,6 @@ namespace XIE.Tasks
 		}
 		[NonSerialized]
 		private double m_This = 0;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.DataOut[0].Data = this.This;
-		}
 
 		#endregion
 

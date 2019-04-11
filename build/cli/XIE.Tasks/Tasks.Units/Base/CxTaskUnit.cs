@@ -305,8 +305,9 @@ namespace XIE.Tasks
 					}
 				}
 
-				// このタスクユニットを所有するタスクフロー:
-				this.SetOwnerTaskflow(_src.GetOwnerTaskflow());
+				// その他:
+				this.SetupEventArgs = _src.SetupEventArgs;
+				this.Parent = _src.Parent;
 
 				return;
 				#endregion
@@ -607,6 +608,44 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region プロパティ: (状態)
+
+		/// <summary>
+		/// 最上位のタスクフロー (通常は Syntax_Class です。)
+		/// </summary>
+		[Browsable(false)]
+		[ReadOnly(true)]
+		[XmlIgnore]
+		[CxCategory("Status")]
+		[CxDescription("P:XIE.Tasks.CxTaskNode.Owner")]
+		public virtual CxTaskflow Owner
+		{
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return this.SetupEventArgs.Taskflow;
+			}
+		}
+
+		/// <summary>
+		/// 自身を保有するタスクフロー
+		/// </summary>
+		[Browsable(false)]
+		[ReadOnly(true)]
+		[XmlIgnore]
+		[CxCategory("Status")]
+		[CxDescription("P:XIE.Tasks.CxTaskNode.Parent")]
+		public virtual CxTaskflow Parent
+		{
+			get { return m_Parent; }
+			protected set { m_Parent = value; }
+		}
+		[NonSerialized]
+		private CxTaskflow m_Parent = null;
+
+		#endregion
+
 		#region メソッド: (初期化)
 
 		/// <summary>
@@ -614,16 +653,25 @@ namespace XIE.Tasks
 		/// </summary>
 		/// <param name="sender">イベントの発行元 (通常は Form または Control です。)</param>
 		/// <param name="e">イベントの内容</param>
+		/// <param name="parent">自身を保有するタスクフロー</param>
 		/// <remarks>
 		///		インスタンスが生成された直後の初期化処理を行います。
-		///		既定では何も行いません。
+		///		既定ではイベント引数をメンバフィールド(SetupEventArgs 及び Parent)に保存します。
 		///		独自の処理があればオーバーライドして処理を実装してください。
 		///		このメソッドはオーナーフォームから呼び出されます。
 		///		フォームやコントロール等へのアクセスが可能です。
 		/// </remarks>
-		public virtual void Setup(object sender, CxTaskSetupEventArgs e)
+		public virtual void Setup(object sender, CxTaskSetupEventArgs e, CxTaskflow parent)
 		{
+			this.SetupEventArgs = e;
+			this.Parent = parent;
 		}
+
+		/// <summary>
+		/// 初期化時に受け取ったイベント引数
+		/// </summary>
+		[NonSerialized]
+		public CxTaskSetupEventArgs SetupEventArgs = null;
 
 		#endregion
 
@@ -919,32 +967,6 @@ namespace XIE.Tasks
 				return "";
 			}
 		}
-
-		#endregion
-
-		#region メソッド: (OwnerTaskflow)
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを設定します。派生クラスが子ノードを持つ場合は再帰的に処理します。
-		/// </summary>
-		/// <param name="owner">所有者となるタスクフロー</param>
-		public virtual void SetOwnerTaskflow(CxTaskUnit owner)
-		{
-			this.m_OwnerTaskflow = owner;
-		}
-
-		/// <summary>
-		/// このタスクユニットを所有するタスクフローを取得します。
-		/// </summary>
-		/// <returns>
-		///		タスクフローを返します。
-		/// </returns>
-		public virtual CxTaskUnit GetOwnerTaskflow()
-		{
-			return this.m_OwnerTaskflow;
-		}
-		[NonSerialized]
-		private CxTaskUnit m_OwnerTaskflow = null;
 
 		#endregion
 	}

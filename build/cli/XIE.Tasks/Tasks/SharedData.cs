@@ -64,6 +64,11 @@ namespace XIE.Tasks
 		/// </summary>
 		public static IxAuxImageList16 Icons16 = null;
 
+		/// <summary>
+		/// コード生成レベル [0:最小限、1:詳細]
+		/// </summary>
+		public static int CodeGenerationLevel = 0;
+
 		#endregion
 	}
 }

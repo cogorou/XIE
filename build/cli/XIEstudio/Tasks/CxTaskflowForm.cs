@@ -3770,10 +3770,6 @@ namespace XIEstudio
 					var src_task = this.DragTask;
 					this.DragTask = null;
 
-					var owner_taskflow = (this.TaskNode.CurrentTaskflow is XIE.Tasks.Syntax_Class)
-						? this.TaskNode.CurrentTaskflow
-						: this.TaskNode.CurrentTaskflow.GetOwnerTaskflow();
-
 					this.TaskNode.AddHistory();
 					this.TaskNode.CurrentTaskflow.TaskUnits.Add(src_task);
 					this.TaskNode.CurrentTaskflow.TaskUnits.ForEach(item => item.Selected = false);
@@ -3793,9 +3789,8 @@ namespace XIEstudio
 							this.TaskNode.Name
 							);
 
-						src_task.SetOwnerTaskflow(owner_taskflow);
 						src_task.Location = ap;
-						src_task.Setup(sender, args);
+						src_task.Setup(sender, args, this.TaskNode.CurrentTaskflow);
 						statusLabelMessage.Text = "";
 					}
 					catch (System.Exception ex)
@@ -3819,10 +3814,6 @@ namespace XIEstudio
 					var src_task = this.DragTask;
 					this.DragTask = null;
 
-					var owner_taskflow = (this.TaskNode.CurrentTaskflow is XIE.Tasks.Syntax_Class)
-						? this.TaskNode.CurrentTaskflow
-						: this.TaskNode.CurrentTaskflow.GetOwnerTaskflow();
-
 					this.TaskNode.AddHistory();
 					this.TaskNode.CurrentTaskflow.TaskUnits.Add(src_task);
 					this.TaskNode.CurrentTaskflow.TaskUnits.ForEach(item => item.Selected = false);
@@ -3842,9 +3833,8 @@ namespace XIEstudio
 							this.TaskNode.Name
 							);
 
-						src_task.SetOwnerTaskflow(owner_taskflow);
 						src_task.Location = ap;
-						src_task.Setup(sender, args);
+						src_task.Setup(sender, args, this.TaskNode.CurrentTaskflow);
 						statusLabelMessage.Text = "";
 					}
 					catch (System.Exception ex)
@@ -6299,10 +6289,6 @@ namespace XIEstudio
 
 				this.TaskNode.AddHistory();
 
-				var owner_taskflow = (this.TaskNode.CurrentTaskflow is XIE.Tasks.Syntax_Class)
-					? this.TaskNode.CurrentTaskflow
-					: this.TaskNode.CurrentTaskflow.GetOwnerTaskflow();
-
 				foreach (var task in tasks)
 				{
 					this.TaskNode.CurrentTaskflow.TaskUnits.Add(task);
@@ -6325,11 +6311,10 @@ namespace XIEstudio
 							task.Location.Y - pictureTaskflow.Location.Y
 							);
 
-						task.SetOwnerTaskflow(owner_taskflow);
 						task.Location = cp;
 						task.Selected = true;
 						task.IconImage = icons.ImageList.Images[task.IconKey];
-						task.Setup(sender, args);
+						task.Setup(sender, args, this.TaskNode.CurrentTaskflow);
 
 						#region 子タスクの初期化:
 						if (task is XIE.Tasks.CxTaskflow)

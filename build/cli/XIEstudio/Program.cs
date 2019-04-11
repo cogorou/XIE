@@ -406,6 +406,12 @@ namespace XIEstudio
 			}
 			#endregion
 
+			#region コード生成レベルの設定:
+			{
+				XIE.Tasks.SharedData.CodeGenerationLevel = CxAuxInfoForm.AppSettings.CodeGenerationLevel;
+			}
+			#endregion
+
 			RemoveTempFiles();
 		}
 

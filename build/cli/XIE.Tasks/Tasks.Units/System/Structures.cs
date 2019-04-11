@@ -229,22 +229,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -502,22 +486,6 @@ namespace XIE.Tasks
 		public int A
 		{
 			get { return Body.A; }
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
 		}
 
 		#endregion
@@ -942,22 +910,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1151,22 +1103,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1330,22 +1266,6 @@ namespace XIE.Tasks
 			private set { m_This = value; }
 		}
 		private DateTime m_This = DateTime.UtcNow;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
 
 		#endregion
 
@@ -1663,8 +1583,11 @@ namespace XIE.Tasks
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		/// <param name="parent"></param>
+		public override void Setup(object sender, CxTaskSetupEventArgs e, CxTaskflow parent)
 		{
+			base.Setup(sender, e, parent);
+
 			if (this.BodyIsInitialized == false)
 			{
 				this.BodyIsInitialized = true;
@@ -2033,22 +1956,6 @@ namespace XIE.Tasks
 				if (data == null) return "";
 				return data.GetType().Name.ToString();
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
 		}
 
 		#endregion
@@ -2437,22 +2344,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -2731,22 +2622,6 @@ namespace XIE.Tasks
 		public int Milliseconds
 		{
 			get { return Body.Milliseconds; }
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
 		}
 
 		#endregion
@@ -3099,22 +2974,6 @@ namespace XIE.Tasks
 				if (data == null) return "";
 				return data.GetType().Name.ToString();
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
 		}
 
 		#endregion

@@ -202,19 +202,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -329,6 +316,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (デシリアライズ (シグネチャコンストラクタ))
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeConstructor();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -346,6 +334,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (シリアライズ)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -387,6 +376,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (Setup)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -397,10 +387,25 @@ namespace XIE.Tasks
 				member.Attributes = MemberAttributes.Public | MemberAttributes.Override;
 				member.Parameters.Add(new CodeParameterDeclarationExpression(typeof(object), "sender"));
 				member.Parameters.Add(new CodeParameterDeclarationExpression(typeof(XIE.Tasks.CxTaskSetupEventArgs), "e"));
+				member.Parameters.Add(new CodeParameterDeclarationExpression(typeof(XIE.Tasks.CxTaskflow), "parent"));
 				code_type.Members.Add(member);
 
 				#region 処理コード:
 				{
+					// base.Setup(sender, e, parent);
+					member.Statements.Add(
+						new CodeMethodInvokeExpression(
+							new CodeBaseReferenceExpression(),
+							"Setup",
+							new CodeExpression[]
+							{
+								new CodeArgumentReferenceExpression("sender"),
+								new CodeArgumentReferenceExpression("e"),
+								new CodeArgumentReferenceExpression("parent"),
+							}
+						));
+
+					// イベント引数:
 					var args = (CxGenerateCodeArgs)e.Clone();
 					args.IndentLevel = method_indent_level;
 					args.TargetType = code_type;
@@ -416,6 +421,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (Prepare)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -445,6 +451,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (Restore)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -513,6 +520,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (ValueChanged)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -559,6 +567,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (Reset)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -946,19 +955,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1167,19 +1163,6 @@ namespace XIE.Tasks
 			private set { m_Condition = value; }
 		}
 		private bool m_Condition = false;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -1405,19 +1388,6 @@ namespace XIE.Tasks
 			private set { m_Condition = value; }
 		}
 		private bool m_Condition = false;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -1680,19 +1650,6 @@ namespace XIE.Tasks
 			private set { m_Condition = value; }
 		}
 		private bool m_Condition = false;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -2007,19 +1964,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -2055,7 +1999,6 @@ namespace XIE.Tasks
 						if (task is Syntax_For_Index)
 						{
 							var child = (Syntax_For_Index)task;
-							child.Parent = this;
 							child.This = this.Index;
 						}
 					}
@@ -2092,7 +2035,6 @@ namespace XIE.Tasks
 						if (task is Syntax_For_Index)
 						{
 							var child = (Syntax_For_Index)task;
-							child.Parent = this;
 							child.This = this.Index;
 						}
 					}
@@ -2364,15 +2306,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region フィールド: (同一アセンブリ内では参照可能です。)
-
-		/// <summary>
-		/// 本体のタスクユニット (Syntax_For から設定されます。)
-		/// </summary>
-		internal Syntax_For Parent = null;
-
-		#endregion
-
 		#region プロパティ: (Outputs)
 
 		/// <summary>
@@ -2388,19 +2321,6 @@ namespace XIE.Tasks
 			set { m_This = value; }
 		}
 		private int m_This = 0;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -2430,12 +2350,14 @@ namespace XIE.Tasks
 		{
 			if (e.TargetMethod.Name == "Execute")
 			{
-				if (this.Parent != null)
+				Syntax_For parent = this.GetBelongTaskflow(this.Parent) as Syntax_For;
+
+				if (parent != null)
 				{
 					#region 親が設定されていれば、親の出力を参照する.
 					var port = this.DataOut[0];
 					var key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this, port);
-					var parent_key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this.Parent, this.Parent.DataOut[0]);
+					var parent_key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(parent, parent.DataOut[0]);
 					e.Variables[key] = e.Variables[parent_key];
 					#endregion
 				}
@@ -2467,6 +2389,26 @@ namespace XIE.Tasks
 		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
 		{
 			// for の index を参照しているだけなので処理の実体はない.
+		}
+
+		#endregion
+
+		#region 関数: (自身が所属する For)
+
+		/// <summary>
+		/// 自身が所属する ForEach の取得
+		/// </summary>
+		/// <param name="parent">自身を所有するタスクフロー</param>
+		/// <returns>
+		///		Syntax_For のインスタンスを返します。
+		/// </returns>
+		private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+		{
+			if (parent == null)
+				return null;
+			if (parent is Syntax_For)
+				return parent;
+			return GetBelongTaskflow(parent.Parent);
 		}
 
 		#endregion
@@ -2641,19 +2583,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -2679,7 +2608,6 @@ namespace XIE.Tasks
 					if (task is Syntax_ForEach_Item)
 					{
 						var child = (Syntax_ForEach_Item)task;
-						child.Parent = this;
 						child.This = item;
 					}
 				}
@@ -2944,15 +2872,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region フィールド: (同一アセンブリ内では参照可能です。)
-
-		/// <summary>
-		/// 本体のタスクユニット (Syntax_ForEach から設定されます。)
-		/// </summary>
-		internal Syntax_ForEach Parent = null;
-
-		#endregion
-
 		#region プロパティ: (Outputs)
 
 		/// <summary>
@@ -2968,19 +2887,6 @@ namespace XIE.Tasks
 			set { m_This = value; }
 		}
 		private object m_This = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -3010,12 +2916,14 @@ namespace XIE.Tasks
 		{
 			if (e.TargetMethod.Name == "Execute")
 			{
-				if (this.Parent != null)
+				Syntax_ForEach parent = this.GetBelongTaskflow(this.Parent) as Syntax_ForEach;
+
+				if (parent != null)
 				{
 					#region 親が設定されていれば、親の出力を参照する.
 					var port = this.DataOut[0];
 					var key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this, port);
-					var parent_key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(this.Parent, this.Parent.DataOut[0]);
+					var parent_key = new KeyValuePair<CxTaskUnit, CxTaskPortOut>(parent, parent.DataOut[0]);
 					e.Variables[key] = e.Variables[parent_key];
 					#endregion
 				}
@@ -3047,6 +2955,26 @@ namespace XIE.Tasks
 		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
 		{
 			// foreach の item を参照しているだけなので処理の実体はない.
+		}
+
+		#endregion
+
+		#region 関数: (自身が所属する ForEach)
+
+		/// <summary>
+		/// 自身が所属する ForEach の取得
+		/// </summary>
+		/// <param name="parent">自身を所有するタスクフロー</param>
+		/// <returns>
+		///		Syntax_ForEach のインスタンスを返します。
+		/// </returns>
+		private CxTaskflow GetBelongTaskflow(CxTaskflow parent)
+		{
+			if (parent == null)
+				return null;
+			if (parent is Syntax_ForEach)
+				return parent;
+			return GetBelongTaskflow(parent.Parent);
 		}
 
 		#endregion
@@ -3148,19 +3076,6 @@ namespace XIE.Tasks
 			#endregion
 
 			return true;
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
 		}
 
 		#endregion
@@ -3333,19 +3248,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -3504,19 +3406,6 @@ namespace XIE.Tasks
 			#endregion
 
 			return true;
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
 		}
 
 		#endregion

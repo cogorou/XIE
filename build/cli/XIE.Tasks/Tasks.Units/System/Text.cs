@@ -152,22 +152,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -434,19 +418,6 @@ namespace XIE.Tasks
 				if (data == null) return "";
 				return data.GetType().Name.ToString();
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
 		}
 
 		#endregion
@@ -732,19 +703,6 @@ namespace XIE.Tasks
 				if (this.DataOut.Length == 0) return null;
 				return this.DataOut[0].Data as string;
 			}
-		}
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
 		}
 
 		#endregion
@@ -1068,22 +1026,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1308,19 +1250,6 @@ namespace XIE.Tasks
 		}
 		[NonSerialized]
 		private byte[] m_This = new byte[0];
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 
@@ -1584,19 +1513,6 @@ namespace XIE.Tasks
 		}
 		[NonSerialized]
 		private string m_This = "";
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
 
 		#endregion
 

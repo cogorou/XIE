@@ -197,22 +197,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -474,24 +458,16 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.Array_Length.This")]
 		public int This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
-		}
-		[NonSerialized]
-		private int m_This = 0;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.DataOut[0].Data = this.This;
+			get
+			{
+				var body = this.DataIn[0].Data as System.Collections.IEnumerable;
+				if (body == null)
+					return 0;
+				var info = body.GetType().GetProperty("Length", BindingFlags.Public | BindingFlags.Instance);
+				if (info == null)
+					return 0;
+				return (int)info.GetValue(body, null);
+			}
 		}
 
 		#endregion
@@ -509,10 +485,6 @@ namespace XIE.Tasks
 
 			// 引数の取得.
 			this.DataIn[0].CheckValidity(true);
-			var body = (System.Collections.IEnumerable)this.DataIn[0].Data;
-
-			// 実行.
-			this.This = (int)body.GetType().GetProperty("Length").GetValue(body, null);
 
 			// 出力.
 			this.DataOut[0].Data = this.This;
@@ -1277,19 +1249,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -1530,22 +1489,6 @@ namespace XIE.Tasks
 		}
 		[NonSerialized]
 		private System.Collections.IList m_This = null;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
 
 		#endregion
 
@@ -2244,24 +2187,13 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.List_Count.This")]
 		public int This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
-		}
-		[NonSerialized]
-		private int m_This = 0;
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			this.DataOut[0].Data = this.This;
+			get
+			{
+				var body = this.DataIn[0].Data as System.Collections.IList;
+				if (body == null)
+					return 0;
+				return body.Count;
+			}
 		}
 
 		#endregion
@@ -2279,10 +2211,6 @@ namespace XIE.Tasks
 
 			// 引数の取得.
 			this.DataIn[0].CheckValidity(true);
-			var src = (System.Collections.IList)this.DataIn[0].Data;
-
-			// 実行.
-			this.This = src.Count;
 
 			// 出力.
 			this.DataOut[0].Data = this.This;
@@ -2931,19 +2859,6 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-		}
-
-		#endregion
-
 		#region メソッド: (実行)
 
 		/// <summary>
@@ -3177,22 +3092,6 @@ namespace XIE.Tasks
 		}
 
 		#endregion
-
-		#endregion
-
-		#region メソッド: (初期化)
-
-		/// <summary>
-		/// 初期化
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
-		{
-			var args = new CxTaskExecuteEventArgs();
-			args.CopyFrom(e);
-			this.Execute(sender, args);
-		}
 
 		#endregion
 

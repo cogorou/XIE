@@ -642,19 +642,22 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region メソッド: (初期化)
+		#region プロパティ: (外部機器情報)
 
 		/// <summary>
-		/// 初期化
+		/// 外部機器情報
 		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		public override void Setup(object sender, CxTaskSetupEventArgs e)
+		[ReadOnly(true)]
+		[XmlIgnore]
+		private CxAuxInfo AuxInfo
 		{
-			this.AuxInfo = e.AuxInfo;
+			get
+			{
+				if (this.SetupEventArgs == null)
+					return null;
+				return this.SetupEventArgs.AuxInfo;
+			}
 		}
-		[NonSerialized]
-		private CxAuxInfo AuxInfo = null;
 
 		#endregion
 
@@ -971,6 +974,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (デシリアライズ (シグネチャコンストラクタ))
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeConstructor();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
@@ -988,6 +992,7 @@ namespace XIE.Tasks
 			#endregion
 
 			#region メソッド: (シリアライズ)
+			if (1 <= SharedData.CodeGenerationLevel)
 			{
 				var member = new CodeMemberMethod();
 				member.Comments.Add(new CodeCommentStatement("<summary>", true));
