@@ -136,7 +136,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 待機時間 (msec)

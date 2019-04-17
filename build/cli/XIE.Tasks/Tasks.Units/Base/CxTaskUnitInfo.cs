@@ -76,7 +76,7 @@ namespace XIE.Tasks
 		// プロパティ:
 		//
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ファイル名

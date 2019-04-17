@@ -241,6 +241,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -492,6 +515,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = Convert.ToInt32(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -640,7 +686,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 指標 [範囲:0~]
@@ -792,6 +838,29 @@ namespace XIE.Tasks
 
 		[NonSerialized]
 		CxScript Invoker = null;
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
 
 		#endregion
 
@@ -948,7 +1017,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 指標 [範囲:0~]
@@ -1285,6 +1354,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1514,6 +1606,29 @@ namespace XIE.Tasks
 			this.This = (System.Collections.IList)body_ctor.Invoke(null);
 
 			this.DataOut[0].Data = this.This;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -2218,6 +2333,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = Convert.ToInt32(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -2366,7 +2504,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 指標 [範囲:0~]
@@ -2474,6 +2612,29 @@ namespace XIE.Tasks
 
 			// 実行.
 			this.DataOut[0].Data = body[this.Index];
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -2631,7 +2792,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 指標 [範囲:0~]
@@ -2880,6 +3041,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -3106,6 +3290,29 @@ namespace XIE.Tasks
 		{
 			this.Reset();
 			this.DataOut[0].Data = new List<string>(this.FileNames);
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (List<string>)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion

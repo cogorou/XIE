@@ -140,11 +140,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxStopwatch_ctor.This")]
 		public CxStopwatch This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as CxStopwatch;
+			}
 		}
-		[NonSerialized]
-		private CxStopwatch m_This = new CxStopwatch();
 
 		#endregion
 
@@ -159,11 +159,31 @@ namespace XIE.Tasks
 		{
 			this.Reset();
 
-			if (this.This == null)
-				this.This = new CxStopwatch();
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = new CxStopwatch();
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxStopwatch)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -348,6 +368,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = Convert.ToDouble(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -489,7 +532,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 経過時間 (msec)
@@ -719,6 +762,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = Convert.ToDouble(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -860,7 +926,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ラップタイム (msec)

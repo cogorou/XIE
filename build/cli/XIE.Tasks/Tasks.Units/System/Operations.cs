@@ -33,6 +33,223 @@ namespace XIE.Tasks
 	// Operations
 	// 
 
+	#region Primitive.Assign
+
+	/// <summary>
+	/// 代入
+	/// </summary>
+	[Serializable]
+	[TypeConverter(typeof(CxSortingConverter))]
+	public class Primitive_Assign : CxTaskUnit
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public Primitive_Assign()
+			: base()
+		{
+			this.Category = "Primitive";
+			this.Name = "Assign";
+			this.IconKey = "Parser-Operation";
+
+			this.DataIn = new CxTaskPortIn[]
+			{
+				new CxTaskPortIn("Left"),
+				new CxTaskPortIn("Right"),
+			};
+			this.DataParam = new CxTaskPortIn[]
+			{
+			};
+			this.DataOut = new CxTaskPortOut[]
+			{
+			};
+		}
+
+		private enum Descriptions
+		{
+			/// <summary>
+			/// 左辺値 (代入先)
+			/// </summary>
+			DataIn0,
+
+			/// <summary>
+			/// 右辺値 (代入する値)
+			/// </summary>
+			DataIn1,
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public override void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			#region 同一型:
+			if (src is Primitive_Assign)
+			{
+				base.CopyFrom(src);
+
+				var _src = (Primitive_Assign)src;
+
+				return;
+			}
+			#endregion
+
+			#region XIE.IxConvertible
+			if (src is XIE.IxConvertible)
+			{
+				((XIE.IxConvertible)src).CopyTo(this);
+				return;
+			}
+			#endregion
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public override bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			#region 同一型の比較:
+			{
+				var _src = (Primitive_Assign)src;
+			}
+			#endregion
+
+			return true;
+		}
+
+		#endregion
+
+		#region プロパティ: (Inputs)
+
+		/// <summary>
+		/// 左辺値
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Inputs")]
+		[CxDescription("P:XIE.Tasks.Primitive_Assign.Left")]
+		public string Left
+		{
+			get
+			{
+				if (this.DataIn == null) return "";
+				if (this.DataIn.Length <= 0) return "";
+				object data = this.DataIn[0].Data;
+				if (data == null) return "";
+				return data.ToString();
+			}
+		}
+
+		/// <summary>
+		/// 右辺値
+		/// </summary>
+		[XmlIgnore]
+		[ReadOnly(true)]
+		[CxCategory("Inputs")]
+		[CxDescription("P:XIE.Tasks.Primitive_Assign.Right")]
+		public string Right
+		{
+			get
+			{
+				if (this.DataIn == null) return "";
+				if (this.DataIn.Length <= 1) return "";
+				object data = this.DataIn[1].Data;
+				if (data == null) return "";
+				return data.ToString();
+			}
+		}
+
+		#endregion
+
+		#region メソッド: (実行)
+
+		/// <summary>
+		/// 実行
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public override void Execute(object sender, CxTaskExecuteEventArgs e)
+		{
+			this.Reset();
+
+			// 引数の取得:
+			this.DataIn[0].CheckValidity(true);
+			this.DataIn[1].CheckValidity(true);
+			this.DataIn[0].ReferenceTask.Assign(this.DataIn[0].ReferencePort, this.DataIn[1].Data);
+		}
+
+		#endregion
+
+		#region メソッド: (コード生成)
+
+		/// <summary>
+		/// コード生成: 変数宣言
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateDeclarationCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+		}
+
+		/// <summary>
+		/// コード生成: 処理部
+		/// </summary>
+		/// <param name="sender">呼び出し元</param>
+		/// <param name="e">引数</param>
+		/// <param name="scope">追加先のスコープ</param>
+		public override void GenerateProcedureCode(object sender, CxGenerateCodeArgs e, CodeStatementCollection scope)
+		{
+			if (e.TargetMethod.Name == "Execute")
+			{
+				var connected = !Array.Exists(this.DataIn, (item) => { return (item.IsConnected == false); });
+				if (connected)
+				{
+					scope.Add(new CodeSnippetStatement());
+					scope.Add(new CodeCommentStatement(string.Format("{0}: {1} ({2})", e.TaskNames[this], this.Name, this.Category)));
+
+					var left = new CodeExtraVariable(e.GetVariable(this.DataIn[0]));
+					var right = new CodeExtraVariable(e.GetVariable(this.DataIn[1]));
+
+					if (this.DataIn[0].ReferencePort != null &&
+						this.DataIn[0].ReferencePort.Types.Length > 0)
+					{
+						// left = (left_type)right;
+						scope.Add(left.Assign(new CodeCastExpression(this.DataIn[0].ReferencePort.Types[0], right)));
+					}
+					else
+					{
+						// left = right;
+						scope.Add(left.Assign(right));
+					}
+				}
+			}
+		}
+
+		#endregion
+	}
+
+	#endregion
+
 	#region Primitive.Comparison
 
 	/// <summary>
@@ -368,6 +585,29 @@ namespace XIE.Tasks
 		public override void Restore(object sender, CxTaskExecuteEventArgs e)
 		{
 			base.Restore(sender, e);
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -951,6 +1191,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1501,6 +1764,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1785,7 +2071,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Outputs)
 
 		/// <summary>
 		/// 出力値
@@ -1810,6 +2096,29 @@ namespace XIE.Tasks
 		/// <param name="e"></param>
 		public override void Execute(object sender, CxTaskExecuteEventArgs e)
 		{
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion

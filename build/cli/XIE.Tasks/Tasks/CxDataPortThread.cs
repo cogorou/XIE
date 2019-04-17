@@ -293,7 +293,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// タイムスタンプ (LCT)

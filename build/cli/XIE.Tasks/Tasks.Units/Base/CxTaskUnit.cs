@@ -744,6 +744,20 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public virtual void Assign(CxTaskPortOut target_port, object value)
+		{
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (接続データ)
 
 		/// <summary>

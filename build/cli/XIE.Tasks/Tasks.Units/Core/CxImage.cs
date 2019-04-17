@@ -141,7 +141,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 画像サイズ。幅または高さが 0 の場合は未確保になります。
@@ -242,6 +242,29 @@ namespace XIE.Tasks
 
 			// 出力.
 			this.DataOut[0].Data = this.This;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -491,6 +514,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (TxImageSize)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -689,6 +735,29 @@ namespace XIE.Tasks
 
 			// 出力.
 			this.DataOut[0].Data = this.This;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (TxSizeI)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -895,6 +964,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = Convert.ToInt32(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1058,7 +1150,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ビット深度 [範囲:0=最大値, 1~64:指定値] [既定値:0]
@@ -1290,7 +1382,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ファイル名 [拡張子: bmp,dib,png,jpg,jpeg,tif,tiff,raw]
@@ -1418,6 +1510,29 @@ namespace XIE.Tasks
 			this.DataOut[0].Data = src;
 
 			return;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -1656,7 +1771,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ファイル名 [拡張子: bmp,dib,png,jpg,jpeg,tif,tiff,raw] 空文字を指定した場合は処理を行いません。
@@ -1994,7 +2109,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 画像サイズ。幅または高さが 0 の場合は未確保になります。
@@ -2080,6 +2195,29 @@ namespace XIE.Tasks
 			this.DataOut[0].Data = src;
 
 			return;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -2312,6 +2450,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -2536,6 +2697,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -2725,7 +2909,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 複製先の型 [Type: None=同一型、その他=指定型] [Pack: 0=同一パック数、1~=指定パック数]
@@ -2853,6 +3037,29 @@ namespace XIE.Tasks
 			this.DataOut[0].Data = this.This;
 
 			return;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -3039,7 +3246,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// アタッチするチャネル指標 [範囲:-1=全チャネル、0~=指定チャネル]
@@ -3157,6 +3364,29 @@ namespace XIE.Tasks
 			this.DataOut[0].Data = this.This;
 
 			return;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (CxImage)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -3416,7 +3646,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// チャネル指標 [範囲:0~]
@@ -3478,6 +3708,29 @@ namespace XIE.Tasks
 			this.DataOut[0].Data = this.This;
 	
 			return;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (TxStatistics)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -3669,6 +3922,29 @@ namespace XIE.Tasks
 
 			// 出力.
 			this.DataOut[0].Data = src.Exif();
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (TxExif)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -3964,7 +4240,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 複製後の Exif のタイムゾーン [true=ローカル時刻、false=協定世界時]

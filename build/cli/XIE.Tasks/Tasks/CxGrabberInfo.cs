@@ -54,7 +54,7 @@ namespace XIE.Tasks
 		// プロパティ:
 		//
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// アセンブリ名 (アセンブリファイルまたは厳密名を指定してください。)

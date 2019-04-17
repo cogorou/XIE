@@ -259,6 +259,51 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					if (value is Color)
+					{
+						target_port.Data = (Color)value;
+						return;
+					}
+					else if (value is TxRGB8x3)
+					{
+						target_port.Data = (Color)(TxRGB8x3)value;
+						return;
+					}
+					else if (value is TxRGB8x4)
+					{
+						target_port.Data = (Color)(TxRGB8x4)value;
+						return;
+					}
+					else if (value is TxBGR8x3)
+					{
+						target_port.Data = (Color)(TxBGR8x3)value;
+						return;
+					}
+					else if (value is TxBGR8x4)
+					{
+						target_port.Data = (Color)(TxBGR8x4)value;
+						return;
+					}
+					break;
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -421,7 +466,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// カラー
@@ -532,6 +577,32 @@ namespace XIE.Tasks
 			this.DataOut[1].Data = this.m_Body.G;
 			this.DataOut[2].Data = this.m_Body.B;
 			this.DataOut[3].Data = this.m_Body.A;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+					{
+						target_port.Data = Convert.ToByte(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -945,6 +1016,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (DateTime)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1119,6 +1213,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (DateTime)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -1281,6 +1398,29 @@ namespace XIE.Tasks
 			this.Reset();
 			this.This = DateTime.UtcNow;
 			this.DataOut[0].Data = this.This;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (DateTime)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -1461,7 +1601,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 日時
@@ -1633,6 +1773,35 @@ namespace XIE.Tasks
 			this.DataOut[4].Data = this.Body.Minute;
 			this.DataOut[5].Data = this.Body.Second;
 			this.DataOut[6].Data = this.Body.Millisecond;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+					{
+						target_port.Data = Convert.ToInt32(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -1889,7 +2058,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 日時
@@ -1990,6 +2159,29 @@ namespace XIE.Tasks
 				if (info != null)
 					this.DataOut[0].Data = info.GetValue(this.Body, null);
 			}
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -2377,6 +2569,29 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = (TimeSpan)value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -2546,7 +2761,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 時間間隔
@@ -2655,6 +2870,33 @@ namespace XIE.Tasks
 			this.DataOut[2].Data = this.Body.Minutes;
 			this.DataOut[3].Data = this.Body.Seconds;
 			this.DataOut[4].Data = this.Body.Milliseconds;
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+					{
+						target_port.Data = Convert.ToInt32(value);
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion
@@ -2907,7 +3149,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ:
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// 時間間隔
@@ -3008,6 +3250,29 @@ namespace XIE.Tasks
 				if (info != null)
 					this.DataOut[0].Data = info.GetValue(this.Body, null);
 			}
+		}
+
+		#endregion
+
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			switch (dst_index)
+			{
+				case 0:
+					{
+						target_port.Data = value;
+						return;
+					}
+			}
+			throw new NotSupportedException();
 		}
 
 		#endregion

@@ -59,7 +59,7 @@ namespace XIE.Tasks
 
 		#endregion
 
-		#region プロパティ: (Parameter)
+		#region プロパティ: (Parameters)
 
 		/// <summary>
 		/// ホスト名 (127.0.0.1 のようなアドレス)

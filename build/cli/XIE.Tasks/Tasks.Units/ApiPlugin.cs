@@ -266,6 +266,14 @@ namespace XIE.Tasks
 				}
 				#endregion
 
+				#region Assign
+				{
+					var subdir = AddFolder(category, "Assign", "", "TabPage");
+
+					subdir.Tasks[new XIE.Tasks.Primitive_Assign()] = "";
+				}
+				#endregion
+
 				#region Comparison
 				{
 					var subdir = AddFolder(category, "Comparison", "", "TabPage");
