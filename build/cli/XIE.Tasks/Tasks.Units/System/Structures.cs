@@ -218,12 +218,20 @@ namespace XIE.Tasks
 		/// カラー
 		/// </summary>
 		[XmlIgnore]
-		[ReadOnly(true)]
 		[CxCategory("Outputs")]
-		[CxDescription("P:XIE.Tasks.Color_ctor.This")]
-		public TxRGB8x4 This
+		[CxDescription("P:FIE.Tasks.Color_ctor.This")]
+		public Color This
 		{
 			get { return m_This; }
+			set { m_This = value; }
+		}
+
+		[Browsable(false)]
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public Color ThisForXml
+		{
+			get { return m_This; }
+			set { m_This = value; }
 		}
 		private TxRGB8x4 m_This = new TxRGB8x4(0, 0, 0);
 
@@ -274,27 +282,27 @@ namespace XIE.Tasks
 				case 0:
 					if (value is Color)
 					{
-						target_port.Data = (Color)value;
+						target_port.Data = this.This = (Color)value;
 						return;
 					}
 					else if (value is TxRGB8x3)
 					{
-						target_port.Data = (Color)(TxRGB8x3)value;
+						target_port.Data = this.This = (Color)(TxRGB8x3)value;
 						return;
 					}
 					else if (value is TxRGB8x4)
 					{
-						target_port.Data = (Color)(TxRGB8x4)value;
+						target_port.Data = this.This = (Color)(TxRGB8x4)value;
 						return;
 					}
 					else if (value is TxBGR8x3)
 					{
-						target_port.Data = (Color)(TxBGR8x3)value;
+						target_port.Data = this.This = (Color)(TxBGR8x3)value;
 						return;
 					}
 					else if (value is TxBGR8x4)
 					{
-						target_port.Data = (Color)(TxBGR8x4)value;
+						target_port.Data = this.This = (Color)(TxBGR8x4)value;
 						return;
 					}
 					break;
@@ -1137,8 +1145,6 @@ namespace XIE.Tasks
 
 				var _src = (DateTime_Now)src;
 
-				this.This = _src.This;
-
 				return;
 			}
 			#endregion
@@ -1170,8 +1176,6 @@ namespace XIE.Tasks
 			#region 同一型の比較:
 			{
 				var _src = (DateTime_Now)src;
-
-				if (this.This != _src.This) return false;
 			}
 			#endregion
 
@@ -1190,10 +1194,15 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.DateTime_Now.This")]
 		public DateTime This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				const int index = 0;
+				if (this.DataOut[index].Data is DateTime)
+					return (DateTime)this.DataOut[index].Data;
+				else
+					return DateTime.Now;
+			}
 		}
-		private DateTime m_This = DateTime.Now;
 
 		#endregion
 
@@ -1207,8 +1216,7 @@ namespace XIE.Tasks
 		public override void Execute(object sender, CxTaskExecuteEventArgs e)
 		{
 			this.Reset();
-			this.This = DateTime.Now;
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = DateTime.Now;
 		}
 
 		#endregion
@@ -1326,8 +1334,6 @@ namespace XIE.Tasks
 
 				var _src = (DateTime_UtcNow)src;
 
-				this.This = _src.This;
-
 				return;
 			}
 			#endregion
@@ -1359,8 +1365,6 @@ namespace XIE.Tasks
 			#region 同一型の比較:
 			{
 				var _src = (DateTime_UtcNow)src;
-
-				if (this.This != _src.This) return false;
 			}
 			#endregion
 
@@ -1379,10 +1383,15 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.DateTime_UtcNow.This")]
 		public DateTime This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				const int index = 0;
+				if (this.DataOut[index].Data is DateTime)
+					return (DateTime)this.DataOut[index].Data;
+				else
+					return DateTime.UtcNow;
+			}
 		}
-		private DateTime m_This = DateTime.UtcNow;
 
 		#endregion
 
@@ -1396,8 +1405,7 @@ namespace XIE.Tasks
 		public override void Execute(object sender, CxTaskExecuteEventArgs e)
 		{
 			this.Reset();
-			this.This = DateTime.UtcNow;
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = DateTime.UtcNow;
 		}
 
 		#endregion

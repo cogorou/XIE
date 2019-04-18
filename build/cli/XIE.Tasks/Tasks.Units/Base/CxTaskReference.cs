@@ -340,6 +340,31 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			if (this.DependencyTask == null)
+				throw new NotSupportedException();
+
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			if (0 <= dst_index && dst_index < this.DependencyTask.DataOut.Length)
+			{
+				var dst_port = this.DependencyTask.DataOut[dst_index];
+				this.DependencyTask.Assign(dst_port, value);	// 上流の代入処理の実行:
+				target_port.Data = dst_port.Data;				// 反映:
+				return;
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>

@@ -84,14 +84,11 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.Defs_XIE_PI.This")]
-		public double This
+		public object This
 		{
 			get
 			{
-				int index = 0;
-				if (this.DataOut[index].Data is double)
-					return (double)this.DataOut[index].Data;
-				return 0;
+				return this.DataOut[0].Data;
 			}
 		}
 
@@ -292,14 +289,11 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.Defs_XIE_EPSd.This")]
-		public double This
+		public object This
 		{
 			get
 			{
-				int index = 0;
-				if (this.DataOut[index].Data is double)
-					return (double)this.DataOut[index].Data;
-				return 0;
+				return this.DataOut[0].Data;
 			}
 		}
 
@@ -500,14 +494,11 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.Defs_XIE_EPSf.This")]
-		public float This
+		public object This
 		{
 			get
 			{
-				int index = 0;
-				if (this.DataOut[index].Data is float)
-					return (float)this.DataOut[index].Data;
-				return 0;
+				return this.DataOut[0].Data;
 			}
 		}
 

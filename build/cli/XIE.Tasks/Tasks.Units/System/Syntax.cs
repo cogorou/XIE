@@ -218,6 +218,39 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (指定のデータ出力ポートのデータに値を代入します。)
+		/// </summary>
+		/// <param name="target_port">代入先のデータ出力ポート</param>
+		/// <param name="value">代入する値</param>
+		public override void Assign(CxTaskPortOut target_port, object value)
+		{
+			int dst_index = Array.IndexOf(this.DataOut, target_port);
+			if (0 <= dst_index)
+			{
+				// CxTaskUnit_DataOut_Data の参照先の Assign を実行する.
+				var tasks = this.GetTasks(true);
+				foreach (var task in tasks)
+				{
+					if (task is CxTaskUnit_DataOut_Data)
+					{
+						var port_task = ((CxTaskUnit_DataOut_Data)task);
+						if (port_task.Index == dst_index)
+							port_task.DataIn[0].Assign(value);	// 上流の代入処理の実行:
+					}
+				}
+
+				// 自身のデータ出力ポートに反映する.
+				this.DataOut[dst_index].Data = value;
+				return;
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (コード生成)
 
 		/// <summary>
@@ -2080,7 +2113,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = Convert.ToInt32(value);
+						target_port.Data = this.Index = Convert.ToInt32(value);
 						return;
 					}
 			}
@@ -2375,7 +2408,12 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = Convert.ToInt32(value);
+						target_port.Data = this.This = Convert.ToInt32(value);
+
+						// memo: for 文の指標を for 文内で書き換えられる.
+						var parent = GetBelongTaskflow(this.Parent);
+						if (parent != null)
+							parent.Assign(parent.DataOut[0], value);
 						return;
 					}
 			}
@@ -2987,7 +3025,11 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = value;
+						target_port.Data = this.This = value;
+
+						var parent = GetBelongTaskflow(this.Parent);
+						if (parent != null)
+							parent.Assign(parent.DataOut[0], value);
 						return;
 					}
 			}

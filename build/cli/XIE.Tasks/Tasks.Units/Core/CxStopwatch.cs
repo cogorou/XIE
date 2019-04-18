@@ -334,13 +334,13 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.CxStopwatch_Elapsed_get.This")]
-		public double This
+		public object This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data;
+			}
 		}
-		[NonSerialized]
-		private double m_This = 0;
 
 		#endregion
 
@@ -359,11 +359,8 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			var src = (CxStopwatch)this.DataIn[0].Data;
 
-			// 実行.
-			this.This = src.Elapsed;
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Elapsed;
 		}
 
 		#endregion
@@ -728,13 +725,13 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.CxStopwatch_Lap_get.This")]
-		public double This
+		public object This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data;
+			}
 		}
-		[NonSerialized]
-		private double m_This = 0;
 
 		#endregion
 
@@ -753,11 +750,8 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			var src = (CxStopwatch)this.DataIn[0].Data;
 
-			// 実行.
-			this.This = src.Lap;
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Lap;
 		}
 
 		#endregion

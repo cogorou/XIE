@@ -205,11 +205,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_ctor.This")]
 		public CxImage This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as CxImage;
+			}
 		}
-		[NonSerialized]
-		private CxImage m_This = new CxImage();
 
 		#endregion
 
@@ -235,13 +235,8 @@ namespace XIE.Tasks
 				}
 			}
 
-			if (this.This == null)
-				this.This = new CxImage(this.ImageSize);
-			else
-				this.This.Resize(this.ImageSize);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = new CxImage(this.ImageSize);
 		}
 
 		#endregion
@@ -482,11 +477,15 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_ImageSize.This")]
 		public TxImageSize This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				const int index = 0;
+				if (this.DataOut[index].Data is TxImageSize)
+					return (TxImageSize)this.DataOut[index].Data;
+				else
+					return new TxImageSize();
+			}
 		}
-		[NonSerialized]
-		private TxImageSize m_This = new TxImageSize();
 
 		#endregion
 
@@ -505,11 +504,8 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			var src = (CxImage)this.DataIn[0].Data;
 
-			// 実行.
-			this.This = src.ImageSize;
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.ImageSize;
 		}
 
 		#endregion
@@ -707,11 +703,15 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_Size.This")]
 		public TxSizeI This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				const int index = 0;
+				if (this.DataOut[index].Data is TxSizeI)
+					return (TxSizeI)this.DataOut[index].Data;
+				else
+					return new TxSizeI();
+			}
 		}
-		[NonSerialized]
-		private TxSizeI m_This = new TxSizeI();
 
 		#endregion
 
@@ -730,11 +730,8 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			var src = (CxImage)this.DataIn[0].Data;
 
-			// 実行.
-			this.This = src.Size;
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Size;
 		}
 
 		#endregion
@@ -930,13 +927,13 @@ namespace XIE.Tasks
 		[ReadOnly(true)]
 		[CxCategory("Outputs")]
 		[CxDescription("P:XIE.Tasks.CxImage_Depth_get.This")]
-		public int This
+		public object This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data;
+			}
 		}
-		[NonSerialized]
-		private int m_This = 0;
 
 		#endregion
 
@@ -955,11 +952,8 @@ namespace XIE.Tasks
 			this.DataIn[0].CheckValidity(true);
 			var src = (CxImage)this.DataIn[0].Data;
 
-			// 実行.
-			this.This = src.Depth;
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Depth;
 		}
 
 		#endregion
@@ -2994,11 +2988,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_Clone.This")]
 		public CxImage This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as CxImage;
+			}
 		}
-		[NonSerialized]
-		private CxImage m_This = new CxImage();
 
 		#endregion
 
@@ -3030,11 +3024,8 @@ namespace XIE.Tasks
 				}
 			}
 
-			// 実行.
-			this.This = src.Clone(this.Model, this.Channels, this.Scale);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Clone(this.Model, this.Channels, this.Scale);
 
 			return;
 		}
@@ -3320,11 +3311,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_Child.This")]
 		public CxImage This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as CxImage;
+			}
 		}
-		[NonSerialized]
-		private CxImage m_This = new CxImage();
 
 		#endregion
 
@@ -3357,11 +3348,8 @@ namespace XIE.Tasks
 				}
 			}
 
-			// 実行.
-			this.This = src.Child(this.ChannelNo, this.Bounds);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Child(this.ChannelNo, this.Bounds);
 
 			return;
 		}
@@ -3673,10 +3661,15 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.CxImage_Statistics.This")]
 		public TxStatistics This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				const int index = 0;
+				if (this.DataOut[index].Data is TxStatistics)
+					return (TxStatistics)this.DataOut[index].Data;
+				else
+					return new TxStatistics();
+			}
 		}
-		private TxStatistics m_This = new TxStatistics();
 
 		#endregion
 
@@ -3701,11 +3694,8 @@ namespace XIE.Tasks
 				? (CxImage)this.DataParam[1].Data
 				: (CxImage)null;
 
-			// 実行.
-			this.This = src.Statistics(this.Channel, mask);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.Statistics(this.Channel, mask);
 	
 			return;
 		}

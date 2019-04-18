@@ -1576,11 +1576,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.List_ctor.This")]
 		public System.Collections.IList This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as System.Collections.IList;
+			}
 		}
-		[NonSerialized]
-		private System.Collections.IList m_This = null;
 
 		#endregion
 
@@ -1603,9 +1603,7 @@ namespace XIE.Tasks
 			var body_type = list_type.MakeGenericType(item_type);
 			var body_ctor = body_type.GetConstructor(Type.EmptyTypes);
 
-			this.This = (System.Collections.IList)body_ctor.Invoke(null);
-
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = (System.Collections.IList)body_ctor.Invoke(null);
 		}
 
 		#endregion

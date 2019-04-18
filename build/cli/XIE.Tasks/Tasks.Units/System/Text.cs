@@ -181,7 +181,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = (string)value;
+						target_port.Data = this.This = (string)value;
 						return;
 					}
 			}
@@ -1337,11 +1337,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.Encoding_GetBytes.This")]
 		public byte[] This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as byte[];
+			}
 		}
-		[NonSerialized]
-		private byte[] m_This = new byte[0];
 
 		#endregion
 
@@ -1371,11 +1371,8 @@ namespace XIE.Tasks
 				}
 			}
 
-			// 実行.
-			this.This = src.GetBytes(this.Text);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.GetBytes(this.Text);
 
 			return;
 		}
@@ -1623,11 +1620,11 @@ namespace XIE.Tasks
 		[CxDescription("P:XIE.Tasks.Encoding_GetString.This")]
 		public string This
 		{
-			get { return m_This; }
-			private set { m_This = value; }
+			get
+			{
+				return this.DataOut[0].Data as string;
+			}
 		}
-		[NonSerialized]
-		private string m_This = "";
 
 		#endregion
 
@@ -1659,11 +1656,8 @@ namespace XIE.Tasks
 				}
 			}
 
-			// 実行.
-			this.This = src.GetString(this.Bytes, this.Index, this.Count);
-
 			// 出力.
-			this.DataOut[0].Data = this.This;
+			this.DataOut[0].Data = src.GetString(this.Bytes, this.Index, this.Count);
 
 			return;
 		}

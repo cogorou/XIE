@@ -427,6 +427,41 @@ namespace XIE.Tasks
 
 		#endregion
 
+		#region メソッド: (代入)
+
+		/// <summary>
+		/// 代入 (接続している場合は、接続先の代入を実行します。未接続の場合は、自身が保有するデータを更新します。)
+		/// </summary>
+		/// <param name="value">代入する値</param>
+		public virtual void Assign(object value)
+		{
+			if (this.IsConnected)
+			{
+				this.ReferenceTask.Assign(this.ReferencePort, value);
+				return;
+			}
+			else if (value == null)
+			{
+				this.ResetSubData();
+				return;
+			}
+			else
+			{
+				var src_type = value.GetType();
+				foreach (var dst_type in this.Types)
+				{
+					if (dst_type == src_type)
+					{
+						this.SubData = value;
+						return;
+					}
+				}
+			}
+			throw new NotSupportedException();
+		}
+
+		#endregion
+
 		#region メソッド: (接続)
 
 		/// <summary>
