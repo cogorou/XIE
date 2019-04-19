@@ -174,7 +174,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (ExBoolean)value;
+						target_port.Data = (ExBoolean)value;
 						return;
 					}
 			}
@@ -376,7 +376,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (ExEndianType)value;
+						target_port.Data = (ExEndianType)value;
 						return;
 					}
 			}
@@ -578,7 +578,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (ExScanDir)value;
+						target_port.Data = (ExScanDir)value;
 						return;
 					}
 			}
@@ -780,7 +780,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (ExStatus)value;
+						target_port.Data = (ExStatus)value;
 						return;
 					}
 			}
@@ -982,7 +982,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (ExType)value;
+						target_port.Data = (ExType)value;
 						return;
 					}
 			}

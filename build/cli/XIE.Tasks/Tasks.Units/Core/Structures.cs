@@ -350,7 +350,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxImageSize)value;
+						target_port.Data = (TxImageSize)value;
 						return;
 					}
 			}
@@ -1018,7 +1018,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxModel)value;
+						target_port.Data = (TxModel)value;
 						return;
 					}
 			}
@@ -1547,7 +1547,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRGB8x3)value;
+						target_port.Data = (TxRGB8x3)value;
 						return;
 					}
 			}
@@ -2101,7 +2101,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRGB8x4)value;
+						target_port.Data = (TxRGB8x4)value;
 						return;
 					}
 			}
@@ -2648,7 +2648,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxBGR8x3)value;
+						target_port.Data = (TxBGR8x3)value;
 						return;
 					}
 			}
@@ -3202,7 +3202,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxBGR8x4)value;
+						target_port.Data = (TxBGR8x4)value;
 						return;
 					}
 			}
@@ -3732,7 +3732,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxPointD)value;
+						target_port.Data = (TxPointD)value;
 						return;
 					}
 			}
@@ -4355,7 +4355,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxPointI)value;
+						target_port.Data = (TxPointI)value;
 						return;
 					}
 			}
@@ -4977,7 +4977,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxSizeD)value;
+						target_port.Data = (TxSizeD)value;
 						return;
 					}
 			}
@@ -5484,7 +5484,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxSizeI)value;
+						target_port.Data = (TxSizeI)value;
 						return;
 					}
 			}
@@ -5994,7 +5994,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRangeD)value;
+						target_port.Data = (TxRangeD)value;
 						return;
 					}
 			}
@@ -6501,7 +6501,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRangeI)value;
+						target_port.Data = (TxRangeI)value;
 						return;
 					}
 			}
@@ -7045,7 +7045,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRectangleD)value;
+						target_port.Data = (TxRectangleD)value;
 						return;
 					}
 			}
@@ -7710,7 +7710,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxRectangleI)value;
+						target_port.Data = (TxRectangleI)value;
 						return;
 					}
 			}
@@ -8357,7 +8357,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxCircleD)value;
+						target_port.Data = (TxCircleD)value;
 						return;
 					}
 			}
@@ -8993,7 +8993,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxCircleI)value;
+						target_port.Data = (TxCircleI)value;
 						return;
 					}
 			}
@@ -9665,7 +9665,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxCircleArcD)value;
+						target_port.Data = (TxCircleArcD)value;
 						return;
 					}
 			}
@@ -10395,7 +10395,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxCircleArcI)value;
+						target_port.Data = (TxCircleArcI)value;
 						return;
 					}
 			}
@@ -11107,7 +11107,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxEllipseD)value;
+						target_port.Data = (TxEllipseD)value;
 						return;
 					}
 			}
@@ -11772,7 +11772,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxEllipseI)value;
+						target_port.Data = (TxEllipseI)value;
 						return;
 					}
 			}
@@ -12473,7 +12473,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxEllipseArcD)value;
+						target_port.Data = (TxEllipseArcD)value;
 						return;
 					}
 			}
@@ -13232,7 +13232,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxEllipseArcI)value;
+						target_port.Data = (TxEllipseArcI)value;
 						return;
 					}
 			}
@@ -13937,7 +13937,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxLineD)value;
+						target_port.Data = (TxLineD)value;
 						return;
 					}
 			}
@@ -14573,7 +14573,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxLineI)value;
+						target_port.Data = (TxLineI)value;
 						return;
 					}
 			}
@@ -15227,7 +15227,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxLineSegmentD)value;
+						target_port.Data = (TxLineSegmentD)value;
 						return;
 					}
 			}
@@ -15892,7 +15892,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxLineSegmentI)value;
+						target_port.Data = (TxLineSegmentI)value;
 						return;
 					}
 			}
@@ -16629,7 +16629,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxTrapezoidD)value;
+						target_port.Data = (TxTrapezoidD)value;
 						return;
 					}
 			}
@@ -17410,7 +17410,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxTrapezoidI)value;
+						target_port.Data = (TxTrapezoidI)value;
 						return;
 					}
 			}
@@ -18136,7 +18136,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (TxStatistics)value;
+						target_port.Data = (TxStatistics)value;
 						return;
 					}
 			}

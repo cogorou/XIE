@@ -181,7 +181,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToBoolean(value);
+						target_port.Data = Convert.ToBoolean(value);
 						return;
 					}
 			}
@@ -383,7 +383,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToByte(value);
+						target_port.Data = Convert.ToByte(value);
 						return;
 					}
 			}
@@ -585,7 +585,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToSByte(value);
+						target_port.Data = Convert.ToSByte(value);
 						return;
 					}
 			}
@@ -787,7 +787,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToChar(value);
+						target_port.Data = Convert.ToChar(value);
 						return;
 					}
 			}
@@ -989,7 +989,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToUInt16(value);
+						target_port.Data = Convert.ToUInt16(value);
 						return;
 					}
 			}
@@ -1191,7 +1191,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToInt16(value);
+						target_port.Data = Convert.ToInt16(value);
 						return;
 					}
 			}
@@ -1393,7 +1393,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToUInt32(value);
+						target_port.Data = Convert.ToUInt32(value);
 						return;
 					}
 			}
@@ -1595,7 +1595,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToInt32(value);
+						target_port.Data = Convert.ToInt32(value);
 						return;
 					}
 			}
@@ -1797,7 +1797,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToUInt64(value);
+						target_port.Data = Convert.ToUInt64(value);
 						return;
 					}
 			}
@@ -1999,7 +1999,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToInt64(value);
+						target_port.Data = Convert.ToInt64(value);
 						return;
 					}
 			}
@@ -2201,7 +2201,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToSingle(value);
+						target_port.Data = Convert.ToSingle(value);
 						return;
 					}
 			}
@@ -2403,7 +2403,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = Convert.ToDouble(value);
+						target_port.Data = Convert.ToDouble(value);
 						return;
 					}
 			}

@@ -181,7 +181,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
-						target_port.Data = this.This = (string)value;
+						target_port.Data = (string)value;
 						return;
 					}
 			}

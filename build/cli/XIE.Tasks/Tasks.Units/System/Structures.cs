@@ -282,27 +282,27 @@ namespace XIE.Tasks
 				case 0:
 					if (value is Color)
 					{
-						target_port.Data = this.This = (Color)value;
+						target_port.Data = (Color)value;
 						return;
 					}
 					else if (value is TxRGB8x3)
 					{
-						target_port.Data = this.This = (Color)(TxRGB8x3)value;
+						target_port.Data = (Color)(TxRGB8x3)value;
 						return;
 					}
 					else if (value is TxRGB8x4)
 					{
-						target_port.Data = this.This = (Color)(TxRGB8x4)value;
+						target_port.Data = (Color)(TxRGB8x4)value;
 						return;
 					}
 					else if (value is TxBGR8x3)
 					{
-						target_port.Data = this.This = (Color)(TxBGR8x3)value;
+						target_port.Data = (Color)(TxBGR8x3)value;
 						return;
 					}
 					else if (value is TxBGR8x4)
 					{
-						target_port.Data = this.This = (Color)(TxBGR8x4)value;
+						target_port.Data = (Color)(TxBGR8x4)value;
 						return;
 					}
 					break;

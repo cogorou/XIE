@@ -2113,6 +2113,7 @@ namespace XIE.Tasks
 			{
 				case 0:
 					{
+						// memo: for 文の指標を for 文内で書き換えられる.
 						target_port.Data = this.Index = Convert.ToInt32(value);
 						return;
 					}
@@ -3027,6 +3028,7 @@ namespace XIE.Tasks
 					{
 						target_port.Data = this.This = value;
 
+						// memo: foreach の item を差し替える.
 						var parent = GetBelongTaskflow(this.Parent);
 						if (parent != null)
 							parent.Assign(parent.DataOut[0], value);
