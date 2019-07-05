@@ -57,6 +57,7 @@
 			this.menuDataClose = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuDataThumbnail = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuDataProperty = new System.Windows.Forms.ToolStripMenuItem();
 			this.MediaMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.menuMediaStart = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuMediaPause = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,16 +89,6 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuTaskThumbnail = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuTaskProperty = new System.Windows.Forms.ToolStripMenuItem();
-			this.GrabberMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.menuGrabberOpen = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuGrabberClose = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-			this.menuGrabberProperty = new System.Windows.Forms.ToolStripMenuItem();
-			this.DataPortMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.menuDataPortOpen = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuDataPortClose = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
-			this.menuDataPortProperty = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolbarView = new XIE.Forms.CxToolStripEx();
 			this.toolLogForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
@@ -186,7 +177,6 @@
 			this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuViewProfile = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewGrid = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuDataProperty = new System.Windows.Forms.ToolStripMenuItem();
 			this.statusbar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitVert)).BeginInit();
 			this.splitVert.Panel1.SuspendLayout();
@@ -197,8 +187,6 @@
 			this.MediaMenu.SuspendLayout();
 			this.CameraMenu.SuspendLayout();
 			this.TaskMenu.SuspendLayout();
-			this.GrabberMenu.SuspendLayout();
-			this.DataPortMenu.SuspendLayout();
 			this.toolbarView.SuspendLayout();
 			this.ImageViewMenu.SuspendLayout();
 			this.SuspendLayout();
@@ -412,7 +400,7 @@
             this.menuDataThumbnail,
             this.menuDataProperty});
 			this.DataMenu.Name = "CameraParamMenu";
-			this.DataMenu.Size = new System.Drawing.Size(185, 142);
+			this.DataMenu.Size = new System.Drawing.Size(185, 120);
 			this.DataMenu.Opened += new System.EventHandler(this.DataMenu_Opened);
 			// 
 			// menuDataOpen
@@ -452,6 +440,14 @@
 			this.menuDataThumbnail.Size = new System.Drawing.Size(184, 22);
 			this.menuDataThumbnail.Text = "Thumbnail";
 			this.menuDataThumbnail.Click += new System.EventHandler(this.menuDataThumbnail_Click);
+			// 
+			// menuDataProperty
+			// 
+			this.menuDataProperty.Image = ((System.Drawing.Image)(resources.GetObject("menuDataProperty.Image")));
+			this.menuDataProperty.Name = "menuDataProperty";
+			this.menuDataProperty.Size = new System.Drawing.Size(184, 22);
+			this.menuDataProperty.Text = "Property (&R)";
+			this.menuDataProperty.Click += new System.EventHandler(this.menuDataProperty_Click);
 			// 
 			// MediaMenu
 			// 
@@ -705,86 +701,6 @@
 			this.menuTaskProperty.Size = new System.Drawing.Size(184, 22);
 			this.menuTaskProperty.Text = "Property (&R)";
 			this.menuTaskProperty.Click += new System.EventHandler(this.menuTaskProperty_Click);
-			// 
-			// GrabberMenu
-			// 
-			this.GrabberMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrabberOpen,
-            this.menuGrabberClose,
-            this.toolStripSeparator20,
-            this.menuGrabberProperty});
-			this.GrabberMenu.Name = "DioMenu";
-			this.GrabberMenu.Size = new System.Drawing.Size(149, 76);
-			this.GrabberMenu.Opened += new System.EventHandler(this.GrabberMenu_Opened);
-			// 
-			// menuGrabberOpen
-			// 
-			this.menuGrabberOpen.Image = ((System.Drawing.Image)(resources.GetObject("menuGrabberOpen.Image")));
-			this.menuGrabberOpen.Name = "menuGrabberOpen";
-			this.menuGrabberOpen.Size = new System.Drawing.Size(148, 22);
-			this.menuGrabberOpen.Text = "Open (&O)";
-			this.menuGrabberOpen.Click += new System.EventHandler(this.menuGrabberOpen_Click);
-			// 
-			// menuGrabberClose
-			// 
-			this.menuGrabberClose.Image = ((System.Drawing.Image)(resources.GetObject("menuGrabberClose.Image")));
-			this.menuGrabberClose.Name = "menuGrabberClose";
-			this.menuGrabberClose.Size = new System.Drawing.Size(148, 22);
-			this.menuGrabberClose.Text = "Close (&C)";
-			this.menuGrabberClose.Click += new System.EventHandler(this.menuGrabberClose_Click);
-			// 
-			// toolStripSeparator20
-			// 
-			this.toolStripSeparator20.Name = "toolStripSeparator20";
-			this.toolStripSeparator20.Size = new System.Drawing.Size(145, 6);
-			// 
-			// menuGrabberProperty
-			// 
-			this.menuGrabberProperty.Image = ((System.Drawing.Image)(resources.GetObject("menuGrabberProperty.Image")));
-			this.menuGrabberProperty.Name = "menuGrabberProperty";
-			this.menuGrabberProperty.Size = new System.Drawing.Size(148, 22);
-			this.menuGrabberProperty.Text = "Property (&R)";
-			this.menuGrabberProperty.Click += new System.EventHandler(this.menuGrabberProperty_Click);
-			// 
-			// DataPortMenu
-			// 
-			this.DataPortMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDataPortOpen,
-            this.menuDataPortClose,
-            this.toolStripSeparator19,
-            this.menuDataPortProperty});
-			this.DataPortMenu.Name = "DioMenu";
-			this.DataPortMenu.Size = new System.Drawing.Size(149, 76);
-			this.DataPortMenu.Opened += new System.EventHandler(this.DataPortMenu_Opened);
-			// 
-			// menuDataPortOpen
-			// 
-			this.menuDataPortOpen.Image = ((System.Drawing.Image)(resources.GetObject("menuDataPortOpen.Image")));
-			this.menuDataPortOpen.Name = "menuDataPortOpen";
-			this.menuDataPortOpen.Size = new System.Drawing.Size(148, 22);
-			this.menuDataPortOpen.Text = "Open (&O)";
-			this.menuDataPortOpen.Click += new System.EventHandler(this.menuDataPortOpen_Click);
-			// 
-			// menuDataPortClose
-			// 
-			this.menuDataPortClose.Image = ((System.Drawing.Image)(resources.GetObject("menuDataPortClose.Image")));
-			this.menuDataPortClose.Name = "menuDataPortClose";
-			this.menuDataPortClose.Size = new System.Drawing.Size(148, 22);
-			this.menuDataPortClose.Text = "Close (&C)";
-			this.menuDataPortClose.Click += new System.EventHandler(this.menuDataPortClose_Click);
-			// 
-			// toolStripSeparator19
-			// 
-			this.toolStripSeparator19.Name = "toolStripSeparator19";
-			this.toolStripSeparator19.Size = new System.Drawing.Size(145, 6);
-			// 
-			// menuDataPortProperty
-			// 
-			this.menuDataPortProperty.Image = ((System.Drawing.Image)(resources.GetObject("menuDataPortProperty.Image")));
-			this.menuDataPortProperty.Name = "menuDataPortProperty";
-			this.menuDataPortProperty.Size = new System.Drawing.Size(148, 22);
-			this.menuDataPortProperty.Text = "Property (&R)";
-			this.menuDataPortProperty.Click += new System.EventHandler(this.menuDataPortProperty_Click);
 			// 
 			// toolbarView
 			// 
@@ -1621,14 +1537,6 @@
 			this.menuViewGrid.Text = "Grid";
 			this.menuViewGrid.Click += new System.EventHandler(this.menuViewGrid_Click);
 			// 
-			// menuDataProperty
-			// 
-			this.menuDataProperty.Image = ((System.Drawing.Image)(resources.GetObject("menuDataProperty.Image")));
-			this.menuDataProperty.Name = "menuDataProperty";
-			this.menuDataProperty.Size = new System.Drawing.Size(184, 22);
-			this.menuDataProperty.Text = "Property (&R)";
-			this.menuDataProperty.Click += new System.EventHandler(this.menuDataProperty_Click);
-			// 
 			// CxAuxInfoForm
 			// 
 			this.AllowDrop = true;
@@ -1665,8 +1573,6 @@
 			this.MediaMenu.ResumeLayout(false);
 			this.CameraMenu.ResumeLayout(false);
 			this.TaskMenu.ResumeLayout(false);
-			this.GrabberMenu.ResumeLayout(false);
-			this.DataPortMenu.ResumeLayout(false);
 			this.toolbarView.ResumeLayout(false);
 			this.toolbarView.PerformLayout();
 			this.ImageViewMenu.ResumeLayout(false);
@@ -1781,16 +1687,6 @@
 		private System.Windows.Forms.ToolStripButton toolViewExif;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
-		private System.Windows.Forms.ContextMenuStrip GrabberMenu;
-		private System.Windows.Forms.ToolStripMenuItem menuGrabberOpen;
-		private System.Windows.Forms.ToolStripMenuItem menuGrabberClose;
-		private System.Windows.Forms.ContextMenuStrip DataPortMenu;
-		private System.Windows.Forms.ToolStripMenuItem menuDataPortOpen;
-		private System.Windows.Forms.ToolStripMenuItem menuDataPortClose;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
-		private System.Windows.Forms.ToolStripMenuItem menuGrabberProperty;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
-		private System.Windows.Forms.ToolStripMenuItem menuDataPortProperty;
 		private System.Windows.Forms.ToolStripStatusLabel toolImagePrev;
 		private System.Windows.Forms.ToolStripStatusLabel toolImageName;
 		private System.Windows.Forms.ToolStripStatusLabel toolImageNext;

@@ -368,7 +368,7 @@ namespace XIEstudio
 			get { return m_PaintBrush; }
 			set { m_PaintBrush = value; }
 		}
-		private CxPaintBrush m_PaintBrush = new CxPaintBrush();
+		private CxPaintBrush m_PaintBrush = (CxPaintBrush)CxImageEditorForm.ImageEditorSettings.PaintBrush.Clone();
 
 		/// <summary>
 		/// ペイント水滴ツール
@@ -378,7 +378,7 @@ namespace XIEstudio
 			get { return m_PaintDrop; }
 			set { m_PaintDrop = value; }
 		}
-		private CxPaintDrop m_PaintDrop = new CxPaintDrop();
+		private CxPaintDrop m_PaintDrop = (CxPaintDrop)CxImageEditorForm.ImageEditorSettings.PaintDrop.Clone();
 
 		#endregion
 
@@ -770,6 +770,7 @@ namespace XIEstudio
 	/// <summary>
 	/// 図形操作オーバレイ
 	/// </summary>
+	[Serializable]
 	public class CxFigureOverlay : System.Object
 		, IDisposable
 		, ICloneable
@@ -1287,21 +1288,29 @@ namespace XIEstudio
 		/// <summary>
 		/// マウス操作開始時のイベント引数
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		private XIE.GDI.CxHandlingEventArgs HandlingEventArgs = null;
 
 		/// <summary>
 		/// マウス位置判定時のイベント引数
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		private XIE.GDI.CxHandlingEventArgs HitEventArgs = null;
 
 		/// <summary>
 		/// マウス位置にある図形
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		private XIE.GDI.IxGdi2d HitFigure = null;
 
 		/// <summary>
 		/// マウスが図形上のどの位置にあるかを示す位置情報
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		private XIE.GDI.TxHitPosition HitPosition = new XIE.GDI.TxHitPosition();
 
 		#endregion
@@ -1311,6 +1320,8 @@ namespace XIEstudio
 		/// <summary>
 		/// 操作前にコールバックされる関数
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		public XIE.GDI.CxHandlingEventHandler BeginHandling = null;
 
 		#endregion
@@ -1449,6 +1460,7 @@ namespace XIEstudio
 	/// <summary>
 	/// ペイントブラシツール
 	/// </summary>
+	[Serializable]
 	public class CxPaintBrush : System.Object
 		, ICloneable
 		, IxEquatable
@@ -1547,7 +1559,20 @@ namespace XIEstudio
 		{
 			if (ReferenceEquals(src, null)) return false;
 			if (ReferenceEquals(src, this)) return true;
-			return false;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			try
+			{
+				var _src = (CxPaintBrush)src;
+				if (this.Color != _src.Color) return false;
+				if (this.BrushSize != _src.BrushSize) return false;
+
+				return true;
+			}
+			catch (System.Exception)
+			{
+				return false;
+			}
 		}
 
 		#endregion
@@ -1582,6 +1607,8 @@ namespace XIEstudio
 			}
 			#endregion
 		}
+		[XmlIgnore]
+		[NonSerialized]
 		private TxPointD MousePosition = new TxPointD();
 
 		#endregion
@@ -1936,6 +1963,12 @@ namespace XIEstudio
 									this.Color = current_color;
 								}
 								#endregion
+
+								#region ImageEditorSettings への反映:
+								{
+									CxImageEditorForm.ImageEditorSettings.PaintBrush = (XIEstudio.CxPaintBrush)((ICloneable)this).Clone();
+								}
+								#endregion
 							}
 							#endregion
 							break;
@@ -1950,6 +1983,8 @@ namespace XIEstudio
 		/// <summary>
 		/// マウスが押下されているか否か
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		private bool IsPressed = false;
 
 		#endregion
@@ -1959,6 +1994,8 @@ namespace XIEstudio
 		/// <summary>
 		/// 操作前にコールバックされる関数
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		public XIE.GDI.CxHandlingEventHandler BeginHandling = null;
 
 		#endregion
@@ -1967,6 +2004,7 @@ namespace XIEstudio
 	/// <summary>
 	/// ペイント水滴ツール
 	/// </summary>
+	[Serializable]
 	public class CxPaintDrop : System.Object
 		, ICloneable
 		, IxEquatable
@@ -2065,7 +2103,20 @@ namespace XIEstudio
 		{
 			if (ReferenceEquals(src, null)) return false;
 			if (ReferenceEquals(src, this)) return true;
-			return false;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			try
+			{
+				var _src = (CxPaintDrop)src;
+				if (this.Color != _src.Color) return false;
+				if (this.ErrorRange != _src.ErrorRange) return false;
+
+				return true;
+			}
+			catch (System.Exception)
+			{
+				return false;
+			}
 		}
 
 		#endregion
@@ -2125,6 +2176,8 @@ namespace XIEstudio
 			}
 			#endregion
 		}
+		[XmlIgnore]
+		[NonSerialized]
 		private TxPointD MousePosition = new TxPointD();
 
 		#endregion
@@ -2583,6 +2636,12 @@ namespace XIEstudio
 									this.Color = current_color;
 								}
 								#endregion
+
+								#region ImageEditorSettings への反映:
+								{
+									CxImageEditorForm.ImageEditorSettings.PaintDrop = (XIEstudio.CxPaintDrop)((ICloneable)this).Clone();
+								}
+								#endregion
 							}
 							#endregion
 							break;
@@ -2601,6 +2660,8 @@ namespace XIEstudio
 		/// <summary>
 		/// 操作前にコールバックされる関数
 		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
 		public XIE.GDI.CxHandlingEventHandler BeginHandling = null;
 
 		#endregion

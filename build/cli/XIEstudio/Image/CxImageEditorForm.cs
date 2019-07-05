@@ -26,6 +26,20 @@ namespace XIEstudio
 	/// </summary>
 	public partial class CxImageEditorForm : Form
 	{
+		#region 共有データ:
+
+		/// <summary>
+		/// 画像編集フォーム設定
+		/// </summary>
+		public static CxImageEditorSettings ImageEditorSettings = null;
+
+		/// <summary>
+		/// 画像編集フォーム設定ファイルパス
+		/// </summary>
+		public static string ImageEditorSettingsFileName = "";
+
+		#endregion
+
 		#region コンストラクタ:
 
 		/// <summary>
@@ -1750,81 +1764,29 @@ namespace XIEstudio
 			#region 図形の新規生成:
 			do
 			{
-				if (ReferenceEquals(sender, menuFigureAddPoint))
+				if (ReferenceEquals(sender, menuFigureAddString))
 				{
+					var figure = (XIE.GDI.CxGdiString)CxImageEditorForm.ImageEditorSettings.String.Clone();
 					var center = vis.Location + vis.Size / 2;
-					var size = new XIE.TxSizeD(10, 10);
-					var figure = new XIE.GDI.CxGdiPoint(center);
-					figure.PenColor = Color.Red;
-					figure.AnchorSize = (mag < 1) ? size / mag : size;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddLineSegment))
-				{
-					var center = vis.Location + vis.Size / 2;
-					var size = vis.Size / 8;
-					var st = center - size;
-					var ed = center + size;
-					var figure = new XIE.GDI.CxGdiLineSegment(st, ed);
-					figure.PenColor = Color.Red;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddLine))
-				{
-					var figure = new XIE.GDI.CxGdiLine(-0.75, 1, 0);
-					figure.PenColor = Color.Red;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddCircle))
-				{
-					var center = vis.Location + vis.Size / 2;
-					var radius = System.Math.Min(vis.Size.Width, vis.Size.Height) / 8;
-					var figure = new XIE.GDI.CxGdiCircle(center, radius);
-					figure.PenColor = Color.Red;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddCircleArc))
-				{
-					var center = vis.Location + vis.Size / 2;
-					var radius = System.Math.Min(vis.Size.Width, vis.Size.Height) / 8;
-					var figure = new XIE.GDI.CxGdiCircleArc(center, radius, 0, 270);
-					figure.PenColor = Color.Red;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddEllipse))
-				{
-					var center = vis.Location + vis.Size / 2;
-					var radius = vis.Size / 8;
-					var figure = new XIE.GDI.CxGdiEllipse(center, radius.Width, radius.Height);
-					figure.PenColor = Color.Red;
-					added_figure = figure;
-					break;
-				}
-				if (ReferenceEquals(sender, menuFigureAddEllipseArc))
-				{
-					var center = vis.Location + vis.Size / 2;
-					var radius = vis.Size / 8;
-					var figure = new XIE.GDI.CxGdiEllipseArc(center, radius.Width, radius.Height, 0, 270);
-					figure.PenColor = Color.Red;
+					figure.Location = center;
+					var now = DateTime.Now;
+					figure.Text = string.Format("{0:0000}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}.{6:000}",
+						now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
 					added_figure = figure;
 					break;
 				}
 				if (ReferenceEquals(sender, menuFigureAddRectangle))
 				{
+					var figure = CxImageEditorForm.ImageEditorSettings.Rectangle;
 					var center = vis.Location + vis.Size / 2;
 					var size = vis.Size / 8;
-					var figure = new XIE.GDI.CxGdiRectangle(center - size, size * 2);
-					figure.PenColor = Color.Red;
+					figure.Shape = new TxRectangleD(center - size, size * 2);
 					added_figure = figure;
 					break;
 				}
 				if (ReferenceEquals(sender, menuFigureAddTrapezoid))
 				{
+					var figure = CxImageEditorForm.ImageEditorSettings.Trapezoid;
 					var center = vis.Location + vis.Size / 2;
 					var size1 = vis.Size / 8;
 					var size2 = vis.Size / 6;
@@ -1832,41 +1794,92 @@ namespace XIEstudio
 					var p2 = center + new XIE.TxSizeD(+size1.Width, -size1.Height);
 					var p3 = center + new XIE.TxSizeD(+size2.Width, +size1.Height);
 					var p4 = center + new XIE.TxSizeD(-size2.Width, +size1.Height);
-					var figure = new XIE.GDI.CxGdiTrapezoid(p1, p2, p3, p4);
-					figure.PenColor = Color.Red;
+					figure.Shape = new TxTrapezoidD(p1, p2, p3, p4);
 					added_figure = figure;
 					break;
 				}
-				if (ReferenceEquals(sender, menuFigureAddPolyline))
+				if (ReferenceEquals(sender, menuFigureAddPoint))
 				{
+					var figure = CxImageEditorForm.ImageEditorSettings.Point;
 					var center = vis.Location + vis.Size / 2;
-					var size1 = vis.Size / 8;
-					var size2 = vis.Size / 16;
-					var points = new XIE.TxPointD[]
-					{
-						center + new XIE.TxSizeD(-size1.Width, -size1.Height),
-						center + new XIE.TxSizeD(-size2.Width, +size1.Height),
-						center,
-						center + new XIE.TxSizeD(+size2.Width, +size1.Height),
-						center + new XIE.TxSizeD(+size1.Width, -size1.Height),
-					};
-					var figure = new XIE.GDI.CxGdiPolyline(points);
-					figure.PenColor = Color.Red;
+					var size = new XIE.TxSizeD(10, 10);
+					figure.Shape = center;
+					figure.AnchorSize = (mag < 1) ? size / mag : size;
 					added_figure = figure;
 					break;
 				}
-				if (ReferenceEquals(sender, menuFigureAddString))
+				if (ReferenceEquals(sender, menuFigureAddLineSegment))
 				{
-					var figure = new XIE.GDI.CxGdiString();
+					var figure = CxImageEditorForm.ImageEditorSettings.LineSegment;
 					var center = vis.Location + vis.Size / 2;
-					figure.Location = center;
-					figure.PenColor = Color.Red;
-					var now = DateTime.Now;
-					figure.Text = string.Format("{0:0000}/{1:00}/{2:00} {3:00}:{4:00}:{5:00}.{6:000}",
-						now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second, now.Millisecond);
+					var size = vis.Size / 8;
+					var st = center - size;
+					var ed = center + size;
+					figure.Shape = new TxLineSegmentD(st, ed);
 					added_figure = figure;
 					break;
 				}
+				//if (ReferenceEquals(sender, menuFigureAddLine))
+				//{
+				//	var figure = CxImageEditorForm.ImageEditorSettings.Line;
+				//	figure.Shape = new TxLineD(-0.75, 1, 0);
+				//	added_figure = figure;
+				//	break;
+				//}
+				if (ReferenceEquals(sender, menuFigureAddCircle))
+				{
+					var figure = CxImageEditorForm.ImageEditorSettings.Circle;
+					var center = vis.Location + vis.Size / 2;
+					var radius = System.Math.Min(vis.Size.Width, vis.Size.Height) / 8;
+					figure.Shape = new TxCircleD(center, radius);
+					added_figure = figure;
+					break;
+				}
+				if (ReferenceEquals(sender, menuFigureAddCircleArc))
+				{
+					var figure = CxImageEditorForm.ImageEditorSettings.CircleArc;
+					var center = vis.Location + vis.Size / 2;
+					var radius = System.Math.Min(vis.Size.Width, vis.Size.Height) / 8;
+					figure.Shape = new TxCircleArcD(center, radius, 0, 270);
+					added_figure = figure;
+					break;
+				}
+				if (ReferenceEquals(sender, menuFigureAddEllipse))
+				{
+					var figure = CxImageEditorForm.ImageEditorSettings.Ellipse;
+					var center = vis.Location + vis.Size / 2;
+					var radius = vis.Size / 8;
+					figure.Shape = new TxEllipseD(center, radius.Width, radius.Height);
+					added_figure = figure;
+					break;
+				}
+				if (ReferenceEquals(sender, menuFigureAddEllipseArc))
+				{
+					var figure = CxImageEditorForm.ImageEditorSettings.EllipseArc;
+					var center = vis.Location + vis.Size / 2;
+					var radius = vis.Size / 8;
+					figure.Shape = new TxEllipseArcD(center, radius.Width, radius.Height, 0, 270);
+					added_figure = figure;
+					break;
+				}
+				//if (ReferenceEquals(sender, menuFigureAddPolyline))
+				//{
+				//	var figure = (XIE.GDI.CxGdiPolyline)CxImageEditorForm.ImageEditorSettings.Polyline.Clone();
+				//	var center = vis.Location + vis.Size / 2;
+				//	var size1 = vis.Size / 8;
+				//	var size2 = vis.Size / 16;
+				//	var points = new XIE.TxPointD[]
+				//	{
+				//		center + new XIE.TxSizeD(-size1.Width, -size1.Height),
+				//		center + new XIE.TxSizeD(-size2.Width, +size1.Height),
+				//		center,
+				//		center + new XIE.TxSizeD(+size2.Width, +size1.Height),
+				//		center + new XIE.TxSizeD(+size1.Width, -size1.Height),
+				//	};
+				//	figure.Shape = points;
+				//	added_figure = figure;
+				//	break;
+				//}
 			} while (false);
 			#endregion
 
@@ -2065,6 +2078,74 @@ namespace XIEstudio
 					this.ImageNode.Overlay.SelectedFigures.Add(figure);
 				}
 			}
+
+			#region ImageEditorSettings への反映:
+			// this is not loop.
+			do
+			{
+				var overlay = propertyOverlay.SelectedObject;
+
+				// オーバレイ図形:
+				if (overlay is XIE.GDI.CxGdiPoint)
+				{
+					CxImageEditorForm.ImageEditorSettings.Point = (XIE.GDI.CxGdiPoint)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiLineSegment)
+				{
+					CxImageEditorForm.ImageEditorSettings.LineSegment = (XIE.GDI.CxGdiLineSegment)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiCircle)
+				{
+					CxImageEditorForm.ImageEditorSettings.Circle = (XIE.GDI.CxGdiCircle)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiCircleArc)
+				{
+					CxImageEditorForm.ImageEditorSettings.CircleArc = (XIE.GDI.CxGdiCircleArc)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiEllipse)
+				{
+					CxImageEditorForm.ImageEditorSettings.Ellipse = (XIE.GDI.CxGdiEllipse)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiEllipseArc)
+				{
+					CxImageEditorForm.ImageEditorSettings.EllipseArc = (XIE.GDI.CxGdiEllipseArc)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiRectangle)
+				{
+					CxImageEditorForm.ImageEditorSettings.Rectangle = (XIE.GDI.CxGdiRectangle)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiTrapezoid)
+				{
+					CxImageEditorForm.ImageEditorSettings.Trapezoid = (XIE.GDI.CxGdiTrapezoid)overlay;
+					break;
+				}
+				if (overlay is XIE.GDI.CxGdiString)
+				{
+					CxImageEditorForm.ImageEditorSettings.String = (XIE.GDI.CxGdiString)((ICloneable)overlay).Clone();
+					break;
+				}
+
+				// オーバレイツール:
+				if (overlay is XIEstudio.CxPaintBrush)
+				{
+					CxImageEditorForm.ImageEditorSettings.PaintBrush = (XIEstudio.CxPaintBrush)((ICloneable)overlay).Clone();
+					break;
+				}
+				if (overlay is XIEstudio.CxPaintDrop)
+				{
+					CxImageEditorForm.ImageEditorSettings.PaintDrop = (XIEstudio.CxPaintDrop)((ICloneable)overlay).Clone();
+					break;
+				}
+			}
+			while (false);
+			#endregion
 
 			this.ImageView.Refresh();
 

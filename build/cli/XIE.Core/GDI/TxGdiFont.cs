@@ -131,9 +131,10 @@ namespace XIE.GDI
 			get
 			{
 				var result = new TxGdiFont();
-				result.Name = "Consolas";
-				result.Size = 14;
-				result.Style = FontStyle.Regular;
+				var deffont = System.Drawing.SystemFonts.DefaultFont;
+				result.Name = deffont.FontFamily.Name;
+				result.Size = deffont.Size;
+				result.Style = deffont.Style;
 				return result;
 			}
 		}

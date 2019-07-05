@@ -392,6 +392,23 @@ namespace XIEstudio
 			}
 			#endregion
 
+			#region 画像編集フォーム設定の初期化:
+			try
+			{
+				CxImageEditorForm.ImageEditorSettings = new XIEstudio.CxImageEditorSettings();
+
+				CxImageEditorForm.ImageEditorSettingsFileName = System.IO.Path.Combine(XIE.Tasks.SharedData.ProjectDir, "ImageEditorSettings.xml");
+				if (System.IO.File.Exists(CxImageEditorForm.ImageEditorSettingsFileName))
+					CxImageEditorForm.ImageEditorSettings.Load(CxImageEditorForm.ImageEditorSettingsFileName);
+
+				CxImageEditorForm.ImageEditorSettings.Setup();
+			}
+			catch (System.Exception ex)
+			{
+				XIE.Log.Api.Error(ex.StackTrace);
+			}
+			#endregion
+
 			#region 参照設定の初期化:
 			try
 			{
@@ -427,6 +444,17 @@ namespace XIEstudio
 				if (System.IO.Directory.Exists(dir))
 				{
 					CxAuxInfoForm.AppSettings.Save(CxAuxInfoForm.AppSettingsFileName);
+				}
+			}
+			#endregion
+
+			#region 画像編集フォーム設定の保存:
+			if (string.IsNullOrEmpty(CxImageEditorForm.ImageEditorSettingsFileName) == false)
+			{
+				var dir = System.IO.Path.GetDirectoryName(CxImageEditorForm.ImageEditorSettingsFileName);
+				if (System.IO.Directory.Exists(dir))
+				{
+					CxImageEditorForm.ImageEditorSettings.Save(CxImageEditorForm.ImageEditorSettingsFileName);
 				}
 			}
 			#endregion

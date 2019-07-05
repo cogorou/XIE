@@ -147,15 +147,14 @@
 			this.toolFigureAdd = new System.Windows.Forms.ToolStripDropDownButton();
 			this.menuFigureAddPoint = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddLineSegment = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFigureAddLine = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddCircle = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddCircleArc = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddEllipse = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddEllipseArc = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddRectangle = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddTrapezoid = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFigureAddPolyline = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddString = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolFigureAlign = new System.Windows.Forms.ToolStripButton();
 			this.toolFigureClone = new System.Windows.Forms.ToolStripButton();
 			this.toolFigureDraw = new System.Windows.Forms.ToolStripButton();
 			this.toolFigureClear = new System.Windows.Forms.ToolStripButton();
@@ -203,7 +202,6 @@
 			this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
 			this.menuViewProfile = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuViewGrid = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolFigureAlign = new System.Windows.Forms.ToolStripButton();
 			this.toolbarView.SuspendLayout();
 			this.statusbar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitView)).BeginInit();
@@ -1214,7 +1212,7 @@
 			// 
 			this.splitView.Panel2.Controls.Add(this.propertyOverlay);
 			this.splitView.Size = new System.Drawing.Size(967, 492);
-			this.splitView.SplitterDistance = 593;
+			this.splitView.SplitterDistance = 585;
 			this.splitView.SplitterWidth = 8;
 			this.splitView.TabIndex = 4;
 			// 
@@ -1223,7 +1221,7 @@
 			this.panelImageView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelImageView.Location = new System.Drawing.Point(0, 0);
 			this.panelImageView.Name = "panelImageView";
-			this.panelImageView.Size = new System.Drawing.Size(591, 490);
+			this.panelImageView.Size = new System.Drawing.Size(583, 490);
 			this.panelImageView.TabIndex = 0;
 			// 
 			// propertyOverlay
@@ -1232,7 +1230,7 @@
 			this.propertyOverlay.LineColor = System.Drawing.SystemColors.ControlDark;
 			this.propertyOverlay.Location = new System.Drawing.Point(0, 0);
 			this.propertyOverlay.Name = "propertyOverlay";
-			this.propertyOverlay.Size = new System.Drawing.Size(364, 490);
+			this.propertyOverlay.Size = new System.Drawing.Size(372, 490);
 			this.propertyOverlay.TabIndex = 0;
 			this.propertyOverlay.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyOverlay_PropertyValueChanged);
 			this.propertyOverlay.Enter += new System.EventHandler(this.propertyOverlay_Enter);
@@ -1293,7 +1291,7 @@
 			// toolScalingModeNone
 			// 
 			this.toolScalingModeNone.Name = "toolScalingModeNone";
-			this.toolScalingModeNone.Size = new System.Drawing.Size(152, 22);
+			this.toolScalingModeNone.Size = new System.Drawing.Size(120, 22);
 			this.toolScalingModeNone.Tag = "None";
 			this.toolScalingModeNone.Text = "None";
 			this.toolScalingModeNone.Click += new System.EventHandler(this.toolScalingMode_Click);
@@ -1301,7 +1299,7 @@
 			// toolScalingModeTopLeft
 			// 
 			this.toolScalingModeTopLeft.Name = "toolScalingModeTopLeft";
-			this.toolScalingModeTopLeft.Size = new System.Drawing.Size(152, 22);
+			this.toolScalingModeTopLeft.Size = new System.Drawing.Size(120, 22);
 			this.toolScalingModeTopLeft.Tag = "TopLeft";
 			this.toolScalingModeTopLeft.Text = "TopLeft";
 			this.toolScalingModeTopLeft.Click += new System.EventHandler(this.toolScalingMode_Click);
@@ -1309,7 +1307,7 @@
 			// toolScalingModeCenter
 			// 
 			this.toolScalingModeCenter.Name = "toolScalingModeCenter";
-			this.toolScalingModeCenter.Size = new System.Drawing.Size(152, 22);
+			this.toolScalingModeCenter.Size = new System.Drawing.Size(120, 22);
 			this.toolScalingModeCenter.Tag = "Center";
 			this.toolScalingModeCenter.Text = "Center";
 			this.toolScalingModeCenter.Click += new System.EventHandler(this.toolScalingMode_Click);
@@ -1371,17 +1369,15 @@
 			this.toolFigureAdd.AutoSize = false;
 			this.toolFigureAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.toolFigureAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFigureAddString,
+            this.menuFigureAddRectangle,
+            this.menuFigureAddTrapezoid,
             this.menuFigureAddPoint,
             this.menuFigureAddLineSegment,
-            this.menuFigureAddLine,
             this.menuFigureAddCircle,
             this.menuFigureAddCircleArc,
             this.menuFigureAddEllipse,
-            this.menuFigureAddEllipseArc,
-            this.menuFigureAddRectangle,
-            this.menuFigureAddTrapezoid,
-            this.menuFigureAddPolyline,
-            this.menuFigureAddString});
+            this.menuFigureAddEllipseArc});
 			this.toolFigureAdd.Image = ((System.Drawing.Image)(resources.GetObject("toolFigureAdd.Image")));
 			this.toolFigureAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolFigureAdd.Name = "toolFigureAdd";
@@ -1401,13 +1397,6 @@
 			this.menuFigureAddLineSegment.Size = new System.Drawing.Size(153, 22);
 			this.menuFigureAddLineSegment.Text = "LineSegment";
 			this.menuFigureAddLineSegment.Click += new System.EventHandler(this.toolFigureAdd_Click);
-			// 
-			// menuFigureAddLine
-			// 
-			this.menuFigureAddLine.Name = "menuFigureAddLine";
-			this.menuFigureAddLine.Size = new System.Drawing.Size(153, 22);
-			this.menuFigureAddLine.Text = "Line";
-			this.menuFigureAddLine.Click += new System.EventHandler(this.toolFigureAdd_Click);
 			// 
 			// menuFigureAddCircle
 			// 
@@ -1451,19 +1440,23 @@
 			this.menuFigureAddTrapezoid.Text = "Trapezoid";
 			this.menuFigureAddTrapezoid.Click += new System.EventHandler(this.toolFigureAdd_Click);
 			// 
-			// menuFigureAddPolyline
-			// 
-			this.menuFigureAddPolyline.Name = "menuFigureAddPolyline";
-			this.menuFigureAddPolyline.Size = new System.Drawing.Size(153, 22);
-			this.menuFigureAddPolyline.Text = "Polyline";
-			this.menuFigureAddPolyline.Click += new System.EventHandler(this.toolFigureAdd_Click);
-			// 
 			// menuFigureAddString
 			// 
 			this.menuFigureAddString.Name = "menuFigureAddString";
 			this.menuFigureAddString.Size = new System.Drawing.Size(153, 22);
 			this.menuFigureAddString.Text = "String";
 			this.menuFigureAddString.Click += new System.EventHandler(this.toolFigureAdd_Click);
+			// 
+			// toolFigureAlign
+			// 
+			this.toolFigureAlign.AutoSize = false;
+			this.toolFigureAlign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolFigureAlign.Image = ((System.Drawing.Image)(resources.GetObject("toolFigureAlign.Image")));
+			this.toolFigureAlign.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolFigureAlign.Name = "toolFigureAlign";
+			this.toolFigureAlign.Size = new System.Drawing.Size(32, 32);
+			this.toolFigureAlign.Text = "Align";
+			this.toolFigureAlign.Click += new System.EventHandler(this.toolFigureAlign_Click);
 			// 
 			// toolFigureClone
 			// 
@@ -1849,17 +1842,6 @@
 			this.menuViewGrid.Text = "Grid";
 			this.menuViewGrid.Click += new System.EventHandler(this.menuViewGrid_Click);
 			// 
-			// toolFigureAlign
-			// 
-			this.toolFigureAlign.AutoSize = false;
-			this.toolFigureAlign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolFigureAlign.Image = ((System.Drawing.Image)(resources.GetObject("toolFigureAlign.Image")));
-			this.toolFigureAlign.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolFigureAlign.Name = "toolFigureAlign";
-			this.toolFigureAlign.Size = new System.Drawing.Size(32, 32);
-			this.toolFigureAlign.Text = "Align";
-			this.toolFigureAlign.Click += new System.EventHandler(this.toolFigureAlign_Click);
-			// 
 			// CxImageEditorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2008,14 +1990,12 @@
 		private System.Windows.Forms.ToolStripDropDownButton toolFigureAdd;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddPoint;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddLineSegment;
-		private System.Windows.Forms.ToolStripMenuItem menuFigureAddLine;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddCircle;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddEllipse;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddEllipseArc;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddRectangle;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddTrapezoid;
 		private System.Windows.Forms.ToolStripMenuItem menuFigureAddString;
-		private System.Windows.Forms.ToolStripMenuItem menuFigureAddPolyline;
 		private System.Windows.Forms.ContextMenuStrip ImageViewMenu;
 		private System.Windows.Forms.ToolStripMenuItem menuViewROI;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator23;

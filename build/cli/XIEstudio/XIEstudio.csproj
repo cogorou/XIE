@@ -112,6 +112,7 @@
     <Compile Include="Image\CxGammaConverterForm.Designer.cs">
       <DependentUpon>CxGammaConverterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Image\CxImageEditorSettings.cs" />
     <Compile Include="Image\CxPartColorForm.cs">
       <SubType>Form</SubType>
     </Compile>
