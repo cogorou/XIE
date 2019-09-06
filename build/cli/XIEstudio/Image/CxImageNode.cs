@@ -3026,19 +3026,58 @@ namespace XIEstudio
 												);
 											// 元画像を作業用画像に反映する.
 											{
-												// 1: 作業用画像のボーダー部分を元画像の平均値で塗り潰す.
-												for (var k = 0; k < work.Channels; k++)
-												{
-													var stat = child.Statistics(k);			// 統計.
-													using (var work_each = work.Child(k))
-													{
-														work_each.Clear(stat.Mean);			// 平均.
-													}
-												}
-												// 2: 作業用画像の処理範囲部分に元画像を複製する.
+												// 1: 作業用画像の処理範囲部分に元画像を複製する.
 												using (var work_child = work.Child(work_roi))
 												{
 													work_child.Filter().Copy(child);
+												}
+												// 2: 作業用画像のボーダー部分を塗り潰す.
+												for (var k = 0; k < work.Channels; k++)
+												{
+													// 上辺.
+													using (var work_edge = work.Child(new TxRectangleI(work_roi.X, work_roi.Y, work_roi.Width, 1)))
+													{
+														for (int y = 0; y < work_roi.Y; y++)
+														{
+															using (var work_border = work.Child(new TxRectangleI(work_roi.X, y, work_roi.Width, 1)))
+															{
+																work_border.Filter().Copy(work_edge);
+															}
+														}
+													}
+													// 下辺.
+													using (var work_edge = work.Child(new TxRectangleI(work_roi.X, work_roi.Y + work_roi.Height - 1, work_roi.Width, 1)))
+													{
+														for (int y = work_roi.Y + work_roi.Height; y < work.Height; y++)
+														{
+															using (var work_border = work.Child(new TxRectangleI(work_roi.X, y, work_roi.Width, 1)))
+															{
+																work_border.Filter().Copy(work_edge);
+															}
+														}
+													}
+													// 左辺.
+													using (var work_edge = work.Child(new TxRectangleI(work_roi.X, 0, 1, work.Height)))
+													{
+														for (int x = 0; x < work_roi.X; x++)
+														{
+															using (var work_border = work.Child(new TxRectangleI(x, 0, 1, work.Height)))
+															{
+																work_border.Filter().Copy(work_edge);
+															}
+														}
+													}
+													// 右辺.
+													using (var work_edge = work.Child(new TxRectangleI(work_roi.X + work_roi.Width - 1, 0, 1, work.Height)))
+													{
+														for (int x = work_roi.X + work_roi.Width; x < work.Width; x++)
+														{
+															using (var work_border = work.Child(new TxRectangleI(x, 0, 1, work.Height)))
+															{
+																work_border.Filter().Copy(work_edge);
+															}
+														}
+													}
 												}
 											}
 											// 局所領域平均により平滑化した結果を元画像へ反映する.

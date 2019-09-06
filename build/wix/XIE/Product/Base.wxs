@@ -5,7 +5,7 @@
 	<?define Product = "XIE" ?>
 	<?define Version = "1.0" ?>
 	<?define Build = "0" ?>
-	<?define Revision = "8" ?>
+	<?define Revision = "9" ?>
 	<?define Release = "2019/09/06" ?>
 	<?define Codepage = "932" ?>
 	<!--
