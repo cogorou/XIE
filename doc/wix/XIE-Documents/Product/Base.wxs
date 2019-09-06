@@ -6,7 +6,7 @@
 	<?define Version = "1.0" ?>
 	<?define Build = "0" ?>
 	<?define Revision = "0" ?>
-	<?define Release = "2019/03/11" ?>
+	<?define Release = "2019/09/06" ?>
 	<?define Codepage = "932" ?>
 	<!--
 		<?define Language = "1041" ?>

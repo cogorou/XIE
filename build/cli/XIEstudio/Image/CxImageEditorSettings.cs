@@ -180,7 +180,20 @@ namespace XIEstudio
 			set { m_PaintDrop = value; }
 		}
 		private XIEstudio.CxPaintDrop m_PaintDrop = new XIEstudio.CxPaintDrop();
+
+		/// <summary>
+		/// ペイント平滑化ツールの既定値
+		/// </summary>
+		[XIE.CxCategory("Tools")]
+		[XIE.CxDescription("P:XIEstudio.CxImageEditorSettings.PaintSmoothing")]
+		public virtual XIEstudio.CxPaintSmoothing PaintSmoothing
+		{
+			get { return m_PaintSmoothing; }
+			set { m_PaintSmoothing = value; }
+		}
+		private XIEstudio.CxPaintSmoothing m_PaintSmoothing = new XIEstudio.CxPaintSmoothing();
 			
+		
 		#endregion
 
 		#region 初期化:
@@ -250,6 +263,11 @@ namespace XIEstudio
 			else
 				this.PaintDrop = (XIEstudio.CxPaintDrop)_src.PaintDrop.Clone();
 
+			if (_src.PaintSmoothing == null)
+				this.PaintSmoothing = null;
+			else
+				this.PaintSmoothing = (XIEstudio.CxPaintSmoothing)_src.PaintSmoothing.Clone();
+
 			return;
 		}
 
@@ -298,6 +316,13 @@ namespace XIEstudio
 				if (this.PaintDrop != null && _src.PaintDrop != null)
 				{
 					if (this.PaintDrop.ContentEquals(_src.PaintDrop) == false) return false;
+				}
+
+				if (this.PaintSmoothing != null && _src.PaintSmoothing == null) return false;
+				if (this.PaintSmoothing == null && _src.PaintSmoothing != null) return false;
+				if (this.PaintSmoothing != null && _src.PaintSmoothing != null)
+				{
+					if (this.PaintSmoothing.ContentEquals(_src.PaintSmoothing) == false) return false;
 				}
 
 				return true;

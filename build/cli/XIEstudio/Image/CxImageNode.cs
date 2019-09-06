@@ -380,6 +380,16 @@ namespace XIEstudio
 		}
 		private CxPaintDrop m_PaintDrop = (CxPaintDrop)CxImageEditorForm.ImageEditorSettings.PaintDrop.Clone();
 
+		/// <summary>
+		/// ペイント平滑化ツール
+		/// </summary>
+		public virtual CxPaintSmoothing PaintSmoothing
+		{
+			get { return m_PaintSmoothing; }
+			set { m_PaintSmoothing = value; }
+		}
+		private CxPaintSmoothing m_PaintSmoothing = (CxPaintSmoothing)CxImageEditorForm.ImageEditorSettings.PaintSmoothing.Clone();
+
 		#endregion
 
 		#region プロパティ: (TimeStamp)
@@ -1479,7 +1489,7 @@ namespace XIEstudio
 		#region プロパティ:
 
 		/// <summary>
-		/// 描画色
+		/// 描画色。画像を Shift+左クリック すると色を抽出します。
 		/// </summary>
 		[XIE.CxCategory("Parameters")]
 		[XIE.CxDescription("P:XIEstudio.CxPaintBrush.Color")]
@@ -2023,7 +2033,7 @@ namespace XIEstudio
 		#region プロパティ:
 
 		/// <summary>
-		/// 描画色
+		/// 描画色。画像を Shift+左クリック すると色を抽出します。
 		/// </summary>
 		[XIE.CxCategory("Parameters")]
 		[XIE.CxDescription("P:XIEstudio.CxPaintDrop.Color")]
@@ -2035,7 +2045,7 @@ namespace XIEstudio
 		private TxRGB8x4 m_Color = new TxRGB8x4(255, 0, 0);
 
 		/// <summary>
-		/// 水滴の浸透許容範囲 (%) [0~100]
+		/// 水滴の浸透許容範囲 (%) [0~100] ※ ±(注目画素の輝度値×N％) の画素値を対象とします。Ctrl＋左クリックの場合は注目画素に連結する画素のみ対象とします。
 		/// </summary>
 		[XIE.CxCategory("Parameters")]
 		[XIE.CxDescription("P:XIEstudio.CxPaintDrop.ErrorRange")]
@@ -2652,6 +2662,660 @@ namespace XIEstudio
 				}
 			}
 		}
+
+		#endregion
+
+		#region 操作前にコールバックされる関数:
+
+		/// <summary>
+		/// 操作前にコールバックされる関数
+		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
+		public XIE.GDI.CxHandlingEventHandler BeginHandling = null;
+
+		#endregion
+	}
+
+	/// <summary>
+	/// ペイント平滑化ツール
+	/// </summary>
+	[Serializable]
+	public class CxPaintSmoothing : System.Object
+		, ICloneable
+		, IxEquatable
+	{
+		#region コンストラクタ:
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		public CxPaintSmoothing()
+		{
+		}
+
+		#endregion
+
+		#region プロパティ:
+
+		/// <summary>
+		/// フィルタサイズ [3 以上の奇数]
+		/// </summary>
+		[XIE.CxCategory("Parameters")]
+		[XIE.CxDescription("P:XIEstudio.CxPaintSmoothing.m_FilterSize")]
+		public int FilterSize
+		{
+			get { return m_FilterSize; }
+			set { m_FilterSize = value; }
+		}
+		private int m_FilterSize = 3;
+
+		/// <summary>
+		/// ブラシサイズ
+		/// </summary>
+		[XIE.CxCategory("Parameters")]
+		[XIE.CxDescription("P:XIEstudio.CxPaintSmoothing.BrushSize")]
+		public TxSizeI BrushSize
+		{
+			get { return m_BrushSize; }
+			set { m_BrushSize = value; }
+		}
+		private TxSizeI m_BrushSize = new TxSizeI(11, 11);
+
+		/// <summary>
+		/// 描画色。画像を Shift+左クリック すると色を抽出します。
+		/// </summary>
+		[XIE.CxCategory("Visualization")]
+		[XIE.CxDescription("P:XIEstudio.CxPaintSmoothing.Color")]
+		public TxRGB8x4 Color
+		{
+			get { return m_Color; }
+			set { m_Color = value; }
+		}
+		private TxRGB8x4 m_Color = new TxRGB8x4(255, 0, 0);
+
+		#endregion
+
+		#region ICloneable の実装:
+
+		/// <summary>
+		/// クローンの生成
+		/// </summary>
+		/// <returns>
+		///		新しく生成したオブジェクトに自身の内容を複製して返します。
+		/// </returns>
+		public virtual object Clone()
+		{
+			Type type = this.GetType();
+			Assembly asm = Assembly.GetAssembly(type);
+			object clone = asm.CreateInstance(type.FullName);
+			((IxEquatable)clone).CopyFrom(this);
+			return clone;
+		}
+
+		#endregion
+
+		#region IxEquatable の実装:
+
+		/// <summary>
+		/// オブジェクトの内容の複製
+		/// </summary>
+		/// <param name="src">複製元</param>
+		public virtual void CopyFrom(object src)
+		{
+			if (ReferenceEquals(this, src)) return;
+
+			if (src is CxPaintSmoothing)
+			{
+				#region 同一型:
+				var _src = (CxPaintSmoothing)src;
+
+				this.FilterSize = _src.FilterSize;
+				this.BrushSize = _src.BrushSize;
+				this.Color = _src.Color;
+
+				return;
+				#endregion
+			}
+
+			throw new CxException(ExStatus.Unsupported);
+		}
+
+		/// <summary>
+		/// オブジェクトの内容の比較
+		/// </summary>
+		/// <param name="src">比較対象</param>
+		/// <returns>
+		///		内容が一致する場合は true 、それ以外は false を返します。
+		/// </returns>
+		public virtual bool ContentEquals(object src)
+		{
+			if (ReferenceEquals(src, null)) return false;
+			if (ReferenceEquals(src, this)) return true;
+			if (this.GetType().IsInstanceOfType(src) == false) return false;
+
+			try
+			{
+				var _src = (CxPaintSmoothing)src;
+				if (this.FilterSize != _src.FilterSize) return false;
+				if (this.BrushSize != _src.BrushSize) return false;
+				if (this.Color != _src.Color) return false;
+
+				return true;
+			}
+			catch (System.Exception)
+			{
+				return false;
+			}
+		}
+
+		#endregion
+
+		#region 描画:
+
+		/// <summary>
+		/// 描画イベント
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public virtual void Rendering(object sender, XIE.GDI.CxRenderingEventArgs e)
+		{
+			#region カーソル描画:
+			{
+				TxSizeD size = this.BrushSize;
+				TxSizeD half = this.BrushSize / 2;
+				var rect = new TxRectangleD(this.MousePosition - half, size);
+
+				var cursor_fg = new XIE.GDI.CxGdiRectangle(rect);
+				cursor_fg.PenColor = this.Color;
+				cursor_fg.PenStyle = XIE.GDI.ExGdiPenStyle.Dash;
+
+				var cursor_bg = new XIE.GDI.CxGdiRectangle(rect);
+				cursor_bg.PenColor = new XIE.TxRGB8x4(
+					(byte)(255 - this.Color.R),
+					(byte)(255 - this.Color.G),
+					(byte)(255 - this.Color.B)
+					);
+
+				e.Canvas.DrawOverlay(new XIE.GDI.IxGdi2d[] { cursor_bg, cursor_fg }, XIE.GDI.ExGdiScalingMode.TopLeft);
+			}
+			#endregion
+		}
+		[XmlIgnore]
+		[NonSerialized]
+		private TxPointD MousePosition = new TxPointD();
+
+		#endregion
+
+		#region 操作:
+
+		/// <summary>
+		/// 操作イベント
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		public virtual void Handling(object sender, XIE.GDI.CxHandlingEventArgs e)
+		{
+			if (e.IsGripped == false)
+			{
+				// ※ TopLeft の場合は切り捨て、Center の場合は四捨五入する.
+				var scaling_mode = XIE.GDI.ExGdiScalingMode.TopLeft;
+				var mouse_position = e.Canvas.DPtoIP(e.MouseEventArgs.Location, scaling_mode);
+				switch (scaling_mode)
+				{
+					case XIE.GDI.ExGdiScalingMode.TopLeft:
+						mouse_position.X = System.Math.Floor(mouse_position.X);
+						mouse_position.Y = System.Math.Floor(mouse_position.Y);
+						break;
+					case XIE.GDI.ExGdiScalingMode.Center:
+						mouse_position.X = System.Math.Round(mouse_position.X);
+						mouse_position.Y = System.Math.Round(mouse_position.Y);
+						break;
+				}
+				this.MousePosition = mouse_position;
+
+				Keys keys = e.Keys;
+				bool ctrl = (keys & Keys.Control) == Keys.Control;
+				bool shift = (keys & Keys.Shift) == Keys.Shift;
+				bool alt = (keys & Keys.Alt) == Keys.Alt;
+
+				{
+					int mode = 0;
+
+					#region 判定:
+					switch (e.Reason)
+					{
+						case XIE.GDI.ExHandlingEventReason.MouseDown:
+							switch (Control.MouseButtons)
+							{
+								case MouseButtons.Left:
+									if (!ctrl && !shift && !alt)	// Left
+									{
+										mode = 1;
+										this.IsPressed = true;
+									}
+									if (!ctrl && shift && !alt)		// Shift+Left
+									{
+										mode = 11;
+									}
+									break;
+							}
+							break;
+						case XIE.GDI.ExHandlingEventReason.MouseUp:
+							{
+								this.IsPressed = false;
+							}
+							break;
+						case XIE.GDI.ExHandlingEventReason.MouseMove:
+							if (this.IsPressed)
+							{
+								switch (Control.MouseButtons)
+								{
+									case MouseButtons.Left:
+										mode = 2;
+										break;
+									default:
+										mode = 99;
+										this.IsPressed = false;
+										break;
+								}
+							}
+							else
+							{
+								mode = 99;
+							}
+							break;
+						default:
+							break;
+					}
+					#endregion
+
+					switch (mode)
+					{
+						case 1:
+						case 2:
+							#region 描画:
+							if (e.Image != null && e.Image.IsValid)
+							{
+								TxSizeD size = this.BrushSize;
+								TxSizeD half = this.BrushSize / 2;
+								var rect = new TxRectangleD(this.MousePosition - half, size);
+
+								#region 範囲チェック:
+								int sx = (int)System.Math.Round(rect.X);
+								int sy = (int)System.Math.Round(rect.Y);
+								int ex = sx + this.BrushSize.Width;
+								int ey = sy + this.BrushSize.Height;
+
+								if (sx < 0)
+									sx = 0;
+								if (sy < 0)
+									sy = 0;
+								if (ex > e.Image.Width)
+									ex = e.Image.Width;
+								if (ey > e.Image.Height)
+									ey = e.Image.Height;
+								#endregion
+
+								var roi = new TxRectangleI(sx, sy, ex - sx, ey - sy);
+								if (roi.Width > 0 && roi.Height > 0)
+								{
+									if (mode == 1)
+									{
+										if (this.BeginHandling != null)
+											this.BeginHandling(sender, e);
+									}
+
+									int filter_size = System.Math.Abs(this.FilterSize / 2) * 2 + 1;
+									if (filter_size < 3)
+										filter_size = 3;
+
+									#region 平滑化:
+									// 
+									// 　　┏━━━┓←── e.Image
+									// 　　┃　　　┃
+									// 　　┃　　　┃
+									// 　　┗━━━┛
+									// 　　↓ each channel
+									// 　　┌───┐←── child
+									// 　　│　　　│　　
+									// 　　│　　　│　　
+									// 　　└───┘　　
+									// 　　│ unpack
+									// ┏━━━━━━━┓← work (unpacked)
+									// ┃　↓　　　　　┃
+									// ┃　┏━━━┓←┃─ work_child (処理範囲部分)
+									// ┃　┃　　　┃　┃
+									// ┃　┃　　　┃　┃
+									// ┃　┗━━━┛　┃
+									// ┃　　　　　　　┃
+									// ┗━━━━━━━┛
+									// 　　↓ each channel
+									// ┌───────┐← work_sum1
+									// │　　　　　　　│
+									// │　┌───┐←│─ (局所領域の注目画素が移動する範囲)
+									// │　│　　　│　│
+									// │　│　　　│　│
+									// │　└───┘　│
+									// │　│　　　　　│
+									// └───────┘
+									// 　　↓ 局所領域平均
+									// 　　┏━━━┓←── work_buff
+									// 　　┃　　　┃
+									// 　　┃　　　┃
+									// 　　┗━━━┛
+									// 
+									for (int ch = 0; ch < e.Image.Channels; ch++)
+									{
+										using (var child = e.Image.Child(ch, roi))
+										using (var work = new CxImage())
+										{
+											// 作業用画像:
+											work.Resize(
+												child.Width + filter_size,
+												child.Height + filter_size,
+												new TxModel(child.Model.Type, 1),
+												child.Model.Pack
+												);
+											// 処理範囲:
+											var work_roi = new TxRectangleI(
+												filter_size / 2 + 1,
+												filter_size / 2 + 1,
+												child.Width,
+												child.Height
+												);
+											// 元画像を作業用画像に反映する.
+											{
+												// 1: 作業用画像のボーダー部分を元画像の平均値で塗り潰す.
+												for (var k = 0; k < work.Channels; k++)
+												{
+													var stat = child.Statistics(k);			// 統計.
+													using (var work_each = work.Child(k))
+													{
+														work_each.Clear(stat.Mean);			// 平均.
+													}
+												}
+												// 2: 作業用画像の処理範囲部分に元画像を複製する.
+												using (var work_child = work.Child(work_roi))
+												{
+													work_child.Filter().Copy(child);
+												}
+											}
+											// 局所領域平均により平滑化した結果を元画像へ反映する.
+											using (var work_buff = new CxImage(work_roi.Width, work_roi.Height, TxModel.F64(1), work.Channels))
+											{
+												#region 局所領域平均による平滑化:
+												for (var k = 0; k < work_buff.Channels; k++)
+												{
+													using (var work_each = work.Child(k))
+													using (var work_sum1 = new CxImage(work.Width, work.Height, XIE.TxModel.F64(1), 1))
+													{
+														// 積分画像:
+														var effector = new XIE.Effectors.CxIntegral(1);	// [1=総和、2=２乗の総和]
+														effector.Execute(work_each, work_sum1);
+
+														// 局所領域平均:
+														// 例)
+														// ・注目画素 … [0,0] ※ 下図×部分
+														// ・局所領域 … 始点=-1,-1、サイズ=3x3 (9画素)
+														// ・平均 … ((11-10)-(01-00)) / 9
+														// 
+														// ┌─┬─┬─┬─┬───┐
+														// │00│　│　│01│
+														// ├─┌─┬─┬─┐
+														// │　│　│　│　│
+														// ├─├─┼─┼─┤← 元画像のＹ端
+														// │　│　│×│　│
+														// ├─├─┼─┼─┤
+														// │10│　│　│11│
+														// ├─└─┴─┴─┘
+														// │　　　↑　　　　　　
+														// │　　　└ 元画像のＸ端　　　　　　
+														// └───────────┘
+														// 
+														var back_size = filter_size / 2 + 1;
+														var next_size = filter_size / 2;
+														var filter_pixels = filter_size * filter_size;
+														var sum_scan = work_sum1.Scanner(0);
+														var dst_scan = work_buff.Scanner(k);
+														for (int y = 0; y < work_roi.Height; y++)
+														{
+															for (int x = 0; x < work_roi.Width; x++)
+															{
+																unsafe
+																{
+																	var sum00 = *((double*)sum_scan[work_roi.Y + y - back_size, work_roi.X + x - back_size].ToPointer());
+																	var sum01 = *((double*)sum_scan[work_roi.Y + y - back_size, work_roi.X + x + next_size].ToPointer());
+																	var sum10 = *((double*)sum_scan[work_roi.Y + y + next_size, work_roi.X + x - back_size].ToPointer());
+																	var sum11 = *((double*)sum_scan[work_roi.Y + y + next_size, work_roi.X + x + next_size].ToPointer());
+																	var mean = ((sum11 - sum10) - (sum01 - sum00)) / filter_pixels;
+																	var dst_addr = (double*)dst_scan[y, x];
+																	*dst_addr = mean;
+																}
+															}
+														}
+													}
+												}
+												#endregion
+
+												// 元画像への反映:
+												child.Filter().Copy(work_buff);
+											}
+										}
+									}
+									#endregion
+
+									e.IsGripped = true;
+									e.IsUpdated = true;	// 上位側へ表示更新を要求する.
+								}
+							}
+							#endregion
+							break;
+						case 11:
+							#region 色抽出:
+							if (e.Image != null && e.Image.IsValid)
+							{
+								#region 範囲チェック:
+								int mx = (int)System.Math.Round(this.MousePosition.X);
+								int my = (int)System.Math.Round(this.MousePosition.Y);
+
+								if (mx < 0)
+									mx = 0;
+								if (my < 0)
+									my = 0;
+								if (mx > e.Image.Width - 1)
+									mx = e.Image.Width - 1;
+								if (my > e.Image.Height - 1)
+									my = e.Image.Height - 1;
+								#endregion
+
+								var scale = XIE.Axi.CalcScale(e.Image.Model.Type, e.Image.Depth, ExType.U8, 0);
+								var current_color = this.Color;
+								var picked_colors = new List<byte>();
+
+								var channels = 0;
+								var pack = 0;
+
+								#region チャネル数とパック数の設定:
+								switch (e.Image.Channels)
+								{
+									case 3:
+									case 4:
+										channels = 3;
+										pack = 1;
+										break;
+									default:
+										switch (e.Image.Model.Pack)
+										{
+											case 3:
+											case 4:
+												channels = 1;
+												pack = 3;
+												break;
+											default:
+												channels = 1;
+												pack = 1;
+												break;
+										}
+										break;
+								}
+								#endregion
+
+								for (int ch = 0; ch < channels; ch++)
+								{
+									var scan = e.Image.Scanner(ch);
+									var pixel = scan[my, mx];
+
+									#region 画素の型による分岐:
+									switch (e.Image.Model.Type)
+									{
+										case ExType.U8:
+											unsafe
+											{
+												var addr = (byte*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.U16:
+											unsafe
+											{
+												var addr = (ushort*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.U32:
+											unsafe
+											{
+												var addr = (uint*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.U64:
+											unsafe
+											{
+												var addr = (ulong*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.S8:
+											unsafe
+											{
+												var addr = (sbyte*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.S16:
+											unsafe
+											{
+												var addr = (short*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.S32:
+											unsafe
+											{
+												var addr = (int*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.S64:
+											unsafe
+											{
+												var addr = (long*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.F32:
+											unsafe
+											{
+												var addr = (float*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+										case ExType.F64:
+											unsafe
+											{
+												var addr = (double*)pixel;
+												for (int k = 0; k < pack; k++)
+												{
+													picked_colors.Add((byte)System.Math.Round(addr[k] * scale));
+												}
+											}
+											break;
+									}
+									#endregion
+								}
+
+								#region 抽出した色の設定:
+								if (picked_colors.Count > 0)
+								{
+									switch (picked_colors.Count)
+									{
+										case 3:
+										case 4:
+											current_color.R = picked_colors[0];
+											current_color.G = picked_colors[1];
+											current_color.B = picked_colors[2];
+											break;
+										default:
+											current_color.R = picked_colors[0];
+											current_color.G = picked_colors[0];
+											current_color.B = picked_colors[0];
+											break;
+									}
+									this.Color = current_color;
+								}
+								#endregion
+
+								#region ImageEditorSettings への反映:
+								{
+									CxImageEditorForm.ImageEditorSettings.PaintSmoothing = (XIEstudio.CxPaintSmoothing)((ICloneable)this).Clone();
+								}
+								#endregion
+							}
+							#endregion
+							break;
+						case 99:
+							e.IsUpdated = true;	// 上位側へ表示更新を要求する.
+							break;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// マウスが押下されているか否か
+		/// </summary>
+		[XmlIgnore]
+		[NonSerialized]
+		private bool IsPressed = false;
 
 		#endregion
 

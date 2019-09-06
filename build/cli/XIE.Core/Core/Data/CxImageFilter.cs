@@ -248,7 +248,7 @@ namespace XIE
 		#region メソッド: (Mathematic)
 
 		/// <summary>
-		/// 絶対値
+		/// 数理関数
 		/// </summary>
 		/// <param name="src">入力</param>
 		/// <param name="type">種別</param>

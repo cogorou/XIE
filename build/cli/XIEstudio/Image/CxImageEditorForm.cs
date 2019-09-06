@@ -1612,6 +1612,10 @@ namespace XIEstudio
 			/// ペイントモード (水滴)
 			/// </summary>
 			Drop,
+			/// <summary>
+			/// ペイントモード (平滑化)
+			/// </summary>
+			Smoothing,
 		}
 
 		/// <summary>
@@ -1731,6 +1735,28 @@ namespace XIEstudio
 			{
 				this.EditMode = ExEditMode.Drop;
 				this.propertyOverlay.SelectedObject = this.ImageNode.PaintDrop;
+				this.propertyOverlay.Refresh();
+			}
+			else
+			{
+				this.EditMode = ExEditMode.None;
+				this.propertyOverlay.SelectedObject = null;
+				this.propertyOverlay.Refresh();
+			}
+			this.ImageView.Refresh();
+		}
+
+		/// <summary>
+		/// toolbarOverlay: ペイントモード (平滑化)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void toolPaintSmoothing_Click(object sender, EventArgs e)
+		{
+			if (this.EditMode != ExEditMode.Smoothing)
+			{
+				this.EditMode = ExEditMode.Smoothing;
+				this.propertyOverlay.SelectedObject = this.ImageNode.PaintSmoothing;
 				this.propertyOverlay.Refresh();
 			}
 			else
@@ -2143,6 +2169,11 @@ namespace XIEstudio
 					CxImageEditorForm.ImageEditorSettings.PaintDrop = (XIEstudio.CxPaintDrop)((ICloneable)overlay).Clone();
 					break;
 				}
+				if (overlay is XIEstudio.CxPaintSmoothing)
+				{
+					CxImageEditorForm.ImageEditorSettings.PaintSmoothing = (XIEstudio.CxPaintSmoothing)((ICloneable)overlay).Clone();
+					break;
+				}
 			}
 			while (false);
 			#endregion
@@ -2434,6 +2465,9 @@ namespace XIEstudio
 					case ExEditMode.Drop:
 						this.ImageNode.PaintDrop.Rendering(sender, e);
 						break;
+					case ExEditMode.Smoothing:
+						this.ImageNode.PaintSmoothing.Rendering(sender, e);
+						break;
 				}
 			}
 		}
@@ -2525,6 +2559,27 @@ namespace XIEstudio
 						finally
 						{
 							this.ImageNode.PaintDrop.BeginHandling = null;
+						}
+						break;
+					case ExEditMode.Smoothing:
+						try
+						{
+							this.ImageNode.PaintSmoothing.BeginHandling = (object _sender, XIE.GDI.CxHandlingEventArgs _e) =>
+							{
+								this.ImageNode.AddHistory(0, true);
+							};
+
+							var is_updated = e.IsUpdated;
+							this.ImageNode.PaintSmoothing.Handling(sender, e);
+
+							if (!is_updated && e.IsUpdated)
+							{
+								CxAuxInfoForm.AuxInfo.SendRequested(this.ImageNode, new XIE.Tasks.CxAuxNotifyEventArgs_Refresh());
+							}
+						}
+						finally
+						{
+							this.ImageNode.PaintSmoothing.BeginHandling = null;
 						}
 						break;
 				}

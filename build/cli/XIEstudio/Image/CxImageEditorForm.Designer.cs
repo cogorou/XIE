@@ -143,17 +143,18 @@
 			this.toolFigureHandling = new System.Windows.Forms.ToolStripButton();
 			this.toolPaintBrushMode = new System.Windows.Forms.ToolStripButton();
 			this.toolPaintDropMode = new System.Windows.Forms.ToolStripButton();
+			this.toolPaintSmoothing = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolFigureAdd = new System.Windows.Forms.ToolStripDropDownButton();
+			this.menuFigureAddString = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuFigureAddRectangle = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuFigureAddTrapezoid = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddPoint = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddLineSegment = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddCircle = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddCircleArc = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddEllipse = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuFigureAddEllipseArc = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFigureAddRectangle = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFigureAddTrapezoid = new System.Windows.Forms.ToolStripMenuItem();
-			this.menuFigureAddString = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolFigureAlign = new System.Windows.Forms.ToolStripButton();
 			this.toolFigureClone = new System.Windows.Forms.ToolStripButton();
 			this.toolFigureDraw = new System.Windows.Forms.ToolStripButton();
@@ -1212,7 +1213,7 @@
 			// 
 			this.splitView.Panel2.Controls.Add(this.propertyOverlay);
 			this.splitView.Size = new System.Drawing.Size(967, 492);
-			this.splitView.SplitterDistance = 585;
+			this.splitView.SplitterDistance = 577;
 			this.splitView.SplitterWidth = 8;
 			this.splitView.TabIndex = 4;
 			// 
@@ -1221,7 +1222,7 @@
 			this.panelImageView.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelImageView.Location = new System.Drawing.Point(0, 0);
 			this.panelImageView.Name = "panelImageView";
-			this.panelImageView.Size = new System.Drawing.Size(583, 490);
+			this.panelImageView.Size = new System.Drawing.Size(575, 490);
 			this.panelImageView.TabIndex = 0;
 			// 
 			// propertyOverlay
@@ -1230,7 +1231,7 @@
 			this.propertyOverlay.LineColor = System.Drawing.SystemColors.ControlDark;
 			this.propertyOverlay.Location = new System.Drawing.Point(0, 0);
 			this.propertyOverlay.Name = "propertyOverlay";
-			this.propertyOverlay.Size = new System.Drawing.Size(372, 490);
+			this.propertyOverlay.Size = new System.Drawing.Size(380, 490);
 			this.propertyOverlay.TabIndex = 0;
 			this.propertyOverlay.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyOverlay_PropertyValueChanged);
 			this.propertyOverlay.Enter += new System.EventHandler(this.propertyOverlay_Enter);
@@ -1247,6 +1248,7 @@
             this.toolFigureHandling,
             this.toolPaintBrushMode,
             this.toolPaintDropMode,
+            this.toolPaintSmoothing,
             this.toolStripSeparator7,
             this.toolFigureAdd,
             this.toolFigureAlign,
@@ -1359,6 +1361,20 @@
 			this.toolPaintDropMode.ToolTipText = "Drop mode";
 			this.toolPaintDropMode.Click += new System.EventHandler(this.toolPaintDropMode_Click);
 			// 
+			// toolPaintSmoothing
+			// 
+			this.toolPaintSmoothing.AutoSize = false;
+			this.toolPaintSmoothing.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolPaintSmoothing.Image = ((System.Drawing.Image)(resources.GetObject("toolPaintSmoothing.Image")));
+			this.toolPaintSmoothing.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolPaintSmoothing.Name = "toolPaintSmoothing";
+			this.toolPaintSmoothing.Size = new System.Drawing.Size(32, 32);
+			this.toolPaintSmoothing.Text = "Smoothing";
+			this.toolPaintSmoothing.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+			this.toolPaintSmoothing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolPaintSmoothing.ToolTipText = "Smoothing";
+			this.toolPaintSmoothing.Click += new System.EventHandler(this.toolPaintSmoothing_Click);
+			// 
 			// toolStripSeparator7
 			// 
 			this.toolStripSeparator7.Name = "toolStripSeparator7";
@@ -1383,6 +1399,27 @@
 			this.toolFigureAdd.Name = "toolFigureAdd";
 			this.toolFigureAdd.Size = new System.Drawing.Size(40, 32);
 			this.toolFigureAdd.Text = "Add";
+			// 
+			// menuFigureAddString
+			// 
+			this.menuFigureAddString.Name = "menuFigureAddString";
+			this.menuFigureAddString.Size = new System.Drawing.Size(153, 22);
+			this.menuFigureAddString.Text = "String";
+			this.menuFigureAddString.Click += new System.EventHandler(this.toolFigureAdd_Click);
+			// 
+			// menuFigureAddRectangle
+			// 
+			this.menuFigureAddRectangle.Name = "menuFigureAddRectangle";
+			this.menuFigureAddRectangle.Size = new System.Drawing.Size(153, 22);
+			this.menuFigureAddRectangle.Text = "Rectangle";
+			this.menuFigureAddRectangle.Click += new System.EventHandler(this.toolFigureAdd_Click);
+			// 
+			// menuFigureAddTrapezoid
+			// 
+			this.menuFigureAddTrapezoid.Name = "menuFigureAddTrapezoid";
+			this.menuFigureAddTrapezoid.Size = new System.Drawing.Size(153, 22);
+			this.menuFigureAddTrapezoid.Text = "Trapezoid";
+			this.menuFigureAddTrapezoid.Click += new System.EventHandler(this.toolFigureAdd_Click);
 			// 
 			// menuFigureAddPoint
 			// 
@@ -1425,27 +1462,6 @@
 			this.menuFigureAddEllipseArc.Size = new System.Drawing.Size(153, 22);
 			this.menuFigureAddEllipseArc.Text = "EllipseArc";
 			this.menuFigureAddEllipseArc.Click += new System.EventHandler(this.toolFigureAdd_Click);
-			// 
-			// menuFigureAddRectangle
-			// 
-			this.menuFigureAddRectangle.Name = "menuFigureAddRectangle";
-			this.menuFigureAddRectangle.Size = new System.Drawing.Size(153, 22);
-			this.menuFigureAddRectangle.Text = "Rectangle";
-			this.menuFigureAddRectangle.Click += new System.EventHandler(this.toolFigureAdd_Click);
-			// 
-			// menuFigureAddTrapezoid
-			// 
-			this.menuFigureAddTrapezoid.Name = "menuFigureAddTrapezoid";
-			this.menuFigureAddTrapezoid.Size = new System.Drawing.Size(153, 22);
-			this.menuFigureAddTrapezoid.Text = "Trapezoid";
-			this.menuFigureAddTrapezoid.Click += new System.EventHandler(this.toolFigureAdd_Click);
-			// 
-			// menuFigureAddString
-			// 
-			this.menuFigureAddString.Name = "menuFigureAddString";
-			this.menuFigureAddString.Size = new System.Drawing.Size(153, 22);
-			this.menuFigureAddString.Text = "String";
-			this.menuFigureAddString.Click += new System.EventHandler(this.toolFigureAdd_Click);
 			// 
 			// toolFigureAlign
 			// 
@@ -2050,5 +2066,6 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
 		private System.Windows.Forms.ToolStripButton toolFigureClone;
 		private System.Windows.Forms.ToolStripButton toolFigureAlign;
+		private System.Windows.Forms.ToolStripButton toolPaintSmoothing;
 	}
 }
