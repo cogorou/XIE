@@ -24,7 +24,7 @@ namespace XIE.Media
 	/// </summary>
 	[Serializable]
 	[TypeConverter(typeof(CxSortingConverter))]
-	[StructLayout(LayoutKind.Sequential, Pack = XIE.Axi.XIE_PACKING_SIZE)]
+	[StructLayout(LayoutKind.Sequential, Pack = XIE.Defs.XIE_PACKING_SIZE)]
 	public struct TxGrabberArgs :
 		IEquatable<TxGrabberArgs>
 	{

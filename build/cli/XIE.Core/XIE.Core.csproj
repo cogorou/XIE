@@ -246,7 +246,7 @@
     <Compile Include="Media\IxMediaControl.cs" />
     <Compile Include="Media\TxDeviceListItem.cs" />
     <Compile Include="Media\TxDeviceParam.cs" />
-    <Compile Include="Media\TxEventReceiverArgs.cs" />
+    <Compile Include="Media\TxGrabberArgs.cs" />
     <Compile Include="Media\TxScreenListItem.cs" />
     <Compile Include="Net\CxTcpClient.cs" />
     <Compile Include="Net\CxTcpServer.cs" />

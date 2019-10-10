@@ -378,7 +378,7 @@ namespace XIE
 		///		packing_size で割り切れるように
 		///		パディングを含めたサイズ (bytes) を計算します。<br/>
 		///		対応しない型が指定された場合は 0 を返します。<br/>
-		///		CxImage の水平方向サイズは 8 bytes (Axi.XIE_PACKING_SIZE) でパッキングされています。
+		///		CxImage の水平方向サイズは 8 bytes (Defs.XIE_PACKING_SIZE) でパッキングされています。
 		/// </returns>
 		public static int fnXIE_Core_Axi_CalcStride(TxModel model, int width, int packing_size)
 		{
