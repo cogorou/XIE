@@ -313,21 +313,30 @@ namespace XIEstudio
 
 			try
 			{
-				using (var image = new XIE.CxImage())
+				var roi = new XIE.TxRectangleI();
+
+				#region ROI 指定:
+				if (this.ROIOverlay.Visible &&
+					this.ROIOverlay.CheckValidity(this.ImageView.Image))
 				{
-					var roi = new XIE.TxRectangleI();
+					roi = (XIE.TxRectangleI)this.ROIOverlay.Shape;
+				}
+				#endregion
 
-					#region ROI 指定:
-					if (this.ROIOverlay.Visible &&
-						this.ROIOverlay.CheckValidity(this.ImageView.Image))
+				try
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = true;	// クリップボード監視通知イベントを無視する.
+
+					using (var image = new XIE.CxImage())
 					{
-						roi = (XIE.TxRectangleI)this.ROIOverlay.Shape;
+						image.Attach(ImageView.Image, roi);
+
+						XIE.AxiClipboard.CopyFrom(image);
 					}
-					#endregion
-
-					image.Attach(ImageView.Image, roi);
-
-					XIE.AxiClipboard.CopyFrom(image);
+				}
+				finally
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = false;
 				}
 			}
 			catch (System.Exception ex)
@@ -349,26 +358,35 @@ namespace XIEstudio
 			{
 				this.ImageNode.AddHistory(0, true);	// 編集履歴:
 
-				using (var image = new XIE.CxImage())
+				var roi = new XIE.TxRectangleI();
+
+				#region ROI 指定:
+				if (this.ROIOverlay.Visible &&
+					this.ROIOverlay.CheckValidity(this.ImageView.Image))
 				{
-					var roi = new XIE.TxRectangleI();
+					roi = (XIE.TxRectangleI)this.ROIOverlay.Shape;
+				}
+				#endregion
 
-					#region ROI 指定:
-					if (this.ROIOverlay.Visible &&
-						this.ROIOverlay.CheckValidity(this.ImageView.Image))
+				try
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = true;	// クリップボード監視通知イベントを無視する.
+
+					using (var image = new XIE.CxImage())
 					{
-						roi = (XIE.TxRectangleI)this.ROIOverlay.Shape;
+						image.Attach(ImageView.Image, roi);
+
+						XIE.AxiClipboard.CopyFrom(image);
+
+						image.Clear(0);
+						ImageView.Refresh();
+
+						CxAuxInfoForm.AuxInfo.SendRequested(this.ImageNode, new XIE.Tasks.CxAuxNotifyEventArgs_Refresh());
 					}
-					#endregion
-
-					image.Attach(ImageView.Image, roi);
-
-					XIE.AxiClipboard.CopyFrom(image);
-
-					image.Clear(0);
-					ImageView.Refresh();
-
-					CxAuxInfoForm.AuxInfo.SendRequested(this.ImageNode, new XIE.Tasks.CxAuxNotifyEventArgs_Refresh());
+				}
+				finally
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = false;
 				}
 			}
 			catch (System.Exception ex)

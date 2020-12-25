@@ -2365,8 +2365,8 @@ namespace XIEstudio
 											}
 											#endregion
 
-											#region マスク生成: (クラスタリング) [Ctrl+Left]
-											if (ctrl)
+											#region マスク生成: (クラスタリング)
+											//if (ctrl)
 											{
 												watch.Start();
 												if (mask.IsValid)

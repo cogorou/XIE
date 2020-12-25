@@ -362,5 +362,14 @@ namespace XIEstudio
 		}
 
 		#endregion
+
+		#region クリップボード監視関連:
+
+		/// <summary>
+		/// クリップボード監視通知イベントを無視するか否か
+		/// </summary>
+		public static bool IgnoreClipboardObserverNotifyEvent = false;
+
+		#endregion
 	}
 }

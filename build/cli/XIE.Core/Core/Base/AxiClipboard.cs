@@ -76,10 +76,13 @@ namespace XIE
 			if (is_compatible)
 			{
 #if true
-				using (var dib = AllocateDib(src))
-				{
-					Clipboard.SetData(DataFormats.Dib, dib);
-				}
+				var bitmap = src.ToBitmap();
+				Clipboard.SetDataObject(bitmap, false);
+
+				//using (var dib = AllocateDib(src))
+				//{
+				//	Clipboard.SetData(DataFormats.Dib, dib);
+				//}
 #else
 				switch (System.Environment.OSVersion.Platform)
 				{

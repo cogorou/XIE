@@ -606,13 +606,12 @@ namespace XIEstudio
 			var args = (XIE.Forms.CxClipboardObserverEventArgs)e;
 			var idata = Clipboard.GetDataObject();
 
-			if (idata != null && idata.GetDataPresent(DataFormats.Dib))
+			if (ApiHelper.IgnoreClipboardObserverNotifyEvent == false)
 			{
-				XIE.Log.Api.Trace("ClipboardObserver_Notify: Dib [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
-
-				if (args.Msg.WParam == IntPtr.Zero ||
-					args.Msg.WParam == new IntPtr(65552))
+				if (idata != null && idata.GetDataPresent(DataFormats.Dib))
 				{
+					XIE.Log.Api.Trace("ClipboardObserver_Notify: Dib [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
+
 					#region クリップボードからの取得.
 					try
 					{
@@ -640,14 +639,10 @@ namespace XIEstudio
 					}
 					#endregion
 				}
-			}
-			else if (idata != null && idata.GetDataPresent(DataFormats.Bitmap))
-			{
-				XIE.Log.Api.Trace("ClipboardObserver_Notify: Bitmap [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
-
-				if (args.Msg.WParam == IntPtr.Zero ||
-					args.Msg.WParam == new IntPtr(65552))
+				else if (idata != null && idata.GetDataPresent(DataFormats.Bitmap))
 				{
+					XIE.Log.Api.Trace("ClipboardObserver_Notify: Bitmap [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
+
 					#region クリップボードからの取得.
 					try
 					{
@@ -676,10 +671,10 @@ namespace XIEstudio
 					}
 					#endregion
 				}
-			}
-			else
-			{
-				XIE.Log.Api.Trace("ClipboardObserver_Notify: Etc [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
+				else
+				{
+					XIE.Log.Api.Trace("ClipboardObserver_Notify: Etc [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
+				}
 			}
 		}
 
@@ -698,21 +693,30 @@ namespace XIEstudio
 
 			try
 			{
-				using (var image = new XIE.CxImage())
+				var roi = new XIE.TxRectangleI();
+
+				#region ROI 指定:
+				if (this.ROIOverlay.Visible &&
+					this.ROIOverlay.CheckValidity(this.ImageView.Image))
 				{
-					var roi = new XIE.TxRectangleI();
+					roi = (XIE.TxRectangleD)this.ROIOverlay.Shape;
+				}
+				#endregion
 
-					#region ROI 指定:
-					if (this.ROIOverlay.Visible &&
-						this.ROIOverlay.CheckValidity(this.ImageView.Image))
+				try
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = true;	// クリップボード監視通知イベントを無視する.
+
+					using (var image = new XIE.CxImage())
 					{
-						roi = (XIE.TxRectangleD)this.ROIOverlay.Shape;
+						image.Attach(ImageView.Image, roi);
+
+						XIE.AxiClipboard.CopyFrom(image);
 					}
-					#endregion
-
-					image.Attach(ImageView.Image, roi);
-
-					XIE.AxiClipboard.CopyFrom(image);
+				}
+				finally
+				{
+					ApiHelper.IgnoreClipboardObserverNotifyEvent = false;
 				}
 			}
 			catch (System.Exception ex)
