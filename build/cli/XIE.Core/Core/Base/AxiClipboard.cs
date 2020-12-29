@@ -75,32 +75,8 @@ namespace XIE
 			#region クリップボードへのコピー:
 			if (is_compatible)
 			{
-#if true
 				var bitmap = src.ToBitmap();
 				Clipboard.SetDataObject(bitmap, false);
-
-				//using (var dib = AllocateDib(src))
-				//{
-				//	Clipboard.SetData(DataFormats.Dib, dib);
-				//}
-#else
-				switch (System.Environment.OSVersion.Platform)
-				{
-					case PlatformID.Unix:
-						// Linux では Bitmap を使用する.
-						{
-							Clipboard.SetData(DataFormats.Bitmap, src);
-						}
-						break;
-					default:
-						// Windows では Dib を使用する.
-						using (var dib = AllocateDib(src))
-						{
-							Clipboard.SetData(DataFormats.Dib, dib);
-						}
-						break;
-				}
-#endif
 			}
 			else
 			{

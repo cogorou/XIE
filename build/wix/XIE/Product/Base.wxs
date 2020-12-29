@@ -5,8 +5,8 @@
 	<?define Product = "XIE" ?>
 	<?define Version = "1.0" ?>
 	<?define Build = "0" ?>
-	<?define Revision = "10" ?>
-	<?define Release = "2020/12/25" ?>
+	<?define Revision = "11" ?>
+	<?define Release = "2020/12/29" ?>
 	<?define Codepage = "932" ?>
 	<!--
 		<?define Language = "1041" ?>

@@ -608,6 +608,7 @@ namespace XIEstudio
 
 			if (ApiHelper.IgnoreClipboardObserverNotifyEvent == false)
 			{
+#if false
 				if (idata != null && idata.GetDataPresent(DataFormats.Dib))
 				{
 					XIE.Log.Api.Trace("ClipboardObserver_Notify: Dib [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
@@ -639,7 +640,9 @@ namespace XIEstudio
 					}
 					#endregion
 				}
-				else if (idata != null && idata.GetDataPresent(DataFormats.Bitmap))
+#endif
+
+				if (idata != null && idata.GetDataPresent(DataFormats.Bitmap))
 				{
 					XIE.Log.Api.Trace("ClipboardObserver_Notify: Bitmap [{0},{1},{2},{3}]", args.Msg.HWnd, args.Msg.WParam, args.Msg.LParam, this.Handle);
 
